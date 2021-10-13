@@ -1280,7 +1280,7 @@ but because the Harmenberg-weighted distributions of $\cRat_{t}$ and $\cRat_{t+1
 Thus in an economy that has settled into either a Harmenberg-invariant or a Szeidl-invariant distribution, cross-sectional mean growth rates of noncapital income and consumption are the same.
 
 \hypertarget{Balanced-Growth-Of-Covariances}{}
-\subsection{Balanced Growth of Covariances}\label{subsec:Covariances}
+\subsection{Balanced Growth and Covariances}\label{subsec:Covariances}
 
 \begin{comment}
 From the perspective of period $t$, %current aggregate assets are nonstochastic, $\BLevBF_{t}=\Mean[b_{t} \pLevBF_{t}]$, but next period's assets are stochastic,
@@ -1292,12 +1292,32 @@ From the perspective of period $t$, %current aggregate assets are nonstochastic,
 \\              & = \PGro \Mean[(\bRat_{t}+\tShk_{t}-\cFunc(\bRat_{t}+\tShk_{t}))\Rnorm\pLevBF_{t}]
 \end{align*}
 \end{comment}
-Consider again a Harmenberg-converged economy at date $t=0$.  Total assets are
+Consider again a Harmenberg-converged economy at date $t=0$, and suppose for convenience that mean permanent income for all consumers at that date happens to be $\Mean[\pLevBF_{t}]=1$.  Total assets at $t$ and $t+1$ are
 \begin{align*}
-    \mathbf{A}_t & = \Harm{\Mean}_{t}[a_t\pLevBF_t] = \Harm{\Mean}_{t}[a_t]\Harm{\Mean}_{t}[\pLevBF_t] + \HarmWide{\textup{cov}}_{t}(a_t, \pLevBF_t) 
-% \\   \mathbf{A}_{t+1} & = \Harm{\Mean}_{t+1}[a_{t+1}\pLevBF_{t+1}] = \Harm{\Mean}_{t+1}[a_{t+1}]\Harm{\Mean}_{t+1}[\pLevBF_{t+1}] + \HarmWide{\textup{cov}}_{t+1}(a_{t+1}, \pLevBF_{t+1}).
+  \mathbf{A}_{t}  % & l= \bar{\tilde{\aRat}}_{t} = \Mean[a_{t}\pLevBF_{t}] = \Mean[a_{t}]\Mean[\pLevBF_{t}] + \textup{cov}_{t}(\aRat_{t}, \pLevBF_{t}) \\
+                    & = %\bar{\tilde{\aRat}}_{t} =
+                      \Mean[a_{t}\pLevBF_{t}] = \Mean[a_{t}] + \textup{cov}_{t}(\aRat_{t}, \pLevBF_{t})  \\
+  \mathbf{A}_{t+1} & = \Mean[a_{t+1}\pLevBF_{t+1}] = \Mean[a_{t+1}]\PGro + \textup{cov}_{t+1}(\aRat_{t+1}, \pLevBF_{t+1})
 \end{align*}
-where $\HarmWide{\textup{cov}}_{t}$ is the covariance calculated according to the Harmenberg measure.
+but Harmenberg's proof that $\mathbf{A}_{t+1}-\PGro \mathbf{A}_{t}=0$ allows us to use these to conclude that
+\begin{align*}
+%  \mathbf{A}_{t+1} & = \Mean_{t+1}[a_{t+1}\pLevBF_{t+1}] = \Mean_{t+1}[a_{t+1}\PGro\pShk_{t+1}\pLevBF_{t}] + \textup{cov}_{t+1}(\aRat_{t+1}, \pLevBF_{t}\PGro \pShk_{t+1})
+%\\  & = \PGro \Harm{\Mean}_{t+1}[a_{t+1}]\underbrace{\Harm{\Mean}[\pLevBF_{t}]}_{=1} + \textup{cov}_{t+1}(a_{t+1}, \pLevBF_{t+1})                      
+% \\   \mathbf{A}_{t+1} & = \Harm{\Mean}_{t+1}[a_{t+1}\pLevBF_{t+1}] = \Harm{\Mean}_{t+1}[a_{t+1}]\Harm{\Mean}_{t+1}[\pLevBF_{t+1}] + \HarmWide{\textup{cov}}_{t+1}(a_{t+1}, \pLevBF_{t+1}).
+%0 = \mathbf{A}_{t+1}-\PGro \mathbf{A}_{t} & =  \Mean[\aRat_{t+1}]\PGro + \PGro \cov_{t+1} - (\Mean[\aRat_{t}]+\cov_{t}) \\ 
+%\left(\Mean[\aRat_{t+1}] \PGro+ \cov_{t+1}(\aRat_{t+1},\pLevBF_{t+1}) \right) & = \left(\Mean[\aRat_{t}]+\cov_{t}(\aRat_{t},\pLevBF_{t})\right)  \\ 
+\left(\Mean[\aRat_{t+1}]  - \Mean[\aRat_{t}]\right)\PGro & =\cov_{t+1}(\aRat_{t+1},\pLevBF_{t+1})  - \PGro \cov_{t}(\aRat_{t},\pLevBF_{t})
+\end{align*}
+
+The less interesting possibility here is when the economy is Szeidl-invariant, in which case $\Mean[\aRat_{t+1}] = \Mean[\aRat_{t}] = \bar{\aRat}$, implying that the economy exhibits balanced growth in the covariance:
+\begin{align}
+ \cov_{t+1}(\aRat_{t+1},\pLevBF_{t+1}) & = \PGro \cov_{t}(\aRat_{t},\pLevBF_{t}).
+\end{align}
+
+The more interesting case is when the economy is Harmenberg- but not Szeidl-invariant, in which case all we are entitled to conclude is that any growth in the mean ratio is matched by corresponding growth in the covariance.  Still, both of these quantitites are in priniciple measurable in micro data.  %Indeed, in principle, the Harmenberg-invariant distribution itself could be measured in such data.
+
+\begin{comment}
+which is the point where $\HarmWide{\textup{cov}}_{t}$ is the covariance calculated according to the Harmenberg measure.
 
 As Harmenberg points out, a convenient feature of his measure is that $\Harm{\Mean}_{t+n}[\pLevBF_{t+n}]=\PGro^{n}$.  Using this, if by date $t=0$ the economy had achieved a Harmenberg-invariant state then we could define $\bar{\aRat}=\Harm{\Mean}_{t}[a_{t}]$ and use the fact that thereafter assets grow at the constant rate $\PGro$ to obtain
   \begin{align}
@@ -1307,11 +1327,13 @@ As Harmenberg points out, a convenient feature of his measure is that $\Harm{\Me
 \end{align}
 
 A corresponding argument shows that $\cov(\mRat,\pLevBF)$ also grows by $\PGro$.
+\end{comment}
+
 
 \hypertarget{microfounding-macro-needs-ergodicity}{}
-At first blush, this is a reassuring conclusion; one of the most persuasive arguments for the agenda of building microfoundations of macroeconomics is that microeconomic `big data' allow us to measure cross-sectional covariances with great precision, and we can use microeconomic natural experiments to disentangle questions that are hopelessly entangled in aggregate time-series data.  Knowing that such covariances ought to be a stable feature of a stably growing economy is therefore encouraging.
+At first blush, these are reassuring conclusions; one of the most persuasive arguments for the agenda of building microfoundations of macroeconomics is that microeconomic `big data' allow us to measure cross-sectional covariances with great precision, and we can use microeconomic natural experiments to disentangle questions that are hopelessly entangled in aggregate time-series data.  Knowing that such covariances ought to be a stable feature of a stably growing economy is therefore encouraging.
 
-One concern about this point is that the Harmenberg-measure covariance $\HarmWide{\textup{cov}}$ is a rather peculiar object, and probably one that would be difficult to measure.  Recall that what we need, for the Harmenberg measure, is to know the total amount of permanent income accruing to persons whose asset-to-permanent-income \emph{ratio} is equal to each particular value.  The concern is alleviated by noting that, for an economy that has converged according to the Szeidl criteria, the same argument can be applied with respect to the standard ways of computing the covariance.
+%One concern about this point is that the Harmenberg-measure covariance $\HarmWide{\textup{cov}}$ is a rather peculiar object, and probably one that would be difficult to measure.  Recall that what we need, for the Harmenberg measure, is to know the total amount of permanent income accruing to persons whose asset-to-permanent-income \emph{ratio} is equal to each particular value.  The concern is alleviated by noting that, for an economy that has converged according to the Szeidl criteria, the same argument can be applied with respect to the standard ways of computing the covariance.
 
 But this discussion also highlights another uncomfortable point: In the model as specified, permanent income does not, itself, have a limiting distribution; it becomes ever more dispersed as the economy with infinite-horizon consumers continues to grow indefinitely.
 
@@ -1322,11 +1344,11 @@ The problem is not with the growth factor $\PGro$; the same point would hold wit
 \end{align}
 \end{comment}
 
-A few microeconomic data sources attempt direct measurement of `permanent income'; \cite{cstwMPC}, for example, show that their assumptions about the magnitude of permanent shocks (and mortality; see below) yield a distribution of permanent income that roughly matches answers in the \emph{Survey of Consumer Finances} to a question whose aim is to elicit an estimate of their permanent income from respondents.  The paper uses those results to estimate that about half of the inequality in the level of wealth in the U.S.\ is attributable to inequality in permanent income.  %It is not clear that such an exercise could sensibly be conducted in a model economy without a stationary distribution of permanent income.
+A few microeconomic data sources attempt direct measurement of `permanent income'; \cite{cstwMPC}, for example, show that their assumptions about the magnitude of permanent shocks (and mortality; see below) yield a distribution of permanent income that roughly matches answers in the \emph{Survey of Consumer Finances} to a question that aims to elicit a direct measure of permanent income from survey respondents.  The paper uses those results to estimate that about half of the inequality in the level of wealth in the U.S.\ is attributable to inequality in permanent income.  %It is not clear that such an exercise could sensibly be conducted in a model economy without a stationary distribution of permanent income.
 
 %The remainder of their paper argues that because their model is comprehensively calibrated to match microeconomic facts of this kind, its implications for things that are harder to measure (like the marginal propensity to consume) are more credible.
 
-For the large and growing contingent of macroeconomists who want to build microfoundations by comparing the microeconomic implications of their models to microeconomic data (in levels -- not in ratios to permanent income, which is rarely measured at all in microeconomic datasets), it would be something of a challenge to determine how to construct either Monte Carlo or Markov-matrix-based simulated microeconomic data from a model of the kind sketched above that can be straightforwardly compared to data readily available from the ever-richer microeconomic sources (including, now, national registries from some countries).  %Although its balanced growth aggregate equilibrium could be compared to dynamics of macroeconomic variables, it can be challenging to determine how to construct appropriate empirical microfoundations for a model in which in the limit permanent income is infinitely dispersed.
+For the large and growing contingent of macroeconomists who want to build microfoundations by comparing the microeconomic implications of their models to microeconomic data (in levels -- not in ratios to permanent income, which is rarely measured in microeconomic datasets other than the SCF), it would be something of a challenge to determine how to construct either Monte Carlo or Markov-matrix-based simulated microeconomic data from a model of the kind sketched above that can be straightforwardly compared to data readily available from the ever-richer microeconomic sources (including, now, national registries from some countries).  %Although its balanced growth aggregate equilibrium could be compared to dynamics of macroeconomic variables, it can be challenging to determine how to construct appropriate empirical microfoundations for a model in which in the limit permanent income is infinitely dispersed.
 
 \begin{comment}
 \hypertarget{Consumption-and-Income-Growth-at-the-Household-Level}{}
