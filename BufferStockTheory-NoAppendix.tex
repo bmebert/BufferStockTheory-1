@@ -37,7 +37,7 @@
   \href{https://econ-ark.org}{\includegraphics{\ResourcesDir/PoweredByEconARK}}
 }
 
-\renewcommand{\forcedate}{October 11, 2021}\date{\forcedate}
+\renewcommand{\forcedate}{October 13, 2021}\date{\forcedate}
 
 \maketitle
 \hypertarget{abstract}{}
@@ -1205,6 +1205,8 @@ Assume a continuum of \textit{ex ante} identical households on the unit interval
 \newcommand{\nvrnt}{f}
 \newcommand{\Harm}{\tilde}
 \newcommand{\HarmWide}{\widetilde}
+\newcommand{\cv}{\textup{cov}}
+
 Szeidl~\citeyearpar{szeidlInvariant} proved that such a population will be characterized by invariant distributions of $\mRat$, $\cRat$, and $\aRat$ under the condition\footnote{\cite{szeidlInvariant}'s equation (9), in our notation, is:
   \begin{align*}
     \Ex \log \Rfree (1-\MPC) & < \Ex \log \PGro \pShk
@@ -1227,11 +1229,11 @@ which is stronger than our {\GIC} condition $\PatPGro < 1$ (under the imposed as
   \end{align*}
   where the $\sim$ over the expectations operator indicates that the expectation is being taken with respect to the permanent-income-neutral measure.  But by assumption $\Harm{\Ex} \log \pShk = 0$ so exponentiating both sides of this equation turns it into $\PatPGro < 1$ which is the {\GIC}.}  He is then able to prove a conjecture from an earlier draft of this paper (\cite{BufferStockTheoryQESubmit}) that under the {\GIC}, aggregate consumption grows at the same rate $\PGro$ as aggregate noncapital income in the long run (with the corollarly that aggregate assets grow at the same rate).
 
-Given the terminology developed earlier, the natural designation for the stable ratio of aggregate market resources to noncapital income is the `aggregate steady state' ratio, $\StE{M}$.  Note that this is not numerically the same as the individual \href{https://econ-ark.github.io/BufferStockTheory/#pseudo-steady-state}{pseudo-steady-state} ratio $\mStE$ because the nonlinearities involved in simulation and aggregation will have consequences.\footnote{Still, the pseudo-steady-state can be calculated immediately from the policy function without any simulation, and therefore would likely serve as an excellent and low-cost starting point for the numerical simulation process.}
+Given the terminology developed earlier, the natural designation for the stable ratio of aggregate market resources to noncapital income is the `aggregate steady state' ratio, $\StE{M}$.  This is not numerically the same as the individual \href{https://econ-ark.github.io/BufferStockTheory/#pseudo-steady-state}{pseudo-steady-state} ratio $\mStE$ because the nonlinearities involved in simulation and aggregation will have consequences.\footnote{Still, the pseudo-steady-state can be calculated immediately from the policy function without any simulation, and therefore would likely serve as an excellent and low-cost starting point for the numerical simulation process.}
 
-\cite{harmenbergInvariant} also shows\footnote{The test of the Harmenberg method currently implemented in the Econ-ARK toolkit shows that, for the same computational resources, Harmenberg's method reduces the standard error of the simulated aggregate consumption series by a factor of more than 8; see the last part of \href{https://github.com/econ-ark/BufferStockTheory/blob/master/reproduce/computed.sh}{\texttt{reproduce/computed.sh}}.} that his reformulation of the problem can reduce costs of calculation enormously.
+\cite{harmenbergInvariant} shows\footnote{The test of the Harmenberg method currently implemented in the Econ-ARK toolkit shows that, for the same computational resources, Harmenberg's method reduces the standard error of the simulated aggregate consumption series by a factor of more than 8; see the last part of \href{https://github.com/econ-ark/BufferStockTheory/blob/master/reproduce/computed.sh}{\texttt{reproduce/computed.sh}}.} that his reformulation of the problem can reduce costs of calculation enormously.  The method also appears to be promisingly generalizable: For any statistic $\mathcal{S}$ that is the key focus of an analysis, it should be possible to improve the efficiency of simulations aimed at calculating that statistic by constructing an $\mathcal{S}$-weighted distribution rather than a neutral distribution.
 
-The remainder of this section draws out some implications of these points.
+The remainder of this section briefly draws out some implications of these points.
 
 \hypertarget{Growth-Rates-of-Individual-Income-and-Consumption}{}
 \subsection{Individual Balanced Growth of  Income, Consumption, and Wealth}\label{subsec:cGroEqPGroQ}
@@ -1292,38 +1294,86 @@ From the perspective of period $t$, %current aggregate assets are nonstochastic,
 \\              & = \PGro \Mean[(\bRat_{t}+\tShk_{t}-\cFunc(\bRat_{t}+\tShk_{t}))\Rnorm\pLevBF_{t}]
 \end{align*}
 \end{comment}
-Consider again a Harmenberg-converged economy at date $t=0$, and suppose for convenience that mean permanent income for all consumers at that date happens to be $\Mean[\pLevBF_{t}]=1$.  Total assets at $t$ and $t+1$ are
+
+Consider again a Harmenberg-converged economy at date $t=0$, and define $\bar{\aRat}_{t+n} \equiv \Mean[\aRat_{t+n}]$.  Total assets at $t+1$ and $t+2$ are
+\begin{align}
+%  \mathbf{A}_{t}  % & l= \bar{\tilde{\aRat}}_{t} = \Mean[a_{t}\pLevBF_{t}] = \Mean[a_{t}]\Mean[\pLevBF_{t}] + \cv_{t}(\aRat_{t}, \pLevBF_{t}) \\
+%                    & = %\bar{\tilde{\aRat}}_{t} =
+%                      \Mean[a_{t}\pLevBF_{t}] = \Mean[a_{t}]\overbrace{\Mean[\pLevBF_{t}]}^{=1} + \cv_{t}(\aRat_{t}, \pLevBF_{t})  \\
+  \mathbf{A}_{t+1} & = \Mean[a_{t+1}\pLevBF_{t+1}] = \bar{\aRat}_{t+1}\PGro^{1} + \cv_{t+1}(\aRat_{t+1}, \pLevBF_{t+1}) \notag
+\\  \mathbf{A}_{t+2} & = \Mean[a_{t+2}\pLevBF_{t+2}] = \bar{a}_{t+2}\PGro^{2} + \cv_{t+2}(\aRat_{t+2}, \pLevBF_{t+2}) \label{eq:atp2vsatp1}
+\end{align}
+but Harmenberg's proof that $\mathbf{A}_{t+2}-\PGro \mathbf{A}_{t+1}=0$ allows us to multiply the first of these by $\PGro$ and subtract from the second, yielding (dropping the arguments to the $\cv$ terms for clarity):
 \begin{align*}
-  \mathbf{A}_{t}  % & l= \bar{\tilde{\aRat}}_{t} = \Mean[a_{t}\pLevBF_{t}] = \Mean[a_{t}]\Mean[\pLevBF_{t}] + \textup{cov}_{t}(\aRat_{t}, \pLevBF_{t}) \\
-                    & = %\bar{\tilde{\aRat}}_{t} =
-                      \Mean[a_{t}\pLevBF_{t}] = \Mean[a_{t}] + \textup{cov}_{t}(\aRat_{t}, \pLevBF_{t})  \\
-  \mathbf{A}_{t+1} & = \Mean[a_{t+1}\pLevBF_{t+1}] = \Mean[a_{t+1}]\PGro + \textup{cov}_{t+1}(\aRat_{t+1}, \pLevBF_{t+1})
-\end{align*}
-but Harmenberg's proof that $\mathbf{A}_{t+1}-\PGro \mathbf{A}_{t}=0$ allows us to use these to conclude that
-\begin{align*}
-%  \mathbf{A}_{t+1} & = \Mean_{t+1}[a_{t+1}\pLevBF_{t+1}] = \Mean_{t+1}[a_{t+1}\PGro\pShk_{t+1}\pLevBF_{t}] + \textup{cov}_{t+1}(\aRat_{t+1}, \pLevBF_{t}\PGro \pShk_{t+1})
-%\\  & = \PGro \Harm{\Mean}_{t+1}[a_{t+1}]\underbrace{\Harm{\Mean}[\pLevBF_{t}]}_{=1} + \textup{cov}_{t+1}(a_{t+1}, \pLevBF_{t+1})                      
-% \\   \mathbf{A}_{t+1} & = \Harm{\Mean}_{t+1}[a_{t+1}\pLevBF_{t+1}] = \Harm{\Mean}_{t+1}[a_{t+1}]\Harm{\Mean}_{t+1}[\pLevBF_{t+1}] + \HarmWide{\textup{cov}}_{t+1}(a_{t+1}, \pLevBF_{t+1}).
+%  \mathbf{A}_{t+1} & = \Mean_{t+1}[a_{t+1}\pLevBF_{t+1}] = \Mean_{t+1}[a_{t+1}\PGro\pShk_{t+1}\pLevBF_{t}] + \cv_{t+1}(\aRat_{t+1}, \pLevBF_{t}\PGro \pShk_{t+1})
+%\\  & = \PGro \Harm{\Mean}_{t+1}[a_{t+1}]\underbrace{\Harm{\Mean}[\pLevBF_{t}]}_{=1} + \cv_{t+1}(a_{t+1}, \pLevBF_{t+1})                      
+% \\   \mathbf{A}_{t+1} & = \Harm{\Mean}_{t+1}[a_{t+1}\pLevBF_{t+1}] = \Harm{\Mean}_{t+1}[a_{t+1}]\Harm{\Mean}_{t+1}[\pLevBF_{t+1}] + \HarmWide{\cv}_{t+1}(a_{t+1}, \pLevBF_{t+1}).
 %0 = \mathbf{A}_{t+1}-\PGro \mathbf{A}_{t} & =  \Mean[\aRat_{t+1}]\PGro + \PGro \cov_{t+1} - (\Mean[\aRat_{t}]+\cov_{t}) \\ 
-%\left(\Mean[\aRat_{t+1}] \PGro+ \cov_{t+1}(\aRat_{t+1},\pLevBF_{t+1}) \right) & = \left(\Mean[\aRat_{t}]+\cov_{t}(\aRat_{t},\pLevBF_{t})\right)  \\ 
-\left(\Mean[\aRat_{t+1}]  - \Mean[\aRat_{t}]\right)\PGro & =\cov_{t+1}(\aRat_{t+1},\pLevBF_{t+1})  - \PGro \cov_{t}(\aRat_{t},\pLevBF_{t})
+%\left(\Mean[\aRat_{t+1}] \PGro+ \cov_{t+1} \right) & = \left(\Mean[\aRat_{t}]+\cov_{t}\right)  \\ 
+%\left(\Mean[\aRat_{t+1}]  - \Mean[\aRat_{t}]\right)\PGro & =\cov_{t+1}  - \PGro \cov_{t} \label{eq:MeanaRatVsCovGro}%
+%  \\ \left(\Mean[\aRat_{t+2}]\PGro^{2}  - \Mean[\aRat_{t+1}]\PGro^{1}\PGro^{1}\right) & = \cov_{t+2}  - \PGro \cov_{t+1} \label{eq:MeanaRatVsCovGro2}%
+%  \\ \left(\Mean[\aRat_{t+2}]\PGro^{2}  - \Mean[\aRat_{t+1}]\PGro^{2}\right) & = \cov_{t+2}  - \PGro \cov_{t+1} \label{eq:MeanaRatVsCovGro2}%
+ \left(\bar{\aRat}_{t+2} - \bar{\aRat}_{t+1}\right)\PGro^{2} & = \cov_{t+2}  - \PGro \cov_{t+1} \label{eq:MeanaRatVsCovGro2}%                                                                                                                                                                       
+%  \left(\tilde{\Mean}[\aRat_{t+1}]/\PGro  - \tilde{\Mean}[\aRat_{t}]\right)\PGro & =\cov_{t+1}  - \PGro \cov_{t} \\
+%  \bar{\tilde{\aRat}} \left(1  - \PGro\right) & =\cov_{t+1}  - \PGro \cov_{t}
 \end{align*}
 
-The less interesting possibility here is when the economy is Szeidl-invariant, in which case $\Mean[\aRat_{t+1}] = \Mean[\aRat_{t}] = \bar{\aRat}$, implying that the economy exhibits balanced growth in the covariance:
+The less interesting possibility here is when the economy is Szeidl-invariant, in which case $\bar{\aRat}_{t+2} = \bar{\aRat}_{t+1}$, implying that the economy exhibits balanced growth in the covariance:
 \begin{align}
- \cov_{t+1}(\aRat_{t+1},\pLevBF_{t+1}) & = \PGro \cov_{t}(\aRat_{t},\pLevBF_{t}).
+ \cov_{t+2} & = \PGro \cov_{t+1}.
 \end{align}
 
-The more interesting case is when the economy is Harmenberg- but not Szeidl-invariant, in which case all we are entitled to conclude is that any growth in the mean ratio is matched by corresponding growth in the covariance.  Still, both of these quantitites are in priniciple measurable in micro data.  %Indeed, in principle, the Harmenberg-invariant distribution itself could be measured in such data.
+The slightly more interesting case is when the economy is Harmenberg- but not Szeidl-invariant.  In that case, if the $\cv$ and the $\Mean[\aRat]$ terms have constant growth factors $\mu_{\cov}$ and $\mu_{\aRat}$, an equation corresponding to \eqref{eq:atp2vsatp1} will hold in $t+n$:
+\begin{align}
+  (\overbrace{\mu_{\aRat}^{n}\bar{\aRat}_{t}}^{\bar{\aRat}_{t+n}}-\mu^{n-1}_{\aRat}\bar{\aRat}_{t})\PGro^{n} & = (\mu_{\cv}^{n}-\PGro \mu_{\cv}^{n-1}) \cv_{t} \notag
+\\ (\mu_{\aRat}\PGro)^{n-1} (\mu_{\aRat}-1)\bar{\aRat}_{t}\PGro & = \mu_{\cv}^{n-1}(\mu_{\cv}-\PGro ) \cv_{t} \label{eq:aRatGrovsCovGronm1}
+\end{align}
+so for the LHS and RHS to grow at the same rates we need
+\begin{align}
+ \mu_{\cov}  & = \mu_{\aRat}\PGro \label{eq:aRatGrovscovGro}. 
+\end{align}
+This is intuitive.  In the Szeidl-invariant economy, this just reproduces our result above that the covariance exhibits balanced growth because $\mu_{\aRat}=1$.  The revised result just says that in the Harmenberg case where the mean value of $\aRat$ can grow, the covariance must rise in proportion to any ongoing expansion of $\bar{\aRat}$ as well.
+\begin{comment}
+  \begin{align*}
+    \overbrace{\mu_{\aRat}^{n} \bar{\aRat}_{t}}^{\bar{\aRat}_{t+n}}(\mu_{\aRat} - 1)\PGro^{n} & =(\mu_{\cv} - \PGro) \overbrace{\cv_{t}\mu_{\cv}^{n}}^{\cv_{t+n}}
+\\                                                                                                 
+    (\mu_{\aRat}\PGro/\mu_{\cv})^{n} \bar{\aRat}_{t}(\mu_{\aRat} - 1) & =(\mu_{\cv} - \PGro) \cv_{t}
+  \end{align*}
+    and a corresponding equation will hold in $t+1$:
+  \begin{align*}
+\\  \overbrace{\mu_{\aRat} \bar{\aRat}_{t}}^{\bar{\aRat}_{t+1}}(\mu_{\aRat} - 1)\PGro & =(\mu_{\cv} - \PGro) \overbrace{\cv_{t}\mu_{\cv}}^{\cv_{t+1}}
+  \end{align*}
+  \begin{align*}
+  (\mu_{\aRat} - 1)\bar{\aRat}_{t}(\mu_{\aRat} - 1)\PGro & =(\mu_{\cv} - \PGro) \cv_{t}(\mu_{\cv} - 1)
+\end{align*}
+
+  \begin{align*}
+  (\mu_{\aRat} - 1)\bar{\aRat}_{t}(\mu_{\aRat} - 1)\PGro & =(\mu_{\cv} - \PGro) \cv_{t}(\mu_{\cv} - 1)
+\end{align*}
+\begin{align}
+%  \mu_{\aRat} - 1 & = \mu_{\cv} - \PGro \\
+%  \mu_{\aRat} + \pGro & = \mu_{\cv}  \\
+  \mu_{\cv} & = \mu_{\aRat} + (\PGro - 1) \label{eq:aRatGroVscov}
+\end{align}
+\begin{align*}
+  \mathbf{A}_{t}  % & l= \bar{\tilde{\aRat}}_{t} = \Harm{\Mean}_{t+1}[a_{t}\pLevBF_{t}] = \Harm{\Mean}_{t+1}[a_{t}]\Harm{\Mean}_{t+1}[\pLevBF_{t}] + \cv_{t}(\aRat_{t}, \pLevBF_{t}) \\
+                    & = %\bar{\tilde{\aRat}}_{t} =
+                      \Harm{\Mean}_{t\phantom{+1}}[\aRat]\phantom{\PGro} = \Mean[a_{t\phantom{t+1}}]\phantom{\PGro} + \cv_{t}(\aRat_{t}, \pLevBF_{t})  \\
+  \mathbf{A}_{t+1} & = \Harm{\Mean}_{t         +1 }[\aRat]         \PGro  = \bar{\aRat}_{t+1}\PGro  + \cv_{t+1}(\aRat_{t+1}, \pLevBF_{t+1})
+\end{align*}
+
+Still, both of these quantitites are in priniciple measurable in micro data.  %Indeed, in principle, the Harmenberg-invariant distribution itself could be measured in such data.
+
+\end{comment}
 
 \begin{comment}
-which is the point where $\HarmWide{\textup{cov}}_{t}$ is the covariance calculated according to the Harmenberg measure.
+which is the point where $\HarmWide{\cv}_{t}$ is the covariance calculated according to the Harmenberg measure.
 
 As Harmenberg points out, a convenient feature of his measure is that $\Harm{\Mean}_{t+n}[\pLevBF_{t+n}]=\PGro^{n}$.  Using this, if by date $t=0$ the economy had achieved a Harmenberg-invariant state then we could define $\bar{\aRat}=\Harm{\Mean}_{t}[a_{t}]$ and use the fact that thereafter assets grow at the constant rate $\PGro$ to obtain
   \begin{align}
   \mathbf{A}_{t+1} & = \PGro \mathbf{A}_{t}\notag \\ 
-  \bar{\aRat}\PGro +\HarmWide{\textup{cov}}(\aRat_{t+1},\pLevBF_{t+1})   & = \PGro \left( \bar{\aRat}  +  \HarmWide{\textup{cov}}(\aRat_{t},\pLevBF_{t})\right) \label{eq:covProblem} 
-\\  \HarmWide{\textup{cov}}(\aRat_{t+1},\pLevBF_{t+1})   & = \HarmWide{\textup{cov}}(\aRat_{t},\pLevBF_{t})  \notag
+  \bar{\aRat}\PGro +\HarmWide{\cv}(\aRat_{t+1},\pLevBF_{t+1})   & = \PGro \left( \bar{\aRat}  +  \HarmWide{\cv}(\aRat_{t},\pLevBF_{t})\right) \label{eq:covProblem} 
+\\  \HarmWide{\cv}(\aRat_{t+1},\pLevBF_{t+1})   & = \HarmWide{\cv}(\aRat_{t},\pLevBF_{t})  \notag
 \end{align}
 
 A corresponding argument shows that $\cov(\mRat,\pLevBF)$ also grows by $\PGro$.
@@ -1333,20 +1383,18 @@ A corresponding argument shows that $\cov(\mRat,\pLevBF)$ also grows by $\PGro$.
 \hypertarget{microfounding-macro-needs-ergodicity}{}
 At first blush, these are reassuring conclusions; one of the most persuasive arguments for the agenda of building microfoundations of macroeconomics is that microeconomic `big data' allow us to measure cross-sectional covariances with great precision, and we can use microeconomic natural experiments to disentangle questions that are hopelessly entangled in aggregate time-series data.  Knowing that such covariances ought to be a stable feature of a stably growing economy is therefore encouraging.
 
-%One concern about this point is that the Harmenberg-measure covariance $\HarmWide{\textup{cov}}$ is a rather peculiar object, and probably one that would be difficult to measure.  Recall that what we need, for the Harmenberg measure, is to know the total amount of permanent income accruing to persons whose asset-to-permanent-income \emph{ratio} is equal to each particular value.  The concern is alleviated by noting that, for an economy that has converged according to the Szeidl criteria, the same argument can be applied with respect to the standard ways of computing the covariance.
+%One concern about this point is that the Harmenberg-measure covariance $\HarmWide{\cv}$ is a rather peculiar object, and probably one that would be difficult to measure.  Recall that what we need, for the Harmenberg measure, is to know the total amount of permanent income accruing to persons whose asset-to-permanent-income \emph{ratio} is equal to each particular value.  The concern is alleviated by noting that, for an economy that has converged according to the Szeidl criteria, the same argument can be applied with respect to the standard ways of computing the covariance.
 
-But this discussion also highlights another uncomfortable point: In the model as specified, permanent income does not, itself, have a limiting distribution; it becomes ever more dispersed as the economy with infinite-horizon consumers continues to grow indefinitely.
+But this discussion also highlights an uncomfortable point: In the model as specified, permanent income does not have a limiting distribution; it becomes ever more dispersed as the economy with infinite-horizon consumers continues to grow indefinitely.
 
 \begin{comment}
 The problem is not with the growth factor $\PGro$; the same point would hold with $\PGro=1$, in which case the proposition would become
 \begin{align}
-    \textup{cov}(\aRat_{t+1},\pLevBF_{t+1})   & = \textup{cov}(\aRat_{t},\pLevBF_{t}) \label{eq:covSolnStable} .
+    \cv(\aRat_{t+1},\pLevBF_{t+1})   & = \cv(\aRat_{t},\pLevBF_{t}) \label{eq:covSolnStable} .
 \end{align}
 \end{comment}
 
-A few microeconomic data sources attempt direct measurement of `permanent income'; \cite{cstwMPC}, for example, show that their assumptions about the magnitude of permanent shocks (and mortality; see below) yield a distribution of permanent income that roughly matches answers in the \emph{Survey of Consumer Finances} to a question that aims to elicit a direct measure of permanent income from survey respondents.  The paper uses those results to estimate that about half of the inequality in the level of wealth in the U.S.\ is attributable to inequality in permanent income.  %It is not clear that such an exercise could sensibly be conducted in a model economy without a stationary distribution of permanent income.
-
-%The remainder of their paper argues that because their model is comprehensively calibrated to match microeconomic facts of this kind, its implications for things that are harder to measure (like the marginal propensity to consume) are more credible.
+A few microeconomic data sources attempt direct measurement of `permanent income'; \cite{cstwMPC}, for example, show that their assumptions about the magnitude of permanent shocks (and mortality; see below) yield a distribution of permanent income that roughly matches answers in the \emph{Survey of Consumer Finances} to a survey question that aims to elicit a direct measure of permanent income from respondents.  The paper uses those results (and others) to argue that a model that matches empirical facts about the distribution of permanent income and wealth also does a reasonable job of matching empirical facts about the marginal propensity to consume.  The quantitative credibility of the paper's argument depends in good measure on the model's match to the distribution of permanent income inequality, which would not be possible in a model without a nondegenerate steady-state distribution of permanent income.
 
 For the large and growing contingent of macroeconomists who want to build microfoundations by comparing the microeconomic implications of their models to microeconomic data (in levels -- not in ratios to permanent income, which is rarely measured in microeconomic datasets other than the SCF), it would be something of a challenge to determine how to construct either Monte Carlo or Markov-matrix-based simulated microeconomic data from a model of the kind sketched above that can be straightforwardly compared to data readily available from the ever-richer microeconomic sources (including, now, national registries from some countries).  %Although its balanced growth aggregate equilibrium could be compared to dynamics of macroeconomic variables, it can be challenging to determine how to construct appropriate empirical microfoundations for a model in which in the limit permanent income is infinitely dispersed.
 
