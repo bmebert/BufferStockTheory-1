@@ -1346,37 +1346,39 @@ The less interesting possibility here is when the economy is Szeidl-invariant, i
  \cov_{t+2} & = \PGro \cov_{t+1}.
 \end{align}
 
-The slightly more interesting case is when the economy is Harmenberg- but not Szeidl-invariant.  In that case, if the $\cv$ and the $\Mean[\cRat]$ terms have constant growth factors $\mu_{\cov}$ and $\mu_{\cRat}$, an equation corresponding to \eqref{eq:atp2vsatp1} will hold in $t+n$:
+\newcommand{\Grw}{\Omega}
+
+The slightly more interesting case is when the economy is Harmenberg- but not Szeidl-invariant.  In that case, if the $\cv$ and the $\Mean[\cRat]$ terms have constant growth factors $\Grw_{\cov}$ and $\Grw_{\cRat}$, an equation corresponding to \eqref{eq:atp2vsatp1} will hold in $t+n$:
 \begin{align}
-  (\overbrace{\mu_{\cRat}^{n}\bar{\cRat}_{t}}^{\bar{\cRat}_{t+n}}-\mu^{n-1}_{\cRat}\bar{\cRat}_{t})\PGro^{n} & = (\mu_{\cv}^{n}-\PGro \mu_{\cv}^{n-1}) \cv_{t} \notag
-\\ (\mu_{\cRat}\PGro)^{n-1} (\mu_{\cRat}-1)\bar{\cRat}_{t}\PGro & = \mu_{\cv}^{n-1}(\mu_{\cv}-\PGro ) \cv_{t} \label{eq:aRatGrovsCovGronm1}
+  (\overbrace{\Grw_{\cRat}^{n}\bar{\cRat}_{t}}^{\bar{\cRat}_{t+n}}-\Grw^{n-1}_{\cRat}\bar{\cRat}_{t})\PGro^{n} & = (\Grw_{\cv}^{n}-\PGro \Grw_{\cv}^{n-1}) \cv_{t} \notag
+\\ (\Grw_{\cRat}\PGro)^{n-1} (\Grw_{\cRat}-1)\bar{\cRat}_{t}\PGro & = \Grw_{\cv}^{n-1}(\Grw_{\cv}-\PGro ) \cv_{t} \label{eq:aRatGrovsCovGronm1}
 \end{align}
 so for the LHS and RHS to grow at the same rates we need
 \begin{align}
- \mu_{\cov}  & = \mu_{\cRat}\PGro \label{eq:aRatGrovscovGro}. 
+ \Grw_{\cov}  & = \Grw_{\cRat}\PGro \label{eq:aRatGrovscovGro}. 
 \end{align}
-This is intuitive.  In the Szeidl-invariant economy, this just reproduces our result above that the covariance exhibits balanced growth because $\mu_{\cRat}=1$.  The revised result just says that in the Harmenberg case where the mean value of $\cRat$ can grow, the covariance must rise in proportion to any ongoing expansion of $\bar{\cRat}$ as well.
+This is intuitive.  In the Szeidl-invariant economy, this just reproduces our result above that the covariance exhibits balanced growth because $\Grw_{\cRat}=1$.  The revised result just says that in the Harmenberg case where the mean value of $\cRat$ can grow, the covariance must rise in proportion to any ongoing expansion of $\bar{\cRat}$ as well.
 \begin{comment}
   \begin{align*}
-    \overbrace{\mu_{\cRat}^{n} \bar{\cRat}_{t}}^{\bar{\cRat}_{t+n}}(\mu_{\cRat} - 1)\PGro^{n} & =(\mu_{\cv} - \PGro) \overbrace{\cv_{t}\mu_{\cv}^{n}}^{\cv_{t+n}}
+    \overbrace{\Grw_{\cRat}^{n} \bar{\cRat}_{t}}^{\bar{\cRat}_{t+n}}(\Grw_{\cRat} - 1)\PGro^{n} & =(\Grw_{\cv} - \PGro) \overbrace{\cv_{t}\Grw_{\cv}^{n}}^{\cv_{t+n}}
 \\                                                                                                 
-    (\mu_{\cRat}\PGro/\mu_{\cv})^{n} \bar{\cRat}_{t}(\mu_{\cRat} - 1) & =(\mu_{\cv} - \PGro) \cv_{t}
+    (\Grw_{\cRat}\PGro/\Grw_{\cv})^{n} \bar{\cRat}_{t}(\Grw_{\cRat} - 1) & =(\Grw_{\cv} - \PGro) \cv_{t}
   \end{align*}
     and a corresponding equation will hold in $t+1$:
   \begin{align*}
-\\  \overbrace{\mu_{\cRat} \bar{\cRat}_{t}}^{\bar{\cRat}_{t+1}}(\mu_{\cRat} - 1)\PGro & =(\mu_{\cv} - \PGro) \overbrace{\cv_{t}\mu_{\cv}}^{\cv_{t+1}}
+\\  \overbrace{\Grw_{\cRat} \bar{\cRat}_{t}}^{\bar{\cRat}_{t+1}}(\Grw_{\cRat} - 1)\PGro & =(\Grw_{\cv} - \PGro) \overbrace{\cv_{t}\Grw_{\cv}}^{\cv_{t+1}}
   \end{align*}
   \begin{align*}
-  (\mu_{\cRat} - 1)\bar{\cRat}_{t}(\mu_{\cRat} - 1)\PGro & =(\mu_{\cv} - \PGro) \cv_{t}(\mu_{\cv} - 1)
+  (\Grw_{\cRat} - 1)\bar{\cRat}_{t}(\Grw_{\cRat} - 1)\PGro & =(\Grw_{\cv} - \PGro) \cv_{t}(\Grw_{\cv} - 1)
 \end{align*}
 
   \begin{align*}
-  (\mu_{\cRat} - 1)\bar{\cRat}_{t}(\mu_{\cRat} - 1)\PGro & =(\mu_{\cv} - \PGro) \cv_{t}(\mu_{\cv} - 1)
+  (\Grw_{\cRat} - 1)\bar{\cRat}_{t}(\Grw_{\cRat} - 1)\PGro & =(\Grw_{\cv} - \PGro) \cv_{t}(\Grw_{\cv} - 1)
 \end{align*}
 \begin{align}
-%  \mu_{\cRat} - 1 & = \mu_{\cv} - \PGro \\
-%  \mu_{\cRat} + \pGro & = \mu_{\cv}  \\
-  \mu_{\cv} & = \mu_{\cRat} + (\PGro - 1) \label{eq:aRatGroVscov}
+%  \Grw_{\cRat} - 1 & = \Grw_{\cv} - \PGro \\
+%  \Grw_{\cRat} + \pGro & = \Grw_{\cv}  \\
+  \Grw_{\cv} & = \Grw_{\cRat} + (\PGro - 1) \label{eq:aRatGroVscov}
 \end{align}
 \begin{align*}
   \CLevBF_{t}  % & l= \bar{\tilde{\cRat}}_{t} = \Harm{\Mean}_{t+1}[\cRat_{t}\pLevBF_{t}] = \Harm{\Mean}_{t+1}[\cRat_{t}]\Harm{\Mean}_{t+1}[\pLevBF_{t}] + \cv_{t}(\cRat_{t}, \pLevBF_{t}) \\
