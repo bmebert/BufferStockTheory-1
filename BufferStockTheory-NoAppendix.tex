@@ -1245,19 +1245,19 @@ Say that $\Mean\left[\bullet\right]$ yields the mean of its argument in the popu
 \end{align*}
 because of the independence assumptions we have made about $\tShkAll$ and $\pShk$.
 
-Consider an economy that satisfies the Szeidl impatience condition~\eqref{eq:GICSzeidl} and has existed for long enough by date $t$ that by some measure we can consider it as Szeidl-converged.  In such an economy a microeconomist with a population-representative panel dataset could calculate the growth rate of consumption for each individual household, and take the average to obtain:
+Consider an economy that satisfies the Szeidl impatience condition~\eqref{eq:GICSzeidl} and has existed for long enough by date $t$ that we can consider it as Szeidl-converged.  In such an economy a microeconomist with a population-representative panel dataset could calculate the growth rate of consumption for each individual household, and take the average to obtain:
 \begin{align}
     \Mean\left[\Delta \log \cLevBF_{t+1}\right]  & = \Mean\left[ \log {\cRat}_{t+1}\pLevBF_{t+1} - \log c_{t}\pLevBF_{t}\right]  \notag \\
     %                                               & = \Mean\left[ \log \pLevBF_{t+1}- \log \pLevBF_{t} + \log {\cRat}_{t+1} - \log c_{t}\right]  \notag \\
     & = \Mean\left[ \log \pLevBF_{t+1}- \log \pLevBF_{t}\right] + \Mean\left[ \log {\cRat}_{t+1} - \log c_{t}\right] \label{eq:MeanDeltaLogC}.
 \end{align}
 
-Because this economy is Szeidl-converged, distributions of $\cRat_{t}$ and $\cRat_{t+1}$ will be identical, so that the second term in  \eqref{eq:MeanDeltaLogC} disappears, reducing the result to the proposition that cross-sectional growth rates of consumption and permanent income are the same:
+Because this economy is Szeidl-converged, distributions of $\cRat_{t}$ and $\cRat_{t+1}$ will be identical, so that the second term in  \eqref{eq:MeanDeltaLogC} disappears; hence, cross-sectional growth rates of consumption and permanent income are the same:
 \begin{align}
     \Mean\left[\Delta \log \cLevBF_{t+1}\right]  & = \Mean\left[ \Delta \log \pLevBF_{t+1}\right] = \log \PGro \label{eq:MeanDeltaLogCeqMeanDeltaLogP}.
 \end{align}
 
-In a Harmenberg-invariant economy (and therefore also any Szeidl-invariant economy), a similar proposition that is testable using cross-section data is a direct implication of the fact that in such an economy a constant proportion of aggregate permanent income is accounted for by the successive sets of consumers with any particular $\mRat$.  This is essentially Harmenberg's definition of the density of the permanent-income-invariant distribution of a variable (say, $\mRat$).  Call $\cLevBF_{t}(\mRat)$ the total amount of consumption at date $t$ by persons with market resources $\mRat$, and note that in the invariant economy it is given by the converged consumtion function $\cFunc(\mRat)$ multiplied by the amount of permanent income accruing to such, people $\pRat_{t}(\mRat)\PLev_{t}$.  But Harmenberg's proof shows that $\pRat(\mRat)$ is invariant,\footnote{In his notation, this is $\tilde{\psi}^{\mRat}$.} and we know from above that $\PLev_{t+1} = \PGro \PLev_{t}$.  So 
+In a Harmenberg-invariant economy (and therefore also any Szeidl-invariant economy), a similar proposition that is testable without a panel (that is, using only cross-section data) is a direct implication of the fact that in such an economy a constant proportion of aggregate permanent income is accounted for by the successive sets of consumers with any particular $\mRat$.  This fact is essentially Harmenberg's definition of the density of the permanent-income-invariant distribution of a variable (say, $\mRat$).  Call $\cLevBF_{t}(\mRat)$ the total amount of consumption at date $t$ by persons with market resources $\mRat$, and note that in the invariant economy it is given by the converged consumption function $\cFunc(\mRat)$ multiplied by the amount of permanent income accruing to such, people $\pRat_{t}(\mRat)\PLev_{t}$.  But Harmenberg's proof shows that $\pRat(\mRat)$ is invariant,\footnote{In his notation, this is $\tilde{\psi}^{\mRat}$.} and we know from above that $\PLev_{t+1} = \PGro \PLev_{t}$.  So 
 \begin{align}
   \log \cLevBF_{t+1}(\mRat) - \log \cLevBF_{t}(\mRat) &  \notag 
     = \log \cFunc(\mRat) \pRat(\mRat)\PLev_{t+1} - \log \cFunc(\mRat)\pRat(\mRat)\PLev_{t} \\
@@ -1324,7 +1324,7 @@ Total consumption at $t+1$ and $t+2$ are
 %                    & = %\bar{\tilde{\cRat}}_{t} =
 %                      \Mean[\cRat_{t}\pLevBF_{t}] = \Mean[\cRat_{t}]\overbrace{\Mean[\pLevBF_{t}]}^{=1} + \cv_{t}(\cRat_{t}, \pLevBF_{t})  \\
   \CLevBF_{t+1} & = \Mean[\cRat_{t+1}\pLevBF_{t+1}] = \bar{\cRat}_{t+1}\PGro^{1} + \cv_{t+1}(\cRat_{t+1}, \pLevBF_{t+1}) \notag
-\\  \CLevBF_{t+2} & = \Mean[\cRat_{t+2}\pLevBF_{t+2}] = \bar{a}_{t+2}\PGro^{2} + \cv_{t+2}(\cRat_{t+2}, \pLevBF_{t+2}) \label{eq:atp2vsatp1}
+\\  \CLevBF_{t+2} & = \Mean[\cRat_{t+2}\pLevBF_{t+2}] = \bar{\cRat}_{t+2}\PGro^{2} + \cv_{t+2}(\cRat_{t+2}, \pLevBF_{t+2}) \label{eq:atp2vsatp1}
 \end{align}
 but Harmenberg's proof that $\CLevBF_{t+2}-\PGro \CLevBF_{t+1}=0$ allows us to multiply the first of these by $\PGro$ and subtract from the second, yielding (dropping the arguments to the $\cv$ terms for clarity):
 \begin{align*}
@@ -1419,7 +1419,7 @@ The problem is not with the growth factor $\PGro$; the same point would hold wit
 \end{align}
 \end{comment}
 
-A few microeconomic data sources attempt direct measurement of `permanent income'; \cite{cstwMPC}, for example, show that their assumptions about the magnitude of permanent shocks (and mortality; see below) yield a distribution of permanent income that roughly matches answers in the \emph{Survey of Consumer Finances} to a survey question that aims to elicit a direct measure of permanent income.  Those results are used to calibrate a model that matches empirical facts about the distribution of permanent income and wealth also does a reasonable job of matching empirical facts about the marginal propensity to consume.  The quantitative credibility of the paper's argument depends on the model's match to the distribution of permanent income inequality, which would not be possible in a model without a nondegenerate steady-state distribution of permanent income.
+A few microeconomic data sources attempt direct measurement of `permanent income'; \cite{cstwMPC}, for example, show that their assumptions about the magnitude of permanent shocks (and mortality; see below) yield a distribution of permanent income that roughly matches answers in the U.S.\ \emph{Survey of Consumer Finances} to a survey question that aims to elicit a direct measure of permanent income.  Those results are used to calibrate a model that matches empirical facts about the distribution of permanent income and wealth also does a reasonable job of matching empirical facts about the marginal propensity to consume.  The quantitative credibility of the paper's argument depends on the model's match to the distribution of permanent income inequality, which would not be possible in a model without a nondegenerate steady-state distribution of permanent income.
 
 For the large and growing contingent of macroeconomists who want to build microfoundations by comparing the microeconomic implications of their models to microeconomic data (in levels -- not in ratios to permanent income, which is rarely measured in microeconomic datasets other than the SCF), it would be something of a challenge to determine how to construct either Monte Carlo or Markov-matrix-based simulated microeconomic data from a model of the kind sketched above that can be straightforwardly compared to data readily available from the ever-richer microeconomic sources (including, now, national registries from some countries).  %Although its balanced growth aggregate equilibrium could be compared to dynamics of macroeconomic variables, it can be challenging to determine how to construct appropriate empirical microfoundations for a model in which in the limit permanent income is infinitely dispersed.
 
@@ -1436,7 +1436,7 @@ Unfortunately, the {\GICNrm} condition that we imposed which yielded all of thes
 \hypertarget{Mortality-And-Redistribution}{}
 \subsection{Mortality and Redistribution}\label{sec:Mortality-And-Redistribution}
 
-Death can solve the problem that infinite-horizon models do not have a limiting distribution of permanent income.
+Death can solve this problem.
 
 \hypertarget{Blanchard-Lives}{}
 \subsubsection{Blanchard Lives}
@@ -1452,7 +1452,7 @@ The only adjustments this requires to the analysis above are therefore to the fe
 \hypertarget{Modigliani-Lives}{}
 \subsubsection{Modigliani Lives}
 
-\cite{blanchardFinite}'s innovation was useful not only for the insight it provided but also because the principal alternative, the Life Cycle model of~\cite{modiglianiWealth}, was computationally challenging given the then-available technologies. Aside from its (considerable) conceptual value, there is no need for Blanchard's analytical solution today, when serious modeling incorporates uncertainty, constraints, and other features that rule out analytical solutions anyway.% chktex 2  %Modern models can can easily handle assumptions more realistic than Blanchard's about the disposition of assets at death.
+\cite{blanchardFinite}'s innovation was useful not only for the insight it provided but also because the principal alternative, the Life Cycle model of~\cite{modiglianiWealth}, was computationally challenging given the then-available technologies. Aside from its (considerable) conceptual value, there is no need for Blanchard's analytical solution today, when essentially all modeling incorporates uncertainty, constraints, and other features that rule out analytical solutions anyway.% chktex 2  %Modern models can can easily handle assumptions more realistic than Blanchard's about the disposition of assets at death.
 
 The simplest alternative to Blanchard is to follow Modigliani in assuming that any wealth remaining at death occurs accidentally (not implausible, given the robust finding that for the great majority of households, bequests amount to less than 2 percent of lifetime earnings,~\cite{hendricksBequests,hendricksSmallBequests}).
 
