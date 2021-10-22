@@ -81,6 +81,10 @@ svg-math-and-subfigures.cfg
 svg-math-and-subfigures.tex
 svg-math-and-subfigures_fix-dmofilter-parsing-problems.cfg
 svg-math-and-subfigures_fix-dmofilter-parsing-problems.cfg~
+svg-math-and-subfigures_html5.cfg
+svg-math-and-subfigures_html5.cfg~
+svg-math-and-subfigures_xhtml.cfg
+svg-math-and-subfigures_xhtml.cfg~
 svg-set-size-to-1p0.mk4
 svg-set-size-to-1p1.mk4
 svg-set-size-to-1p1x1p0.mk4
