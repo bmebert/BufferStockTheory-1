@@ -209,16 +209,16 @@ We establish a bit more notation by reviewing the familiar result that in such p
 \hypertarget{The-Related-Problem}{}
 
 Now, in a one-time deviation from the notational convention established in the last sentence, define nonbold `normalized value' not as $\vLevBF_{t}/\pLevBF_{t}$ but as $\vFunc_{t} = \vLevBF_{t}/\pLevBF_{t}^{1-\CRRA}$, because this allows us to exploit features of the related problem,
-\begin{gather}\label{eq:veqn}
-  \begin{align}
-    \vFunc_{t}(\mRat_{t})  & = \max_{{\{\cFunc\}}_{t}^{T}}~  \uFunc(\cFunc_{t}) +\DiscFac \Ex_{t}[\PGro_{t+1}^{1-\CRRA}\vFunc_{t+1}({\mRat}_{t+1})] \notag \\
-                           & \mbox{s.t.}  \nonumber
-    \\ {\aRat}_{t}  & = \mRat_{t}-c_{t}  \notag
-    \\ {\kRat}_{t+1} & = \aRat_{t}/\PGro_{t+1}  \notag
-    \\ {\bRat}_{t+1}  & = {\kRat}_{t+1}\Rfree = (\Rfree/\PGro_{t+1})\aRat_{t}  ~ = ~ \Rnorm_{t+1}\aRat_{t}  \notag
-    \\ \mRat_{t+1}  & = \bRat_{t+1}+\tShkAll_{t+1}  \notag, %
-  \end{align}
-\end{gather}
+\begin{equation}\label{eq:veqn}
+  \begin{split}
+    \vFunc_{t}(\mRat_{t})  & = \max_{{\{\cFunc\}}_{t}^{T}}~  \uFunc(\cFunc_{t}) +\DiscFac \Ex_{t}[\PGro_{t+1}^{1-\CRRA}\vFunc_{t+1}({\mRat}_{t+1})]  \\
+                           & \mbox{s.t.}  
+    \\ {\aRat}_{t}  & = \mRat_{t}-c_{t}  
+    \\ {\kRat}_{t+1} & = \aRat_{t}/\PGro_{t+1}  
+    \\ {\bRat}_{t+1}  & = {\kRat}_{t+1}\Rfree = (\Rfree/\PGro_{t+1})\aRat_{t}  ~ = ~ \Rnorm_{t+1}\aRat_{t}  
+    \\ \mRat_{t+1}  & = \bRat_{t+1}+\tShkAll_{t+1}  , %
+  \end{split}
+\end{equation}
 where $\Rnorm_{t+1}\equiv (\Rfree/\PGro_{t+1})$ is a `permanent-income-growth-normalized' return factor, and the reformulated problem's first order condition is\footnote{Leaving aside their assumptions about the marginal utility function and liquidity constraints, it is tempting to view this as a special case of the model of MST, with our $\Rnorm_{t+1}=\Rfree/\PGro_{t+1}$ (defined below equation~\eqref{eq:veqn}) corresponding to their stochastic rate of return on capital and the {\FVAF} $\DiscFac \PGro_{t+1}^{1-\CRRA}$ defined below~\eqref{eq:FVAC} corresponding to their stochastic discount factor.  A caveat is that, here, $\Rnorm_{t+1}$ and the modified discount factor are intimately (through $\PGro_{t+1}$), which has profound effects.  It would be interesting, and should not be too difficult, to examine the case with independent shocks to the rate of return and productivity growth.}
 \begin{align}
   c_{t}^{-\CRRA}  & = \Rfree \DiscFac \Ex_{t}[ {\PGro}_{t+1}^{-\CRRA} {\cRat}
