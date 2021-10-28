@@ -1,4 +1,4 @@
-\documentclass[BufferStockTheory]{subfiles}
+\input{./econtexRoot}\documentclass[BufferStockTheory]{subfiles}
 % WARNING: AuCTeX local variables only get reset when file is loaded
 % and differ between this file and BufferStockTheory.tex
 % so must re-load whichever file you want to compile with C-x C-v
@@ -11,8 +11,7 @@
 % 0. Being compiled as subfile of main document
 % * Just compile main document repeatedly
 
-\input{./econtexRoot}
-\input{\LaTeXInputs/econtex_onlyinsubfile}
+\input{./econtexRoot}\input{\LaTeXInputs/econtex_onlyinsubfile}
 \onlyinsubfile{\externaldocument{BufferStockTheory}} % Get xrefs -- esp to appendix -- from main file; only works properly if main file has already been compiled;
 
 \begin{document}
@@ -38,7 +37,7 @@
   \href{https://econ-ark.org}{\includegraphics{\ResourcesDir/PoweredByEconARK}}
 }
 
-\renewcommand{\forcedate}{October 21, 2021}\date{\forcedate}
+\renewcommand{\forcedate}{October 28, 2021}\date{\forcedate}
 
 \maketitle
 \hypertarget{abstract}{}
@@ -377,7 +376,6 @@ Perhaps more useful than prose or a table,  the relations of the conditions for 
 
 \providecommand{\figName}{RelatePFGICFHWCRICPFFVAC} % Allows generic definition of hypertargets based on title of figure
 \providecommand{\figFile}{\figName} %  and on filename
-% \hypertarget{\figFile}{}
 \hypertarget{\figName}{}
 \input{\FigDir/\figName} % Read in the tex to generate the figure
 
@@ -1349,10 +1347,6 @@ will hold for any $\mRat$.
 
 Harmenberg has a brief discussion demonstrating that the covariance between the individual consumption ratio $\cRat$ and the idiosyncratic component of permanent income $\pLevBF$ does not shrink to zero over time; so covariances are another potential target of measurement for construction of microfoundations.  %Here we draw out some of those implications.
 
-%\pagebreak
-
-\providecommand{\cRatAvg}{\pmb{\mathbbm{\cRat}}}
-
 Consider a date-0 Harmenberg-converged economy, and define the mean value of the consumption ratio as $\cRatAvg_{t+n} \equiv \Mean[\cRat_{t+n}]$.  Normalizing period-0 aggregate permanent income to $\PLevBF_{0}=1$, total consumption at $t+1$ and $t+2$ are
 \begin{equation}\label{eq:atp2vsatp1}
   \begin{split}
@@ -1375,8 +1369,6 @@ In the special case of a Szeidl-invariant economy, $\cRatAvg_{t+2} = \cRatAvg_{t
   \cov_{t+2} & = \PGro \cov_{t+1}.
 \end{align}
 
-\providecommand{\Grw}{\Omega}
-%\providecommand{\cRatAvg}{\mathfrak{\cRat}}
 The more interesting case is when the economy is Harmenberg- but not Szeidl-invariant.  In that case, if the $\cv$ and the $\cRatAvg$ terms have constant growth factors $\Grw_{\cov}$ and $\Grw_{\cRatAvg}$, an equation corresponding to \eqref{eq:cNrmvsCov} will hold in $t+n$:
 \begin{equation} \label{eq:aRatGrovsCovGronm1}
   \begin{split}
