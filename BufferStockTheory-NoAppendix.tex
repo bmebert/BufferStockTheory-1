@@ -1288,14 +1288,15 @@ Because this economy is Szeidl-converged, distributions of $\cRat_{t}$ and $\cRa
   \Mean\left[\Delta \log \cLevBF_{t+1}\right]  & = \Mean\left[ \Delta \log \pLevBF_{t+1}\right] = \log \PGro \label{eq:MeanDeltaLogCeqMeanDeltaLogP}.
 \end{align}
 
-In a Harmenberg-invariant economy (and therefore also any Szeidl-invariant economy), a similar proposition holds in the cross-section as a direct implication of the fact that a constant proportion of aggregate permanent income is accounted for by the successive sets of consumers with any particular $\mRat$.  This fact is essentially Harmenberg's definition of the density of the permanent-income-invariant distribution of a variable (say, $\mRat$).\footnote{His $\tilde{\psi}^{m}$ has an invariant distribution.}  Call $\cLevBF_{t}(\mRat)$ the total amount of consumption at date $t$ by persons with market resources $\mRat$, and note that in the invariant economy it is given by the converged consumption function $\cFunc(\mRat)$ multiplied by the amount of permanent income accruing to such people $\pLevBF_{t}(\mRat)\PLev_{t}$.  But Harmenberg's proof shows that $\pLevBF(\mRat)$ is invariant,\footnote{In his notation, this is $\tilde{\psi}^{\mRat}$.} and aggregate permanent income grows according to $\PLev_{t+1} = \PGro \PLev_{t}$.  So 
+In a Harmenberg-invariant economy (and therefore also any Szeidl-invariant economy), a similar proposition holds in the cross-section as a direct implication of the fact that a constant proportion of total permanent income is accounted for by the successive sets of consumers with any particular $\mRat$.  This fact is essentially Harmenberg's definition of the density of the permanent-income-invariant distribution of $\mRat$; call this density $\pRat(\mRat)$.\footnote{In his notation, this is $\tilde{\psi}^{\mRat}$.}  Call $\cLevBF_{t}(\mRat)$ the total amount of consumption at date $t$ by persons with market resources $\mRat$, and note that in the invariant economy it is given by the converged consumption function $\cFunc(\mRat)$ multiplied by the amount of permanent income accruing to such people $\pRat(\mRat)\PLevBF_{t}$.  Since $\pRat(\mRat)$ is invariant and aggregate permanent income grows according to $\PLevBF_{t+1} = \PGro \PLevBF_{t}$, 
 \begin{equation*}
   \begin{split}
     \log \cLevBF_{t+1}(\mRat) - \log \cLevBF_{t}(\mRat) &  \notag 
-    = \log \cFunc(\mRat) \pRat(\mRat)\PLev_{t+1} - \log \cFunc(\mRat)\pRat(\mRat)\PLev_{t} \\
-    & = \log \PGro .
+    = \log \cFunc(\mRat) \pRat(\mRat)\PLevBF_{t+1} - \log \cFunc(\mRat)\pRat(\mRat)\PLevBF_{t} \\
+    & = \log \PGro
   \end{split}
 \end{equation*}
+will hold for any $\mRat$.
 
 Thus we have microeconomic propositions that can be tested in either cross-section or panel microdata to judge the microfoundations that should be expected to hold for a macroeconomic analysis that requires balanced growth for its conclusions.
 
@@ -1346,79 +1347,75 @@ Thus we have microeconomic propositions that can be tested in either cross-secti
   \end{align*}
 \end{comment}
 
-Harmenberg has a brief discussion demonstrating that the covariance between the individual consumption ratio $\cRat$ and the idiosyncratic component of permanent income level $\pLevBF$ does not shrink to zero over time; so covariances are another potential target of measurement for construction of microfoundations.  %Here we draw out some of those implications.
+Harmenberg has a brief discussion demonstrating that the covariance between the individual consumption ratio $\cRat$ and the idiosyncratic component of permanent income $\pLevBF$ does not shrink to zero over time; so covariances are another potential target of measurement for construction of microfoundations.  %Here we draw out some of those implications.
 
-Consider again a date-0 Harmenberg-converged economy, and define the mean value of the consumption ratio as $\bar{\cRat}_{t+n} \equiv \Mean[\cRat_{t+n}]$.  Normalizing perid-0 aggregate permanent income to $\PLev_{0}=1$, total consumption at $t+1$ and $t+2$ are
+%\pagebreak
+
+\providecommand{\cRatAvg}{\pmb{\mathbbm{\cRat}}}
+
+Consider a date-0 Harmenberg-converged economy, and define the mean value of the consumption ratio as $\cRatAvg_{t+n} \equiv \Mean[\cRat_{t+n}]$.  Normalizing period-0 aggregate permanent income to $\PLevBF_{0}=1$, total consumption at $t+1$ and $t+2$ are
 \begin{equation}\label{eq:atp2vsatp1}
   \begin{split}
     % \CLevBF_{t}  % & l= \bar{\tilde{\cRat}}_{t} = \Mean[\cRat_{t}\pLevBF_{t}] = \Mean[\cRat_{t}]\Mean[\pLevBF_{t}] + \cv_{t}(\cRat_{t}, \pLevBF_{t}) \\
     % & = %\bar{\tilde{\cRat}}_{t} =
     % \Mean[\cRat_{t}\pLevBF_{t}] = \Mean[\cRat_{t}]\overbrace{\Mean[\pLevBF_{t}]}^{=1} + \cv_{t}(\cRat_{t}, \pLevBF_{t})  \\
-    \CLevBF_{t+1} & = \Mean[\cRat_{t+1}\pLevBF_{t+1}] = \bar{\cRat}_{t+1}\PGro^{1} + \cv_{t+1}(\cRat_{t+1}, \pLevBF_{t+1}) 
-    \\  \CLevBF_{t+2} & = \Mean[\cRat_{t+2}\pLevBF_{t+2}] = \bar{\cRat}_{t+2}\PGro^{2} + \cv_{t+2}(\cRat_{t+2}, \pLevBF_{t+2})
+    \CLevBF_{t+1} & = \Mean[\cRat_{t+1}\pLevBF_{t+1}] = \cRatAvg_{t+1}\PGro^{1} + \cv_{t+1}(\cRat_{t+1}, \pLevBF_{t+1}) 
+    \\  \CLevBF_{t+2} & = \Mean[\cRat_{t+2}\pLevBF_{t+2}] = \cRatAvg_{t+2}\PGro^{2} + \cv_{t+2}(\cRat_{t+2}, \pLevBF_{t+2})
   \end{split}
 \end{equation}
-but Harmenberg's proof that $\CLevBF_{t+2}-\PGro \CLevBF_{t+1}=0$ allows us to multiply $\CLevBF_{t+1}$ by $\PGro$ and subtract from $\CLev_{t+2}$. Dropping the arguments to the $\cv$ terms for clarity, this yields:
-\begin{align*}
-  % \CLevBF_{t+1} & = \Mean_{t+1}[\cRat_{t+1}\pLevBF_{t+1}] = \Mean_{t+1}[\cRat_{t+1}\PGro\pShk_{t+1}\pLevBF_{t}] + \cv_{t+1}(\cRat_{t+1}, \pLevBF_{t}\PGro \pShk_{t+1})
-  % \\  & = \PGro \Harm{\Mean}_{t+1}[\cRat_{t+1}]\underbrace{\Harm{\Mean}[\pLevBF_{t}]}_{=1} + \cv_{t+1}(\cRat_{t+1}, \pLevBF_{t+1})                      
-  % \\   \CLevBF_{t+1} & = \Harm{\Mean}_{t+1}[\cRat_{t+1}\pLevBF_{t+1}] = \Harm{\Mean}_{t+1}[\cRat_{t+1}]\Harm{\Mean}_{t+1}[\pLevBF_{t+1}] + \HarmWide{\cv}_{t+1}(\cRat_{t+1}, \pLevBF_{t+1}).
-  % 0 = \CLevBF_{t+1}-\PGro \CLevBF_{t} & =  \Mean[\cRat_{t+1}]\PGro + \PGro \cov_{t+1} - (\Mean[\cRat_{t}]+\cov_{t}) \\ 
-  % \left(\Mean[\cRat_{t+1}] \PGro+ \cov_{t+1} \right) & = \left(\Mean[\cRat_{t}]+\cov_{t}\right)  \\ 
-  % \left(\Mean[\cRat_{t+1}]  - \Mean[\cRat_{t}]\right)\PGro & =\cov_{t+1}  - \PGro \cov_{t} \label{eq:MeanaRatVsCovGro}%
-  % \\ \left(\Mean[\cRat_{t+2}]\PGro^{2}  - \Mean[\cRat_{t+1}]\PGro^{1}\PGro^{1}\right) & = \cov_{t+2}  - \PGro \cov_{t+1} \label{eq:MeanaRatVsCovGro2}%
-  % \\ \left(\Mean[\cRat_{t+2}]\PGro^{2}  - \Mean[\cRat_{t+1}]\PGro^{2}\right) & = \cov_{t+2}  - \PGro \cov_{t+1} \label{eq:MeanaRatVsCovGro2}%
-                                                                                 \left(\bar{\cRat}_{t+2} - \bar{\cRat}_{t+1}\right)\PGro^{2} & = \cov_{t+2}  - \PGro \cov_{t+1}. \label{eq:MeanaRatVsCovGro2}%                                                                                                                                                                       .
-                                                                                 % \left(\tilde{\Mean}[\cRat_{t+1}]/\PGro  - \tilde{\Mean}[\cRat_{t}]\right)\PGro & =\cov_{t+1}  - \PGro \cov_{t} \\
-                                                                                 % \bar{\tilde{\cRat}} \left(1  - \PGro\right) & =\cov_{t+1}  - \PGro \cov_{t}
-\end{align*}
+and Harmenberg's proof that $\CLevBF_{t+2}-\PGro \CLevBF_{t+1}=0$ allows us to subtract $\PGro \CLevBF_{t+1}$ from $\CLevBF_{t+2}$ to obtain:
+\begin{equation} \label{eq:cNrmvsCov}\begin{split}
+   0 & = \cRatAvg_{t+2}\PGro^{2} + \cv_{t+2}-\PGro\left(\PGro\cRatAvg_{t+1} + \cv_{t+1}\right)\\ %
+\cRatAvg_{t+2}\PGro^{2} + \cv_{t+2}   & =\cRatAvg_{t+1}\PGro^{2} + \PGro \cv_{t+1}\\
+  \left(\cRatAvg_{t+2} - \cRatAvg_{t+1}\right)\PGro^{2} & = \PGro \cov_{t+1} - \cov_{t+2} . 
+\end{split}\end{equation}
 
-In the special case of a Szeidl-invariant economy, $\bar{\cRat}_{t+2} = \bar{\cRat}_{t+1}$, implying that the economy exhibits balanced growth in the covariance:
+In the special case of a Szeidl-invariant economy, $\cRatAvg_{t+2} = \cRatAvg_{t+1}$, implying that the economy exhibits balanced growth in the covariance:
 \begin{align}
   \cov_{t+2} & = \PGro \cov_{t+1}.
 \end{align}
 
 \providecommand{\Grw}{\Omega}
-
-The more interesting case is when the economy is Harmenberg- but not Szeidl-invariant.  In that case, if the $\cv$ and the $\Mean[\cRat]$ terms have constant growth factors $\Grw_{\cov}$ and $\Grw_{\bar{\cRat}}$, an equation corresponding to \eqref{eq:atp2vsatp1} will hold in $t+n$:
+%\providecommand{\cRatAvg}{\mathfrak{\cRat}}
+The more interesting case is when the economy is Harmenberg- but not Szeidl-invariant.  In that case, if the $\cv$ and the $\cRatAvg$ terms have constant growth factors $\Grw_{\cov}$ and $\Grw_{\cRatAvg}$, an equation corresponding to \eqref{eq:cNrmvsCov} will hold in $t+n$:
 \begin{equation} \label{eq:aRatGrovsCovGronm1}
   \begin{split}
-    (\overbrace{\Grw_{\bar{\cRat}}^{n}\bar{\cRat}_{t}}^{\bar{\cRat}_{t+n}}-\Grw^{n-1}_{\cRat}\bar{\cRat}_{t})\PGro^{n} & = (\Grw_{\cv}^{n}-\PGro \Grw_{\cv}^{n-1}) \cv_{t} 
-    \\ (\Grw_{\bar{\cRat}}\PGro)^{n-1} (\Grw_{\bar{\cRat}}-1)\bar{\cRat}_{t}\PGro & = \Grw_{\cv}^{n-1}(\Grw_{\cv}-\PGro ) \cv_{t}
+    (\overbrace{\Grw_{\cRatAvg}^{n}\cRatAvg_{t}}^{\cRatAvg_{t+n}}-\Grw^{n-1}_{\cRat}\cRatAvg_{t})\PGro^{n} & = \left(\PGro\Grw_{\cv}^{n-1} -\Grw_{\cv}^{n}\right)\cv_{t} 
+    \\ (\Grw_{\cRatAvg}\PGro)^{n-1} (\Grw_{\cRatAvg}-1)\cRatAvg_{t}\PGro & = \Grw_{\cv}^{n-1}(\PGro - \Grw_{\cv}) \cv_{t}
   \end{split}
 \end{equation}
 so for the LHS and RHS to grow at the same rates we need
 \begin{align}
-  \Grw_{\cov}  & = \Grw_{\bar{\cRat}}\PGro \label{eq:aRatGrovscovGro}. 
+  \Grw_{\cov}  & = \Grw_{\cRatAvg}\PGro \label{eq:aRatGrovscovGro}. 
 \end{align}
-This is intuitive.  In the Szeidl-invariant economy, this just reproduces our result above that the covariance exhibits balanced growth because $\Grw_{\bar{\cRat}}=1$.  The revised result just says that in the Harmenberg case where the mean value $\bar{\cRat}$ of the consumption ratio $\cRat$ can grow, the covariance must rise in proportion to any ongoing expansion of $\bar{\cRat}$.
+This is intuitive.  In the Szeidl-invariant economy, this just reproduces our result above that the covariance exhibits balanced growth because $\Grw_{\cRatAvg}=1$.  The revised result just says that in the Harmenberg case where the mean value $\cRatAvg$ of the consumption ratio $\cRat$ can grow, the covariance must rise in proportion to any ongoing expansion of $\cRatAvg$.
 \begin{comment}
   \begin{align*}
-    \overbrace{\Grw_{\bar{\cRat}}^{n} \bar{\cRat}_{t}}^{\bar{\cRat}_{t+n}}(\Grw_{\bar{\cRat}} - 1)\PGro^{n} & =(\Grw_{\cv} - \PGro) \overbrace{\cv_{t}\Grw_{\cv}^{n}}^{\cv_{t+n}}
+    \overbrace{\Grw_{\cRatAvg}^{n} \cRatAvg_{t}}^{\cRatAvg_{t+n}}(\Grw_{\cRatAvg} - 1)\PGro^{n} & =(\Grw_{\cv} - \PGro) \overbrace{\cv_{t}\Grw_{\cv}^{n}}^{\cv_{t+n}}
     \\                                                                                                 
-    (\Grw_{\bar{\cRat}}\PGro/\Grw_{\cv})^{n} \bar{\cRat}_{t}(\Grw_{\bar{\cRat}} - 1) & =(\Grw_{\cv} - \PGro) \cv_{t}
+    (\Grw_{\cRatAvg}\PGro/\Grw_{\cv})^{n} \cRatAvg_{t}(\Grw_{\cRatAvg} - 1) & =(\Grw_{\cv} - \PGro) \cv_{t}
   \end{align*}
   and a corresponding equation will hold in $t+1$:
   \begin{align*}
-    \\  \overbrace{\Grw_{\bar{\cRat}} \bar{\cRat}_{t}}^{\bar{\cRat}_{t+1}}(\Grw_{\bar{\cRat}} - 1)\PGro & =(\Grw_{\cv} - \PGro) \overbrace{\cv_{t}\Grw_{\cv}}^{\cv_{t+1}}
+    \\  \overbrace{\Grw_{\cRatAvg} \cRatAvg_{t}}^{\cRatAvg_{t+1}}(\Grw_{\cRatAvg} - 1)\PGro & =(\Grw_{\cv} - \PGro) \overbrace{\cv_{t}\Grw_{\cv}}^{\cv_{t+1}}
   \end{align*}
   \begin{align*}
-    (\Grw_{\bar{\cRat}} - 1)\bar{\cRat}_{t}(\Grw_{\bar{\cRat}} - 1)\PGro & =(\Grw_{\cv} - \PGro) \cv_{t}(\Grw_{\cv} - 1)
+    (\Grw_{\cRatAvg} - 1)\cRatAvg_{t}(\Grw_{\cRatAvg} - 1)\PGro & =(\Grw_{\cv} - \PGro) \cv_{t}(\Grw_{\cv} - 1)
   \end{align*}
 
   \begin{align*}
-    (\Grw_{\bar{\cRat}} - 1)\bar{\cRat}_{t}(\Grw_{\bar{\cRat}} - 1)\PGro & =(\Grw_{\cv} - \PGro) \cv_{t}(\Grw_{\cv} - 1)
+    (\Grw_{\cRatAvg} - 1)\cRatAvg_{t}(\Grw_{\cRatAvg} - 1)\PGro & =(\Grw_{\cv} - \PGro) \cv_{t}(\Grw_{\cv} - 1)
   \end{align*}
   \begin{align}
-    % \Grw_{\bar{\cRat}} - 1 & = \Grw_{\cv} - \PGro \\
-    % \Grw_{\bar{\cRat}} + \pGro & = \Grw_{\cv}  \\
-    \Grw_{\cv} & = \Grw_{\bar{\cRat}} + (\PGro - 1) \label{eq:aRatGroVscov}
+    % \Grw_{\cRatAvg} - 1 & = \Grw_{\cv} - \PGro \\
+    % \Grw_{\cRatAvg} + \pGro & = \Grw_{\cv}  \\
+    \Grw_{\cv} & = \Grw_{\cRatAvg} + (\PGro - 1) \label{eq:aRatGroVscov}
   \end{align}
   \begin{align*}
     \CLevBF_{t}  % & l= \bar{\tilde{\cRat}}_{t} = \Harm{\Mean}_{t+1}[\cRat_{t}\pLevBF_{t}] = \Harm{\Mean}_{t+1}[\cRat_{t}]\Harm{\Mean}_{t+1}[\pLevBF_{t}] + \cv_{t}(\cRat_{t}, \pLevBF_{t}) \\
                    & = %\bar{\tilde{\cRat}}_{t} =
                      \Harm{\Mean}_{t\phantom{+1}}[\cRat]\phantom{\PGro} = \Mean[\cRat_{t\phantom{t+1}}]\phantom{\PGro} + \cv_{t}(\cRat_{t}, \pLevBF_{t})  \\
-    \CLevBF_{t+1} & = \Harm{\Mean}_{t         +1 }[\cRat]         \PGro  = \bar{\cRat}_{t+1}\PGro  + \cv_{t+1}(\cRat_{t+1}, \pLevBF_{t+1})
+    \CLevBF_{t+1} & = \Harm{\Mean}_{t         +1 }[\cRat]         \PGro  = \cRatAvg_{t+1}\PGro  + \cv_{t+1}(\cRat_{t+1}, \pLevBF_{t+1})
   \end{align*}
 
   Still, both of these quantitites are in priniciple measurable in micro data.  %Indeed, in principle, the Harmenberg-invariant distribution itself could be measured in such data.
@@ -1428,11 +1425,11 @@ This is intuitive.  In the Szeidl-invariant economy, this just reproduces our re
 \begin{comment}
   which is the point where $\HarmWide{\cv}_{t}$ is the covariance calculated according to the Harmenberg measure.
 
-  As Harmenberg points out, a convenient feature of his measure is that $\Harm{\Mean}_{t+n}[\pLevBF_{t+n}]=\PGro^{n}$.  Using this, if by date $t=0$ the economy had achieved a Harmenberg-invariant state then we could define $\bar{\cRat}=\Harm{\Mean}_{t}[\cRat_ {t}]$ and use the fact that thereafter assets grow at the constant rate $\PGro$ to obtain
+  As Harmenberg points out, a convenient feature of his measure is that $\Harm{\Mean}_{t+n}[\pLevBF_{t+n}]=\PGro^{n}$.  Using this, if by date $t=0$ the economy had achieved a Harmenberg-invariant state then we could define $\cRatAvg=\Harm{\Mean}_{t}[\cRat_ {t}]$ and use the fact that thereafter assets grow at the constant rate $\PGro$ to obtain
   \begin{equation}
     \begin{split}\label{eq:covProblem} 
       \CLevBF_{t+1} & = \PGro \CLevBF_{t}\notag \\ 
-      \bar{\cRat}\PGro +\HarmWide{\cv}(\cRat_{t+1},\pLevBF_{t+1})   & = \PGro \left( \bar{\cRat}  +  \HarmWide{\cv}(\cRat_{t},\pLevBF_{t})\right) 
+      \cRatAvg\PGro +\HarmWide{\cv}(\cRat_{t+1},\pLevBF_{t+1})   & = \PGro \left( \cRatAvg    +  \HarmWide{\cv}(\cRat_{t},\pLevBF_{t})\right) 
       \\  \HarmWide{\cv}(\cRat_{t+1},\pLevBF_{t+1})   & = \HarmWide{\cv}(\cRat_{t},\pLevBF_{t})  \notag
     \end{split}
   \end{equation}
