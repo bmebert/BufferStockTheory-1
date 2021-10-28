@@ -1,0 +1,58 @@
+% -*- mode: LaTeX; TeX-PDF-mode: t; -*-
+\input{./econtexRoot}\documentclass[\econtexRoot/BufferStockTheory]{subfiles}
+\input{./econtexRoot}\input{\LaTeXInputs/econtex_onlyinsubfile}
+\onlyinsubfile{\externaldocument{\LaTeXGenerated/BufferStockTheory}} % Get xrefs -- esp to appendix -- from main file; only works properly if main file has already been compiled;
+
+%\renewcommand{\LtxDir}{}
+\onlyinsubfile{\renewcommand{\LtxDir}{../LaTeX/}}
+
+\begin{document}
+
+\hypertarget{ApndxBalancedGrowthCNrmAndCov}{}
+\section{Balanced Growth in $\cRat$ and $\cov(\cRat,\pLevBF)$}\label{sec:ApndxBalancedGrowthCNrmAndCov}
+
+
+\providecommand{\Grw}{\Omega}
+\renewcommand{\Grw}{\Omega}
+
+Section~\ref{subsec:Covariances} demonstrates some propositions under the assumption that, when an economy satisfies the {\GIC}, there will be constant growth factors $\Grw_{\bar{\cRat}}$ and $\Grw_{\cov}$ respectively for $\bar{\cRat}$ and $\cov(\cRat,\pLev)$  In the case of a Szeidl-invariant economy, the main text shows that these are $\Grw_{\bar{\cRat}}=1$ and $\Grw_{\cov}=\PGro$.  If the economy is Harmenberg- but not Szeidl-invariant, no proof is offered that these growth factors will be constant.
+
+Figures~\ref{fig:logcNrm} and~\ref{fig:logcov} plot the results of simulations of an economy that satisfies Harmenberg- but not Szeidl-invariance with a popualtion of 4 million agents over the last 1000 periods (of a 2000 period simulation).  The first figure shows that $\log \bar{\cRat}$ increases apparently linearly.  The second figure shows that $log (-\cov(\cRat,\pLev))$ also increases apparently linearly.
+
+\pagebreak
+\begin{figure}[h]
+  \centerline{
+    \includegraphics[width=4in]{\FigDir/logcNrm}
+  }
+  \caption{$\cRat$ Appears to Grow Linearly}\label{fig:logcNrm}
+\end{figure}
+\begin{figure}[h]
+  \centerline{
+    \includegraphics[width=4in]{\FigDir/logcov}
+  }
+  \caption{$\cov(\cRat,\pLev)$ Appears to Grow Linearly}\label{fig:logcov}
+\end{figure}
+
+
+\end{document}
+\endinput
+
+% Local Variables:
+% eval: (setq TeX-command-list  (assq-delete-all (car (assoc "BibTeX" TeX-command-list)) TeX-command-list))
+% eval: (setq TeX-command-list  (assq-delete-all (car (assoc "BibTeX" TeX-command-list)) TeX-command-list))
+% eval: (setq TeX-command-list  (assq-delete-all (car (assoc "BibTeX" TeX-command-list)) TeX-command-list))
+% eval: (setq TeX-command-list  (assq-delete-all (car (assoc "BibTeX" TeX-command-list)) TeX-command-list))
+% eval: (setq TeX-command-list  (assq-delete-all (car (assoc "Biber"  TeX-command-list)) TeX-command-list))
+% eval: (add-to-list 'TeX-command-list '("BibTeX" "bibtex ../LaTeX/%s" TeX-run-BibTeX nil t                                                                              :help "Run BibTeX") t)
+% eval: (add-to-list 'TeX-command-list '("BibTeX" "bibtex ../LaTeX/%s" TeX-run-BibTeX nil (plain-tex-mode latex-mode doctex-mode ams-tex-mode texinfo-mode context-mode) :help "Run BibTeX") t)
+% TeX-PDF-mode: t
+% TeX-file-line-error: t
+% TeX-debug-warnings: t
+% LaTeX-command-style: (("" "%(PDF)%(latex) %(file-line-error) %(extraopts) -output-directory=../LaTeX %S%(PDFout)"))
+% TeX-source-correlate-mode: t
+% TeX-parse-self: t
+% eval: (cond ((string-equal system-type "darwin") (progn (setq TeX-view-program-list '(("Skim" "/Applications/Skim.app/Contents/SharedSupport/displayline -b %n ../LaTeX/%o %b"))))))
+% eval: (cond ((string-equal system-type "gnu/linux") (progn (setq TeX-view-program-list '(("Evince" "evince --page-index=%(outpage) ../LaTeX/%o"))))))
+% eval: (cond ((string-equal system-type "gnu/linux") (progn (setq TeX-view-program-selection '((output-pdf "Evince"))))))
+% TeX-parse-all-errors: t
+% End:

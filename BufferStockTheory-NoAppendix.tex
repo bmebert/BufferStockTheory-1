@@ -1252,7 +1252,7 @@ which is stronger than our {\GIC} condition $\PatPGro < 1$ (under the imposed as
 % A earlier draft of this paper~\cite{BufferStockTheoryQESubmit} conjectured that
 \hypertarget{Growth-Rates-of-Aggregate-Income-and-Consumption}{}
 
-\cite{harmenbergInvariant} substitutes a clever change of probability measure into \cite{szeidlInvariant}'s proof to show that under the {\GIC}, invariant \emph{permanent-income-weighted} distributions exist.\footnote{Harmenberg in a nutshell:  If $\pShk$ is described by density function $f_\pShk(\pShk)$, define the \emph{permanent-income-neutral measure} by $\Harm{f}_\pShk(\pShk) \equiv \pShk f_\pShk(\pShk)$.  Following derivations parallel to those in the previous foonote, the condition for the existence of invariant permanent-income-weighted distributions is
+\cite{harmenbergInvariant} substitutes a clever change of probability measure into Szeidl's proof to show that under the {\GIC}, invariant \emph{permanent-income-weighted} distributions exist.\footnote{Harmenberg in a nutshell:  If $\pShk$ is described by density function $f_\pShk(\pShk)$, define the \emph{permanent-income-neutral measure} by $\Harm{f}_\pShk(\pShk) \equiv \pShk f_\pShk(\pShk)$.  Following derivations parallel to those in the previous foonote, the condition for the existence of invariant permanent-income-weighted distributions is
   \begin{align*}
     \log \PatPGro  & < \Harm{\Ex} \log \pShk
   \end{align*}
@@ -1260,7 +1260,7 @@ which is stronger than our {\GIC} condition $\PatPGro < 1$ (under the imposed as
 
 % Given the terminology developed earlier, the natural designation for the stable ratio of aggregate market resources to noncapital income is the `aggregate steady state' ratio, $\StE{M}$.  This is not numerically the same as the individual \href{https://econ-ark.github.io/BufferStockTheory/#pseudo-steady-state}{pseudo-steady-state} ratio $\mStE$ because the nonlinearities involved in simulation and aggregation will have consequences.\footnote{Still, the pseudo-steady-state can be calculated immediately from the policy function without any simulation, and therefore would likely serve as an excellent and low-cost starting point for the numerical simulation process.}
 
-\cite{harmenbergInvariant} shows\footnote{The test of the Harmenberg method currently implemented in the Econ-ARK toolkit shows that, for the same computational resources, Harmenberg's method reduces the standard error of the simulated aggregate consumption series by a factor of more than 8; see the last part of \href{https://github.com/econ-ark/BufferStockTheory/blob/master/reproduce/computed.sh}{\texttt{reproduce/computed.sh}}.} that his reformulation of the problem can reduce costs of calculation enormously.  % The idea also appears to be promisingly generalizable: For any statistic $\mathcal{S}$ that is the key focus of an analysis, it should be possible to improve the efficiency of simulations aimed at calculating that statistic by constructing an $\mathcal{S}$-weighted distribution rather than a neutral distribution.
+\cite{harmenbergInvariant} shows\footnote{In test of the Harmenberg method currently implemented in the Econ-ARK toolkit, Harmenberg's method reduces the standard error of the simulated aggregate consumption series by a factor of more than 8 (using identical computational resources); see the last part of \href{https://github.com/econ-ark/BufferStockTheory/blob/master/reproduce/computed.sh}{\texttt{reproduce/computed.sh}}.} that his reformulation of the problem can reduce costs of calculation enormously.  % The idea also appears to be promisingly generalizable: For any statistic $\mathcal{S}$ that is the key focus of an analysis, it should be possible to improve the efficiency of simulations aimed at calculating that statistic by constructing an $\mathcal{S}$-weighted distribution rather than a neutral distribution.
 
 The remainder of this section briefly draws out some implications of these points.
 
@@ -1274,12 +1274,12 @@ Say that $\Mean\left[\bullet\right]$ yields the mean of its argument in the popu
 \end{align*}
 because of the independence assumptions we have made about $\tShkAll$ and $\pShk$.
 
-Consider an economy that satisfies the Szeidl impatience condition~\eqref{eq:GICSzeidl} and has existed for long enough by date $t$ that we can consider it as Szeidl-converged.  In such an economy a microeconomist with a population-representative panel dataset could calculate the growth rate of consumption for each individual household, and take the average to obtain:
+Consider an economy that satisfies the Szeidl impatience condition~\eqref{eq:GICSzeidl} and has existed for long enough by date $t$ that we can consider it as Szeidl-converged.  In such an economy a microeconomist with a population-representative panel dataset could calculate the growth rate of consumption for each individual household, and take the average:
 \begin{equation}\label{eq:MeanDeltaLogC}
   \begin{split}
     \Mean\left[\Delta \log \cLevBF_{t+1}\right]  & = \Mean\left[ \log {\cRat}_{t+1}\pLevBF_{t+1} - \log c_{t}\pLevBF_{t}\right]  \\
     % & = \Mean\left[ \log \pLevBF_{t+1}- \log \pLevBF_{t} + \log {\cRat}_{t+1} - \log c_{t}\right]  \notag \\
-    & = \Mean\left[ \log \pLevBF_{t+1}- \log \pLevBF_{t}\right] + \Mean\left[ \log {\cRat}_{t+1} - \log c_{t}\right]
+    & = \Mean\left[ \log \pLevBF_{t+1}- \log \pLevBF_{t}\right] + \Mean\left[ \log {\cRat}_{t+1} - \log c_{t}\right].
   \end{split}
 \end{equation}
 
@@ -1288,7 +1288,7 @@ Because this economy is Szeidl-converged, distributions of $\cRat_{t}$ and $\cRa
   \Mean\left[\Delta \log \cLevBF_{t+1}\right]  & = \Mean\left[ \Delta \log \pLevBF_{t+1}\right] = \log \PGro \label{eq:MeanDeltaLogCeqMeanDeltaLogP}.
 \end{align}
 
-In a Harmenberg-invariant economy (and therefore also any Szeidl-invariant economy), a similar proposition that is testable without a panel (that is, using only cross-section data) is a direct implication of the fact that a constant proportion of aggregate permanent income is accounted for by the successive sets of consumers with any particular $\mRat$.  This fact is essentially Harmenberg's definition of the density of the permanent-income-invariant distribution of a variable (say, $\mRat$).  Call $\cLevBF_{t}(\mRat)$ the total amount of consumption at date $t$ by persons with market resources $\mRat$, and note that in the invariant economy it is given by the converged consumption function $\cFunc(\mRat)$ multiplied by the amount of permanent income accruing to such, people $\pRat_{t}(\mRat)\PLev_{t}$.  But Harmenberg's proof shows that $\pRat(\mRat)$ is invariant,\footnote{In his notation, this is $\tilde{\psi}^{\mRat}$.} and we know from above that $\PLev_{t+1} = \PGro \PLev_{t}$.  So 
+In a Harmenberg-invariant economy (and therefore also any Szeidl-invariant economy), a similar proposition holds in the cross-section as a direct implication of the fact that a constant proportion of aggregate permanent income is accounted for by the successive sets of consumers with any particular $\mRat$.  This fact is essentially Harmenberg's definition of the density of the permanent-income-invariant distribution of a variable (say, $\mRat$).\footnote{His $\tilde{\psi}^{m}$ has an invariant distribution.}  Call $\cLevBF_{t}(\mRat)$ the total amount of consumption at date $t$ by persons with market resources $\mRat$, and note that in the invariant economy it is given by the converged consumption function $\cFunc(\mRat)$ multiplied by the amount of permanent income accruing to such people $\pLevBF_{t}(\mRat)\PLev_{t}$.  But Harmenberg's proof shows that $\pLevBF(\mRat)$ is invariant,\footnote{In his notation, this is $\tilde{\psi}^{\mRat}$.} and aggregate permanent income grows according to $\PLev_{t+1} = \PGro \PLev_{t}$.  So 
 \begin{equation*}
   \begin{split}
     \log \cLevBF_{t+1}(\mRat) - \log \cLevBF_{t}(\mRat) &  \notag 
@@ -1346,10 +1346,9 @@ Thus we have microeconomic propositions that can be tested in either cross-secti
   \end{align*}
 \end{comment}
 
-Harmenberg has a brief discussion that demonstrates that the covariance between the consumption ratio $\cRat$ and the permanent income level $\pLevBF$ does not shrink to zero over time; so covariances are another potential target of measurement for construction of microfoundations.  Here we draw out some of those implications.
+Harmenberg has a brief discussion demonstrating that the covariance between the individual consumption ratio $\cRat$ and the idiosyncratic component of permanent income level $\pLevBF$ does not shrink to zero over time; so covariances are another potential target of measurement for construction of microfoundations.  %Here we draw out some of those implications.
 
-Consider again a Harmenberg-converged economy at date $t=0$, and define $\bar{\cRat}_{t+n} \equiv \Mean[\cRat_{t+n}]$.  
-Total consumption at $t+1$ and $t+2$ are
+Consider again a date-0 Harmenberg-converged economy, and define the mean value of the consumption ratio as $\bar{\cRat}_{t+n} \equiv \Mean[\cRat_{t+n}]$.  Normalizing perid-0 aggregate permanent income to $\PLev_{0}=1$, total consumption at $t+1$ and $t+2$ are
 \begin{equation}\label{eq:atp2vsatp1}
   \begin{split}
     % \CLevBF_{t}  % & l= \bar{\tilde{\cRat}}_{t} = \Mean[\cRat_{t}\pLevBF_{t}] = \Mean[\cRat_{t}]\Mean[\pLevBF_{t}] + \cv_{t}(\cRat_{t}, \pLevBF_{t}) \\
@@ -1359,7 +1358,7 @@ Total consumption at $t+1$ and $t+2$ are
     \\  \CLevBF_{t+2} & = \Mean[\cRat_{t+2}\pLevBF_{t+2}] = \bar{\cRat}_{t+2}\PGro^{2} + \cv_{t+2}(\cRat_{t+2}, \pLevBF_{t+2})
   \end{split}
 \end{equation}
-but Harmenberg's proof that $\CLevBF_{t+2}-\PGro \CLevBF_{t+1}=0$ allows us to multiply the first of these by $\PGro$ and subtract from the second, yielding (dropping the arguments to the $\cv$ terms for clarity):
+but Harmenberg's proof that $\CLevBF_{t+2}-\PGro \CLevBF_{t+1}=0$ allows us to multiply $\CLevBF_{t+1}$ by $\PGro$ and subtract from $\CLev_{t+2}$. Dropping the arguments to the $\cv$ terms for clarity, this yields:
 \begin{align*}
   % \CLevBF_{t+1} & = \Mean_{t+1}[\cRat_{t+1}\pLevBF_{t+1}] = \Mean_{t+1}[\cRat_{t+1}\PGro\pShk_{t+1}\pLevBF_{t}] + \cv_{t+1}(\cRat_{t+1}, \pLevBF_{t}\PGro \pShk_{t+1})
   % \\  & = \PGro \Harm{\Mean}_{t+1}[\cRat_{t+1}]\underbrace{\Harm{\Mean}[\pLevBF_{t}]}_{=1} + \cv_{t+1}(\cRat_{t+1}, \pLevBF_{t+1})                      
@@ -1374,14 +1373,14 @@ but Harmenberg's proof that $\CLevBF_{t+2}-\PGro \CLevBF_{t+1}=0$ allows us to m
                                                                                  % \bar{\tilde{\cRat}} \left(1  - \PGro\right) & =\cov_{t+1}  - \PGro \cov_{t}
 \end{align*}
 
-The less interesting possibility here is when the economy is Szeidl-invariant, in which case $\bar{\cRat}_{t+2} = \bar{\cRat}_{t+1}$, implying that the economy exhibits balanced growth in the covariance:
+In the special case of a Szeidl-invariant economy, $\bar{\cRat}_{t+2} = \bar{\cRat}_{t+1}$, implying that the economy exhibits balanced growth in the covariance:
 \begin{align}
   \cov_{t+2} & = \PGro \cov_{t+1}.
 \end{align}
 
-\newcommand{\Grw}{\Omega}
+\providecommand{\Grw}{\Omega}
 
-The more interesting case is when the economy is Harmenberg- but not Szeidl-invariant.  In that case, if the $\cv$ and the $\Mean[\cRat]$ terms have constant growth factors $\Grw_{\cov}$ and $\Grw_{\bar{\cRat}}$,\footnote{This conditional `if' is not something that Harmenberg proves (or that is proven elsewhere); it is a hypothetical that is useful for the subsequent general argument.} an equation corresponding to \eqref{eq:atp2vsatp1} will hold in $t+n$:
+The more interesting case is when the economy is Harmenberg- but not Szeidl-invariant.  In that case, if the $\cv$ and the $\Mean[\cRat]$ terms have constant growth factors $\Grw_{\cov}$ and $\Grw_{\bar{\cRat}}$, an equation corresponding to \eqref{eq:atp2vsatp1} will hold in $t+n$:
 \begin{equation} \label{eq:aRatGrovsCovGronm1}
   \begin{split}
     (\overbrace{\Grw_{\bar{\cRat}}^{n}\bar{\cRat}_{t}}^{\bar{\cRat}_{t+n}}-\Grw^{n-1}_{\cRat}\bar{\cRat}_{t})\PGro^{n} & = (\Grw_{\cv}^{n}-\PGro \Grw_{\cv}^{n-1}) \cv_{t} 
