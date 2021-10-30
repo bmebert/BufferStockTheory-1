@@ -3,7 +3,7 @@
 scriptDir="$(dirname "$0")"
 
 # Regenerate computed results (figs) needed for compiling paper
-./reproduce/computed.sh
+./reproduce/computed.sh MIN # Replace with MAX to ApndxBalancedGrowthcNrmAndCov.ipynb
 
 echo '' ; echo 'Reproduce text of paper:' ; echo ''
 

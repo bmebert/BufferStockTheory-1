@@ -37,7 +37,7 @@
   \href{https://econ-ark.org}{\includegraphics{\ResourcesDir/PoweredByEconARK}}
 }
 
-\renewcommand{\forcedate}{October 29, 2021}\date{\forcedate}
+\renewcommand{\forcedate}{October 30, 2021}\date{\forcedate}
 
 \maketitle
 \hypertarget{abstract}{}
@@ -1081,7 +1081,7 @@ The proofs of the two theorems are almost completely parallel; to save space, th
   \end{itemize}
 \item Existence of the equilibrium point
   \begin{itemize}
-  \item This follows from the upper and lower bound limiting MPC's, existence and continuity, and the Intermediate Value Theorem
+  \item This follows from existence of upper and lower bound limiting MPCs, existence and continuity of the decision rule, and the Intermediate Value Theorem
   \end{itemize}
 \item Monotonicity of $\Ex_{t}[{\mRat}_{t+1}-\mRat_{t}]$ or $\Ex_{t}[{\mRat}_{t+1}\pShk_{t+1}-\mRat_{t}]$
   \begin{itemize}
@@ -1094,7 +1094,7 @@ The proofs of the two theorems are almost completely parallel; to save space, th
 
 Because the equations defining target and pseudo-steady-state $\mRat$,~\eqref{eq:mTargImplicit} and~\eqref{eq:balgrostable}, differ only by substitution of $\Rnorm$ for $\bar{\Rnorm}=\Rnorm \Ex[\pShk^{-1}]$, if there are no permanent shocks ($\pShk \equiv 1$), the conditions are identical.  For many parameterizations (e.g., under the baseline parameter values used for constructing figure~\ref{fig:cGroTargetFig}), $\mTrg$ and $\mTrg$ will not differ much.
 
-An illuminating exception is exhibited in Figure~\ref{fig:GICNrmFailsButGICRawHolds}, which modifies the baseline parameter values by quadrupling the variance of the permanent shocks, enough to cause failure of the \GICNrm; now there is no target wealth level $\mTrg$ (precauationary motives keep $\cFunc(m)$ everywhere below the level that would keep expected $\mRat$ constant).
+An illuminating exception is exhibited in Figure~\ref{fig:GICNrmFailsButGICRawHolds}, which modifies the baseline parameter values by quadrupling the variance of the permanent shocks, enough to cause failure of the \GICNrm; now there is no target wealth level $\mTrg$ (precautionary motives keep $\cFunc(m)$ everywhere below the level that would keep expected $\mRat$ constant).
 
 
 \renewcommand{\figFile}{GICNrmFailsButGICRawHolds}
@@ -1254,11 +1254,12 @@ which is stronger than our {\GIC} condition $\PatPGro < 1$ (under the imposed as
   \begin{align*}
     \log \PatPGro  & < \Harm{\Ex} \log \pShk
   \end{align*}
-  where the $\sim$ over the expectations operator indicates that the expectation is being taken with respect to $f_\pShk(\pShk)$.  But by assumption $\Harm{\Ex} \log \pShk = 0$ so exponentiating both sides of this equation turns it into $\PatPGro < 1$ which is the {\GIC}.}  This allows him to prove a conjecture from an earlier draft of this paper (\cite{BufferStockTheoryQESubmit}) that under the {\GIC}, aggregate consumption grows at the same rate $\PGro$ as aggregate noncapital income in the long run (with the corollary that aggregate assets and market resources grow at the same rate).
+  where the $\sim$ over the expectations operator indicates that the expectation is being taken with respect to $f_\pShk(\pShk)$.  But by assumption $\Harm{\Ex} \log \pShk = 0$ so exponentiating both sides of this equation turns it into $\PatPGro < 1$ which is the {\GIC}.}  This allows him to prove a conjecture from an earlier draft of this paper (\cite{BufferStockTheoryQESubmit}) that under the {\GIC}, aggregate consumption grows at the same rate $\PGro$ as aggregate noncapital income in the long run (with the corollary that aggregate assets and market resources grow at that same rate).
 
 % Given the terminology developed earlier, the natural designation for the stable ratio of aggregate market resources to noncapital income is the `aggregate steady state' ratio, $\StE{M}$.  This is not numerically the same as the individual \href{https://econ-ark.github.io/BufferStockTheory/#pseudo-steady-state}{pseudo-steady-state} ratio $\mStE$ because the nonlinearities involved in simulation and aggregation will have consequences.\footnote{Still, the pseudo-steady-state can be calculated immediately from the policy function without any simulation, and therefore would likely serve as an excellent and low-cost starting point for the numerical simulation process.}
 
-\cite{harmenbergInvariant} shows\footnote{In test of the Harmenberg method currently implemented in the Econ-ARK toolkit, Harmenberg's method reduces the standard error of the simulated aggregate consumption series by a factor of more than 8 (using identical computational resources); see the last part of \href{https://github.com/econ-ark/BufferStockTheory/blob/master/reproduce/computed.sh}{\texttt{reproduce/computed.sh}}.} that his reformulation of the problem can reduce costs of calculation enormously.  % The idea also appears to be promisingly generalizable: For any statistic $\mathcal{S}$ that is the key focus of an analysis, it should be possible to improve the efficiency of simulations aimed at calculating that statistic by constructing an $\mathcal{S}$-weighted distribution rather than a neutral distribution.
+\hypertarget{test-Harmenbergs-method}{}
+\cite{harmenbergInvariant} shows\footnote{The test of the Harmenberg method currently implemented in the Econ-ARK toolkit shows that Harmenberg's method reduces the standard error of the simulated aggregate consumption series by a factor of more than 8 (using identical computational resources); see the last part of \href{https://github.com/econ-ark/BufferStockTheory/blob/master/Code/Python/test_Harmenbergs_method.sh}{\texttt{test\_Harmenbergs\_method.sh}}.} that his reformulation of the problem can reduce costs of calculation enormously.  % The idea also appears to be promisingly generalizable: For any statistic $\mathcal{S}$ that is the key focus of an analysis, it should be possible to improve the efficiency of simulations aimed at calculating that statistic by constructing an $\mathcal{S}$-weighted distribution rather than a neutral distribution.
 
 The remainder of this section briefly draws out some implications of these points.
 
@@ -1431,7 +1432,7 @@ This is intuitive.  In the Szeidl-invariant economy, this just reproduces our re
 
 
 \hypertarget{microfounding-macro-needs-ergodicity}{}
-\subsection{Implications for Microfoudations}\label{subsec:Covariances}
+\subsection{Implications for Microfoundations}\label{subsec:Covariances}
 
 Thus we have microeconomic propositions, for both growth rates and for covariances of observable variables,\footnote{Parallel results to those for consumption can be obtained for other measures like market assets.} that can be tested in either cross-section or panel microdata to judge (and calibrate) the microfoundations that should be expected to hold for a macroeconomic analysis that requires balanced growth for its conclusions.  
 
@@ -1493,7 +1494,7 @@ The chief appeal of this approach is the simplicity of the change it makes in th
   \Alive  \Pat_{\PGro} & < 1. \label{eq:GICMrt}
 \end{align}
 
-With no income growth, the condition required to prohibit unbounded growth in aggregate wealth would be the condition that prevents the per-capita wealth to income ratio of surviving consumers from growing faster than the rate at which mortality diminishes their collective population.  With income growth, the aggregate wealth-to-income ratio will head to infinity only if a cohort of consumers is patient enough to make the desired rate of growth of wealth fast enough to counteract combined erosive forces of mortality and productivity.
+With no income growth, the condition required to prohibit unbounded growth in aggregate wealth would be the condition that prevents the per-capita wealth-to-permanent-income ratio of surviving consumers from growing faster than the rate at which mortality diminishes their collective population.  With income growth, the aggregate wealth-to-income ratio will head to infinity only if a cohort of consumers is patient enough to make the desired rate of growth of wealth fast enough to counteract combined erosive forces of mortality and productivity.
 
 
 \hypertarget{Conclusions}{}
