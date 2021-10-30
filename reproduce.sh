@@ -3,7 +3,7 @@
 scriptDir="$(dirname "$0")"
 
 # Regenerate computed results (figs) needed for compiling paper
-./reproduce/computed.sh MIN # Replace with MAX to ApndxBalancedGrowthcNrmAndCov.ipynb
+./reproduce/computed.sh MIN # Replace with MAX to execute ApndxBalancedGrowthcNrmAndCov.ipynb
 
 echo '' ; echo 'Reproduce text of paper:' ; echo ''
 
@@ -56,13 +56,16 @@ find ./Appendices -name '*.tex' ! -name '*econtexRoot*' ! -name '*econtexPath*' 
 while read appendixName; do
     filename=$(basename ${appendixName%.*}) # Strip the path and the ".tex"
     cmd="pdflatex -halt-on-error                 --output-directory=$output_directory $appendixName"
-    echo "$cmd" ; eval "$cmd"
+    echo "$cmd"
+    eval "$cmd"
     if grep -q 'bibliography{' "$appendixName"; then # it has a bibliography
 	bibtex $output_directory/$filename 
 	eval "$cmd" 
     fi
     eval "$cmd"
-    mv "$output_directory/$filename.pdf" Appendices
+    cmd="mv $output_directory/$filename.pdf Appendices"
+    echo "$cmd"
+    eval "$cmd"
 done < /tmp/appendices
 
 [[ -e "$texname".pdf ]] && rm -f "$texname".pdf
