@@ -88,7 +88,7 @@ A connected literature in macroeconomic theory, starting with~\cite{bewleyPIH}, 
 
 This paper's first contribution is to articulate conditions under which the infinite-horizon Friedman-Muth(-Zeldes) problem (without complications like a consumption floor or liquidity constraints) defines a contraction mapping problem whose limit is sensible as the horizon approaches infinity.  A \hyperlink{FVAC}{`Finite Value of Autarky Condition'} is mostly sufficient (the other imposed condition, the \hyperlink{WRIC}{`Weak Return Impatience Condition'},\footnote{This is a generalization of a condition in~\cite{mstIncFluct}.} is unlikely to bind).  Because the infinite-horizon solution is the limit of finite-horizon recursions, many intermediate results are also useful for solving finite-horizon problems.
 
-But the paper's main theoretical contribution is to identify, for the infinite-horizon case, conditions under which `stable' values of the wealth-to-permanent-income ratio exist, either for individual consumers (a consumer's wealth can be predicted to move toward a `target' ratio) or for the aggregate (the economy as a whole moves toward a `balanced growth' equilibrium).  The requirement for stability is always that the model's parameters satisfy a `Growth Impatience Condition' whose details depend on the quantity whose stability is of interest.  A model that exhibits such stability qualifies as a `buffer stock' model.\footnote{Buffer stock models are neither a subset nor a superset of~\cite{bewleyPIH} models.  But closed economies in which capital results from saving and has declining marginal productivity are always `buffer stock' economies under some definition of that term, because capital accumulation causes interest rates to fall, which guarantees that a Growth Impatience Condition will hold in equilibrium (see below).  The more interesting applications are to populations (or economies) whose marginal saving behavior does not determine the relevant interest rate, or in which the marginal product of capital does not fall as capital is accumulated (again, see below).}
+But the paper's main theoretical contribution is to identify, for the infinite-horizon case, conditions under which `stable' points exist, either for individual consumers (a consumer's wealth can be predicted to move toward a `target' ratio, or expected growth of market resources matches expected growth of permanent income) or for the aggregate (the economy as a whole moves toward a `balanced growth' equilibrium).  The requirement for stability is always that the model's parameters satisfy a `Growth Impatience Condition' whose details depend on the quantity whose stability is of interest.  A model that exhibits such stability qualifies as a `buffer stock' model.\footnote{Buffer stock models are neither a subset nor a superset of~\cite{bewleyPIH} models.  But closed economies in which capital results from saving and has declining marginal productivity are always `buffer stock' economies under some definition of that term, because capital accumulation causes interest rates to fall, which guarantees that a Growth Impatience Condition will hold in equilibrium (see below).  The more interesting applications are to populations (or economies) whose marginal saving behavior does not determine the relevant interest rate, or in which the marginal product of capital does not fall as capital is accumulated (again, see below).}
 
 \hypertarget{KMP}{} Even without a formal proof of its existence, buffer stock saving has been intuitively understood to underlie central quantitative results in heterogeneous agent macroeconomics; for example, the logic of target saving is central to the claim by~\cite{kmpHandbook} in the \textit{Handbook of Macroeconomics} that such models explain why, during the Great Recession, middle-class consumers cut their spending more than the poor or the rich.  The theory below provides the rigorous basis for this claim:  Learning that the future has become more uncertain does not change the urgent imperatives of the poor (their high $\uFunc^{\prime}(\cRat)$ means they --- optimally --- have little room to maneuver).  And, increased labor income uncertainty does not much change the behavior of the rich because it poses little risk to their consumption.  Only people in the middle have both the motivation and the wiggle-room to respond to uncertainty by reducing their spending.
 
@@ -287,7 +287,7 @@ where the archaic letter \href{https://en.wikipedia.org/wiki/Thorn_(letter)}{`th
 \begin{align}
   \Pat & = {(\Rfree\DiscFac)}^{1/\CRRA} \label{eq:APF}.
 \end{align}
-$\Pat$ captures `patience' because, if the `absolute impatience condition' (\AIC) holds,\footnote{Impatience conditions have figured in intertemporal optimization problems since the beginning, e.g.\ in~\cite{ramseySave}.  These issues are so central that it would be hopeless to attempt to cite conditions in every other paper that correspond to conditions named and briefly exposited here.  I make no claim to novelty for any condition aside from those implicated in my theorems, whose parallels \textit{will} be articulated.}
+$\Pat$ captures `patience' because, if the `absolute impatience condition' (\AIC) holds,\footnote{Impatience conditions have figured in intertemporal optimization problems since the beginning, e.g.\ in~\cite{ramseySave}.  These issues are so central that it would be hopeless to attempt to cite conditions in every other paper that correspond to conditions named and briefly exposited here.  I make no claim to novelty for any condition aside from those implicated in my theorems, whose forerunners \textit{will} be articulated.}
 \begin{align}
   \label{eq:AIC}
   \Pat  & < 1,
@@ -437,6 +437,7 @@ We now examine the case with uncertainty but without constraints, which will tur
 \hypertarget{Uncertainty-Modified-Conditions}{}
 \subsection{Uncertainty-Modified Conditions}\label{subsec:UncertaintyModifiedConditions}
 \subsubsection{Impatience}
+
 
 When uncertainty is introduced, the expectation of beginning-of-period bank balances $\bRat_{t+1}$ can be rewritten as:
 \begin{align*}
@@ -959,7 +960,7 @@ where the second-to-last line follows because  $\lim_{\mRat_{t} \downarrow 0} \E
 
 \subsection{Unique `Stable' Points}\label{subsec:onetarget}\hypertarget{TheoremTarget}{}
 
-Two theorems, whose substance is described here and whose details are in an appendix, articulate alternative (but closely related) stability criteria for the model.
+Three theorems, whose substance is described here and whose details are in an appendix, articulate alternative (but closely related) stability criteria for the model.
 
 \subsubsection{`Individual Target Wealth'}\label{subsubsec:mTarget}
 One definition of a `stable' point is what we will call a `target' value $\mTrg$ such that if $\mRat_{t}=\mTrg$, then $\Ex_{t}[\mRat_{t+1}]=\mRat_{t}$.  Existence of such a target turns out to require the {\GICNrm} condition.
@@ -1046,8 +1047,7 @@ The critical $\mRat$ will be the value $\mStE$ at which $\mRatBF$ growth matches
 
 The only difference between~\eqref{eq:balgrostable} and~\eqref{eq:mTargImplicit} is the substitution of $\Rnorm$ for $\bar{\Rnorm}$.
 
-Our choice to call to this $\mStE$ as individual problem's `pseudo-steady-state' is motivated by what happens in the case where all draws of all future shocks just happen to take on their expected value of 1.0.  (They unexpectedly always take on their expected values).  In that infinitely improbable case, the economy \textit{would} exhibit balanced growth.\footnote{    \begin{align*}      \Ex_{t}[\mRat_{t+1}/\mRat_{t}|\pShk_{t+1}=\tShk_{t+1}=1] = \PGro \left(\mStE-\cFunc(\mStE)\Rnorm + 1 \right)/\mRat = \PGro    \end{align*}}
-
+Our choice to call to this $\mStE$ the individual problem's `pseudo-steady-state' is motivated by what happens in the case where all draws of all future shocks just happen to take on their expected value of 1.0.  (They unexpectedly always take on their expected values).  In that infinitely improbable case, the economy \textit{would} exhibit balanced growth.\footnote{    \begin{align*}      \Ex_{t}[\mRat_{t+1}/\mRat_{t}|\pShk_{t+1}=\tShk_{t+1}=1] = \PGro \left(\mStE-\cFunc(\mStE)\Rnorm + 1 \right)/\mRat = \PGro    \end{align*}}
 
 % Note that since $\PGroAdj < \PGro$, $\usual{\cFunc}^{\prime}(\mTrg) > \usual{\cFunc}^{\prime}(\mStE)$ which implies that $\mTrg < \mBal$.
 
@@ -1072,8 +1072,34 @@ Theorem~\ref{thm:MSSBalExists}~formally states the relevant proposition.
 
 % the sense in which $\mStE$ is a `target' is less obvious than that for $\mtarg$; a full justification of this terminology must await the macroeconomic analysis below.  a glimpse of the idea is can be seen by noting that, for an economy whose entire population of consumers in period $t$ all had $\mRat_{t} = \mBal$, the ratio of the aggregate values $\mlevbf_{t+1}= \int \mlevbf_{t+1}$ to $\plevbf_{t+1}= \int \plevbf_{t+1}$ next period would be $\mlevbf_{t+1}/\plevbf_{t+1}=\mbal$ so that, at least between those two periods, the economy would exhibit stability.  indeed, if we turned off the idiosyncratic shocks,
 
-The proofs of the two theorems are almost completely parallel; to save space, they are relegated to Appendix~\ref{sec:ApndxMTargetIsStable}.  In sum, they involve three steps:
+\hypertarget{log-pseudo-steady-state}{}
+\subsubsection{The  expected `log-pseudo steady state'}\label{subsubsec:logpseudosteadystate}
 
+A final point of stability will be indicated by a $\sim$ accent; this is the $\mRat$ at which the expectation of $\log \mRat$ is unchanging.
+
+\begin{verbatimwrite}{\EqDir/TheoremGroIsStable}
+  \begin{theorem}\label{thm:TheoremGroIsStable}
+    For the nondegenerate solution to the problem defined in Section~\ref{subsec:Setup} when {\FVAC}, {\WRIC}, and {\GICLog} all hold, there exists a unique cash-on-hand-to-permanent-income ratio $\mGro>0$ such that
+    \begin{equation}
+      \Ex_t [\log {\mLevBF}_{t+1} ] = \log \mLevBF_t \mbox{~if~} \mLev_t = \mGro.
+      \label{eq:mTarget}
+    \end{equation}
+    Moreover, $\mGro$ is a point of stability in the sense that
+    \begin{equation} \label{eq:stability}
+      \begin{split}
+        \forall {\mRat}_t\in(0,\mGro),      \,\,& \Ex_t [\log {\mLevBF}_{t+1}] > \log {\mLevBF}_t  \\
+        \forall {\mRat}_t\in(\mGro,\infty), \,\,& \Ex_t [\log {\mLevBF}_{t+1}] < \log {\mLevBF}_t.
+      \end{split}
+    \end{equation}
+  \end{theorem}
+\end{verbatimwrite}
+\input{\LtxDir\EqDir/TheoremGroIsStable}
+
+with two associated Lemmas demonstrating that $\mStE < \Gro{\mRat}$ and $\mStE < \$mTrg$.
+
+\subsection{Proofs}\label{subsec:StabilityProofs}
+
+The proofs of the theorems are almost completely parallel; to save space, they are relegated to Appendix~\ref{sec:ApndxMTargetIsStable}.  In sum, they involve three steps:
 \begin{enumerate}
 \item Existence and continuity of $\Ex_{t}[\mRat_{t+1}/\mRat_{t}]$ or $\Ex_{t}[\mRat_{t+1}\pShk_{t+1}/\mRat_{t}]$
   \begin{itemize}
@@ -1089,7 +1115,7 @@ The proofs of the two theorems are almost completely parallel; to save space, th
   \end{itemize}
 \end{enumerate}
 
-\subsubsection{Example Where There Is An Expected-Balanced-Growth
+\subsection{Example Where There Is An Expected-Balanced-Growth
   \texorpdfstring{$\mStE$}{m} State But No Target}
 
 Because the equations defining target and pseudo-steady-state $\mRat$,~\eqref{eq:mTargImplicit} and~\eqref{eq:balgrostable}, differ only by substitution of $\Rnorm$ for $\bar{\Rnorm}=\Rnorm \Ex[\pShk^{-1}]$, if there are no permanent shocks ($\pShk \equiv 1$), the conditions are identical.  For many parameterizations (e.g., under the baseline parameter values used for constructing figure~\ref{fig:cGroTargetFig}), $\mTrg$ and $\mTrg$ will not differ much.

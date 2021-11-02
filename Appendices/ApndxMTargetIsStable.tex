@@ -16,15 +16,15 @@
 
 %\subsection{To Prove}
 
-This appendix proves Theorems~\ref{thm:target} and~\ref{thm:MSSBalExists} and 
+This appendix proves Theorems~\ref{thm:target}-\ref{thm:TheoremGroIsStable} and the following Lemmas:
 \onlyinsubfile{\setcounter{theorem}{1}}
 
-%\input{\LtxDir\EqDir/TheoremMTargetIsStable}
+  \begin{lemma}\label{lemma:orderingPartOne}
+  If $\StE{\mRat}$ and $\Trg{\mRat}$ both exist, then $\StE{\mRat} \leq \Trg{\mRat}$.
+  \end{lemma}
 
-%  \input{\LtxDir\EqDir/TheoremMSSBalExists}
-
-  \begin{lemma}
-  If both $\check{\mRat}$ and $\hat{\mRat}$ exist, then $\hat{\mRat} < \check{\mRat}$.
+  \begin{lemma}\label{lemma:orderingPartTwo}
+  If $\StE{\mRat}$ and $\Gro{\mRat}$ both exist, then $\StE{\mRat} \leq \Gro{\mRat}$.
   \end{lemma}
 
   \subsection{Proof of Theorem~\ref{thm:target}}
@@ -37,17 +37,17 @@ This appendix proves Theorems~\ref{thm:target} and~\ref{thm:MSSBalExists} and
 \end{itemize}
 
 
-\subsubsection{Existence and Continuity of
+\subsection{Existence and Continuity of
   \texorpdfstring{$\Ex_t [{\mRat}_{t+1}/\mRat_t]$}{Ex-{t}[mRat-{t+1}/mRat-{t}]}}\label{subsubsec:RatExitsCont}
-The consumption function exists because we have imposed the sufficient conditions (the $\WRIC$ and $\FVAC$; Theorem~\ref{thm:contmap}).  (Indeed, Appendix~\ref{sec:CIsTwiceDifferentiable} shows that $\cFunc(\mRat)$ is not just continuous, but twice continuously differentiable.)
+The consumption function exists because we have imposed sufficient conditions (the $\WRIC$ and $\FVAC$; Theorem~\ref{thm:contmap}). % (Indeed, Appendix~\ref{sec:CIsTwiceDifferentiable} shows that $\cFunc(\mRat)$ is not just continuous, but twice continuously differentiable.)
 
 Section~\ref{sec:cExists} shows that for all $t$, $\aRat_{t-1} = {\mRat}_{t-1} -  \cRat_{t-1} > 0$.  Since ${\mRat}_{t}= {\aRat}_{t-1} \Rnorm_{t} + \tShkAll_{t}$, even if $\tShkAll_{t}$ takes on its minimum value of 0, $\aRat_{t-1} \Rnorm_{t} > 0$, since both $\aRat_{t-1}$ and $\Rnorm_{t}$ are strictly positive.  With $\mRat_{t}$ and $\mRat_{t+1}$ both strictly positive, the ratio $\Ex_t [{\mRat}_{t+1}/\mRat_t]$ inherits continuity (and, for that matter, continuous differentiability) from the consumption function.
 
-\subsubsection{Existence of a point where
+\subsection{Existence of a point where
   \texorpdfstring{$\Ex_t [{\mRat}_{t+1}/\mRat_t]=1$}
   {Ex-t[mRat-{t+1}/mRat-{t}]=1}.}
 
-Existence of a point where $\Ex_t [{\mRat}_{t+1}/\mRat_t] = 1$ follows from:
+This follows from:
 \begin{enumerate}
 \item Existence and continuity of $\Ex_t [{\mRat}_{t+1}/\mRat_t]$ (just proven)
   \item Existence a point where $\Ex_t [{\mRat}_{t+1}/\mRat_t] < 1$
@@ -55,7 +55,7 @@ Existence of a point where $\Ex_t [{\mRat}_{t+1}/\mRat_t] = 1$ follows from:
     \item The Intermediate Value Theorem
     \end{enumerate}
 
-\noindent    \textit{Existence of a point where $\Ex_t [{\mRat}_{t+1}/\mRat_t] < 1$}.
+\subsubsection{\textit{Existence of a point where $\Ex_t [{\mRat}_{t+1}/\mRat_t] < 1$}}
     
 \textbf{If {\RIC} holds.}  Logic exactly parallel to that of Section~\ref{subsec:LimitsAsmtToInfty} leading to equation~\eqref{eq:xtp1toinfty}, but dropping the $\PGro_{t+1}$ from the RHS, establishes that
 \begin{align}
@@ -72,10 +72,9 @@ where the inequality reflects imposition of the \GICNrm~\eqref{eq:GICNrm}.
 
 So we have $\lim_{\mRat \uparrow \infty} \Ex_{t}[\mRat_{t+1}/\mRat_{t}] < 1$ whether the {\RIC} holds or fails.
 
-\medskip\medskip
+\medskip
 
-\noindent \textit{Existence of a point where \texorpdfstring{$\Ex_t [{\mRat}_{t+1}/\mRat_t] > 1$}{E[mRat-{t+1}/mRat-{t}] > 1}}.
-
+\subsubsection{\textit{Existence of a point where \texorpdfstring{$\Ex_t [{\mRat}_{t+1}/\mRat_t] > 1$}{E[mRat-{t+1}/mRat-{t}] > 1}}}
 Paralleling the logic for $\cRat$ in Section~\ref{subsec:LimitsAsmtToZero}: the ratio of $\Ex_{t}[\mRat_{t+1}]$ to $\mRat_{t}$ is unbounded above as $\mRat_{t} \downarrow 0$ because $\lim_{\mRat_{t}\downarrow 0} \Ex_{t}[\mRat_{t+1}] > 0$.
 
 \medskip\medskip
@@ -144,7 +143,7 @@ The elements of the proof are:
 \item $\Ex_{t}[\pShk_{t+1}\mRat_{t+1}-\mRat_{t}]$ is monotonically decreasing
 \end{itemize}
 
-\subsubsection{Existence and Continuity of The Ratio}% of $\hat{\mRat}_{t+1}/\mRat_{t}$.}
+\subsubsection{Existence and Continuity of the Ratio}% of $\Trg{\mRat}_{t+1}/\mRat_{t}$.}
 
 Since by assumption $ 0 < \ushort{\pShk} \leq \pShk_{t+1} \leq \bar{\pShk} < \infty$, our proof in~\ref{subsubsec:RatExitsCont} that demonstrated existence and continuity of $\Ex_{t}[\mRat_{t+1}/\mRat_{t}]$ implies existence and continuity of $\Ex_{t}[\pShk_{t+1}\mRat_{t+1}/\mRat_{t}]$.
 
@@ -213,13 +212,111 @@ which means that $\difFunc^{\prime}(\mRat_{t})$ from~\eqref{eq:difFuncDecreases}
 
 But we showed in Section~\ref{subsec:UncertaintyModifiedConditions} that the only circumstances under which the problem has a nondegenerate solution while the {\RIC} fails were ones where the {\FHWC} also fails (that is,~\eqref{eq:FHWCFails} holds).
 
-%\subsection{Proof of Lemma}
+
+
+\subsection{Proof of Theorem~\ref{thm:TheoremGroIsStable}}
+
+Proof of the existence of the final kind of stability is straightforward.  
+\begin{equation}\begin{split}
+  \log \mLevBF_{t+1} - \log \mLevBF_{t} &  = \log \pLevBF_{t+1} \mRat_{t+1} - \log \pLevBF_{t} \mRat_{t} 
+\\ & =   \log \PGro\pShk_{t+1} \mRat_{t+1} - \log \mRat_{t}
+\\   & = \log \PGro\pShk_{t+1} \left((\mRat_{t}-\cRat_{t})\Rfree/\PGro\pShk_{t+1}+\tShk_{t+1}\right) - \log \mRat_{t}
+\\   & = \log \left((\mRat_{t}-\cRat_{t})\Rfree+\PGro\pShk_{t+1}\tShk_{t+1}\right) - \log \mRat_{t}
+\\   & = \log \PGro\pShk_{t+1} + \log \left((\mRat_{t}-\cRat_{t})\Rnorm_{t+1}+\tShk_{t+1}\right) - \log \mRat_{t}
+%\\  \Ex_{t} \Delta \log \mLevBF_{t+1} & = \underbrace{\log \PGro + \Ex_{t}[\log \pShk_{t+1}]}_{< 0~\text{by~\GICLog}} + \Ex_{t} \log \left((\mRat_{t}-\cRat_{t})\Rnorm_{t+1}+\tShk_{t+1}\right) - \log \mRat_{t}
+\\  \Ex_{t} \Delta \log \mLevBF_{t+1} & = \log \PGro + \Ex_{t}[\log \pShk_{t+1}] + \Ex_{t} \log \left(\frac{(\mRat_{t}-\cRat_{t})\Rnorm_{t+1}+\tShk_{t+1}}{\mRat_{t}}\right) 
+\\  \Ex_{t} \Delta \log \mLevBF_{t+1} & = \log \PGro + \Ex_{t}[\log \pShk_{t+1}] + \Ex_{t} \log \left((1-\cRat_{t}/\mRat_{t})\Rnorm_{t+1}+\tShk_{t+1}/\mRat_{t}\right) .
+\end{split}\end{equation}
+
+\begin{equation}\begin{split}
+  (d/d\mRat_{t}) \Delta \log \mLevBF_{t+1} &  = \log \pLevBF_{t+1} \mRat_{t+1} - \log \pLevBF_{t} \mRat_{t} 
+  \\   & = \left(\frac{\Rnorm_{t+1}(1-\MPC(\mRat_{t}))}{(\mRat_{t}-\cRat_{t})\Rnorm_{t+1}+\tShk_{t+1}}\right)-1/\mRat_{t}
+  \\   & = \left(\frac{(1-\MPC(\mRat_{t}))}{(\mRat_{t}-\cRat_{t})+\Rnorm_{t+1}^{-1}\tShk_{t+1}}\right)-1/\mRat_{t}
+\\   & = \left(\frac{(1-\MPC(\mRat_{t}))}{(\mRat_{t}-\cRat_{t})+\PGro\pShk_{t+1}\tShk_{t+1}/\Rfree}\right)-1/\mRat_{t}    
+\end{split}\end{equation}
+
+
+As argued elsewhere, expected growth approaches a maximum of $\infty$ as $\mRat_{t} \downarrow 0$.  As $\mRat_{t} \uparrow \infty$, the contribution of the term involving $\tShk$ becomes negligible and the expenditure ratio $\eFunc(\mRat)=\cFunc(\mRat)/\mRat$ approaches $\MinMPC$, so the limiting growth factor approaches
+\begin{equation}\begin{split}
+    \lim_{\mRat_{t} \uparrow \infty} \Ex_{t} [\Delta \log \mLevBF_{t+1}] & = \log \PGro + \Ex_{t}[\log \pShk_{t+1}] + \Ex_{t} \log \left((1-\MinMPC)\Rnorm_{t+1}\right)
+    \\ & = \log \PGro + \Ex_{t}[\log \pShk_{t+1}] + \Ex_{t}\left( \log \Pat - (\log \PGro + \log \pShk_{t+1})\right)
+    \\ & = \log \Pat.
+\end{split}\end{equation}
+
+The same arguments as before will guarantee continuity over the range of feasible values of $\mRat$.  So all that remains to prove is that $\Ex_{t} [\Delta \log \mLevBF_{t+1}]$ is strictly decreasing as $\mRat$ rises.
+Differentiating with respect to $\mRat_{t}$ yields 
+\begin{equation}\begin{split}
+    (d/d\mRat_{t})  \Ex_{t} \Delta \log \mLevBF_{t+1} & = (d/d\mRat_{t})\Ex_{t} \log \left((1-\cRat_{t}/\mRat_{t})\Rnorm_{t+1}+\tShk_{t+1}/\mRat_{t}\right)
+    \\ & = \Ex_{t} \left(\frac{-\tShk_{t+1}/\mRat^{2}_{t}-\Rnorm_{t+1}\eFunc^{\prime}(\mRat_{t})}{\tShk_{t+1}/\mRat_{t}+\Rnorm_{t+1}(1-\eFunc(\mRat_{t}))}\right)
+    \\ & = \Ex_{t} \left(\frac{-\tShk_{t+1}/\mRat_{t}-\mRat_{t}\Rnorm_{t+1}\eFunc^{\prime}(\mRat_{t})}{\tShk_{t+1}+\mRat_{t}\Rnorm_{t+1}(1-\eFunc(\mRat_{t}))}\right)
+    \\ & < \Ex_{t} \left(\frac{-\underline{\tShk}/\mRat_{t}-\mRat_{t}\Rnorm_{t+1}\eFunc^{\prime}(\mRat_{t})}{\bar{\tShk}+\mRat_{t}\Rnorm_{t+1}(1-\eFunc(\mRat_{t}))}\right)
+  \end{split}\end{equation}
+and for every realization of $\tShk$ and $\Rnorm$, the numerator of this expression is negative and the denominator is positive.  So the expression's expectation must be negative.
+
+
+\subsection{Proof of Lemmas~\ref{lemma:orderingPartOne}-\ref{lemma:orderingPartTwo}}
+
+\subsubsection{Pseudo-Steady-State $\mRat$ Is Smaller than Target $\mRat$}
+Designate
+\begin{equation}\begin{split}
+  \StE{\mFunc}_{t+1}(\aRat) % = \Ex_{t}[\StE{\aRat}\Rnorm+\tShk_{t+1}\pShk_{t+1} ] \\
+   & = 1+\aRat\Rnorm
+\\  \Trg{\mFunc}_{t+1}(\aRat)% & = \Ex_{t}[\Trg{\aRat}(\Rnorm/\pShk_{t+1})+\tShk_{t+1}\pShk_{t+1} ] \\
+ & = 1+\aRat\underbrace{\Rnorm/\InvEpShkInv}_{\bar{\Rnorm} > \Rnorm}
+\end{split}\end{equation}
+so that we can implicitly define the target and pseudo-steady-state points as
+\begin{equation}\begin{split}
+  \mTrg & =\Trg{\mFunc}_{t+1}(\mTrg-\cFunc(\mTrg))
+  \\ \mStE & = \StE{\mFunc}_{t+1}(\mStE-\cFunc(\mStE))
+\end{split}\end{equation}
+Then subtract:
+\begin{equation}\begin{split}
+  \mTrg - \mStE %& =\Trg{\mFunc}_{t+1}(\mTrg-\cFunc(\mTrg)) - \StE{\mFunc}_{t+1}(\mStE-\cFunc(\mStE))  
+%  \\  \mTrg - \mStE & =1+ (\mTrg-\cFunc(\mTrg))\Rnorm/\InvEpShkInv - (1+(\mStE-\cFunc(\mStE))\Rnorm)
+ & = \left(\Trg{\aRat} \InvEpShkInv^{-1} - \StE{\aRat} \right)\Rnorm 
+\\ & = \left({\aRat}(\mTrg) \InvEpShkInv^{-1} - {\aRat}(\mStE) \right)\Rnorm 
+\\ & = \left({\aRat}(\mTrg) \InvEpShkInv^{-1} - \left({\aRat}(\mTrg+\mStE-\mTrg)\right) \right)\Rnorm 
+\\ & \approx \left({\aRat}(\mTrg) \InvEpShkInv^{-1} - \left({\aRat}(\mTrg)+(\mStE-\mTrg)\aFunc^{\prime}(\Trg{\mRat})\right) \right)\Rnorm 
+%  \\ & = \left({\aRat}(\mTrg) \InvEpShkInv^{-1} - {\aRat}(\mTrg)-(\mStE-\mTrg){\aRat}^{\prime} \right)\Rnorm
+%  \\ & = \left({\aRat}(\mTrg) \InvEpShkInv^{-1} - {\aRat}(\mTrg)+(\mTrg-\mStE){\aRat}^{\prime} \right)\Rnorm
+  \\ (\mTrg - \mStE)(1-\underbrace{{\aRat}^{\prime}(\mTrg)\Rnorm}_{< \PatPGro < 1}) & = (\InvEpShkInv^{-1} - 1)\Trg{\aRat}\Rnorm
+%\\ & = \left((\mTrg-\cFunc(\mTrg)) \InvEpShkInv^{-1} - (\mStE-\cFunc(\mTrg+\mStE-\mTrg)) \right)\Rnorm 
+%\\ & = \left((\mTrg-\cFunc(\mTrg)) \InvEpShkInv^{-1} -( (\mStE-\cFunc(\mTrg)+(\mStE-\mTrg)\MPC)) \right)\Rnorm 
+\end{split}\end{equation}
+The RHS of this equation is strictly positive because $\InvEpShkInv^{-1}>1$ and both $\Trg{\aRat}$ and $\Rnorm$ are positive; while on the LHS, $(1-\Rnorm\aRat^{\prime})>0$.  So the equation can only hold if $\Trg{\mRat}-\StE{\mRat} > 0$.  That is, the target ratio exceeds the pseudo-steady-state ratio.\footnote{The use of the first order Taylor approximation could be substituted, cumbersomely, with the average of $\aFunc^{\prime}$ over the interval to remove the approximation in the derivations above.}
+
+\subsubsection{The $\mRat$  achieving Expected-Log-Balanced-Growth Is Smaller than Pseudo-Steady-State $\mRat$}
+
+Expected log balanced growth occurs when
+\begin{equation}\begin{split}
+    \Ex_{t}[\log \mLevBF_{t+1}] & = \log \PGro \mLevBF_{t}
+\\      \Ex_{t}[\log \pLevBF_{t+1}\mRat_{t+1}] & = \log \PGro \pLevBF_{t} \mRat_{t}
+\\      \Ex_{t}[\log \pShk_{t+1}\mRat_{t+1}] & = \log \PGro \mRat_{t}
+\\      \Ex_{t}[\log \left(\aRat(\mRat_{t})\Rfree+\pShk_{t+1}\tShk_{t+1}\PGro\right)] & = \log \PGro \mRat_{t}
+\\      \Ex_{t}[\log \left(\aRat(\mRat_{t})\Rnorm+\pShk_{t+1}\tShk_{t+1}\right)] & = \log \mRat_{t}
+\end{split}\end{equation}
+and we call the $\mRat$ that satisfies this equation $\Gro{\mRat}$.
+
+Now we use the fact that the expectation of the log is less than the log of the expectation, 
+\begin{equation}\begin{split}
+     \log \Ex_{t}[\aRat(\Gro{\mRat}_{t})\Rnorm+\pShk_{t+1}\tShk_{t+1}] & < \log \Gro{\mRat}_{t}
+\\     \log \left(\aRat(\Gro{\mRat}_{t})\Rnorm+1\right) & < \log \Gro{\mRat}_{t}
+\\     \aRat(\Gro{\mRat}_{t})\Rnorm+1 & < \Gro{\mRat}_{t}
+\end{split}\end{equation}
+Finally, subtract $\StE{\mRat}$ from both sides,
+\begin{equation}\begin{split}
+     \aRat(\Gro{\mRat}_{t})\Rnorm+1 - (\aRat(\StE{\mRat}_{t})\Rnorm+1 )& < \Gro{\mRat}_{t} - \StE{\mRat}_{t}
+\\     \aRat(\Gro{\mRat}_{t})-\aRat(\Gro{\mRat}_{t}+\StE{\mRat}-\Gro{\mRat}_{t}))\Rnorm& < \Gro{\mRat}_{t} - \StE{\mRat}_{t}
+\\     \aRat(\Gro{\mRat}_{t})-(\aRat(\Gro{\mRat}_{t})+(\StE{\mRat}-\Gro{\mRat}_{t})\aRat^{\prime}(\Gro{\mRat}))\Rnorm& < \Gro{\mRat}_{t} - \StE{\mRat}
+\\     (\Gro{\mRat}_{t}-\StE{\mRat})\aRat^{\prime}(\Gro{\mRat})\Rnorm& < \Gro{\mRat}_{t} - \StE{\mRat}
+\\     \underbrace{\aRat^{\prime}(\Gro{\mRat})\Rnorm}_{< \PatPGro} & < 1
+\end{split}\end{equation}
+which again holds because $\PatPGro < 1$ (and, as above, a proof that does not require the Taylor approximation is available but more cumbersome).
 
 \begin{comment}
 \subsection{Comment}
 
-
-Due to the model's nonlinearities the values of $\mRat$ at which the expected growth rate of $\cLevBF$ matches $\PGro$ is very slightly different from the $\mRat$ at which the growth rate at which expected growth of $\mLevBF$ is $\PGro$.  Defining $\grave{\mRat}$ as the $\mRat$ at which $\Ex_{t}[\cRatBF_{t+1}/\cRatBF_{t}]=\PGro$, we can show that to first order $\grave{\mRat} \approx \check{\mRat}.$
+Due to the model's nonlinearities the values of $\mRat$ at which the expected growth rate of $\cLevBF$ matches $\PGro$ is very slightly different from the $\mRat$ at which the growth rate at which expected growth of $\mLevBF$ is $\PGro$.  Defining $\grave{\mRat}$ as the $\mRat$ at which $\Ex_{t}[\cRatBF_{t+1}/\cRatBF_{t}]=\PGro$, we can show that to first order $\grave{\mRat} \approx \StE{\mRat}.$
 \begin{align*}
   \Ex_{t}[\cFunc(\mRat_{t+1})\pShk_{t+1}] & = \cFunc(\mRat_{t}) \label{eq:balgrostableC}.
 %  \\ \Ex_{t}[\cFunc(\mRat_{t+1})\pShk_{t+1}] & = \cFunc(\mRat_{t}) 
@@ -227,7 +324,7 @@ Due to the model's nonlinearities the values of $\mRat$ at which the expected gr
   \\ \Ex_{t}[\left(\cFunc^{\prime}(\grave{\mRat})(\mRat_{t+1}-\grave{\mRat})\right)\pShk_{t+1}] & \approx 0
   \\ \Ex_{t}[\mRat_{t+1}] & \approx \grave{\mRat} 
 \end{align*}
-but at $\mRat=\check{\mRat}$, $\Ex_{t}[\mRat_{t+1}]=\check{\mRat}\approx\grave{\mRat}$.
+but at $\mRat=\StE{\mRat}$, $\Ex_{t}[\mRat_{t+1}]=\Trg{\mRat}\approx\grave{\mRat}$.
 \end{comment}
 
 \end{document}
