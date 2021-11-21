@@ -68,7 +68,7 @@
 \newcommand{\Abve}{\bar}
 \newcommand{\Belw}{\ushort}
 \newcommand{\Trg}{\hat}
-\newcommand{\Gro}{\tilde}
+\newcommand{\Gro}{\acute}
 \newcommand{\mTrg}{\Trg{m}}
 \newcommand{\mGro}{\Gro{m}}
 \newcommand{\StE}{\check}
@@ -82,3 +82,18 @@
 \providecommand{\cRatAvg}{\pmb{\mathfrak{\cRat}}}
 
 
+\usepackage{pdfcomment}
+
+\DefineFamilyKey[.section]{KOMAarg}{hypertarget}{%
+  \hypertarget{#1}{}%
+}
+
+\DefineFamilyMember[.subsection]{KOMAarg}
+\DefineFamilyKey[.subsection]{KOMAarg}{hypertarget}{%
+  \hypertarget{#1}{}%
+}
+
+\DefineFamilyMember[.subsubsection]{KOMAarg}
+\DefineFamilyKey[.subsubsection]{KOMAarg}{hypertarget}{%
+  \hypertarget{#1}{}%
+}

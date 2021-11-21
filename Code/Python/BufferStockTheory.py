@@ -24,7 +24,7 @@
 #     name: python
 #     nbconvert_exporter: python
 #     pygments_lexer: ipython3
-#     version: 3.8.5
+#     version: 3.8.8
 #   latex_envs:
 #     LaTeX_envs_menu_present: true
 #     autoclose: false
@@ -56,17 +56,22 @@
 # %% [markdown]
 # <a id='interactive-dashboard'></a>
 #
-# [This notebook](https://econ-ark.org/BufferStockTheory/#launch) uses the [Econ-ARK/HARK](https://github.com/econ-ark/HARK) toolkit to reproduce and illustrate key results of the paper [Theoretical Foundations of Buffer Stock Saving](http://econ-ark.github.io/BufferStockTheory/BufferStockTheory).
+# [This notebook](https://econ-ark.org/BufferStockTheory?launch) uses the [Econ-ARK/HARK](https://github.com/econ-ark/HARK) toolkit to reproduce and illustrate key results of the paper [Theoretical Foundations of Buffer Stock Saving](http://econ-ark.github.io/BufferStockTheory/BufferStockTheory).
 #
-# An [interactive dashboard](https://econ-ark.org/BufferStockStockTheory/#Dashboard) allows you to modify parameters to see how the figures change.
+# An [interactive dashboard](https://econ-ark.org/BufferStockStockTheory/#Dashboard) allows you to modify parameters to see how (some of) the figures change.
 #
-# - JupyterLab, click on the $\bullet$$\bullet$$\bullet$ patterns to expose the runnable code
-# - in either a Jupyter notebook or JupyterLab, click a double triangle to execute the code and generate the figures
+#
+#
+#
+# - In JupyterLab, click on the $\bullet$$\bullet$$\bullet$ patterns to expose the runnable code
+# - in either a Jupyter notebook or JupyterLab:
+#
+#     * Click the double triangle <span class=reload>&#x23e9;</span> above to execute the code and generate the figures
 
 # %% [markdown]
 # `# Setup Python Below`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # This cell does some setup
 
 # Import required python packages
@@ -262,7 +267,7 @@ base_params['BoroCnstArt'] = None    # No artificial borrowing constraint
 # m_{t+1} &=& a_t \Rfree/(\PermGroFac \permShk_{t+1}) + \tranShk_{t+1} \\
 # \end{eqnarray*}
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # Set the parameters for the baseline results in the paper
 base_params['PermGroFac'] = [1.03]  # Permanent income growth factor
 base_params['Rfree'] = Rfree = 1.04  # Interest factor on assets
@@ -285,7 +290,7 @@ base_params['tranShkStd'] = [0.1]   # Standard deviation of log transitory incom
 # %% [markdown]
 # `# Create a buffer stock consumer instance:`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # Create a buffer stock consumer instance by invoking the IndShockConsumerType class
 # with the parameter dictionary "base_params"
 
@@ -467,7 +472,7 @@ makeFig('cFuncsConverge')  # Comment out if you want to run uninterrupted
 # %% [markdown]
 # ## [Unique and Stable Values of $\mNrm$](https://econ-ark.github.io/BufferStockTheory/#Unique-Stable-Points)
 #
-# Assuming that the **FVAC** and **WRIC** hold so that the problem has a nondegenerate solution, under more stringent conditions its dynamics can also be shown to exhibit certain kinds of stability.  Two particularly useful kinds of stability are existence of a 'target' value of market resources $\Trg{\mNrm}$ and a 'pseudo-steady-state' value $\StE{\mNrm}$.
+# Assuming that the **FVAC** and **WRIC** hold so that the problem has a nondegenerate solution, under more stringent conditions its dynamics can also be shown to exhibit certain kinds of stability.  Two particularly useful kinds of stability are existence of a 'target' value of market resources $\Trg{\mNrm}$ (`mTrg` in the toolkit) and a 'pseudo-steady-state' value $\StE{\mNrm}$ (`mStE` in the toolkit).
 #
 # ### [If the GIC-Nrm Holds, $\exists$ a finite 'target' $\mNrm$](https://econ-ark.github.io/BufferStockTheory/#onetarget)
 #
@@ -517,7 +522,7 @@ makeFig('cFuncsConverge')  # Comment out if you want to run uninterrupted
 # %% [markdown]
 # `# Create an example consumer instance where the GICNrm fails but the GIC Holds:`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # GICNrmFailsButGICRawHolds Example
 
 base_params['cycles'] = 0  # revert to default of infinite horizon
@@ -534,7 +539,7 @@ GICNrmFailsButGICRawHolds = \
 # %% [markdown]
 # `# Solve that consumer's problem:`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # Solve the model for these parameter values
 GICNrmFailsButGICRawHolds.tolerance = 0.0001
 
@@ -603,7 +608,7 @@ print('\ndistance_now < distance_original: ' +
 # %% [markdown]
 # `# Plot the results:`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # Plot GICNrmFailsButGICRawHolds
 
 soln = GICNrmFailsButGICRawHolds.solution[0]  # Short alias for solution
@@ -678,7 +683,7 @@ print('Finite mNrmStE but infinite mNrmTrg')
 # %% [markdown]
 # `# Construct infinite horizon solution for consumer with baseline parameters:`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # Find the infinite horizon solution
 
 base_params['aXtraCount'] = base_params['aXtraCount'] * 20
@@ -703,7 +708,8 @@ baseAgent_Inf = IndShockConsumerType(
 # % & = & \Ex_{t}\left[\frac{\PermGroFac \permShk_{t+1} \pLev_{t}}{\pLev_{t}}\frac{\cFunc(m_{t+1})}{\cFunc(m_{t})}\right] \\
 # & = & \left[\frac{\PermGroFac \permShk_{t+1} \cFunc(m_{t+1})}{\cFunc(m_{t})}\right]
 # \end{eqnarray*}
-#
+
+# %% [markdown] {"tags": []}
 # and similarly the growth factor for market resources is:
 #
 # \begin{eqnarray*}
@@ -711,11 +717,102 @@ baseAgent_Inf = IndShockConsumerType(
 # & = & \Ex_{t}\left[\frac{\PermGroFac \permShk_{t+1} \mNrm_{t+1}} {\mNrm_{t}} \right]
 # \\ & = & \Ex_{t}\left[\frac{\PermGroFac \permShk_{t+1} (\aNrm_{t}\Rfree/(\PermGroFac \permShk_{t+1}))+\PermGroFac \permShk_{t+1}\tranShk_{t+1}}
 # {\mNrm_{t}}\right]
+# \\ & = & \Ex_{t}\left[\frac{\PermGroFac (\aNrm_{t}\RNrm+\permShk_{t+1}\tranShk_{t+1})}
+# {\mNrm_{t}}\right]
 # %\\ & = & \Ex_{t}\left[\frac{\aNrm_{t}\Rfree+\tranShk_{t+1}}{\mNrm_{t}}\right]
-# \\ & = & \left[\frac{\aNrm_{t}\Rfree+\PermGroFac}{\mNrm_{t}}\right]
+# \\ & = & \PermGroFac \left[\frac{\aNrm_{t}\RNrm+1}{\mNrm_{t}}\right]
 # \end{eqnarray*}
+
+# %% [markdown]
+# while for the $\log$ we have:
 #
+# \begin{align*}
+# \Ex_{t}[\log \left(\mLev_{t+1}/\mLev_{t}\right)] & = \Ex_{t}\left[
+# \log (\PermGroFac \permShk_{t+1} \mNrm_{t+1})
+# \right]- \log \mNrm_{t} 
+# %\\ & = \Ex_{t}\left[\log (\aNrm_{t}\Rfree+\PermGroFac\permShk_{t+1}\tranShk_{t+1})\right]- \log \mNrm_{t} 
+# %\\ & = \Ex_{t}\left[\log (\aNrm_{t}\Rfree)(1+\PermGroFac\permShk_{t+1}\tranShk_{t+1}/(\aNrm_{t}\Rfree))\right]- \log \mNrm_{t} 
+# \\ & = \Ex_{t}\left[
+# \log \PermGroFac (\aNrm_{t}\RNrm+\permShk_{t+1}\tranShk_{t+1})\right]- \log \mNrm_{t} 
+# \\ & = \Ex_{t}\left[
+# \log \PermGroFac (\aNrm_{t}\RNrm+1+(\permShk_{t+1}\tranShk_{t+1}-1)\right]- \log \mNrm_{t} 
+# \\ & = \Ex_{t}\left[
+# \log \PermGroFac (\acute{\mNrm}_{t+1}+(\permShk_{t+1}\tranShk_{t+1}-1))\right]- \log \mNrm_{t} 
+# \\ & = \log \PermGroFac + \Ex_{t}\left[
+# \log \PermGroFac (\acute{\mNrm}_{t+1}(1+\acute{\mNrm}_{t+1}^{-1}(\permShk_{t+1}\tranShk_{t+1}-1))\right]- \log \mNrm_{t} 
+# \\ & = \log \PermGroFac + \Ex_{t}\left[
+#  \log \acute{m}_{t+1}(1+\acute{m}_{t+1}^{-1}(\permShk_{t+1}\tranShk_{t+1}-1))\right]- \log \mNrm_{t} 
+# \\ & = \log \PermGroFac + \log \acute{m}_{t+1}+ \Ex_{t}\left[
+#  \log (1+\acute{m}_{t+1}^{-1}(\permShk_{t+1}\tranShk_{t+1}-1))\right]- \log \mNrm_{t} 
+# \\ & = \log \Ex_{t}[\mLev_{t+1}/\mLev_{t}]+ \Ex_{t}\left[
+#  \log (1+\acute{m}_{t+1}^{-1}(\permShk_{t+1}\tranShk_{t+1}-1))\right]
+# %\\ & = \log \PermGroFac+\log \aNrm_{t}\RNrm +\Ex_{t}\left[ \log \left(1+\left(\frac{\permShk_{t+1}\tranShk_{t+1}}{a_{t}\RNrm}\right)\right)\right]- \log \mNrm_{t} 
+# %\\ & = \Ex_{t}\left[\log \check{\mNrm}_{t+1}(1+(\permShk_{t+1}\tranShk_{t+1}-1)/\check{\mNrm}_{t+1})\right]- \log \mNrm_{t} 
+# %\\ & \approx \Ex_{t}\left[\log \aNrm_{t}\Rfree/\PermGroFac)+\tranShk_{t+1}/(\aNrm_{t}\Rfree/\PermGroFac)\right]- \log \mNrm_{t} 
+# %\\ & \approx \log (\aNrm_{t}\Rfree)+\PermGroFac/(\aNrm_{t}\Rfree)- \log \mNrm_{t} 
+# \end{align*}
 #
+# so
+# \begin{align*}
+# \exp(\Ex_{t}[\log \left(\mLev_{t+1}/\mLev_{t}\right)]) & = \Ex_{t}[\mLev_{t+1}/\mLev_{t}]\exp(\Ex_{t}\left[
+#  \log (1+\acute{m}_{t+1}^{-1}(\permShk_{t+1}\tranShk_{t+1}-1))\right])
+# \end{align*}
+#
+
+# %% [markdown]
+# \begin{align*}
+# (d/dm_{t})\Ex_{t}\left[\log(1+\acute{m}_{t+1}^{-1}(\permShk_{t+1}\tranShk_{t+1}-1))\right]
+#  &= \Ex_{t}\left[(d/dm_{t})\log(1+\acute{m}_{t+1}^{-1}(\permShk_{t+1}\tranShk_{t+1}-1))\right]
+# \\ &= \Ex_{t}\left[
+# \left(
+# \frac{(\permShk_{t+1}\tranShk_{t+1}-1)(d/dm_{t})m_{t+1}^{-1}}{1+m_{t+1}^{-1}(\permShk_{t+1}\tranShk_{t+1}-1))}
+# \right)
+# \right]
+# \\ &= \Ex_{t}\left[
+# \left(
+# \frac{(d/dm_{t})m_{t+1}^{-1}}{1/(\permShk_{t+1}\tranShk_{t+1}-1)+m_{t+1}^{-1}}
+# \right)
+# \right]
+# \\ &= \Ex_{t}\left[
+# \left(
+# \frac{\acute{m}_{t+1}(d/dm_{t})\acute{m}_{t+1}^{-1}}{\acute{m}_{t+1}/(\permShk_{t+1}\tranShk_{t+1}-1)+1}
+# \right)
+# \right]
+# \end{align*}
+# and since $\Ex_{t}[(\permShk_{t+1}\tranShk_{t+1}-1) = 0$ and $1+m_{t+1}^{-1}(\permShk_{t+1}\tranShk_{t+1}-1) > 0$, this will be negative if 
+
+# %% [markdown]
+# Denominator is positive when
+# \begin{align*}
+# (\Rfree a_{t}+1)/(\permShk_{t+1}\tranShk_{t+1}-1) & > - 1
+# \\ (\Rfree a_{t}+1) & > (1-\permShk_{t+1}\tranShk_{t+1})
+# \\ a_{t} & > -\Rfree^{-1}\permShk_{t+1}\tranShk_{t+1}
+# \end{align*}
+#
+
+# %% [markdown]
+# Denominator is zero when
+# \begin{align*}
+# 1/(\permShk_{t+1}\tranShk_{t+1}-1) & = -\acute{m}_{t+1}^{-1}
+# \\ \acute{m}_{t+1} & = -(\permShk_{t+1}\tranShk_{t+1}-1) 
+# \\ \Rfree a_{t}+1 & = 1-(\permShk_{t+1}\tranShk_{t+1}) 
+# \\ \Rfree a_{t} & = -(\permShk_{t+1}\tranShk_{t+1}) 
+# \end{align*}
+#
+
+# %% [markdown] {"tags": []}
+# but in the vicinity of the pseudo-steady-state point $\check{\mNrm}$ where $\mNrm_{t+1}=\aNrm_{t}\RNrm+1=\check{\mNrm}$ this reduces to 
+# \begin{align*}
+# \Ex_{t}[\log \left(\mLev_{t+1}/\mLev_{t}\right)] & = \Ex_{t}\left[
+# \log \PermGroFac (\check{\mNrm}(1+(\permShk_{t+1}\tranShk_{t+1}-1)/\check{\mNrm})\right]- \log \check{\mNrm}
+# \\  & = \Ex_{t}\left[
+# \log \PermGroFac (1+(\permShk_{t+1}\tranShk_{t+1}-1)/\check{\mNrm})\right]
+# \\  & = \log \PermGroFac + \log a_{t}\Rfree + \Ex_{t}\left[
+# \log \left(1+\underbrace{(
+# \permShk_{t+1}\tranShk_{t+1}-1)/\check{\mNrm}}_{\xi_{t+1}})\right)
+# \right]
+# \\  & \approx \log \PermGroFac + \Ex_{t}[\xi_{t+1}]-(1/2)\Ex_{t}[\xi_{t+1}^2]+...
+# \end{align*}
 
 # %% [markdown]
 # For $\mNrm$ things are slightly more complicated:
@@ -728,9 +825,39 @@ baseAgent_Inf = IndShockConsumerType(
 #
 
 # %% [markdown]
+# Finally, for the expectation of the log $\mu=\log m \mathbf{p}$:
+# \begin{align}
+# \Ex_{t}[\mu_{t+1}] %& =  
+# %\Ex_{t}\left[\log\left(a_{t}(\Rfree/\permShk_{t+1}\PermGroFac) +\tranShk_{t+1}\right)\right]\\
+# %\\ & =\Ex_{t}\left[\log a_{t}\RNrm + \log \left(\permShk_{t+1}^{-1}(1 +\PermGroFac\tranShk_{t+1}\permShk_{t+1})\right)\right]\\
+# %\\ & =\log a_{t}\RNrm +\Ex_{t}\left[\log \permShk_{t+1}^{-1}+\log \left(1 +\PermGroFac\tranShk_{t+1}\permShk_{t+1}\right)\right]\\
+# &= \Ex_{t}\left[
+# \log
+# \left(
+# a_{t}(\Rfree/(\permShk_{t+1}\PermGroFac))\right)\left(1 +\frac{\PermGroFac\permShk_{t+1}\tranShk_{t+1}}{a_{t}\Rfree}
+# \right)
+# \right]
+# %\\ & =  \Ex_{t}\left[\log \left(a_{t}(\Rfree/(\permShk_{t+1}\PermGroFac))\right)\left(1 +\frac{\PermGroFac\permShk_{t+1}\tranShk_{t+1}}{a_{t}\Rfree}\right)\right]
+# \\ & = \log a_{t} (\Rfree/\PermGroFac)+\Ex_{t}\left[
+# \log
+# \permShk_{t+1}^{-1}+\log\left(1 +\frac{\PermGroFac\permShk_{t+1}\tranShk_{t+1}}{a_{t}\Rfree}
+# \right)
+# \right]
+# \\ & \approx \log a_{t} (\Rfree/\PermGroFac)+\Ex_{t}\left[
+# \log
+# \permShk_{t+1}^{-1}+\frac{\PermGroFac\permShk_{t+1}\tranShk_{t+1}}{a_{t}\Rfree}
+# \right]
+# \\ & \approx \log a_{t} (\Rfree/\PermGroFac)+\Ex_{t}\left[
+# \log
+# \permShk_{t+1}^{-1}
+# \right]+\frac{\PermGroFac}{a_{t}\Rfree}
+# \end{align}
+#
+
+# %% [markdown]
 # `# Solve problem of consumer with baseline parameters:`
 
-# %% {"jupyter": {"source_hidden": true}, "pycharm": {"name": "#%%\n"}, "tags": []}
+# %% {"pycharm": {"name": "#%%\n"}, "tags": []}
 # Solve baseline parameters agent
 tweaked_params = deepcopy(base_params)
 tweaked_params['DiscFac'] = 0.970  # Tweak to make figure clearer
@@ -743,7 +870,7 @@ baseAgent_Inf.solve(
 # %% [markdown]
 # `# Plot growth factors for various model elements at steady state:`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # Plot growth rates
 
 soln = baseAgent_Inf.solution[0]
@@ -752,16 +879,17 @@ Bilt, Pars, E_Next_ = soln.Bilt, soln.Pars, soln.E_Next_
 # Retrieve parameters (makes code more readable)
 Rfree, DiscFac, CRRA, G = Pars.Rfree, Pars.DiscFac, Pars.CRRA, Pars.PermGroFac
 
-color_cons, color_mrktLev, color_mrktNrm, color_perm = "blue", "red", "green", "black"
+color_cons, color_mrktLev, color_mrktNrm, color_perm, color_mLog, color_mAlt = "blue", "red", "green", "black", "purple", "orange"
 
-mPlotMin, mCalcMax, mPlotMax = 0.0, 50, 1.8
+mPlotMin, mCalcMax, mPlotMax = 1.0, 50, 1.8
+#mPlotMin, mCalcMax, mPlotMax = 0.01, 50, 0.03
 
 # Get steady state equilibrium and target values for m
 mNrmStE, mNrmTrg = Bilt.mNrmStE, Bilt.mNrmTrg
 
 pts_num = 200  # Plot this many points
 
-m_pts = np.linspace(1, mPlotMax, pts_num)   # values of m for plot
+m_pts = np.linspace(mPlotMin, mPlotMax, pts_num)   # values of m for plot
 c_pts = soln.cFunc(m_pts)                   # values of c for plot
 a_pts = m_pts - c_pts                       # values of a
 
@@ -770,12 +898,22 @@ Ex_cLev_tp1_Over_pLev_t = [
     soln.E_Next_.cLev_tp1_Over_pLev_t_from_a_t(a) for a in a_pts]
 Ex_mLev_tp1_Over_pLev_t = [
     soln.E_Next_.mLev_tp1_Over_pLev_t_from_a_t(a) for a in a_pts]
+Ex_mLog_tp1 = [
+    soln.E_Next_.mLog_tp1_from_a_t(a) for a in a_pts]
+Ex_mApx_tp1 = [
+    soln.E_Next_.mApx_tp1_from_a_t(a) for a in a_pts]
+Ex_mDif_tp1 = [
+    soln.E_Next_.mDif_tp1_from_a_t(a) for a in a_pts]
 Ex_m_tp1_from_a_t = [
     soln.E_Next_.m_tp1_from_a_t(a) for a in a_pts]
 
 Ex_cLevGro = np.array(Ex_cLev_tp1_Over_pLev_t)/c_pts
 Ex_mLevGro = np.array(Ex_mLev_tp1_Over_pLev_t)/m_pts
 Ex_mNrmGro = np.array(Ex_m_tp1_from_a_t)/m_pts
+Ex_mGroExp = np.array(np.exp(Ex_mLog_tp1)/m_pts)
+Ex_mGroExpAlt = G* np.array((a_pts * E_Next_.RNrm_PF+1)/m_pts)
+Ex_mApxGro = np.array(np.exp(Ex_mApx_tp1)/m_pts)
+Ex_mDifGro = np.exp(Ex_mDif_tp1)
 
 # Absolute Patience Factor = lower bound of consumption growth factor
 APF = (Rfree*DiscFac)**(1.0/CRRA)
@@ -799,8 +937,21 @@ ax.plot(m_pts, Ex_mLevGro        , color=color_mrktLev)
 # Plot expected growth for the market resources ratio
 ax.plot(m_pts, Ex_mNrmGro        , color=color_mrktNrm)
 
+# Plot expected growth for the market resources ratio
+#ax.plot(m_pts, Ex_mGroExp        , color=color_mLog)
+
+# Plot expected growth for the market resources ratio
+#ax.plot(m_pts, Ex_mGroExpAlt     , color=color_mAlt)
+
+# Plot expected growth for the market resources ratio
+#ax.plot(m_pts, Ex_mApxGro     , color=color_cons)
+
+# Plot expected growth for the market resources ratio
+#ax.plot(m_pts, Ex_mDifGro     , color=color_cons)
+
 # Axes limits
 GroFacMin, GroFacMax, xMin = 0.98, 1.06, 1.1
+# GroFacMin, GroFacMax, xMin = 0.001, 100.0, 0.01
 ax.set_xlim(xMin, mPlotMax * 1.1)
 ax.set_ylim(GroFacMin, GroFacMax)
 
@@ -846,12 +997,25 @@ ax.text(mTrgGro_lbl_xVal-0.01, mTrgGro_lbl_yVal-0.003,mNrmGro_lbl,va='bottom',ha
 ax.text(mLevGro_lbl_xVal+0.01, mLevGro_lbl_yVal+0.001,mLevGro_lbl,va='top')
 
 # Ticks
-ax.tick_params(labelbottom=False, labelleft=True, left='off', right='on', bottom='on', top='off')
+#ax.tick_params(labelbottom=False, labelleft=True, left='off', right='on', bottom='on', top='off')
+ax.tick_params(labelbottom=True, labelleft=True, left='off', right='on', bottom='on', top='off')
 plt.setp(ax.get_yticklabels(), fontsize=fssml)
 plt.axvline(x=mNrmTrg,label='Individual Target', linestyle='dotted')
 plt.legend()
 ax.set_ylabel('Growth Factors')
 makeFig('cGroTargetFig')
+
+# %% {"tags": []}
+E_Next_.mDif_tp1_from_a_t(0.0000000000000002),E_Next_.mDif_tp1_from_a_t(1)
+
+# %% {"tags": []}
+np.dot(np.log(1.+0.99*((Bilt.tranShkValsBcst*Bilt.permShkValsBcst-1)))          
+                ,
+                Bilt.ShkPrbs)
+        
+
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
+stop
 
 # %% [markdown] {"tags": []}
 # ### [Consumption Function Bounds](https://econ-ark.github.io/BufferStockTheory/#AnalysisOfTheConvergedConsumptionFunction)
@@ -863,7 +1027,7 @@ makeFig('cGroTargetFig')
 # %% [markdown] {"tags": []}
 # `# Define bounds for figure:`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # Define mpc_Min, h_inf and PF consumption function, upper and lower bound of c function
 
 baseAgent_Inf = IndShockConsumerType(**base_params, quietly=True)  # construct it silently
@@ -888,7 +1052,7 @@ def cFunc_BotBnd(m): return mpc_Min * m
 # %% [markdown]
 # `# Plot figure showing bounds`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # Plot the consumption function and its bounds
 
 cMaxLabel = r'$\overline{c}(m)= (m-1+h)\tilde{\kappa}$'
@@ -963,7 +1127,7 @@ makeFig('cFuncBounds')
 # %% [markdown]
 # `# Make and plot figure showing the upper and lower limites of the MPC:`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # The last figure shows the upper and lower limits of the MPC
 
 mPlotMax = 8
@@ -1033,7 +1197,7 @@ makeFig('MPCLimits')
 # %% [markdown] {"tags": []}
 # ### Appendix: Perfect foresight agent failing both the FHWC and RIC
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 PFGICRawHoldsFHWCFailsRICFails_par = deepcopy(init_perfect_foresight)
 
 # Replace parameters.

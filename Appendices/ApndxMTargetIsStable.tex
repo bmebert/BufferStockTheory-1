@@ -16,16 +16,18 @@
 
 %\subsection{To Prove}
 
-This appendix proves Theorems~\ref{thm:target}-\ref{thm:TheoremGroIsStable} and the following Lemmas:
+This appendix proves Theorems~\ref{thm:target}-\ref{thm:MSSBalExists} and:
 \onlyinsubfile{\setcounter{theorem}{1}}
 
   \begin{lemma}\label{lemma:orderingPartOne}
   If $\StE{\mRat}$ and $\Trg{\mRat}$ both exist, then $\StE{\mRat} \leq \Trg{\mRat}$.
   \end{lemma}
 
+  \begin{comment}
   \begin{lemma}\label{lemma:orderingPartTwo}
   If $\StE{\mRat}$ and $\Gro{\mRat}$ both exist, then $\StE{\mRat} \leq \Gro{\mRat}$.
   \end{lemma}
+\end{comment}
 
   \subsection{Proof of Theorem~\ref{thm:target}}
   
@@ -216,23 +218,32 @@ But we showed in Section~\ref{subsec:UncertaintyModifiedConditions} that the onl
 
 \subsection{Proof of Theorem~\ref{thm:TheoremGroIsStable}}
 
-Proof of the existence of the final kind of stability is straightforward.  
+Proof of the existence of the final kind of stability is not straightforward.  
 \begin{equation}\begin{split}
   \log \mLevBF_{t+1} - \log \mLevBF_{t} &  = \log \pLevBF_{t+1} \mRat_{t+1} - \log \pLevBF_{t} \mRat_{t} 
 \\ & =   \log \PGro\pShk_{t+1} \mRat_{t+1} - \log \mRat_{t}
 \\   & = \log \PGro\pShk_{t+1} \left((\mRat_{t}-\cRat_{t})\Rfree/\PGro\pShk_{t+1}+\tShk_{t+1}\right) - \log \mRat_{t}
 \\   & = \log \left((\mRat_{t}-\cRat_{t})\Rfree+\PGro\pShk_{t+1}\tShk_{t+1}\right) - \log \mRat_{t}
-\\   & = \log \PGro\pShk_{t+1} + \log \left((\mRat_{t}-\cRat_{t})\Rnorm_{t+1}+\tShk_{t+1}\right) - \log \mRat_{t}
+\\   & = \log \left((\mRat_{t}-\cRat_{t})\Rfree(1+\left(\frac{\PGro\pShk_{t+1}\tShk_{t+1}}{(\mRat_{t}-\cRat_{t})\Rfree}\right)\right) - \log \mRat_{t}
+\\   & = \log \Rfree + \log (\mRat_{t}-\cRat_{t})+\log \left(1+\left(\frac{\PGro\pShk_{t+1}\tShk_{t+1}}{(\mRat_{t}-\cRat_{t})\Rfree}\right)\right) - \log \mRat_{t}
+%\\   & = \log \PGro\pShk_{t+1} + \log \left((\mRat_{t}-\cRat_{t})\Rnorm_{t+1}+\tShk_{t+1}\right) - \log \mRat_{t}
 %\\  \Ex_{t} \Delta \log \mLevBF_{t+1} & = \underbrace{\log \PGro + \Ex_{t}[\log \pShk_{t+1}]}_{< 0~\text{by~\GICLog}} + \Ex_{t} \log \left((\mRat_{t}-\cRat_{t})\Rnorm_{t+1}+\tShk_{t+1}\right) - \log \mRat_{t}
-\\  \Ex_{t} \Delta \log \mLevBF_{t+1} & = \log \PGro + \Ex_{t}[\log \pShk_{t+1}] + \Ex_{t} \log \left(\frac{(\mRat_{t}-\cRat_{t})\Rnorm_{t+1}+\tShk_{t+1}}{\mRat_{t}}\right) 
-\\  \Ex_{t} \Delta \log \mLevBF_{t+1} & = \log \PGro + \Ex_{t}[\log \pShk_{t+1}] + \Ex_{t} \log \left((1-\cRat_{t}/\mRat_{t})\Rnorm_{t+1}+\tShk_{t+1}/\mRat_{t}\right) .
+%\\  \Ex_{t} \Delta \log \mLevBF_{t+1} & = \log \PGro + \Ex_{t}[\log \pShk_{t+1}] + \Ex_{t} \log \left(\frac{(\mRat_{t}-\cRat_{t})\Rnorm_{t+1}+\tShk_{t+1}}{\mRat_{t}}\right) 
+%\\   & = \log \PGro + \Ex_{t}[\log \pShk_{t+1}] + \Ex_{t} \log \left((1-\cRat_{t}/\mRat_{t})\Rnorm_{t+1}+\tShk_{t+1}/\mRat_{t}\right) .
+\end{split}\end{equation}
+
+ The derivative of log growth with respect to $\mRat$ is therefore
+\begin{equation}\begin{split}
+    (d/d\mRat_{t}) \Delta \log \mLevBF_{t+1} &  = \left(\frac{\aFunc^{\prime}(\mRat_{t})}{(\mRat_{t}-\cRat_{t})}\right)-\frac{1}{\mRat_{t}}+\left(\frac{(\mRat_{t}-\cRat_{t})\Rfree(\aFunc^{\prime}(\mRat_{t})\Rfree)}{(\mRat_{t}-\cRat_{t})\Rfree+\PGro\pShk_{t+1}\tShk_{t+1}}\right)
+\\  &  = \left(\frac{\mRat_{t}\aFunc^{\prime}(\mRat_{t})}{\mRat_{t}(\mRat_{t}-\cRat_{t})}\right)-\frac{\mRat_{t}-\cRat_{t}}{\mRat_{t}(\mRat_{t}-\cRat_{t})}+    
+\\  &  = \left(\frac{\mRat_{t}\aFunc^{\prime}(\mRat_{t})-(\mRat_{t}-\cRat_{t})}{\mRat_{t}(\mRat_{t}-\cRat_{t})}\right)+
 \end{split}\end{equation}
 
 \begin{equation}\begin{split}
   (d/d\mRat_{t}) \Delta \log \mLevBF_{t+1} &  = \log \pLevBF_{t+1} \mRat_{t+1} - \log \pLevBF_{t} \mRat_{t} 
   \\   & = \left(\frac{\Rnorm_{t+1}(1-\MPC(\mRat_{t}))}{(\mRat_{t}-\cRat_{t})\Rnorm_{t+1}+\tShk_{t+1}}\right)-1/\mRat_{t}
   \\   & = \left(\frac{(1-\MPC(\mRat_{t}))}{(\mRat_{t}-\cRat_{t})+\Rnorm_{t+1}^{-1}\tShk_{t+1}}\right)-1/\mRat_{t}
-\\   & = \left(\frac{(1-\MPC(\mRat_{t}))}{(\mRat_{t}-\cRat_{t})+\PGro\pShk_{t+1}\tShk_{t+1}/\Rfree}\right)-1/\mRat_{t}    
+\\   & = \left(\frac{(1-\MPC(\mRat_{t}))}{(\mRat_{t}-\cRat_{t})+\PGro\pShk_{t+1}\tShk_{t+1}/\Rfree}\right)-1/\mRat_{t}   . 
 \end{split}\end{equation}
 
 
