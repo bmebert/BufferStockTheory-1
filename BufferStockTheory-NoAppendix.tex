@@ -37,7 +37,7 @@
   \href{https://econ-ark.org}{\includegraphics{\ResourcesDir/PoweredByEconARK}}
 }
 
-%\date{\today}
+% \date{\today}
 \renewcommand{\forcedate}{November 22, 2021}\date{\forcedate}
 
 \maketitle
@@ -73,31 +73,29 @@
   The paper's results \href{https://\owner.github.io/nbreproduce}{can be automatically reproduced} using the \href{https://econ-ark/HARK}{Econ-ARK/HARK} toolkit, which can be cited per our references (\cite{carroll_et_al-proc-scipy-2018}); for reference to the toolkit itself see \href{https://econ-ark.org/acknowledging/}{Acknowleding Econ-ARK}.  Thanks to the \href{https://consumerfinance.gov}{Consumer Financial Protection Bureau} for funding the original creation of the \href{https://econ-ark.org}{Econ-ARK} toolkit; and to the \href{https://sloan.org}{Sloan Foundation} for funding Econ-ARK's \href{https://sloan.org/grant-detail/8071}{extensive further development} that brought it to the point where it could be used for this project.  The toolkit can be cited with its digital object identifier, \href{https://doi.org/10.5281/zenodo.1001067}{10.5281/zenodo.1001067}, as is done in the paper's own references as \cite{carroll_et_al-proc-scipy-2018}.  Thanks to Will Du, James Feigenbaum, Joseph Kaboski, Miles Kimball, Qingyin Ma, Misuzu Otsuka, Damiano Sandri, John Stachurski, Adam Szeidl, Alexis Akira Toda, Metin Uyanik, Mateo Vel\'asquez-Giraldo, Weifeng Wu,  Jiaxiong Yao, and Xudong Zheng for comments on earlier versions of this paper, John Boyd for help in applying his weighted contraction mapping theorem, Ryoji  Hiraguchi for extraordinary mathematical insight that improved the  paper greatly, David Zervos for early guidance to the literature, and participants in a seminar at the Johns Hopkins University, a presentation at the 2009 meetings of the Society of Economic Dynamics for their insights, and at a presentation at the Australian National University.}
 
 
-\pagenumbering{gobble}
-
+\pagenumbering{gobble} % Prevent numbering for pages including the TOC and title page
 
 \ifthenelse{\boolean{Web}}{
-  }{
+}{
   \begin{minipage}{0.9\textwidth}
     \tiny \thankstext
   \end{minipage}
   \titlepagefinish\pagebreak
-} % {Web}
-
-
-
-\begin{minipage}{0.9\textwidth}
+  \let\LaTeXStandardContentsName\contentsname
+  \renewcommand{\contentsname}{}
   \tableofcontents
-\end{minipage}
+  \pagebreak
 
-\begin{minipage}{0.9\textwidth}
-  \listoffigures 
-\end{minipage}
+  \medskip\medskip
+  \begin{minipage}{0.9\textwidth}
+    \listoffigures 
+  \end{minipage}
 
-\medskip\medskip
-\begin{minipage}{0.9\textwidth}
-  \listoftables
-\end{minipage}
+  \medskip\medskip
+  \begin{minipage}{0.9\textwidth}
+    \listoftables
+  \end{minipage}
+} % {Web}
 
 
 \pagebreak
@@ -251,7 +249,7 @@ Now, in a one-time deviation from the notational convention established in the l
 \begin{equation}\label{eq:veqn}
   \begin{split}
     \vFunc_{t}(\mRat_{t})  & = \max_{{\{\cFunc\}}_{t}^{T}}~  \uFunc(\cFunc_{t}) +\DiscFac \Ex_{t}[\PGro_{t+1}^{1-\CRRA}\vFunc_{t+1}({\mRat}_{t+1})]  \\
-                           & \mbox{s.t.}
+    & \mbox{s.t.}
     \\ {\aRat}_{t}  & = \mRat_{t}-c_{t}
     \\ {\kRat}_{t+1} & = \aRat_{t}/\PGro_{t+1}
     \\ {\bRat}_{t+1}  & = {\kRat}_{t+1}\Rfree = (\Rfree/\PGro_{t+1})\aRat_{t}  ~ = ~ \Rnorm_{t+1}\aRat_{t}
@@ -399,7 +397,7 @@ We can define `autarky' as a circumstance under which capital markets do not exi
 \begin{equation}\label{eq:ValuePFAnalyticalAutarky}
   \begin{split}
     \vLevBF_{t}^{\text{autarky}}  & = \uFunc(\pLevBF_{t})+\DiscFac \uFunc(\pLevBF_{t}\PGro)+\DiscFac^{2} \uFunc(\pLevBF_{t} \PGro^{2})+\ldots
-%    \\  & = \uFunc(\pLevBF_{t})\left(1+\DiscFac \PGro^{1-\CRRA}+{(\DiscFac \PGro^{1-\CRRA})}^{2}+\ldots\right)
+    % \\  & = \uFunc(\pLevBF_{t})\left(1+\DiscFac \PGro^{1-\CRRA}+{(\DiscFac \PGro^{1-\CRRA})}^{2}+\ldots\right)
     \\  & = \uFunc(\pLevBF_{t})\left(\frac{1-{(\DiscFac \PGro^{1-\CRRA})}^{T-t+1}}{1-\DiscFac \PGro^{1-\CRRA}}\right)
   \end{split}
 \end{equation}
@@ -771,7 +769,7 @@ exhibit (given the \FVAC) under \cncl{\RIC} (that is, $\Rfree < {(\Rfree \DiscFa
   \begin{split}
     \Rfree   & < \overbrace{{(\Rfree \DiscFac)}^{1/\CRRA} ~ < ~ {(\Rfree {(\PGro \uInvEpShkuInv)}^{\CRRA-1})}^{1/\CRRA}}^{\text{implied by \FVAC}}
     \\  \Rfree   & < {(\Rfree/\PGro)}^{1/\CRRA}\PGro \uInvEpShkuInv^{1-1/\CRRA}
-%    \\  \Rfree/\PGro  & < {(\Rfree/\PGro)}^{1/\CRRA}\uInvEpShkuInv^{1-1/\CRRA}
+    % \\  \Rfree/\PGro  & < {(\Rfree/\PGro)}^{1/\CRRA}\uInvEpShkuInv^{1-1/\CRRA}
     \\  \Rfree/\PGro  & < \uInvEpShkuInv
   \end{split}
 \end{equation}
@@ -1106,33 +1104,33 @@ Theorem~\ref{thm:MSSBalExists}~formally states the relevant proposition.
 % the sense in which $\mStE$ is a `target' is less obvious than that for $\mtarg$; a full justification of this terminology must await the macroeconomic analysis below.  a glimpse of the idea is can be seen by noting that, for an economy whose entire population of consumers in period $t$ all had $\mRat_{t} = \mBal$, the ratio of the aggregate values $\mlevbf_{t+1}= \int \mlevbf_{t+1}$ to $\plevbf_{t+1}= \int \plevbf_{t+1}$ next period would be $\mlevbf_{t+1}/\plevbf_{t+1}=\mbal$ so that, at least between those two periods, the economy would exhibit stability.  indeed, if we turned off the idiosyncratic shocks,
 
 \begin{comment}
-\hypertarget{log-pseudo-steady-state}{}
-\subsubsection{The  expected `log-pseudo steady state'}\label{subsubsec:logpseudosteadystate}
+  \hypertarget{log-pseudo-steady-state}{}
+  \subsubsection{The  expected `log-pseudo steady state'}\label{subsubsec:logpseudosteadystate}
 
-A final point of stability will be indicated by a $\sim$ accent; this is the $\mRat$ at which the expectation of $\log \mLevBF$ is unchanging.
+  A final point of stability will be indicated by a $\sim$ accent; this is the $\mRat$ at which the expectation of $\log \mLevBF$ is unchanging.
 
-\begin{verbatimwrite}{\EqDir/TheoremGroIsStable}
-  \begin{theorem}\label{thm:TheoremGroIsStable}
-    For the nondegenerate solution to the problem defined in Section~\ref{subsec:Setup} when {\FVAC}, {\WRIC}, and {\GICLog} all hold, there exists a unique cash-on-hand-to-permanent-income ratio $\mGro>0$ such that
-    \begin{equation}
-      \Ex_t [\log {\mLevBF}_{t+1} ] = \log \mLevBF_t \mbox{~if~} \mLev_t = \mGro.
-      \label{eq:mTarget}
-    \end{equation}
-    Moreover, $\mGro$ is a point of stability in the sense that
-    \begin{equation} \label{eq:stability}
-      \begin{split}
-        \forall {\mRat}_t\in(0,\mGro),      \,\,& \Ex_t [\log {\mLevBF}_{t+1}] > \log {\mLevBF}_t  \\
-        \forall {\mRat}_t\in(\mGro,\infty), \,\,& \Ex_t [\log {\mLevBF}_{t+1}] < \log {\mLevBF}_t.
-      \end{split}
-    \end{equation}
-  \end{theorem}
-\end{verbatimwrite}
-\input{\LtxDir\EqDir/TheoremGroIsStable}
+  \begin{verbatimwrite}{\EqDir/TheoremGroIsStable}
+    \begin{theorem}\label{thm:TheoremGroIsStable}
+      For the nondegenerate solution to the problem defined in Section~\ref{subsec:Setup} when {\FVAC}, {\WRIC}, and {\GICLog} all hold, there exists a unique cash-on-hand-to-permanent-income ratio $\mGro>0$ such that
+      \begin{equation}
+        \Ex_t [\log {\mLevBF}_{t+1} ] = \log \mLevBF_t \mbox{~if~} \mLev_t = \mGro.
+        \label{eq:mTarget}
+      \end{equation}
+      Moreover, $\mGro$ is a point of stability in the sense that
+      \begin{equation} \label{eq:stability}
+        \begin{split}
+          \forall {\mRat}_t\in(0,\mGro),      \,\,& \Ex_t [\log {\mLevBF}_{t+1}] > \log {\mLevBF}_t  \\
+          \forall {\mRat}_t\in(\mGro,\infty), \,\,& \Ex_t [\log {\mLevBF}_{t+1}] < \log {\mLevBF}_t.
+        \end{split}
+      \end{equation}
+    \end{theorem}
+  \end{verbatimwrite}
+  \input{\LtxDir\EqDir/TheoremGroIsStable}
 
-with two associated Lemmas demonstrating that $\mStE < \Gro{\mRat}$ and $\mStE < \$\mTrg$.
+  with two associated Lemmas demonstrating that $\mStE < \Gro{\mRat}$ and $\mStE < \$\mTrg$.
 \end{comment}
 
-%\subsection{Proofs}\label{subsec:StabilityProofs}
+% \subsection{Proofs}\label{subsec:StabilityProofs}
 
 The proofs of the theorems are almost completely parallel; to save space, they are relegated to Appendix~\ref{sec:ApndxMTargetIsStable}.  In sum, they involve three steps:
 \begin{enumerate}
@@ -1314,7 +1312,7 @@ which is stronger than our {\GIC} condition $\PatPGro < 1$ (under the imposed as
   \begin{align*}
     \log \PatPGro  & < \Harm{\Ex} \log \pShk
   \end{align*}
-where the $\sim$ over the expectations operator indicates that the expectation is being taken with respect to $f_\pShk(\pShk)$.  But by assumption $\Harm{\Ex} \log \pShk = 0$ so exponentiating both sides of this equation turns it into $\PatPGro < 1$ which is the {\GIC}.}  This allows him to prove a conjecture from an earlier draft of this paper (\cite{BufferStockTheoryQESubmit}) that under the {\GIC}, aggregate consumption grows at the same rate $\PGro$ as aggregate noncapital income in the long run (with the corollary that aggregate assets and market resources grow at that same rate). \hypertarget{test-Harmenbergs-method}{}
+  where the $\sim$ over the expectations operator indicates that the expectation is being taken with respect to $f_\pShk(\pShk)$.  But by assumption $\Harm{\Ex} \log \pShk = 0$ so exponentiating both sides of this equation turns it into $\PatPGro < 1$ which is the {\GIC}.}  This allows him to prove a conjecture from an earlier draft of this paper (\cite{BufferStockTheoryQESubmit}) that under the {\GIC}, aggregate consumption grows at the same rate $\PGro$ as aggregate noncapital income in the long run (with the corollary that aggregate assets and market resources grow at that same rate). \hypertarget{test-Harmenbergs-method}{}
 % Given the terminology developed earlier, the natural designation for the stable ratio of aggregate market resources to noncapital income is the `aggregate steady state' ratio, $\StE{M}$.  This is not numerically the same as the individual \href{https://econ-ark.github.io/BufferStockTheory/#pseudo-steady-state}{pseudo-steady-state} ratio $\mStE$ because the nonlinearities involved in simulation and aggregation will have consequences.\footnote{Still, the pseudo-steady-state can be calculated immediately from the policy function without any simulation, and therefore would likely serve as an excellent and low-cost starting point for the numerical simulation process.}
 \cite{harmenbergInvariant} shows\footnote{The test of the Harmenberg method currently implemented in the Econ-ARK toolkit shows that Harmenberg's method reduces the standard error of the simulated aggregate consumption series by a factor of more than 8 (using identical computational resources); see the last part of \href{https://github.com/econ-ark/BufferStockTheory/blob/master/Code/Python/test_Harmenbergs_method.sh}{\texttt{test\_Harmenbergs\_method.sh}}.} that his reformulation of the problem can reduce costs of calculation enormously.  % The idea also appears to be promisingly generalizable: For any statistic $\mathcal{S}$ that is the key focus of an analysis, it should be possible to improve the efficiency of simulations aimed at calculating that statistic by constructing an $\mathcal{S}$-weighted distribution rather than a neutral distribution.
 
@@ -1417,10 +1415,10 @@ Consider a date-$t$ Harmenberg-converged economy, and define the mean value of t
 \end{equation}
 and Harmenberg's proof that $\CLevBF_{t+2}-\PGro \CLevBF_{t+1}=0$ allows us to subtract $\PGro \CLevBF_{t+1}$ from $\CLevBF_{t+2}$ to obtain:
 \begin{equation} \label{eq:cNrmvsCov}\begin{split}
-%   0 & = \cRatAvg_{t+2}\PGro^{2} + \cv_{t+2}-\PGro\left(\PGro\cRatAvg_{t+1} + \cv_{t+1}\right)\\ %
-%\cRatAvg_{t+2}\PGro^{2} + \cv_{t+2}   & =\cRatAvg_{t+1}\PGro^{2} + \PGro \cv_{t+1}\\
-  \left(\cRatAvg_{t+2} - \cRatAvg_{t+1}\right)\PGro^{2} & = \PGro \cov_{t+1} - \cov_{t+2} .
-\end{split}\end{equation}
+    % 0 & = \cRatAvg_{t+2}\PGro^{2} + \cv_{t+2}-\PGro\left(\PGro\cRatAvg_{t+1} + \cv_{t+1}\right)\\ %
+    % \cRatAvg_{t+2}\PGro^{2} + \cv_{t+2}   & =\cRatAvg_{t+1}\PGro^{2} + \PGro \cv_{t+1}\\
+    \left(\cRatAvg_{t+2} - \cRatAvg_{t+1}\right)\PGro^{2} & = \PGro \cov_{t+1} - \cov_{t+2} .
+  \end{split}\end{equation}
 
 In the special case of a Szeidl-invariant economy, $\cRatAvg_{t+2} = \cRatAvg_{t+1}$, implying that the economy exhibits balanced growth in the covariance:
 \begin{align}
@@ -1526,7 +1524,7 @@ For the large and growing contingent of macroeconomists who want to build microf
 Death can solve this problem.
 
 \hypertarget{Blanchard-Lives}{}
-%\subsubsection{Blanchard Lives}
+% \subsubsection{Blanchard Lives}
 Most heterogeneous-agent models incorporate a constant positive probability of death, following~\cite{blanchardFinite}.  In the Blanchardian model, if the probability of death exceeds a threshold that depends on the size of the permanent shocks,~\cite{cstwMPC} show that the limiting distribution of permanent income has a finite variance.  \cite{blanchardFinite} assumes the existence of a universal annuitization scheme in which estates of dying consumers are redistributed to survivors in proportion to survivors' wealth, giving the recipients a higher effective rate of return. This treatment has several analytical advantages, most notably that the effect of mortality on the time preference factor is the exact inverse of its effect on the (effective) interest factor:  If the probability of remaining alive (not dead) is $\Alive$, then the assumption that no utility accrues after death makes the effective discount factor $\hat{\DiscFac}=\DiscFac\Alive$, while the enhancement to the rate of return from the annuity scheme yields an effective interest rate of $\hat{\Rfree}/\Alive$ (recall that because of white-noise mortality, the average wealth of the two groups is identical).  Combining these, the effective patience factor in the new economy $\hat{\Pat}$ is unchanged from its value in the infinite horizon model:% chktex 2
 \begin{equation}
   \hat{\Pat} \equiv {\left(\DiscFac \Alive \Rfree / \Alive\right)}^{1/\CRRA} = {\left(\Rfree \DiscFac\right)}^{1/\CRRA} \equiv \Pat.
@@ -1537,7 +1535,7 @@ The only adjustments this requires to the analysis above are therefore to the fe
 % The numerical finding that the covariance term above is approximately zero allows us to conclude again that the key requirement for aggregate balanced growth is presumably the {\GICRaw}.
 
 \hypertarget{Modigliani-Lives}{}
-%\subsubsection{Modigliani Lives}
+% \subsubsection{Modigliani Lives}
 
 \cite{blanchardFinite}'s innovation was useful not only for the insight it provided but also because the principal alternative, the Life Cycle model of~\cite{modiglianiWealth}, was computationally challenging given the then-available technologies. Aside from its (considerable) conceptual value, there is no need for Blanchard's analytical solution today, when essentially all modeling incorporates uncertainty, constraints, and other features that rule out analytical solutions anyway.% chktex 2  %Modern models can can easily handle assumptions more realistic than Blanchard's about the disposition of assets at death.
 
@@ -1577,9 +1575,9 @@ The main use of infinite horizon versions of such models is in heterogeneous age
 % \texname, % subfile inherits texname from preamble of parent
 % \econtexBib % Default bib database is in Resources/LaTeXInputs
 % }}
-%\bibliography{economics}
+%   \bibliography{economics}
 \onlyinsubfile{\input{\LaTeXInputs/bibliography_blend}}
-%\bibliography{economics}
+% \bibliography{economics}
 \end{document}
 \endinput
 
