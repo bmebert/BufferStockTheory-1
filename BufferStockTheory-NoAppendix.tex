@@ -77,17 +77,20 @@
     \tiny \thankstext
   \end{minipage}
 } % {Web}
-{\titlepagefinish}
+{\titlepagefinish \tableofcontents \pagebreak}
 
 \let\LaTeXStandardContentsName\contentsname
 \renewcommand{\contentsname}{}
 
-\tableofcontents
+\pagenumbering{gobble}
 
 \hypertarget{Introduction}{}
 \section{Introduction}\label{sec:intro}
+\setcounter{page}{0}
 
 In the presence of realistic transitory and permanent shocks to income \textit{a la}~\cite{friedmanATheory} and~\cite{muthOptimal}, only one further ingredient is required to construct a microeconomically testable model of consumption: A description of preferences.  Zeldes~\citeyearpar{zeldesStochastic} was the first to calibrate a quantitatively plausible example; his paper spawned a literature showing that such models' predictions can match household life cycle data reasonably well, whether or not explicit liquidity constraints are imposed.\footnote{See~\cite{carrollBSLCPIH} or~\cite{gpLifeCycle} for arguments that models with only `natural' constraints (see below) match a wide variety of facts; for a model with explicit constraints that produces very similar results, see, e.g.~\cite{Cagetti}.}
+
+\pagenumbering{arabic}
 
 A connected literature in macroeconomic theory, starting with~\cite{bewleyPIH}, has derived limiting properties of related infinite-horizon problems -- but only in models more complex than the case with just shocks and preferences, because standard contraction mapping theorems (beginning with~\cite{bellmanDynamicProgramming} and including those building on Stokey et~al.~\citeyearpar{slpMethods}) cannot be applied when utility and/or marginal utility are unbounded. Many proof methods also rule out permanent shocks \textit{a la}~\cite{friedmanATheory} and~\cite{muthOptimal} (and~Zeldes).\footnote{See \hyperlink{DiffFromLit}{the fuller discussion} at the end of Section~\ref{subsec:Setup}.}
 
@@ -812,7 +815,7 @@ First, as $\mRat_{t} \uparrow \infty$ the expected consumption growth factor goe
 \input{\FigDir/cGroTargetFig}
 
 \hypertarget{LimitsAsmtToInfty}{}
-\subsection{Limits as \texorpdfstring{$\mRat$}{m} approaches Infinity}\label{subsec:LimitsAsmtToInfty}
+\subsection{Limits as \texorpdfstring{$\mRat$}{m} Approaches Infinity}\label{subsec:LimitsAsmtToInfty}
 
 Define
 \begin{align*}
@@ -1042,7 +1045,7 @@ The critical $\mRat$ will be the value $\mStE$ at which $\mRatBF$ growth matches
   \end{split}
 \end{equation}
 
-The only difference between~\eqref{eq:balgrostable} and~\eqref{eq:mTargImplicit} is the substitution of $\Rnorm$ for $\bar{\Rnorm}$.\footnote{A third candidate `stable point' is the $\mGro$ where $\Ex_{t}[\log \mLev_{t+1}] = \log \PGro \mLev_{t}$; equivalently, $\Ex_{t}\left[\log\left((\mStE-\usual{\cFunc}(\mGro))\Rnorm+\pShk_{t+1}\tShk_{t+1}\right)\right]  = \log \mGro_{t}$.  Because the expectation of the log of a stochastic variable is less than the log of the expectation, this will be satisfied by an $\mGro < \mStE$.  For our purposes, little would be gained by an analysis of this point parallel to those of the other points of stability; but to accommodate potential uses,  the toolkit computes the value of this point as~\texttt{mLogTrg}.}$^{,}$\footnote{Our choice to call to this the individual problem's `individual balanced-growth pseudo-steady-state' $\mStE$ is motivated by what happens in the case where all draws of all future shocks just happen to take on their expected value of 1.0.  (They unexpectedly always take on their expected values).  In that infinitely improbable case, the economy \textit{would} exhibit balanced growth.
+The only difference between~\eqref{eq:balgrostable} and~\eqref{eq:mTargImplicit} is the substitution of $\Rnorm$ for $\bar{\Rnorm}$.\footnote{A third candidate `stable point' is the $\mGro$ where $\Ex_{t}[\log \mLev_{t+1}] = \log \PGro \mLev_{t}$; equivalently, $\Ex_{t}\left[\log\left((\mStE-\usual{\cFunc}(\mGro))\Rnorm+\pShk_{t+1}\tShk_{t+1}\right)\right]  = \log \mGro_{t}$.  Because the expectation of the log of a stochastic variable is less than the log of the expectation, this will be satisfied by an $\mGro < \mStE$.  For our purposes, little would be gained by an analysis of this point parallel to those of the other points of stability; but to accommodate potential uses,  the toolkit computes the value of this point as~\texttt{mLogTrg}.\label{thirdmeasure}}$^{,}$\footnote{Our choice to call to this the individual problem's `individual balanced-growth pseudo-steady-state' $\mStE$ is motivated by what happens in the case where all draws of all future shocks just happen to take on their expected value of 1.0.  (They unexpectedly always take on their expected values).  In that infinitely improbable case, the economy \textit{would} exhibit balanced growth.
   \begin{align*}
     \Ex_{t}[\mRat_{t+1}/\mRat_{t}|\pShk_{t+1}=\tShk_{t+1}=1] = \PGro \left(\mStE-\cFunc(\mStE)\Rnorm + 1 \right)/\mRat = \PGro
   \end{align*}}
@@ -1097,7 +1100,7 @@ A final point of stability will be indicated by a $\sim$ accent; this is the $\m
 with two associated Lemmas demonstrating that $\mStE < \Gro{\mRat}$ and $\mStE < \$\mTrg$.
 \end{comment}
 
-\subsection{Proofs}\label{subsec:StabilityProofs}
+%\subsection{Proofs}\label{subsec:StabilityProofs}
 
 The proofs of the theorems are almost completely parallel; to save space, they are relegated to Appendix~\ref{sec:ApndxMTargetIsStable}.  In sum, they involve three steps:
 \begin{enumerate}

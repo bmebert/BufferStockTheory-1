@@ -214,58 +214,31 @@ which means that $\difFunc^{\prime}(\mRat_{t})$ from~\eqref{eq:difFuncDecreases}
 
 But we showed in Section~\ref{subsec:UncertaintyModifiedConditions} that the only circumstances under which the problem has a nondegenerate solution while the {\RIC} fails were ones where the {\FHWC} also fails (that is,~\eqref{eq:FHWCFails} holds).
 
+\subsection{A Third Measure}
 
+A footnote in~Section~\ref{sec:convergedcfunc} mentions the possibility of calculating growth in the expectation of the log of $\mRat$ rather than the expectation of the ratio.  Here we show that one way of doing that is to calculate a nonlinear adjustment factor for the expectation of the ratio.
+\begin{align*}
+\log \left(\mLevBF_{t+1}/\mLevBF_{t}\right) & = \log (\PGro \pShk_{t+1} \mRat_{t+1})- \log \mRat_{t} 
+\\ & = \log \PGro (\aRat_{t}\Rnorm+\permShk_{t+1}\tShk_{t+1})- \log \mRat_{t} 
+\\ & = \log \PGro (\aRat_{t}\Rnorm+1+(\permShk_{t+1}\tShk_{t+1}-1))- \log \mRat_{t}
+\end{align*}
 
-\subsection{Proof of Theorem~\ref{thm:TheoremGroIsStable}}
+Now define $\Gro{\mRat}_{t+1}=\aRat_{t}\Rnorm+1$, and compute the expectation:
+\begin{align*}
+  \Ex_{t}[\log \left(\mLevBF_{t+1}/\mLevBF_{t}\right)]
+   & = \Ex_{t}\left[\log \PGro (\Gro{\mRat}_{t+1}+(\permShk_{t+1}\tShk_{t+1}-1))\right]- \log \mRat_{t} 
+\\ & = \log \PGro + \Ex_{t}\left[\log (\Gro{\mRat}_{t+1}(1+\Gro{\mRat}_{t+1}^{-1}(\permShk_{t+1}\tShk_{t+1}-1))\right]- \log \mRat_{t} 
+\\ & = \underbrace{\log \PGro + \log \Gro{\mRat}_{t+1} - \log \mRat_{t}}_{\equiv \log \Ex_{t}[\mLevBF_{t+1}/\mLevBF_{t}]} + \Ex_{t}\left[ \log (1+\Gro{\mRat}_{t+1}^{-1}(\permShk_{t+1}\tShk_{t+1}-1))\right]
+\end{align*}
+and exponentiating tells us that
+\begin{align}
+  \exp(\Ex_{t}[\log \mLevBF_{t+1}/\mLevBF_{t}]) & = \Ex_{t}[\mLevBF_{t+1}/\mLevBF_{t}]\exp( \Ex_{t}\left[ \log (1+\Gro{\mRat}_{t+1}^{-1}(\permShk_{t+1}\tShk_{t+1}-1))\right])
+\end{align}
+and this latter factor is a number that approaches 1 from below as $\mRat_{t}$ rises.  Thus the expected growth rate of the log is smaller than the log of the growth rate of the expected ratio.
 
-Proof of the existence of the final kind of stability is not straightforward.  
-\begin{equation}\begin{split}
-  \log \mLevBF_{t+1} - \log \mLevBF_{t} &  = \log \pLevBF_{t+1} \mRat_{t+1} - \log \pLevBF_{t} \mRat_{t} 
-\\ & =   \log \PGro\pShk_{t+1} \mRat_{t+1} - \log \mRat_{t}
-\\   & = \log \PGro\pShk_{t+1} \left((\mRat_{t}-\cRat_{t})\Rfree/\PGro\pShk_{t+1}+\tShk_{t+1}\right) - \log \mRat_{t}
-\\   & = \log \left((\mRat_{t}-\cRat_{t})\Rfree+\PGro\pShk_{t+1}\tShk_{t+1}\right) - \log \mRat_{t}
-\\   & = \log \left((\mRat_{t}-\cRat_{t})\Rfree(1+\left(\frac{\PGro\pShk_{t+1}\tShk_{t+1}}{(\mRat_{t}-\cRat_{t})\Rfree}\right)\right) - \log \mRat_{t}
-\\   & = \log \Rfree + \log (\mRat_{t}-\cRat_{t})+\log \left(1+\left(\frac{\PGro\pShk_{t+1}\tShk_{t+1}}{(\mRat_{t}-\cRat_{t})\Rfree}\right)\right) - \log \mRat_{t}
-%\\   & = \log \PGro\pShk_{t+1} + \log \left((\mRat_{t}-\cRat_{t})\Rnorm_{t+1}+\tShk_{t+1}\right) - \log \mRat_{t}
-%\\  \Ex_{t} \Delta \log \mLevBF_{t+1} & = \underbrace{\log \PGro + \Ex_{t}[\log \pShk_{t+1}]}_{< 0~\text{by~\GICLog}} + \Ex_{t} \log \left((\mRat_{t}-\cRat_{t})\Rnorm_{t+1}+\tShk_{t+1}\right) - \log \mRat_{t}
-%\\  \Ex_{t} \Delta \log \mLevBF_{t+1} & = \log \PGro + \Ex_{t}[\log \pShk_{t+1}] + \Ex_{t} \log \left(\frac{(\mRat_{t}-\cRat_{t})\Rnorm_{t+1}+\tShk_{t+1}}{\mRat_{t}}\right) 
-%\\   & = \log \PGro + \Ex_{t}[\log \pShk_{t+1}] + \Ex_{t} \log \left((1-\cRat_{t}/\mRat_{t})\Rnorm_{t+1}+\tShk_{t+1}/\mRat_{t}\right) .
-\end{split}\end{equation}
+% Abandoned efforts to prove that this target exists; it surely does, but that is not so easy to prove because it requires quantifying the competition between the fact that the first term being multiplied decreases with the fact that the second term increases.  
 
- The derivative of log growth with respect to $\mRat$ is therefore
-\begin{equation}\begin{split}
-    (d/d\mRat_{t}) \Delta \log \mLevBF_{t+1} &  = \left(\frac{\aFunc^{\prime}(\mRat_{t})}{(\mRat_{t}-\cRat_{t})}\right)-\frac{1}{\mRat_{t}}+\left(\frac{(\mRat_{t}-\cRat_{t})\Rfree(\aFunc^{\prime}(\mRat_{t})\Rfree)}{(\mRat_{t}-\cRat_{t})\Rfree+\PGro\pShk_{t+1}\tShk_{t+1}}\right)
-\\  &  = \left(\frac{\mRat_{t}\aFunc^{\prime}(\mRat_{t})}{\mRat_{t}(\mRat_{t}-\cRat_{t})}\right)-\frac{\mRat_{t}-\cRat_{t}}{\mRat_{t}(\mRat_{t}-\cRat_{t})}+    
-\\  &  = \left(\frac{\mRat_{t}\aFunc^{\prime}(\mRat_{t})-(\mRat_{t}-\cRat_{t})}{\mRat_{t}(\mRat_{t}-\cRat_{t})}\right)+
-\end{split}\end{equation}
-
-\begin{equation}\begin{split}
-  (d/d\mRat_{t}) \Delta \log \mLevBF_{t+1} &  = \log \pLevBF_{t+1} \mRat_{t+1} - \log \pLevBF_{t} \mRat_{t} 
-  \\   & = \left(\frac{\Rnorm_{t+1}(1-\MPC(\mRat_{t}))}{(\mRat_{t}-\cRat_{t})\Rnorm_{t+1}+\tShk_{t+1}}\right)-1/\mRat_{t}
-  \\   & = \left(\frac{(1-\MPC(\mRat_{t}))}{(\mRat_{t}-\cRat_{t})+\Rnorm_{t+1}^{-1}\tShk_{t+1}}\right)-1/\mRat_{t}
-\\   & = \left(\frac{(1-\MPC(\mRat_{t}))}{(\mRat_{t}-\cRat_{t})+\PGro\pShk_{t+1}\tShk_{t+1}/\Rfree}\right)-1/\mRat_{t}   . 
-\end{split}\end{equation}
-
-
-As argued elsewhere, expected growth approaches a maximum of $\infty$ as $\mRat_{t} \downarrow 0$.  As $\mRat_{t} \uparrow \infty$, the contribution of the term involving $\tShk$ becomes negligible and the expenditure ratio $\eFunc(\mRat)=\cFunc(\mRat)/\mRat$ approaches $\MinMPC$, so the limiting growth factor approaches
-\begin{equation}\begin{split}
-    \lim_{\mRat_{t} \uparrow \infty} \Ex_{t} [\Delta \log \mLevBF_{t+1}] & = \log \PGro + \Ex_{t}[\log \pShk_{t+1}] + \Ex_{t} \log \left((1-\MinMPC)\Rnorm_{t+1}\right)
-    \\ & = \log \PGro + \Ex_{t}[\log \pShk_{t+1}] + \Ex_{t}\left( \log \Pat - (\log \PGro + \log \pShk_{t+1})\right)
-    \\ & = \log \Pat.
-\end{split}\end{equation}
-
-The same arguments as before will guarantee continuity over the range of feasible values of $\mRat$.  So all that remains to prove is that $\Ex_{t} [\Delta \log \mLevBF_{t+1}]$ is strictly decreasing as $\mRat$ rises.
-Differentiating with respect to $\mRat_{t}$ yields 
-\begin{equation}\begin{split}
-    (d/d\mRat_{t})  \Ex_{t} \Delta \log \mLevBF_{t+1} & = (d/d\mRat_{t})\Ex_{t} \log \left((1-\cRat_{t}/\mRat_{t})\Rnorm_{t+1}+\tShk_{t+1}/\mRat_{t}\right)
-    \\ & = \Ex_{t} \left(\frac{-\tShk_{t+1}/\mRat^{2}_{t}-\Rnorm_{t+1}\eFunc^{\prime}(\mRat_{t})}{\tShk_{t+1}/\mRat_{t}+\Rnorm_{t+1}(1-\eFunc(\mRat_{t}))}\right)
-    \\ & = \Ex_{t} \left(\frac{-\tShk_{t+1}/\mRat_{t}-\mRat_{t}\Rnorm_{t+1}\eFunc^{\prime}(\mRat_{t})}{\tShk_{t+1}+\mRat_{t}\Rnorm_{t+1}(1-\eFunc(\mRat_{t}))}\right)
-    \\ & < \Ex_{t} \left(\frac{-\underline{\tShk}/\mRat_{t}-\mRat_{t}\Rnorm_{t+1}\eFunc^{\prime}(\mRat_{t})}{\bar{\tShk}+\mRat_{t}\Rnorm_{t+1}(1-\eFunc(\mRat_{t}))}\right)
-  \end{split}\end{equation}
-and for every realization of $\tShk$ and $\Rnorm$, the numerator of this expression is negative and the denominator is positive.  So the expression's expectation must be negative.
-
-
-\subsection{Proof of Lemmas~\ref{lemma:orderingPartOne}-\ref{lemma:orderingPartTwo}}
+\subsection{Proof of Lemma}%~\ref{lemma:orderingPartOne}-\ref{lemma:orderingPartTwo}}
 
 \subsubsection{Pseudo-Steady-State $\mRat$ Is Smaller than Target $\mRat$}
 Designate
@@ -296,7 +269,7 @@ Then subtract:
 \end{split}\end{equation}
 The RHS of this equation is strictly positive because $\InvEpShkInv^{-1}>1$ and both $\Trg{\aRat}$ and $\Rnorm$ are positive; while on the LHS, $(1-\Rnorm\aRat^{\prime})>0$.  So the equation can only hold if $\Trg{\mRat}-\StE{\mRat} > 0$.  That is, the target ratio exceeds the pseudo-steady-state ratio.\footnote{The use of the first order Taylor approximation could be substituted, cumbersomely, with the average of $\aFunc^{\prime}$ over the interval to remove the approximation in the derivations above.}
 
-\subsubsection{The $\mRat$  achieving Expected-Log-Balanced-Growth Is Smaller than Pseudo-Steady-State $\mRat$}
+\subsubsection{The $\mRat$  Achieving Individual Expected-Log-Balanced-Growth Is Smaller than the Individual Pseudo-Steady-State $\mRat$}
 
 Expected log balanced growth occurs when
 \begin{equation}\begin{split}
@@ -308,22 +281,26 @@ Expected log balanced growth occurs when
 \end{split}\end{equation}
 and we call the $\mRat$ that satisfies this equation $\Gro{\mRat}$.
 
+Subtract the definition of $\StE{\mRat}$ from that of $\Gro{\mRat}$:
+\begin{equation}\begin{split}
+    \exp(\Ex_{t}[\log \left(\aRat(\Gro{\mRat})\Rnorm+\pShk_{t+1}\tShk_{t+1}\right)]) - (\aRat(\StE{\mRat})\Rnorm+1 ) = \Gro{\mRat} - \StE{\mRat}
+\end{split}\end{equation}
+
 Now we use the fact that the expectation of the log is less than the log of the expectation, 
 \begin{equation}\begin{split}
-     \log \Ex_{t}[\aRat(\Gro{\mRat}_{t})\Rnorm+\pShk_{t+1}\tShk_{t+1}] & < \log \Gro{\mRat}_{t}
-\\     \log \left(\aRat(\Gro{\mRat}_{t})\Rnorm+1\right) & < \log \Gro{\mRat}_{t}
-\\     \aRat(\Gro{\mRat}_{t})\Rnorm+1 & < \Gro{\mRat}_{t}
+%    \log \Ex_{t}[\aRat(\Gro{\mRat}_{t})\Rnorm+\pShk_{t+1}\tShk_{t+1}] & <     \log \left(\aRat(\Gro{\mRat}_{t})\Rnorm+1\right) \\
+ \exp(\Ex_{t}[\log \left(\aRat(\Gro{\mRat})\Rnorm+\pShk_{t+1}\tShk_{t+1}\right)]) & < \left(\aRat(\Gro{\mRat})\Rnorm+1    \right)
 \end{split}\end{equation}
-Finally, subtract $\StE{\mRat}$ from both sides,
+so
 \begin{equation}\begin{split}
-     \aRat(\Gro{\mRat}_{t})\Rnorm+1 - (\aRat(\StE{\mRat}_{t})\Rnorm+1 )& < \Gro{\mRat}_{t} - \StE{\mRat}_{t}
-\\     \aRat(\Gro{\mRat}_{t})-\aRat(\Gro{\mRat}_{t}+\StE{\mRat}-\Gro{\mRat}_{t}))\Rnorm& < \Gro{\mRat}_{t} - \StE{\mRat}_{t}
-\\     \aRat(\Gro{\mRat}_{t})-(\aRat(\Gro{\mRat}_{t})+(\StE{\mRat}-\Gro{\mRat}_{t})\aRat^{\prime}(\Gro{\mRat}))\Rnorm& < \Gro{\mRat}_{t} - \StE{\mRat}
-\\     (\Gro{\mRat}_{t}-\StE{\mRat})\aRat^{\prime}(\Gro{\mRat})\Rnorm& < \Gro{\mRat}_{t} - \StE{\mRat}
-\\     \underbrace{\aRat^{\prime}(\Gro{\mRat})\Rnorm}_{< \PatPGro} & < 1
+    \exp(\Ex_{t}[\log \left(\aRat(\Gro{\mRat})\Rnorm+1\right)]) - (\aRat(\StE{\mRat})\Rnorm+1 ) < \Gro{\mRat} - \StE{\mRat}
+\\    \left(\aRat(\Gro{\mRat})\Rnorm+1\right) - (\aRat(\StE{\mRat})\Rnorm+1 ) < \Gro{\mRat} - \StE{\mRat}    
+\\     (\aRat(\Gro{\mRat})-\aRat(\Gro{\mRat}+\StE{\mRat}-\Gro{\mRat}))\Rnorm& < \Gro{\mRat} - \StE{\mRat}
+\\     (\aRat(\Gro{\mRat})-(\aRat(\Gro{\mRat})+(\StE{\mRat}-\Gro{\mRat})\bar{\aFunc}^{\prime})\Rnorm& < \Gro{\mRat} - \StE{\mRat}
+\\     (\Gro{\mRat}-\StE{\mRat})\bar{\aFunc}^{\prime}\Rnorm& < \Gro{\mRat} - \StE{\mRat}
+\\     \underbrace{\bar{\aFunc}^{\prime}\Rnorm}_{< \PatPGro} & < 1
 \end{split}\end{equation}
-which again holds because $\PatPGro < 1$ (and, as above, a proof that does not require the Taylor approximation is available but more cumbersome).
-
+where we are interpreting $\bar{\aFunc}^{\prime}$ as the mean of the value of $\aFunc^{\prime}$ over the interval between $\Gro{\mRat}$ and $\StE{\mRat}$.
 \begin{comment}
 \subsection{Comment}
 

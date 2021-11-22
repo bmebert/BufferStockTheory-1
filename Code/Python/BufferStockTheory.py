@@ -724,97 +724,6 @@ baseAgent_Inf = IndShockConsumerType(
 # \end{eqnarray*}
 
 # %% [markdown]
-# while for the $\log$ we have:
-#
-# \begin{align*}
-# \Ex_{t}[\log \left(\mLev_{t+1}/\mLev_{t}\right)] & = \Ex_{t}\left[
-# \log (\PermGroFac \permShk_{t+1} \mNrm_{t+1})
-# \right]- \log \mNrm_{t} 
-# %\\ & = \Ex_{t}\left[\log (\aNrm_{t}\Rfree+\PermGroFac\permShk_{t+1}\tranShk_{t+1})\right]- \log \mNrm_{t} 
-# %\\ & = \Ex_{t}\left[\log (\aNrm_{t}\Rfree)(1+\PermGroFac\permShk_{t+1}\tranShk_{t+1}/(\aNrm_{t}\Rfree))\right]- \log \mNrm_{t} 
-# \\ & = \Ex_{t}\left[
-# \log \PermGroFac (\aNrm_{t}\RNrm+\permShk_{t+1}\tranShk_{t+1})\right]- \log \mNrm_{t} 
-# \\ & = \Ex_{t}\left[
-# \log \PermGroFac (\aNrm_{t}\RNrm+1+(\permShk_{t+1}\tranShk_{t+1}-1)\right]- \log \mNrm_{t} 
-# \\ & = \Ex_{t}\left[
-# \log \PermGroFac (\acute{\mNrm}_{t+1}+(\permShk_{t+1}\tranShk_{t+1}-1))\right]- \log \mNrm_{t} 
-# \\ & = \log \PermGroFac + \Ex_{t}\left[
-# \log \PermGroFac (\acute{\mNrm}_{t+1}(1+\acute{\mNrm}_{t+1}^{-1}(\permShk_{t+1}\tranShk_{t+1}-1))\right]- \log \mNrm_{t} 
-# \\ & = \log \PermGroFac + \Ex_{t}\left[
-#  \log \acute{m}_{t+1}(1+\acute{m}_{t+1}^{-1}(\permShk_{t+1}\tranShk_{t+1}-1))\right]- \log \mNrm_{t} 
-# \\ & = \log \PermGroFac + \log \acute{m}_{t+1}+ \Ex_{t}\left[
-#  \log (1+\acute{m}_{t+1}^{-1}(\permShk_{t+1}\tranShk_{t+1}-1))\right]- \log \mNrm_{t} 
-# \\ & = \log \Ex_{t}[\mLev_{t+1}/\mLev_{t}]+ \Ex_{t}\left[
-#  \log (1+\acute{m}_{t+1}^{-1}(\permShk_{t+1}\tranShk_{t+1}-1))\right]
-# %\\ & = \log \PermGroFac+\log \aNrm_{t}\RNrm +\Ex_{t}\left[ \log \left(1+\left(\frac{\permShk_{t+1}\tranShk_{t+1}}{a_{t}\RNrm}\right)\right)\right]- \log \mNrm_{t} 
-# %\\ & = \Ex_{t}\left[\log \check{\mNrm}_{t+1}(1+(\permShk_{t+1}\tranShk_{t+1}-1)/\check{\mNrm}_{t+1})\right]- \log \mNrm_{t} 
-# %\\ & \approx \Ex_{t}\left[\log \aNrm_{t}\Rfree/\PermGroFac)+\tranShk_{t+1}/(\aNrm_{t}\Rfree/\PermGroFac)\right]- \log \mNrm_{t} 
-# %\\ & \approx \log (\aNrm_{t}\Rfree)+\PermGroFac/(\aNrm_{t}\Rfree)- \log \mNrm_{t} 
-# \end{align*}
-#
-# so
-# \begin{align*}
-# \exp(\Ex_{t}[\log \left(\mLev_{t+1}/\mLev_{t}\right)]) & = \Ex_{t}[\mLev_{t+1}/\mLev_{t}]\exp(\Ex_{t}\left[
-#  \log (1+\acute{m}_{t+1}^{-1}(\permShk_{t+1}\tranShk_{t+1}-1))\right])
-# \end{align*}
-#
-
-# %% [markdown]
-# \begin{align*}
-# (d/dm_{t})\Ex_{t}\left[\log(1+\acute{m}_{t+1}^{-1}(\permShk_{t+1}\tranShk_{t+1}-1))\right]
-#  &= \Ex_{t}\left[(d/dm_{t})\log(1+\acute{m}_{t+1}^{-1}(\permShk_{t+1}\tranShk_{t+1}-1))\right]
-# \\ &= \Ex_{t}\left[
-# \left(
-# \frac{(\permShk_{t+1}\tranShk_{t+1}-1)(d/dm_{t})m_{t+1}^{-1}}{1+m_{t+1}^{-1}(\permShk_{t+1}\tranShk_{t+1}-1))}
-# \right)
-# \right]
-# \\ &= \Ex_{t}\left[
-# \left(
-# \frac{(d/dm_{t})m_{t+1}^{-1}}{1/(\permShk_{t+1}\tranShk_{t+1}-1)+m_{t+1}^{-1}}
-# \right)
-# \right]
-# \\ &= \Ex_{t}\left[
-# \left(
-# \frac{\acute{m}_{t+1}(d/dm_{t})\acute{m}_{t+1}^{-1}}{\acute{m}_{t+1}/(\permShk_{t+1}\tranShk_{t+1}-1)+1}
-# \right)
-# \right]
-# \end{align*}
-# and since $\Ex_{t}[(\permShk_{t+1}\tranShk_{t+1}-1) = 0$ and $1+m_{t+1}^{-1}(\permShk_{t+1}\tranShk_{t+1}-1) > 0$, this will be negative if 
-
-# %% [markdown]
-# Denominator is positive when
-# \begin{align*}
-# (\Rfree a_{t}+1)/(\permShk_{t+1}\tranShk_{t+1}-1) & > - 1
-# \\ (\Rfree a_{t}+1) & > (1-\permShk_{t+1}\tranShk_{t+1})
-# \\ a_{t} & > -\Rfree^{-1}\permShk_{t+1}\tranShk_{t+1}
-# \end{align*}
-#
-
-# %% [markdown]
-# Denominator is zero when
-# \begin{align*}
-# 1/(\permShk_{t+1}\tranShk_{t+1}-1) & = -\acute{m}_{t+1}^{-1}
-# \\ \acute{m}_{t+1} & = -(\permShk_{t+1}\tranShk_{t+1}-1) 
-# \\ \Rfree a_{t}+1 & = 1-(\permShk_{t+1}\tranShk_{t+1}) 
-# \\ \Rfree a_{t} & = -(\permShk_{t+1}\tranShk_{t+1}) 
-# \end{align*}
-#
-
-# %% [markdown] {"tags": []}
-# but in the vicinity of the pseudo-steady-state point $\check{\mNrm}$ where $\mNrm_{t+1}=\aNrm_{t}\RNrm+1=\check{\mNrm}$ this reduces to 
-# \begin{align*}
-# \Ex_{t}[\log \left(\mLev_{t+1}/\mLev_{t}\right)] & = \Ex_{t}\left[
-# \log \PermGroFac (\check{\mNrm}(1+(\permShk_{t+1}\tranShk_{t+1}-1)/\check{\mNrm})\right]- \log \check{\mNrm}
-# \\  & = \Ex_{t}\left[
-# \log \PermGroFac (1+(\permShk_{t+1}\tranShk_{t+1}-1)/\check{\mNrm})\right]
-# \\  & = \log \PermGroFac + \log a_{t}\Rfree + \Ex_{t}\left[
-# \log \left(1+\underbrace{(
-# \permShk_{t+1}\tranShk_{t+1}-1)/\check{\mNrm}}_{\xi_{t+1}})\right)
-# \right]
-# \\  & \approx \log \PermGroFac + \Ex_{t}[\xi_{t+1}]-(1/2)\Ex_{t}[\xi_{t+1}^2]+...
-# \end{align*}
-
-# %% [markdown]
 # For $\mNrm$ things are slightly more complicated:
 # \begin{eqnarray*}
 # \Ex_{t}[m_{t+1}]
@@ -822,36 +731,6 @@ baseAgent_Inf = IndShockConsumerType(
 # & = & a_{t}\Rfree\Ex_{t}\left[(\permShk_{t+1}\PermGroFac)^{-1}\right] +1 \\
 # \Ex_{t}\left[\frac{m_{t+1}}{m_{t}}\right] & = & \left(\frac{a_{t}\Rfree\Ex_{t}\left[(\permShk_{t+1}\PermGroFac)^{-1}\right]+1}{\mNrm_{t}}\right)
 # \end{eqnarray*}
-#
-
-# %% [markdown]
-# Finally, for the expectation of the log $\mu=\log m \mathbf{p}$:
-# \begin{align}
-# \Ex_{t}[\mu_{t+1}] %& =  
-# %\Ex_{t}\left[\log\left(a_{t}(\Rfree/\permShk_{t+1}\PermGroFac) +\tranShk_{t+1}\right)\right]\\
-# %\\ & =\Ex_{t}\left[\log a_{t}\RNrm + \log \left(\permShk_{t+1}^{-1}(1 +\PermGroFac\tranShk_{t+1}\permShk_{t+1})\right)\right]\\
-# %\\ & =\log a_{t}\RNrm +\Ex_{t}\left[\log \permShk_{t+1}^{-1}+\log \left(1 +\PermGroFac\tranShk_{t+1}\permShk_{t+1}\right)\right]\\
-# &= \Ex_{t}\left[
-# \log
-# \left(
-# a_{t}(\Rfree/(\permShk_{t+1}\PermGroFac))\right)\left(1 +\frac{\PermGroFac\permShk_{t+1}\tranShk_{t+1}}{a_{t}\Rfree}
-# \right)
-# \right]
-# %\\ & =  \Ex_{t}\left[\log \left(a_{t}(\Rfree/(\permShk_{t+1}\PermGroFac))\right)\left(1 +\frac{\PermGroFac\permShk_{t+1}\tranShk_{t+1}}{a_{t}\Rfree}\right)\right]
-# \\ & = \log a_{t} (\Rfree/\PermGroFac)+\Ex_{t}\left[
-# \log
-# \permShk_{t+1}^{-1}+\log\left(1 +\frac{\PermGroFac\permShk_{t+1}\tranShk_{t+1}}{a_{t}\Rfree}
-# \right)
-# \right]
-# \\ & \approx \log a_{t} (\Rfree/\PermGroFac)+\Ex_{t}\left[
-# \log
-# \permShk_{t+1}^{-1}+\frac{\PermGroFac\permShk_{t+1}\tranShk_{t+1}}{a_{t}\Rfree}
-# \right]
-# \\ & \approx \log a_{t} (\Rfree/\PermGroFac)+\Ex_{t}\left[
-# \log
-# \permShk_{t+1}^{-1}
-# \right]+\frac{\PermGroFac}{a_{t}\Rfree}
-# \end{align}
 #
 
 # %% [markdown]
@@ -879,10 +758,9 @@ Bilt, Pars, E_Next_ = soln.Bilt, soln.Pars, soln.E_Next_
 # Retrieve parameters (makes code more readable)
 Rfree, DiscFac, CRRA, G = Pars.Rfree, Pars.DiscFac, Pars.CRRA, Pars.PermGroFac
 
-color_cons, color_mrktLev, color_mrktNrm, color_perm, color_mLog, color_mAlt = "blue", "red", "green", "black", "purple", "orange"
+color_cons, color_mrktLev, color_mrktNrm, color_perm = "blue", "red", "green", "black"
 
 mPlotMin, mCalcMax, mPlotMax = 1.0, 50, 1.8
-#mPlotMin, mCalcMax, mPlotMax = 0.01, 50, 0.03
 
 # Get steady state equilibrium and target values for m
 mNrmStE, mNrmTrg = Bilt.mNrmStE, Bilt.mNrmTrg
@@ -900,20 +778,13 @@ Ex_mLev_tp1_Over_pLev_t = [
     soln.E_Next_.mLev_tp1_Over_pLev_t_from_a_t(a) for a in a_pts]
 Ex_mLog_tp1 = [
     soln.E_Next_.mLog_tp1_from_a_t(a) for a in a_pts]
-Ex_mApx_tp1 = [
-    soln.E_Next_.mApx_tp1_from_a_t(a) for a in a_pts]
-Ex_mDif_tp1 = [
-    soln.E_Next_.mDif_tp1_from_a_t(a) for a in a_pts]
 Ex_m_tp1_from_a_t = [
     soln.E_Next_.m_tp1_from_a_t(a) for a in a_pts]
 
 Ex_cLevGro = np.array(Ex_cLev_tp1_Over_pLev_t)/c_pts
 Ex_mLevGro = np.array(Ex_mLev_tp1_Over_pLev_t)/m_pts
 Ex_mNrmGro = np.array(Ex_m_tp1_from_a_t)/m_pts
-Ex_mGroExp = np.array(np.exp(Ex_mLog_tp1)/m_pts)
-Ex_mGroExpAlt = G* np.array((a_pts * E_Next_.RNrm_PF+1)/m_pts)
-Ex_mApxGro = np.array(np.exp(Ex_mApx_tp1)/m_pts)
-Ex_mDifGro = np.exp(Ex_mDif_tp1)
+Ex_mGroExp = np.array(np.exp(Ex_mLog_tp1)/m_pts) # Exponentiate expected log growth
 
 # Absolute Patience Factor = lower bound of consumption growth factor
 APF = (Rfree*DiscFac)**(1.0/CRRA)
@@ -937,17 +808,9 @@ ax.plot(m_pts, Ex_mLevGro        , color=color_mrktLev)
 # Plot expected growth for the market resources ratio
 ax.plot(m_pts, Ex_mNrmGro        , color=color_mrktNrm)
 
+# To reduce clutter, the exponentiated log growth is left out
 # Plot expected growth for the market resources ratio
 #ax.plot(m_pts, Ex_mGroExp        , color=color_mLog)
-
-# Plot expected growth for the market resources ratio
-#ax.plot(m_pts, Ex_mGroExpAlt     , color=color_mAlt)
-
-# Plot expected growth for the market resources ratio
-#ax.plot(m_pts, Ex_mApxGro     , color=color_cons)
-
-# Plot expected growth for the market resources ratio
-#ax.plot(m_pts, Ex_mDifGro     , color=color_cons)
 
 # Axes limits
 GroFacMin, GroFacMax, xMin = 0.98, 1.06, 1.1
@@ -1012,7 +875,7 @@ E_Next_.mDif_tp1_from_a_t(0.0000000000000002),E_Next_.mDif_tp1_from_a_t(1)
 np.dot(np.log(1.+0.99*((Bilt.tranShkValsBcst*Bilt.permShkValsBcst-1)))          
                 ,
                 Bilt.ShkPrbs)
-        
+
 
 # %% {"jupyter": {"source_hidden": true}, "tags": []}
 stop
