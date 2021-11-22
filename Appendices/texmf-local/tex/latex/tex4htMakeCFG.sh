@@ -10,7 +10,8 @@ handoutName=$1
 
 # cd "$(dirname "$0")" # http://stackoverflow.com/questions/3349105/how-to-set-current
 
-cmd="cp `kpsewhich svg-math-and-subfigures.cfg` $handoutName.cfg"
+#cmd="cp `kpsewhich svg-math-and-subfigures.cfg` $handoutName.cfg"
+cmd="cp `kpsewhich svg-math-and-subfigures_tex4ht-and-table-of-contents-fix.cfg` $handoutName.cfg"
 #cmd="cp `kpsewhich svg-math-and-subfigures_html5.cfg` $handoutName.cfg"
 #cmd="cp `kpsewhich svg-math-and-subfigures_xhtml.cfg` $handoutName.cfg"
 #cmd="cp `kpsewhich svg-math-and-subfigures_fix-dmofilter-parsing-problems.cfg` $handoutName.cfg"
