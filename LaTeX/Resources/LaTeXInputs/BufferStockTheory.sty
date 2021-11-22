@@ -98,3 +98,21 @@
 \DefineFamilyKey[.subsubsection]{KOMAarg}{hypertarget}{%
   \hypertarget{#1}{}%
 }
+
+%\usepackage[headsepline=0.75pt]{scrlayer-scrpage}
+\usepackage{scrlayer-scrpage}
+%\setkomafont{pagehead}{\normalfont\sffamily}% <- changed
+
+\RedeclareSectionCommand[
+tocindent=0cm,
+tocnumwidth=0.6cm
+]{section}
+\RedeclareSectionCommand[
+tocindent=0.6cm,
+tocnumwidth=0.9cm
+]{subsection}
+\RedeclareSectionCommand[
+tocindent=1.5cm,
+tocnumwidth=1.5cm
+]{subsubsection}
+
