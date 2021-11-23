@@ -18,6 +18,8 @@
 
 
 % Attempted to make all lines used for Web version contain {Web} (or version with only single curly brace at end) so can be removed with sed
+
+
 \providecommand{\versn}{pdf} % Version; like, web or pdf or journal submission
 \ifthenelse{\boolean{Web}}{    % {Web}
   \renewcommand{\versn}{Web}     % Too hard to figure out passing -output-directory through make4ht through htlatex, so web version is compiled with junk files in main directory
@@ -80,6 +82,7 @@
   \begin{minipage}{0.9\textwidth}
     \tiny \thankstext
   \end{minipage}
+
   \titlepagefinish\pagebreak
   \let\LaTeXStandardContentsName\contentsname
   \renewcommand{\contentsname}{}
@@ -119,13 +122,14 @@ But the main theoretical contribution is to identify, for the infinite-horizon c
 
 Analytical derivations required for the proofs also explain many other results familiar from the numerical literature.
 
-The paper begins by describing sufficient conditions for the problem to define a sensible (nondegenerate) limiting consumption function (and explains how the model relates to those previously considered).  The conditions are interestingly parallel to those required for the \hyperlink{Factors-Defined-And-Compared}{liquidity constrained perfect foresight model}; that parallel is explored and explained.  This analysis establishes limiting properties of the consumption function as resources approach infinity, and as they approach their lower bound; using these limits, the contraction mapping theorem is proven.
+The paper begins by describing sufficient conditions for the problem to define a sensible (nondegenerate) limiting consumption function (and explains how the model relates to those previously considered).  The conditions are interestingly parallel to those required for the \hyperlink{Factors-Defined-And-Compared}{liquidity constrained perfect foresight model}; that parallel is explored and explained.  This analysis establishes limiting properties of the consumption function as resources approach infinity, and as they approach their lower bound; using these livmits, the contraction mapping theorem is proven.
 
 The next theoretical contribution demonstrates that a model with an `artificial' liquidity constraint (it prohibits borrowing by consumers who could certainly repay) is a limiting case of the unconstrained model.  The analytical appeal of the unconstrained model is that it is both mathematically convenient (e.g., the consumption function is twice continuously differentiable), and arbitrarily close (cf.\ Section~\ref{sec:deatonIsLimit}) to less tractable models. This congenial environment makes proofs easier (if we define a proposition as holding (in the limit) if it continues to hold as the horizon extends to infinity).
 
 In proving the remaining theorems, the \hyperlink{AnalysisoftheConvergedConsumptionFunction}{next section} examines key properties of the model. First, \hyperlink{LimitsAsmtToInfty}{as cash approaches infinity} the expected growth rate of consumption and the marginal propensity to consume (MPC) converge to their values in the perfect foresight case. Second, \hyperlink{LimitsAsmtToZero}{as cash approaches zero} the expected growth rate of consumption approaches infinity, and the MPC approaches a simple analytical limit.  Next, the central theorems articulate conditions under which different measures of `growth impatience' imply useful conclusions about points of stability (`target' or `balanced growth' points).
 
 The final section elaborates the conditions under which, even with a fixed aggregate interest rate that differs from the time preference rate, a small open economy populated by buffer stock consumers has a balanced growth equilibrium in which growth rates of consumption, income, and wealth match the exogenous growth rate of permanent income (equivalent, here, to productivity growth). In the terms of~\cite{schmitt2003closing}, buffer stock saving is an appealing method of `closing' a small open economy model, because it requires no ad-hoc assumptions.  Not even liquidity constraints.\footnote{The paper's insights are instantiated in the \href{https://econ-ark.org}{Econ-ARK} toolkit, whose \href{https://hark.readthedocs.io/en/stable/reference/ConsumptionSaving/ConsIndShockModel.html}{buffer stock saving module} flags parametric choices under which a problem is degenerate or under which stable ratios of wealth to income may not exist.}
+
 
 
 \ifthenelse{\boolean{Web}}{}{% else
@@ -141,6 +145,11 @@ The final section elaborates the conditions under which, even with a fixed aggre
 \subsection{Setup}\label{subsec:Setup}
 
 The infinite horizon solution is the (limiting) first-period solution to a sequence of finite-horizon problems as the horizon (the last period of life) becomes arbitrarily distant.
+
+
+\onlyinsubfile{\input{\LaTeXInputs/bibliography_blend}}
+\end{document}
+\endinput
 
 That is, for the value function, fixing a terminal date $T$,  we are interested in $\vLevBF_{T-n}$ in the sequence of value functions $\{\vLevBF_{T},\vLevBF_{T-1},\ldots,\vLevBF_{T-n}\}$.  We will say that the problem has a `nondegenerate' infinite horizon solution if, corresponding to that $\vLevBF$, as $n \uparrow \infty$ there is a limiting consumption function $\usual{\cFunc}(\mRat) = \lim_{n \uparrow \infty} \cFunc_{T-n}$ which is neither $\usual{\cFunc}(\mRat)=0$ everywhere (for all $\mRat$) nor $\usual{\cFunc}(\mRat)=\infty$ everywhere.
 
@@ -217,7 +226,6 @@ The model looks more special than it is.  In particular, a positive probability 
 \subsection{Comparison to Existing Literature}\label{subsec:Lit}
 \hypertarget{DiffFromLit}{} This model differs from Bewley's~\citeyearpar{bewleyPIH} classic formulation in several ways. The CRRA utility function does not satisfy Bewley's assumption that $\uFunc(0)$ is well-defined, or that $\uP(0)$ is well-defined and finite; indeed, neither the value function nor the marginal value function will be bounded.  It differs from Schectman and Escudero~\citeyearpar{seIncFluct} in that they impose liquidity constraints and positive minimum income.  It differs from both of these in that it permits permanent growth in income, and also permanent shocks to income, which a large empirical literature finds to be of dominant importance in microdata.\footnote{MaCurdy~\citeyearpar{macurdyTimeseries}; Abowd and Card~\citeyearpar{acCovariance}; Carroll and Samwick~\citeyearpar{csNature}; Jappelli and Pistaferri~\citeyearpar{jpCins}.  Much of the literature instead incorporates highly `persistent' but not completely permanent shocks, but~\cite{dhmImproving} show that when measurement problems are handled correctly data yields serial correlation coefficients $0.98-1.00$; and~\cite{dmHowMuch} suggests that survey data support the same conclusion.}  It differs from Deaton~\citeyearpar{deatonLiqConstr} because liquidity constraints are absent; there are separate transitory and permanent shocks (\textit{a la}~\cite{muthOptimal}); and the transitory shocks here can occasionally cause income to reach zero.%\footnote{Below it will become clear that the Deaton model is a particular limit of this paper's model.}
 
-\onlyinsubfile{\input{\LaTeXInputs/bibliography_blend}}\end{document}\endinput
 
 
 
@@ -443,6 +451,22 @@ If a liquidity constraint requiring $\bRat \geq 0$ is ever to be relevant, it mu
 \begin{align}
   1^{-\CRRA}  & > \Rfree \DiscFac \PGro^{-\CRRA}1^{-\CRRA}  \label{eq:LiqConstrBinds}.
 \end{align}
+
+%\hypertarget{GPFRaw}{}
+%\hypertarget{GICRaw}{}
+%By analogy to the \RPF, we therefore define a `growth patience factor' (\GPFRaw) as
+%\begin{align}
+%  \PatPGro  & = {\Pat}/\PGro,  \label{eq:GPFRaw}
+%\end{align}
+%and define a `growth impatience condition' (\GICRaw)
+%\begin{verbatimwrite}{\EqDir/GICRaw}
+%  \begin{align}
+%    \PatPGro &  < 1   \label{eq:GICRaw}
+%  \end{align}
+%\end{verbatimwrite}
+%\input{\LtxDir\EqDir/GICRaw}
+%which is equivalent to~\eqref{eq:LiqConstrBinds} (exponentiate both
+%sides by $1/\CRRA$).
 
 We now examine implications of possible configurations of the conditions.
 

@@ -9,8 +9,12 @@
 
 \subfile{BufferStockTheory-NoAppendix} % Main body of paper
 
+\pagebreak\input{\LaTeXInputs/bibliography_blend}\end{document}
+
+\endinput
+
 \pagebreak
-\hypertarget{Appendices}{} % Allows link to [url-of-paper]#Appendicesj
+\hypertarget{Appendices}{} % Allows link to [url-of-paper]#Appendices
 \appendix \centerline{\LARGE Appendices}\vspace{0.2in}
 
 \subfile{\ApndxDir/ApndxLiqConstr}
@@ -22,13 +26,13 @@
 \subfile{\ApndxDir/ApndxSolnMethEndogGpts}
 \subfile{\ApndxDir/ApndxSolnMethTermFunc}
 \subfile{\ApndxDir/ApndxConditionDiagrams}
+
 \subfile{\ApndxDir/ApndxCGrowthDeclines}
 \subfile{\ApndxDir/ApndxMTargetIsStable}
+
+
 \subfile{\ApndxDir/ApndxBalancedGrowthcNrmAndCov}
 
-\pagebreak
-\input{\LaTeXInputs/bibliography_blend}
-\end{document}\endinput
 
 % Stuff below configures compilation for AucTeX in Emacs
 
@@ -51,3 +55,5 @@
 % eval: (cond ((string-equal system-type "gnu/linux") (progn (setq TeX-view-program-list '(("Evince" "evince --page-index=%(outpage) LaTeX/%o"))))))
 % eval: (cond ((string-equal system-type "gnu/linux") (progn (setq TeX-view-program-selection '((output-pdf "Evince"))))))
 % End:
+
+\endinput
