@@ -196,7 +196,7 @@ base_params['BoroCnstArt'] = None    # No artificial borrowing constraint
 # \newcommand{\permShk}{\psi} % New
 # \newcommand{\Rfree}{\mathsf{R}}
 # \newcommand{\Trg}{\hat}
-# \newcommand{\StE}{\check}
+# \newcommand{\Bal}{\check}
 # \newcommand{\Thorn}{\pmb{\TH}}
 # \newcommand{\TranShkStd}{\sigma_\Theta}
 # \newcommand{\TranShk}{\Theta}
@@ -472,7 +472,7 @@ makeFig('cFuncsConverge')  # Comment out if you want to run uninterrupted
 # %% [markdown]
 # ## [Unique and Stable Values of $\mNrm$](https://econ-ark.github.io/BufferStockTheory/#Unique-Stable-Points)
 #
-# Assuming that the **FVAC** and **WRIC** hold so that the problem has a nondegenerate solution, under more stringent conditions its dynamics can also be shown to exhibit certain kinds of stability.  Two particularly useful kinds of stability are existence of a 'target' value of market resources $\Trg{\mNrm}$ (`mTrg` in the toolkit) and a 'pseudo-steady-state' value $\StE{\mNrm}$ (`mStE` in the toolkit).
+# Assuming that the **FVAC** and **WRIC** hold so that the problem has a nondegenerate solution, under more stringent conditions its dynamics can also be shown to exhibit certain kinds of stability.  Two particularly useful kinds of stability are existence of a 'target' value of market resources $\Trg{\mNrm}$ (`mNrmFacTrg` in the toolkit) and a 'pseudo-steady-state' value $\Bal{\mNrm}$ (`mBal` in the toolkit).
 #
 # ### [If the GIC-Nrm Holds, $\exists$ a finite 'target' $\mNrm$](https://econ-ark.github.io/BufferStockTheory/#onetarget)
 #
@@ -496,26 +496,26 @@ makeFig('cFuncsConverge')  # Comment out if you want to run uninterrupted
 #
 # ### [If the GIC-Raw Holds, $\exists$ a finite 'pseudo-steady-state' $\mNrm$](https://econ-ark.github.io/BufferStockTheory/#Collective-Stability)
 #
-# Section [Collective Stability and the Pseudo-Steady-State](https://econ-ark.github.io/BufferStockTheory/#Collective-Stability) shows that, under parameter values for which the limiting consumption function exists, if the **GIC** holds then there will be a value $\StE{m}$ such that:
+# Section [Collective Stability and the Pseudo-Steady-State](https://econ-ark.github.io/BufferStockTheory/#Collective-Stability) shows that, under parameter values for which the limiting consumption function exists, if the **GIC** holds then there will be a value $\Bal{m}$ such that:
 #
 # \begin{eqnarray*}
-# \Ex_{t}[\mLev_{t+1}/\mLev_{t}] & > & \PermGroFac~\text{if $m_{t} < \StE{m}$} \\
-# \Ex_{t}[\mLev_{t+1}/\mLev_{t}] & < & \PermGroFac~\text{if $m_{t} > \StE{m}$} \\
-# \Ex_{t}[\mLev_{t+1}/\mLev_{t}] & = & \PermGroFac~\text{if $m_{t} = \StE{m}$}
+# \Ex_{t}[\mLev_{t+1}/\mLev_{t}] & > & \PermGroFac~\text{if $m_{t} < \Bal{m}$} \\
+# \Ex_{t}[\mLev_{t+1}/\mLev_{t}] & < & \PermGroFac~\text{if $m_{t} > \Bal{m}$} \\
+# \Ex_{t}[\mLev_{t+1}/\mLev_{t}] & = & \PermGroFac~\text{if $m_{t} = \Bal{m}$}
 # \end{eqnarray*}
 #
-# [An equation](https://econ-ark.github.io/BufferStockTheory/#balgrostableSolve) in the paper tells us that if $\mNrm_{t}=\StE{m}$ then:
+# [An equation](https://econ-ark.github.io/BufferStockTheory/#balgrostableSolve) in the paper tells us that if $\mNrm_{t}=\Bal{m}$ then:
 #
 # \begin{align}
-# (\StE{\mNrm}-\cFunc(\StE{\mNrm}))\RNrm+1 & = \StE{\mNrm}
+# (\Bal{\mNrm}-\cFunc(\Bal{\mNrm}))\RNrm+1 & = \Bal{\mNrm}
 # \end{align}
 #
-# which can be solved numerically for the unique $\StE{\mNrm}$ that satisfies it.
+# which can be solved numerically for the unique $\Bal{\mNrm}$ that satisfies it.
 #
 #
 # ### [Example With Finite Pseudo-Steady-State But Infinite Target Wealth](https://econ-ark.github.io/BufferStockTheory/#GICNrmFailsButGICRawHolds)
 #
-# [A figure](https://econ-ark.github.io/BufferStockTheory/#GICNrmFailsButGICRawHolds) depicts a solution when the **FVAC** (Finite Value of Autarky Condition) and **WRIC** hold (so that the model has a solution), the **GIC** holds, so the model has a pseudo-steady-state $\StE{\mNrm}$, but the **GIC-Nrm** fails, so the model does not have an individual target wealth ratio $\Trg{\mNrm}$ (or, rather, the target wealth ratio is infinity, as can be seen by the fact that the level of $\cNrm$ is always below the level that would keep $\Ex_{t}[\Delta \mNrm_{t+1}] = 0$).
+# [A figure](https://econ-ark.github.io/BufferStockTheory/#GICNrmFailsButGICRawHolds) depicts a solution when the **FVAC** (Finite Value of Autarky Condition) and **WRIC** hold (so that the model has a solution), the **GIC** holds, so the model has a pseudo-steady-state $\Bal{\mNrm}$, but the **GIC-Nrm** fails, so the model does not have an individual target wealth ratio $\Trg{\mNrm}$ (or, rather, the target wealth ratio is infinity, as can be seen by the fact that the level of $\cNrm$ is always below the level that would keep $\Ex_{t}[\Delta \mNrm_{t+1}] = 0$).
 #
 # This example was constructed by quadrupling the variance of the permanent shocks from the baseline parameterization.  The extra precautionary saving induced by increased uncertainty is what pushes the agent into the region without a target wealth ratio.
 
@@ -657,21 +657,21 @@ ax.tick_params(labelbottom=False, labelleft=False, left='off',
 ax.legend(handles=[c_Stable_Ind_lbl, c_Stable_Agg_lbl])
 ax.legend(prop=dict(size=fsmid))
 
-mNrmStE = Bilt.mNrmStE
-cNrmStE = c_Stable_Agg = cFunc(mNrmStE)
+mNrmFacBal = Bilt.mNrmFacBal
+cNrmBal = c_Stable_Agg = cFunc(mNrmFacBal)
 
-ax.plot(mNrmStE, cNrmStE, marker=".", markersize=15, color="black")  # Dot at StE point
+ax.plot(mNrmFacBal, cNrmBal, marker=".", markersize=15, color="black")  # Dot at Bal point
 ax.text(1, 0.6, "$\mathrm{c}(m_{t})$", fontsize=fsmid)  # label cFunc
 
 if latexExists:
-    ax.text(mNrmStE+0.02, cNrmStE-0.10, r"$\nwarrow$", fontsize=fsmid)
-    ax.text(mNrmStE+0.25, cNrmStE-0.18, r"$\StE{m}~$", fontsize=fsmid)
+    ax.text(mNrmFacBal+0.02, cNrmBal-0.10, r"$\nwarrow$", fontsize=fsmid)
+    ax.text(mNrmFacBal+0.25, cNrmBal-0.18, r"$\Bal{m}~$", fontsize=fsmid)
 else:
-    ax.text(mNrmStE+0.02, cNrmStE-0.10, r"$\nwarrow$", fontsize=fsmid)
-    ax.text(mNrmStE+0.25, cNrmStE-0.18, r"$\check{m}~$", fontsize=fsmid)
+    ax.text(mNrmFacBal+0.02, cNrmBal-0.10, r"$\nwarrow$", fontsize=fsmid)
+    ax.text(mNrmFacBal+0.25, cNrmBal-0.18, r"$\check{m}~$", fontsize=fsmid)
 
 makeFig('GICNrmFailsButGICRawHolds')
-print('Finite mNrmStE but infinite mNrmTrg')
+print('Finite mNrmFacBal but infinite mNrmFacTrg')
 
 
 # %% [markdown]
@@ -783,7 +783,7 @@ color_cons, color_mrktLev, color_mrktNrm, color_perm, color_exp_E_mLog_Gro, colo
 mPlotMin, mCalcMax, mPlotMax = 1.0, 50, 1.8
 
 # Get steady state equilibrium and target values for m
-mNrmStE, mNrmTrg = Bilt.mNrmStE, Bilt.mNrmTrg
+mNrmFacBal, mNrmFacTrg = Bilt.mNrmFacBal, Bilt.mNrmFacTrg
 
 pts_num = 200  # Plot this many points
 
@@ -803,8 +803,8 @@ Ex_mLog_tp1_minus_mLog_t_from_m_t = [
 Ex_m_tp1_from_a_t = [
     soln.E_Next_.m_tp1_from_a_t(a) for a in a_pts]
 
-Ex_cLevGro = np.array(Ex_cLev_tp1_Over_pLev_t)/c_pts
-Ex_mLevGro = np.array(Ex_mLev_tp1_Over_pLev_t)/m_pts
+Ex_cLevGroFac = np.array(Ex_cLev_tp1_Over_pLev_t)/c_pts
+Ex_mLevGroFac = np.array(Ex_mLev_tp1_Over_pLev_t)/m_pts
 Ex_mNrmGro = np.array(Ex_m_tp1_from_a_t)/m_pts
 # Ex_mGroExpAlt = np.array(np.exp(Ex_log_m_tp1-np.log(m_pts))) # Exponentiate expected log growth
 Ex_mGroExp = np.exp(Ex_mLog_tp1_minus_mLog_t_from_m_t)
@@ -823,10 +823,10 @@ ax.plot([0, mPlotMax], [APF, APF], color=color_cons)
 ax.plot([0, mPlotMax], [G, G]    , color=color_perm)
 
 # Plot the expected consumption growth factor
-ax.plot(m_pts, Ex_cLevGro        , color=color_cons)
+ax.plot(m_pts, Ex_cLevGroFac        , color=color_cons)
 
 # Plot expected growth for the level of market resources
-ax.plot(m_pts, Ex_mLevGro        , color=color_mrktLev)
+ax.plot(m_pts, Ex_mLevGroFac        , color=color_mrktLev)
 
 # Plot expected growth for the market resources ratio
 ax.plot(m_pts, Ex_mNrmGro        , color=color_mrktNrm)
@@ -847,61 +847,61 @@ Thorn = u"\u00DE"
 
 # If latex installed on system, plotting can look better
 if latexExists:
-    mNrmTrg_lbl = r'$1.00 = \Ex_{t}[\mNrm_{t+1}/\mNrm_{t}]:~ \Trg{m} \rightarrow~~$'
+    mNrmFacTrg_lbl = r'$1.00 = \Ex_{t}[\mNrm_{t+1}/\mNrm_{t}]:~ \Trg{m} \rightarrow~~$'
     PermGro_lbl = r"$\PermGroFac$"
-    cLevGro_lbl = r"$\Ex_{t}[\cLev_{t+1}/\cLev_{t}]$"
+    cLevGroFac_lbl = r"$\Ex_{t}[\cLev_{t+1}/\cLev_{t}]$"
     mNrmGro_lbl = r"$\Ex_{t}[\mNrm_{t+1}/\mNrm_{t}] ^{\nearrow}$"
-    mLevGro_lbl = r"$\Ex_{t}[\mLev_{t+1}/\mLev_{t}]$"
-    mNrmStE_lbl = r"$\check{\mNrm}_{\searrow}~$"    
+    mLevGroFac_lbl = r"$\Ex_{t}[\mLev_{t+1}/\mLev_{t}]$"
+    mNrmFacBal_lbl = r"$\check{\mNrm}_{\searrow}~$"    
     cLevAPF_lbl = r'$\pmb{\text{\TH}} = (\Rfree\DiscFac)^{1/\CRRA}$'
 else:
-    mNrmTrg_lbl = r'$\mathsf{E}_{t}[m_{t+1}/m_{t}]:~ \hat{m} \rightarrow~~$'
+    mNrmFacTrg_lbl = r'$\mathsf{E}_{t}[m_{t+1}/m_{t}]:~ \hat{m} \rightarrow~~$'
     PermGro_lbl = r"$\Gamma$"
-    cLevGro_lbl = r"$\mathsf{E}_{t}[\mathbf{c}_{t+1}/\mathbf{c}_{t}]$"
+    cLevGroFac_lbl = r"$\mathsf{E}_{t}[\mathbf{c}_{t+1}/\mathbf{c}_{t}]$"
     mNrmGro_lbl = r"$\mathsf{E}_{t}[m_{t+1}/m_{t}]^{\nearrow}$"
-    mLevGro_lbl = r"$\mathsf{E}_{t}[\mathbf{m}_{t+1}/\mathbf{m}_{t}]$"
-    mNrmStE_lbl = r"$m\check_{\searrow}$"    
+    mLevGroFac_lbl = r"$\mathsf{E}_{t}[\mathbf{m}_{t+1}/\mathbf{m}_{t}]$"
+    mNrmFacBal_lbl = r"$m\check_{\searrow}$"    
     cLevAPF_lbl = Thorn + r'$= (\mathsf{R}\beta)^{1/\rho}$'
 
 
-if mNrmTrg:  # Do not try to plot it if it does not exist!
-    ax.text(mNrmTrg-0.01, 1.0-0.001, 
-            mNrmTrg_lbl, ha='right')
+if mNrmFacTrg:  # Do not try to plot it if it does not exist!
+    ax.text(mNrmFacTrg-0.01, 1.0-0.001, 
+            mNrmFacTrg_lbl, ha='right')
 
-ax.plot(mNrmStE, G  , marker=".", markersize=12, color="black")  # Dot at mNrmStE 
-ax.plot(mNrmTrg, 1.0, marker=".", markersize=12, color="black")  # Dot at mNrmTrg 
+ax.plot(mNrmFacBal, G  , marker=".", markersize=12, color="black")  # Dot at mNrmFacBal 
+ax.plot(mNrmFacTrg, 1.0, marker=".", markersize=12, color="black")  # Dot at mNrmFacTrg 
 
-mLevGro_lbl_xVal = mPlotMax
-mLevGro_lbl_yVal = soln.E_Next_.mLev_tp1_Over_mLev_t(mLevGro_lbl_xVal)
+mLevGroFac_lbl_xVal = mPlotMax
+mLevGroFac_lbl_yVal = soln.E_Next_.mLev_tp1_Over_mLev_t(mLevGroFac_lbl_xVal)
 
-mTrgGro_lbl_xVal = 0.92*mNrmTrg
-mTrgGro_lbl_yVal = soln.E_Next_.m_tp1_Over_m_t(mTrgGro_lbl_xVal)
+mNrmGroFac_lbl_xVal = 0.92*mNrmFacTrg
+mNrmGroFac_lbl_yVal = soln.E_Next_.m_tp1_Over_m_t(mNrmGroFac_lbl_xVal)
 
 ax.text(mPlotMax+0.01, G-0.001,PermGro_lbl)
-ax.text(mPlotMax+0.01, Ex_cLevGro[-1]  ,cLevGro_lbl)
+ax.text(mPlotMax+0.01, Ex_cLevGroFac[-1]  ,cLevGroFac_lbl)
 ax.text(mPlotMax+0.01, APF-0.001       ,cLevAPF_lbl)
-ax.text(mNrmStE-0.06, G+0.001,mNrmStE_lbl              ,va='bottom',ha='left')
-ax.text(mTrgGro_lbl_xVal-0.01, mTrgGro_lbl_yVal-0.003,mNrmGro_lbl,va='bottom',ha='right')
-ax.text(mLevGro_lbl_xVal+0.01, mLevGro_lbl_yVal+0.001,mLevGro_lbl,va='top')
+ax.text(mNrmFacBal-0.06, G+0.001,mNrmFacBal_lbl              ,va='bottom',ha='left')
+ax.text(mNrmGroFac_lbl_xVal-0.01, mNrmGroFac_lbl_yVal-0.003,mNrmGro_lbl,va='bottom',ha='right')
+ax.text(mLevGroFac_lbl_xVal+0.01, mLevGroFac_lbl_yVal+0.001,mLevGroFac_lbl,va='top')
 
 # Ticks
 ax.tick_params(labelbottom=True, labelleft=True, left='off', right='on', bottom='on', top='off')
 plt.setp(ax.get_yticklabels(), fontsize=fssml)
 
-# Label the mNrmTrg with vertical lines
-plt.axvline(x=mNrmTrg,label='Individual Target', linestyle='dotted')
+# Label the mNrmFacTrg with vertical lines
+plt.axvline(x=mNrmFacTrg,label='Individual Target', linestyle='dotted')
 plt.legend()
 ax.set_ylabel('Growth Factors')
 makeFig('cGroTargetFig')
 
 # %%
-mNrmStE
+mNrmFacBal
 
 # %%
-np.exp(E_Next_.mLog_tp1_minus_mLog_t_from_m_t(mNrmStE))
+np.exp(E_Next_.mLog_tp1_minus_mLog_t_from_m_t(mNrmFacBal))
 
 # %% {"tags": []}
-E_Next_.mLev_tp1_Over_mLev_t(mNrmStE)
+E_Next_.mLev_tp1_Over_mLev_t(mNrmFacBal)
 
 # %%
 E_Next_.log_m_tp1_times_permShk_tp1_from_a_t(2)
