@@ -71,7 +71,7 @@
 # %% [markdown]
 # `# Setup Python Below`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # This cell does some setup
 
 # Import required python packages
@@ -105,7 +105,7 @@ if os.path.isdir('binder'):  # Folder defining requirements exists
 # %% [markdown]
 # `# Setup HARK Below`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # Import required HARK tools
 from HARK import __version__ as HARKversion
 from HARK.utilities import (
@@ -267,7 +267,7 @@ base_params['BoroCnstArt'] = None    # No artificial borrowing constraint
 # m_{t+1} &=& a_t \Rfree/(\PermGroFac \permShk_{t+1}) + \tranShk_{t+1} \\
 # \end{eqnarray*}
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # Set the parameters for the baseline results in the paper
 base_params['PermGroFac'] = [1.03]  # Permanent income growth factor
 base_params['Rfree'] = Rfree = 1.04  # Interest factor on assets
@@ -290,7 +290,7 @@ base_params['tranShkStd'] = [0.1]   # Standard deviation of log transitory incom
 # %% [markdown]
 # `# Create a buffer stock consumer instance:`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # Create a buffer stock consumer instance by invoking the IndShockConsumerType class
 # with the parameter dictionary "base_params"
 
@@ -309,7 +309,7 @@ cFunc = baseAgent_Fin.cFunc    # Shorthand
 # %% [markdown]
 # `# Plot the consumption rules:`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # Plot the different consumption rules for the different periods
 
 mPlotMin = 0
@@ -522,7 +522,7 @@ makeFig('cFuncsConverge')  # Comment out if you want to run uninterrupted
 # %% [markdown]
 # `# Create an example consumer instance where the GICNrm fails but the GIC Holds:`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # GICNrmFailsButGICRawHolds Example
 
 base_params['cycles'] = 0  # revert to default of infinite horizon
@@ -539,7 +539,7 @@ GICNrmFailsButGICRawHolds = \
 # %% [markdown]
 # `# Solve that consumer's problem:`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # Solve the model for these parameter values
 GICNrmFailsButGICRawHolds.tolerance = 0.0001
 
@@ -608,7 +608,7 @@ print('\ndistance_now < distance_original: ' +
 # %% [markdown]
 # `# Plot the results:`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # Plot GICNrmFailsButGICRawHolds
 
 soln = GICNrmFailsButGICRawHolds.solution[0]  # Short alias for solution
@@ -637,7 +637,7 @@ c_Stable_Ind_color = "black"  # "red"
 
 cVals_Lmting = cFunc(mPltVals)
 c_Stable_Ind = E_tp1_.c_where_E_Next_m_tp1_minus_m_t_eq_0(mPltVals)
-c_Stable_Agg = E_tp1_.c_where_E_Next_permGroShk_times_m_tp1_minus_m_t_eq_0(
+c_Stable_Agg = E_tp1_.c_where_E_Next_permShk_tp1_times_m_tp1_minus_m_t_eq_0(
     mPltVals)
 
 cVals_Lmting_lbl, = ax.plot(mPltVals, cVals_Lmting, color=cVals_Lmting_color)
@@ -683,7 +683,7 @@ print('Finite mNrmStE but infinite mNrmTrg')
 # %% [markdown]
 # `# Construct infinite horizon solution for consumer with baseline parameters:`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # Find the infinite horizon solution
 
 base_params['aXtraCount'] = base_params['aXtraCount'] * 20
@@ -719,24 +719,43 @@ baseAgent_Inf = IndShockConsumerType(
 # {\mNrm_{t}}\right]
 # \\ & = & \Ex_{t}\left[\frac{\PermGroFac (\aNrm_{t}\RNrm+\permShk_{t+1}\tranShk_{t+1})}
 # {\mNrm_{t}}\right]
-# %\\ & = & \Ex_{t}\left[\frac{\aNrm_{t}\Rfree+\tranShk_{t+1}}{\mNrm_{t}}\right]
 # \\ & = & \PermGroFac \left[\frac{\aNrm_{t}\RNrm+1}{\mNrm_{t}}\right]
 # \end{eqnarray*}
 
 # %% [markdown]
-# For $\mNrm$ things are slightly more complicated:
+# For $\mNrm$ things are only slightly more complicated:
 # \begin{eqnarray*}
 # \Ex_{t}[m_{t+1}]
 # & = & \Ex_{t}\left[(m_{t}-c_{t})(\Rfree/(\permShk_{t+1}\PermGroFac)) +\tranShk_{t+1}\right]\\
 # & = & a_{t}\Rfree\Ex_{t}\left[(\permShk_{t+1}\PermGroFac)^{-1}\right] +1 \\
 # \Ex_{t}\left[\frac{m_{t+1}}{m_{t}}\right] & = & \left(\frac{a_{t}\Rfree\Ex_{t}\left[(\permShk_{t+1}\PermGroFac)^{-1}\right]+1}{\mNrm_{t}}\right)
 # \end{eqnarray*}
-#
+
+# %% [markdown] {"tags": []}
+# The expectation of the growth in the log of $\mLev$ is a downward-adjusted value of the log of the growth factor:
+# \begin{eqnarray*}
+# \Ex_{t}[\log(\mLev_{t+1}/\mLev_{t})]
+# & = & \Ex_{t}\left[\log \PermGroFac \permShk_{t+1} \mNrm_{t+1}\right] - \log \mNrm_{t}
+# \\ & = & \Ex_{t}\left[\log \PermGroFac \left(\permShk_{t+1} (\aNrm_{t}\Rfree/(\PermGroFac \permShk_{t+1}))+\permShk_{t+1}\tranShk_{t+1}\right)\right]-\log \mNrm_{t}
+# \\ & = & \Ex_{t}\left[\log \PermGroFac (\aNrm_{t}\RNrm+\permShk_{t+1}\tranShk_{t+1}+1-1)\right] - \log 
+# {\mNrm_{t}}
+# \\ & = & 
+# \log \left(\PermGroFac 
+# (\aNrm_{t}\RNrm+1)\Ex_{t}\left[\left(
+# 1+\frac{\permShk_{t+1}\tranShk_{t+1}-1}{(\aNrm_{t}\RNrm+1)}
+# \right)
+# \right]\right) - \log {\mNrm_{t}}
+# \\ & = & \log \underbrace{\PermGroFac \left[\frac{\aNrm_{t}\RNrm+1}{\mNrm_{t}}\right]}_{\Ex_{t}[\mLev_{t+1}/\mLev_{t}]}+
+# \log \Ex_{t}\left[\left(1+
+# \frac{\permShk_{t+1}\tranShk_{t+1}-1}{(\aNrm_{t}\RNrm+1)}
+# \right)
+# \right]
+# \end{eqnarray*}
 
 # %% [markdown]
 # `# Solve problem of consumer with baseline parameters:`
 
-# %% {"jupyter": {"source_hidden": true}, "pycharm": {"name": "#%%\n"}, "tags": []}
+# %% {"pycharm": {"name": "#%%\n"}, "tags": []}
 # Solve baseline parameters agent
 tweaked_params = deepcopy(base_params)
 tweaked_params['DiscFac'] = 0.970  # Tweak to make figure clearer
@@ -749,7 +768,7 @@ baseAgent_Inf.solve(
 # %% [markdown]
 # `# Plot growth factors for various model elements at steady state:`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # Plot growth rates
 
 soln = baseAgent_Inf.solution[0]
@@ -758,7 +777,8 @@ Bilt, Pars, E_Next_ = soln.Bilt, soln.Pars, soln.E_Next_
 # Retrieve parameters (makes code more readable)
 Rfree, DiscFac, CRRA, G = Pars.Rfree, Pars.DiscFac, Pars.CRRA, Pars.PermGroFac
 
-color_cons, color_mrktLev, color_mrktNrm, color_perm = "blue", "red", "green", "black"
+color_cons, color_mrktLev, color_mrktNrm, color_perm, color_exp_E_mLog_Gro, color_exp_E_mLog_Gro_Alt = \
+    "blue", "red", "green", "black", "orange", "brown"
 
 mPlotMin, mCalcMax, mPlotMax = 1.0, 50, 1.8
 
@@ -776,15 +796,18 @@ Ex_cLev_tp1_Over_pLev_t = [
     soln.E_Next_.cLev_tp1_Over_pLev_t_from_a_t(a) for a in a_pts]
 Ex_mLev_tp1_Over_pLev_t = [
     soln.E_Next_.mLev_tp1_Over_pLev_t_from_a_t(a) for a in a_pts]
-Ex_mLog_tp1 = [
-    soln.E_Next_.mLog_tp1_from_a_t(a) for a in a_pts]
+#Ex_log_m_tp1 = [
+#    soln.E_Next_.mLog_tp1_from_a_t(a) for a in a_pts]
+Ex_mLog_tp1_minus_mLog_t_from_m_t = [
+    soln.E_Next_.mLog_tp1_minus_mLog_t_from_m_t(m) for m in m_pts]
 Ex_m_tp1_from_a_t = [
     soln.E_Next_.m_tp1_from_a_t(a) for a in a_pts]
 
 Ex_cLevGro = np.array(Ex_cLev_tp1_Over_pLev_t)/c_pts
 Ex_mLevGro = np.array(Ex_mLev_tp1_Over_pLev_t)/m_pts
 Ex_mNrmGro = np.array(Ex_m_tp1_from_a_t)/m_pts
-Ex_mGroExp = np.array(np.exp(Ex_mLog_tp1)/m_pts) # Exponentiate expected log growth
+# Ex_mGroExpAlt = np.array(np.exp(Ex_log_m_tp1-np.log(m_pts))) # Exponentiate expected log growth
+Ex_mGroExp = np.exp(Ex_mLog_tp1_minus_mLog_t_from_m_t)
 
 # Absolute Patience Factor = lower bound of consumption growth factor
 APF = (Rfree*DiscFac)**(1.0/CRRA)
@@ -810,10 +833,12 @@ ax.plot(m_pts, Ex_mNrmGro        , color=color_mrktNrm)
 
 # To reduce clutter, the exponentiated log growth is left out
 # Plot expected growth for the market resources ratio
-#ax.plot(m_pts, Ex_mGroExp        , color=color_mLog)
+#ax.plot(m_pts, Ex_mGroExpAlt        , color=color_exp_E_mLog_Gro_Alt)
+
+ax.plot(m_pts, Ex_mGroExp        , color=color_exp_E_mLog_Gro)
 
 # Axes limits
-GroFacMin, GroFacMax, xMin = 0.98, 1.06, 1.1
+GroFacMin, GroFacMax, xMin = 0.976, 1.06, 1.1
 # GroFacMin, GroFacMax, xMin = 0.001, 100.0, 0.01
 ax.set_xlim(xMin, mPlotMax * 1.1)
 ax.set_ylim(GroFacMin, GroFacMax)
@@ -860,13 +885,29 @@ ax.text(mTrgGro_lbl_xVal-0.01, mTrgGro_lbl_yVal-0.003,mNrmGro_lbl,va='bottom',ha
 ax.text(mLevGro_lbl_xVal+0.01, mLevGro_lbl_yVal+0.001,mLevGro_lbl,va='top')
 
 # Ticks
-#ax.tick_params(labelbottom=False, labelleft=True, left='off', right='on', bottom='on', top='off')
 ax.tick_params(labelbottom=True, labelleft=True, left='off', right='on', bottom='on', top='off')
 plt.setp(ax.get_yticklabels(), fontsize=fssml)
+
+# Label the mNrmTrg with vertical lines
 plt.axvline(x=mNrmTrg,label='Individual Target', linestyle='dotted')
 plt.legend()
 ax.set_ylabel('Growth Factors')
 makeFig('cGroTargetFig')
+
+# %%
+mNrmStE
+
+# %%
+np.exp(E_Next_.mLog_tp1_minus_mLog_t_from_m_t(mNrmStE))
+
+# %% {"tags": []}
+E_Next_.mLev_tp1_Over_mLev_t(mNrmStE)
+
+# %%
+E_Next_.log_m_tp1_times_permShk_tp1_from_a_t(2)
+
+# %%
+stop
 
 # %% [markdown] {"tags": []}
 # ### [Consumption Function Bounds](https://econ-ark.github.io/BufferStockTheory/#AnalysisOfTheConvergedConsumptionFunction)
@@ -878,7 +919,7 @@ makeFig('cGroTargetFig')
 # %% [markdown] {"tags": []}
 # `# Define bounds for figure:`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # Define mpc_Min, h_inf and PF consumption function, upper and lower bound of c function
 
 baseAgent_Inf = IndShockConsumerType(**base_params, quietly=True)  # construct it silently
@@ -903,7 +944,7 @@ def cFunc_BotBnd(m): return mpc_Min * m
 # %% [markdown]
 # `# Plot figure showing bounds`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # Plot the consumption function and its bounds
 
 cMaxLabel = r'$\overline{c}(m)= (m-1+h)\tilde{\kappa}$'
@@ -978,7 +1019,7 @@ makeFig('cFuncBounds')
 # %% [markdown]
 # `# Make and plot figure showing the upper and lower limites of the MPC:`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # The last figure shows the upper and lower limits of the MPC
 
 mPlotMax = 8
@@ -1048,7 +1089,7 @@ makeFig('MPCLimits')
 # %% [markdown] {"tags": []}
 # ### Appendix: Perfect foresight agent failing both the FHWC and RIC
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 PFGICRawHoldsFHWCFailsRICFails_par = deepcopy(init_perfect_foresight)
 
 # Replace parameters.
