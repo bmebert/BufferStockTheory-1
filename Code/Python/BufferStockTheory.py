@@ -71,7 +71,7 @@
 # %% [markdown]
 # `# Setup Python Below`
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # This cell does some setup
 
 # Import required python packages
@@ -105,7 +105,7 @@ if os.path.isdir('binder'):  # Folder defining requirements exists
 # %% [markdown]
 # `# Setup HARK Below`
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # Import required HARK tools
 from HARK import __version__ as HARKversion
 from HARK.utilities import (
@@ -267,7 +267,7 @@ base_params['BoroCnstArt'] = None    # No artificial borrowing constraint
 # m_{t+1} &=& a_t \Rfree/(\PermGroFac \permShk_{t+1}) + \tranShk_{t+1} \\
 # \end{eqnarray*}
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # Set the parameters for the baseline results in the paper
 base_params['PermGroFac'] = [1.03]  # Permanent income growth factor
 base_params['Rfree'] = Rfree = 1.04  # Interest factor on assets
@@ -290,7 +290,7 @@ base_params['tranShkStd'] = [0.1]   # Standard deviation of log transitory incom
 # %% [markdown]
 # `# Create a buffer stock consumer instance:`
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # Create a buffer stock consumer instance by invoking the IndShockConsumerType class
 # with the parameter dictionary "base_params"
 
@@ -309,7 +309,7 @@ cFunc = baseAgent_Fin.cFunc    # Shorthand
 # %% [markdown]
 # `# Plot the consumption rules:`
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # Plot the different consumption rules for the different periods
 
 mPlotMin = 0
@@ -522,7 +522,7 @@ makeFig('cFuncsConverge')  # Comment out if you want to run uninterrupted
 # %% [markdown]
 # `# Create an example consumer instance where the GICNrm fails but the GIC Holds:`
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # GICNrmFailsButGICRawHolds Example
 
 base_params['cycles'] = 0  # revert to default of infinite horizon
@@ -539,7 +539,7 @@ GICNrmFailsButGICRawHolds = \
 # %% [markdown]
 # `# Solve that consumer's problem:`
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # Solve the model for these parameter values
 GICNrmFailsButGICRawHolds.tolerance = 0.0001
 
@@ -608,7 +608,7 @@ print('\ndistance_now < distance_original: ' +
 # %% [markdown]
 # `# Plot the results:`
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # Plot GICNrmFailsButGICRawHolds
 
 soln = GICNrmFailsButGICRawHolds.solution[0]  # Short alias for solution
@@ -683,7 +683,7 @@ print('Finite mNrmStE but infinite mNrmTrg')
 # %% [markdown]
 # `# Construct infinite horizon solution for consumer with baseline parameters:`
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # Find the infinite horizon solution
 
 base_params['aXtraCount'] = base_params['aXtraCount'] * 20
@@ -736,7 +736,7 @@ baseAgent_Inf = IndShockConsumerType(
 # %% [markdown]
 # `# Solve problem of consumer with baseline parameters:`
 
-# %% {"pycharm": {"name": "#%%\n"}, "tags": []}
+# %% {"jupyter": {"source_hidden": true}, "pycharm": {"name": "#%%\n"}, "tags": []}
 # Solve baseline parameters agent
 tweaked_params = deepcopy(base_params)
 tweaked_params['DiscFac'] = 0.970  # Tweak to make figure clearer
@@ -749,7 +749,7 @@ baseAgent_Inf.solve(
 # %% [markdown]
 # `# Plot growth factors for various model elements at steady state:`
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # Plot growth rates
 
 soln = baseAgent_Inf.solution[0]
@@ -868,18 +868,6 @@ plt.legend()
 ax.set_ylabel('Growth Factors')
 makeFig('cGroTargetFig')
 
-# %% {"tags": []}
-E_Next_.mDif_tp1_from_a_t(0.0000000000000002),E_Next_.mDif_tp1_from_a_t(1)
-
-# %% {"tags": []}
-np.dot(np.log(1.+0.99*((Bilt.tranShkValsBcst*Bilt.permShkValsBcst-1)))          
-                ,
-                Bilt.ShkPrbs)
-
-
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
-stop
-
 # %% [markdown] {"tags": []}
 # ### [Consumption Function Bounds](https://econ-ark.github.io/BufferStockTheory/#AnalysisOfTheConvergedConsumptionFunction)
 # [The next figure](https://econ-ark.github.io/BufferStockTheory/#cFuncBounds)
@@ -890,7 +878,7 @@ stop
 # %% [markdown] {"tags": []}
 # `# Define bounds for figure:`
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # Define mpc_Min, h_inf and PF consumption function, upper and lower bound of c function
 
 baseAgent_Inf = IndShockConsumerType(**base_params, quietly=True)  # construct it silently
@@ -915,7 +903,7 @@ def cFunc_BotBnd(m): return mpc_Min * m
 # %% [markdown]
 # `# Plot figure showing bounds`
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # Plot the consumption function and its bounds
 
 cMaxLabel = r'$\overline{c}(m)= (m-1+h)\tilde{\kappa}$'
@@ -990,7 +978,7 @@ makeFig('cFuncBounds')
 # %% [markdown]
 # `# Make and plot figure showing the upper and lower limites of the MPC:`
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # The last figure shows the upper and lower limits of the MPC
 
 mPlotMax = 8
@@ -1060,7 +1048,7 @@ makeFig('MPCLimits')
 # %% [markdown] {"tags": []}
 # ### Appendix: Perfect foresight agent failing both the FHWC and RIC
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 PFGICRawHoldsFHWCFailsRICFails_par = deepcopy(init_perfect_foresight)
 
 # Replace parameters.
