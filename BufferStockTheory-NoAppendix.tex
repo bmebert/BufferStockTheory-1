@@ -78,6 +78,7 @@
 \pagenumbering{gobble} % Prevent numbering for pages including the TOC and title page
 
 \ifthenelse{\boolean{Web}}{
+  \tableofcontents
 }{
   \begin{minipage}{0.9\textwidth}
     \tiny \thankstext
@@ -145,11 +146,6 @@ The final section elaborates the conditions under which, even with a fixed aggre
 \subsection{Setup}\label{subsec:Setup}
 
 The infinite horizon solution is the (limiting) first-period solution to a sequence of finite-horizon problems as the horizon (the last period of life) becomes arbitrarily distant.
-
-
-\onlyinsubfile{\input{\LaTeXInputs/bibliography_blend}}
-\end{document}
-\endinput
 
 That is, for the value function, fixing a terminal date $T$,  we are interested in $\vLevBF_{T-n}$ in the sequence of value functions $\{\vLevBF_{T},\vLevBF_{T-1},\ldots,\vLevBF_{T-n}\}$.  We will say that the problem has a `nondegenerate' infinite horizon solution if, corresponding to that $\vLevBF$, as $n \uparrow \infty$ there is a limiting consumption function $\usual{\cFunc}(\mRat) = \lim_{n \uparrow \infty} \cFunc_{T-n}$ which is neither $\usual{\cFunc}(\mRat)=0$ everywhere (for all $\mRat$) nor $\usual{\cFunc}(\mRat)=\infty$ everywhere.
 

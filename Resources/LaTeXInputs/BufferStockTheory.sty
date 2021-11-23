@@ -99,9 +99,8 @@
   \hypertarget{#1}{}%
 }
 
-%\usepackage[headsepline=0.75pt]{scrlayer-scrpage}
-\usepackage{scrlayer-scrpage}
-%\setkomafont{pagehead}{\normalfont\sffamily}% <- changed
+% Layers at top of page make no sense if there is no page
+\ifthenelse{\boolean{Web}}{}{\usepackage{scrlayer-scrpage}}
 
 \RedeclareSectionCommand[
 tocindent=0cm,
