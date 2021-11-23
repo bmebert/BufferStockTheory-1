@@ -657,10 +657,10 @@ ax.tick_params(labelbottom=False, labelleft=False, left='off',
 ax.legend(handles=[c_Stable_Ind_lbl, c_Stable_Agg_lbl])
 ax.legend(prop=dict(size=fsmid))
 
-mNrmFacBal = Bilt.mNrmFacBal
-cNrmBal = c_Stable_Agg = cFunc(mNrmFacBal)
+mNrmFacBal = Bilt.mNrmStE
+cNrmFacBal = c_Stable_Agg = cFunc(mNrmFacBal)
 
-ax.plot(mNrmFacBal, cNrmBal, marker=".", markersize=15, color="black")  # Dot at Bal point
+ax.plot(mNrmFacBal, cNrmFacBal, marker=".", markersize=15, color="black")  # Dot at Bal point
 ax.text(1, 0.6, "$\mathrm{c}(m_{t})$", fontsize=fsmid)  # label cFunc
 
 if latexExists:
@@ -768,6 +768,9 @@ baseAgent_Inf.solve(
 # %% [markdown]
 # `# Plot growth factors for various model elements at steady state:`
 
+# %%
+dir(soln)
+
 # %% {"tags": []}
 # Plot growth rates
 
@@ -777,13 +780,13 @@ Bilt, Pars, E_Next_ = soln.Bilt, soln.Pars, soln.E_Next_
 # Retrieve parameters (makes code more readable)
 Rfree, DiscFac, CRRA, G = Pars.Rfree, Pars.DiscFac, Pars.CRRA, Pars.PermGroFac
 
-color_cons, color_mrktLev, color_mrktNrm, color_perm, color_exp_E_mLog_Gro, color_exp_E_mLog_Gro_Alt = \
-    "blue", "red", "green", "black", "orange", "brown"
+color_cons, color_mrktLev, color_mrktNrm, color_perm, color_mLogGroExp = \
+    "blue", "red", "green", "black", "orange"
 
 mPlotMin, mCalcMax, mPlotMax = 1.0, 50, 1.8
 
 # Get steady state equilibrium and target values for m
-mNrmFacBal, mNrmFacTrg = Bilt.mNrmFacBal, Bilt.mNrmFacTrg
+mNrmFacBal, mNrmFacTrg = Bilt.mNrmStE, Bilt.mNrmTrg
 
 pts_num = 200  # Plot this many points
 
@@ -796,8 +799,6 @@ Ex_cLev_tp1_Over_pLev_t = [
     soln.E_Next_.cLev_tp1_Over_pLev_t_from_a_t(a) for a in a_pts]
 Ex_mLev_tp1_Over_pLev_t = [
     soln.E_Next_.mLev_tp1_Over_pLev_t_from_a_t(a) for a in a_pts]
-#Ex_log_m_tp1 = [
-#    soln.E_Next_.mLog_tp1_from_a_t(a) for a in a_pts]
 Ex_mLog_tp1_minus_mLog_t_from_m_t = [
     soln.E_Next_.mLog_tp1_minus_mLog_t_from_m_t(m) for m in m_pts]
 Ex_m_tp1_from_a_t = [
@@ -805,9 +806,8 @@ Ex_m_tp1_from_a_t = [
 
 Ex_cLevGroFac = np.array(Ex_cLev_tp1_Over_pLev_t)/c_pts
 Ex_mLevGroFac = np.array(Ex_mLev_tp1_Over_pLev_t)/m_pts
-Ex_mNrmGro = np.array(Ex_m_tp1_from_a_t)/m_pts
-# Ex_mGroExpAlt = np.array(np.exp(Ex_log_m_tp1-np.log(m_pts))) # Exponentiate expected log growth
-Ex_mGroExp = np.exp(Ex_mLog_tp1_minus_mLog_t_from_m_t)
+Ex_mNrmGroFac = np.array(Ex_m_tp1_from_a_t)/m_pts
+Ex_mLogGroExp = np.exp(Ex_mLog_tp1_minus_mLog_t_from_m_t)
 
 # Absolute Patience Factor = lower bound of consumption growth factor
 APF = (Rfree*DiscFac)**(1.0/CRRA)
@@ -829,13 +829,10 @@ ax.plot(m_pts, Ex_cLevGroFac        , color=color_cons)
 ax.plot(m_pts, Ex_mLevGroFac        , color=color_mrktLev)
 
 # Plot expected growth for the market resources ratio
-ax.plot(m_pts, Ex_mNrmGro        , color=color_mrktNrm)
+ax.plot(m_pts, Ex_mNrmGroFac        , color=color_mrktNrm)
 
 # To reduce clutter, the exponentiated log growth is left out
-# Plot expected growth for the market resources ratio
-#ax.plot(m_pts, Ex_mGroExpAlt        , color=color_exp_E_mLog_Gro_Alt)
-
-ax.plot(m_pts, Ex_mGroExp        , color=color_exp_E_mLog_Gro)
+#ax.plot(m_pts, Ex_mLogGroExp        , color=color_mLogGroExp)
 
 # Axes limits
 GroFacMin, GroFacMax, xMin = 0.976, 1.06, 1.1
@@ -850,7 +847,7 @@ if latexExists:
     mNrmFacTrg_lbl = r'$1.00 = \Ex_{t}[\mNrm_{t+1}/\mNrm_{t}]:~ \Trg{m} \rightarrow~~$'
     PermGro_lbl = r"$\PermGroFac$"
     cLevGroFac_lbl = r"$\Ex_{t}[\cLev_{t+1}/\cLev_{t}]$"
-    mNrmGro_lbl = r"$\Ex_{t}[\mNrm_{t+1}/\mNrm_{t}] ^{\nearrow}$"
+    mNrmGroFac_lbl = r"$\Ex_{t}[\mNrm_{t+1}/\mNrm_{t}] ^{\nearrow}$"
     mLevGroFac_lbl = r"$\Ex_{t}[\mLev_{t+1}/\mLev_{t}]$"
     mNrmFacBal_lbl = r"$\check{\mNrm}_{\searrow}~$"    
     cLevAPF_lbl = r'$\pmb{\text{\TH}} = (\Rfree\DiscFac)^{1/\CRRA}$'
@@ -858,7 +855,7 @@ else:
     mNrmFacTrg_lbl = r'$\mathsf{E}_{t}[m_{t+1}/m_{t}]:~ \hat{m} \rightarrow~~$'
     PermGro_lbl = r"$\Gamma$"
     cLevGroFac_lbl = r"$\mathsf{E}_{t}[\mathbf{c}_{t+1}/\mathbf{c}_{t}]$"
-    mNrmGro_lbl = r"$\mathsf{E}_{t}[m_{t+1}/m_{t}]^{\nearrow}$"
+    mNrmGroFac_lbl = r"$\mathsf{E}_{t}[m_{t+1}/m_{t}]^{\nearrow}$"
     mLevGroFac_lbl = r"$\mathsf{E}_{t}[\mathbf{m}_{t+1}/\mathbf{m}_{t}]$"
     mNrmFacBal_lbl = r"$m\check_{\searrow}$"    
     cLevAPF_lbl = Thorn + r'$= (\mathsf{R}\beta)^{1/\rho}$'
@@ -881,7 +878,7 @@ ax.text(mPlotMax+0.01, G-0.001,PermGro_lbl)
 ax.text(mPlotMax+0.01, Ex_cLevGroFac[-1]  ,cLevGroFac_lbl)
 ax.text(mPlotMax+0.01, APF-0.001       ,cLevAPF_lbl)
 ax.text(mNrmFacBal-0.06, G+0.001,mNrmFacBal_lbl              ,va='bottom',ha='left')
-ax.text(mNrmGroFac_lbl_xVal-0.01, mNrmGroFac_lbl_yVal-0.003,mNrmGro_lbl,va='bottom',ha='right')
+ax.text(mNrmGroFac_lbl_xVal-0.01, mNrmGroFac_lbl_yVal-0.003,mNrmGroFac_lbl,va='bottom',ha='right')
 ax.text(mLevGroFac_lbl_xVal+0.01, mLevGroFac_lbl_yVal+0.001,mLevGroFac_lbl,va='top')
 
 # Ticks
@@ -893,21 +890,6 @@ plt.axvline(x=mNrmFacTrg,label='Individual Target', linestyle='dotted')
 plt.legend()
 ax.set_ylabel('Growth Factors')
 makeFig('cGroTargetFig')
-
-# %%
-mNrmFacBal
-
-# %%
-np.exp(E_Next_.mLog_tp1_minus_mLog_t_from_m_t(mNrmFacBal))
-
-# %% {"tags": []}
-E_Next_.mLev_tp1_Over_mLev_t(mNrmFacBal)
-
-# %%
-E_Next_.log_m_tp1_times_permShk_tp1_from_a_t(2)
-
-# %%
-stop
 
 # %% [markdown] {"tags": []}
 # ### [Consumption Function Bounds](https://econ-ark.github.io/BufferStockTheory/#AnalysisOfTheConvergedConsumptionFunction)
