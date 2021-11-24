@@ -71,7 +71,7 @@
 # %% [markdown]
 # `# Setup Python Below`
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # This cell does some setup
 
 # Import required python packages
@@ -105,7 +105,7 @@ if os.path.isdir('binder'):  # Folder defining requirements exists
 # %% [markdown]
 # `# Setup HARK Below`
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # Import required HARK tools
 from HARK import __version__ as HARKversion
 from HARK.utilities import (
@@ -156,7 +156,7 @@ base_params['BoroCnstArt'] = None    # No artificial borrowing constraint
 # %% [markdown] {"tags": []}
 # ## [The Problem](http://econ-ark.github.io/BufferStockTheory/BufferStockTheory/#The-Problem)
 #
-# The paper defines and calibrates a small set of parameters:
+# The paper [calibrates](https://econ-ark.github.io/BufferStockTheory/#Calibration) a small set of parameters:
 #
 # \begin{align}
 #  &
@@ -225,7 +225,7 @@ base_params['BoroCnstArt'] = None    # No artificial borrowing constraint
 # \mathbf{v}_{t} = \sum_{i=0}^{n} \DiscFac^{n}\mathrm{u}(\mathbf{c}_{t+n})
 # \end{equation}
 #
-# The infinite-horizon solution is the limit of the first period solution $\mathrm{c}_{T-n}$ as the horizon $n$ goes to infinity.
+# The infinite-horizon solution is defined as the limit of the first period solution $\mathrm{c}_{T-n}$ as the horizon $n$ goes to infinity.
 
 # %% [markdown] {"tags": []}
 # ### Details
@@ -267,7 +267,7 @@ base_params['BoroCnstArt'] = None    # No artificial borrowing constraint
 # m_{t+1} &=& a_t \Rfree/(\PermGroFac \permShk_{t+1}) + \tranShk_{t+1} \\
 # \end{eqnarray*}
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # Set the parameters for the baseline results in the paper
 base_params['PermGroFac'] = [1.03]  # Permanent income growth factor
 base_params['Rfree'] = Rfree = 1.04  # Interest factor on assets
@@ -290,7 +290,7 @@ base_params['tranShkStd'] = [0.1]   # Standard deviation of log transitory incom
 # %% [markdown]
 # `# Create a buffer stock consumer instance:`
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # Create a buffer stock consumer instance by invoking the IndShockConsumerType class
 # with the parameter dictionary "base_params"
 
@@ -309,7 +309,7 @@ cFunc = baseAgent_Fin.cFunc    # Shorthand
 # %% [markdown]
 # `# Plot the consumption rules:`
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # Plot the different consumption rules for the different periods
 
 mPlotMin = 0
@@ -368,7 +368,7 @@ makeFig('cFuncsConverge')  # Comment out if you want to run uninterrupted
 #
 # ### [The Finite Human Wealth Condition](http://econ-ark.github.io/BufferStockTheory/#Human-Wealth)
 #
-# Human wealth for a perfect foresight consumer is the present discounted value of future income:
+# Human wealth for a perfect foresight consumer is the present discounted value of future noncapital income:
 #
 # \begin{eqnarray}\notag
 # \hLev_{t} & = & \Ex_{t}[\pLev_{t} + \Rfree^{-1} \pLev_{t+1} + \Rfree^{2} \pLev_{t+2} ... ] \\ \notag
@@ -381,7 +381,7 @@ makeFig('cFuncsConverge')  # Comment out if you want to run uninterrupted
 # %% [markdown] {"tags": []}
 # ### [Absolute Patience and the AIC](https://econ-ark.github.io/BufferStockTheory/#AIC)
 #
-# The paper defines the Absolute Patience Factor [(APF)](https://econ-ark.github.io/BufferStockTheory/#APF) as being equal to the ratio $\cLev_{t+1}/\cLev_{t}$ for a perfect foresight consumer.  (The Old English character Thorn used for this object in the paper cannot reliably be rendered in Jupyter notebooks; it may appear as capital Phi):
+# The paper defines the Absolute Patience Factor [(APF)](https://econ-ark.github.io/BufferStockTheory/#APF) as being equal to the ratio $\cLev_{t+1}/\cLev_{t}$ for a perfect foresight consumer.  (The Old English character [Thorn](https://en.wikipedia.org/wiki/Thorn_(letter)) used for this object in the paper cannot reliably be rendered in Jupyter notebooks; it may appear as capital Phi):
 #
 # \begin{equation}
 # \PatFac = (\Rfree \DiscFac)^{1/\CRRA}
@@ -411,7 +411,7 @@ makeFig('cFuncsConverge')  # Comment out if you want to run uninterrupted
 # ### [The Finite Value of Autarky Condition (FVAC)](https://econ-ark.github.io/BufferStockTheory/#Autarky-Value)
 
 # %% [markdown]
-# The paper [shows](https://econ-ark.github.io/BufferStockTheory/#Autarky-Value) that a consumer who planned to spend his permanent income $\{ \pLev_{t}, \pLev_{t+1}, ...\} $ in every period would have value defined by
+# The paper [shows](https://econ-ark.github.io/BufferStockTheory/#Autarky-Value) that a consumer who planned to spend his permanent noncapital income $\{ \pLev_{t}, \pLev_{t+1}, ...\} $ in every period would have value defined by
 #
 # \begin{equation*}
 # \vLev_{t}^{\text{autarky}} = \uFunc(\pLev_{t})\left(\frac{1}{1-\DiscFac \PermGroFac^{1-\CRRA} \Ex[\permShk^{1-\CRRA}]}\right)
@@ -430,7 +430,7 @@ makeFig('cFuncsConverge')  # Comment out if you want to run uninterrupted
 #
 # If the RIC does not hold, the consumer is so patient that the optimal consumption function approaches zero as the horizon extends indefinitely.
 #
-# When the probability of unemployment is $\UnempPrb$, the paper articulates an analogous (but weaker) condition:
+# When the probability of unemployment is $\UnempPrb$, the paper articulates an analogous (but weaker) return impatience condition:
 #
 # \begin{eqnarray}
 #  \UnempPrb^{1/\CRRA} \APF/\Rfree & < & 1
@@ -472,7 +472,7 @@ makeFig('cFuncsConverge')  # Comment out if you want to run uninterrupted
 # %% [markdown]
 # ## [Unique and Stable Values of $\mNrm$](https://econ-ark.github.io/BufferStockTheory/#Unique-Stable-Points)
 #
-# Assuming that the **FVAC** and **WRIC** hold so that the problem has a nondegenerate solution, under more stringent conditions its dynamics can also be shown to exhibit certain kinds of stability.  Two particularly useful kinds of stability are existence of a 'target' value of market resources $\Trg{\mNrm}$ (`mNrmFacTrg` in the toolkit) and a 'pseudo-steady-state' value $\Bal{\mNrm}$ (`mBal` in the toolkit).
+# Assuming that the **FVAC** and **WRIC** hold so that the problem has a nondegenerate solution, under more stringent conditions its dynamics can also be shown to exhibit certain kinds of stability.  Two particularly useful kinds of stability are existence of a 'target' value of market resources $\Trg{\mNrm}$ (`mNrmFacTrg` in the toolkit) and a 'pseudo-steady-state' value $\Bal{\mNrm}$ (`mNrmFacBal` in the toolkit).
 #
 # ### [If the GIC-Nrm Holds, $\exists$ a finite 'target' $\mNrm$](https://econ-ark.github.io/BufferStockTheory/#onetarget)
 #
@@ -494,9 +494,9 @@ makeFig('cFuncsConverge')  # Comment out if you want to run uninterrupted
 #
 # which can be solved numerically for the unique $\Trg{\mNrm}$ that satisfies it.
 #
-# ### [If the GIC-Raw Holds, $\exists$ a finite 'pseudo-steady-state' $\mNrm$](https://econ-ark.github.io/BufferStockTheory/#Collective-Stability)
+# ### [If the GIC-Raw Holds, $\exists$ a balanced growth 'pseudo-steady-state' $\mNrm$](https://econ-ark.github.io/BufferStockTheory/#pseudo-steady-state)
 #
-# Section [Collective Stability and the Pseudo-Steady-State](https://econ-ark.github.io/BufferStockTheory/#Collective-Stability) shows that, under parameter values for which the limiting consumption function exists, if the **GIC** holds then there will be a value $\Bal{m}$ such that:
+# Section [Individual Balanced-Growth 'pseudo steady state'](https://econ-ark.github.io/BufferStockTheory/#pseudo-steady-state) shows that, under parameter values for which the limiting consumption function exists, if the **GIC** holds then there will be a value $\Bal{m}$ such that:
 #
 # \begin{eqnarray*}
 # \Ex_{t}[\mLev_{t+1}/\mLev_{t}] & > & \PermGroFac~\text{if $m_{t} < \Bal{m}$} \\
@@ -515,14 +515,14 @@ makeFig('cFuncsConverge')  # Comment out if you want to run uninterrupted
 #
 # ### [Example With Finite Pseudo-Steady-State But Infinite Target Wealth](https://econ-ark.github.io/BufferStockTheory/#GICNrmFailsButGICRawHolds)
 #
-# [A figure](https://econ-ark.github.io/BufferStockTheory/#GICNrmFailsButGICRawHolds) depicts a solution when the **FVAC** (Finite Value of Autarky Condition) and **WRIC** hold (so that the model has a solution), the **GIC** holds, so the model has a pseudo-steady-state $\Bal{\mNrm}$, but the **GIC-Nrm** fails, so the model does not have an individual target wealth ratio $\Trg{\mNrm}$ (or, rather, the target wealth ratio is infinity, as can be seen by the fact that the level of $\cNrm$ is always below the level that would keep $\Ex_{t}[\Delta \mNrm_{t+1}] = 0$).
+# [A figure](https://econ-ark.github.io/BufferStockTheory/#GICNrmFailsButGICRawHolds) depicts a solution when the **FVAC** [(Finite Value of Autarky Condition)](https://econ-ark.github.io/BufferStockTheory/#FVAC) and [**WRIC**](https://econ-ark.github.io/BufferStockTheory/#FVAC) hold (so that the model has a solution), the [**GIC**](https://econ-ark.github.io/BufferStockTheory/#GICRaw) holds, so the model has a pseudo-steady-state $\Bal{\mNrm}$, but the [**GIC-Nrm**](https://econ-ark.github.io/BufferStockTheory/#GICNrm) fails, so the model does not have an individual target wealth ratio $\Trg{\mNrm}$ (or, rather, the target wealth ratio is infinity, as can be seen by the fact that the level of $\cNrm$ is always below the level that would keep $\Ex_{t}[\Delta \mNrm_{t+1}] = 0$).
 #
 # This example was constructed by quadrupling the variance of the permanent shocks from the baseline parameterization.  The extra precautionary saving induced by increased uncertainty is what pushes the agent into the region without a target wealth ratio.
 
 # %% [markdown]
 # `# Create an example consumer instance where the GICNrm fails but the GIC Holds:`
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # GICNrmFailsButGICRawHolds Example
 
 base_params['cycles'] = 0  # revert to default of infinite horizon
@@ -541,7 +541,7 @@ GICNrmFailsButGICRawHolds = \
 
 # %% {"tags": []}
 # Solve the model for these parameter values
-GICNrmFailsButGICRawHolds.tolerance = 0.0001
+GICNrmFailsButGICRawHolds.tolerance = 0.0001   # How close is enough
 
 GICNrmFailsButGICRawHolds.solve(quietly=True)  # Suppress output
 
@@ -595,7 +595,6 @@ GICNrmFailsButGICRawHolds.update_assets_grid()
 # and decrease error tolerance
 GICNrmFailsButGICRawHolds.tolerance = GICNrmFailsButGICRawHolds.tolerance/10
 
-
 GICNrmFailsButGICRawHolds.solution[0].stge_kind['iter_status'] = 'iterator'
 # continue solving
 GICNrmFailsButGICRawHolds.solve(messaging_level=logging.DEBUG, quietly=False)
@@ -609,13 +608,17 @@ print('\ndistance_now < distance_original: ' +
 # `# Plot the results:`
 
 # %% {"tags": []}
-# Plot GICNrmFailsButGICRawHolds
+# Plot https://econ-ark.github.io/BufferStockTheory/#GICNrmFailsButGICRawHolds
 
 soln = GICNrmFailsButGICRawHolds.solution[0]  # Short alias for solution
 
+# Get objects that have been Built, parameters configured, and expectations 
 Bilt, Pars, E_tp1_ = soln.Bilt, soln.Pars, soln.E_Next_
+
+# consumption function
 cFunc = Bilt.cFunc
 
+# Initialize figure setup
 fig, ax = plt.subplots(figsize=(12, 8))
 
 [xMin, xMax] = [0.0, 8.0]
@@ -625,26 +628,26 @@ yMax = E_tp1_.c_where_E_Next_m_tp1_minus_m_t_eq_0(xMax)*1.3
 mPltVals = np.linspace(xMin, xMax, mPts)
 
 if latexExists:
-    c_Stable_Ind_txt = "$\Ex_{t}[\Delta m_{t+1}] = 0$"
-    c_Stable_Agg_txt = "$\Ex_{t}[{\mathbf{m}}_{t+1}/{\mathbf{m}}_{t}] = \PermGroFac$"
+    c_Stable_Trg_txt = "$\Ex_{t}[\Delta m_{t+1}] = 0$"
+    c_Stable_Bal_txt = "$\Ex_{t}[{\mathbf{m}}_{t+1}/{\mathbf{m}}_{t}] = \PermGroFac$"
 else:
-    c_Stable_Ind_txt = "$\mathsf{E}_{t}[\Delta m_{t+1}] = 0$"
-    c_Stable_Agg_txt = "$\mathsf{E}_{t}[\mathbf{m}_{t+1}/\mathbf{m}_{t}] = \Gamma$"
+    c_Stable_Trg_txt = "$\mathsf{E}_{t}[\Delta m_{t+1}] = 0$"
+    c_Stable_Bal_txt = "$\mathsf{E}_{t}[\mathbf{m}_{t+1}/\mathbf{m}_{t}] = \Gamma$"
 
 cVals_Lmting_color = "black"
-c_Stable_Agg_color = "black"  # "blue"
-c_Stable_Ind_color = "black"  # "red"
+c_Stable_Bal_color = "black"  # or "blue"
+c_Stable_Trg_color = "black"  # or "red"
 
 cVals_Lmting = cFunc(mPltVals)
-c_Stable_Ind = E_tp1_.c_where_E_Next_m_tp1_minus_m_t_eq_0(mPltVals)
-c_Stable_Agg = E_tp1_.c_where_E_Next_permShk_tp1_times_m_tp1_minus_m_t_eq_0(
+c_Stable_Trg = E_tp1_.c_where_E_Next_m_tp1_minus_m_t_eq_0(mPltVals)
+c_Stable_Bal = E_tp1_.c_where_E_Next_permShk_tp1_times_m_tp1_minus_m_t_eq_0(
     mPltVals)
 
 cVals_Lmting_lbl, = ax.plot(mPltVals, cVals_Lmting, color=cVals_Lmting_color)
-c_Stable_Ind_lbl, = ax.plot(mPltVals, c_Stable_Ind,
-                            color=c_Stable_Ind_color, linestyle="dashed", label=c_Stable_Ind_txt)
-c_Stable_Agg_lbl, = ax.plot(mPltVals, c_Stable_Agg,
-                            color=c_Stable_Agg_color, linestyle="dotted", label=c_Stable_Agg_txt)
+c_Stable_Trg_lbl, = ax.plot(mPltVals, c_Stable_Trg,
+                            color=c_Stable_Trg_color, linestyle="dashed", label=c_Stable_Trg_txt)
+c_Stable_Bal_lbl, = ax.plot(mPltVals, c_Stable_Bal,
+                            color=c_Stable_Bal_color, linestyle="dotted", label=c_Stable_Bal_txt)
 
 ax.set_xlim(xMin, xMax)
 ax.set_ylim(yMin, yMax)
@@ -654,21 +657,21 @@ ax.set_ylabel("$\mathit{c}$", fontweight='bold', fontsize=fsmid, loc="top", rota
 ax.tick_params(labelbottom=False, labelleft=False, left='off',
                right='off', bottom='off', top='off')
 
-ax.legend(handles=[c_Stable_Ind_lbl, c_Stable_Agg_lbl])
+ax.legend(handles=[c_Stable_Trg_lbl, c_Stable_Bal_lbl])
 ax.legend(prop=dict(size=fsmid))
 
 mNrmFacBal = Bilt.mNrmStE
-cNrmFacBal = c_Stable_Agg = cFunc(mNrmFacBal)
+cNrmFacBal = c_Stable_Bal = cFunc(mNrmFacBal)
 
 ax.plot(mNrmFacBal, cNrmFacBal, marker=".", markersize=15, color="black")  # Dot at Bal point
 ax.text(1, 0.6, "$\mathrm{c}(m_{t})$", fontsize=fsmid)  # label cFunc
 
 if latexExists:
-    ax.text(mNrmFacBal+0.02, cNrmBal-0.10, r"$\nwarrow$", fontsize=fsmid)
-    ax.text(mNrmFacBal+0.25, cNrmBal-0.18, r"$\Bal{m}~$", fontsize=fsmid)
+    ax.text(mNrmFacBal+0.02, cNrmFacBal-0.10, r"$\nwarrow$", fontsize=fsmid)
+    ax.text(mNrmFacBal+0.25, cNrmFacBal-0.18, r"$\hat{m}~$", fontsize=fsmid)
 else:
-    ax.text(mNrmFacBal+0.02, cNrmBal-0.10, r"$\nwarrow$", fontsize=fsmid)
-    ax.text(mNrmFacBal+0.25, cNrmBal-0.18, r"$\check{m}~$", fontsize=fsmid)
+    ax.text(mNrmFacBal+0.02, cNrmFacBal-0.10, r"$\nwarrow$", fontsize=fsmid)
+    ax.text(mNrmFacBal+0.25, cNrmFacBal-0.18, r"$\check{m}~$", fontsize=fsmid)
 
 makeFig('GICNrmFailsButGICRawHolds')
 print('Finite mNrmFacBal but infinite mNrmFacTrg')
@@ -683,7 +686,7 @@ print('Finite mNrmFacBal but infinite mNrmFacTrg')
 # %% [markdown]
 # `# Construct infinite horizon solution for consumer with baseline parameters:`
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # Find the infinite horizon solution
 
 base_params['aXtraCount'] = base_params['aXtraCount'] * 20
@@ -731,7 +734,7 @@ baseAgent_Inf = IndShockConsumerType(
 # \Ex_{t}\left[\frac{m_{t+1}}{m_{t}}\right] & = & \left(\frac{a_{t}\Rfree\Ex_{t}\left[(\permShk_{t+1}\PermGroFac)^{-1}\right]+1}{\mNrm_{t}}\right)
 # \end{eqnarray*}
 
-# %% [markdown] {"tags": []}
+# %% [markdown] {"jupyter": {"source_hidden": true}, "tags": []}
 # The expectation of the growth in the log of $\mLev$ is a downward-adjusted value of the log of the growth factor:
 # \begin{eqnarray*}
 # \Ex_{t}[\log(\mLev_{t+1}/\mLev_{t})]
@@ -755,7 +758,7 @@ baseAgent_Inf = IndShockConsumerType(
 # %% [markdown]
 # `# Solve problem of consumer with baseline parameters:`
 
-# %% {"pycharm": {"name": "#%%\n"}, "tags": []}
+# %% {"jupyter": {"source_hidden": true}, "pycharm": {"name": "#%%\n"}, "tags": []}
 # Solve baseline parameters agent
 tweaked_params = deepcopy(base_params)
 tweaked_params['DiscFac'] = 0.970  # Tweak to make figure clearer
@@ -768,13 +771,12 @@ baseAgent_Inf.solve(
 # %% [markdown]
 # `# Plot growth factors for various model elements at steady state:`
 
-# %%
-dir(soln)
-
 # %% {"tags": []}
 # Plot growth rates
 
 soln = baseAgent_Inf.solution[0]
+
+# Built, parameters, expectations
 Bilt, Pars, E_Next_ = soln.Bilt, soln.Pars, soln.E_Next_
 
 # Retrieve parameters (makes code more readable)
@@ -810,7 +812,8 @@ Ex_mNrmGroFac = np.array(Ex_m_tp1_from_a_t)/m_pts
 Ex_mLogGroExp = np.exp(Ex_mLog_tp1_minus_mLog_t_from_m_t)
 
 # Absolute Patience Factor = lower bound of consumption growth factor
-APF = (Rfree*DiscFac)**(1.0/CRRA)
+# https://econ-ark.github.io/BufferStockTheory/#APF
+APF = Bilt.APF
 
 # Init figure and axes
 fig, ax = plt.subplots(figsize=(12, 8))
@@ -917,7 +920,6 @@ mpc_Min = 1.0-RPF
 mpc_Max = 1.0 - (UnempPrb**(1/CRRA)) * RPF
 h_inf = (1.0/(1.0-G/Rfree))
 
-
 def cFunc_Uncnst(m): return mpc_Min * m + (h_inf - 1) * mpc_Min
 def cFunc_TopBnd(m): return mpc_Max * m
 def cFunc_BotBnd(m): return mpc_Min * m
@@ -926,7 +928,7 @@ def cFunc_BotBnd(m): return mpc_Min * m
 # %% [markdown]
 # `# Plot figure showing bounds`
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # Plot the consumption function and its bounds
 
 cMaxLabel = r'$\overline{c}(m)= (m-1+h)\tilde{\kappa}$'
@@ -1001,7 +1003,7 @@ makeFig('cFuncBounds')
 # %% [markdown]
 # `# Make and plot figure showing the upper and lower limites of the MPC:`
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # The last figure shows the upper and lower limits of the MPC
 
 mPlotMax = 8
@@ -1070,8 +1072,12 @@ makeFig('MPCLimits')
 
 # %% [markdown] {"tags": []}
 # ### Appendix: Perfect foresight agent failing both the FHWC and RIC
+#
+# An appendix shows the solution for the problem of a perfect foresight consumer whose parameters fail to satisfy both the FHWC and the RIC
+#
+# [Perfect Foresight Liquidity Constrained Solution](https://econ-ark.github.io/BufferStockTheory/#ApndxLiqConstr)
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 PFGICRawHoldsFHWCFailsRICFails_par = deepcopy(init_perfect_foresight)
 
 # Replace parameters.
