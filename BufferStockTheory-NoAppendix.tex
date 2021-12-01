@@ -37,7 +37,7 @@
 }
 
 % \date{\today}
-\renewcommand{\forcedate}{November 23, 2021}\date{\forcedate}
+\renewcommand{\forcedate}{December 1, 2021}\date{\forcedate}
 
 \maketitle
 \hypertarget{abstract}{}
@@ -675,7 +675,7 @@ The full relationship among conditions is represented in Figure~\ref{fig:Inequal
 \hypertarget{\figFile}{}
 \input{\FigDir/\figName} % Read in the tex to generate the figure
 
-%\subsubsection{The \WRIC}\label{subsubsec:WRICdiscuss}
+\subsubsection{The \WRIC}\label{subsubsec:WRICdiscuss}
 
 The `weakness' of the additional condition sufficient for contraction beyond the {\FVAC}, the \WRIC, can be seen by asking `under what circumstances would the \FVAC~hold but the \WRIC~fail?'  Algebraically, the requirement is
 \begin{align}
@@ -1064,7 +1064,7 @@ which is stronger than our {\GIC} condition $\PatPGro < 1$ (under the imposed as
 % A earlier draft of this paper~\cite{BufferStockTheoryQESubmit} conjectured that
 \hypertarget{Growth-Rates-of-Aggregate-Income-and-Consumption}{}
 
-\cite{harmenbergInvariant} substitutes a clever change of probability measure into Szeidl's proof to show that under the {\GIC}, invariant \emph{permanent-income-weighted} distributions exist.\footnote{Harmenberg in a nutshell:  If $\pShk$ is described by density function $f_\pShk(\pShk)$, define the \emph{permanent-income-neutral measure} by $\Harm{f}_\pShk(\pShk) \equiv \pShk f_\pShk(\pShk)$.  Following derivations parallel to those in the previous foonote, the condition for the existence of invariant permanent-income-weighted distributions is
+\cite{harmenbergInvariant} substitutes a clever change of probability-measure into Szeidl's proof to show that under the {\GIC}, invariant \emph{permanent-income-weighted} distributions exist.\footnote{Harmenberg in a nutshell:  If $\pShk$ is described by density function $f_\pShk(\pShk)$, define the \emph{permanent-income-neutral measure} by $\Harm{f}_\pShk(\pShk) \equiv \pShk f_\pShk(\pShk)$.  Following derivations parallel to those in the previous foonote, the condition for the existence of invariant permanent-income-weighted distributions is
   \begin{align*}
     \log \PatPGro  & < \Harm{\Ex} \log \pShk
   \end{align*}
@@ -1098,7 +1098,7 @@ Because this economy is Szeidl-converged, distributions of $\cRat_{t}$ and $\cRa
   \Mean\left[\Delta \log \cLevBF_{t+1}\right]  & = \Mean\left[ \Delta \log \pLevBF_{t+1}\right] = \log \PGro \label{eq:MeanDeltaLogCeqMeanDeltaLogP}.
 \end{align}
 
-In a Harmenberg-invariant economy (and therefore also any Szeidl-invariant economy), a similar proposition holds in the cross-section as a direct implication of the fact that a constant proportion of total permanent income is accounted for by the successive sets of consumers with any particular $\mRat$.  This fact is one way of interpreting Harmenberg's definition of the density of the permanent-income-invariant distribution of $\mRat$; call this density $\pRat(\mRat)$.\footnote{In his notation, this is $\tilde{\psi}^{\mRat}$.}  Call $\cLevBF_{t}(\mRat)$ the total amount of consumption at date $t$ by persons with market resources $\mRat$, and note that in the invariant economy it is given by the converged consumption function $\cFunc(\mRat)$ multiplied by the amount of permanent income accruing to such people $\pRat(\mRat)\PLevBF_{t}$.  Since $\pRat(\mRat)$ is invariant and aggregate permanent income grows according to $\PLevBF_{t+1} = \PGro \PLevBF_{t}$,
+In a Harmenberg-invariant economy (and therefore also any Szeidl-invariant economy), a similar proposition holds in the cross-section as a direct implication of the fact that a constant proportion of total permanent income is accounted for by the successive sets of consumers with any particular $\mRat$.  This fact is one way of interpreting Harmenberg's definition of the density of the permanent-income-invariant distribution of $\mRat$; call this density~$\pRat(\mRat)$.\footnote{In his notation, this is $\tilde{\psi}^{\mRat}$.}  Call $\cLevBF_{t}(\mRat)$ the total amount of consumption at date $t$ by persons with market resources $\mRat$, and note that in the invariant economy this is given by the converged consumption function $\cFunc(\mRat)$ multiplied by the amount of permanent income accruing to such people $\pRat(\mRat)\PLevBF_{t}$.  Since $\pRat(\mRat)$ is invariant and aggregate permanent income grows according to $\PLevBF_{t+1} = \PGro \PLevBF_{t}$,
 \begin{equation*}
   \begin{split}
     \log \cLevBF_{t+1}(\mRat) - \log \cLevBF_{t}(\mRat) &  \notag
@@ -1237,9 +1237,9 @@ At first blush, these points are reassuring; one of the most persuasive argument
 
 But this discussion also highlights an uncomfortable point: In the model as specified, permanent income does not have a limiting distribution; it becomes ever more dispersed as the economy with infinite-horizon consumers continues to exist indefinitely.
 
-A few microeconomic data sources attempt direct measurement of `permanent income'; \cite{cstwMPC}, for example, show that their assumptions about the magnitude of permanent shocks (and mortality; see below) yield a distribution of permanent income that roughly matches answers in the U.S.\ \emph{Survey of Consumer Finances} (`SCF') to a survey question that aims to elicit a direct measure of permanent income.  The paper uses those results to calibrate a model that matches empirical facts about the distribution of permanent income and wealth, and show that it also does a reasonable job of matching empirical facts about the marginal propensity to consume.  The quantitative credibility of the argument depends on the model's match to the distribution of permanent income inequality, which would not be possible in a model without a nondegenerate steady-state distribution of permanent income.
+A few microeconomic data sources attempt direct measurement of `permanent income'; \cite{cstwMPC}, for example, show that their assumptions about the magnitude of permanent shocks (and mortality; see below) yield a distribution of permanent income that roughly matches answers in the U.S.\ \emph{Survey of Consumer Finances} (`SCF') to a survey question that aims to elicit a direct measure of permanent income.  That paper uses those results to calibrate a model that matches empirical facts about the distribution of permanent income and wealth, and to show that the model also does a reasonable job of matching empirical facts about the marginal propensity to consume.  The quantitative credibility of the argument depends on the model's match to the distribution of permanent income inequality, which would not be possible in a model without a nondegenerate steady-state distribution of permanent income.
 
-For the large and growing contingent of macroeconomists who want to build microfoundations by comparing the microeconomic implications of their models to micro data (in levels -- not in ratios to permanent income, which is rarely measured in microeconomic datasets other than the SCF), it would be something of a challenge to determine how to construct either Monte Carlo or Markov-matrix-based simulated microeconomic data from a model of the kind sketched above that can be straightforwardly compared to data readily available from the ever-richer microeconomic sources (including, now, national registries from some countries).  
+For the large and growing contingent of macroeconomists who want to build microfoundations by comparing the microeconomic implications of their models to micro data (in levels -- not in ratios to permanent income, which is rarely measured in microeconomic datasets other than the SCF), it would be something of a challenge to determine how to construct either Monte Carlo or Markov-matrix-based simulated microeconomic data from a model of the kind sketched above (with infinitely lived consumers and no limiting distribution of permanent income) that can be straightforwardly compared to data readily available from the ever-richer microeconomic sources (including, now, national registries from some countries).  
 
 \begin{comment}
   \hypertarget{Consumption-and-Income-Growth-at-the-Household-Level}{}
@@ -1256,7 +1256,7 @@ For the large and growing contingent of macroeconomists who want to build microf
 Death can solve this problem.
 
 \hypertarget{Blanchard-Lives}{}
-Most heterogeneous-agent models incorporate a constant positive probability of death, following~\cite{blanchardFinite}.  In the Blanchardian model, if the probability of death exceeds a threshold that depends on the size of the permanent shocks,~\cite{cstwMPC} show that the limiting distribution of permanent income has a finite variance.  \cite{blanchardFinite} assumes the existence of a universal annuitization scheme in which estates of dying consumers are redistributed to survivors in proportion to survivors' wealth, giving the recipients a higher effective rate of return. This treatment has several analytical advantages, most notably that the effect of mortality on the time preference factor is the exact inverse of its effect on the (effective) interest factor:  If the probability of remaining alive (not dead) is $\Alive$, then the assumption that no utility accrues after death makes the effective discount factor $\hat{\DiscFac}=\DiscFac\Alive$, while the enhancement to the rate of return from the annuity scheme yields an effective interest rate of $\hat{\Rfree}/\Alive$ (recall that because of white-noise mortality, the average wealth of the two groups is identical).  Combining these, the effective patience factor in the new economy $\hat{\Pat}$ is unchanged from its value in the infinite horizon model:% chktex 2
+Most heterogeneous-agent models incorporate a constant positive probability of death, following \cite{blanchardFinite}.  In the Blanchardian model, if the probability of death exceeds a threshold that depends on the size of the permanent shocks,~\cite{cstwMPC} show that the limiting distribution of permanent income has a finite variance.  \cite{blanchardFinite} assumes the existence of a universal annuitization scheme in which estates of dying consumers are redistributed to survivors in proportion to survivors' wealth, giving the recipients a higher effective rate of return. This treatment has several analytical advantages, most notably that the effect of mortality on the time preference factor is the exact inverse of its effect on the (effective) interest factor:  If the probability of remaining alive (not dead) is $\Alive$, then the assumption that no utility accrues after death makes the effective discount factor $\hat{\DiscFac}=\DiscFac\Alive$, while the enhancement to the rate of return from the annuity scheme yields an effective interest rate of $\hat{\Rfree}/\Alive$ (recall that because of white-noise mortality, the average wealth of the two groups is identical).  Combining these, the effective patience factor in the new economy $\hat{\Pat}$ is unchanged from its value in the infinite horizon model:% chktex 2
 \begin{equation}
   \hat{\Pat} \equiv {\left(\DiscFac \Alive \Rfree / \Alive\right)}^{1/\CRRA} = {\left(\Rfree \DiscFac\right)}^{1/\CRRA} \equiv \Pat.
 \end{equation}

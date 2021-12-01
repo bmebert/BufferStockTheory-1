@@ -6,15 +6,18 @@
 \setboolean{BothExist}{true}
 \setboolean{NeitherExists}{true}
 
+\let\ushort\undefined
 \usepackage{footmisc}
 \usepackage{datetime2}
 \usepackage{refcount}
 \usepackage{xr-hyper}
 \usepackage{hhline}
 % Sets up default definitions that must be renewcommanded to override in master
+%\starttrackingnewcommands
 \newcommand{\onlyinsubfile}[1]{#1}\newcommand{\notinsubfile}[1]{}
 
 % https://tex.stackexchange.com/questions/463699/proper-reference-numbers-with-subfiles
+%\stoptrackingnewcommands
 \newcommand\labelprefix{}
 \newcommand\localorexternallabel[1]{%
   \expandafter\ifx\csname r@#1\endcsname\relax
@@ -22,14 +25,17 @@
   \fi #1%
 }
 
+%\starttrackingnewcommands
 % Appendices and body are subfiles
 \usepackage{subfiles}
+%\starttrackingnewcommands
 
 % Implement a standard setup and shortcuts, e.g. for the \CRRA
 \usepackage{\econtexSetup}
 \usepackage{\econtexShortcuts}
 \usepackage{makecell}
-%\usepackage{lineno}
+
+% \usepackage{lineno}
 
 \usepackage{rotating}\usepackage{subfigure}
 % Embed metadata
@@ -82,7 +88,7 @@
 \providecommand{\Grw}{\Omega}
 \providecommand{\cRatAvg}{\pmb{\mathfrak{\cRat}}}
 
-
+%\stoptrackingnewcommands
 \usepackage{pdfcomment}
 
 \DefineFamilyKey[.section]{KOMAarg}{hypertarget}{%
@@ -102,6 +108,7 @@
 % Layers at top of page make no sense if there is no page
 \ifthenelse{\boolean{Web}}{}{\usepackage{scrlayer-scrpage}}
 
+
 \RedeclareSectionCommand[
 tocindent=0cm,
 tocnumwidth=0.25cm
@@ -115,3 +122,25 @@ tocindent=0.5cm,
 tocnumwidth=0.75cm
 ]{subsubsection}
 
+% \newcommand{\BSTlinkTo}{https://\owner.github.io/BufferStockTheory}
+% \newcommand{\BSTlinkTo}{https://\owner.github.io/BufferStockTheory}
+% \renewcommand{\FHWC}{\href{{\BSTlinkTo}FHWC}{\textrm{FHWC}}}
+% \newcommand{\FHWCFull}{\href{{\BSTlinkTo}\#FHWC}{{\BSTlinkTo}\#FHWC}}
+% \newcommand{\GICRawFull}{\href{{\BSTlinkTo}\#GICRaw}{{\BSTlinkTo}\#GICRaw}}
+% \newcommand{\RICFull}{\href{{\BSTlinkTo}\#RIC}{{\BSTlinkTo}\#RIC}}
+% \newcommand{\PFFVACFull}{\href{{\BSTlinkTo}\#PFFVAC}{{\BSTlinkTo}\#RIC}}
+% \renewcommand{\FHWC}{\href{{\BSTlinkTo}\#FHWC}{\textrm{FHWC}}}
+% \renewcommand{\GICRaw}{\href{{\BSTlinkTo}\#GICRaw}{\textrm{PF-GICNrm}}}
+% \renewcommand{\RIC}{\href{{\BSTlinkTo}\#RIC}{\textrm{RIC}}}
+% \renewcommand{\PFFVAC}{\href{{\BSTlinkTo}\#PFFVAC}{\textrm{PF-FVAC}}}
+
+\newcommand{\BSTlinkTo}{https://\owner.github.io/BufferStockTheory}
+\renewcommand{\FHWC}{\href{{\BSTlinkTo}FHWC}{\textrm{FHWC}}}
+\newcommand{\FHWCFull}{\href{{\BSTlinkTo}\#FHWC}{{\BSTlinkTo}\#FHWC}}
+\newcommand{\GICRawFull}{\href{{\BSTlinkTo}\#GICRaw}{{\BSTlinkTo}\#GICRaw}}
+\newcommand{\RICFull}{\href{{\BSTlinkTo}\#RIC}{{\BSTlinkTo}\#RIC}}
+\newcommand{\PFFVACFull}{\href{{\BSTlinkTo}\#PFFVAC}{{\BSTlinkTo}\#RIC}}
+\renewcommand{\FHWC}{\href{{\BSTlinkTo}\#FHWC}{\textrm{FHWC}}}
+\renewcommand{\GICRaw}{\href{{\BSTlinkTo}\#GICRaw}{\textrm{PF-GICNrm}}}
+\renewcommand{\RIC}{\href{{\BSTlinkTo}\#RIC}{\textrm{RIC}}}
+\renewcommand{\PFFVAC}{\href{{\BSTlinkTo}\#PFFVAC}{\textrm{PF-FVAC}}}

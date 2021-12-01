@@ -1,10 +1,11 @@
-\input{./econtexRoot} % Set paths for root and various resources
+\input{./econtexRoot} % Set paths (like, \LaTeXInputs) for various resources
 \documentclass[titlepage]{\econtex}
-\providecommand{\texname}{BufferStockTheory}% Keyname for the paper
+\newcommand{\texname}{BufferStockTheory}% Keyname for the paper
 \usepackage{\LaTeXInputs/\texname}% Styling for whole paper (and subfiles)
-\begin{document}
 
+\begin{document}
 % Redefine commands from sty file to signal compilation from master
+% This signals that submaterial called from here knows it is not standalone
 \renewcommand{\onlyinsubfile}[1]{}\renewcommand{\notinsubfile}[1]{#1}
 
 \subfile{BufferStockTheory-NoAppendix} % Main body of paper
@@ -12,7 +13,6 @@
 \pagebreak
 \hypertarget{Appendices}{} % Allows link to [url-of-paper]#Appendices
 \section{~~~~~~~~~~Appendices~~~~~~~~~~}
-\appendix %\centerline{\LARGE Appendices}\vspace{0.2in}
 
 \subfile{\ApndxDir/ApndxLiqConstr}
 \subfile{\ApndxDir/ApndxConcaveCFunc}
@@ -28,8 +28,8 @@
 \subfile{\ApndxDir/ApndxBalancedGrowthcNrmAndCov}
 
 \pagebreak\input{\LaTeXInputs/bibliography_blend}\end{document}
-\endinput
 
+\endinput % not needed here; useful if end of doc moves up (ignore rest of file)
 
 % Stuff below configures compilation for AucTeX in Emacs
 
