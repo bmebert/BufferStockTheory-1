@@ -1,5 +1,5 @@
 \input{./econtexRoot} % Set paths (like, \LaTeXInputs) for various resources
-\documentclass[titlepage]{\econtex}
+\documentclass[headings=optiontoheadandtoc,titlepage]{\econtex}
 \usepackage{etoolbox}
 \newcommand{\texname}{BufferStockTheory}% Keyname for the paper
 \usepackage{\LaTeXInputs/\texname}% Styling for whole paper (and subfiles)
@@ -11,9 +11,9 @@
 
 \subfile{BufferStockTheory-NoAppendix} % Main body of paper
 
-\pagebreak
+\pagebreak\appendix
 \hypertarget{Appendices}{} % Allows link to [url-of-paper]#Appendices
-\section{~~~~~~~~~~Appendices~~~~~~~~~~}
+\section[nonumber=true]{Appendices}
 
 \subfile{\ApndxDir/ApndxLiqConstr}
 \subfile{\ApndxDir/ApndxConcaveCFunc}

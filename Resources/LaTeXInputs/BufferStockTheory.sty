@@ -180,19 +180,33 @@
 % Layers at top of page make no sense if there is no page
 \ifthenelse{\boolean{Web}}{}{\usepackage{scrlayer-scrpage}}
 
-
-\RedeclareSectionCommand[
+\ifthenelse{\boolean{Web}}{ % Web and PDF spacing differ
+  \RedeclareSectionCommand[
 tocindent=0cm,
-tocnumwidth=0.66cm
+tocnumwidth=0.25cm
 ]{section}
 \RedeclareSectionCommand[
-tocindent=0.66cm,
-tocnumwidth=1.33cm
+tocindent=0.25cm,
+tocnumwidth=0.5cm
 ]{subsection}
 \RedeclareSectionCommand[
-tocindent=1.5cm,
-tocnumwidth=1.5cm
+tocindent=1.0cm,
+tocnumwidth=0.75cm
 ]{subsubsection}
+}{ % else PDF, which needs different spacing 
+\RedeclareSectionCommand[
+tocindent=0cm,
+tocnumwidth=0.6cm
+]{section}
+\RedeclareSectionCommand[
+tocindent=0.6cm,
+tocnumwidth=0.8cm
+]{subsection}
+\RedeclareSectionCommand[
+tocindent=0.6cm,
+tocnumwidth=1.4cm
+]{subsubsection}
+} % End Web
 
 % \newcommand{\BSTlinkTo}{https://\owner.github.io/BufferStockTheory}
 % \newcommand{\BSTlinkTo}{https://\owner.github.io/BufferStockTheory}
@@ -206,7 +220,7 @@ tocnumwidth=1.5cm
 % \renewcommand{\RIC}{\href{{\BSTlinkTo}\#RIC}{\textrm{RIC}}}
 % \renewcommand{\PFFVAC}{\href{{\BSTlinkTo}\#PFFVAC}{\textrm{PF-FVAC}}}
 
-\newcommand{\BSTlinkTo}{https://\owner.github.io/BufferStockTheory3} % Frame 3
+\newcommand{\BSTlinkTo}{https://\owner.github.io/BufferStockTheory/BufferStockTheory3.html} % Frame 3
 \renewcommand{\FHWC}{\href{{\BSTlinkTo}FHWC}{\textrm{FHWC}}}
 \newcommand{\FHWCFull}{\href{{\BSTlinkTo}\#FHWC}{{\BSTlinkTo}\#FHWC}}
 \newcommand{\GICRawFull}{\href{{\BSTlinkTo}\#GICRaw}{{\BSTlinkTo}\#GICRaw}}
@@ -214,8 +228,12 @@ tocnumwidth=1.5cm
 \newcommand{\PFFVACFull}{\href{{\BSTlinkTo}\#PFFVAC}{{\BSTlinkTo}\#RIC}}
 \renewcommand{\FHWC}{\href{{\BSTlinkTo}\#FHWC}{\textrm{FHWC}}}
 \renewcommand{\GICRaw}{\href{{\BSTlinkTo}\#GICRaw}{\textrm{PF-GIC}}}
+\newcommand{\GPFNrm}{\href{{\BSTlinkTo}\#GPFNrm}{\textrm{GPF-Nrm}}}
+\renewcommand{\GICNrm}{\href{{\BSTlinkTo}\#GICNrm}{\textrm{GIC-Nrm}}}
 \renewcommand{\RIC}{\href{{\BSTlinkTo}\#RIC}{\textrm{RIC}}}
 \renewcommand{\PFFVAC}{\href{{\BSTlinkTo}\#PFFVAC}{\textrm{PF-FVAC}}}
+\renewcommand{\FVAC}{\href{{\BSTlinkTo}\#FVAC}{\textrm{FVAC}}}
+\newcommand{\VAF}{\href{{\BSTlinkTo}\#VAF}{\textrm{VAF}}}
 
 
 

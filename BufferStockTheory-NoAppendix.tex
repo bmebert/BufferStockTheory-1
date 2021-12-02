@@ -312,13 +312,13 @@ Without constraints, the consumption Euler equation always holds; with $\uP(\cLe
 where the archaic letter \href{https://en.wikipedia.org/wiki/Thorn_(letter)}{`thorn'} represents what we will call the `Absolute Patience Factor' \hypertarget{APF}{(APF)} because, if the `absolute impatience condition' (\AIC) holds,\footnote{Impatience conditions have figured in intertemporal optimization problems since the beginning, e.g.\ in~\cite{ramseySave}.  These issues are so central that it would be hopeless to attempt to cite conditions in every other paper that correspond to conditions named and briefly exposited here.  I make no claim to novelty for any condition aside from those implicated in my theorems, whose forerunners \textit{will} be articulated.}
 \begin{align}
   \label{eq:AIC}
-  \Pat  & < 1,
+\text{\AIC:~~}  \Pat  & < 1, \phantom{\text{\AIC:~~}}
 \end{align}
 the consumer's level of spending will be too large to sustain indefinitely.  We call such a consumer `absolutely impatient.'\hypertarget{RPF}{}
 
 A `Return Patience Factor' (RPF) relates absolute patience to the return factor:
 \begin{align}
-  \PatR  & \equiv  {\Pat}/\Rfree \label{eq:PatR}
+\text{\RPF:~~}  \PatR  & \equiv  {\Pat}/\Rfree \phantom{\text{\RPF:~~}}\label{eq:PatR}
 \end{align}
 and since consumption is growing by $\Pat$ but discounted by $\Rfree$:
 \begin{align}
@@ -338,7 +338,7 @@ where $\MinMPC_{t}$ is the marginal propensity to consume (MPC) --- it answers t
 
 The denominator of~\eqref{eq:WDef} is the reason that, for $\underbar{\MPC}$ to be strictly positive as $n=T-t$ goes to infinity, we must impose the Return Impatience Condition (\RIC):
 \begin{align}
-  \PatR  & < 1   \label{eq:RIC},
+\text{\RIC:~~}  \PatR  & < 1   \phantom{\text{\RIC:~~}} \label{eq:RIC},
 \end{align}
 so that
 \begin{align}
@@ -362,14 +362,14 @@ and so in order to rule out the degenerate limiting solution $\bar{\cFunc}(\mRat
 \hypertarget{GPFRaw}{}
 \subsubsection{The Growth Impatience Condition ({\GIC})}\label{subsubsec:GIC}
 By analogy to the \RPF, we define a `growth patience factor' (\GPFRaw) as
-\begin{flalign}
-  \text{(GPF)} && \PatPGro= {\Pat}/\PGro,  &&   \label{eq:GPFRaw}
-\end{flalign}
+\begin{equation}\begin{gathered}\begin{split}
+ \text{GPF:} && \PatPGro= {\Pat}/\PGro,  &   \label{eq:GPFRaw}
+\end{split}\end{gathered}\end{equation}
 and define a `growth impatience condition' ({GIC})
 \begin{verbatimwrite}{\EqDir/GICRaw}
-  \begin{flalign}
-\text{(GIC)}  &&  \PatPGro  < 1 &&  \label{eq:GICRaw}
-  \end{flalign}
+\begin{equation}\begin{gathered}\begin{split}
+    \text{GIC:}  &&  \PatPGro  < 1 \phantom{/\PGro}&  \label{eq:GICRaw}
+\end{split}\end{gathered}\end{equation}
 \end{verbatimwrite}
 \input{\LtxDir\EqDir/GICRaw}
 which is equivalent to~\eqref{eq:LiqConstrBinds} (exponentiate both
@@ -382,22 +382,16 @@ sides by $1/\CRRA$).
 We can define `autarky' as a circumstance under which capital markets do not exist, so the consumer simply spends all permanent noncapital income $\pLevBF$ in every period.  Because $\uFunc(xy) = x^{1-\CRRA}\uFunc(y)$, the value the consumer would achieve is
 %\begin{equation}
 %  \begin{split}
-    \begin{align}\label{eq:ValuePFAnalyticalAutarky}
+\begin{equation}\begin{gathered}\begin{aligned}  \label{eq:ValuePFAnalyticalAutarky}
     \vLevBF_{t}^{\text{autarky}}  & = \uFunc(\pLevBF_{t})+\DiscFac \uFunc(\pLevBF_{t}\PGro)+\DiscFac^{2} \uFunc(\pLevBF_{t} \PGro^{2})+\ldots
       \\  & = \uFunc(\pLevBF_{t})\left(\frac{1-{(\DiscFac \PGro^{1-\CRRA})}^{T-t+1}}{1-\DiscFac \PGro^{1-\CRRA}}\right) \notag
-    \end{align}
-%   \end{split}
-%\end{equation}
+\end{aligned}\end{gathered}\end{equation}
 which (for $\PGro>0$) asymptotes to a finite number as $n=T-t$ approaches $+\infty$ if any of these equivalent conditions holds:
-%\begin{equation}
-%  \begin{split}
-    \begin{flalign} \label{eq:PFFVAC}
- &&     \overbrace{\DiscFac \PGro^{1-\CRRA} }^{\equiv \DiscAlt}  < 1  && \notag \\
-\text{(PF-FVAC)}   &&  \DiscFac \Rfree \PGro^{-\CRRA}   < \Rfree/\PGro  &&
-      \\ && \PatR     < {(\PGro/\Rfree)}^{1-1/\CRRA}, && \notag
-    \end{flalign}
-%  \end{split}
-%\end{equation}
+\begin{equation}\begin{gathered}\begin{aligned}  \label{eq:PFFVAC}
+      \overbrace{\DiscFac \PGro^{1-\CRRA} }^{\equiv \DiscAlt} < & 1  \notag 
+\\    \DiscFac \Rfree \PGro^{-\CRRA}   <  & \Rfree/\PGro   
+      \\  \PatR    < & {(\PGro/\Rfree)}^{1-1/\CRRA},  \notag
+\end{aligned}\end{gathered}\end{equation}
 where we call $\DiscAlt$\footnote{This is another kind of discount factor, so we use the Hebrew `bet' which is a cognate of the Greek `beta'.} the `Perfect Foresight Value Of Autarky Factor' ({\PFVAF}), and the variants of~\eqref{eq:PFFVAC} constitute alternative versions of the Perfect Foresight Finite Value of Autarky Condition, \PFFVAC; they guarantee that a consumer who always spends all permanent income `has finite autarky value'  (in the perfect foresight case).\footnote{This is related to the key impatience condition in~\cite{asHomogeneous}.} % chktex 13
 
 If the {\FHWC} is satisfied, the {\PFFVAC} implies that the {\RIC} is satisfied.\footnote{Divide both sides of the second inequality in~\eqref{eq:PFFVAC} by $\Rfree$:
@@ -481,10 +475,10 @@ which satisfies $\InvEpShkInv < 1$ (thanks again to Mr.\ Jensen), so it is conve
 \end{verbatimwrite}
 \input{\LtxDir\EqDir/PGroAdj}
 because this allows us to write uncertainty-adjusted versions of equations and conditions in a manner exactly parallel to those for the perfect foresight case; for example, we define a normalized Growth Patience Factor (GPF-Nrm):
-\hypertarget{GICNrm}{}\hypertarget{GICNrmI}{}\hypertarget{PermGroAdj}{}
+\hypertarget{GICNrm}{}\hypertarget{GICNrmI}{}\hypertarget{PermGroAdj}{}\hypertarget{GPFNrm}{}
 \begin{verbatimwrite}{\EqDir/PatPGroAdj}
   \begin{align}
-    \PatPGroAdj  & = \Pat/\PGroAdj = \Ex[\Pat/(\PGro\pShk)]  \label{eq:GPFNrm}
+\text{{\GPFNrm}:~~}    \PatPGroAdj  & = \Pat/\PGroAdj = \Ex[\Pat/(\PGro\pShk)]  \phantom{\text{{\GPFNrm}:~~}} \label{eq:GPFNrm}
   \end{align}
 \end{verbatimwrite}
 \input{\LtxDir\EqDir/PatPGroAdj}
@@ -498,7 +492,7 @@ because this allows us to write uncertainty-adjusted versions of equations and c
 and a normalized version of the Growth Impatience Condition, {\GICNrm}:
 \begin{verbatimwrite}{\EqDir/GICNrm}
   \begin{align}
-    \PatPGroAdj  & < 1 \label{eq:GICNrm},
+\text{{\GICNrm}:~~}    \PatPGroAdj  & < 1 \phantom{\text{{\GICNrm}:~~}}\label{eq:GICNrm},
   \end{align}\end{verbatimwrite}
 \input{\LtxDir\EqDir/GICNrm}
 that is stronger than the perfect foresight version~\eqref{eq:GICRaw} because $\PGroAdj < \PGro$.
@@ -530,14 +524,14 @@ $\vLevBF_{t}$ will be positive and finite as $T$ approaches $\infty$ if\hypertar
 \begin{verbatimwrite}{\EqDir/FVAC}
   \begin{equation}\label{eq:FVAC}
     \begin{split}
-      0 < \overbrace{\DiscFac \PGrouAdj^{1-\CRRA} }^{\equiv \DiscAltuAdj}  & < 1
+      0 < \overbrace{\DiscFac \PGrouAdj^{1-\CRRA} }^{\equiv \DiscAltuAdj = \text{\VAF}}  & < 1
       \\ 0 < \DiscFac  & < \PGrouAdj^{\CRRA-1} .
     \end{split}
   \end{equation}
 \end{verbatimwrite}
 {\input{\LtxDir\EqDir/FVAC}}
 
-We call \eqref{eq:FVAC} the `finite value of autarky condition' because it guarantees that value is finite for a consumer who always consumes their (now stochastic) permanent income (and we will call $\DiscAltuAdj$ the `Value of Autarky Factor' (or `VAF')).\footnote{In a stationary environment --- that is, with $\PGrouAdj=1$ --- this corresponds to an impatience condition imposed by~\cite{mstIncFluct}; but their remaining conditions do not correspond to those here, because their problem differs and their method of proof differs.}  For nondegenerate $\pShk$, this condition is stronger (harder to satisfy in the sense of requiring lower $\DiscFac$) than the perfect foresight version~\eqref{eq:PFFVAC} because $\PGrouAdj < \PGro$.\footnote{Rewrite~\eqref{eq:FVAC} as
+We call \eqref{eq:FVAC} the `finite value of autarky condition' because it guarantees that value is finite for a consumer who always consumes their (now stochastic) permanent income (and we will call $\DiscAltuAdj$ the `Value of Autarky Factor' (or `{\VAF}')).\footnote{In a stationary environment --- that is, with $\PGrouAdj=1$ --- this corresponds to an impatience condition imposed by~\cite{mstIncFluct}; but their remaining conditions do not correspond to those here, because their problem differs and their method of proof differs.}  For nondegenerate $\pShk$, this condition is stronger (harder to satisfy in the sense of requiring lower $\DiscFac$) than the perfect foresight version~\eqref{eq:PFFVAC} because $\PGrouAdj < \PGro$.\footnote{Rewrite~\eqref{eq:FVAC} as
   \begin{align*}
     \DiscFac \Rfree & < \Rfree \PGrouAdj^{\CRRA-1}
     \\ {(\DiscFac \Rfree)}^{1/\CRRA}  & < \Rfree^{1/\CRRA} \PGro^{1-1/\CRRA} \uInvEpShkuInv^{1-1/\CRRA}
