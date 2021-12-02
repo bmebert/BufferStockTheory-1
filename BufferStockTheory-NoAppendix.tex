@@ -55,7 +55,7 @@
 }
 
 % \date{\today}
-\renewcommand{\forcedate}{December 1, 2021}\date{\forcedate}
+\renewcommand{\forcedate}{December 2, 2021}\date{\forcedate}
 
 \maketitle
 \hypertarget{abstract}{}
@@ -298,7 +298,7 @@ where $\bLevBF$ is nonhuman wealth, and with a constant $\Rnorm \equiv \Rfree/\P
 \end{align}\hypertarget{FHWC}{}
 For $\hRat \equiv \lim_{n \rightarrow \infty} \hRat_{T-n}$ to be finite, need the Finite Human Wealth Condition (`\FHWC'):
 \begin{align}
-  \underbrace{\PGro/\Rfree}_{\equiv \Rnorm^{-1}}  & < 1 \label{eq:FHWC}.
+\text{{\FHWC}:~~}  \underbrace{\PGro/\Rfree}_{\equiv \Rnorm^{-1}}  & < 1 \phantom{\text{{\FHWC}:~~}}\label{eq:FHWC}.
 \end{align}
 Intuitively, finite human wealth requires a growth rate of (noncapital) income smaller than the interest rate at which that income is being discounted.
 
@@ -309,7 +309,7 @@ Without constraints, the consumption Euler equation always holds; with $\uP(\cLe
 \begin{align}
   \cLevBF_{t+1}/\cLevBF_{t}  & = \underbrace{{(\Rfree\DiscFac)}^{1/\CRRA}}_{\equiv \Pat}   \label{eq:Pat}
 \end{align}
-where the archaic letter \href{https://en.wikipedia.org/wiki/Thorn_(letter)}{`thorn'} represents what we will call the `Absolute Patience Factor' \hypertarget{APF}{(APF)} because, if the `absolute impatience condition' (\AIC) holds,\footnote{Impatience conditions have figured in intertemporal optimization problems since the beginning, e.g.\ in~\cite{ramseySave}.  These issues are so central that it would be hopeless to attempt to cite conditions in every other paper that correspond to conditions named and briefly exposited here.  I make no claim to novelty for any condition aside from those implicated in my theorems, whose forerunners \textit{will} be articulated.}
+where the archaic letter \href{https://en.wikipedia.org/wiki/Thorn_(letter)}{`thorn'} represents what we will call the `Absolute Patience Factor' \hypertarget{APF}{({\APF})} because, if the `absolute impatience condition' (\AIC) holds,\footnote{Impatience conditions have figured in intertemporal optimization problems since the beginning, e.g.\ in~\cite{ramseySave}.  These issues are so central that it would be hopeless to attempt to cite conditions in every other paper that correspond to conditions named and briefly exposited here.  I make no claim to novelty for any condition aside from those implicated in my theorems, whose forerunners \textit{will} be articulated.}
 \begin{align}
   \label{eq:AIC}
 \text{\AIC:~~}  \Pat  & < 1, \phantom{\text{\AIC:~~}}
@@ -359,16 +359,16 @@ Given that the {\RIC}~holds, and (as before) defining limiting objects by the ab
 \end{align}
 and so in order to rule out the degenerate limiting solution $\bar{\cFunc}(\mRat) = \infty$ we need $\hRat$ to be finite; that is, we must impose the Finite Human Wealth Condition~\eqref{eq:FHWC}.
 
-\hypertarget{GPFRaw}{}
+\hypertarget{GPFRaw}{}\hypertarget{GIC}{}
 \subsubsection{The Growth Impatience Condition ({\GIC})}\label{subsubsec:GIC}
 By analogy to the \RPF, we define a `growth patience factor' (\GPFRaw) as
 \begin{equation}\begin{gathered}\begin{split}
- \text{GPF:} && \PatPGro= {\Pat}/\PGro,  &   \label{eq:GPFRaw}
+ \text{{\GPFRaw}:~~} && \PatPGro= {\Pat}/\PGro,  &   \label{eq:GPFRaw}
 \end{split}\end{gathered}\end{equation}
-and define a `growth impatience condition' ({GIC})
+and define a `growth impatience condition' ({\GIC})
 \begin{verbatimwrite}{\EqDir/GICRaw}
 \begin{equation}\begin{gathered}\begin{split}
-    \text{GIC:}  &&  \PatPGro  < 1 \phantom{/\PGro}&  \label{eq:GICRaw}
+    \text{\GIC:~~}  &&  \PatPGro  < 1 \phantom{/\PGro}&  \phantom{\text{\GIC:~~}} \label{eq:GICRaw}
 \end{split}\end{gathered}\end{equation}
 \end{verbatimwrite}
 \input{\LtxDir\EqDir/GICRaw}
@@ -388,7 +388,7 @@ We can define `autarky' as a circumstance under which capital markets do not exi
 \end{aligned}\end{gathered}\end{equation}
 which (for $\PGro>0$) asymptotes to a finite number as $n=T-t$ approaches $+\infty$ if any of these equivalent conditions holds:
 \begin{equation}\begin{gathered}\begin{aligned}  \label{eq:PFFVAC}
-      \overbrace{\DiscFac \PGro^{1-\CRRA} }^{\equiv \DiscAlt} < & 1  \notag 
+\text{\PFFVAC:~~}      \overbrace{\DiscFac \PGro^{1-\CRRA} }^{\equiv \DiscAlt} < & 1  \phantom{\text{\PFFVAC:~~}} \notag 
 \\    \DiscFac \Rfree \PGro^{-\CRRA}   <  & \Rfree/\PGro   
       \\  \PatR    < & {(\PGro/\Rfree)}^{1-1/\CRRA},  \notag
 \end{aligned}\end{gathered}\end{equation}
@@ -439,7 +439,7 @@ We now examine implications of possible configurations of the conditions.
   \end{cases}
 \end{equation*}
 
-\textit{{\GICRaw} and {\RIC}.}  More useful is the case where the return impatience and {\GIC} conditions both hold.  In this case Appendix~\ref{sec:ApndxLiqConstr} shows that the limiting constrained consumption function is piecewise linear, with $\constr{\cFunc}(\mRat)=\mRat$ up to a first `kink point' at $\mRat_{\#}^{1}>1$, and with discrete declines in the MPC at a set of kink points $\{\mRat_{\#}^{1},\mRat_{\#}^{2},\ldots\}$.  As $\mRat \uparrow \infty$ the constrained consumption function $\constr{\cFunc}(\mRat)$ becomes arbitrarily close to the unconstrained $\bar{\cFunc}(\mRat)$, and the marginal propensity to consume function $\constr{\MPCFunc}(\mRat) \equiv \constr{\cFunc}^{\prime}(\mRat)$ limits to $\MinMPC$.\footnote{See~\cite{chkLiqConstr} for details.}  Similarly, the value function $\constr{\vFunc}(\mRat)$ is nondegenerate and limits into the value function of the unconstrained consumer.
+\textit{{\GICRaw} and {\RIC}.}  More useful is the case where the return impatience and {\GICRaw} conditions both hold.  In this case Appendix~\ref{sec:ApndxLiqConstr} shows that the limiting constrained consumption function is piecewise linear, with $\constr{\cFunc}(\mRat)=\mRat$ up to a first `kink point' at $\mRat_{\#}^{1}>1$, and with discrete declines in the MPC at a set of kink points $\{\mRat_{\#}^{1},\mRat_{\#}^{2},\ldots\}$.  As $\mRat \uparrow \infty$ the constrained consumption function $\constr{\cFunc}(\mRat)$ becomes arbitrarily close to the unconstrained $\bar{\cFunc}(\mRat)$, and the marginal propensity to consume function $\constr{\MPCFunc}(\mRat) \equiv \constr{\cFunc}^{\prime}(\mRat)$ limits to $\MinMPC$.\footnote{See~\cite{chkLiqConstr} for details.}  Similarly, the value function $\constr{\vFunc}(\mRat)$ is nondegenerate and limits into the value function of the unconstrained consumer.
 
 This logic holds even when the finite human wealth condition fails (\cncl{\FHWC}), because the constraint prevents the (limiting) consumer\footnote{That is, one obeying $\cFunc(\mRat) = \lim_{n \uparrow \infty} \cFunc_{T-n}(\mRat)$.} from borrowing against unbounded human wealth to finance unbounded current consumption.  Under these circumstances, the consumer who starts with any $\bRat_{t} > 1$ will, over time, run those resources down so that by some finite number of periods $\tau$ in the future the consumer will reach $\bRat_{t+\tau} = 0$, and thereafter will set $\cLevBF = \pLevBF$ for eternity (which the {\PFFVAC} says yields finite value).  Using the same steps as for equation~\eqref{eq:ValuePFAnalyticalAutarky}, value of the interim program is also finite: \hypertarget{PFFVAC}{} \hypertarget{PFVAF}{}
 \begin{align*}
@@ -524,7 +524,7 @@ $\vLevBF_{t}$ will be positive and finite as $T$ approaches $\infty$ if\hypertar
 \begin{verbatimwrite}{\EqDir/FVAC}
   \begin{equation}\label{eq:FVAC}
     \begin{split}
-      0 < \overbrace{\DiscFac \PGrouAdj^{1-\CRRA} }^{\equiv \DiscAltuAdj = \text{\VAF}}  & < 1
+\text{{\FVAC}:~~}      0 < \overbrace{\DiscFac \PGrouAdj^{1-\CRRA} }^{\equiv \DiscAltuAdj~=~\text{\VAF}}  & < 1 \phantom{\text{{\FVAC}:~~}}
       \\ 0 < \DiscFac  & < \PGrouAdj^{\CRRA-1} .
     \end{split}
   \end{equation}
@@ -581,14 +581,14 @@ Under our imposed assumption that human wealth is finite, the MPC bound as wealt
 \end{align}
 \subsubsection{The Weak RIC Condition ({\WRIC})}{}\label{sec:WRIC}
 \hypertarget{MPCnvrsUpper}{}
-\hypertarget{WRIC}{}
+\hypertarget{WRIC}{}\hypertarget{WRPF}{}
 Appendix equation~\eqref{eq:MaxMPCInvApndx} presents a parallel expression for the limiting maximal MPC as $\mRat_{t} \downarrow 0$:
 \begin{align}\hypertarget{WRPF}{}
   \MaxMPC_{t}^{-1}  & = 1+\MinMPS \MaxMPC_{t+1}^{-1} \label{eq:MaxMPCInv}
 \end{align}
 where $\left\{\MaxMPC_{T-n}^{-1}\right\} _{n=0}^{\infty}$ is a decreasing convergent sequence if the `weak return patience factor' $\pZero^{1/\CRRA}\PatR$ satisfies:
 \begin{align}
-  0 \leq & \pZero^{1/\CRRA} \PatR < 1 \label{eq:WRIC},
+\text{{\WRIC}:~~}  1 \geq & \pZero^{1/\CRRA} \PatR \phantom{\text{{\WRIC}:~~}} \label{eq:WRIC},
 \end{align}
 a condition we dub the `Weak Return Impatience Condition' (\WRIC) because with $\pZero < 1$ it will hold more easily (for a larger set of parameter values) than the \RIC~($\PatR < 1$).  The essence of the argument is that as wealth approaches zero, the overriding consideration that limits consumption is the (recursive) fear of the zero-income events.  (That is why the probability of the zero income event $\pZero$ appears in the expression.)
 
