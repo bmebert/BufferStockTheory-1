@@ -14,14 +14,32 @@
 \input{./econtexRoot}\input{\LaTeXInputs/econtex_onlyinsubfile}
 \onlyinsubfile{\externaldocument{BufferStockTheory}} % Get xrefs -- esp to apndx -- from main file; only works if main file has already been compiled
 
+% \starttrackingnewcommands
+%  \newcommand{\foo}{foo}
+%  \newcommand{\baz}{bar}
+%  \newcommand{\titi}{Hemixos castanonotus}
+%  \newcommand{\eag}{Haliaeetus leucocephalus}
+
+% % Redefine commands from sty file to signal compilation from master
+
+%  \stoptrackingnewcommands
+
+\newcommand{\NewMaxMinMPC}{\ushort{\MPC}}
+
+\providecommand{\versn}{pdf} % Version; like, web or pdf or journal submission
+
+\newcommand{\thankstext}{
+  The paper's results \href{https://\owner.github.io/nbreproduce}{can be automatically reproduced} using the \href{https://econ-ark/HARK}{Econ-ARK/HARK} toolkit, which can be cited per our references (\cite{carroll_et_al-proc-scipy-2018}); for reference to the toolkit itself see \href{https://econ-ark.org/acknowledging/}{Acknowleding Econ-ARK}.  Thanks to the \href{https://consumerfinance.gov}{Consumer Financial Protection Bureau} for funding the original creation of the \href{https://econ-ark.org}{Econ-ARK} toolkit; and to the \href{https://sloan.org}{Sloan Foundation} for funding Econ-ARK's \href{https://sloan.org/grant-detail/8071}{extensive further development} that brought it to the point where it could be used for this project.  The toolkit can be cited with its digital object identifier, \href{https://doi.org/10.5281/zenodo.1001067}{10.5281/zenodo.1001067}, as is done in the paper's own references as \cite{carroll_et_al-proc-scipy-2018}.  Thanks to Will Du, James Feigenbaum, Joseph Kaboski, Miles Kimball, Qingyin Ma, Misuzu Otsuka, Damiano Sandri, John Stachurski, Adam Szeidl, Alexis Akira Toda, Metin Uyanik, Mateo Vel\'asquez-Giraldo, Weifeng Wu,  Jiaxiong Yao, and Xudong Zheng for comments on earlier versions of this paper, John Boyd for help in applying his weighted contraction mapping theorem, Ryoji  Hiraguchi for extraordinary mathematical insight that improved the  paper greatly, David Zervos for early guidance to the literature, and participants in a seminar at the Johns Hopkins University, a presentation at the 2009 meetings of the Society of Economic Dynamics for their insights, and at a presentation at the Australian National University.}
+
+
 \begin{document}
 
 % Attempted to make all lines used for Web version contain {Web} (or version with only single curly brace at end) so can be removed with sed
-\providecommand{\versn}{pdf} % Version; like, web or pdf or journal submission
 \ifthenelse{\boolean{Web}}{    % {Web}
   \renewcommand{\versn}{Web}     % Too hard to figure out passing -output-directory through make4ht through htlatex, so web version is compiled with junk files in main directory
   \renewcommand{\rootFromOut}{.} % {Web}
 }{}  % {Web}
+
 
 % Tiny info header at top tracks git commit
 %\hfill{\tiny \jobname~\versn~\today~{at} \DTMcurrenttime, \input{\ResourcesDir/.git-source-commit}~~\input{\ResourcesDir/.git-public-commit}}
@@ -67,9 +85,6 @@
 \begin{authorsinfo}
   \name{Contact: \href{mailto:ccarroll@jhu.edu}{\texttt{ccarroll@jhu.edu}}, Department of Economics, 590 Wyman Hall, Johns Hopkins University, Baltimore, MD 21218, \url{https://www.econ2.jhu.edu/people/ccarroll}, and National Bureau of Economic Research.}
 \end{authorsinfo}
-
-\newcommand{\thankstext}{
-  The paper's results \href{https://\owner.github.io/nbreproduce}{can be automatically reproduced} using the \href{https://econ-ark/HARK}{Econ-ARK/HARK} toolkit, which can be cited per our references (\cite{carroll_et_al-proc-scipy-2018}); for reference to the toolkit itself see \href{https://econ-ark.org/acknowledging/}{Acknowleding Econ-ARK}.  Thanks to the \href{https://consumerfinance.gov}{Consumer Financial Protection Bureau} for funding the original creation of the \href{https://econ-ark.org}{Econ-ARK} toolkit; and to the \href{https://sloan.org}{Sloan Foundation} for funding Econ-ARK's \href{https://sloan.org/grant-detail/8071}{extensive further development} that brought it to the point where it could be used for this project.  The toolkit can be cited with its digital object identifier, \href{https://doi.org/10.5281/zenodo.1001067}{10.5281/zenodo.1001067}, as is done in the paper's own references as \cite{carroll_et_al-proc-scipy-2018}.  Thanks to Will Du, James Feigenbaum, Joseph Kaboski, Miles Kimball, Qingyin Ma, Misuzu Otsuka, Damiano Sandri, John Stachurski, Adam Szeidl, Alexis Akira Toda, Metin Uyanik, Mateo Vel\'asquez-Giraldo, Weifeng Wu,  Jiaxiong Yao, and Xudong Zheng for comments on earlier versions of this paper, John Boyd for help in applying his weighted contraction mapping theorem, Ryoji  Hiraguchi for extraordinary mathematical insight that improved the  paper greatly, David Zervos for early guidance to the literature, and participants in a seminar at the Johns Hopkins University, a presentation at the 2009 meetings of the Society of Economic Dynamics for their insights, and at a presentation at the Australian National University.}
 
 \pagenumbering{gobble} % Prevent numbering for pages including the TOC and title page
 
@@ -157,19 +172,19 @@ and the consumer cannot die in debt,
 \end{align}
 
 \hypertarget{checkRestrictions}{}
-In the usual exposition, a dynamic budget constraint (DBC) combines several distinct events that jointly determine next period's $\mLevBF$ (given this period's choices); for the detailed analysis here, it will be useful to disarticulate and describe every separate step:\hypertarget{DBCParts}{}
+\hypertarget{DBCparts}{}
+In the usual exposition, a dynamic budget constraint (DBC) combines several distinct events that jointly determine next period's $\mLevBF$ (given this period's choices); for the detailed analysis here, it will be useful to disarticulate and describe every separate step:
 \begin{verbatimwrite}{\EqDir/DBCparts}
-  \begin{equation} \label{eq:DBCparts}
-    \begin{split}
-      \aLevBF_{t}    & = \mLevBF_{t}-\cLevBF_{t}  \\
-      \kLevBF_{t+1}   & = \aLevBF_{t} \\
-      \bLevBF_{t+1}    & = \kLevBF_{t+1} \Rfree \\
-      \pLevBF_{t+1}  & = \pLevBF_{t} \underbrace{\PGro\pShk_{t+1}}_{\equiv \PGro_{t+1}}  \\
-      \mLevBF_{t+1}  & =  \bLevBF_{t+1} +\pLevBF_{t+1}\tShkAll_{t+1},
-    \end{split}
+  \begin{equation}\label{eq:DBCparts}
+   \begin{split}
+     \aLevBF_{t}     & = \mLevBF_{t}-\cLevBF_{t}  
+\\     \kLevBF_{t+1}   & = \aLevBF_{t} \notag
+      \bLevBF_{t+1}    & = \kLevBF_{t+1} \Rfree \notag \\
+      \pLevBF_{t+1}  & = \pLevBF_{t} \underbrace{\PGro\pShk_{t+1}}_{\equiv \PGro_{t+1}} \notag \\
+      \mLevBF_{t+1}  & =  \bLevBF_{t+1} +\pLevBF_{t+1}\tShkAll_{t+1},\notag
+   \end{split}
   \end{equation}
 \end{verbatimwrite}
-\input{\LtxDir\EqDir/DBCparts}
 where $\aLevBF_{t}$ indicates the consumer's assets at the end of period $t$, which translate one-for-one into capital $\kLevBF_{t+1}$ at the beginning of the next period, which (before the consumption choice) grows by a fixed interest factor $\Rfree =(1+\rfree)$,  so that $\bLevBF_{t+1}$ is the consumer's financial (`bank') balances before next period's consumption choice;\footnote{Allowing a stochastic interest factor is straightforward but adds little insight for our purposes; however, see~\cite{benhabibWealth},~\cite{maTodaRich}, and~\cite{mstIncFluct} for the implications of capital income risk for the distribution of wealth and other interesting questions not considered here.} $\mLevBF_{t+1}$ (`market resources') is the sum of financial wealth $\bLevBF_{t+1}$ and noncapital income $\pLevBF_{t+1}\tShkAll_{t+1}$ (permanent noncapital income $\pLevBF_{t+1}$ multiplied by a mean-one iid transitory income shock factor $\tShkAll_{t+1}$; transitory shocks are assumed to satisfy $\Ex_{t}[{\tShkAll}_{t+n}]=1~\forall~n\geq 1$). Permanent noncapital income in $t+1$ is equal to its previous value, multiplied by a growth factor $\PGro$, modified by a mean-one iid shock $\pShk_{t+1}$, $\Ex_{t}[{\pShk}_{t+n}]=1~\forall~n \geq 1$ satisfying $\pShk \in [\ushort{\pShk},\bar{\pShk}]$ for $0 < \ushort{\pShk} \leq 1 \leq \bar{\pShk} < \infty$ (and $\ushort{\pShk}=\bar{\pShk}=1$ is the degenerate case with no permanent shocks).
 
 Following~\cite{zeldesStochastic}, in future periods $t+n~\forall~n \geq 1$ there is a small probability $\pZero$ that income will be zero (a `zero-income event'),
@@ -225,12 +240,14 @@ We establish a bit more notation by reviewing the familiar result that in such p
 Now, in a one-time deviation from the notational convention established in the last sentence, define nonbold `normalized value' not as $\vLevBF_{t}/\pLevBF_{t}$ but as $\vFunc_{t} = \vLevBF_{t}/\pLevBF_{t}^{1-\CRRA}$, because this allows us to exploit features of the related problem,
 \begin{equation}\label{eq:veqn}
   \begin{split}
+%    \begin{align*}
     \vFunc_{t}(\mRat_{t})  & = \max_{{\{\cFunc\}}_{t}^{T}}~  \uFunc(\cFunc_{t}) +\DiscFac \Ex_{t}[\PGro_{t+1}^{1-\CRRA}\vFunc_{t+1}({\mRat}_{t+1})]  \\
     & \mbox{s.t.}
     \\ {\aRat}_{t}  & = \mRat_{t}-c_{t}
     \\ {\kRat}_{t+1} & = \aRat_{t}/\PGro_{t+1}
     \\ {\bRat}_{t+1}  & = {\kRat}_{t+1}\Rfree = (\Rfree/\PGro_{t+1})\aRat_{t}  ~ = ~ \Rnorm_{t+1}\aRat_{t}
-    \\ \mRat_{t+1}  & = \bRat_{t+1}+\tShkAll_{t+1}  , 
+      \\ \mRat_{t+1}  & = \bRat_{t+1}+\tShkAll_{t+1}  ,
+%    \end{align*}
   \end{split}
 \end{equation}
 where $\Rnorm_{t+1}\equiv (\Rfree/\PGro_{t+1})$ is a `permanent-income-growth-normalized' return factor, and the reformulated problem's first order condition is\footnote{Leaving aside their assumptions about the marginal utility function and liquidity constraints, it is tempting to view this as a special case of the model of MST, with our $\Rnorm_{t+1}=\Rfree/\PGro_{t+1}$ (defined below equation~\eqref{eq:veqn}) corresponding to their stochastic rate of return on capital and the {\FVAF} $\DiscFac \PGro_{t+1}^{1-\CRRA}$ defined below~\eqref{eq:FVAC} corresponding to their stochastic discount factor.  A caveat is that, here, $\Rnorm_{t+1}$ and the modified discount factor are intimately connected (through $\PGro_{t+1}$), which has profound effects.}%  It would be interesting, and should not be too difficult, to examine the case with independent shocks to the rate of return and productivity growth.
@@ -345,14 +362,14 @@ and so in order to rule out the degenerate limiting solution $\bar{\cFunc}(\mRat
 \hypertarget{GPFRaw}{}
 \subsubsection{The Growth Impatience Condition ({\GIC})}\label{subsubsec:GIC}
 By analogy to the \RPF, we define a `growth patience factor' (\GPFRaw) as
-\begin{align}
-  \PatPGro  & = {\Pat}/\PGro,  \label{eq:GPFRaw}
-\end{align}
-and define a `growth impatience condition' (\GICRaw)
+\begin{flalign}
+  \text{(GPF)} && \PatPGro= {\Pat}/\PGro,  &&   \label{eq:GPFRaw}
+\end{flalign}
+and define a `growth impatience condition' ({GIC})
 \begin{verbatimwrite}{\EqDir/GICRaw}
-  \begin{align}
-    \PatPGro &  < 1   \label{eq:GICRaw}
-  \end{align}
+  \begin{flalign}
+\text{(GIC)}  &&  \PatPGro  < 1 &&  \label{eq:GICRaw}
+  \end{flalign}
 \end{verbatimwrite}
 \input{\LtxDir\EqDir/GICRaw}
 which is equivalent to~\eqref{eq:LiqConstrBinds} (exponentiate both
@@ -363,20 +380,24 @@ sides by $1/\CRRA$).
 \subsubsection{The Perfect Foresight Finite Value of Autarky Condition (\PFFVAC)}
 
 We can define `autarky' as a circumstance under which capital markets do not exist, so the consumer simply spends all permanent noncapital income $\pLevBF$ in every period.  Because $\uFunc(xy) = x^{1-\CRRA}\uFunc(y)$, the value the consumer would achieve is
-\begin{equation}\label{eq:ValuePFAnalyticalAutarky}
-  \begin{split}
+%\begin{equation}
+%  \begin{split}
+    \begin{align}\label{eq:ValuePFAnalyticalAutarky}
     \vLevBF_{t}^{\text{autarky}}  & = \uFunc(\pLevBF_{t})+\DiscFac \uFunc(\pLevBF_{t}\PGro)+\DiscFac^{2} \uFunc(\pLevBF_{t} \PGro^{2})+\ldots
-    \\  & = \uFunc(\pLevBF_{t})\left(\frac{1-{(\DiscFac \PGro^{1-\CRRA})}^{T-t+1}}{1-\DiscFac \PGro^{1-\CRRA}}\right)
-  \end{split}
-\end{equation}
+      \\  & = \uFunc(\pLevBF_{t})\left(\frac{1-{(\DiscFac \PGro^{1-\CRRA})}^{T-t+1}}{1-\DiscFac \PGro^{1-\CRRA}}\right) \notag
+    \end{align}
+%   \end{split}
+%\end{equation}
 which (for $\PGro>0$) asymptotes to a finite number as $n=T-t$ approaches $+\infty$ if any of these equivalent conditions holds:
-\begin{equation}\label{eq:PFFVAC}
-  \begin{split}
-    \overbrace{\DiscFac \PGro^{1-\CRRA} }^{\equiv \DiscAlt}  & < 1
-    \\ \DiscFac \Rfree \PGro^{-\CRRA}  & < \Rfree/\PGro
-    \\ \PatR    & < {(\PGro/\Rfree)}^{1-1/\CRRA},
-  \end{split}
-\end{equation}
+%\begin{equation}
+%  \begin{split}
+    \begin{flalign} \label{eq:PFFVAC}
+ &&     \overbrace{\DiscFac \PGro^{1-\CRRA} }^{\equiv \DiscAlt}  < 1  && \notag \\
+\text{(PF-FVAC)}   &&  \DiscFac \Rfree \PGro^{-\CRRA}   < \Rfree/\PGro  &&
+      \\ && \PatR     < {(\PGro/\Rfree)}^{1-1/\CRRA}, && \notag
+    \end{flalign}
+%  \end{split}
+%\end{equation}
 where we call $\DiscAlt$\footnote{This is another kind of discount factor, so we use the Hebrew `bet' which is a cognate of the Greek `beta'.} the `Perfect Foresight Value Of Autarky Factor' ({\PFVAF}), and the variants of~\eqref{eq:PFFVAC} constitute alternative versions of the Perfect Foresight Finite Value of Autarky Condition, \PFFVAC; they guarantee that a consumer who always spends all permanent income `has finite autarky value'  (in the perfect foresight case).\footnote{This is related to the key impatience condition in~\cite{asHomogeneous}.} % chktex 13
 
 If the {\FHWC} is satisfied, the {\PFFVAC} implies that the {\RIC} is satisfied.\footnote{Divide both sides of the second inequality in~\eqref{eq:PFFVAC} by $\Rfree$:
@@ -404,7 +425,7 @@ Perhaps more useful than prose or a table,  the relations of the conditions for 
 
 \hypertarget{PF-Constrained-Solution}{}
 \hypertarget{Constrained-Solution}{}
-\subsubsection{PF Constrained Solution Exists Under~\texorpdfstring{{\RIC}}{RIC} or~\texorpdfstring{\{\cncl{\RIC},\GICRaw\}}{RIC-Fails,GIC}}\label{subsec:PFCon}
+\subsubsection{PF Constrained Solution Exists Under~\texorpdfstring{{\RIC}}{RIC} or~\texorpdfstring{\{\cncl{\RIC},~\GICRaw\}}{RIC-Fails,~GIC}}\label{subsec:PFCon}
 
 We next sketch the perfect foresight constrained solution because it is a useful benchmark (and limit) for the unconstrained problem with uncertainty (our ultimate interest).
 
@@ -557,7 +578,6 @@ Strict concavity and continuous differentiability of the consumption function ar
 
 The consumption functions depicted in Figure~\ref{fig:cFuncsConverge} appear to have limiting slopes as $\mRat \downarrow 0$ and as $\mRat \uparrow \infty$.  This section confirms that impression and derives those slopes, which will be needed in the contraction mapping proof.\footnote{\cite{benhabibWealth} show that the consumption function becomes linear as wealth approaches infinity in a model with capital income risk and liquidity constraints;~\cite{maTodaRich} show that these results generalize to the limits derived here if capital income is added to the model.}
 
-\newcommand{\NewMaxMinMPC}{\ushort{\MPC}}
 
 Assume (as justified above) that a continuously differentiable concave consumption function exists in period $t+1$, with an origin at $\usual{\cFunc}_{t+1}(0)=0$, a minimal MPC $\NewMaxMinMPC_{t+1}>0$, and maximal MPC $\MaxMPC_{t+1} \leq 1$.  (If $t+1 = T$ these will be $\NewMaxMinMPC_{T}=\MaxMPC_{T}=1$; for earlier periods they will exist by recursion.)
 
@@ -675,7 +695,7 @@ The full relationship among conditions is represented in Figure~\ref{fig:Inequal
 \hypertarget{\figFile}{}
 \input{\FigDir/\figName} % Read in the tex to generate the figure
 
-\subsubsection{The \WRIC}\label{subsubsec:WRICdiscuss}
+%\subsubsection{The \WRIC}\label{subsubsec:WRICdiscuss}
 
 The `weakness' of the additional condition sufficient for contraction beyond the {\FVAC}, the \WRIC, can be seen by asking `under what circumstances would the \FVAC~hold but the \WRIC~fail?'  Algebraically, the requirement is
 \begin{align}
@@ -775,9 +795,7 @@ But
   & = \lim_{m \uparrow \infty} (\mRat -1+ \hRat)/\mRat  \\
   & = 1,
 \end{align*}
-so as $\mRat \uparrow \infty, \usual{\cFunc}(\mRat)/\ushort{\cFunc}(\mRat)
-\rightarrow 1$, and the continuous differentiability and strict
-concavity of $\usual{\cFunc}(\mRat)$ therefore implies
+so as $\mRat \uparrow \infty, \usual{\cFunc}(\mRat)/\ushort{\cFunc}(\mRat) \rightarrow 1$, and the continuous differentiability and strict concavity of $\usual{\cFunc}(\mRat)$ therefore implies
 \begin{equation*} % \label{eq:limxtoinftycp}
   \lim_{m \uparrow \infty} \usual{\cFunc}^{\prime}(\mRat) =
   \ushort{\cFunc}^{\prime}(\mRat) = \bar{\cFunc}^{\prime}(\mRat) = \MinMPC
@@ -1042,12 +1060,6 @@ Before we get to the formal arguments below, the key insight can be understood h
 Assume a continuum of \textit{ex ante} identical households on the unit interval, with constant total mass normalized to one and indexed by $i \in [0,1]$, all behaving according to the model specified above.
 
 
-\newcommand{\Nvrnt}{F}
-\newcommand{\nvrnt}{f}
-\newcommand{\Harm}{\tilde}
-\newcommand{\HarmWide}{\widetilde}
-\newcommand{\cv}{\textup{cov}}
-
 Szeidl~\citeyearpar{szeidlInvariant} proved that such a population will be characterized by invariant distributions of $\mRat$, $\cRat$, and $\aRat$ under the condition\footnote{\cite{szeidlInvariant}'s equation (9), in our notation, is:
   \begin{align*}
     \Ex \log \Rfree (1-\MPC) & < \Ex \log \PGro \pShk
@@ -1108,37 +1120,6 @@ In a Harmenberg-invariant economy (and therefore also any Szeidl-invariant econo
 \end{equation*}
 will hold for any $\mRat$.
 
-
-
-\begin{comment}
-  \newcommand{\popn}{\Xi}
-  \newcommand{\Dstn}{\mathcal{F}}
-  \newcommand{\dstn}{f}
-  Define $\popn(\mRat)$ as the population density at a given $\mRat$.
-
-  \begin{align}
-    \Dstn(\mRat)/\Dstn(\sim)
-  \end{align}
-
-  The same point applies in a Harmenberg-invariant economy, if we weigh the distributions according to the Harmenberg-invariant measures when taking the mean.  Because Harmenberg's measure is time-specific (it removes the predictable growth term), a mean operator using his weighting must have time subscripts: 
-  \begin{align*}
-    \PGro \Harm{\Mean}_{t+1}\left[\log \cLevBF_{t+1}\right] - \Harm{\Mean}_{t}\left[\log \cLevBF_{t}\right] & = \PGro \Harm{\Mean}_{t+1}\left[ \log \pLevBF_{t+1} + \log \cRat_{t+1} \right] - \Harm{\Mean}_{t}\left[\log \pLevBF_{t} + \log \cRat_{t}\right]
-    \\ & = \PGro \Harm{\Mean}_{t+1}\left[ \log \pLevBF_{t+1} \right] - \Harm{\Mean}_{t}\left[\log \pLevBF_{t} \right]
-    \\ & ~~
-         + \PGro \Harm{\Mean}_{t+1}\left[ \log \cRat_{t+1} \right] - \Harm{\Mean}_{t}\left[\log \cRat_{t}\right]
-  \end{align*}
-  \begin{align*}
-    \Harm{\Mean}_{t+1}\left[\log \cLevBF_{t+1}\right] - \Harm{\Mean}_{t}\left[\log \cLevBF_{t}\right] & =  \Harm{\Mean}_{t+1}\left[ \log \pLevBF_{t+1} + \log \cRat_{t+1} \right] - \Harm{\Mean}_{t}\left[\log \pLevBF_{t} + \log \cRat_{t}\right]
-    \\ & =  \Harm{\Mean}_{t+1}\left[ \log \pLevBF_{t+1} \right] - \Harm{\Mean}_{t}\left[\log \pLevBF_{t} \right]
-    \\ & ~~
-         +  \Harm{\Mean}_{t+1}\left[ \log \cRat_{t+1} \right] - \Harm{\Mean}_{t}\left[\log \cRat_{t}\right]
-  \end{align*}
-  but because the Harmenberg-weighted distributions of $\cRat_{t}$ and $\cRat_{t+1}$ are identical this reduces to
-  \begin{align*}
-\Harm{\Mean}_{t+1}\left[\log \cLevBF_{t+1}\right] - \Harm{\Mean}_{t}\left[\log \cLevBF_{t}\right] & = \Harm{\Mean}_{t+1}\left[ \log \pLevBF_{t+1} \right] - \Harm{\Mean}_{t}\left[\log \pLevBF_{t} \right]
-  \end{align*}
-  (and it would be possible to undo the growth adjustment that requires dating the Harmenberg mean operators to reduce this expression to be identical to \eqref{eq:MeanDeltaLogCeqMeanDeltaLogP}).
-\end{comment}
 
 \hypertarget{Balanced-Growth-Of-Covariances}{}
 \subsection{Aggregate Balanced Growth and Idiosyncratic Covariances}\label{subsec:Covariances}
@@ -1305,10 +1286,10 @@ The main use of infinite horizon versions of such models is in heterogeneous age
 % \texname, % subfile inherits texname from preamble of parent
 % \econtexBib % Default bib database is in Resources/LaTeXInputs
 % }}
-%   \bibliography{economics}
+
 \onlyinsubfile{\input{\LaTeXInputs/bibliography_blend}}
-% \bibliography{economics}
 \end{document}
+
 \endinput
 
 % If you are editing in Emacs-AucTeX, modify the lines below for your system (otherwise ignore)

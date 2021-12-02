@@ -6,6 +6,58 @@
 \setboolean{BothExist}{true}
 \setboolean{NeitherExists}{true}
 
+\makeatletter
+ % This macro will contain all the tracked commands:
+ \def\@mycommands{}
+ % These macros enable and disable tracking the commands:
+ \def\starttrackingnewcommands{%
+     \let\old@@newcommand\@newcommand
+     \def\@newcommand##1{%
+         \expandafter\def\expandafter\@mycommands\expandafter{\@mycommands\oneof@mycommands##1}%
+         \old@@newcommand##1%
+     }%
+ }
+ \def\stoptrackingnewcommands{%
+     \let\@newcommand\old@@newcommand
+ }
+ % These macros are used to write to the log file:
+ \def\mycommand@used#1{\typeout{My command `\string #1' was used.}}
+ \def\mycommand@unused#1{%
+     \GenericWarning{(mycommands)}{LaTeX Warning:
+         My command `\string #1' was not used!%
+     }%
+ }
+ % These macros mark a command as used or unused:
+ \def\mycommand@markunused#1{%
+     \expandafter\gdef\csname mycommand@status@\expandafter\@gobble\string #1\endcsname{\mycommand@unused #1}%
+     \pretocmd #1{\mycommand@markused #1}{}{\GenericWarning{(mycommands)}{Could not patch `\string #1' as unused!}}%
+     \aftergroup\mycommand@markunused\aftergroup #1%
+ }
+ \def\mycommand@markused#1{%
+     \expandafter\gdef\csname mycommand@status@\expandafter\@gobble\string #1\endcsname{\mycommand@used #1}%
+     \patchcmd #1{\mycommand@markused #1}{}{}{\GenericWarning{(mycommands)}{Could not patch `\string #1' as used!}}%
+     \aftergroup\mycommand@markused\aftergroup #1%
+ }
+ % This macro calls the appropriate logging macro for a command:
+ \def\mycommand@evaluateuse#1{%
+     \csname mycommand@status@\expandafter\@gobble\string#1\endcsname
+ }
+ % Mark all commands as unused at \begin{document}:
+ \AtBeginDocument{%
+     \let\oneof@mycommands\mycommand@markunused
+     \@mycommands
+ }
+ % Evaluate the use of the commands at \end{document}:
+ \AtEndDocument{%
+     \let\oneof@mycommands\mycommand@evaluateuse
+     {\let\mycommand@unused\@gobble% first, only the used commands
+         \@mycommands
+     }{\let\mycommand@used\@gobble% then, only the unused commands
+         \@mycommands
+     }%
+ }
+\makeatother
+
 \let\ushort\undefined
 \usepackage{footmisc}
 \usepackage{datetime2}
@@ -13,11 +65,9 @@
 \usepackage{xr-hyper}
 \usepackage{hhline}
 % Sets up default definitions that must be renewcommanded to override in master
-%\starttrackingnewcommands
 \newcommand{\onlyinsubfile}[1]{#1}\newcommand{\notinsubfile}[1]{}
 
 % https://tex.stackexchange.com/questions/463699/proper-reference-numbers-with-subfiles
-%\stoptrackingnewcommands
 \newcommand\labelprefix{}
 \newcommand\localorexternallabel[1]{%
   \expandafter\ifx\csname r@#1\endcsname\relax
@@ -25,14 +75,37 @@
   \fi #1%
 }
 
-%\starttrackingnewcommands
 % Appendices and body are subfiles
 \usepackage{subfiles}
-%\starttrackingnewcommands
 
 % Implement a standard setup and shortcuts, e.g. for the \CRRA
 \usepackage{\econtexSetup}
+\starttrackingnewcommands
+% \newcommand{\aRat}{\ensuremath{a}}
+\stoptrackingnewcommands
+\newcommand{\aRat}{a}
+\newcommand{\aAgg}{\ensuremath{\mathsf{A}}}
+\newcommand{\aboveMin}{\blacktriangle}
+\newcommand{\adjPar}{\ensuremath{\omega}}
+\newcommand{\adj}{\ensuremath{\mathrm{j}}}
+\newcommand{\aE}{\aRat^{e}}
+\newcommand{\aFunc}{\ensuremath{\mathrm{a}}}
+\newcommand{\Age}{\ensuremath{Z}}
+\newcommand{\age}{\ensuremath{z}}
+\newcommand{\ALevBF}{\ensuremath{\mathbf{A}}}
+\newcommand{\aLevBF}{a}
+\newcommand{\ALev}{\ensuremath{A}}
+\newcommand{\aLev}{\ensuremath{a}}
+\newcommand{\Alive}{\ensuremath{\aleph}}
+\newcommand{\Alt}{\grave}
+\newcommand{\aMin}{\ensuremath{\underline{\aRat}}}
+\newcommand{\aRatBF}{\ensuremath{\pmb{a}}}
+\newcommand{\ASS}{\ensuremath{\ensuremath{A}}}
+\newcommand{\aSS}{\ensuremath{\ensuremath{a}}}
+\newcommand{\ATarg}{\ensuremath{\check{A}}}
+\newcommand{\aTarg}{\ensuremath{\check{a}}}
 \usepackage{\econtexShortcuts}
+
 \usepackage{makecell}
 
 % \usepackage{lineno}
@@ -80,15 +153,14 @@
 \newcommand{\mGro}{\Gro{m}}
 \newcommand{\StE}{\check}
 \newcommand{\mStE}{\check{m}}
-\providecommand{\aRatBF}{\ensuremath{\pmb{\mathrm{a}}}}
-\providecommand{\mRatBF}{\ensuremath{\pmb{\mathrm{m}}}}
-\providecommand{\bRatBF}{\ensuremath{\pmb{\mathrm{b}}}}
-\providecommand{\IncUnemp}{\mu}
-\providecommand{\usual}{}
-\providecommand{\Grw}{\Omega}
-\providecommand{\cRatAvg}{\pmb{\mathfrak{\cRat}}}
+\renewcommand{\aRatBF}{\ensuremath{\pmb{\mathrm{a}}}}
+\renewcommand{\mRatBF}{\ensuremath{\pmb{\mathrm{m}}}}
+\renewcommand{\bRatBF}{\ensuremath{\pmb{\mathrm{b}}}}
+\newcommand{\IncUnemp}{\mu}
+\newcommand{\usual}{}
+\newcommand{\Grw}{\Omega}
+\newcommand{\cRatAvg}{\pmb{\mathfrak{\cRat}}}
 
-%\stoptrackingnewcommands
 \usepackage{pdfcomment}
 
 \DefineFamilyKey[.section]{KOMAarg}{hypertarget}{%
@@ -111,15 +183,15 @@
 
 \RedeclareSectionCommand[
 tocindent=0cm,
-tocnumwidth=0.25cm
+tocnumwidth=0.5cm
 ]{section}
 \RedeclareSectionCommand[
-tocindent=0.25cm,
-tocnumwidth=0.5cm
+tocindent=0.5cm,
+tocnumwidth=1.0cm
 ]{subsection}
 \RedeclareSectionCommand[
-tocindent=0.5cm,
-tocnumwidth=0.75cm
+tocindent=1.0cm,
+tocnumwidth=1.5cm
 ]{subsubsection}
 
 % \newcommand{\BSTlinkTo}{https://\owner.github.io/BufferStockTheory}
@@ -134,13 +206,34 @@ tocnumwidth=0.75cm
 % \renewcommand{\RIC}{\href{{\BSTlinkTo}\#RIC}{\textrm{RIC}}}
 % \renewcommand{\PFFVAC}{\href{{\BSTlinkTo}\#PFFVAC}{\textrm{PF-FVAC}}}
 
-\newcommand{\BSTlinkTo}{https://\owner.github.io/BufferStockTheory}
+\newcommand{\BSTlinkTo}{https://\owner.github.io/BufferStockTheory3} % Frame 3
 \renewcommand{\FHWC}{\href{{\BSTlinkTo}FHWC}{\textrm{FHWC}}}
 \newcommand{\FHWCFull}{\href{{\BSTlinkTo}\#FHWC}{{\BSTlinkTo}\#FHWC}}
 \newcommand{\GICRawFull}{\href{{\BSTlinkTo}\#GICRaw}{{\BSTlinkTo}\#GICRaw}}
 \newcommand{\RICFull}{\href{{\BSTlinkTo}\#RIC}{{\BSTlinkTo}\#RIC}}
 \newcommand{\PFFVACFull}{\href{{\BSTlinkTo}\#PFFVAC}{{\BSTlinkTo}\#RIC}}
 \renewcommand{\FHWC}{\href{{\BSTlinkTo}\#FHWC}{\textrm{FHWC}}}
-\renewcommand{\GICRaw}{\href{{\BSTlinkTo}\#GICRaw}{\textrm{PF-GICNrm}}}
+\renewcommand{\GICRaw}{\href{{\BSTlinkTo}\#GICRaw}{\textrm{PF-GIC}}}
 \renewcommand{\RIC}{\href{{\BSTlinkTo}\#RIC}{\textrm{RIC}}}
 \renewcommand{\PFFVAC}{\href{{\BSTlinkTo}\#PFFVAC}{\textrm{PF-FVAC}}}
+
+
+
+\newcommand{\Nvrnt}{F}
+\newcommand{\nvrnt}{f}
+\newcommand{\Harm}{\tilde}
+\newcommand{\HarmWide}{\widetilde}
+\newcommand{\cv}{\textup{cov}}
+\newcommand{\AMPS}{\bar{\acute{\aFunc}}}
+\provideboolean{Metin}\setboolean{Metin}{true}\newcommand{\Metin}[2]{\ifthenelse{\boolean{Metin}}{\marginpar{\large Metin}\{{#1}\} $\rightarrow$ \{{#2}\}}{#2}}% PrivateMsg: Comments by Metin Uyanik
+
+%\newcommand{figName}{}
+
+% \starttrackingnewcommands
+%  \newcommand{\foo}{foo}
+%  \newcommand{\baz}{bar}
+%  \newcommand{\titi}{Hemixos castanonotus}
+%  \newcommand{\eag}{Haliaeetus leucocephalus}
+
+% % Redefine commands from sty file to signal compilation from master
+% \stoptrackingnewcommands
