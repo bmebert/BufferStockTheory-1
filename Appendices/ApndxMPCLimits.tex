@@ -65,7 +65,7 @@ The minimal MPC's are obtained by considering the case where $\mRat_{t} \uparrow
 \begin{eqnarray*}
  {({\mRat_{t}}\eFunc_{t}(\mRat_{t}))}^{-\CRRA}  & = \DiscFac \Rfree \Ex_{t}\left[{\left(\eFunc_{t+1}(\aFunc_{t}(\mRat_{t})\Rnorm_{t+1})\left({\Rfree \aFunc_{t}(\mRat_{t})}\right)\right)}^{-\CRRA}\right]
 \end{eqnarray*}
-and we know from L'H\^opital's rule that $\lim_{\mRat_{t} \rightarrow \infty} \eFunc_{t}(\mRat_{t}) = \MinMPC_{t}$, and $\lim_{\mRat_{t} \rightarrow \infty} \eFunc_{t+1}(\aFunc_{t}(\mRat_{t})\Rnorm_{t+1}) = \MinMPC_{t+1}$ so a further limit of the Euler equation is\hypertarget{MPCnvrs}{}
+and using L'H\^opital's rule $\lim_{\mRat_{t} \rightarrow \infty} \eFunc_{t}(\mRat_{t}) = \MinMPC_{t}$, and $\lim_{\mRat_{t} \rightarrow \infty} \eFunc_{t+1}(\aFunc_{t}(\mRat_{t})\Rnorm_{t+1}) = \MinMPC_{t+1}$ so a further limit of the Euler equation is\hypertarget{MPCnvrs}{}
 \begin{eqnarray*}
   {(\mRat_{t}\MinMPC_{t})}^{-\CRRA}  & = & \DiscFac \Rfree {\left(\MinMPC_{t+1} \Rfree (1-\MinMPC_{t})\mRat_{t}\right)}^{-\CRRA}
 \\ \underbrace{{\Rfree}^{-1}{\Pat}}_{\equiv \MaxMPS = (1-\underline{\MPC})} \MinMPC_{t}  & = & (1-\MinMPC_{t}) \MinMPC_{t+1}
@@ -84,8 +84,7 @@ convergent sequence, and we define
 as the limiting (inverse) marginal MPC.\@  If the \RIC~does \textit{not} hold, then $\lim_{n \rightarrow \infty} \MinMPC_{T-n}^{-1} = \infty$
 and so the limiting MPC is $\MinMPC = 0$.
 
-For the purpose of constructing the limiting perfect foresight consumption function, it is useful further to note that
-the PDV of consumption is given by\hypertarget{MPCnvrsIsCPDV}{}
+For the purpose of constructing the limiting perfect foresight consumption function, it is useful further to note that the PDV of consumption is given by\hypertarget{MPCnvrsIsCPDV}{}
 
 \begin{eqnarray*}
   \cRat_{t}\underbrace{\left(1 + \PatR + \PatR^{2} + \cdots \right)}_{=1+\PatR(1+\PatR\MinMPC_{t+2}^{-1})\ldots}   & = \cRat_{t}\MinMPC_{T-n}^{-1}.

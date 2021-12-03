@@ -2,8 +2,9 @@
   \newlength\TableWidth
   \newsavebox{\ComparisonSub}
   \begin{table}[!th]
-    \centering
-\caption{Definitions and Comparisons of Conditions}\label{table:Comparison}
+    \iflabelexists{table:Comparison}{}{\label{table:Comparison}} % Don't define it if already defined
+    \centering 
+\caption{Definitions and Comparisons of Conditions} 
   \sbox{\ComparisonSub}{
 \begin{tabular}{|c|c|}\hline
 Perfect Foresight Versions & Uncertainty Versions\\ \hline
@@ -57,5 +58,5 @@ equivalently $\Pat  < \Rfree^{1/\CRRA}\PGro^{1-1/\CRRA}$ & \\
 \end{tabular}
 } % End \sbox
 \settowidth\TableWidth{\usebox{\ComparisonSub}}
-\usebox{\ComparisonSub}
+\scalebox{0.9}{\usebox{\ComparisonSub}}
 \end{table}

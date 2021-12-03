@@ -57,7 +57,7 @@ This follows from:
     \item The Intermediate Value Theorem
     \end{enumerate}
 
-\subsubsection{Existence of \texorpdfstring{$\mRat$}{m} where $\Ex_t [{\mRat}_{t+1}/\mRat_t] < 1$}
+\subsubsection{Existence of \texorpdfstring{$\mRat$}{m} where \texorpdfstring{$\Ex_t [{\mRat}_{t+1}/\mRat_t] < 1$}{E[m{t+1}/m{t}}}
     
 \textbf{If {\RIC} holds.}  Logic exactly parallel to that of Section~\ref{subsec:LimitsAsmtToInfty} leading to equation~\eqref{eq:xtp1toinfty}, but dropping the $\PGro_{t+1}$ from the RHS, establishes that
 \begin{align}
@@ -76,7 +76,7 @@ So we have $\lim_{\mRat \uparrow \infty} \Ex_{t}[\mRat_{t+1}/\mRat_{t}] < 1$ whe
 
 \medskip
 
-\subsubsection{Existence of \texorpdfstring{$\mRat$}{m} > 1 where \texorpdfstring{$\Ex_t [{\mRat}_{t+1}/\mRat_t] > 1$}{E[$m_{t+1}/mRat_{t}$] > 1}}
+\subsubsection{Existence of \texorpdfstring{$\mRat$}{m} > 1 where \texorpdfstring{$\Ex_t [{\mRat}_{t+1}/\mRat_t] > 1$}{E[m{t+1}/m{t}] > 1}}
 Paralleling the logic for $\cRat$ in Section~\ref{subsec:LimitsAsmtToZero}: the ratio of $\Ex_{t}[\mRat_{t+1}]$ to $\mRat_{t}$ is unbounded above as $\mRat_{t} \downarrow 0$ because $\lim_{\mRat_{t}\downarrow 0} \Ex_{t}[\mRat_{t+1}] > 0$.
 
 \medskip\medskip
@@ -172,7 +172,7 @@ where the last two lines are merely a restatement of the \GICRaw~\eqref{eq:GICRa
 
 The Intermediate Value Theorem says that if $\Ex_{t}[\pShk_{t+1}\mRat_{t+1}/\mRat_t]$ is continuous, and takes on values above and below 1, there must be at least one point at which it is equal to one.
 
-\subsubsection{\texorpdfstring{$\Ex_{t}[\pShk_{t+1}\mRat_{t+1}] -\mRat_t$}{pShk mRat-{t+1} --- mRat-{t}} is monotonically decreasing.}
+\subsubsection{\texorpdfstring{$\Ex_{t}[\pShk_{t+1}\mRat_{t+1}] -\mRat_t$}{pShk m{t+1} --- m{t}} is monotonically decreasing.}
 
 Define \providecommand{\difFunc}{\pmb{\zeta}} $\difFunc(\mRat_t) \equiv 
 \Ex_t[\pShk_{t+1}\mRat_{t+1}] - \mRat_t$ and note that
@@ -240,7 +240,7 @@ and this latter factor is a number that approaches 1 from below as $\mRat_{t}$ r
 
 \subsection{Proof of Lemma}%~\ref{lemma:orderingPartOne}-\ref{lemma:orderingPartTwo}}
 
-\subsubsection{Pseudo-Steady-State $\mRat$ Is Smaller than Target $\mRat$}
+\subsubsection{Pseudo-Steady-State \texorpdfstring{$\mRat$}{m} Is Smaller than Target \texorpdfstring{$\mRat$}{m}}
 Designate
 \begin{equation}\begin{split}
   \StE{\mFunc}_{t+1}(\aRat) % = \Ex_{t}[\StE{\aRat}\Rnorm+\tShk_{t+1}\pShk_{t+1} ] \\
@@ -269,7 +269,7 @@ Then subtract:
 \end{split}\end{equation}
 The RHS of this equation is strictly positive because $\InvEpShkInv^{-1}>1$ and both $\Trg{\aRat}$ and $\Rnorm$ are positive; while on the LHS, $(1-\Rnorm\aRat^{\prime})>0$.  So the equation can only hold if $\Trg{\mRat}-\StE{\mRat} > 0$.  That is, the target ratio exceeds the pseudo-steady-state ratio.\footnote{The use of the first order Taylor approximation could be substituted, cumbersomely, with the average of $\aFunc^{\prime}$ over the interval to remove the approximation in the derivations above.}
 
-\subsubsection{The $\mRat$  Achieving Individual Expected-Log-Balanced-Growth Is Smaller than the Individual Pseudo-Steady-State $\mRat$}
+\subsubsection{The \texorpdfstring{$\mRat$}{m}  Achieving Individual Expected-Log-Balanced-Growth Is Smaller than the Individual Pseudo-Steady-State \texorpdfstring{$\mRat$}{m}}
 
 Expected log balanced growth occurs when
 \begin{equation}\begin{split}

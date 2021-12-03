@@ -73,8 +73,8 @@
         \texttt{Dashboard:~} \= \= \texttt{\url{https://econ-ark.org/materials/bufferstocktheory?dashboard}} \\
         \texttt{~~~REMARK:~} \> \> \texttt{\url{https://econ-ark.org/materials/bufferstocktheory}} \\ 
         \texttt{~~~~~html:~} \> \> \texttt{\href{https://\owner.github.io/BufferStockTheory/}{https://\owner.github.io/BufferStockTheory/}} \\ % Owner is defined in Resources/owner.tex
-        \texttt{~~~~~~PDF:~} \> \> \texttt{\href{https://\owner.github.io/BufferStockTheory/BufferStockTheory.pdf}{https://\owner.github.io/BufferStockTheory/LaTeX/BufferStockTheory.pdf}} \\ 
-        \texttt{~~~Slides:~} \> \> \texttt{\href{https://\owner.github.io/BufferStockTheory/BufferStockTheory-Slides.pdf}{https://\owner.github.io/BufferStockTheory/LaTeX/BufferStockTheory-Slides.pdf}} \\
+        \texttt{~~~~~~PDF:~} \> \> \texttt{\href{https://\owner.github.io/BufferStockTheory/LaTeX/BufferStockTheory.pdf}{https://\owner.github.io/BufferStockTheory/LaTeX/BufferStockTheory.pdf}} \\ 
+        \texttt{~~~Slides:~} \> \> \texttt{\href{https://\owner.github.io/BufferStockTheory/LaTeX/BufferStockTheory-Slides.pdf}{https://\owner.github.io/BufferStockTheory/LaTeX/BufferStockTheory-Slides.pdf}} \\
         \texttt{~Appendix:~} \> \> \texttt{\href{https://\owner.github.io/BufferStockTheory\#Appendices}{https://\owner.github.io/BufferStockTheory\#Appendices}}    \\
         \texttt{~~~GitHub:~} \> \> \texttt{\href{https://github.com/\owner/BufferStockTheory}{https://github.com/\owner/BufferStockTheory}} \\
       \end{tabbing}
@@ -350,7 +350,7 @@ The {\RIC} thus implies that the consumer cannot be so pathologically patient as
 
 \hypertarget{Unconstrained-Solution}{}\hypertarget{PF-Unconstrained-Solution}{}
 \subsubsection{PF Unconstrained Solution Requires {\FHWC} and {\RIC}}\label{subsec:PFUncon}
-\hypertarget{APF}{}\hypertarget{AIC}{}
+\hypertarget{AIC}{}
 
 
 Given that the {\RIC}~holds, and (as before) defining limiting objects by the absence of a time subscript, the limiting upper bound consumption function will be
@@ -362,14 +362,14 @@ and so in order to rule out the degenerate limiting solution $\bar{\cFunc}(\mRat
 \hypertarget{GPFRaw}{}\hypertarget{GIC}{}
 \subsubsection{The Growth Impatience Condition ({\GIC})}\label{subsubsec:GIC}
 By analogy to the \RPF, we define a `growth patience factor' (\GPFRaw) as
-\begin{equation}\begin{gathered}\begin{split}
+\begin{equation}\begin{gathered}\begin{aligned}
  \text{{\GPFRaw}:~~} && \PatPGro= {\Pat}/\PGro,  &   \label{eq:GPFRaw}
-\end{split}\end{gathered}\end{equation}
+\end{aligned}\end{gathered}\end{equation}
 and define a `growth impatience condition' ({\GIC})
 \begin{verbatimwrite}{\EqDir/GICRaw}
-\begin{equation}\begin{gathered}\begin{split}
+\begin{equation}\begin{gathered}\begin{aligned}
     \text{\GIC:~~}  &&  \PatPGro  < 1 \phantom{/\PGro}&  \phantom{\text{\GIC:~~}} \label{eq:GICRaw}
-\end{split}\end{gathered}\end{equation}
+\end{aligned}\end{gathered}\end{equation}
 \end{verbatimwrite}
 \input{\LtxDir\EqDir/GICRaw}
 which is equivalent to~\eqref{eq:LiqConstrBinds} (exponentiate both
@@ -583,7 +583,7 @@ Under our imposed assumption that human wealth is finite, the MPC bound as wealt
 \hypertarget{MPCnvrsUpper}{}
 \hypertarget{WRIC}{}\hypertarget{WRPF}{}
 Appendix equation~\eqref{eq:MaxMPCInvApndx} presents a parallel expression for the limiting maximal MPC as $\mRat_{t} \downarrow 0$:
-\begin{align}\hypertarget{WRPF}{}
+\begin{align}
   \MaxMPC_{t}^{-1}  & = 1+\MinMPS \MaxMPC_{t+1}^{-1} \label{eq:MaxMPCInv}
 \end{align}
 where $\left\{\MaxMPC_{T-n}^{-1}\right\} _{n=0}^{\infty}$ is a decreasing convergent sequence if the `weak return patience factor' $\pZero^{1/\CRRA}\PatR$ satisfies:
@@ -952,7 +952,7 @@ The critical $\mRat$ will be the value $\mStE$ at which $\mRatBF$ growth matches
   \end{split}
 \end{equation}
 
-The only difference between~\eqref{eq:balgrostable} and~\eqref{eq:mTargImplicit} is the substitution of $\Rnorm$ for $\bar{\Rnorm}$.\footnote{A third candidate `stable point' is the $\mGro$ where $\Ex_{t}[\log \mLev_{t+1}] = \log \PGro \mLev_{t}$; equivalently, $\Ex_{t}\left[\log\left((\mStE-\usual{\cFunc}(\mGro))\Rnorm+\pShk_{t+1}\tShk_{t+1}\right)\right]  = \log \mGro_{t}$.  Because the expectation of the log of a stochastic variable is less than the log of the expectation, this will be satisfied by an $\mGro < \mStE$.  For our purposes, little would be gained by an analysis of this point parallel to those of the other points of stability; but to accommodate potential uses,  the toolkit computes the value of this point as~\texttt{mLogTrg}.\label{thirdmeasure}}$^{,}$\footnote{Our choice to call to this the individual problem's `individual balanced-growth pseudo-steady-state' $\mStE$ is motivated by what happens in the case where all draws of all future shocks just happen to take on their expected value of 1.0.  (They unexpectedly always take on their expected values).  In that infinitely improbable case, the economy \textit{would} exhibit balanced growth.
+The only difference between~\eqref{eq:balgrostable} and~\eqref{eq:mTargImplicit} is the substitution of $\Rnorm$ for $\bar{\Rnorm}$.\footnote{A third candidate `stable point' is the $\mGro$ where $\Ex_{t}[\log \mLev_{t+1}] = \log \PGro \mLev_{t}$; this can be conveniently rewritten as $\Ex_{t}\left[\log\left((\mStE-\usual{\cFunc}(\mGro))\Rnorm+\pShk_{t+1}\tShk_{t+1}\right)\right]  = \log \mGro_{t}$.  Because the expectation of the log of a stochastic variable is less than the log of the expectation, this will be satisfied by an $\mGro < \mStE$.  For our purposes, little would be gained by an analysis of this point parallel to those of the other points of stability; but to accommodate potential uses,  the toolkit computes the value of this point as~\texttt{mLogTrg}.\label{thirdmeasure}}$^{,}$\footnote{Our choice to call to this the individual problem's `individual balanced-growth pseudo-steady-state' $\mStE$ is motivated by what happens in the case where all draws of all future shocks just happen to take on their expected value of 1.0.  (They unexpectedly always take on their expected values).  In that infinitely improbable case, the economy \textit{would} exhibit balanced growth.
   \begin{align*}
     \Ex_{t}[\mRat_{t+1}/\mRat_{t}|\pShk_{t+1}=\tShk_{t+1}=1] = \PGro \left(\mStE-\cFunc(\mStE)\Rnorm + 1 \right)/\mRat = \PGro
   \end{align*}}

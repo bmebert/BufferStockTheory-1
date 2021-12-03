@@ -261,3 +261,7 @@ tocnumwidth=1.4cm
 
 % % Redefine commands from sty file to signal compilation from master
 % \stoptrackingnewcommands
+
+\makeatletter
+\newcommand{\iflabelexists}[3]{\@ifundefined{r@#1}{\G@refundefinedtrue{#3}}{#2}}
+\makeatother

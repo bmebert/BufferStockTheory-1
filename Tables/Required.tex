@@ -1,8 +1,9 @@
 
 \newsavebox{\Required}
 \begin{table}
+  \iflabelexists{table:Required}{}{\label{table:Required}} % Don't define it if already defined
 \centering
-\caption{Sufficient Conditions for Nondegenerate$^{\ddagger}$ Solution} \label{table:Required}
+\caption{Sufficient Conditions for Nondegenerate$^{\ddagger}$ Solution} 
 \sbox{\Required}{
 \begin{tabular}{|l|l|l|} \hline
   \multicolumn{1}{|l|}{Consumption Model(s)}                                                                             & \multicolumn{1}{c|}{Conditions}         & \multicolumn{1}{c|}{Comments}
@@ -60,7 +61,7 @@
     \end{minipage}}
 }
 
-\usebox{\RequiredShrunkBox}
+\scalebox{0.9}{\usebox{\RequiredShrunkBox}}
 
 
 \parbox{\textwidth}{\footnotesize         $^{\ddagger}$For feasible $\mRat$ satisfying $0 < \mRat < \infty$, a nondegenerate limiting consumption function defines a unique optimal value of $\cRat$ satisfying $0 < \cRat(m) < \infty$; a nondegenerate limiting value function defines a corresponding unique value of $-\infty < \vFunc(\mRat) < 0$ .~~$^{\circ}$RIC, \FHWC~are necessary as well as sufficient for the perfect foresight case.~~$^{\ast}$That is, the first kink point in $\cRat(\mRat)$ is $\mRat_{\#}$ s.t. for $\mRat < \mRat_{\#}$ the constraint will bind now, while for $\mRat > \mRat_{\#}$ the constraint will bind one period in the future.  The second kink point corresponds to the $\mRat$ where the constraint will bind two periods in the future, etc.~~$^{\ast\ast}$In the Friedman/Muth model, the {\RIC}+{\FHWC} are sufficient, but \textit{not} necessary for nondegeneracy}
