@@ -12,7 +12,7 @@
 #       format_version: '1.3'
 #       jupytext_version: 1.11.2
 #   kernelspec:
-#     display_name: Python 3 (ipykernel)
+#     display_name: Python 3
 #     language: python
 #     name: python3
 #   language_info:
@@ -24,7 +24,7 @@
 #     name: python
 #     nbconvert_exporter: python
 #     pygments_lexer: ipython3
-#     version: 3.9.6
+#     version: 3.8.8
 #   latex_envs:
 #     LaTeX_envs_menu_present: true
 #     autoclose: false
@@ -71,7 +71,7 @@
 # %% [markdown]
 # `# Setup Python Below`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # This cell does some setup
 
 # Import required python packages

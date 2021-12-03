@@ -13,7 +13,10 @@
 
 \pagebreak\appendix
 \hypertarget{Appendices}{} % Allows link to [url-of-paper]#Appendices
-\section[nonumber=true]{Appendices}
+\ifthenelse{\boolean{Web}}{% Web
+  \section{Appendices}}{   % PDF
+  \section[nonumber=true]{Appendices}
+}
 
 \subfile{\ApndxDir/ApndxLiqConstr}
 \subfile{\ApndxDir/ApndxConcaveCFunc}
