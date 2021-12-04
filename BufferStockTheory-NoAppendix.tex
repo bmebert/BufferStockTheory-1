@@ -55,7 +55,7 @@
 }
 
 % \date{\today}
-\renewcommand{\forcedate}{December 2, 2021}\date{\forcedate}
+\renewcommand{\forcedate}{December 3, 2021}\date{\forcedate}
 
 \maketitle
 \hypertarget{abstract}{}
@@ -409,7 +409,7 @@ If the {\FHWC} is satisfied, the {\PFFVAC} implies that the {\RIC} is satisfied.
 
 The first panel of Table~\ref{table:Required} summarizes: The PF-Unconstrained model has a nondegenerate limiting solution if we impose the {\RIC} and {\FHWC} (these conditions are necessary as well as sufficient).  Together the {\PFFVAC} and the {\FHWC} imply the {\RIC}.  If we impose the {\GIC} and the {\FHWC}, both the {\PFFVAC} and the {\RIC} follow, so {\GIC}+{\FHWC} are also sufficient.  But there are circumstances under which the {\RIC} and {\FHWC} can hold while the {\PFFVAC} fails (`\cncl{\PFFVAC}').  For example, if $\PGro=0$, the problem is a standard `cake-eating' problem with a nondegenerate solution under the {\RIC} (when the consumer has access to capital markets).% chktex 10
 
-Perhaps more useful than prose or a table,  the relations of the conditions for the unconstrained perfect foresight case are presented diagrammatically in Figure~\ref{fig:RelatePFGICFHWCRICPFFVAC}.  Each node represents a quantity considered in the foregoing analysis.  The arrow associated with each inequality reflects the imposition of that condition.  For example, one way we wrote the {\PFFVAC} in equation~\eqref{eq:PFFVAC} is $\Pat < \Rfree^{1/\CRRA} \PGro^{1-1/\CRRA}$, so imposition of the {\PFFVAC} is captured by the diagonal arrow connecting $\Pat$ and $\Rfree^{1/\CRRA}\PGro^{1-1/\CRRA}$.  Traversing the boundary of the diagram clockwise starting at $\Pat$ involves imposing first the {\GICRaw} then the {\FHWC}, and the consequent arrival at the bottom right node tells us that these two conditions jointly imply that the {\PFFVAC} holds.  Reversal of a condition reverses the arrow's direction; so, for example, the bottom-most arrow going from $\Rfree$ to $\Rfree^{1/\CRRA}\PGro^{1-1/\CRRA}$ imposes {\cncl{\FHWC}}; but we can cancel the cancellation and reverse the arrow.  This would allow us to traverse the diagram in a clockwise direction from $\Pat$ to $\Rfree$, revealing that imposition of {\GICRaw} and {\FHWC} (and, redundantly, {\FHWC} again) let us conclude that the {\RIC} holds because the starting point is $\Pat$ and the endpoint is $\Rfree$.  (Consult Appendix~\ref{sec:ApndxConditionDiagrams} for a detailed exposition of diagrams of this type).
+More useful than prose or a table is the diagrammatic presentation of the relation of the conditions in Figure~\ref{fig:RelatePFGICFHWCRICPFFVAC}.  Each node represents a quantity considered in the foregoing analysis.  The arrow associated with each inequality reflects the imposition of that condition.  For example, one way we wrote the {\PFFVAC} in equation~\eqref{eq:PFFVAC} is $\Pat < \Rfree^{1/\CRRA} \PGro^{1-1/\CRRA}$, so imposition of the {\PFFVAC} is captured by the diagonal arrow connecting $\Pat$ and $\Rfree^{1/\CRRA}\PGro^{1-1/\CRRA}$.  Traversing the boundary of the diagram clockwise starting at $\Pat$ involves imposing first the {\GICRaw} then the {\FHWC}, and the consequent arrival at the bottom right node tells us that these two conditions jointly imply that the {\PFFVAC} holds.  Reversal of a condition reverses the arrow's direction; so, for example, the bottom-most arrow going to $\Rfree^{1/\CRRA}\PGro^{1-1/\CRRA}$ imposes {\cncl{\FHWC}}; but we can cancel the cancellation and reverse the arrow.  This would allow us to traverse the diagram in a clockwise direction from $\Pat$  through $\PGro$ to $\Rfree^{1/\CRRA}\PGro^{1-1/\CRRA}$ to $\Rfree$, revealing that imposition of {\GICRaw} and {\FHWC} (and, redundantly, {\FHWC} again) let us conclude that the {\RIC} holds because the starting point is $\Pat$ and the endpoint is $\Rfree$.  (Consult Appendix~\ref{sec:ApndxConditionDiagrams} for a detailed exposition of diagrams of this type).
 
 % \figName allows generic definition of hypertargets based on title of figure
 \providecommand{\figName}{RelatePFGICFHWCRICPFFVAC} 
@@ -423,10 +423,11 @@ Perhaps more useful than prose or a table,  the relations of the conditions for 
 
 We next sketch the perfect foresight constrained solution because it is a useful benchmark (and limit) for the unconstrained problem with uncertainty (our ultimate interest).
 
-If a liquidity constraint requiring $\bRat \geq 0$ is ever to be relevant, it must be relevant at the lowest possible level of market resources, $\mRat_{t}=1$, defined by the lower bound, $\bRat_{t}=0$ (if it were relevant at any higher point, it would certainly be relevant at this point).  The constraint is `relevant' if it prevents the choice that would otherwise be optimal; at $\mRat_{t}=1$ the constraint is relevant if the marginal utility from spending all of today's resources $c_{t}=m_{t}=1$, exceeds the marginal utility from doing the same thing next period, $\cRat_{t+1}=1$; that is, if such choices would violate the Euler equation~\eqref{eq:scaledeuler}:
+If a liquidity constraint requiring $\bRat \geq 0$ is ever to be relevant, it must be relevant at the lowest possible level of market resources, $\mRat_{t}=1$, defined by the lower bound, $\bRat_{t}=0$ (if it were relevant at any higher point, it would certainly be relevant here).  The constraint is `relevant' if it prevents the choice that would otherwise be optimal; at $\mRat_{t}=1$ it is relevant if the marginal utility from spending all of today's resources $c_{t}=m_{t}=1$, exceeds the marginal utility from doing the same thing next period, $\cRat_{t+1}=1$; that is, if such choices would violate the Euler equation~\eqref{eq:scaledeuler}:
 \begin{align}
-  1^{-\CRRA}  & > \Rfree \DiscFac \PGro^{-\CRRA}1^{-\CRRA}  \label{eq:LiqConstrBinds}.
+  1^{-\CRRA}  & > \Rfree \DiscFac \PGro^{-\CRRA}1^{-\CRRA},  \label{eq:LiqConstrBinds}
 \end{align}
+which is just a restatement of the {\GIC}.
 
 We now examine implications of possible configurations of the conditions.
 
@@ -447,7 +448,7 @@ This logic holds even when the finite human wealth condition fails (\cncl{\FHWC}
   & = \PGro^{\tau(1-\CRRA)} \uFunc(\pLevBF_{t})\left(\frac{1-{(\DiscFac \PGro^{1-\CRRA})}^{T-(t+\tau)+1}}{1-\DiscFac \PGro^{1-\CRRA}}\right).
 \end{align*}
 % Note that the last version of the \PFFVAC~in~\eqref{eq:PFFVAC} implies the \GICRaw~$\PatPGro < 1$ whenever \cncl{\FHWC} ($\Rfree < \PGro$) holds.
-So, if \cncl{\FHWC}, the limiting consumer's value for any finite $\mRat$ will be the sum of two finite numbers: The component due to the unconstrained consumption choice made over the finite horizon leading up to $\bRat_{t+\tau} = 0$, and the finite component due to the value of consuming all $\pLevBF_{t+\tau}$ thereafter.
+So, even under \cncl{\FHWC}, the limiting consumer's value for any finite $\mRat$ will be the sum of two finite numbers: The component due to the unconstrained consumption choice made over the finite horizon leading up to $\bRat_{t+\tau} = 0$, and the finite component due to the value of consuming all $\pLevBF_{t+\tau}$ thereafter.
 
 \hypertarget{RICandFHWCFail}{} \textit{{\GICRaw} and {\cncl{\RIC}}}.  The most peculiar possibility occurs when the \RIC~fails.  Under these circumstances the \FHWC~must also fail (Appendix~\ref{sec:ApndxLiqConstr}), and the constrained consumption function is nondegenerate.  (See appendix Figure~\ref{fig:PFGICHoldsFHWCFailsRICFails} for a numerical example).  While $\lim_{m \uparrow \infty} \constr{\MPCFunc}(\mRat) = 0$, nevertheless the limiting constrained consumption function $\constr{\cFunc}(\mRat)$ is finite, strictly positive, and strictly increasing in $\mRat$.  This result interestingly reconciles the conflicting intuitions from the unconstrained case, where \cncl{\RIC} would suggest a degenerate limit of $\constr{\cFunc}(\mRat)=0$ while \cncl{\FHWC} would suggest a degenerate limit of $\constr{\cFunc}(\mRat)=\infty$.
 
@@ -590,7 +591,7 @@ where $\left\{\MaxMPC_{T-n}^{-1}\right\} _{n=0}^{\infty}$ is a decreasing conver
 \begin{align}
 \text{{\WRIC}:~~}  1 \geq &~\pZero^{1/\CRRA} \PatR, \phantom{\text{{\WRIC}:~~}} \label{eq:WRIC}
 \end{align}
-a condition we dub the `Weak Return Impatience Condition' (\WRIC) because with $\pZero < 1$ it will hold more easily (for a larger set of parameter values) than the \RIC~($\PatR < 1$).  The essence of the argument is that as wealth approaches zero, the overriding consideration that limits consumption is the (recursive) fear of the zero-income events.  (That is why the probability of the zero income event $\pZero$ appears in the expression.)
+a condition we dub the `Weak Return Impatience Condition' because with $\pZero < 1$ it will hold more easily (for a larger set of parameter values) than the \RIC~($\PatR < 1$).  The essence of the argument is that as wealth approaches zero, the overriding consideration that limits consumption is the (recursive) fear of the zero-income events.  (That is why the probability of the zero income event $\pZero$ appears in the expression.)
 
 \hypertarget{cBounds}{}
 We are now in position to observe that the optimal consumption function must satisfy
@@ -794,13 +795,9 @@ so as $\mRat \uparrow \infty, \usual{\cFunc}(\mRat)/\ushort{\cFunc}(\mRat) \righ
   \lim_{m \uparrow \infty} \usual{\cFunc}^{\prime}(\mRat) =
   \ushort{\cFunc}^{\prime}(\mRat) = \bar{\cFunc}^{\prime}(\mRat) = \MinMPC
 \end{equation*}
-because any other fixed limit would eventually lead to a level of
-consumption either exceeding $\bar{\cFunc}(\mRat)$ or lower than
-$\ushort{\cFunc}(\mRat)$.
+because any other fixed limit would eventually lead to a level of consumption either exceeding $\bar{\cFunc}(\mRat)$ or lower than $\ushort{\cFunc}(\mRat)$.
 
-Figure~\ref{fig:mpclimits} confirms these limits visually.  The top
-plot shows the converged consumption function along with its upper and lower bounds,
-while the lower plot shows the marginal propensity to consume.
+Figure~\ref{fig:mpclimits} confirms these limits visually.  The top plot shows the converged consumption function along with its upper and lower bounds, while the lower plot shows the marginal propensity to consume.
 
 \renewcommand{\figFile}{mpclimits}
 \hypertarget{\figFile}{}
@@ -876,7 +873,7 @@ Now using the continuous differentiability of the consumption function along wit
                                                           \eFunc(\mRat) = \MaxMPC.
 \end{align*}
 
-Figure~\ref{fig:mpclimits} confirms that the numerical solution obtains this limit for the MPC as $\mRat$ approaches zero.
+Figure~\ref{fig:mpclimits} visually confirms that the numerical solution obtains this limit for the MPC as $\mRat$ approaches zero.
 
 For consumption growth, as $\mRat \downarrow 0$ we have
 \begin{align*}
