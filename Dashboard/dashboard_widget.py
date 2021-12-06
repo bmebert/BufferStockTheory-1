@@ -289,7 +289,7 @@ def makeGICFailExample(DiscFac, permShkStd, UnempPrb):
     # Shortcuts/aliases
     soln = GICFailsExample.solution[0]  # solution
     cFunc, Bilt, E_Next_ = soln.cFunc, soln.Bilt, soln.E_Next_
-    mNrmStE, mNrmTrg = Bilt.mNrmStE, Bilt.mNrmTrg
+    mNrmBalLvl, mNrmTrg = Bilt.mNrmBalLvl, Bilt.mNrmTrg
 
     E_d_mtp1_0 = E_Next_.c_where_E_Next_m_tp1_minus_m_t_eq_0
     E_MGro_Bal = E_Next_.c_where_E_Next_permGroShk_times_m_tp1_minus_m_t_eq_0
@@ -312,7 +312,7 @@ def makeGICFailExample(DiscFac, permShkStd, UnempPrb):
     plt.ylim(cPlotMin, cPlotMax)
 
     if Bilt.GICLiv:  # Growth impatience condition (including mortality)
-        plt.axvline(Bilt.mNrmStE, label="mNrmStE exists", color="orange", linestyle="dashed")
+        plt.axvline(Bilt.mNrmBalLvl, label="mNrmBalLvl exists", color="orange", linestyle="dashed")
 
     if Bilt.GICNrm:  # Normalized GIC
         plt.axvline(Bilt.mNrmTrg, label="mNrmTrg exists", color="green", linestyle="dashed")
@@ -323,7 +323,7 @@ def makeGICFailExample(DiscFac, permShkStd, UnempPrb):
     )
 
     _log.critical(f'mNrmTrg: {mNrmTrg:.3f}')
-    _log.critical(f'mNrmStE: {mNrmStE:.3f}')
+    _log.critical(f'mNrmBalLvl: {mNrmBalLvl:.3f}')
 
     plt.legend(fontsize='medium')
     plt.show()
@@ -356,7 +356,7 @@ def cGroTargetFig_make(PermGroFac, DiscFac):
     mPlotMin, mCalcMax, mPlotMax = 0.3, 50, 8
 
     # Get StE and target values
-    mNrmStE, mNrmTrg = Bilt.mNrmStE, Bilt.mNrmTrg
+    mNrmBalLvl, mNrmTrg = Bilt.mNrmBalLvl, Bilt.mNrmTrg
 
     pts_num = 200  # Plot this many points
 
@@ -402,10 +402,10 @@ def cGroTargetFig_make(PermGroFac, DiscFac):
     # Axes limits
     GroFacMin, GroFacMax, xMin = 0.96, 1.08, 1.1
 
-    if mNrmStE and mNrmStE < mPlotMax:
-        ax.plot(mNrmStE, PermGroFac, marker=".", markersize=15, color="black")
+    if mNrmBalLvl and mNrmBalLvl < mPlotMax:
+        ax.plot(mNrmBalLvl, PermGroFac, marker=".", markersize=15, color="black")
 
-#    mLevGro, = ax.plot([mNrmStE, mNrmStE], [0, GroFacMax], color=color_mrktLev,
+#    mLevGro, = ax.plot([mNrmBalLvl, mNrmBalLvl], [0, GroFacMax], color=color_mrktLev,
 #                       label=r'$\mathbf{m}$-Level-Growth: $\mathbb{E}_{t}[{\mathbf{m}}_{t+1}/{\mathbf{m}}_{t}]$')
 #    ax.legend(handles=[mLevGro])
 
@@ -431,7 +431,7 @@ def cGroTargetFig_make(PermGroFac, DiscFac):
     plt.setp(ax.get_yticklabels(), fontsize=fssml)
 
     _log.critical(f'mNrmTrg: {mNrmTrg:.3f}')
-    _log.critical(f'mNrmStE: {mNrmStE:.3f}')
+    _log.critical(f'mNrmBalLvl: {mNrmBalLvl:.3f}')
 
     plt.legend(fontsize='medium')
     ax.set_ylabel('Growth Factors', fontsize=fsmid)
@@ -525,7 +525,7 @@ def makeTargetMfig(Rfree, DiscFac, CRRA, permShkStd, TranShkStd):
     def EmDelEq0(mVec): return (EPermGroFac/Rfree)+(1.0-EPermGroFac/Rfree)*mVec
     cBelwStE_Best = cFunc(mBelwStE)  # "best" = optimal c
     cBelwStE_Sstn = EmDelEq0(mBelwStE)               # "sustainable" c
-    mNrmStE = Bilt.mNrmStE
+    mNrmBalLvl = Bilt.mNrmBalLvl
 
     plt.figure(figsize=(12, 8))
     plt.plot(mBelwStE, cBelwStE_Best, label="$c(m_{t})$")
@@ -533,7 +533,7 @@ def makeTargetMfig(Rfree, DiscFac, CRRA, permShkStd, TranShkStd):
     plt.xlim(mPlotMin, mPlotMax)
     plt.ylim(cPlotMin, cFunc(mPlotMax))
     plt.plot(
-        [mNrmStE, mNrmStE],
+        [mNrmBalLvl, mNrmBalLvl],
         [0, 2.5],
         color="black",
         linestyle="--",
@@ -548,7 +548,7 @@ def makeTargetMfig(Rfree, DiscFac, CRRA, permShkStd, TranShkStd):
     )
     plt.text(0, 1.47, r"$c$", fontsize=26)
     plt.text(3.02, 0, r"$m$", fontsize=26)
-    plt.text(mNrmStE - 0.05, -0.1, "m̌", fontsize=26)
+    plt.text(mNrmBalLvl - 0.05, -0.1, "m̌", fontsize=26)
     plt.legend(fontsize='x-large')
     plt.show()
     return None

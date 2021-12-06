@@ -1,0 +1,82 @@
+% https://tex.stackexchange.com/questions/463699/proper-reference-numbers-with-subfiles
+\newcommand\labelprefix{}
+\newcommand\localorexternallabel[1]{%
+  \expandafter\ifx\csname r@#1\endcsname\relax
+  \labelprefix
+  \fi #1%
+}
+
+\pdfsuppresswarningpagegroup=1
+
+% Appendices and body are subfiles
+\usepackage{subfiles}
+
+% Command to define a label only if it does not yet exist (suppresses useless warnings)
+\makeatletter
+\newcommand{\iflabelexists}[3]{\@ifundefined{r@#1}{\G@refundefinedtrue{#3}}{#2}}
+\makeatother
+
+% %Define handles for various conditions
+% \newcommand{\PFGPF}{{\mbox{PF-GPF}}}
+% \newcommand{\PFGIC}{{\mbox{PF-GIC}}}
+% \newcommand{\AIC}{{\mbox{AIC}}}
+% \newcommand{\PFFVAC}{{\mbox{PF-FVAC}}}
+% \newcommand{\PFVAF}{{\mbox{PF-VAF}}}
+% \newcommand{\FVAC}{{\mbox{FVAC}}}
+% \newcommand{\FVAF}{{\mbox{FVAF}}}
+% \newcommand{\GIC}{{\mbox{GIC}}}
+% \newcommand{\GICAgg}{{\mbox{GIC-Agg}}}
+% \newcommand{\RIC}{{\mbox{RIC}}}
+% \newcommand{\WRIC}{{\mbox{WRIC}}}
+% \newcommand{\FHWC}{{\mbox{FHWC}}}
+% \newcommand{\RPF}{{\mbox{RPF}}}
+% \newcommand{\GPF}{{\mbox{GPF}}}
+% \newcommand{\FHWF}{\mbox{FHWF}}
+% \newcommand{\GICRaw}{\mbox{GIC}}
+% \newcommand{\GPFRaw}{\mbox{GPF}}
+% \newcommand{\GICNrm}{\mbox{GIC-Nrm}}
+% \newcommand{\GICLog}{\mbox{GIC-Log}}
+
+\providecommand{\avg}{\bar}
+\newcommand{\cv}{\textup{cov}}
+\providecommand{\Abve}{\bar}
+\providecommand{\Belw}{\ushort}
+%\providecommand{\Trg}{\hat}
+%\providecommand{\Gro}{\acute}
+\providecommand{\GroFac}{\Omega}
+%\providecommand{\mTrgNrm}{\Trg{\mNrm}}
+%\providecommand{\mGro}{\Gro{\mNrm}}
+\providecommand{\IncUnemp}{\mu}
+\providecommand{\Lvl}{\pmb}
+
+% Constrained
+\newcommand{\cnstr}[1]{\grave{#1}}
+
+\newcommand{\BalGroFac}{\check}
+\newcommand{\BalGroRte}{\tilde}
+\newcommand{\TargetNrm}{\hat}
+\newcommand{\mBalLvl}{\BalGroFac{\mNrm}}
+\newcommand{\mBalLog}{\BalGroRte{\mNrm}}
+\newcommand{\mTrgNrm}{\TargetNrm{\mNrm}}
+
+% Create links to explanations in text
+\newcommand{\BSTpaperLink}{https://\owner.github.io/BufferStockTheory/BufferStockTheory3.html} % Frame 3
+\newcommand{\FHWC}{\href{{\BSTpaperLink}FHWC}{\textrm{FHWC}}}
+\newcommand{\FHWF}{\href{{\BSTpaperLink}FHWF}{\textrm{FHWF}}}
+\newcommand{\GICRaw}{\href{{\BSTpaperLink}\#GICRaw}{\textrm{GIC}}}
+\newcommand{\GPFRaw}{\href{{\BSTpaperLink}\#GPFRaw}{\textrm{GPF}}}
+\newcommand{\GPF}{\href{{\BSTpaperLink}\#GPFRaw}{\textrm{GPF}}}
+\newcommand{\GPFNrm}{\href{{\BSTpaperLink}\#GPFNrm}{\textrm{GPF-Nrm}}}
+\newcommand{\GICNrm}{\href{{\BSTpaperLink}\#GICNrm}{\textrm{GIC-Nrm}}}
+\newcommand{\RIC}{\href{{\BSTpaperLink}\#RIC}{\textrm{RIC}}}
+\newcommand{\PFFVAC}{\href{{\BSTpaperLink}\#PFFVAC}{\textrm{PF-FVAC}}}
+\newcommand{\PFVAF}{\href{{\BSTpaperLink}\#PFFVAF}{\textrm{PF-VAF}}}
+\newcommand{\FVAC}{\href{{\BSTpaperLink}\#FVAC}{\textrm{FVAC}}}
+\newcommand{\VAF}{\href{{\BSTpaperLink}\#VAF}{\textrm{VAF}}}
+\newcommand{\APF}{\href{{\BSTpaperLink}\#APF}{\textrm{APF}}}
+\newcommand{\RPF}{\href{{\BSTpaperLink}\#RPF}{\textrm{RPF}}}
+\newcommand{\AIC}{\href{{\BSTpaperLink}\#AIC}{\textrm{AIC}}}
+\newcommand{\GIC}{\href{{\BSTpaperLink}\#GIC}{\textrm{GIC}}}
+\newcommand{\WRPF}{\href{{\BSTpaperLink}\#WRPF}{\textrm{WRPF}}}
+\newcommand{\WRIC}{\href{{\BSTpaperLink}\#WRIC}{\textrm{WRIC}}}
+

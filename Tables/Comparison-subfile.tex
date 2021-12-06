@@ -13,6 +13,7 @@
 \begin{verbatimwrite}{\TableDir/Comparison}
   \let\TableWidth\relax
   \newlength\TableWidth
+  \iflabelexists{table:Comparison}{}{\label{table:Comparison}} % Don't define it if already defined
   \newsavebox{\ComparisonSub}
   \begin{table}[!th]
     \centering

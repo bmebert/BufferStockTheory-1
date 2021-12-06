@@ -660,7 +660,7 @@ ax.tick_params(labelbottom=False, labelleft=False, left='off',
 ax.legend(handles=[c_Stable_Trg_lbl, c_Stable_Bal_lbl])
 ax.legend(prop=dict(size=fsmid))
 
-mNrmFacBal = Bilt.mNrmStE
+mNrmFacBal = Bilt.mNrmBalLvl
 cNrmFacBal = c_Stable_Bal = cFunc(mNrmFacBal)
 
 ax.plot(mNrmFacBal, cNrmFacBal, marker=".", markersize=15, color="black")  # Dot at Bal point
@@ -734,7 +734,7 @@ baseAgent_Inf = IndShockConsumerType(
 # \Ex_{t}\left[\frac{m_{t+1}}{m_{t}}\right] & = & \left(\frac{a_{t}\Rfree\Ex_{t}\left[(\permShk_{t+1}\PermGroFac)^{-1}\right]+1}{\mNrm_{t}}\right)
 # \end{eqnarray*}
 
-# %% [markdown] {"jupyter": {"source_hidden": true}, "tags": []}
+# %% [markdown] {"tags": []}
 # The expectation of the growth in the log of $\mLev$ is a downward-adjusted value of the log of the growth factor:
 # \begin{eqnarray*}
 # \Ex_{t}[\log(\mLev_{t+1}/\mLev_{t})]
@@ -788,7 +788,7 @@ color_cons, color_mrktLev, color_mrktNrm, color_perm, color_mLogGroExp = \
 mPlotMin, mCalcMax, mPlotMax = 1.0, 50, 1.8
 
 # Get steady state equilibrium and target values for m
-mNrmFacBal, mNrmFacTrg = Bilt.mNrmStE, Bilt.mNrmTrg
+mNrmFacBal, mNrmFacTrg = Bilt.mNrmBalLvl, Bilt.mNrmTrg
 
 pts_num = 200  # Plot this many points
 

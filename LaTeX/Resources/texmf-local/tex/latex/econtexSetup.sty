@@ -123,8 +123,12 @@
 % \RequirePackage[pdftex]{graphicx}
     \RequirePackage{graphicx} % requiring [pdftex] seems to interfere with Pandemic build
 %    \RequirePackage[plainpages=false,hypertexnames=false,verbose,unicode=true,unicode=true,unicode=true]{hyperref}
-    \RequirePackage[hypertexnames=false,verbose,unicode=true,unicode=true,unicode=true]{hyperref} % plainpages seems to mess up BST 
+    \usepackage{pdfcomment}
+%    \RequirePackage[hypertexnames=false,verbose,unicode=true,unicode=true,unicode=true]{hyperref} % plainpages seems to mess up BST
+    % Automatically create tooltips for sections 
     \hypersetup{
+      hypertexnames=false,
+      unicode=true,
        pdffitwindow = false,     % Don't rescale to fit size of window
        pdfpagemode=UseThumbs,
        pdfstartview=FitH,

@@ -20,12 +20,12 @@ This appendix proves Theorems~\ref{thm:target}-\ref{thm:MSSBalExists} and:
 \onlyinsubfile{\setcounter{theorem}{1}}
 
   \begin{lemma}\label{lemma:orderingPartOne}
-  If $\StE{\mRat}$ and $\Trg{\mRat}$ both exist, then $\StE{\mRat} \leq \Trg{\mRat}$.
+  If $\BalGroFac{\mRat}$ and $\TargetNrm{\mRat}$ both exist, then $\BalGroFac{\mRat} \leq \TargetNrm{\mRat}$.
   \end{lemma}
 
   \begin{comment}
   \begin{lemma}\label{lemma:orderingPartTwo}
-  If $\StE{\mRat}$ and $\Gro{\mRat}$ both exist, then $\StE{\mRat} \leq \Gro{\mRat}$.
+  If $\BalGroFac{\mRat}$ and $\BalGroRte{\mRat}$ both exist, then $\BalGroFac{\mRat} \leq \BalGroRte{\mRat}$.
   \end{lemma}
 \end{comment}
 
@@ -94,7 +94,7 @@ Now define \providecommand{\difFunc}{\pmb{\zeta}} $\difFunc(\mRat_t) \equiv
   \difFunc(\mRat_t) > 0 &\leftrightarrow \Ex_t[{\mRat}_{t+1}/\mRat_t] > 
                           1,\nonumber
 \end{align}
-so that $\difFunc(\mTrg)=0$. Our goal is to prove that $\difFunc(\bullet)$ is strictly 
+so that $\difFunc(\mTrgNrm)=0$. Our goal is to prove that $\difFunc(\bullet)$ is strictly 
 decreasing on $(0,\infty)$ using the fact that
 \begin{align}
   \difFunc^{\prime}(\mRat_{t}) \equiv  \left( \frac{d}{d\mRat_{t}}\right) \difFunc(\mRat_t)  & = \Ex_{t}\left[
@@ -145,7 +145,7 @@ The elements of the proof are:
 \item $\Ex_{t}[\pShk_{t+1}\mRat_{t+1}-\mRat_{t}]$ is monotonically decreasing
 \end{itemize}
 
-\subsubsection{Existence and Continuity of the Ratio}% of $\Trg{\mRat}_{t+1}/\mRat_{t}$.}
+\subsubsection{Existence and Continuity of the Ratio}% of $\TargetNrm{\mRat}_{t+1}/\mRat_{t}$.}
 
 Since by assumption $ 0 < \ushort{\pShk} \leq \pShk_{t+1} \leq \bar{\pShk} < \infty$, our proof in~\ref{subsubsec:RatExitsCont} that demonstrated existence and continuity of $\Ex_{t}[\mRat_{t+1}/\mRat_{t}]$ implies existence and continuity of $\Ex_{t}[\pShk_{t+1}\mRat_{t+1}/\mRat_{t}]$.
 
@@ -183,7 +183,7 @@ Define \providecommand{\difFunc}{\pmb{\zeta}} $\difFunc(\mRat_t) \equiv
   \difFunc(\mRat_t) > 0 &\leftrightarrow \Ex_t[\pShk_{t+1}\mRat_{t+1}/\mRat_{t}] > 
                           1,\nonumber
 \end{align}
-so that $\difFunc(\mTrg)=0$. Our goal is to prove that $\difFunc(\bullet)$ is strictly 
+so that $\difFunc(\mTrgNrm)=0$. Our goal is to prove that $\difFunc(\bullet)$ is strictly 
 decreasing on $(0,\infty)$ using the fact that
 \begin{align}
   \difFunc^{\prime}(\mRat_{t}) \equiv  \left( \frac{d}{d\mRat_{t}}\right) \difFunc(\mRat_t)  & = \Ex_{t}\left[
@@ -223,16 +223,16 @@ A footnote in~Section~\ref{sec:convergedcfunc} mentions the possibility of calcu
 \\ & = \log \PGro (\aRat_{t}\Rnorm+1+(\permShk_{t+1}\tShk_{t+1}-1))- \log \mRat_{t}
 \end{align*}
 
-Now define $\Gro{\mRat}_{t+1}=\aRat_{t}\Rnorm+1$, and compute the expectation:
+Now define $\BalGroRte{\mRat}_{t+1}=\aRat_{t}\Rnorm+1$, and compute the expectation:
 \begin{align*}
   \Ex_{t}[\log \left(\mLevBF_{t+1}/\mLevBF_{t}\right)]
-   & = \Ex_{t}\left[\log \PGro (\Gro{\mRat}_{t+1}+(\permShk_{t+1}\tShk_{t+1}-1))\right]- \log \mRat_{t} 
-\\ & = \log \PGro + \Ex_{t}\left[\log (\Gro{\mRat}_{t+1}(1+\Gro{\mRat}_{t+1}^{-1}(\permShk_{t+1}\tShk_{t+1}-1))\right]- \log \mRat_{t} 
-\\ & = \underbrace{\log \PGro + \log \Gro{\mRat}_{t+1} - \log \mRat_{t}}_{\equiv \log \Ex_{t}[\mLevBF_{t+1}/\mLevBF_{t}]} + \Ex_{t}\left[ \log (1+\Gro{\mRat}_{t+1}^{-1}(\permShk_{t+1}\tShk_{t+1}-1))\right]
+   & = \Ex_{t}\left[\log \PGro (\BalGroRte{\mRat}_{t+1}+(\permShk_{t+1}\tShk_{t+1}-1))\right]- \log \mRat_{t} 
+\\ & = \log \PGro + \Ex_{t}\left[\log (\BalGroRte{\mRat}_{t+1}(1+\BalGroRte{\mRat}_{t+1}^{-1}(\permShk_{t+1}\tShk_{t+1}-1))\right]- \log \mRat_{t} 
+\\ & = \underbrace{\log \PGro + \log \BalGroRte{\mRat}_{t+1} - \log \mRat_{t}}_{\equiv \log \Ex_{t}[\mLevBF_{t+1}/\mLevBF_{t}]} + \Ex_{t}\left[ \log (1+\BalGroRte{\mRat}_{t+1}^{-1}(\permShk_{t+1}\tShk_{t+1}-1))\right]
 \end{align*}
 and exponentiating tells us that
 \begin{align}
-  \exp(\Ex_{t}[\log \mLevBF_{t+1}/\mLevBF_{t}]) & = \Ex_{t}[\mLevBF_{t+1}/\mLevBF_{t}]\exp( \Ex_{t}\left[ \log (1+\Gro{\mRat}_{t+1}^{-1}(\permShk_{t+1}\tShk_{t+1}-1))\right])
+  \exp(\Ex_{t}[\log \mLevBF_{t+1}/\mLevBF_{t}]) & = \Ex_{t}[\mLevBF_{t+1}/\mLevBF_{t}]\exp( \Ex_{t}\left[ \log (1+\BalGroRte{\mRat}_{t+1}^{-1}(\permShk_{t+1}\tShk_{t+1}-1))\right])
 \end{align}
 and this latter factor is a number that approaches 1 from below as $\mRat_{t}$ rises.  Thus the expected growth rate of the log is smaller than the log of the growth rate of the expected ratio.
 
@@ -243,31 +243,31 @@ and this latter factor is a number that approaches 1 from below as $\mRat_{t}$ r
 \subsubsection{Pseudo-Steady-State \texorpdfstring{$\mRat$}{m} Is Smaller than Target \texorpdfstring{$\mRat$}{m}}
 Designate
 \begin{equation}\begin{split}
-  \StE{\mFunc}_{t+1}(\aRat) % = \Ex_{t}[\StE{\aRat}\Rnorm+\tShk_{t+1}\pShk_{t+1} ] \\
+  \BalGroFac{\mFunc}_{t+1}(\aRat) % = \Ex_{t}[\BalGroFac{\aRat}\Rnorm+\tShk_{t+1}\pShk_{t+1} ] \\
    & = 1+\aRat\Rnorm
-\\  \Trg{\mFunc}_{t+1}(\aRat)% & = \Ex_{t}[\Trg{\aRat}(\Rnorm/\pShk_{t+1})+\tShk_{t+1}\pShk_{t+1} ] \\
+\\  \TargetNrm{\mFunc}_{t+1}(\aRat)% & = \Ex_{t}[\TargetNrm{\aRat}(\Rnorm/\pShk_{t+1})+\tShk_{t+1}\pShk_{t+1} ] \\
  & = 1+\aRat\underbrace{\Rnorm/\InvEpShkInv}_{\bar{\Rnorm} > \Rnorm}
 \end{split}\end{equation}
 so that we can implicitly define the target and pseudo-steady-state points as
 \begin{equation}\begin{split}
-  \mTrg & =\Trg{\mFunc}_{t+1}(\mTrg-\cFunc(\mTrg))
-  \\ \mStE & = \StE{\mFunc}_{t+1}(\mStE-\cFunc(\mStE))
+  \mTrgNrm & =\TargetNrm{\mFunc}_{t+1}(\mTrgNrm-\cFunc(\mTrgNrm))
+  \\ \mBalLvl & = \BalGroFac{\mFunc}_{t+1}(\mBalLvl-\cFunc(\mBalLvl))
 \end{split}\end{equation}
 Then subtract:
 \begin{equation}\begin{split}
-  \mTrg - \mStE %& =\Trg{\mFunc}_{t+1}(\mTrg-\cFunc(\mTrg)) - \StE{\mFunc}_{t+1}(\mStE-\cFunc(\mStE))  
-%  \\  \mTrg - \mStE & =1+ (\mTrg-\cFunc(\mTrg))\Rnorm/\InvEpShkInv - (1+(\mStE-\cFunc(\mStE))\Rnorm)
- & = \left(\Trg{\aRat} \InvEpShkInv^{-1} - \StE{\aRat} \right)\Rnorm 
-\\ & = \left({\aRat}(\mTrg) \InvEpShkInv^{-1} - {\aRat}(\mStE) \right)\Rnorm 
-\\ & = \left({\aRat}(\mTrg) \InvEpShkInv^{-1} - \left({\aRat}(\mTrg+\mStE-\mTrg)\right) \right)\Rnorm 
-\\ & \approx \left({\aRat}(\mTrg) \InvEpShkInv^{-1} - \left({\aRat}(\mTrg)+(\mStE-\mTrg)\aFunc^{\prime}(\Trg{\mRat})\right) \right)\Rnorm 
-%  \\ & = \left({\aRat}(\mTrg) \InvEpShkInv^{-1} - {\aRat}(\mTrg)-(\mStE-\mTrg){\aRat}^{\prime} \right)\Rnorm
-%  \\ & = \left({\aRat}(\mTrg) \InvEpShkInv^{-1} - {\aRat}(\mTrg)+(\mTrg-\mStE){\aRat}^{\prime} \right)\Rnorm
-  \\ (\mTrg - \mStE)(1-\underbrace{{\aRat}^{\prime}(\mTrg)\Rnorm}_{< \PatPGro < 1}) & = (\InvEpShkInv^{-1} - 1)\Trg{\aRat}\Rnorm
-%\\ & = \left((\mTrg-\cFunc(\mTrg)) \InvEpShkInv^{-1} - (\mStE-\cFunc(\mTrg+\mStE-\mTrg)) \right)\Rnorm 
-%\\ & = \left((\mTrg-\cFunc(\mTrg)) \InvEpShkInv^{-1} -( (\mStE-\cFunc(\mTrg)+(\mStE-\mTrg)\MPC)) \right)\Rnorm 
+  \mTrgNrm - \mBalLvl %& =\TargetNrm{\mFunc}_{t+1}(\mTrgNrm-\cFunc(\mTrgNrm)) - \BalGroFac{\mFunc}_{t+1}(\mBalLvl-\cFunc(\mBalLvl))  
+%  \\  \mTrgNrm - \mBalLvl & =1+ (\mTrgNrm-\cFunc(\mTrgNrm))\Rnorm/\InvEpShkInv - (1+(\mBalLvl-\cFunc(\mBalLvl))\Rnorm)
+ & = \left(\TargetNrm{\aRat} \InvEpShkInv^{-1} - \BalGroFac{\aRat} \right)\Rnorm 
+\\ & = \left({\aRat}(\mTrgNrm) \InvEpShkInv^{-1} - {\aRat}(\mBalLvl) \right)\Rnorm 
+\\ & = \left({\aRat}(\mTrgNrm) \InvEpShkInv^{-1} - \left({\aRat}(\mTrgNrm+\mBalLvl-\mTrgNrm)\right) \right)\Rnorm 
+\\ & \approx \left({\aRat}(\mTrgNrm) \InvEpShkInv^{-1} - \left({\aRat}(\mTrgNrm)+(\mBalLvl-\mTrgNrm)\aFunc^{\prime}(\TargetNrm{\mRat})\right) \right)\Rnorm 
+%  \\ & = \left({\aRat}(\mTrgNrm) \InvEpShkInv^{-1} - {\aRat}(\mTrgNrm)-(\mBalLvl-\mTrgNrm){\aRat}^{\prime} \right)\Rnorm
+%  \\ & = \left({\aRat}(\mTrgNrm) \InvEpShkInv^{-1} - {\aRat}(\mTrgNrm)+(\mTrgNrm-\mBalLvl){\aRat}^{\prime} \right)\Rnorm
+  \\ (\mTrgNrm - \mBalLvl)(1-\underbrace{{\aRat}^{\prime}(\mTrgNrm)\Rnorm}_{< \PatPGro < 1}) & = (\InvEpShkInv^{-1} - 1)\TargetNrm{\aRat}\Rnorm
+%\\ & = \left((\mTrgNrm-\cFunc(\mTrgNrm)) \InvEpShkInv^{-1} - (\mBalLvl-\cFunc(\mTrgNrm+\mBalLvl-\mTrgNrm)) \right)\Rnorm 
+%\\ & = \left((\mTrgNrm-\cFunc(\mTrgNrm)) \InvEpShkInv^{-1} -( (\mBalLvl-\cFunc(\mTrgNrm)+(\mBalLvl-\mTrgNrm)\MPC)) \right)\Rnorm 
 \end{split}\end{equation}
-The RHS of this equation is strictly positive because $\InvEpShkInv^{-1}>1$ and both $\Trg{\aRat}$ and $\Rnorm$ are positive; while on the LHS, $(1-\Rnorm\aRat^{\prime})>0$.  So the equation can only hold if $\Trg{\mRat}-\StE{\mRat} > 0$.  That is, the target ratio exceeds the pseudo-steady-state ratio.\footnote{The use of the first order Taylor approximation could be substituted, cumbersomely, with the average of $\aFunc^{\prime}$ over the interval to remove the approximation in the derivations above.}
+The RHS of this equation is strictly positive because $\InvEpShkInv^{-1}>1$ and both $\TargetNrm{\aRat}$ and $\Rnorm$ are positive; while on the LHS, $(1-\Rnorm\aRat^{\prime})>0$.  So the equation can only hold if $\TargetNrm{\mRat}-\BalGroFac{\mRat} > 0$.  That is, the target ratio exceeds the pseudo-steady-state ratio.\footnote{The use of the first order Taylor approximation could be substituted, cumbersomely, with the average of $\aFunc^{\prime}$ over the interval to remove the approximation in the derivations above.}
 
 \subsubsection{The \texorpdfstring{$\mRat$}{m}  Achieving Individual Expected-Log-Balanced-Growth Is Smaller than the Individual Pseudo-Steady-State \texorpdfstring{$\mRat$}{m}}
 
@@ -279,32 +279,32 @@ Expected log balanced growth occurs when
 \\      \Ex_{t}[\log \left(\aRat(\mRat_{t})\Rfree+\pShk_{t+1}\tShk_{t+1}\PGro\right)] & = \log \PGro \mRat_{t}
 \\      \Ex_{t}[\log \left(\aRat(\mRat_{t})\Rnorm+\pShk_{t+1}\tShk_{t+1}\right)] & = \log \mRat_{t}
 \end{split}\end{equation}
-and we call the $\mRat$ that satisfies this equation $\Gro{\mRat}$.
+and we call the $\mRat$ that satisfies this equation $\BalGroRte{\mRat}$.
 
-Subtract the definition of $\StE{\mRat}$ from that of $\Gro{\mRat}$:
+Subtract the definition of $\BalGroFac{\mRat}$ from that of $\BalGroRte{\mRat}$:
 \begin{equation}\begin{split}
-    \exp(\Ex_{t}[\log \left(\aRat(\Gro{\mRat})\Rnorm+\pShk_{t+1}\tShk_{t+1}\right)]) - (\aRat(\StE{\mRat})\Rnorm+1 ) = \Gro{\mRat} - \StE{\mRat}
+    \exp(\Ex_{t}[\log \left(\aRat(\BalGroRte{\mRat})\Rnorm+\pShk_{t+1}\tShk_{t+1}\right)]) - (\aRat(\BalGroFac{\mRat})\Rnorm+1 ) = \BalGroRte{\mRat} - \BalGroFac{\mRat}
 \end{split}\end{equation}
 
 Now we use the fact that the expectation of the log is less than the log of the expectation, 
 \begin{equation}\begin{split}
-%    \log \Ex_{t}[\aRat(\Gro{\mRat}_{t})\Rnorm+\pShk_{t+1}\tShk_{t+1}] & <     \log \left(\aRat(\Gro{\mRat}_{t})\Rnorm+1\right) \\
- \exp(\Ex_{t}[\log \left(\aRat(\Gro{\mRat})\Rnorm+\pShk_{t+1}\tShk_{t+1}\right)]) & < \left(\aRat(\Gro{\mRat})\Rnorm+1    \right)
+%    \log \Ex_{t}[\aRat(\BalGroRte{\mRat}_{t})\Rnorm+\pShk_{t+1}\tShk_{t+1}] & <     \log \left(\aRat(\BalGroRte{\mRat}_{t})\Rnorm+1\right) \\
+ \exp(\Ex_{t}[\log \left(\aRat(\BalGroRte{\mRat})\Rnorm+\pShk_{t+1}\tShk_{t+1}\right)]) & < \left(\aRat(\BalGroRte{\mRat})\Rnorm+1    \right)
 \end{split}\end{equation}
 so
 \begin{equation}\begin{split}
-    \exp(\Ex_{t}[\log \left(\aRat(\Gro{\mRat})\Rnorm+1\right)]) - (\aRat(\StE{\mRat})\Rnorm+1 ) < \Gro{\mRat} - \StE{\mRat}
-\\    \left(\aRat(\Gro{\mRat})\Rnorm+1\right) - (\aRat(\StE{\mRat})\Rnorm+1 ) < \Gro{\mRat} - \StE{\mRat}    
-\\     (\aRat(\Gro{\mRat})-\aRat(\Gro{\mRat}+\StE{\mRat}-\Gro{\mRat}))\Rnorm& < \Gro{\mRat} - \StE{\mRat}
-\\     (\aRat(\Gro{\mRat})-(\aRat(\Gro{\mRat})+(\StE{\mRat}-\Gro{\mRat})\bar{\aFunc}^{\prime})\Rnorm& < \Gro{\mRat} - \StE{\mRat}
-\\     (\Gro{\mRat}-\StE{\mRat})\bar{\aFunc}^{\prime}\Rnorm& < \Gro{\mRat} - \StE{\mRat}
+    \exp(\Ex_{t}[\log \left(\aRat(\BalGroRte{\mRat})\Rnorm+1\right)]) - (\aRat(\BalGroFac{\mRat})\Rnorm+1 ) < \BalGroRte{\mRat} - \BalGroFac{\mRat}
+\\    \left(\aRat(\BalGroRte{\mRat})\Rnorm+1\right) - (\aRat(\BalGroFac{\mRat})\Rnorm+1 ) < \BalGroRte{\mRat} - \BalGroFac{\mRat}    
+\\     (\aRat(\BalGroRte{\mRat})-\aRat(\BalGroRte{\mRat}+\BalGroFac{\mRat}-\BalGroRte{\mRat}))\Rnorm& < \BalGroRte{\mRat} - \BalGroFac{\mRat}
+\\     (\aRat(\BalGroRte{\mRat})-(\aRat(\BalGroRte{\mRat})+(\BalGroFac{\mRat}-\BalGroRte{\mRat})\bar{\aFunc}^{\prime})\Rnorm& < \BalGroRte{\mRat} - \BalGroFac{\mRat}
+\\     (\BalGroRte{\mRat}-\BalGroFac{\mRat})\bar{\aFunc}^{\prime}\Rnorm& < \BalGroRte{\mRat} - \BalGroFac{\mRat}
 \\     \underbrace{\bar{\aFunc}^{\prime}\Rnorm}_{< \PatPGro} & < 1
 \end{split}\end{equation}
-where we are interpreting $\bar{\aFunc}^{\prime}$ as the mean of the value of $\aFunc^{\prime}$ over the interval between $\Gro{\mRat}$ and $\StE{\mRat}$.
+where we are interpreting $\bar{\aFunc}^{\prime}$ as the mean of the value of $\aFunc^{\prime}$ over the interval between $\BalGroRte{\mRat}$ and $\BalGroFac{\mRat}$.
 \begin{comment}
 \subsection{Comment}
 
-Due to the model's nonlinearities the values of $\mRat$ at which the expected growth rate of $\cLevBF$ matches $\PGro$ is very slightly different from the $\mRat$ at which the growth rate at which expected growth of $\mLevBF$ is $\PGro$.  Defining $\grave{\mRat}$ as the $\mRat$ at which $\Ex_{t}[\cRatBF_{t+1}/\cRatBF_{t}]=\PGro$, we can show that to first order $\grave{\mRat} \approx \StE{\mRat}.$
+Due to the model's nonlinearities the values of $\mRat$ at which the expected growth rate of $\cLevBF$ matches $\PGro$ is very slightly different from the $\mRat$ at which the growth rate at which expected growth of $\mLevBF$ is $\PGro$.  Defining $\grave{\mRat}$ as the $\mRat$ at which $\Ex_{t}[\cRatBF_{t+1}/\cRatBF_{t}]=\PGro$, we can show that to first order $\grave{\mRat} \approx \BalGroFac{\mRat}.$
 \begin{align*}
   \Ex_{t}[\cFunc(\mRat_{t+1})\pShk_{t+1}] & = \cFunc(\mRat_{t}) \label{eq:balgrostableC}.
 %  \\ \Ex_{t}[\cFunc(\mRat_{t+1})\pShk_{t+1}] & = \cFunc(\mRat_{t}) 
@@ -312,7 +312,7 @@ Due to the model's nonlinearities the values of $\mRat$ at which the expected gr
   \\ \Ex_{t}[\left(\cFunc^{\prime}(\grave{\mRat})(\mRat_{t+1}-\grave{\mRat})\right)\pShk_{t+1}] & \approx 0
   \\ \Ex_{t}[\mRat_{t+1}] & \approx \grave{\mRat} 
 \end{align*}
-but at $\mRat=\StE{\mRat}$, $\Ex_{t}[\mRat_{t+1}]=\Trg{\mRat}\approx\grave{\mRat}$.
+but at $\mRat=\BalGroFac{\mRat}$, $\Ex_{t}[\mRat_{t+1}]=\TargetNrm{\mRat}\approx\grave{\mRat}$.
 \end{comment}
 
 \end{document}

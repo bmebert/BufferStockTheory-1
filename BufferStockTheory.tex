@@ -1,12 +1,12 @@
 \input{./econtexRoot} % Set paths (like, \LaTeXInputs) for various resources
-\documentclass[headings=optiontoheadandtoc,titlepage]{\econtex}
-\usepackage{etoolbox}
+\documentclass[titlepage]{\econtex}
 \newcommand{\texname}{BufferStockTheory}% Keyname for the paper
 \usepackage{\LaTeXInputs/\texname}% Styling for whole paper (and subfiles)
-
 \begin{document}
-% Redefine commands from sty file to signal compilation from master
-% This signals that submaterial called from here knows it is not standalone
+
+% Redefine command from \texname.sty file 
+% This lets any submaterial called from here it is not standalone
+% So that if it IS standalone, e.g., it can make a bibliography
 \renewcommand{\onlyinsubfile}[1]{}\renewcommand{\notinsubfile}[1]{#1}
 
 \subfile{BufferStockTheory-NoAppendix} % Main body of paper
@@ -15,10 +15,10 @@
 \chead[Appendices]{Appendices}
 \appendix
 \hypertarget{Appendices}{} % Allows link to [url-of-paper]#Appendices
-\ifthenelse{\boolean{Web}}{% Web
-  \section{Appendices}}{   % PDF
-  \section[nonumber=true]{Appendices}
-}
+% \ifthenelse{\boolean{Web}}{% Web
+%   \section{Appendices}}{   % PDF
+%   %\section[nonumber=true]{Appendices}
+% }
 
 \subfile{\ApndxDir/ApndxLiqConstr}
 \subfile{\ApndxDir/ApndxConcaveCFunc}
@@ -50,7 +50,7 @@
 % TeX-PDF-mode: t
 % TeX-file-line-error: t
 % TeX-debug-warnings: t
-% LaTeX-command-style: (("" "%(PDF)%(latex) %(file-line-error) %(extraopts) -output-directory=LaTeX %S%(PDFout)"))
+% LaTeX-command-style: (("" "%(PDF)%(latex) %(file-line-error) %(extraopts) -output-directory=./LaTeX %S%(PDFout)"))
 % TeX-source-correlate-mode: t
 % TeX-parse-self: t
 % TeX-parse-all-errors: t
