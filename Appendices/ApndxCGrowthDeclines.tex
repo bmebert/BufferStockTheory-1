@@ -11,19 +11,19 @@ Figure~\ref{fig:cGroTargetFig} depicts the expected consumption growth factor as
 declining function of the cash-on-hand ratio. To investigate this,
 define
 \begin{align*}
-  \pmb{\Upsilon}(\mRat_{t})  & \equiv  \PGro_{t+1} \usual{\cFunc}(\Rnorm_{t+1}\aFunc(\mRat_{t})+\tShkAll_{t+1})/\usual{\cFunc}(\mRat_{t})  = \cLevBF_{t+1}/\cLevBF_{t}
+  \pmb{\Upsilon}(\mNrm_{t})  & \equiv  \PGro_{t+1} \usual{\cFunc}(\Rnorm_{t+1}\aFunc(\mNrm_{t})+\tShkAll_{t+1})/\usual{\cFunc}(\mNrm_{t})  = \cLvl_{t+1}/\cLvl_{t}
 \end{align*}
 and the proposition in which we are interested is
 \begin{align*}
-  (d/d\mRat_{t})\Ex_{t}[\underbrace{\pmb{\Upsilon}(\mRat_{t})}_{\equiv \pmb{\Upsilon}_{t+1}}]  & < 0  
+  (d/d\mNrm_{t})\Ex_{t}[\underbrace{\pmb{\Upsilon}(\mNrm_{t})}_{\equiv \pmb{\Upsilon}_{t+1}}]  & < 0  
 \end{align*}
 or differentiating through the expectations operator, what we want is
 \begin{align}
-  \Ex_{t}\left[\PGro_{t+1} \left(\frac{\usual{\cFunc}^{\prime}(\mRat_{t+1})\Rnorm_{t+1}\aFunc^{\prime}(\mRat_{t})\usual{\cFunc}(\mRat_{t})-\usual{\cFunc}(\mRat_{t+1})\usual{\cFunc}^{\prime}(\mRat_{t})}{\usual{\cFunc}{(\mRat_{t})}^{2}}\right)\right]  & < 0 \label{eq:kappaPrimeLT0}.
+  \Ex_{t}\left[\PGro_{t+1} \left(\frac{\usual{\cFunc}^{\prime}(\mNrm_{t+1})\Rnorm_{t+1}\aFunc^{\prime}(\mNrm_{t})\usual{\cFunc}(\mNrm_{t})-\usual{\cFunc}(\mNrm_{t+1})\usual{\cFunc}^{\prime}(\mNrm_{t})}{\usual{\cFunc}{(\mNrm_{t})}^{2}}\right)\right]  & < 0 \label{eq:kappaPrimeLT0}.
 \end{align}
 
 Henceforth indicating appropriate arguments by the corresponding
-subscript (e.g.\ $\cFunc_{t+1}^{\prime} \equiv \cFunc^{\prime}(\mRat_{t+1})$), since
+subscript (e.g.\ $\cFunc_{t+1}^{\prime} \equiv \cFunc^{\prime}(\mNrm_{t+1})$), since
 $\PGro_{t+1}\Rnorm_{t+1}=\Rfree$, the portion of the LHS of equation~\eqref{eq:kappaPrimeLT0} in brackets can be manipulated to yield
 \begin{equation}\begin{gathered}\begin{aligned}
   \cFunc_{t} \pmb{\Upsilon}^{\prime}_{t+1}  & = \cFunc^{\prime}_{t+1}\aFunc^{\prime}_{t}\Rfree-\cFunc^{\prime}_{t} \PGro_{t+1} \cFunc_{t+1}/\cFunc_{t} \nonumber
@@ -31,7 +31,7 @@ $\PGro_{t+1}\Rnorm_{t+1}=\Rfree$, the portion of the LHS of equation~\eqref{eq:k
         .
 \end{aligned}\end{gathered}\end{equation}
 
-Now differentiate the Euler equation with respect to $\mRat_{t}$:
+Now differentiate the Euler equation with respect to $\mNrm_{t}$:
 \begin{equation}\label{eq:covgen}\begin{split}
   1  & = \Rfree \DiscFac \Ex_{t}[ \pmb{\Upsilon}_{t+1}^{-\CRRA}] 
   \\ 0  & = \Ex_{t}[\pmb{\Upsilon}_{t+1}^{-\CRRA-1} \pmb{\Upsilon}_{t+1}^{\prime}] 
@@ -57,10 +57,10 @@ and
 
 The latter proposition is obviously true under our assumption $\CRRA > 1$.  The former will be true if
 \begin{align*}
-  \mbox{cov}_{t}\left({(\PGro \pShk_{t+1} \cFunc(\mRat_{t+1}))}^{-\CRRA-1},\cFunc^{\prime}(\mRat_{t+1}) \right)  & > 0 \nonumber.
+  \mbox{cov}_{t}\left({(\PGro \pShk_{t+1} \cFunc(\mNrm_{t+1}))}^{-\CRRA-1},\cFunc^{\prime}(\mNrm_{t+1}) \right)  & > 0 \nonumber.
 \end{align*}
 
-The two shocks cause two kinds of variation in $\mRat_{t+1}$.  Variations due to $\tShkAll_{t+1}$ satisfy the proposition, since a higher draw of $\tShkAll$ both reduces $c_{t+1}^{-\CRRA-1}$ and reduces the marginal propensity to consume.  However, permanent shocks have conflicting effects.  On the one hand, a higher draw of $\pShk_{t+1}$ will reduce $\mRat_{t+1}$, thus increasing both $c_{t+1}^{-\CRRA-1}$ and $c_{t+1}^{\prime}$.  On the other hand, the $c_{t+1}^{-\CRRA-1}$ term is multiplied by $\PGro \pShk_{t+1}$, so the effect of a higher $\pShk_{t+1}$ could be to decrease the first term in the covariance, leading to a negative covariance with the second term.  (Analogously, a lower permanent shock $\pShk_{t+1}$ can also lead a negative correlation.)
+The two shocks cause two kinds of variation in $\mNrm_{t+1}$.  Variations due to $\tShkAll_{t+1}$ satisfy the proposition, since a higher draw of $\tShkAll$ both reduces $c_{t+1}^{-\CRRA-1}$ and reduces the marginal propensity to consume.  However, permanent shocks have conflicting effects.  On the one hand, a higher draw of $\pShk_{t+1}$ will reduce $\mNrm_{t+1}$, thus increasing both $c_{t+1}^{-\CRRA-1}$ and $c_{t+1}^{\prime}$.  On the other hand, the $c_{t+1}^{-\CRRA-1}$ term is multiplied by $\PGro \pShk_{t+1}$, so the effect of a higher $\pShk_{t+1}$ could be to decrease the first term in the covariance, leading to a negative covariance with the second term.  (Analogously, a lower permanent shock $\pShk_{t+1}$ can also lead a negative correlation.)
 
 \end{document}
 \endinput

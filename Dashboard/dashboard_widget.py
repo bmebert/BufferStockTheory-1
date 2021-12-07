@@ -364,16 +364,16 @@ def cGroTargetFig_make(PermGroFac, DiscFac):
     c_pts = soln.cFunc(m_pts)                   # values of c for plot
     a_pts = m_pts - c_pts                       # values of a
 
-    Ex_cLev_tp1_Over_pLev_t = [
-        E_Next_.cLev_tp1_Over_pLev_t_from_a_t(a) for a in a_pts]
-    Ex_mLev_tp1_Over_pLev_t = [
-        E_Next_.mLev_tp1_Over_pLev_t_from_a_t(a) for a in a_pts]
+    Ex_cLvl_tp1_Over_pLvl_t = [
+        E_Next_.cLvl_tp1_Over_pLvl_t_from_a_t(a) for a in a_pts]
+    Ex_mLvl_tp1_Over_pLvl_t = [
+        E_Next_.mLvl_tp1_Over_pLvl_t_from_a_t(a) for a in a_pts]
     Ex_m_tp1_from_a_t = [
         E_Next_.m_tp1_from_a_t(a) for a in a_pts]
 
-    Ex_cLevGro = np.array(Ex_cLev_tp1_Over_pLev_t)/c_pts
-    Ex_mLevGro = np.array(Ex_mLev_tp1_Over_pLev_t)/m_pts
-    Ex_mRatGro = np.array(Ex_m_tp1_from_a_t)/m_pts
+    Ex_cLvlGro = np.array(Ex_cLvl_tp1_Over_pLvl_t)/c_pts
+    Ex_mLvlGro = np.array(Ex_mLvl_tp1_Over_pLvl_t)/m_pts
+    Ex_mNrmGro = np.array(Ex_m_tp1_from_a_t)/m_pts
 
     # Absolute Patience Factor = lower bound of consumption growth factor
     APF = (Rfree*DiscFac)**(1.0/CRRA)
@@ -387,16 +387,16 @@ def cGroTargetFig_make(PermGroFac, DiscFac):
     ax.plot([0, mPlotMax], [G, G], color=color_perm)
 
     # Plot the expected consumption growth factor
-    ax.plot(m_pts, Ex_cLevGro, color=color_cons,
+    ax.plot(m_pts, Ex_cLvlGro, color=color_cons,
             label=r'$\mathbf{c}$-Level-Growth: $\mathbb{E}_{t}[{\mathbf{c}}_{t+1}/{\mathbf{c}}_{t}]$'
             )
 
     # Plot the expect growth for the level of market resources
-    mLevGro_lbl, = ax.plot(m_pts, Ex_mLevGro, color=color_mrktLev,
+    mLvlGro_lbl, = ax.plot(m_pts, Ex_mLvlGro, color=color_mrktLev,
                            label=r'$\mathbf{m}$-Level-Growth: $\mathbb{E}_{t}[{\mathbf{m}}_{t+1}/{\mathbf{m}}_{t}]$')
 
     # Plot the expect growth for the market resources ratio
-    mRatGro_lbl, = ax.plot(m_pts, Ex_mRatGro, color=color_mrktRat,
+    mNrmGro_lbl, = ax.plot(m_pts, Ex_mNrmGro, color=color_mrktRat,
                            label=r'$m$-ratio Growth: $\mathbb{E}_{t}[m_{t+1}/m_{t}]$')
 
     # Axes limits
@@ -405,21 +405,21 @@ def cGroTargetFig_make(PermGroFac, DiscFac):
     if mNrmBalLvl and mNrmBalLvl < mPlotMax:
         ax.plot(mNrmBalLvl, PermGroFac, marker=".", markersize=15, color="black")
 
-#    mLevGro, = ax.plot([mNrmBalLvl, mNrmBalLvl], [0, GroFacMax], color=color_mrktLev,
+#    mLvlGro, = ax.plot([mNrmBalLvl, mNrmBalLvl], [0, GroFacMax], color=color_mrktLev,
 #                       label=r'$\mathbf{m}$-Level-Growth: $\mathbb{E}_{t}[{\mathbf{m}}_{t+1}/{\mathbf{m}}_{t}]$')
-#    ax.legend(handles=[mLevGro])
+#    ax.legend(handles=[mLvlGro])
 
     ax.set_xlim(xMin, mPlotMax * 1.2)
     ax.set_ylim(GroFacMin, GroFacMax)
 
-#    mRatGro, = ax.plot([mNrmTrg, mNrmTrg], [0, GroFacMax], color=color_mrktRat,
-    ax.legend(handles=[mLevGro_lbl, mRatGro_lbl])
+#    mNrmGro, = ax.plot([mNrmTrg, mNrmTrg], [0, GroFacMax], color=color_mrktRat,
+    ax.legend(handles=[mLvlGro_lbl, mNrmGro_lbl])
     ax.legend(prop=dict(size=fssml))
 
     ax.text(mPlotMax+0.01, PermGroFac,
             r"$\Gamma$", fontsize=fssml, fontweight='bold')
 
-#    ax.text(mPlotMax+0.01, Ex_cLevGro[-1],
+#    ax.text(mPlotMax+0.01, Ex_cLvlGro[-1],
 #            r"$\mathsf{E}_{t}[\mathbf{c}_{t+1}/\mathbf{c}_{t}]$", fontsize=fssml, fontweight='bold')
     ax.text(mPlotMax+0.01, APF-0.003,
             r'$\Phi = (R\beta)^{1/\rho}$', fontsize=fssml, fontweight='bold')

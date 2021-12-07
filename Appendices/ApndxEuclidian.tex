@@ -13,7 +13,7 @@ Boyd's theorem shows that $\TMap$ defines a contraction mapping
 in a $\boundFunc$-bounded space. We now show that $\TMap$ also
 defines a contraction mapping in Euclidian space.
 
-Calling $\vFunc^{\ast}$ the unique fixed point of the operator $\TMap$, since $\vFunc^{\ast }(\mRat)=\TMap {\vFunc}^{\ast }(\mRat)$,
+Calling $\vFunc^{\ast}$ the unique fixed point of the operator $\TMap$, since $\vFunc^{\ast }(\mNrm)=\TMap {\vFunc}^{\ast }(\mNrm)$,
 \begin{equation}
 \left\Vert \vFunc_{T-n+1}-\vFunc^{\ast }\right\Vert _{\boundFunc }\leq \Shrinker
 ^{n-1}\left\Vert \vFunc_{T}-\vFunc^{\ast }\right\Vert _{\boundFunc }.
@@ -22,17 +22,17 @@ On the other hand, $\vFunc_{T}-\vFunc^{\ast }\in \mathcal{C}_{\boundFunc }\left(
 \mathscr{B}\right) $ and $\MPC =\left\Vert \vFunc_{T}-\vFunc^{\ast }\right\Vert_{\boundFunc }<\infty $ because $\vFunc_{T}$ and $\vFunc^{\ast }$ are in $\mathcal{C}_{\boundFunc
 }\left( \mathscr{A},\mathscr{B}\right) $. It follows that%
 \begin{equation}
-\left\vert \vFunc_{T-n+1}(\mRat)-\vFunc^{\ast }(\mRat)\right\vert \leq \MPC \Shrinker^{n-1}\left\vert \boundFunc(\mRat)\right\vert.
+\left\vert \vFunc_{T-n+1}(\mNrm)-\vFunc^{\ast }(\mNrm)\right\vert \leq \MPC \Shrinker^{n-1}\left\vert \boundFunc(\mNrm)\right\vert.
 \end{equation}%
 Then we obtain
 \begin{equation}
-\underset{n\rightarrow \infty }{\lim }\vFunc_{T-n+1}(\mRat)=\vFunc^{\ast }(\mRat).
+\underset{n\rightarrow \infty }{\lim }\vFunc_{T-n+1}(\mNrm)=\vFunc^{\ast }(\mNrm).
 \end{equation}
 
-Since $\vFunc_{T}(\mRat)=\frac{\mRat^{1-\CRRA }}{1-\CRRA }$, $\vFunc_{T-1}(\mRat)\leq \frac{{\left(\MaxMPC \mRat\right)}^{1-\CRRA}}{1-\CRRA}<\vFunc_{T}(\mRat)$. On the other hand, $\vFunc_{T-1}\leq \vFunc_{T}$
-means $\TMap\vFunc_{T-1}\leq \TMap\vFunc_{T}$, in other words, $\vFunc_{T-2}(\mRat)\leq \vFunc_{T-1}(\mRat)$.
-Inductively one gets $\vFunc_{T-n}(\mRat)\geq \vFunc_{T-n-1}(\mRat)$. This means that $\left\{
-\vFunc_{T-n+1}(\mRat)\right\} _{n=1}^{\infty }$ is a decreasing sequence,
+Since $\vFunc_{T}(\mNrm)=\frac{\mNrm^{1-\CRRA }}{1-\CRRA }$, $\vFunc_{T-1}(\mNrm)\leq \frac{{\left(\MaxMPC \mNrm\right)}^{1-\CRRA}}{1-\CRRA}<\vFunc_{T}(\mNrm)$. On the other hand, $\vFunc_{T-1}\leq \vFunc_{T}$
+means $\TMap\vFunc_{T-1}\leq \TMap\vFunc_{T}$, in other words, $\vFunc_{T-2}(\mNrm)\leq \vFunc_{T-1}(\mNrm)$.
+Inductively one gets $\vFunc_{T-n}(\mNrm)\geq \vFunc_{T-n-1}(\mNrm)$. This means that $\left\{
+\vFunc_{T-n+1}(\mNrm)\right\} _{n=1}^{\infty }$ is a decreasing sequence,
 bounded below by $\vFunc^{\ast}$.
 
 
@@ -41,17 +41,17 @@ bounded below by $\vFunc^{\ast}$.
 
 Given the proof that the value functions converge, we now show the
 pointwise convergence of consumption functions
-$\left\{\cFunc_{T-n+1}(\mRat)\right\} _{n=1}^{\infty }$.
+$\left\{\cFunc_{T-n+1}(\mNrm)\right\} _{n=1}^{\infty }$.
 
-Consider any convergent subsequence $\left\{\cFunc_{T-n(i)}(\mRat)\right\}$ of $\left\{\cFunc_{T-n+1}(\mRat)\right\} _{n=1}^{\infty }$ converging to $c^*$. By the definition of $\cFunc_{T-n}(\mRat)$, we have 
+Consider any convergent subsequence $\left\{\cFunc_{T-n(i)}(\mNrm)\right\}$ of $\left\{\cFunc_{T-n+1}(\mNrm)\right\} _{n=1}^{\infty }$ converging to $c^*$. By the definition of $\cFunc_{T-n}(\mNrm)$, we have 
 \begin{equation}
-    \uFunc(c_{T - n(i)}(\mRat)) + \DiscFac \Ex_{T - n(i)}[{\PGro}_{T-n(i)+1}^{1 - \CRRA}\vFunc_{T-n(i)+1}(\mRat)] \geq \uFunc(c_{T - n(i)}) + \DiscFac \Ex_{T - n(i)}[{\PGro}_{T-n(i)+1}^{1 - \CRRA}\vFunc_{T-n(i)+1}(\mRat)],
+    \uFunc(c_{T - n(i)}(\mNrm)) + \DiscFac \Ex_{T - n(i)}[{\PGro}_{T-n(i)+1}^{1 - \CRRA}\vFunc_{T-n(i)+1}(\mNrm)] \geq \uFunc(c_{T - n(i)}) + \DiscFac \Ex_{T - n(i)}[{\PGro}_{T-n(i)+1}^{1 - \CRRA}\vFunc_{T-n(i)+1}(\mNrm)],
 \end{equation}
-for any $\cRat_{T - n(i)} \in [\MinMinMPC \mRat,\MaxMPC \mRat]$. Now letting $n(i)$ go to infinity, it follows that the left hand side converges to $\uFunc(\cRat^*) + \DiscFac \Ex_{t}[{\PGro}_{t}^{1 - \CRRA}\vFunc(\mRat)]$, and the right hand side converges to $\uFunc(\cRat_{T - n(i)}) + \DiscFac \Ex_{t}[{\PGro}_{t}^{1 - \CRRA}\vFunc(\mRat)]$. So the limit of the preceding inequality as $n(i)$ approaches infinity implies 
+for any $\cNrm_{T - n(i)} \in [\MinMinMPC \mNrm,\MaxMPC \mNrm]$. Now letting $n(i)$ go to infinity, it follows that the left hand side converges to $\uFunc(\cNrm^*) + \DiscFac \Ex_{t}[{\PGro}_{t}^{1 - \CRRA}\vFunc(\mNrm)]$, and the right hand side converges to $\uFunc(\cNrm_{T - n(i)}) + \DiscFac \Ex_{t}[{\PGro}_{t}^{1 - \CRRA}\vFunc(\mNrm)]$. So the limit of the preceding inequality as $n(i)$ approaches infinity implies 
 \begin{equation}
-   \uFunc(\cRat^*) + \DiscFac \Ex_{t}[{\PGro}_{t + 1}^{1 - \CRRA}\vFunc(\mRat)] \geq \uFunc(\cRat_{T - n(i)}) + \DiscFac \Ex_{t}[{\PGro}_{t + 1}^{1 - \CRRA}\vFunc(\mRat)].
+   \uFunc(\cNrm^*) + \DiscFac \Ex_{t}[{\PGro}_{t + 1}^{1 - \CRRA}\vFunc(\mNrm)] \geq \uFunc(\cNrm_{T - n(i)}) + \DiscFac \Ex_{t}[{\PGro}_{t + 1}^{1 - \CRRA}\vFunc(\mNrm)].
 \end{equation}
-Hence, $c^* \in \underset{\cRat_{T - n(i)} \in [\MinMinMPC \mRat,\MaxMPC \mRat]}{\arg \max }\left\{ \uFunc(\cRat_{T - n(i)}) + \DiscFac \Ex_{t}[{\PGro}_{t + 1}^{1 - \CRRA}\vFunc(\mRat)]\right\}$. By the uniqueness of $\cFunc(\mRat)$, $c^* = \cFunc(\mRat)$.
+Hence, $c^* \in \underset{\cNrm_{T - n(i)} \in [\MinMinMPC \mNrm,\MaxMPC \mNrm]}{\arg \max }\left\{ \uFunc(\cNrm_{T - n(i)}) + \DiscFac \Ex_{t}[{\PGro}_{t + 1}^{1 - \CRRA}\vFunc(\mNrm)]\right\}$. By the uniqueness of $\cFunc(\mNrm)$, $c^* = \cFunc(\mNrm)$.
 
 
 

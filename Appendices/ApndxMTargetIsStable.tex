@@ -20,12 +20,12 @@ This appendix proves Theorems~\ref{thm:target}-\ref{thm:MSSBalExists} and:
 \onlyinsubfile{\setcounter{theorem}{1}}
 
   \begin{lemma}\label{lemma:orderingPartOne}
-  If $\BalGroFac{\mRat}$ and $\TargetNrm{\mRat}$ both exist, then $\BalGroFac{\mRat} \leq \TargetNrm{\mRat}$.
+  If $\BalGroFac{\mNrm}$ and $\TargetNrm{\mNrm}$ both exist, then $\BalGroFac{\mNrm} \leq \TargetNrm{\mNrm}$.
   \end{lemma}
 
   \begin{comment}
   \begin{lemma}\label{lemma:orderingPartTwo}
-  If $\BalGroFac{\mRat}$ and $\BalGroRte{\mRat}$ both exist, then $\BalGroFac{\mRat} \leq \BalGroRte{\mRat}$.
+  If $\BalGroFac{\mNrm}$ and $\BalGroRte{\mNrm}$ both exist, then $\BalGroFac{\mNrm} \leq \BalGroRte{\mNrm}$.
   \end{lemma}
 \end{comment}
 
@@ -33,83 +33,83 @@ This appendix proves Theorems~\ref{thm:target}-\ref{thm:MSSBalExists} and:
   
   The elements of the proof of Theorem~\ref{thm:target} are:
 \begin{itemize}
-\item Existence and continuity of $\Ex_t [{\mRat}_{t+1}/\mRat_t]$
-\item Existence of a point where $\Ex_t [{\mRat}_{t+1}/\mRat_t] = 1$
-\item $\Ex_t [{\mRat}_{t+1}]-\mRat_{t}$ is monotonically decreasing
+\item Existence and continuity of $\Ex_t [{\mNrm}_{t+1}/\mNrm_t]$
+\item Existence of a point where $\Ex_t [{\mNrm}_{t+1}/\mNrm_t] = 1$
+\item $\Ex_t [{\mNrm}_{t+1}]-\mNrm_{t}$ is monotonically decreasing
 \end{itemize}
 
 
 \subsection{Existence and Continuity of
-  \texorpdfstring{$\Ex_t [{\mRat}_{t+1}/\mRat_t]$}{Ex-{t}[mRat-{t+1}/mRat-{t}]}}\label{subsubsec:RatExitsCont}
-The consumption function exists because we have imposed sufficient conditions (the $\WRIC$ and $\FVAC$; Theorem~\ref{thm:contmap}). % (Indeed, Appendix~\ref{sec:CIsTwiceDifferentiable} shows that $\cFunc(\mRat)$ is not just continuous, but twice continuously differentiable.)
+  \texorpdfstring{$\Ex_t [{\mNrm}_{t+1}/\mNrm_t]$}{Ex-{t}[mNrm-{t+1}/mNrm-{t}]}}\label{subsubsec:RatExitsCont}
+The consumption function exists because we have imposed sufficient conditions (the $\WRIC$ and $\FVAC$; Theorem~\ref{thm:contmap}). % (Indeed, Appendix~\ref{sec:CIsTwiceDifferentiable} shows that $\cFunc(\mNrm)$ is not just continuous, but twice continuously differentiable.)
 
-Section~\ref{sec:cExists} shows that for all $t$, $\aRat_{t-1} = {\mRat}_{t-1} -  \cRat_{t-1} > 0$.  Since ${\mRat}_{t}= {\aRat}_{t-1} \Rnorm_{t} + \tShkAll_{t}$, even if $\tShkAll_{t}$ takes on its minimum value of 0, $\aRat_{t-1} \Rnorm_{t} > 0$, since both $\aRat_{t-1}$ and $\Rnorm_{t}$ are strictly positive.  With $\mRat_{t}$ and $\mRat_{t+1}$ both strictly positive, the ratio $\Ex_t [{\mRat}_{t+1}/\mRat_t]$ inherits continuity (and, for that matter, continuous differentiability) from the consumption function.
+Section~\ref{sec:cExists} shows that for all $t$, $\aNrm_{t-1} = {\mNrm}_{t-1} -  \cNrm_{t-1} > 0$.  Since ${\mNrm}_{t}= {\aNrm}_{t-1} \Rnorm_{t} + \tShkAll_{t}$, even if $\tShkAll_{t}$ takes on its minimum value of 0, $\aNrm_{t-1} \Rnorm_{t} > 0$, since both $\aNrm_{t-1}$ and $\Rnorm_{t}$ are strictly positive.  With $\mNrm_{t}$ and $\mNrm_{t+1}$ both strictly positive, the ratio $\Ex_t [{\mNrm}_{t+1}/\mNrm_t]$ inherits continuity (and, for that matter, continuous differentiability) from the consumption function.
 
 \subsection{Existence of a point where
-  \texorpdfstring{$\Ex_t [{\mRat}_{t+1}/\mRat_t]=1$}
-  {Ex-t[mRat-{t+1}/mRat-{t}]=1}.}
+  \texorpdfstring{$\Ex_t [{\mNrm}_{t+1}/\mNrm_t]=1$}
+  {Ex-t[mNrm-{t+1}/mNrm-{t}]=1}.}
 
 This follows from:
 \begin{enumerate}
-\item Existence and continuity of $\Ex_t [{\mRat}_{t+1}/\mRat_t]$ (just proven)
-  \item Existence a point where $\Ex_t [{\mRat}_{t+1}/\mRat_t] < 1$
-  \item Existence a point where $\Ex_t [{\mRat}_{t+1}/\mRat_t] > 1$
+\item Existence and continuity of $\Ex_t [{\mNrm}_{t+1}/\mNrm_t]$ (just proven)
+  \item Existence a point where $\Ex_t [{\mNrm}_{t+1}/\mNrm_t] < 1$
+  \item Existence a point where $\Ex_t [{\mNrm}_{t+1}/\mNrm_t] > 1$
     \item The Intermediate Value Theorem
     \end{enumerate}
 
-\subsubsection{Existence of \texorpdfstring{$\mRat$}{m} where \texorpdfstring{$\Ex_t [{\mRat}_{t+1}/\mRat_t] < 1$}{E[m{t+1}/m{t}}}
+\subsubsection{Existence of \texorpdfstring{$\mNrm$}{m} where \texorpdfstring{$\Ex_t [{\mNrm}_{t+1}/\mNrm_t] < 1$}{E[m{t+1}/m{t}}}
     
 \textbf{If {\RIC} holds.}  Logic exactly parallel to that of Section~\ref{subsec:LimitsAsmtToInfty} leading to equation~\eqref{eq:xtp1toinfty}, but dropping the $\PGro_{t+1}$ from the RHS, establishes that
 \begin{align}
-  \lim_{\mRat_{t} \uparrow \infty} \Ex_{t}[{\mRat}_{t+1}/\mRat_{t}]  & =   
-                                                                       \lim_{\mRat_{t} \uparrow \infty} 
-                                                                       \Ex_{t}\left[\frac{{\mathcal{\mathcal{R}}}_{t+1}(\mRat_{t}-\cFunc(\mRat_{t}))+{\tShkAll}_{t+1}}{\mRat_{t}}\right] \notag 
+  \lim_{\mNrm_{t} \uparrow \infty} \Ex_{t}[{\mNrm}_{t+1}/\mNrm_{t}]  & =   
+                                                                       \lim_{\mNrm_{t} \uparrow \infty} 
+                                                                       \Ex_{t}\left[\frac{{\mathcal{\mathcal{R}}}_{t+1}(\mNrm_{t}-\cFunc(\mNrm_{t}))+{\tShkAll}_{t+1}}{\mNrm_{t}}\right] \notag 
   \\  & = \Ex_{t}[(\Rfree/{\PGro}_{t+1})\PatR]  \notag
   \\  & = \Ex_{t}[{\Pat}/{\PGro}_{t+1}]  \label{eq:emgro}
   \\  & < 1 \notag
 \end{align}
 where the inequality reflects imposition of the \GICNrm~\eqref{eq:GICNrm}.
 
-\textbf{If {\RIC} fails.}  When the {\RIC} fails, the fact that $\lim_{\mRat^{\uparrow} \infty} \cFunc^{\prime}(\mRat) = 0$ (see equation~\eqref{eq:MinMPCInv}) means that the limit of the RHS of~\eqref{eq:emgro} as $\mRat \uparrow \infty$ is $\bar{\Rnorm}=\Ex_{t}[\Rnorm_{t+1}]$.  In the next step of this proof, we will prove that the combination {\GICNrm} and \cncl{\RIC} implies $\bar{\Rnorm} < 1$.
+\textbf{If {\RIC} fails.}  When the {\RIC} fails, the fact that $\lim_{\mNrm^{\uparrow} \infty} \cFunc^{\prime}(\mNrm) = 0$ (see equation~\eqref{eq:MinMPCInv}) means that the limit of the RHS of~\eqref{eq:emgro} as $\mNrm \uparrow \infty$ is $\bar{\Rnorm}=\Ex_{t}[\Rnorm_{t+1}]$.  In the next step of this proof, we will prove that the combination {\GICNrm} and \cncl{\RIC} implies $\bar{\Rnorm} < 1$.
 
-So we have $\lim_{\mRat \uparrow \infty} \Ex_{t}[\mRat_{t+1}/\mRat_{t}] < 1$ whether the {\RIC} holds or fails.
+So we have $\lim_{\mNrm \uparrow \infty} \Ex_{t}[\mNrm_{t+1}/\mNrm_{t}] < 1$ whether the {\RIC} holds or fails.
 
 \medskip
 
-\subsubsection{Existence of \texorpdfstring{$\mRat$}{m} > 1 where \texorpdfstring{$\Ex_t [{\mRat}_{t+1}/\mRat_t] > 1$}{E[m{t+1}/m{t}] > 1}}
-Paralleling the logic for $\cRat$ in Section~\ref{subsec:LimitsAsmtToZero}: the ratio of $\Ex_{t}[\mRat_{t+1}]$ to $\mRat_{t}$ is unbounded above as $\mRat_{t} \downarrow 0$ because $\lim_{\mRat_{t}\downarrow 0} \Ex_{t}[\mRat_{t+1}] > 0$.
+\subsubsection{Existence of \texorpdfstring{$\mNrm$}{m} > 1 where \texorpdfstring{$\Ex_t [{\mNrm}_{t+1}/\mNrm_t] > 1$}{E[m{t+1}/m{t}] > 1}}
+Paralleling the logic for $\cNrm$ in Section~\ref{subsec:LimitsAsmtToZero}: the ratio of $\Ex_{t}[\mNrm_{t+1}]$ to $\mNrm_{t}$ is unbounded above as $\mNrm_{t} \downarrow 0$ because $\lim_{\mNrm_{t}\downarrow 0} \Ex_{t}[\mNrm_{t+1}] > 0$.
 
 \medskip\medskip
 
-\noindent \textit{Intermediate Value Theorem}.  If $\Ex_t [{\mRat}_{t+1}/\mRat_t]$ is continuous, and takes on values above and below 1, there must be at least one point at which it is equal to one.
+\noindent \textit{Intermediate Value Theorem}.  If $\Ex_t [{\mNrm}_{t+1}/\mNrm_t]$ is continuous, and takes on values above and below 1, there must be at least one point at which it is equal to one.
 
-\subsubsection{\texorpdfstring{$\Ex_t [{\mRat}_{t+1}] -\mRat_t$}{Delta m} is monotonically decreasing.}
+\subsubsection{\texorpdfstring{$\Ex_t [{\mNrm}_{t+1}] -\mNrm_t$}{Delta m} is monotonically decreasing.}
 
-Now define \providecommand{\difFunc}{\pmb{\zeta}} $\difFunc(\mRat_t) \equiv 
-\Ex_t[\mRat_{t+1}] - \mRat_t$ and note that
-\begin{align}\label{eq:difRatioEquiv}
-  \difFunc(\mRat_t) < 0 &\leftrightarrow \Ex_t[{\mRat}_{t+1}/\mRat_t] < 1 
+Now define \providecommand{\difFunc}{\pmb{\zeta}} $\difFunc(\mNrm_t) \equiv 
+\Ex_t[\mNrm_{t+1}] - \mNrm_t$ and note that
+\begin{align}\label{eq:difNrmioEquiv}
+  \difFunc(\mNrm_t) < 0 &\leftrightarrow \Ex_t[{\mNrm}_{t+1}/\mNrm_t] < 1 
                           \nonumber\\
-  \difFunc(\mRat_t) = 0 &\leftrightarrow \Ex_t[{\mRat}_{t+1}/\mRat_t] = 1\\
-  \difFunc(\mRat_t) > 0 &\leftrightarrow \Ex_t[{\mRat}_{t+1}/\mRat_t] > 
+  \difFunc(\mNrm_t) = 0 &\leftrightarrow \Ex_t[{\mNrm}_{t+1}/\mNrm_t] = 1\\
+  \difFunc(\mNrm_t) > 0 &\leftrightarrow \Ex_t[{\mNrm}_{t+1}/\mNrm_t] > 
                           1,\nonumber
 \end{align}
 so that $\difFunc(\mTrgNrm)=0$. Our goal is to prove that $\difFunc(\bullet)$ is strictly 
 decreasing on $(0,\infty)$ using the fact that
 \begin{align}
-  \difFunc^{\prime}(\mRat_{t}) \equiv  \left( \frac{d}{d\mRat_{t}}\right) \difFunc(\mRat_t)  & = \Ex_{t}\left[
-                                                                                               \left( \frac{d}{d\mRat_{t}}\right) \left( 
-                                                                                               {\Rnorm}_{t+1}(\mRat_{t}-\cFunc(\mRat_{t}))+%
-                                                                                               {\tShkAll}_{t+1} - {\mRat}_t\right) \right] \label{eq:difFuncmRatDecreases} \\
-                                                                                             & = \bar{\Rnorm}\left(1-\cFunc^{\prime}({\mRat}_t)\right) - 1.  \notag
+  \difFunc^{\prime}(\mNrm_{t}) \equiv  \left( \frac{d}{d\mNrm_{t}}\right) \difFunc(\mNrm_t)  & = \Ex_{t}\left[
+                                                                                               \left( \frac{d}{d\mNrm_{t}}\right) \left( 
+                                                                                               {\Rnorm}_{t+1}(\mNrm_{t}-\cFunc(\mNrm_{t}))+%
+                                                                                               {\tShkAll}_{t+1} - {\mNrm}_t\right) \right] \label{eq:difFuncmNrmDecreases} \\
+                                                                                             & = \bar{\Rnorm}\left(1-\cFunc^{\prime}({\mNrm}_t)\right) - 1.  \notag
 \end{align}
 
 % Note that the statement of theorem~\ref{thm:target} did not require the {\RIC} to hold.
-Now, we show that (given our other assumptions) $\difFunc^{\prime}(\mRat)$ is decreasing (but for different reasons) whether the {\RIC} holds or fails.
+Now, we show that (given our other assumptions) $\difFunc^{\prime}(\mNrm)$ is decreasing (but for different reasons) whether the {\RIC} holds or fails.
 
-\textbf{If {\RIC} holds}. Equation~\eqref{eq:MinMPCDef} indicates that if the {\RIC} holds, then $\MinMPC >0$.  We show at the bottom of Section~\ref{sec:WRIC} that if the {\RIC} holds then $0 < \MinMPC < \cFunc^{\prime}(\mRat_{t}) < 1$ so that 
+\textbf{If {\RIC} holds}. Equation~\eqref{eq:MinMPCDef} indicates that if the {\RIC} holds, then $\MinMPC >0$.  We show at the bottom of Section~\ref{sec:WRIC} that if the {\RIC} holds then $0 < \MinMPC < \cFunc^{\prime}(\mNrm_{t}) < 1$ so that 
 \begin{align*}
-  \bar{\Rnorm}\left(1-\cFunc^{\prime}({\mRat}_t)\right) - 1 & <  \bar{\Rnorm}(1-\underbrace{(1-\PatR)}_{\MinMPC}) - 1  \\
+  \bar{\Rnorm}\left(1-\cFunc^{\prime}({\mNrm}_t)\right) - 1 & <  \bar{\Rnorm}(1-\underbrace{(1-\PatR)}_{\MinMPC}) - 1  \\
                                                             & = \bar{\Rnorm}\PatR - 1 \\
                                                             & = \Ex_{t}\left[\frac{\Rfree}{\PGro \pShk}\frac{\Pat}{\Rfree}\right] - 1 \\
                                                             & = \underbrace{\Ex_{t}\left[\frac{\Pat}{\PGro \pShk}\right]}_{= \PatPGroAdj} - 1 
@@ -117,11 +117,11 @@ Now, we show that (given our other assumptions) $\difFunc^{\prime}(\mRat)$ is de
 which is negative because the {\GICNrm} says $\PatPGroAdj < 1$.  
 
 \textbf{If {\RIC} fails.}
-Under \cncl{\RIC}, recall that $\lim_{\mRat \uparrow \infty} \cFunc^{\prime}(\mRat) = 0$.  Concavity of the consumption function means that $\cFunc^{\prime}$ is a decreasing function, so everywhere 
+Under \cncl{\RIC}, recall that $\lim_{\mNrm \uparrow \infty} \cFunc^{\prime}(\mNrm) = 0$.  Concavity of the consumption function means that $\cFunc^{\prime}$ is a decreasing function, so everywhere 
 \begin{align*}
-  \bar{\Rnorm}\left(1-\cFunc^{\prime}({\mRat}_t)\right) & < \bar{\Rnorm}
+  \bar{\Rnorm}\left(1-\cFunc^{\prime}({\mNrm}_t)\right) & < \bar{\Rnorm}
 \end{align*}
-which means that $\difFunc^{\prime}(\mRat_{t})$ from~\eqref{eq:difFuncmRatDecreases} is guaranteed to be negative if
+which means that $\difFunc^{\prime}(\mNrm_{t})$ from~\eqref{eq:difFuncmNrmDecreases} is guaranteed to be negative if
 \begin{align}
   \bar{\Rnorm} \equiv \Ex_{t}\left[\frac{\Rfree}{\PGro \pShk}\right] & < 1  \label{eq:RbarBelowOne}.
 \end{align}
@@ -140,29 +140,29 @@ which satisfies our requirement in~\eqref{eq:RbarBelowOne}.
 
 The elements of the proof are:
 \begin{itemize}
-\item Existence and continuity of $\Ex_{t}[\pShk_{t+1}\mRat_{t+1}/\mRat_t]$
-\item Existence of a point where $\Ex_{t}[\pShk_{t+1}\mRat_{t+1}/\mRat_t] = 1$
-\item $\Ex_{t}[\pShk_{t+1}\mRat_{t+1}-\mRat_{t}]$ is monotonically decreasing
+\item Existence and continuity of $\Ex_{t}[\pShk_{t+1}\mNrm_{t+1}/\mNrm_t]$
+\item Existence of a point where $\Ex_{t}[\pShk_{t+1}\mNrm_{t+1}/\mNrm_t] = 1$
+\item $\Ex_{t}[\pShk_{t+1}\mNrm_{t+1}-\mNrm_{t}]$ is monotonically decreasing
 \end{itemize}
 
-\subsubsection{Existence and Continuity of the Ratio}% of $\TargetNrm{\mRat}_{t+1}/\mRat_{t}$.}
+\subsubsection{Existence and Continuity of the Ratio}% of $\TargetNrm{\mNrm}_{t+1}/\mNrm_{t}$.}
 
-Since by assumption $ 0 < \ushort{\pShk} \leq \pShk_{t+1} \leq \bar{\pShk} < \infty$, our proof in~\ref{subsubsec:RatExitsCont} that demonstrated existence and continuity of $\Ex_{t}[\mRat_{t+1}/\mRat_{t}]$ implies existence and continuity of $\Ex_{t}[\pShk_{t+1}\mRat_{t+1}/\mRat_{t}]$.
+Since by assumption $ 0 < \ushort{\pShk} \leq \pShk_{t+1} \leq \bar{\pShk} < \infty$, our proof in~\ref{subsubsec:RatExitsCont} that demonstrated existence and continuity of $\Ex_{t}[\mNrm_{t+1}/\mNrm_{t}]$ implies existence and continuity of $\Ex_{t}[\pShk_{t+1}\mNrm_{t+1}/\mNrm_{t}]$.
 
 \subsubsection{Existence of a stable point}
 
-Since by assumption $ 0 < \ushort{\pShk} \leq \pShk_{t+1} \leq \bar{\pShk} < \infty$, our proof in Subsection~\ref{subsubsec:RatExitsCont} that the ratio of $\Ex_{t}[\mRat_{t+1}]$ to $\mRat_{t}$ is unbounded as $\mRat_{t} \downarrow 0$ implies that the ratio $\Ex_{t}[\pShk_{t+1}\mRat_{t+1}]$ to $\mRat_{t}$ is unbounded as $\mRat_{t} \downarrow 0$.
+Since by assumption $ 0 < \ushort{\pShk} \leq \pShk_{t+1} \leq \bar{\pShk} < \infty$, our proof in Subsection~\ref{subsubsec:RatExitsCont} that the ratio of $\Ex_{t}[\mNrm_{t+1}]$ to $\mNrm_{t}$ is unbounded as $\mNrm_{t} \downarrow 0$ implies that the ratio $\Ex_{t}[\pShk_{t+1}\mNrm_{t+1}]$ to $\mNrm_{t}$ is unbounded as $\mNrm_{t} \downarrow 0$.
 
-The limit of the expected ratio as $\mRat_{t}$ goes to infinity is most easily calculated by modifying the steps for the prior theorem explicitly:
+The limit of the expected ratio as $\mNrm_{t}$ goes to infinity is most easily calculated by modifying the steps for the prior theorem explicitly:
 \begin{align}
-  \lim_{\mRat_{t} \uparrow \infty} \Ex_{t}[\pShk_{t+1}\mRat_{t+1}/\mRat_{t}]  & =   
-                                                                  \lim_{\mRat_{t} \uparrow \infty} 
-                                                                  \Ex_{t}\left[\frac{\PGro_{t+1}\left((\Rfree/\PGro_{t+1})\aFunc(\mRat_{t})+{\tShkAll}_{t+1}\right)/\PGro}{\mRat_{t}}\right] \notag 
-  \\   & =   \lim_{\mRat_{t} \uparrow \infty} \Ex_{t}\left[
-         \frac{(\Rfree/\PGro)\aFunc(\mRat_{t})+\pShk_{t+1}{\tShkAll}_{t+1}}{\mRat_{t}}
+  \lim_{\mNrm_{t} \uparrow \infty} \Ex_{t}[\pShk_{t+1}\mNrm_{t+1}/\mNrm_{t}]  & =   
+                                                                  \lim_{\mNrm_{t} \uparrow \infty} 
+                                                                  \Ex_{t}\left[\frac{\PGro_{t+1}\left((\Rfree/\PGro_{t+1})\aFunc(\mNrm_{t})+{\tShkAll}_{t+1}\right)/\PGro}{\mNrm_{t}}\right] \notag 
+  \\   & =   \lim_{\mNrm_{t} \uparrow \infty} \Ex_{t}\left[
+         \frac{(\Rfree/\PGro)\aFunc(\mNrm_{t})+\pShk_{t+1}{\tShkAll}_{t+1}}{\mNrm_{t}}
          \right] \notag 
-  \\   & =   \lim_{\mRat_{t} \uparrow \infty} \left[
-         \frac{(\Rfree/\PGro)\aFunc(\mRat_{t})+1}{\mRat_{t}}
+  \\   & =   \lim_{\mNrm_{t} \uparrow \infty} \left[
+         \frac{(\Rfree/\PGro)\aFunc(\mNrm_{t})+1}{\mNrm_{t}}
          \right] \notag 
   \\  & = (\Rfree/\PGro)\PatR \label{eq:emgro2}
   \\  & = \PatPGro \notag
@@ -170,44 +170,44 @@ The limit of the expected ratio as $\mRat_{t}$ goes to infinity is most easily c
 \end{align}
 where the last two lines are merely a restatement of the \GICRaw~\eqref{eq:GICRaw}.
 
-The Intermediate Value Theorem says that if $\Ex_{t}[\pShk_{t+1}\mRat_{t+1}/\mRat_t]$ is continuous, and takes on values above and below 1, there must be at least one point at which it is equal to one.
+The Intermediate Value Theorem says that if $\Ex_{t}[\pShk_{t+1}\mNrm_{t+1}/\mNrm_t]$ is continuous, and takes on values above and below 1, there must be at least one point at which it is equal to one.
 
-\subsubsection{\texorpdfstring{$\Ex_{t}[\pShk_{t+1}\mRat_{t+1}] -\mRat_t$}{pShk m{t+1} --- m{t}} is monotonically decreasing.}
+\subsubsection{\texorpdfstring{$\Ex_{t}[\pShk_{t+1}\mNrm_{t+1}] -\mNrm_t$}{pShk m{t+1} --- m{t}} is monotonically decreasing.}
 
-Define \providecommand{\difFunc}{\pmb{\zeta}} $\difFunc(\mRat_t) \equiv 
-\Ex_t[\pShk_{t+1}\mRat_{t+1}] - \mRat_t$ and note that
-\begin{align}\label{eq:difLevEquiv}
-  \difFunc(\mRat_t) < 0 &\leftrightarrow \Ex_t[\pShk_{t+1}\mRat_{t+1}/\mRat_{t}] < 1 
+Define \providecommand{\difFunc}{\pmb{\zeta}} $\difFunc(\mNrm_t) \equiv 
+\Ex_t[\pShk_{t+1}\mNrm_{t+1}] - \mNrm_t$ and note that
+\begin{align}\label{eq:difLvlEquiv}
+  \difFunc(\mNrm_t) < 0 &\leftrightarrow \Ex_t[\pShk_{t+1}\mNrm_{t+1}/\mNrm_{t}] < 1 
                           \nonumber\\
-  \difFunc(\mRat_t) = 0 &\leftrightarrow \Ex_t[\pShk_{t+1}\mRat_{t+1}/\mRat_{t}] = 1\\
-  \difFunc(\mRat_t) > 0 &\leftrightarrow \Ex_t[\pShk_{t+1}\mRat_{t+1}/\mRat_{t}] > 
+  \difFunc(\mNrm_t) = 0 &\leftrightarrow \Ex_t[\pShk_{t+1}\mNrm_{t+1}/\mNrm_{t}] = 1\\
+  \difFunc(\mNrm_t) > 0 &\leftrightarrow \Ex_t[\pShk_{t+1}\mNrm_{t+1}/\mNrm_{t}] > 
                           1,\nonumber
 \end{align}
 so that $\difFunc(\mTrgNrm)=0$. Our goal is to prove that $\difFunc(\bullet)$ is strictly 
 decreasing on $(0,\infty)$ using the fact that
 \begin{align}
-  \difFunc^{\prime}(\mRat_{t}) \equiv  \left( \frac{d}{d\mRat_{t}}\right) \difFunc(\mRat_t)  & = \Ex_{t}\left[
-                                                                                               \left( \frac{d}{d\mRat_{t}}\right) \left( 
-                                                                                               {\Rnorm}(\mRat_{t}-\cFunc(\mRat_{t}))+%
-                                                                                               {\pShk}_{t+1}{\tShkAll}_{t+1} - {\mRat}_t\right) \right] \label{eq:difFuncDecreases} \\
-                                                                                             & = (\Rfree/\PGro)\left(1-\cFunc^{\prime}({\mRat}_t)\right) - 1.  \notag
+  \difFunc^{\prime}(\mNrm_{t}) \equiv  \left( \frac{d}{d\mNrm_{t}}\right) \difFunc(\mNrm_t)  & = \Ex_{t}\left[
+                                                                                               \left( \frac{d}{d\mNrm_{t}}\right) \left( 
+                                                                                               {\Rnorm}(\mNrm_{t}-\cFunc(\mNrm_{t}))+%
+                                                                                               {\pShk}_{t+1}{\tShkAll}_{t+1} - {\mNrm}_t\right) \right] \label{eq:difFuncDecreases} \\
+                                                                                             & = (\Rfree/\PGro)\left(1-\cFunc^{\prime}({\mNrm}_t)\right) - 1.  \notag
 \end{align}
 
-Now, we show that (given our other assumptions) $\difFunc^{\prime}(\mRat)$ is decreasing (but for different reasons) whether the {\RIC} holds or fails (\cncl{\RIC}).
+Now, we show that (given our other assumptions) $\difFunc^{\prime}(\mNrm)$ is decreasing (but for different reasons) whether the {\RIC} holds or fails (\cncl{\RIC}).
 
-\textbf{If {\RIC} holds}. Equation~\eqref{eq:MinMPCDef} indicates that if the {\RIC} holds, then $\MinMPC >0$.  We show at the bottom of Section~\ref{sec:WRIC} that if the {\RIC} holds then $0 < \MinMPC < \cFunc^{\prime}(\mRat_{t}) < 1$ so that 
+\textbf{If {\RIC} holds}. Equation~\eqref{eq:MinMPCDef} indicates that if the {\RIC} holds, then $\MinMPC >0$.  We show at the bottom of Section~\ref{sec:WRIC} that if the {\RIC} holds then $0 < \MinMPC < \cFunc^{\prime}(\mNrm_{t}) < 1$ so that 
 \begin{align*}
-  \Rnorm\left(1-\cFunc^{\prime}({\mRat}_t)\right) - 1 & <  \Rnorm(1-\underbrace{(1-\PatR)}_{\MinMPC}) - 1  \\
+  \Rnorm\left(1-\cFunc^{\prime}({\mNrm}_t)\right) - 1 & <  \Rnorm(1-\underbrace{(1-\PatR)}_{\MinMPC}) - 1  \\
                                                       & = (\Rfree/\PGro)\PatR - 1 
 \end{align*}
 which is negative because the {\GICRaw} says $\PatPGro < 1$.  
 
 \textbf{If {\RIC} fails.}
-Under \cncl{\RIC}, recall that $\lim_{\mRat \uparrow \infty} \cFunc^{\prime}(\mRat) = 0$.  Concavity of the consumption function means that $\cFunc^{\prime}$ is a decreasing function, so everywhere 
+Under \cncl{\RIC}, recall that $\lim_{\mNrm \uparrow \infty} \cFunc^{\prime}(\mNrm) = 0$.  Concavity of the consumption function means that $\cFunc^{\prime}$ is a decreasing function, so everywhere 
 \begin{align*}
-  \Rnorm\left(1-\cFunc^{\prime}({\mRat}_t)\right) & < \Rnorm
+  \Rnorm\left(1-\cFunc^{\prime}({\mNrm}_t)\right) & < \Rnorm
 \end{align*}
-which means that $\difFunc^{\prime}(\mRat_{t})$ from~\eqref{eq:difFuncDecreases} is guaranteed to be negative if
+which means that $\difFunc^{\prime}(\mNrm_{t})$ from~\eqref{eq:difFuncDecreases} is guaranteed to be negative if
 \begin{align}
   \Rnorm \equiv (\Rfree/\PGro) & < 1  \label{eq:FHWCFails}.
 \end{align}
@@ -216,37 +216,37 @@ But we showed in Section~\ref{subsec:UncertaintyModifiedConditions} that the onl
 
 \subsection{A Third Measure}
 
-A footnote in~Section~\ref{sec:convergedcfunc} mentions the possibility of calculating growth in the expectation of the log of $\mRat$ rather than the expectation of the ratio.  Here we show that one way of doing that is to calculate a nonlinear adjustment factor for the expectation of the ratio.
+A footnote in~Section~\ref{sec:convergedcfunc} mentions the possibility of calculating growth in the expectation of the log of $\mNrm$ rather than the expectation of the ratio.  Here we show that one way of doing that is to calculate a nonlinear adjustment factor for the expectation of the ratio.
 \begin{align*}
-\log \left(\mLevBF_{t+1}/\mLevBF_{t}\right) & = \log (\PGro \pShk_{t+1} \mRat_{t+1})- \log \mRat_{t} 
-\\ & = \log \PGro (\aRat_{t}\Rnorm+\permShk_{t+1}\tShk_{t+1})- \log \mRat_{t} 
-\\ & = \log \PGro (\aRat_{t}\Rnorm+1+(\permShk_{t+1}\tShk_{t+1}-1))- \log \mRat_{t}
+\log \left(\mLvl_{t+1}/\mLvl_{t}\right) & = \log (\PGro \pShk_{t+1} \mNrm_{t+1})- \log \mNrm_{t} 
+\\ & = \log \PGro (\aNrm_{t}\Rnorm+\permShk_{t+1}\tShk_{t+1})- \log \mNrm_{t} 
+\\ & = \log \PGro (\aNrm_{t}\Rnorm+1+(\permShk_{t+1}\tShk_{t+1}-1))- \log \mNrm_{t}
 \end{align*}
 
-Now define $\BalGroRte{\mRat}_{t+1}=\aRat_{t}\Rnorm+1$, and compute the expectation:
+Now define $\BalGroRte{\mNrm}_{t+1}=\aNrm_{t}\Rnorm+1$, and compute the expectation:
 \begin{align*}
-  \Ex_{t}[\log \left(\mLevBF_{t+1}/\mLevBF_{t}\right)]
-   & = \Ex_{t}\left[\log \PGro (\BalGroRte{\mRat}_{t+1}+(\permShk_{t+1}\tShk_{t+1}-1))\right]- \log \mRat_{t} 
-\\ & = \log \PGro + \Ex_{t}\left[\log (\BalGroRte{\mRat}_{t+1}(1+\BalGroRte{\mRat}_{t+1}^{-1}(\permShk_{t+1}\tShk_{t+1}-1))\right]- \log \mRat_{t} 
-\\ & = \underbrace{\log \PGro + \log \BalGroRte{\mRat}_{t+1} - \log \mRat_{t}}_{\equiv \log \Ex_{t}[\mLevBF_{t+1}/\mLevBF_{t}]} + \Ex_{t}\left[ \log (1+\BalGroRte{\mRat}_{t+1}^{-1}(\permShk_{t+1}\tShk_{t+1}-1))\right]
+  \Ex_{t}[\log \left(\mLvl_{t+1}/\mLvl_{t}\right)]
+   & = \Ex_{t}\left[\log \PGro (\BalGroRte{\mNrm}_{t+1}+(\permShk_{t+1}\tShk_{t+1}-1))\right]- \log \mNrm_{t} 
+\\ & = \log \PGro + \Ex_{t}\left[\log (\BalGroRte{\mNrm}_{t+1}(1+\BalGroRte{\mNrm}_{t+1}^{-1}(\permShk_{t+1}\tShk_{t+1}-1))\right]- \log \mNrm_{t} 
+\\ & = \underbrace{\log \PGro + \log \BalGroRte{\mNrm}_{t+1} - \log \mNrm_{t}}_{\equiv \log \Ex_{t}[\mLvl_{t+1}/\mLvl_{t}]} + \Ex_{t}\left[ \log (1+\BalGroRte{\mNrm}_{t+1}^{-1}(\permShk_{t+1}\tShk_{t+1}-1))\right]
 \end{align*}
 and exponentiating tells us that
 \begin{align}
-  \exp(\Ex_{t}[\log \mLevBF_{t+1}/\mLevBF_{t}]) & = \Ex_{t}[\mLevBF_{t+1}/\mLevBF_{t}]\exp( \Ex_{t}\left[ \log (1+\BalGroRte{\mRat}_{t+1}^{-1}(\permShk_{t+1}\tShk_{t+1}-1))\right])
+  \exp(\Ex_{t}[\log \mLvl_{t+1}/\mLvl_{t}]) & = \Ex_{t}[\mLvl_{t+1}/\mLvl_{t}]\exp( \Ex_{t}\left[ \log (1+\BalGroRte{\mNrm}_{t+1}^{-1}(\permShk_{t+1}\tShk_{t+1}-1))\right])
 \end{align}
-and this latter factor is a number that approaches 1 from below as $\mRat_{t}$ rises.  Thus the expected growth rate of the log is smaller than the log of the growth rate of the expected ratio.
+and this latter factor is a number that approaches 1 from below as $\mNrm_{t}$ rises.  Thus the expected growth rate of the log is smaller than the log of the growth rate of the expected ratio.
 
 % Abandoned efforts to prove that this target exists; it surely does, but that is not so easy to prove because it requires quantifying the competition between the fact that the first term being multiplied decreases with the fact that the second term increases.  
 
 \subsection{Proof of Lemma}%~\ref{lemma:orderingPartOne}-\ref{lemma:orderingPartTwo}}
 
-\subsubsection{Pseudo-Steady-State \texorpdfstring{$\mRat$}{m} Is Smaller than Target \texorpdfstring{$\mRat$}{m}}
+\subsubsection{Pseudo-Steady-State \texorpdfstring{$\mNrm$}{m} Is Smaller than Target \texorpdfstring{$\mNrm$}{m}}
 Designate
 \begin{equation}\begin{split}
-  \BalGroFac{\mFunc}_{t+1}(\aRat) % = \Ex_{t}[\BalGroFac{\aRat}\Rnorm+\tShk_{t+1}\pShk_{t+1} ] \\
-   & = 1+\aRat\Rnorm
-\\  \TargetNrm{\mFunc}_{t+1}(\aRat)% & = \Ex_{t}[\TargetNrm{\aRat}(\Rnorm/\pShk_{t+1})+\tShk_{t+1}\pShk_{t+1} ] \\
- & = 1+\aRat\underbrace{\Rnorm/\InvEpShkInv}_{\bar{\Rnorm} > \Rnorm}
+  \BalGroFac{\mFunc}_{t+1}(\aNrm) % = \Ex_{t}[\BalGroFac{\aNrm}\Rnorm+\tShk_{t+1}\pShk_{t+1} ] \\
+   & = 1+\aNrm\Rnorm
+\\  \TargetNrm{\mFunc}_{t+1}(\aNrm)% & = \Ex_{t}[\TargetNrm{\aNrm}(\Rnorm/\pShk_{t+1})+\tShk_{t+1}\pShk_{t+1} ] \\
+ & = 1+\aNrm\underbrace{\Rnorm/\InvEpShkInv}_{\bar{\Rnorm} > \Rnorm}
 \end{split}\end{equation}
 so that we can implicitly define the target and pseudo-steady-state points as
 \begin{equation}\begin{split}
@@ -257,62 +257,62 @@ Then subtract:
 \begin{equation}\begin{split}
   \mTrgNrm - \mBalLvl %& =\TargetNrm{\mFunc}_{t+1}(\mTrgNrm-\cFunc(\mTrgNrm)) - \BalGroFac{\mFunc}_{t+1}(\mBalLvl-\cFunc(\mBalLvl))  
 %  \\  \mTrgNrm - \mBalLvl & =1+ (\mTrgNrm-\cFunc(\mTrgNrm))\Rnorm/\InvEpShkInv - (1+(\mBalLvl-\cFunc(\mBalLvl))\Rnorm)
- & = \left(\TargetNrm{\aRat} \InvEpShkInv^{-1} - \BalGroFac{\aRat} \right)\Rnorm 
-\\ & = \left({\aRat}(\mTrgNrm) \InvEpShkInv^{-1} - {\aRat}(\mBalLvl) \right)\Rnorm 
-\\ & = \left({\aRat}(\mTrgNrm) \InvEpShkInv^{-1} - \left({\aRat}(\mTrgNrm+\mBalLvl-\mTrgNrm)\right) \right)\Rnorm 
-\\ & \approx \left({\aRat}(\mTrgNrm) \InvEpShkInv^{-1} - \left({\aRat}(\mTrgNrm)+(\mBalLvl-\mTrgNrm)\aFunc^{\prime}(\TargetNrm{\mRat})\right) \right)\Rnorm 
-%  \\ & = \left({\aRat}(\mTrgNrm) \InvEpShkInv^{-1} - {\aRat}(\mTrgNrm)-(\mBalLvl-\mTrgNrm){\aRat}^{\prime} \right)\Rnorm
-%  \\ & = \left({\aRat}(\mTrgNrm) \InvEpShkInv^{-1} - {\aRat}(\mTrgNrm)+(\mTrgNrm-\mBalLvl){\aRat}^{\prime} \right)\Rnorm
-  \\ (\mTrgNrm - \mBalLvl)(1-\underbrace{{\aRat}^{\prime}(\mTrgNrm)\Rnorm}_{< \PatPGro < 1}) & = (\InvEpShkInv^{-1} - 1)\TargetNrm{\aRat}\Rnorm
+ & = \left(\TargetNrm{\aNrm} \InvEpShkInv^{-1} - \BalGroFac{\aNrm} \right)\Rnorm 
+\\ & = \left({\aNrm}(\mTrgNrm) \InvEpShkInv^{-1} - {\aNrm}(\mBalLvl) \right)\Rnorm 
+\\ & = \left({\aNrm}(\mTrgNrm) \InvEpShkInv^{-1} - \left({\aNrm}(\mTrgNrm+\mBalLvl-\mTrgNrm)\right) \right)\Rnorm 
+\\ & \approx \left({\aNrm}(\mTrgNrm) \InvEpShkInv^{-1} - \left({\aNrm}(\mTrgNrm)+(\mBalLvl-\mTrgNrm)\aFunc^{\prime}(\TargetNrm{\mNrm})\right) \right)\Rnorm 
+%  \\ & = \left({\aNrm}(\mTrgNrm) \InvEpShkInv^{-1} - {\aNrm}(\mTrgNrm)-(\mBalLvl-\mTrgNrm){\aNrm}^{\prime} \right)\Rnorm
+%  \\ & = \left({\aNrm}(\mTrgNrm) \InvEpShkInv^{-1} - {\aNrm}(\mTrgNrm)+(\mTrgNrm-\mBalLvl){\aNrm}^{\prime} \right)\Rnorm
+  \\ (\mTrgNrm - \mBalLvl)(1-\underbrace{{\aNrm}^{\prime}(\mTrgNrm)\Rnorm}_{< \PatPGro < 1}) & = (\InvEpShkInv^{-1} - 1)\TargetNrm{\aNrm}\Rnorm
 %\\ & = \left((\mTrgNrm-\cFunc(\mTrgNrm)) \InvEpShkInv^{-1} - (\mBalLvl-\cFunc(\mTrgNrm+\mBalLvl-\mTrgNrm)) \right)\Rnorm 
 %\\ & = \left((\mTrgNrm-\cFunc(\mTrgNrm)) \InvEpShkInv^{-1} -( (\mBalLvl-\cFunc(\mTrgNrm)+(\mBalLvl-\mTrgNrm)\MPC)) \right)\Rnorm 
 \end{split}\end{equation}
-The RHS of this equation is strictly positive because $\InvEpShkInv^{-1}>1$ and both $\TargetNrm{\aRat}$ and $\Rnorm$ are positive; while on the LHS, $(1-\Rnorm\aRat^{\prime})>0$.  So the equation can only hold if $\TargetNrm{\mRat}-\BalGroFac{\mRat} > 0$.  That is, the target ratio exceeds the pseudo-steady-state ratio.\footnote{The use of the first order Taylor approximation could be substituted, cumbersomely, with the average of $\aFunc^{\prime}$ over the interval to remove the approximation in the derivations above.}
+The RHS of this equation is strictly positive because $\InvEpShkInv^{-1}>1$ and both $\TargetNrm{\aNrm}$ and $\Rnorm$ are positive; while on the LHS, $(1-\Rnorm\aNrm^{\prime})>0$.  So the equation can only hold if $\TargetNrm{\mNrm}-\BalGroFac{\mNrm} > 0$.  That is, the target ratio exceeds the pseudo-steady-state ratio.\footnote{The use of the first order Taylor approximation could be substituted, cumbersomely, with the average of $\aFunc^{\prime}$ over the interval to remove the approximation in the derivations above.}
 
-\subsubsection{The \texorpdfstring{$\mRat$}{m}  Achieving Individual Expected-Log-Balanced-Growth Is Smaller than the Individual Pseudo-Steady-State \texorpdfstring{$\mRat$}{m}}
+\subsubsection{The \texorpdfstring{$\mNrm$}{m}  Achieving Individual Expected-Log-Balanced-Growth Is Smaller than the Individual Pseudo-Steady-State \texorpdfstring{$\mNrm$}{m}}
 
 Expected log balanced growth occurs when
 \begin{equation}\begin{split}
-    \Ex_{t}[\log \mLevBF_{t+1}] & = \log \PGro \mLevBF_{t}
-\\      \Ex_{t}[\log \pLevBF_{t+1}\mRat_{t+1}] & = \log \PGro \pLevBF_{t} \mRat_{t}
-\\      \Ex_{t}[\log \pShk_{t+1}\mRat_{t+1}] & = \log \PGro \mRat_{t}
-\\      \Ex_{t}[\log \left(\aRat(\mRat_{t})\Rfree+\pShk_{t+1}\tShk_{t+1}\PGro\right)] & = \log \PGro \mRat_{t}
-\\      \Ex_{t}[\log \left(\aRat(\mRat_{t})\Rnorm+\pShk_{t+1}\tShk_{t+1}\right)] & = \log \mRat_{t}
+    \Ex_{t}[\log \mLvl_{t+1}] & = \log \PGro \mLvl_{t}
+\\      \Ex_{t}[\log \pLvl_{t+1}\mNrm_{t+1}] & = \log \PGro \pLvl_{t} \mNrm_{t}
+\\      \Ex_{t}[\log \pShk_{t+1}\mNrm_{t+1}] & = \log \PGro \mNrm_{t}
+\\      \Ex_{t}[\log \left(\aNrm(\mNrm_{t})\Rfree+\pShk_{t+1}\tShk_{t+1}\PGro\right)] & = \log \PGro \mNrm_{t}
+\\      \Ex_{t}[\log \left(\aNrm(\mNrm_{t})\Rnorm+\pShk_{t+1}\tShk_{t+1}\right)] & = \log \mNrm_{t}
 \end{split}\end{equation}
-and we call the $\mRat$ that satisfies this equation $\BalGroRte{\mRat}$.
+and we call the $\mNrm$ that satisfies this equation $\BalGroRte{\mNrm}$.
 
-Subtract the definition of $\BalGroFac{\mRat}$ from that of $\BalGroRte{\mRat}$:
+Subtract the definition of $\BalGroFac{\mNrm}$ from that of $\BalGroRte{\mNrm}$:
 \begin{equation}\begin{split}
-    \exp(\Ex_{t}[\log \left(\aRat(\BalGroRte{\mRat})\Rnorm+\pShk_{t+1}\tShk_{t+1}\right)]) - (\aRat(\BalGroFac{\mRat})\Rnorm+1 ) = \BalGroRte{\mRat} - \BalGroFac{\mRat}
+    \exp(\Ex_{t}[\log \left(\aNrm(\BalGroRte{\mNrm})\Rnorm+\pShk_{t+1}\tShk_{t+1}\right)]) - (\aNrm(\BalGroFac{\mNrm})\Rnorm+1 ) = \BalGroRte{\mNrm} - \BalGroFac{\mNrm}
 \end{split}\end{equation}
 
 Now we use the fact that the expectation of the log is less than the log of the expectation, 
 \begin{equation}\begin{split}
-%    \log \Ex_{t}[\aRat(\BalGroRte{\mRat}_{t})\Rnorm+\pShk_{t+1}\tShk_{t+1}] & <     \log \left(\aRat(\BalGroRte{\mRat}_{t})\Rnorm+1\right) \\
- \exp(\Ex_{t}[\log \left(\aRat(\BalGroRte{\mRat})\Rnorm+\pShk_{t+1}\tShk_{t+1}\right)]) & < \left(\aRat(\BalGroRte{\mRat})\Rnorm+1    \right)
+%    \log \Ex_{t}[\aNrm(\BalGroRte{\mNrm}_{t})\Rnorm+\pShk_{t+1}\tShk_{t+1}] & <     \log \left(\aNrm(\BalGroRte{\mNrm}_{t})\Rnorm+1\right) \\
+ \exp(\Ex_{t}[\log \left(\aNrm(\BalGroRte{\mNrm})\Rnorm+\pShk_{t+1}\tShk_{t+1}\right)]) & < \left(\aNrm(\BalGroRte{\mNrm})\Rnorm+1    \right)
 \end{split}\end{equation}
 so
 \begin{equation}\begin{split}
-    \exp(\Ex_{t}[\log \left(\aRat(\BalGroRte{\mRat})\Rnorm+1\right)]) - (\aRat(\BalGroFac{\mRat})\Rnorm+1 ) < \BalGroRte{\mRat} - \BalGroFac{\mRat}
-\\    \left(\aRat(\BalGroRte{\mRat})\Rnorm+1\right) - (\aRat(\BalGroFac{\mRat})\Rnorm+1 ) < \BalGroRte{\mRat} - \BalGroFac{\mRat}    
-\\     (\aRat(\BalGroRte{\mRat})-\aRat(\BalGroRte{\mRat}+\BalGroFac{\mRat}-\BalGroRte{\mRat}))\Rnorm& < \BalGroRte{\mRat} - \BalGroFac{\mRat}
-\\     (\aRat(\BalGroRte{\mRat})-(\aRat(\BalGroRte{\mRat})+(\BalGroFac{\mRat}-\BalGroRte{\mRat})\bar{\aFunc}^{\prime})\Rnorm& < \BalGroRte{\mRat} - \BalGroFac{\mRat}
-\\     (\BalGroRte{\mRat}-\BalGroFac{\mRat})\bar{\aFunc}^{\prime}\Rnorm& < \BalGroRte{\mRat} - \BalGroFac{\mRat}
+    \exp(\Ex_{t}[\log \left(\aNrm(\BalGroRte{\mNrm})\Rnorm+1\right)]) - (\aNrm(\BalGroFac{\mNrm})\Rnorm+1 ) < \BalGroRte{\mNrm} - \BalGroFac{\mNrm}
+\\    \left(\aNrm(\BalGroRte{\mNrm})\Rnorm+1\right) - (\aNrm(\BalGroFac{\mNrm})\Rnorm+1 ) < \BalGroRte{\mNrm} - \BalGroFac{\mNrm}    
+\\     (\aNrm(\BalGroRte{\mNrm})-\aNrm(\BalGroRte{\mNrm}+\BalGroFac{\mNrm}-\BalGroRte{\mNrm}))\Rnorm& < \BalGroRte{\mNrm} - \BalGroFac{\mNrm}
+\\     (\aNrm(\BalGroRte{\mNrm})-(\aNrm(\BalGroRte{\mNrm})+(\BalGroFac{\mNrm}-\BalGroRte{\mNrm})\bar{\aFunc}^{\prime})\Rnorm& < \BalGroRte{\mNrm} - \BalGroFac{\mNrm}
+\\     (\BalGroRte{\mNrm}-\BalGroFac{\mNrm})\bar{\aFunc}^{\prime}\Rnorm& < \BalGroRte{\mNrm} - \BalGroFac{\mNrm}
 \\     \underbrace{\bar{\aFunc}^{\prime}\Rnorm}_{< \PatPGro} & < 1
 \end{split}\end{equation}
-where we are interpreting $\bar{\aFunc}^{\prime}$ as the mean of the value of $\aFunc^{\prime}$ over the interval between $\BalGroRte{\mRat}$ and $\BalGroFac{\mRat}$.
+where we are interpreting $\bar{\aFunc}^{\prime}$ as the mean of the value of $\aFunc^{\prime}$ over the interval between $\BalGroRte{\mNrm}$ and $\BalGroFac{\mNrm}$.
 \begin{comment}
 \subsection{Comment}
 
-Due to the model's nonlinearities the values of $\mRat$ at which the expected growth rate of $\cLevBF$ matches $\PGro$ is very slightly different from the $\mRat$ at which the growth rate at which expected growth of $\mLevBF$ is $\PGro$.  Defining $\grave{\mRat}$ as the $\mRat$ at which $\Ex_{t}[\cRatBF_{t+1}/\cRatBF_{t}]=\PGro$, we can show that to first order $\grave{\mRat} \approx \BalGroFac{\mRat}.$
+Due to the model's nonlinearities the values of $\mNrm$ at which the expected growth rate of $\cLvl$ matches $\PGro$ is very slightly different from the $\mNrm$ at which the growth rate at which expected growth of $\mLvl$ is $\PGro$.  Defining $\grave{\mNrm}$ as the $\mNrm$ at which $\Ex_{t}[\cLvl_{t+1}/\cLvl_{t}]=\PGro$, we can show that to first order $\grave{\mNrm} \approx \BalGroFac{\mNrm}.$
 \begin{align*}
-  \Ex_{t}[\cFunc(\mRat_{t+1})\pShk_{t+1}] & = \cFunc(\mRat_{t}) \label{eq:balgrostableC}.
-%  \\ \Ex_{t}[\cFunc(\mRat_{t+1})\pShk_{t+1}] & = \cFunc(\mRat_{t}) 
-  \\ \Ex_{t}[\left(\cFunc(\grave{\mRat})+\cFunc^{\prime}(\grave{\mRat})(\mRat_{t+1}-\grave{\mRat})\right)\pShk_{t+1}] & \approx \cFunc(\grave{\mRat})
-  \\ \Ex_{t}[\left(\cFunc^{\prime}(\grave{\mRat})(\mRat_{t+1}-\grave{\mRat})\right)\pShk_{t+1}] & \approx 0
-  \\ \Ex_{t}[\mRat_{t+1}] & \approx \grave{\mRat} 
+  \Ex_{t}[\cFunc(\mNrm_{t+1})\pShk_{t+1}] & = \cFunc(\mNrm_{t}) \label{eq:balgrostableC}.
+%  \\ \Ex_{t}[\cFunc(\mNrm_{t+1})\pShk_{t+1}] & = \cFunc(\mNrm_{t}) 
+  \\ \Ex_{t}[\left(\cFunc(\grave{\mNrm})+\cFunc^{\prime}(\grave{\mNrm})(\mNrm_{t+1}-\grave{\mNrm})\right)\pShk_{t+1}] & \approx \cFunc(\grave{\mNrm})
+  \\ \Ex_{t}[\left(\cFunc^{\prime}(\grave{\mNrm})(\mNrm_{t+1}-\grave{\mNrm})\right)\pShk_{t+1}] & \approx 0
+  \\ \Ex_{t}[\mNrm_{t+1}] & \approx \grave{\mNrm} 
 \end{align*}
-but at $\mRat=\BalGroFac{\mRat}$, $\Ex_{t}[\mRat_{t+1}]=\TargetNrm{\mRat}\approx\grave{\mRat}$.
+but at $\mNrm=\BalGroFac{\mNrm}$, $\Ex_{t}[\mNrm_{t+1}]=\TargetNrm{\mNrm}\approx\grave{\mNrm}$.
 \end{comment}
 
 \end{document}

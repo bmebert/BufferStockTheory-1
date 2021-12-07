@@ -11,21 +11,21 @@ Formally, suppose we change the description of the problem by making
 the following two assumptions:
 \begin{eqnarray*}
     \pZero   & = 0
-\\  c_{t} & \leq  \mRat_{t} \label{eq:liqconstr},
+\\  c_{t} & \leq  \mNrm_{t} \label{eq:liqconstr},
 \end{eqnarray*}
 and we designate the solution to this consumer's problem
-$\cnstr{\cFunc}_{t}(\mRat)$.  We will henceforth refer to this as the
+$\cnstr{\cFunc}_{t}(\mNrm)$.  We will henceforth refer to this as the
 problem of the `restrained' consumer (and, to avoid a common
 confusion, we will refer to the consumer as `constrained' only in
 circumstances when the constraint is actually binding).
 
 Redesignate the consumption function that emerges from our original
-problem for a given fixed $\pZero$ as $\cFunc_{t}(\mRat;\pZero)$ where we
-separate the arguments by a semicolon to distinguish between $\mRat$,
+problem for a given fixed $\pZero$ as $\cFunc_{t}(\mNrm;\pZero)$ where we
+separate the arguments by a semicolon to distinguish between $\mNrm$,
 which is a state variable, and $\pZero$, which is not.  The
 proposition we wish to demonstrate is
 \begin{equation}\begin{gathered}\begin{aligned}
-  \lim_{\pZero \downarrow 0} \cFunc_{t}(\mRat;\pZero)  & = \cnstr{\cFunc}_{t}(\mRat). \label{eq:RestrEqUnrestr} 
+  \lim_{\pZero \downarrow 0} \cFunc_{t}(\mNrm;\pZero)  & = \cnstr{\cFunc}_{t}(\mNrm). \label{eq:RestrEqUnrestr} 
 \end{aligned}\end{gathered}\end{equation}
 
 We will first examine the problem in period $T-1$, then
@@ -37,86 +37,86 @@ to the full-fledged version of the problem.
 
 The solution to the restrained consumer's optimization problem can be
 obtained as follows.  Assuming that the consumer's behavior in period
-$T$ is given by $\cFunc_{T}(\mRat)$ (in practice, this will be
-$\cFunc_{T}(\mRat)=m$), consider the unrestrained optimization problem
+$T$ is given by $\cFunc_{T}(\mNrm)$ (in practice, this will be
+$\cFunc_{T}(\mNrm)=m$), consider the unrestrained optimization problem
 \begin{equation}\begin{gathered}\begin{aligned}
-  \cnstr{\aFunc}^{*}_{T-1}(\mRat)  & = \underset{\aRat}{\arg \max} \left\{\uFunc(\mRat-\aRat) +  \int_{\underline{\tShkEmp}}^{\bar{\tShkEmp}} \vFunc_{T}(a+\tShkEmp) d\CDF_{\tShkEmp} \right\}. \label{eq:vUnconstr}
+  \cnstr{\aFunc}^{*}_{T-1}(\mNrm)  & = \underset{\aNrm}{\arg \max} \left\{\uFunc(\mNrm-\aNrm) +  \int_{\underline{\tShkEmp}}^{\bar{\tShkEmp}} \vFunc_{T}(a+\tShkEmp) d\CDF_{\tShkEmp} \right\}. \label{eq:vUnconstr}
 \end{aligned}\end{gathered}\end{equation}
 
 As usual, the envelope theorem tells us that
-$\vFunc_{T}^{\prime}(\mRat)=\uP(\cFunc_{T}(\mRat))$ so the expected marginal
-value of ending period $T-1$ with assets $\aRat$ can be defined as
+$\vFunc_{T}^{\prime}(\mNrm)=\uP(\cFunc_{T}(\mNrm))$ so the expected marginal
+value of ending period $T-1$ with assets $\aNrm$ can be defined as
 \begin{equation}\begin{gathered}\begin{aligned}
   \cnstr{\mathfrak{v}}_{T-1}^{\prime}(a)  & \equiv  \int_{\underline{\tShkEmp}}^{\bar{\tShkEmp}} \uP(\cFunc_{T}(a+\tShkEmp)) d\CDF_{\tShkEmp}, \notag
 \end{aligned}\end{gathered}\end{equation}
 and the solution to~\eqref{\localorexternallabel{eq:vUnconstr}} will satisfy
 \begin{equation}\begin{gathered}\begin{aligned}
-  \uP(\mRat-\aRat)  & =  \cnstr{\mathfrak{v}}_{T-1}^{\prime}(a) \label{eq:uPConstr}.
+  \uP(\mNrm-\aNrm)  & =  \cnstr{\mathfrak{v}}_{T-1}^{\prime}(a) \label{eq:uPConstr}.
 %
 \end{aligned}\end{gathered}\end{equation}
 
-$\cnstr{\aFunc}_{T-1}^{*}(\mRat)$ therefore answers the question ``With what
+$\cnstr{\aFunc}_{T-1}^{*}(\mNrm)$ therefore answers the question ``With what
 level of assets would the restrained consumer like to end period $T-1$
-if the constraint $c_{T-1} \leq \mRat_{T-1}$ did not exist?''  (Note that
+if the constraint $c_{T-1} \leq \mNrm_{T-1}$ did not exist?''  (Note that
 the restrained consumer's income process remains different from the
 process for the unrestrained consumer so long as $\pZero>0$.)  The
 restrained consumer's actual asset position will be
  \begin{equation}\begin{gathered}\begin{aligned}
-  \cnstr{\aFunc}_{T-1}(\mRat)  & = \max[0,\cnstr{\aFunc}^{*}_{T-1}(\mRat)], \notag
+  \cnstr{\aFunc}_{T-1}(\mNrm)  & = \max[0,\cnstr{\aFunc}^{*}_{T-1}(\mNrm)], \notag
 \end{aligned}\end{gathered}\end{equation}
 reflecting the inability of the restrained consumer to spend more than
 current resources, and note (as pointed out by
 Deaton~\citeyearpar{deatonLiqConstr}) that
  \begin{equation}\begin{gathered}\begin{aligned}
-  \mRat^{1}_{\#}  & = {\left( \cnstr{\mathfrak{v}}_{T-1}^{\prime}(0)\right)}^{-1/\CRRA} \notag
+  \mNrm^{1}_{\#}  & = {\left( \cnstr{\mathfrak{v}}_{T-1}^{\prime}(0)\right)}^{-1/\CRRA} \notag
  \end{aligned}\end{gathered}\end{equation}
-is the cusp value of $\mRat$ at which the constraint makes the
+is the cusp value of $\mNrm$ at which the constraint makes the
 transition between binding and non-binding in period $T-1$.
 
 Analogously to~\eqref{\localorexternallabel{eq:uPConstr}}, defining
 \begin{equation}\begin{gathered}\begin{aligned}
-  \mathfrak{v}_{T-1}^{\prime}(a;\pZero)  & \equiv  \left[\pZero \aRat^{-\CRRA}+\pNotZero\int_{\underline{\tShkEmp}}^{\bar{\tShkEmp}} {\left(\cFunc_{T}(a+\tShkEmp/\pNotZero)\right)}^{-\CRRA} d\CDF_{\tShkEmp}\right], \label{eq:vFrakPrime}
+  \mathfrak{v}_{T-1}^{\prime}(a;\pZero)  & \equiv  \left[\pZero \aNrm^{-\CRRA}+\pNotZero\int_{\underline{\tShkEmp}}^{\bar{\tShkEmp}} {\left(\cFunc_{T}(a+\tShkEmp/\pNotZero)\right)}^{-\CRRA} d\CDF_{\tShkEmp}\right], \label{eq:vFrakPrime}
 \end{aligned}\end{gathered}\end{equation}
 the Euler equation for the original consumer's problem implies
 \begin{equation}\begin{gathered}\begin{aligned}
- {(\mRat-\aRat)}^{-\CRRA}  & = \mathfrak{v}_{T-1}^{\prime}(a;\pZero) \label{eq:uPUnconstr}
+ {(\mNrm-\aNrm)}^{-\CRRA}  & = \mathfrak{v}_{T-1}^{\prime}(a;\pZero) \label{eq:uPUnconstr}
 \end{aligned}\end{gathered}\end{equation}
-with solution $\aFunc_{T-1}^{*}(\mRat;\pZero)$.  Now note that for any
-fixed $\aRat>0$, $\lim_{\pZero \downarrow 0}
+with solution $\aFunc_{T-1}^{*}(\mNrm;\pZero)$.  Now note that for any
+fixed $\aNrm>0$, $\lim_{\pZero \downarrow 0}
 \mathfrak{v}_{T-1}^{\prime}(a;\pZero) =
 \cnstr{\mathfrak{v}}_{T-1}^{\prime}(a)$.  Since the LHS of~\eqref{\localorexternallabel{eq:uPConstr}} and~\eqref{\localorexternallabel{eq:uPUnconstr}} are identical, this
 means that $\lim_{\pZero \downarrow 0}
-\aFunc_{T-1}^{*}(\mRat;\pZero) =
-\cnstr{\aFunc}_{T-1}^{*}(\mRat)$.  That is, for any fixed value of
-$\mRat > \mRat^{1}_{\#}$ such that the consumer subject to the
+\aFunc_{T-1}^{*}(\mNrm;\pZero) =
+\cnstr{\aFunc}_{T-1}^{*}(\mNrm)$.  That is, for any fixed value of
+$\mNrm > \mNrm^{1}_{\#}$ such that the consumer subject to the
 restraint would voluntarily choose to end the period with positive
 assets, the level of end-of-period assets for the unrestrained
 consumer approaches the level for the restrained consumer as $\pZero
-\downarrow 0$.  With the same $\aRat$ and the same $\mRat$, the
+\downarrow 0$.  With the same $\aNrm$ and the same $\mNrm$, the
 consumers must have the same $c$, so the consumption functions are
 identical in the limit.
 
-Now consider values $\mRat\leq \mRat^{1}_{\#}$ for which the restrained consumer
+Now consider values $\mNrm\leq \mNrm^{1}_{\#}$ for which the restrained consumer
 is constrained.  It is obvious that the baseline consumer will never
-choose $\aRat \leq 0$ because the first term in~\eqref{\localorexternallabel{eq:vFrakPrime}} is $\lim_{\aRat \downarrow 0} \pZero  \aRat^{-\CRRA} =
-\infty$, while $\lim_{\aRat \downarrow 0} {(\mRat-\aRat)}^{-\CRRA}$ is finite (the
+choose $\aNrm \leq 0$ because the first term in~\eqref{\localorexternallabel{eq:vFrakPrime}} is $\lim_{\aNrm \downarrow 0} \pZero  \aNrm^{-\CRRA} =
+\infty$, while $\lim_{\aNrm \downarrow 0} {(\mNrm-\aNrm)}^{-\CRRA}$ is finite (the
 marginal value of end-of-period assets approaches infinity as assets approach
-zero, but the marginal utility of consumption has a finite limit for $\mRat>0$).
+zero, but the marginal utility of consumption has a finite limit for $\mNrm>0$).
 The subtler question is whether it is possible to rule out strictly positive
-$\aRat$ for the unrestrained consumer.
+$\aNrm$ for the unrestrained consumer.
 
-The answer is yes.  Suppose, for some $\mRat < \mRat^{1}_{\#}$, that the
+The answer is yes.  Suppose, for some $\mNrm < \mNrm^{1}_{\#}$, that the
 unrestrained consumer is considering ending the period with any
-positive amount of assets $\aRat=\delta > 0$.  For any such $\delta$ we
+positive amount of assets $\aNrm=\delta > 0$.  For any such $\delta$ we
 have that $\lim_{\pZero  \downarrow 0} \mathfrak{v}_{T-1}^{\prime}(a;\pZero)=\cnstr{\mathfrak{v}}_{T-1}^{\prime}(a)$.
 But by assumption we are considering a set of circumstances in which
-$\cnstr{\aFunc}_{T-1}^{*}(\mRat) < 0$, and we showed earlier that
-$\lim_{\pZero  \downarrow 0} \aFunc_{T-1}^{*}(\mRat;\pZero) = \cnstr{\aFunc}_{T-1}^{*}(\mRat)$.  So,
-having assumed $\aRat = \delta > 0$, we have proven that the consumer
-would optimally choose $\aRat < 0$, which is a contradiction.  A similar
-argument holds for $\mRat = \mRat^{1}_{\#}$.
+$\cnstr{\aFunc}_{T-1}^{*}(\mNrm) < 0$, and we showed earlier that
+$\lim_{\pZero  \downarrow 0} \aFunc_{T-1}^{*}(\mNrm;\pZero) = \cnstr{\aFunc}_{T-1}^{*}(\mNrm)$.  So,
+having assumed $\aNrm = \delta > 0$, we have proven that the consumer
+would optimally choose $\aNrm < 0$, which is a contradiction.  A similar
+argument holds for $\mNrm = \mNrm^{1}_{\#}$.
 
-These arguments demonstrate that for any $\mRat>0$, $\lim_{\pZero \downarrow 0} \cFunc_{T-1}(\mRat;\pZero) = \cnstr{\cFunc}_{T-1}(\mRat)$ which is the period $T-1$ version of~\eqref{\localorexternallabel{eq:RestrEqUnrestr}}.  But given equality of the period $T-1$ consumption functions, backwards recursion of the same arguments demonstrates that the limiting consumption functions in previous periods are also identical to the constrained function.
+These arguments demonstrate that for any $\mNrm>0$, $\lim_{\pZero \downarrow 0} \cFunc_{T-1}(\mNrm;\pZero) = \cnstr{\cFunc}_{T-1}(\mNrm)$ which is the period $T-1$ version of~\eqref{\localorexternallabel{eq:RestrEqUnrestr}}.  But given equality of the period $T-1$ consumption functions, backwards recursion of the same arguments demonstrates that the limiting consumption functions in previous periods are also identical to the constrained function.
 
 Note finally that another intuitive confirmation of the equivalence
 between the two problems is that our formula~\eqref{\localorexternallabel{eq:MaxMPCDef}} for the maximal marginal

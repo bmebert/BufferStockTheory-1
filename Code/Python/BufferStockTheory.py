@@ -163,9 +163,9 @@ base_params['BoroCnstArt'] = None    # No artificial borrowing constraint
 # \renewcommand{\APF}{\pmb{\unicode[0.55,0.05]{0x00DE}}}
 # \newcommand{\PatFac}{\pmb{\unicode[0.55,0.05]{0x00DE}}}
 # \newcommand{\PatRte}{\pmb{\unicode[0.55,0.05]{0x00FE}}}
-# \newcommand{\aLev}{\mathbf{a}}
+# \newcommand{\aLvl}{\mathbf{a}}
 # \newcommand{\CRRA}{\rho}
-# \newcommand{\cLev}{{\mathbf{c}}}
+# \newcommand{\cLvl}{{\mathbf{c}}}
 # \newcommand{\aNrm}{{a}}
 # \newcommand{\bNrm}{{b}}
 # \newcommand{\cNrm}{{c}}
@@ -173,14 +173,14 @@ base_params['BoroCnstArt'] = None    # No artificial borrowing constraint
 # \newcommand{\hNrm}{{h}}
 # \newcommand{\mNrm}{{m}}
 # \newcommand{\vNrm}{{v}}
-# \newcommand{\aLev}{{\mathbf{a}}}
-# \newcommand{\bLev}{{\mathbf{b}}}
-# \newcommand{\cLev}{{\mathbf{c}}}
-# \newcommand{\dLev}{{\mathbf{d}}}
-# \newcommand{\hLev}{{\mathbf{h}}}
-# \newcommand{\mLev}{{\mathbf{m}}}
-# \newcommand{\pLev}{{\mathbf{p}}}
-# \newcommand{\vLev}{{\mathbf{v}}}
+# \newcommand{\aLvl}{{\mathbf{a}}}
+# \newcommand{\bLvl}{{\mathbf{b}}}
+# \newcommand{\cLvl}{{\mathbf{c}}}
+# \newcommand{\dLvl}{{\mathbf{d}}}
+# \newcommand{\hLvl}{{\mathbf{h}}}
+# \newcommand{\mLvl}{{\mathbf{m}}}
+# \newcommand{\pLvl}{{\mathbf{p}}}
+# \newcommand{\vLvl}{{\mathbf{v}}}
 # \newcommand{\cFunc}{\mathrm{c}}
 # \newcommand{\uFunc}{\mathrm{u}}
 # \newcommand{\RNrm}{\mathcal{R}}
@@ -229,19 +229,19 @@ base_params['BoroCnstArt'] = None    # No artificial borrowing constraint
 
 # %% [markdown] {"tags": []}
 # ### Details
-# For a microeconomic consumer who begins period $t$ with __**m**__arket resources boldface $\mLev_{t}$ (=net worth plus current income), the amount that remains after __**c**__onsumption of $\cLev_{t}$ will be end-of-period __**a**__ssets $\aLev_{t}$,
+# For a microeconomic consumer who begins period $t$ with __**m**__arket resources boldface $\mLvl_{t}$ (=net worth plus current income), the amount that remains after __**c**__onsumption of $\cLvl_{t}$ will be end-of-period __**a**__ssets $\aLvl_{t}$,
 #
-# <!-- Next period's 'Balances' $B_{t+1}$ reflect this period's $\aLev_{t}$ augmented by return factor $R$:-->
+# <!-- Next period's 'Balances' $B_{t+1}$ reflect this period's $\aLvl_{t}$ augmented by return factor $R$:-->
 
 # %% [markdown]
 # \begin{eqnarray}
-# \aLev_{t}   &=&\mLev_{t}-\cLev_{t}. \notag
+# \aLvl_{t}   &=&\mLvl_{t}-\cLvl_{t}. \notag
 # \end{eqnarray}
 #
-# The consumer's __**p**__ermanent noncapital income $\pLev$ grows by a predictable factor $\PermGroFac$ and is subject to an unpredictable multiplicative shock $\Ex_{t}[\permShk_{t+1}]=1$,
+# The consumer's __**p**__ermanent noncapital income $\pLvl$ grows by a predictable factor $\PermGroFac$ and is subject to an unpredictable multiplicative shock $\Ex_{t}[\permShk_{t+1}]=1$,
 #
 # \begin{eqnarray}
-# \pLev_{t+1} & = & \pLev_{t} \PermGroFac \permShk_{t+1}, \notag
+# \pLvl_{t+1} & = & \pLvl_{t} \PermGroFac \permShk_{t+1}, \notag
 # \end{eqnarray}
 #
 # and, if the consumer is employed, actual income is permanent income multiplied by a transitory shock $\tranShk^{\large e}$.  There is also a probability $\UnempPrb$ that the consumer will be temporarily unemployed and experience income of $\tranShk^{\large u}  = 0$.  We construct $\tranShk^{\large e}$ so that its mean value is $1/(1-\UnempPrb)$ because in that case the mean level of the transitory shock (accounting for both unemployed and employed states) is exactly
@@ -254,11 +254,11 @@ base_params['BoroCnstArt'] = None    # No artificial borrowing constraint
 #
 #   We can combine the unemployment shock $\tranShk^{\large u}$ and the transitory shock to employment income $\tranShk^{\large e}$ into $\tranShk _{t+1}$, so that next period's market resources are
 # \begin{eqnarray}
-#     \mLev_{t+1} &=& \aLev_{t}\Rfree +\pLev_{t+1}\tranShk_{t+1}.  \notag
+#     \mLvl_{t+1} &=& \aLvl_{t}\Rfree +\pLvl_{t+1}\tranShk_{t+1}.  \notag
 # \end{eqnarray}
 
 # %% [markdown]
-# When the consumer has a CRRA utility function $u(\cLev)=\frac{\cLev^{1-\CRRA}}{1-\CRRA}$, the paper shows that the problem can be written in terms of ratios (nonbold font) of level (bold font) variables to permanent income, e.g. $m_{t} \equiv \mLev_{t}/\pLev_{t}$, and the Bellman form of [the problem reduces to](https://econ-ark.github.io/BufferStockTheory/#The-Related-Problem):
+# When the consumer has a CRRA utility function $u(\cLvl)=\frac{\cLvl^{1-\CRRA}}{1-\CRRA}$, the paper shows that the problem can be written in terms of ratios (nonbold font) of level (bold font) variables to permanent income, e.g. $m_{t} \equiv \mLvl_{t}/\pLvl_{t}$, and the Bellman form of [the problem reduces to](https://econ-ark.github.io/BufferStockTheory/#The-Related-Problem):
 #
 # \begin{eqnarray*}
 # v_t(m_t) &=& \max_{c_t}~~ u(c_t) + \DiscFac~\Ex_{t} [(\PermGroFac\permShk_{t+1})^{1-\CRRA} v_{t+1}(m_{t+1}) ] \\
@@ -371,8 +371,8 @@ makeFig('cFuncsConverge')  # Comment out if you want to run uninterrupted
 # Human wealth for a perfect foresight consumer is the present discounted value of future noncapital income:
 #
 # \begin{eqnarray}\notag
-# \hLev_{t} & = & \Ex_{t}[\pLev_{t} + \Rfree^{-1} \pLev_{t+1} + \Rfree^{2} \pLev_{t+2} ... ] \\ \notag
-#       & = & \pLev_{t} \left(1 + (\PermGroFac/\Rfree) + (\PermGroFac/\Rfree)^{2} ... \right)
+# \hLvl_{t} & = & \Ex_{t}[\pLvl_{t} + \Rfree^{-1} \pLvl_{t+1} + \Rfree^{2} \pLvl_{t+2} ... ] \\ \notag
+#       & = & \pLvl_{t} \left(1 + (\PermGroFac/\Rfree) + (\PermGroFac/\Rfree)^{2} ... \right)
 # \end{eqnarray}
 #
 # which approaches infinity as the horizon extends if $\PermGroFac/\Rfree \geq 1$.  We say that the 'Finite Human Wealth Condition' [(FHWC)](https://econ-ark.github.io/BufferStockTheory/#FHWC) holds if
@@ -381,13 +381,13 @@ makeFig('cFuncsConverge')  # Comment out if you want to run uninterrupted
 # %% [markdown] {"tags": []}
 # ### [Absolute Patience and the AIC](https://econ-ark.github.io/BufferStockTheory/#AIC)
 #
-# The paper defines the Absolute Patience Factor [(APF)](https://econ-ark.github.io/BufferStockTheory/#APF) as being equal to the ratio $\cLev_{t+1}/\cLev_{t}$ for a perfect foresight consumer.  (The Old English character [Thorn](https://en.wikipedia.org/wiki/Thorn_(letter)) used for this object in the paper cannot reliably be rendered in Jupyter notebooks; it may appear as capital Phi):
+# The paper defines the Absolute Patience Factor [(APF)](https://econ-ark.github.io/BufferStockTheory/#APF) as being equal to the ratio $\cLvl_{t+1}/\cLvl_{t}$ for a perfect foresight consumer.  (The Old English character [Thorn](https://en.wikipedia.org/wiki/Thorn_(letter)) used for this object in the paper cannot reliably be rendered in Jupyter notebooks; it may appear as capital Phi):
 #
 # \begin{equation}
 # \PatFac = (\Rfree \DiscFac)^{1/\CRRA}
 # \end{equation}
 #
-# If $\APF = 1$, a perfect foresight consumer will spend at exactly the level of $\cLev$ that can be sustained perpetually (given their current and future resources).  If $\APF < 1$ (the consumer is 'absolutely impatient'; or, 'the absolute impatience condition holds'), the consumer is consuming more than the sustainable amount, so consumption will fall, and if the consumer is 'absolutely patient' with $\APF > 1$ consumption will grow over time.
+# If $\APF = 1$, a perfect foresight consumer will spend at exactly the level of $\cLvl$ that can be sustained perpetually (given their current and future resources).  If $\APF < 1$ (the consumer is 'absolutely impatient'; or, 'the absolute impatience condition holds'), the consumer is consuming more than the sustainable amount, so consumption will fall, and if the consumer is 'absolutely patient' with $\APF > 1$ consumption will grow over time.
 #
 #
 
@@ -411,10 +411,10 @@ makeFig('cFuncsConverge')  # Comment out if you want to run uninterrupted
 # ### [The Finite Value of Autarky Condition (FVAC)](https://econ-ark.github.io/BufferStockTheory/#Autarky-Value)
 
 # %% [markdown]
-# The paper [shows](https://econ-ark.github.io/BufferStockTheory/#Autarky-Value) that a consumer who planned to spend his permanent noncapital income $\{ \pLev_{t}, \pLev_{t+1}, ...\} $ in every period would have value defined by
+# The paper [shows](https://econ-ark.github.io/BufferStockTheory/#Autarky-Value) that a consumer who planned to spend his permanent noncapital income $\{ \pLvl_{t}, \pLvl_{t+1}, ...\} $ in every period would have value defined by
 #
 # \begin{equation*}
-# \vLev_{t}^{\text{autarky}} = \uFunc(\pLev_{t})\left(\frac{1}{1-\DiscFac \PermGroFac^{1-\CRRA} \Ex[\permShk^{1-\CRRA}]}\right)
+# \vLvl_{t}^{\text{autarky}} = \uFunc(\pLvl_{t})\left(\frac{1}{1-\DiscFac \PermGroFac^{1-\CRRA} \Ex[\permShk^{1-\CRRA}]}\right)
 # \end{equation*}
 #
 # and defines the ['Finite Value of Autarky Condition'](https://econ-ark.github.io/BufferStockTheory/#Autarky-Value) as the requirement that the denominator be a positive finite number:
@@ -472,7 +472,7 @@ makeFig('cFuncsConverge')  # Comment out if you want to run uninterrupted
 # %% [markdown]
 # ## [Unique and Stable Values of $\mNrm$](https://econ-ark.github.io/BufferStockTheory/#Unique-Stable-Points)
 #
-# Assuming that the **FVAC** and **WRIC** hold so that the problem has a nondegenerate solution, under more stringent conditions its dynamics can also be shown to exhibit certain kinds of stability.  Two particularly useful kinds of stability are existence of a 'target' value of market resources $\Trg{\mNrm}$ (`mNrmFacTrg` in the toolkit) and a 'pseudo-steady-state' value $\Bal{\mNrm}$ (`mNrmFacBal` in the toolkit).
+# Assuming that the **FVAC** and **WRIC** hold so that the problem has a nondegenerate solution, under more stringent conditions its dynamics can also be shown to exhibit certain kinds of stability.  Two particularly useful kinds of stability are existence of a 'target' value of market resources $\Trg{\mNrm}$ (`mNrmFacTrg` in the toolkit) and a 'pseudo-steady-state' value $\Bal{\mNrm}$ (`mBalLvl` in the toolkit).
 #
 # ### [If the GIC-Nrm Holds, $\exists$ a finite 'target' $\mNrm$](https://econ-ark.github.io/BufferStockTheory/#onetarget)
 #
@@ -499,9 +499,9 @@ makeFig('cFuncsConverge')  # Comment out if you want to run uninterrupted
 # Section [Individual Balanced-Growth 'pseudo steady state'](https://econ-ark.github.io/BufferStockTheory/#pseudo-steady-state) shows that, under parameter values for which the limiting consumption function exists, if the **GIC** holds then there will be a value $\Bal{m}$ such that:
 #
 # \begin{eqnarray*}
-# \Ex_{t}[\mLev_{t+1}/\mLev_{t}] & > & \PermGroFac~\text{if $m_{t} < \Bal{m}$} \\
-# \Ex_{t}[\mLev_{t+1}/\mLev_{t}] & < & \PermGroFac~\text{if $m_{t} > \Bal{m}$} \\
-# \Ex_{t}[\mLev_{t+1}/\mLev_{t}] & = & \PermGroFac~\text{if $m_{t} = \Bal{m}$}
+# \Ex_{t}[\mLvl_{t+1}/\mLvl_{t}] & > & \PermGroFac~\text{if $m_{t} < \Bal{m}$} \\
+# \Ex_{t}[\mLvl_{t+1}/\mLvl_{t}] & < & \PermGroFac~\text{if $m_{t} > \Bal{m}$} \\
+# \Ex_{t}[\mLvl_{t+1}/\mLvl_{t}] & = & \PermGroFac~\text{if $m_{t} = \Bal{m}$}
 # \end{eqnarray*}
 #
 # [An equation](https://econ-ark.github.io/BufferStockTheory/#balgrostableSolve) in the paper tells us that if $\mNrm_{t}=\Bal{m}$ then:
@@ -660,21 +660,21 @@ ax.tick_params(labelbottom=False, labelleft=False, left='off',
 ax.legend(handles=[c_Stable_Trg_lbl, c_Stable_Bal_lbl])
 ax.legend(prop=dict(size=fsmid))
 
-mNrmFacBal = Bilt.mNrmBalLvl
-cNrmFacBal = c_Stable_Bal = cFunc(mNrmFacBal)
+mBalLvl = Bilt.mBalLvl
+cNrmFacBal = c_Stable_Bal = cFunc(mBalLvl)
 
-ax.plot(mNrmFacBal, cNrmFacBal, marker=".", markersize=15, color="black")  # Dot at Bal point
+ax.plot(mBalLvl, cNrmFacBal, marker=".", markersize=15, color="black")  # Dot at Bal point
 ax.text(1, 0.6, "$\mathrm{c}(m_{t})$", fontsize=fsmid)  # label cFunc
 
 if latexExists:
-    ax.text(mNrmFacBal+0.02, cNrmFacBal-0.10, r"$\nwarrow$", fontsize=fsmid)
-    ax.text(mNrmFacBal+0.25, cNrmFacBal-0.18, r"$\hat{m}~$", fontsize=fsmid)
+    ax.text(mBalLvl+0.02, cNrmFacBal-0.10, r"$\nwarrow$", fontsize=fsmid)
+    ax.text(mBalLvl+0.25, cNrmFacBal-0.18, r"$\hat{m}~$", fontsize=fsmid)
 else:
-    ax.text(mNrmFacBal+0.02, cNrmFacBal-0.10, r"$\nwarrow$", fontsize=fsmid)
-    ax.text(mNrmFacBal+0.25, cNrmFacBal-0.18, r"$\check{m}~$", fontsize=fsmid)
+    ax.text(mBalLvl+0.02, cNrmFacBal-0.10, r"$\nwarrow$", fontsize=fsmid)
+    ax.text(mBalLvl+0.25, cNrmFacBal-0.18, r"$\check{m}~$", fontsize=fsmid)
 
 makeFig('GICNrmFailsButGICRawHolds')
-print('Finite mNrmFacBal but infinite mNrmFacTrg')
+print('Finite mBalLvl but infinite mNrmFacTrg')
 
 
 # %% [markdown]
@@ -702,13 +702,13 @@ baseAgent_Inf = IndShockConsumerType(
 # %% [markdown] {"tags": []}
 # ### [Expected Consumption Growth, and Permanent Income Growth](https://econ-ark.github.io/BufferStockTheory/#AnalysisoftheConvergedConsumptionFunction)
 #
-# The next figure, [Analysis of the Converged Consumption Function](https://econ-ark.github.io/BufferStockTheory/#cGroTargetFig), shows expected growth factors for the levels of consumption $\cLev$ and market resources $\mLev$ as a function of the market resources ratio $\mNrm$ for a consumer behaving according to the converged consumption rule, along with the growth factor for $\mNrm$ itself, and the (constant) growth factors for consumption and expected permanent income, $\APF$ and $\PermGroFac$.
+# The next figure, [Analysis of the Converged Consumption Function](https://econ-ark.github.io/BufferStockTheory/#cGroTargetFig), shows expected growth factors for the levels of consumption $\cLvl$ and market resources $\mLvl$ as a function of the market resources ratio $\mNrm$ for a consumer behaving according to the converged consumption rule, along with the growth factor for $\mNrm$ itself, and the (constant) growth factors for consumption and expected permanent income, $\APF$ and $\PermGroFac$.
 #
 # The growth factor for consumption can be computed without knowing the _level_ of the consumer's permanent income:
 #
 # \begin{eqnarray*}
-# \Ex_{t}[\cLev_{t+1}/\cLev_{t}] & = & \Ex_{t}\left[\frac{\pLev_{t+1}\cFunc(m_{t+1})}{\pLev_{t}\cFunc(m_{t})}\right] \\
-# % & = & \Ex_{t}\left[\frac{\PermGroFac \permShk_{t+1} \pLev_{t}}{\pLev_{t}}\frac{\cFunc(m_{t+1})}{\cFunc(m_{t})}\right] \\
+# \Ex_{t}[\cLvl_{t+1}/\cLvl_{t}] & = & \Ex_{t}\left[\frac{\pLvl_{t+1}\cFunc(m_{t+1})}{\pLvl_{t}\cFunc(m_{t})}\right] \\
+# % & = & \Ex_{t}\left[\frac{\PermGroFac \permShk_{t+1} \pLvl_{t}}{\pLvl_{t}}\frac{\cFunc(m_{t+1})}{\cFunc(m_{t})}\right] \\
 # & = & \left[\frac{\PermGroFac \permShk_{t+1} \cFunc(m_{t+1})}{\cFunc(m_{t})}\right]
 # \end{eqnarray*}
 
@@ -716,7 +716,7 @@ baseAgent_Inf = IndShockConsumerType(
 # and similarly the growth factor for market resources is:
 #
 # \begin{eqnarray*}
-# \Ex_{t}[\mLev_{t+1}/\mLev_{t}]
+# \Ex_{t}[\mLvl_{t+1}/\mLvl_{t}]
 # & = & \Ex_{t}\left[\frac{\PermGroFac \permShk_{t+1} \mNrm_{t+1}} {\mNrm_{t}} \right]
 # \\ & = & \Ex_{t}\left[\frac{\PermGroFac \permShk_{t+1} (\aNrm_{t}\Rfree/(\PermGroFac \permShk_{t+1}))+\PermGroFac \permShk_{t+1}\tranShk_{t+1}}
 # {\mNrm_{t}}\right]
@@ -735,9 +735,9 @@ baseAgent_Inf = IndShockConsumerType(
 # \end{eqnarray*}
 
 # %% [markdown] {"tags": []}
-# The expectation of the growth in the log of $\mLev$ is a downward-adjusted value of the log of the growth factor:
+# The expectation of the growth in the log of $\mLvl$ is a downward-adjusted value of the log of the growth factor:
 # \begin{eqnarray*}
-# \Ex_{t}[\log(\mLev_{t+1}/\mLev_{t})]
+# \Ex_{t}[\log(\mLvl_{t+1}/\mLvl_{t})]
 # & = & \Ex_{t}\left[\log \PermGroFac \permShk_{t+1} \mNrm_{t+1}\right] - \log \mNrm_{t}
 # \\ & = & \Ex_{t}\left[\log \PermGroFac \left(\permShk_{t+1} (\aNrm_{t}\Rfree/(\PermGroFac \permShk_{t+1}))+\permShk_{t+1}\tranShk_{t+1}\right)\right]-\log \mNrm_{t}
 # \\ & = & \Ex_{t}\left[\log \PermGroFac (\aNrm_{t}\RNrm+\permShk_{t+1}\tranShk_{t+1}+1-1)\right] - \log 
@@ -748,7 +748,7 @@ baseAgent_Inf = IndShockConsumerType(
 # 1+\frac{\permShk_{t+1}\tranShk_{t+1}-1}{(\aNrm_{t}\RNrm+1)}
 # \right)
 # \right]\right) - \log {\mNrm_{t}}
-# \\ & = & \log \underbrace{\PermGroFac \left[\frac{\aNrm_{t}\RNrm+1}{\mNrm_{t}}\right]}_{\Ex_{t}[\mLev_{t+1}/\mLev_{t}]}+
+# \\ & = & \log \underbrace{\PermGroFac \left[\frac{\aNrm_{t}\RNrm+1}{\mNrm_{t}}\right]}_{\Ex_{t}[\mLvl_{t+1}/\mLvl_{t}]}+
 # \log \Ex_{t}\left[\left(1+
 # \frac{\permShk_{t+1}\tranShk_{t+1}-1}{(\aNrm_{t}\RNrm+1)}
 # \right)
@@ -788,7 +788,7 @@ color_cons, color_mrktLev, color_mrktNrm, color_perm, color_mLogGroExp = \
 mPlotMin, mCalcMax, mPlotMax = 1.0, 50, 1.8
 
 # Get steady state equilibrium and target values for m
-mNrmFacBal, mNrmFacTrg = Bilt.mNrmBalLvl, Bilt.mNrmTrg
+mBalLvl, mNrmFacTrg = Bilt.mBalLvl, Bilt.mTrgNrm
 
 pts_num = 200  # Plot this many points
 
@@ -797,17 +797,17 @@ c_pts = soln.cFunc(m_pts)                   # values of c for plot
 a_pts = m_pts - c_pts                       # values of a
 
 # Get ingredients for calculating growth factors, then calculate them
-Ex_cLev_tp1_Over_pLev_t = [ 
-    soln.E_Next_.cLev_tp1_Over_pLev_t_from_a_t(a) for a in a_pts]
-Ex_mLev_tp1_Over_pLev_t = [
-    soln.E_Next_.mLev_tp1_Over_pLev_t_from_a_t(a) for a in a_pts]
+Ex_cLvl_tp1_Over_pLvl_t = [ 
+    soln.E_Next_.cLvl_tp1_Over_pLvl_t_from_a_t(a) for a in a_pts]
+Ex_mLvl_tp1_Over_pLvl_t = [
+    soln.E_Next_.mLvl_tp1_Over_pLvl_t_from_a_t(a) for a in a_pts]
 Ex_mLog_tp1_minus_mLog_t_from_m_t = [
     soln.E_Next_.mLog_tp1_minus_mLog_t_from_m_t(m) for m in m_pts]
 Ex_m_tp1_from_a_t = [
     soln.E_Next_.m_tp1_from_a_t(a) for a in a_pts]
 
-Ex_cLevGroFac = np.array(Ex_cLev_tp1_Over_pLev_t)/c_pts
-Ex_mLevGroFac = np.array(Ex_mLev_tp1_Over_pLev_t)/m_pts
+Ex_cLvlGroFac = np.array(Ex_cLvl_tp1_Over_pLvl_t)/c_pts
+Ex_mLvlGroFac = np.array(Ex_mLvl_tp1_Over_pLvl_t)/m_pts
 Ex_mNrmGroFac = np.array(Ex_m_tp1_from_a_t)/m_pts
 Ex_mLogGroExp = np.exp(Ex_mLog_tp1_minus_mLog_t_from_m_t)
 
@@ -826,10 +826,10 @@ ax.plot([0, mPlotMax], [APF, APF], color=color_cons)
 ax.plot([0, mPlotMax], [G, G]    , color=color_perm)
 
 # Plot the expected consumption growth factor
-ax.plot(m_pts, Ex_cLevGroFac        , color=color_cons)
+ax.plot(m_pts, Ex_cLvlGroFac        , color=color_cons)
 
 # Plot expected growth for the level of market resources
-ax.plot(m_pts, Ex_mLevGroFac        , color=color_mrktLev)
+ax.plot(m_pts, Ex_mLvlGroFac        , color=color_mrktLev)
 
 # Plot expected growth for the market resources ratio
 ax.plot(m_pts, Ex_mNrmGroFac        , color=color_mrktNrm)
@@ -849,40 +849,40 @@ Thorn = u"\u00DE"
 if latexExists:
     mNrmFacTrg_lbl = r'$1.00 = \Ex_{t}[\mNrm_{t+1}/\mNrm_{t}]:~ \Trg{m} \rightarrow~~$'
     PermGro_lbl = r"$\PermGroFac$"
-    cLevGroFac_lbl = r"$\Ex_{t}[\cLev_{t+1}/\cLev_{t}]$"
+    cLvlGroFac_lbl = r"$\Ex_{t}[\cLvl_{t+1}/\cLvl_{t}]$"
     mNrmGroFac_lbl = r"$\Ex_{t}[\mNrm_{t+1}/\mNrm_{t}] ^{\nearrow}$"
-    mLevGroFac_lbl = r"$\Ex_{t}[\mLev_{t+1}/\mLev_{t}]$"
-    mNrmFacBal_lbl = r"$\check{\mNrm}_{\searrow}~$"    
-    cLevAPF_lbl = r'$\pmb{\text{\TH}} = (\Rfree\DiscFac)^{1/\CRRA}$'
+    mLvlGroFac_lbl = r"$\Ex_{t}[\mLvl_{t+1}/\mLvl_{t}]$"
+    mBalLvl_lbl = r"$\check{\mNrm}_{\searrow}~$"    
+    cLvlAPF_lbl = r'$\pmb{\text{\TH}} = (\Rfree\DiscFac)^{1/\CRRA}$'
 else:
     mNrmFacTrg_lbl = r'$\mathsf{E}_{t}[m_{t+1}/m_{t}]:~ \hat{m} \rightarrow~~$'
     PermGro_lbl = r"$\Gamma$"
-    cLevGroFac_lbl = r"$\mathsf{E}_{t}[\mathbf{c}_{t+1}/\mathbf{c}_{t}]$"
+    cLvlGroFac_lbl = r"$\mathsf{E}_{t}[\mathbf{c}_{t+1}/\mathbf{c}_{t}]$"
     mNrmGroFac_lbl = r"$\mathsf{E}_{t}[m_{t+1}/m_{t}]^{\nearrow}$"
-    mLevGroFac_lbl = r"$\mathsf{E}_{t}[\mathbf{m}_{t+1}/\mathbf{m}_{t}]$"
-    mNrmFacBal_lbl = r"$m\check_{\searrow}$"    
-    cLevAPF_lbl = Thorn + r'$= (\mathsf{R}\beta)^{1/\rho}$'
+    mLvlGroFac_lbl = r"$\mathsf{E}_{t}[\mathbf{m}_{t+1}/\mathbf{m}_{t}]$"
+    mBalLvl_lbl = r"$m\check_{\searrow}$"    
+    cLvlAPF_lbl = Thorn + r'$= (\mathsf{R}\beta)^{1/\rho}$'
 
 
 if mNrmFacTrg:  # Do not try to plot it if it does not exist!
     ax.text(mNrmFacTrg-0.01, 1.0-0.001, 
             mNrmFacTrg_lbl, ha='right')
 
-ax.plot(mNrmFacBal, G  , marker=".", markersize=12, color="black")  # Dot at mNrmFacBal 
+ax.plot(mBalLvl, G  , marker=".", markersize=12, color="black")  # Dot at mBalLvl 
 ax.plot(mNrmFacTrg, 1.0, marker=".", markersize=12, color="black")  # Dot at mNrmFacTrg 
 
-mLevGroFac_lbl_xVal = mPlotMax
-mLevGroFac_lbl_yVal = soln.E_Next_.mLev_tp1_Over_mLev_t(mLevGroFac_lbl_xVal)
+mLvlGroFac_lbl_xVal = mPlotMax
+mLvlGroFac_lbl_yVal = soln.E_Next_.mLvl_tp1_Over_mLvl_t(mLvlGroFac_lbl_xVal)
 
 mNrmGroFac_lbl_xVal = 0.92*mNrmFacTrg
 mNrmGroFac_lbl_yVal = soln.E_Next_.m_tp1_Over_m_t(mNrmGroFac_lbl_xVal)
 
 ax.text(mPlotMax+0.01, G-0.001,PermGro_lbl)
-ax.text(mPlotMax+0.01, Ex_cLevGroFac[-1]  ,cLevGroFac_lbl)
-ax.text(mPlotMax+0.01, APF-0.001       ,cLevAPF_lbl)
-ax.text(mNrmFacBal-0.06, G+0.001,mNrmFacBal_lbl              ,va='bottom',ha='left')
+ax.text(mPlotMax+0.01, Ex_cLvlGroFac[-1]  ,cLvlGroFac_lbl)
+ax.text(mPlotMax+0.01, APF-0.001       ,cLvlAPF_lbl)
+ax.text(mBalLvl-0.06, G+0.001,mBalLvl_lbl              ,va='bottom',ha='left')
 ax.text(mNrmGroFac_lbl_xVal-0.01, mNrmGroFac_lbl_yVal-0.003,mNrmGroFac_lbl,va='bottom',ha='right')
-ax.text(mLevGroFac_lbl_xVal+0.01, mLevGroFac_lbl_yVal+0.001,mLevGroFac_lbl,va='top')
+ax.text(mLvlGroFac_lbl_xVal+0.01, mLvlGroFac_lbl_yVal+0.001,mLvlGroFac_lbl,va='top')
 
 # Ticks
 ax.tick_params(labelbottom=True, labelleft=True, left='off', right='on', bottom='on', top='off')

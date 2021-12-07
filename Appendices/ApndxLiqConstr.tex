@@ -10,7 +10,7 @@
 \hypertarget{ApndxLiqConstr}{}
 \section{Perfect Foresight Liquidity Constrained Solution}\label{sec:ApndxLiqConstr}
 
-Under perfect foresight in the presence of a liquidity constraint requiring $\bRat \geq 0$, this appendix taxonomizes the varieties of the limiting consumption function $\cnstr{\cFunc}(\mRat)$ that arise under various parametric conditions.  Results are summarized in table~\ref{table:LiqConstrScenarios}.
+Under perfect foresight in the presence of a liquidity constraint requiring $\bNrm \geq 0$, this appendix taxonomizes the varieties of the limiting consumption function $\cnstr{\cFunc}(\mNrm)$ that arise under various parametric conditions.  Results are summarized in table~\ref{table:LiqConstrScenarios}.
 
 \input{\TableDir/LiqConstrScenarios}
 
@@ -19,17 +19,17 @@ Under perfect foresight in the presence of a liquidity constraint requiring $\bR
 
 A consumer is `growth patient' if the perfect foresight growth
 impatience condition fails (\cncl{\GICRaw}, $1 < \Pat/\PGro$).  Under
-\cncl{\GICRaw} the constraint does not bind at the lowest feasible value of $\mRat_{t}=1$ because
+\cncl{\GICRaw} the constraint does not bind at the lowest feasible value of $\mNrm_{t}=1$ because
 $1 < {(\Rfree\Discount)}^{1/\CRRA}/\PGro$ implies that spending
-everything today (setting $\cRat_{t}=\mRat_{t}=1$) produces lower
+everything today (setting $\cNrm_{t}=\mNrm_{t}=1$) produces lower
 marginal utility than is obtainable by reallocating a marginal unit of
 resources to the next period at return $\Rfree$:\footnote{The point at
   which the constraint would bind (if that point could be attained) is
-  the $\mRat=\cRat$ for which $\uFunc^{\prime}(\cRat_{\#}) = \Rfree
-  \Discount \uFunc^{\prime}(\PGro)$ which is $\cRat_{\#} =
+  the $\mNrm=\cNrm$ for which $\uFunc^{\prime}(\cNrm_{\#}) = \Rfree
+  \Discount \uFunc^{\prime}(\PGro)$ which is $\cNrm_{\#} =
   \PGro/{(\Rfree \Discount)}^{1/\CRRA}$ and the consumption function
   will be defined by
-  $\cnstr{\cFunc}(\mRat)=\min[\mRat,\cRat_{\#}+(\mRat-\cRat_{\#})\MinMPC
+  $\cnstr{\cFunc}(\mNrm)=\min[\mNrm,\cNrm_{\#}+(\mNrm-\cNrm_{\#})\MinMPC
   ]$.}
 \begin{equation}\begin{gathered}\begin{aligned}
   1  & < {(\Rfree \Discount)}^{1/\CRRA}\PGro^{-1}    \notag
@@ -37,7 +37,7 @@ resources to the next period at return $\Rfree$:\footnote{The point at
   \\  \uFunc^{\prime}(1)  & < \Rfree \Discount \uFunc^{\prime}(\PGro)   \label{eq:EulerGICRawFailsEnd}.
 \end{aligned}\end{gathered}\end{equation}
 
-Similar logic shows that under these circumstances the constraint will never bind at $\mRat=1$ for a constrained consumer with a finite horizon of $n$ periods, so for $\mRat \geq 1$ such a consumer's consumption function will be the same as for the unconstrained case examined in the main text.
+Similar logic shows that under these circumstances the constraint will never bind at $\mNrm=1$ for a constrained consumer with a finite horizon of $n$ periods, so for $\mNrm \geq 1$ such a consumer's consumption function will be the same as for the unconstrained case examined in the main text.
 
 \hypertarget{cnclGICRawcnclRICFHWC}{}
 
@@ -45,20 +45,20 @@ Similar logic shows that under these circumstances the constraint will never bin
 holds, the limiting value of this consumption function as $n \uparrow
 \infty$ is the degenerate function
 \begin{equation}\begin{gathered}\begin{aligned}
-  \cnstr{\cFunc}_{T-n}(\mRat)  & = 0 (\bRat_{t}+\hRat).
+  \cnstr{\cFunc}_{T-n}(\mNrm)  & = 0 (\bNrm_{t}+\hNrm).
 \end{aligned}\end{gathered}\end{equation}
 (that is, consumption is zero for any level of human or nonhuman wealth).
 
 \hypertarget{cnclGICRawcnclRICcnclFHWC}{}
 
-\textit{{\RIC}~fails, {\FHWC}~fails}. {\cncl{\FHWC}} implies that human wealth limits to $\hRat =
+\textit{{\RIC}~fails, {\FHWC}~fails}. {\cncl{\FHWC}} implies that human wealth limits to $\hNrm =
 \infty$ so the consumption function limits to either
-$\cnstr{\cFunc}_{T-n}(\mRat) = 0$ or
-$\cnstr{\cFunc}_{T-n}(\mRat) = \infty$ depending on the relative
+$\cnstr{\cFunc}_{T-n}(\mNrm) = 0$ or
+$\cnstr{\cFunc}_{T-n}(\mNrm) = \infty$ depending on the relative
 speeds with which the MPC approaches zero and human wealth approaches
 $\infty$.\footnote{The knife-edge case is where $\Pat = \PGro$, in
   which case the two quantities counterbalance and the limiting
-  function is $\cnstr{\cFunc}(\mRat)=\min[\mRat,1]$.}
+  function is $\cnstr{\cFunc}(\mNrm)=\min[\mNrm,1]$.}
 
 \let\TableWidth\relax
 {\newlength\TableWidth}
@@ -68,48 +68,48 @@ implies that for a consumer satisfying \cncl{\GICRaw} we must impose
 the \RIC~(and the \FHWC~can be shown to be a consequence of \cncl{\GICRaw} and \RIC).  In
 this case, the consumer's optimal behavior is easy to describe.  We
 can calculate the point at which the unconstrained consumer would
-choose $\cRat = \mRat$ from Equation~\eqref{\localorexternallabel{eq:cFuncPFUnc}}:
+choose $\cNrm = \mNrm$ from Equation~\eqref{\localorexternallabel{eq:cFuncPFUnc}}:
 \begin{equation}\begin{gathered}\begin{aligned}
-  \mRat_{\#}  & = (\mRat_{\#}-1+\hRat)\MinMPC
-  \\ \mRat_{\#}(1-\MinMPC)  & = (\hRat - 1)\MinMPC
-  \\ \mRat_{\#}  & = (\hRat - 1)\left(\frac{\MinMPC}{1-\MinMPC}\right)
+  \mNrm_{\#}  & = (\mNrm_{\#}-1+\hNrm)\MinMPC
+  \\ \mNrm_{\#}(1-\MinMPC)  & = (\hNrm - 1)\MinMPC
+  \\ \mNrm_{\#}  & = (\hNrm - 1)\left(\frac{\MinMPC}{1-\MinMPC}\right)
 \end{aligned}\end{gathered}\end{equation}
-which (under these assumptions) satisfies $0 < \mRat_{\#} < 1$.\footnote{Note that $0 < \mRat_{\#}$ is implied by \RIC~and $ \mRat_{\#}<1$ is implied by \cncl{\GICRaw}.}  For
-$\mRat < \mRat_{\#}$ the unconstrained consumer would choose to
-consume more than $\mRat$; for such $\mRat$, the constrained consumer
-is obliged to choose $\cnstr{\cFunc}(\mRat) = \mRat$.\footnote{As an
+which (under these assumptions) satisfies $0 < \mNrm_{\#} < 1$.\footnote{Note that $0 < \mNrm_{\#}$ is implied by \RIC~and $ \mNrm_{\#}<1$ is implied by \cncl{\GICRaw}.}  For
+$\mNrm < \mNrm_{\#}$ the unconstrained consumer would choose to
+consume more than $\mNrm$; for such $\mNrm$, the constrained consumer
+is obliged to choose $\cnstr{\cFunc}(\mNrm) = \mNrm$.\footnote{As an
   illustration, consider a consumer for whom $\Pat = 1$, $\Rfree
   =1.01$ and $\PGro = 0.99$.  This consumer will save the amount
   necessary to ensure that growth in market wealth exactly offsets the
   decline in human wealth represented by $\PGro < 1$; total wealth
   (and therefore total consumption) will remain constant, even as
   market wealth and human wealth trend in opposite directions.}  For
-any $\mRat > \mRat_{\#}$ the constraint will never bind and the
+any $\mNrm > \mNrm_{\#}$ the constraint will never bind and the
 consumer will choose to spend the same amount as the unconstrained
-consumer, $\bar{\cFunc}(\mRat)$.
+consumer, $\bar{\cFunc}(\mNrm)$.
 
 (\cite{StachurskiToda2019JET} obtain a similar lower bound on consumption and use it to study the tail behavior of the wealth distribution.)
 
 
 \subsection{If \GICRaw~Holds}
 
-Imposition of the \GICRaw~reverses the inequality in~\eqref{\localorexternallabel{eq:EulerGICRawFailsEnd}}, and thus reverses the conclusion: A consumer who starts with $\mRat_{t}=1$ will desire to consume more than 1.  Such a consumer will be constrained, not only in period $t$, but perpetually thereafter.
+Imposition of the \GICRaw~reverses the inequality in~\eqref{\localorexternallabel{eq:EulerGICRawFailsEnd}}, and thus reverses the conclusion: A consumer who starts with $\mNrm_{t}=1$ will desire to consume more than 1.  Such a consumer will be constrained, not only in period $t$, but perpetually thereafter.
 
-Now define $\bRat_{\#}^{n}$ as the $\bRat_{t}$ such that an unconstrained consumer holding $\bRat_{t}=\bRat_{\#}^{n}$ would behave so as to arrive in period $t+n$ with $\bRat_{t+n}=0$ (with $\bRat_{\#}^{0}$ trivially equal to 0); for example, a consumer with $\bRat_{t-1}=\bRat_{\#}^{1}$ was on the `cusp' of being constrained in period $t-1$: Had $b_{t-1}$ been infinitesimally smaller, the constraint would have been binding (because the consumer would have desired, but been unable, to enter period $t$ with negative, not zero, $b$).  Given
-the \GICRaw, the constraint certainly binds in period $t$ (and thereafter) with resources of $\mRat_{t}=\mRat_{\#}^{0}=1+\bRat_{\#}^{0}=1$: The consumer cannot spend more (because constrained), and will not choose to spend less (because impatient), than $c_{t}=\cRat_{\#}^{0}=1$.
+Now define $\bNrm_{\#}^{n}$ as the $\bNrm_{t}$ such that an unconstrained consumer holding $\bNrm_{t}=\bNrm_{\#}^{n}$ would behave so as to arrive in period $t+n$ with $\bNrm_{t+n}=0$ (with $\bNrm_{\#}^{0}$ trivially equal to 0); for example, a consumer with $\bNrm_{t-1}=\bNrm_{\#}^{1}$ was on the `cusp' of being constrained in period $t-1$: Had $b_{t-1}$ been infinitesimally smaller, the constraint would have been binding (because the consumer would have desired, but been unable, to enter period $t$ with negative, not zero, $b$).  Given
+the \GICRaw, the constraint certainly binds in period $t$ (and thereafter) with resources of $\mNrm_{t}=\mNrm_{\#}^{0}=1+\bNrm_{\#}^{0}=1$: The consumer cannot spend more (because constrained), and will not choose to spend less (because impatient), than $c_{t}=\cNrm_{\#}^{0}=1$.
 
 We can construct the entire `prehistory' of this consumer leading up to $t$ as follows.
 Maintaining the assumption that the constraint has never bound in the past,
-$\cRat$ must have been growing according to $\PatPGro$, so consumption $n$ periods in the past must have been
+$\cNrm$ must have been growing according to $\PatPGro$, so consumption $n$ periods in the past must have been
 \begin{equation}\begin{gathered}\begin{aligned}
-  \cRat_{\#}^{n}  & = \PatPGro^{-n} \cRat_{t} = \PatPGro^{-n}. \label{eq:cPreHist}
+  \cNrm_{\#}^{n}  & = \PatPGro^{-n} \cNrm_{t} = \PatPGro^{-n}. \label{eq:cPreHist}
 \end{aligned}\end{gathered}\end{equation}
 
 The PDV of consumption from $t-n$ until $t$ can thus be computed as
 \begin{equation}\begin{gathered}\begin{aligned}
-  \mathbb{C}_{t-n}^{t}  & = \cRat_{t-n}(1+\Pat/\Rfree+ \cdots + {(\Pat/\Rfree)}^{n}) \notag
-  % \\   \mathbb{C}_{t-n}^{t}  & = \cRat_{t-n}(1+\PatPGro/\Rnorm+ \cdots + (\PatPGro/\Rnorm)^{n}) \notag
-  \\  & = \cRat_{\#}^{n}(1+\PatR+ \cdots + \PatR^{n}) \notag
+  \mathbb{C}_{t-n}^{t}  & = \cNrm_{t-n}(1+\Pat/\Rfree+ \cdots + {(\Pat/\Rfree)}^{n}) \notag
+  % \\   \mathbb{C}_{t-n}^{t}  & = \cNrm_{t-n}(1+\PatPGro/\Rnorm+ \cdots + (\PatPGro/\Rnorm)^{n}) \notag
+  \\  & = \cNrm_{\#}^{n}(1+\PatR+ \cdots + \PatR^{n}) \notag
   \\  & = \PatPGro^{-n}\left(\frac{1-\PatR^{n+1}}{1-\PatR}\right) \label{PDVc}
   \\  & = \left(\frac{\PatPGro^{-n}-\PatR}{1-\PatR}\right) 
 \end{aligned}\end{gathered}\end{equation}
@@ -117,36 +117,36 @@ and note that the consumer's human wealth between $t-n$ and $t$ (the relevant
 time horizon, because from $t$ onward the consumer will be constrained
 and unable to access post-$t$ income) is
 \begin{equation}\begin{gathered}\begin{aligned}
-  \hRat_{\#}^{n}  & = 1+ \cdots +\Rnorm^{-n}
+  \hNrm_{\#}^{n}  & = 1+ \cdots +\Rnorm^{-n}
 \end{aligned}\end{gathered}\end{equation}
 while the intertemporal budget constraint says
 \begin{eqnarray*}
-  \mathbb{C}_{t-n}^{t}  & = \bRat_{\#}^{n}+\hRat_{\#}^{n}
+  \mathbb{C}_{t-n}^{t}  & = \bNrm_{\#}^{n}+\hNrm_{\#}^{n}
 \end{eqnarray*}
-from which we can solve for the $\bRat_{\#}^{n}$ such that
-the consumer with $\bRat_{t-n} = \bRat_{\#}^{n}$ would
+from which we can solve for the $\bNrm_{\#}^{n}$ such that
+the consumer with $\bNrm_{t-n} = \bNrm_{\#}^{n}$ would
 unconstrainedly plan (in period $t-n$) to arrive in period $t$ with
-$\bRat_{t}=0$:
+$\bNrm_{t}=0$:
 \begin{equation}\begin{gathered}\begin{aligned}
-  \bRat_{\#}^{n} & =  \mathbb{C}_{t-n}^{t} - \overbrace{\left(\frac{1-\Rnorm^{-(n+1)}}{1-\Rnorm^{-1}}\right)}^{\hRat_{\#}^{n}} \label{eq:bPound}.
+  \bNrm_{\#}^{n} & =  \mathbb{C}_{t-n}^{t} - \overbrace{\left(\frac{1-\Rnorm^{-(n+1)}}{1-\Rnorm^{-1}}\right)}^{\hNrm_{\#}^{n}} \label{eq:bPound}.
 \end{aligned}\end{gathered}\end{equation}
 
-Defining $\mRat_{\#}^{n}=\bRat_{\#}^{n}+1$, consider the function
-$\cnstr{\cFunc}(\mRat)$ defined by linearly connecting the points
-$\{\mRat_{\#}^{n},\cRat_{\#}^{n}\}$ for integer values of $n \geq 0$
-(and setting $\cnstr{\cFunc}(\mRat)=\mRat$ for $\mRat<1$).  This
-function will return, for any value of $\mRat$, the optimal value of
-$\cRat$ for a liquidity constrained consumer with an infinite horizon.
+Defining $\mNrm_{\#}^{n}=\bNrm_{\#}^{n}+1$, consider the function
+$\cnstr{\cFunc}(\mNrm)$ defined by linearly connecting the points
+$\{\mNrm_{\#}^{n},\cNrm_{\#}^{n}\}$ for integer values of $n \geq 0$
+(and setting $\cnstr{\cFunc}(\mNrm)=\mNrm$ for $\mNrm<1$).  This
+function will return, for any value of $\mNrm$, the optimal value of
+$\cNrm$ for a liquidity constrained consumer with an infinite horizon.
 The function is piecewise linear with `kink points' where the slope
 discretely changes; for infinitesimal $\epsilon$ the MPC of a
-consumer with assets $\mRat=\mRat_{\#}^{n}-\epsilon$ is discretely
-higher than for a consumer with assets $\mRat=\mRat_{\#}^{n}+\epsilon$
+consumer with assets $\mNrm=\mNrm_{\#}^{n}-\epsilon$ is discretely
+higher than for a consumer with assets $\mNrm=\mNrm_{\#}^{n}+\epsilon$
 because the latter consumer will spread a marginal dollar over more
 periods before exhausting it.
 
-In order for a unique consumption function to be defined by this sequence~\eqref{\localorexternallabel{eq:bPound}} for the entire domain of positive real values of $b$, we need $\bRat_{\#}^{n}$ to become arbitrarily large with $n$.  That is, we need
+In order for a unique consumption function to be defined by this sequence~\eqref{\localorexternallabel{eq:bPound}} for the entire domain of positive real values of $b$, we need $\bNrm_{\#}^{n}$ to become arbitrarily large with $n$.  That is, we need
 \begin{equation}\begin{gathered}\begin{aligned}
-  \lim_{n \rightarrow \infty} \bRat_{\#}^{n} = \infty. \label{eq:bToInfty}
+  \lim_{n \rightarrow \infty} \bNrm_{\#}^{n} = \infty. \label{eq:bToInfty}
 \end{aligned}\end{gathered}\end{equation}
 
 \subsubsection{If \FHWC~Holds}
@@ -200,7 +200,7 @@ and for this to be true we need
 which is merely the \RIC~again.  So the problem has a solution if the \RIC~holds.  Indeed,
 we can even calculate the limiting MPC from
 \begin{equation}\begin{gathered}\begin{aligned}
-  \lim_{n \rightarrow \infty} \MPC^{n}_{\#}  & = \lim_{n \rightarrow \infty} \left(\frac{\cRat_{\#}^{n}}{\bRat_{\#}^{n}}\right) \label{eq:MPCConstrLim}
+  \lim_{n \rightarrow \infty} \MPC^{n}_{\#}  & = \lim_{n \rightarrow \infty} \left(\frac{\cNrm_{\#}^{n}}{\bNrm_{\#}^{n}}\right) \label{eq:MPCConstrLim}
 \end{aligned}\end{gathered}\end{equation}
 which with a bit of algebra\footnote{
   Calculate the limit of
@@ -208,7 +208,7 @@ which with a bit of algebra\footnote{
     \left(\frac{\PatPGro^{-n}}{\PatPGro^{-n}/(1-\PatR) - (1-\Rnorm^{-1}\Rnorm^{-n})/(1-\Rnorm^{-1})}\right)  & = \left(\frac{1}{1/(1-\PatR) + \Rnorm^{-n}\Rnorm^{-1}/(1-\Rnorm^{-1})}\right)
   \end{aligned}\end{gathered}\end{equation}} can be shown to asymptote to the MPC in the perfect foresight model:\footnote{For an example of this configuration of parameters, see the notebook \texttt{doApndxLiqConstr.nb} in the Mathematica software  archive.}
 \begin{equation}\begin{gathered}\begin{aligned}
-  \lim_{m \rightarrow \infty} \cnstr{\pmb{\MPC}}(\mRat)  & = 1-\PatR.
+  \lim_{m \rightarrow \infty} \cnstr{\pmb{\MPC}}(\mNrm)  & = 1-\PatR.
 \end{aligned}\end{gathered}\end{equation}
 
 \noindent {\bf If \RIC~Fails}.  Consider now the \cncl{\RIC} case, $\PatR > 1$.  We can rearrange~\eqref{\localorexternallabel{eq:FHWCfails}}as
@@ -233,20 +233,20 @@ $-\infty$; that is, if
 \end{eqnarray*}
 which merely confirms the starting assumption that the \RIC~fails.
 
-What is happening here is that the $\cRat_{\#}^{n}$ term is increasing backward in time at rate dominated in the limit by $\PGro/\Pat$ while the $\bRat_{\#}$ term is increasing at a rate dominated by $\PGro/\Rfree$ term and
+What is happening here is that the $\cNrm_{\#}^{n}$ term is increasing backward in time at rate dominated in the limit by $\PGro/\Pat$ while the $\bNrm_{\#}$ term is increasing at a rate dominated by $\PGro/\Rfree$ term and
 \begin{eqnarray}
   \PGro/\Rfree & > & \PGro/\Pat 
 \end{eqnarray}
 because $\cncl{\RIC} \Rightarrow \Pat > \Rfree$.
 
-Consequently, while $\lim_{n \uparrow \infty} \bRat_{\#}^{n} = \infty$, the limit of the \textit{ratio} $\cRat_{\#}^{n}/\bRat_{\#}^{n}$ in~\eqref{eq:MPCConstrLim} is zero.
+Consequently, while $\lim_{n \uparrow \infty} \bNrm_{\#}^{n} = \infty$, the limit of the \textit{ratio} $\cNrm_{\#}^{n}/\bNrm_{\#}^{n}$ in~\eqref{eq:MPCConstrLim} is zero.
 Thus, surprisingly, the problem has a well defined solution with
 infinite human wealth if the \RIC~fails.  It remains true that \cncl{\RIC}
 implies a limiting MPC of zero,
 \begin{equation}\begin{gathered}\begin{aligned}
-  \lim_{\mRat \rightarrow \infty} \cnstr{\pmb{\MPC}}(\mRat)   & = 0,
+  \lim_{\mNrm \rightarrow \infty} \cnstr{\pmb{\MPC}}(\mNrm)   & = 0,
 \end{aligned}\end{gathered}\end{equation}
-but that limit is approached gradually, starting from a positive value, and consequently the consumption function is \textit{not} the degenerate $\cnstr{\cFunc}(\mRat)=0$.  (Figure~\ref{fig:PFGICHoldsFHWCFailsRICFails} presents an example for $\CRRA=2$, $\Rfree=0.98$, $\Discount = 1.00$, $\PGro = 0.99$; note that the horizontal axis is bank balances $\bRat = \mRat-1$; the part of the consumption function below the depicted points is uninteresting --- $\cRat = \mRat$ --- so not worth plotting).
+but that limit is approached gradually, starting from a positive value, and consequently the consumption function is \textit{not} the degenerate $\cnstr{\cFunc}(\mNrm)=0$.  (Figure~\ref{fig:PFGICHoldsFHWCFailsRICFails} presents an example for $\CRRA=2$, $\Rfree=0.98$, $\Discount = 1.00$, $\PGro = 0.99$; note that the horizontal axis is bank balances $\bNrm = \mNrm-1$; the part of the consumption function below the depicted points is uninteresting --- $\cNrm = \mNrm$ --- so not worth plotting).
 
 
 \input{\FigDir/PFGICHoldsFHWCFailsRICFails}
@@ -267,21 +267,21 @@ but that limit is approached gradually, starting from a positive value, and cons
   \end{eqnarray*}
   which means that in the limit
   \begin{equation}\begin{gathered}\begin{aligned}
-    \lim_{n \rightarrow \infty} \Rnorm^{n}\bRat_{\#}^{n}  & =  \left(\frac{-\PatR}{1-\PatR}\right) - \Rnorm^{n}\left(\frac{1-\Rnorm^{-1}\Rnorm^{-n}}{1-\Rnorm^{-1}}\right) %\label{eq:bPoundLim}
+    \lim_{n \rightarrow \infty} \Rnorm^{n}\bNrm_{\#}^{n}  & =  \left(\frac{-\PatR}{1-\PatR}\right) - \Rnorm^{n}\left(\frac{1-\Rnorm^{-1}\Rnorm^{-n}}{1-\Rnorm^{-1}}\right) %\label{eq:bPoundLim}
     \\  & = \left(\frac{-\PatR}{1-\PatR} + \frac{-\Rnorm^{-1}}{1-\Rnorm^{-1}}\right) - \left(\frac{\Rnorm^{n}}{1-\Rnorm^{-1}}\right)
   \end{aligned}\end{gathered}\end{equation}
-  so we can solve for the limiting $n$ as a function of $\bRat$ via
+  so we can solve for the limiting $n$ as a function of $\bNrm$ via
   \begin{equation}\begin{gathered}\begin{aligned}
-    \bRat + \left(\frac{1}{1-\Rnorm^{-1}}\right)  & = \Rnorm^{-\hat{n}}\left(\frac{-\PatR}{1-\PatR} + \frac{-\Rnorm^{-1}}{1-\Rnorm^{-1}}\right)
-    \\ \log \left(\bRat + \left(\frac{1}{1-\Rnorm^{-1}}\right)\right)  & = -\hat{n} \log \Rnorm + \log \left(\frac{-\PatR}{1-\PatR} + \frac{-\Rnorm^{-1}}{1-\Rnorm^{-1}}\right)
-    \\ \frac{\log \left(\frac{-\PatR}{1-\PatR} + \frac{-\Rnorm^{-1}}{1-\Rnorm^{-1}}\right)-\log \left(\bRat + \left(\frac{1}{1-\Rnorm^{-1}}\right)\right)}{\log \Rnorm }  & = \hat{n}
+    \bNrm + \left(\frac{1}{1-\Rnorm^{-1}}\right)  & = \Rnorm^{-\hat{n}}\left(\frac{-\PatR}{1-\PatR} + \frac{-\Rnorm^{-1}}{1-\Rnorm^{-1}}\right)
+    \\ \log \left(\bNrm + \left(\frac{1}{1-\Rnorm^{-1}}\right)\right)  & = -\hat{n} \log \Rnorm + \log \left(\frac{-\PatR}{1-\PatR} + \frac{-\Rnorm^{-1}}{1-\Rnorm^{-1}}\right)
+    \\ \frac{\log \left(\frac{-\PatR}{1-\PatR} + \frac{-\Rnorm^{-1}}{1-\Rnorm^{-1}}\right)-\log \left(\bNrm + \left(\frac{1}{1-\Rnorm^{-1}}\right)\right)}{\log \Rnorm }  & = \hat{n}
   \end{aligned}\end{gathered}\end{equation}
-  which defines $\hat{\nFunc}(\bRat)$ which yields an approximation to the
-  value of $n$ associated with a given $\bRat$.
+  which defines $\hat{\nFunc}(\bNrm)$ which yields an approximation to the
+  value of $n$ associated with a given $\bNrm$.
 
   We can directly compute
   \begin{equation}\begin{gathered}\begin{aligned}
-    \nabla  & = \bRat - \bRat_{\#}^{\hat{n}}
+    \nabla  & = \bNrm - \bNrm_{\#}^{\hat{n}}
   \end{aligned}\end{gathered}\end{equation}
   and can obtain a better appxoimation to the correct $n$ from
   \begin{equation}\begin{gathered}\begin{aligned}
@@ -296,9 +296,9 @@ but that limit is approached gradually, starting from a positive value, and cons
 
 
   For this $n$ and
-  $\bRat$ we can obtain the corresponding
-  $\cRat=\PatPGro^{-\nFunc(\bRat)}$.  Note, however, that this is {\it not}
-  the level of $\cRat$ directly associated with $\bRat$ on the true
+  $\bNrm$ we can obtain the corresponding
+  $\cNrm=\PatPGro^{-\nFunc(\bNrm)}$.  Note, however, that this is {\it not}
+  the level of $\cNrm$ directly associated with $\bNrm$ on the true
   consumption function, because we used only a limiting approximation to
   the correct $n$ rather than the correct $n$.
 
@@ -311,7 +311,7 @@ but that limit is approached gradually, starting from a positive value, and cons
 
 \end{comment}
 
-We can summarize as follows.  Given that the \GICRaw~holds, the interesting question is whether the \FHWC~holds.  If so, the RIC~automatically holds, and the solution limits into the solution to the unconstrained problem as $\mRat \uparrow \infty$.  But even if the \FHWC~fails, the problem has a well-defined and nondegenerate solution, whether or not the \RIC~holds.
+We can summarize as follows.  Given that the \GICRaw~holds, the interesting question is whether the \FHWC~holds.  If so, the RIC~automatically holds, and the solution limits into the solution to the unconstrained problem as $\mNrm \uparrow \infty$.  But even if the \FHWC~fails, the problem has a well-defined and nondegenerate solution, whether or not the \RIC~holds.
 
 Although these results were derived for the perfect foresight case, we know from work elsewhere in this paper and in other places that the perfect foresight case is an upper bound for the case with uncertainty.  If the upper bound of the MPC in the perfect foresight case is zero, it is not possible for the upper bound in the model with uncertainty to be greater than zero, because for any $\kappa > 0$ the level of consumption in the model with uncertainty would eventually exceed the level of consumption in the absence of uncertainty.
 

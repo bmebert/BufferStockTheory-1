@@ -120,8 +120,8 @@ cNrm_pLvl_cov_lst =[]
 
 for i in range (fast.T_sim):
     cNrm_avg_now = np.mean(fast.history['cNrm'][i]) # mean cNrm
-    pLvl_avg_now = np.mean(fast.history['pLvl'][i]) # mean pLev
-    cLvl_avg_now = np.mean(fast.history['cNrm'][i]*fast.history['pLvl'][i]) # mean cLev
+    pLvl_avg_now = np.mean(fast.history['pLvl'][i]) # mean pLvl
+    cLvl_avg_now = np.mean(fast.history['cNrm'][i]*fast.history['pLvl'][i]) # mean cLvl
     cNrm_avg_lst.append(cNrm_avg_now)
     pLvl_avg_lst.append(pLvl_avg_now)
     cLvl_avg_lst.append(cLvl_avg_now)
@@ -162,11 +162,11 @@ print('mean cNrm growth: '+formatter.format(groFac_cNrm_cum))
 groFac_cLvl_cum=(cLvl_avg_lst[-1]/cLvl_avg_lst[start_plots_at_period])**(1/num_periods)
 
 plt.plot(np.log(cLvl_avg_lst[start_plots_at_period:]))
-plt.title('log_cLev_avg')
-makeFig('logcLev') 
+plt.title('log_cLvl_avg')
+makeFig('logcLvl') 
 
-print('mean cLev growth: '+formatter.format(groFac_cLvl_cum))
-print('mean cLev growth/mean pLev growth: '+
+print('mean cLvl growth: '+formatter.format(groFac_cLvl_cum))
+print('mean cLvl growth/mean pLvl growth: '+
       formatter.format(groFac_cLvl_cum/groFac_pLvl_cum)
      )
 
