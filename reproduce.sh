@@ -29,10 +29,10 @@ for file in "$texname" "$texname"-NoAppendix "$texname"-Slides; do
     echo '' ; echo "Compiling $file" ; echo ''
     cmd="pdflatex -halt-on-error -output-directory=$output_directory $file"
     eval "$cmd"
-    eval "$cmd" # Hide second output to reduce clutter
+    eval "$cmd > /dev/null" # Hide second output to reduce clutter
     bibtex $output_directory/"$file"
     eval "$cmd" # Hide third output to reduce clutter
-    eval "$cmd" 
+    eval "$cmd > /dev/null" 
     echo '' ; echo "Compiled $file" ; echo ''
 done
 

@@ -24,6 +24,15 @@
   The paper's results \href{https://\owner.github.io/nbreproduce}{can be automatically reproduced} using the \href{https://econ-ark/HARK}{Econ-ARK/HARK} toolkit, which can be cited per our references (\cite{carroll_et_al-proc-scipy-2018}); for reference to the toolkit itself see \href{https://econ-ark.org/acknowledging/}{Acknowleding Econ-ARK}.  Thanks to the \href{https://consumerfinance.gov}{Consumer Financial Protection Bureau} for funding the original creation of the \href{https://econ-ark.org}{Econ-ARK} toolkit; and to the \href{https://sloan.org}{Sloan Foundation} for funding Econ-ARK's \href{https://sloan.org/grant-detail/8071}{extensive further development} that brought it to the point where it could be used for this project.  The toolkit can be cited with its digital object identifier, \href{https://doi.org/10.5281/zenodo.1001067}{10.5281/zenodo.1001067}, as is done in the paper's own references as \cite{carroll_et_al-proc-scipy-2018}.  Thanks to Will Du, James Feigenbaum, Joseph Kaboski, Miles Kimball, Qingyin Ma, Misuzu Otsuka, Damiano Sandri, John Stachurski, Adam Szeidl, Alexis Akira Toda, Metin Uyanik, Mateo Vel\'asquez-Giraldo, Weifeng Wu,  Jiaxiong Yao, and Xudong Zheng for comments on earlier versions of this paper, John Boyd for help in applying his weighted contraction mapping theorem, Ryoji  Hiraguchi for extraordinary mathematical insight that improved the  paper greatly, David Zervos for early guidance to the literature, and participants in a seminar at the Johns Hopkins University, a presentation at the 2009 meetings of the Society of Economic Dynamics for their insights, and at a presentation at the Australian National University.}
 
 
+% Embed metadata
+\hypersetup{pdfauthor={Christopher D. Carroll <ccarroll@jhu.edu>},
+  pdftitle={Theoretical Foundations of Buffer Stock Saving},
+  pdfkeywords={Precautionary saving, buffer-stock saving, consumption, marginal propensity to consume, permanent income hypothesis, income fluctuation problem},
+  pdfcreator = {ccarroll@jhu.edu}
+}
+
+
+
 \begin{document}
 
 % Attempted to make all lines used for Web version contain {Web} (or version with only single curly brace at end) so can be removed with sed
@@ -102,21 +111,18 @@
     \listoftables
   \end{minipage}
 } % {Web}
-
 \pagebreak
-
-%\setkomafont{sectionentry}{\normalfont}
-\hypertarget{Introduction}{}
+ \hypertarget{Introduction}{}
 \section{Introduction}\label{sec:intro}
 \setcounter{page}{0}\pagenumbering{arabic}
 
 In the presence of realistic transitory and permanent shocks to income \textit{a la}~\cite{friedmanATheory} and~\cite{muthOptimal}, only one further ingredient is required to construct a microeconomically testable model of consumption: A description of preferences.  Zeldes~\citeyearpar{zeldesStochastic} was the first to calibrate a quantitatively plausible example, spawning a literature showing that such models' predictions can match household life cycle data reasonably well, whether or not explicit liquidity constraints are imposed.\footnote{See~\cite{carrollBSLCPIH} or~\cite{gpLifeCycle} for arguments that models with only `natural' constraints (see below) match a wide variety of facts; for a model with explicit constraints that produces very similar results, see, e.g.~\cite{Cagetti}.}
 
-A connected literature, starting with~\cite{bewleyPIH}, has derived limiting properties of related infinite-horizon problems -- but only in models more complex than the case with just shocks and preferences, because standard contraction mapping theorems (beginning with~\cite{bellmanDynamicProgramming} and including those building on Stokey et~al.~\citeyearpar{slpMethods}) cannot be applied when utility and/or marginal utility are unbounded. Many proof methods also rule out permanent shocks \textit{a la}~\cite{friedmanATheory} and~\cite{muthOptimal} (and~Zeldes).\footnote{See \hyperlink{DiffFromLit}{the fuller discussion} at the end of Section~\ref{subsec:Setup}.}
+A connected literature, starting with~\cite{bewleyPIH}, has derived limiting properties of related infinite-horizon problems -- but only in models more complex than the case with just shocks and preferences, because standard contraction mapping theorems (beginning with~\cite{bellmanDynamicProgramming} (and including those building on Stokey et~al.~\citeyearpar{slpMethods})) cannot be applied when utility and/or marginal utility are unbounded. Many proof methods also rule out permanent shocks \textit{a la}~\cite{friedmanATheory} and~\cite{muthOptimal} (and~Zeldes).\footnote{See \hyperlink{DiffFromLit}{the fuller discussion} at the end of Section~\ref{subsec:Setup}.}
 
-This paper's first contribution is to articulate conditions under which the infinite-horizon Friedman-Muth(-Zeldes) problem (without complications like a consumption floor or liquidity constraints) defines a contraction mapping whose limit is \href{https://\owner.github.io/BufferStockTheory/\#useful}{useful} (neither zero nor $\infty$) as the horizon recedes.  A \hyperlink{FVAC}{`Finite Value of Autarky Condition'} is mostly sufficient (the other requirement, the \hyperlink{WRIC}{`Weak Return Impatience Condition'},\footnote{This is a generalization of a condition in~\cite{mstIncFluct}.} is unlikely to bind).  Because the infinite-horizon solution is the limit of finite-horizon recursions, many intermediate results are also useful for solving finite-horizon problems.
+This paper's first contribution is to articulate conditions under which the infinite-horizon Friedman-Muth(-Zeldes) problem (without complications like a consumption floor or liquidity constraints) defines a contraction mapping whose limit is \href{https://\owner.github.io/BufferStockTheory/\#useful}{useful} (neither zero nor $\infty$) as the horizon recedes.  A \hyperlink{FVAC}{`Finite Value of Autarky Condition'} is mostly sufficient (the \hyperlink{WRIC}{`Weak Return Impatience Condition'}\footnote{This is a generalization of a condition in~\cite{mstIncFluct}.} is unlikely to bind).  Because the infinite-horizon solution is the limit of finite-horizon recursions, many intermediate results are also useful for solving finite-horizon problems.
 
-But the main theoretical contribution is to identify, for the infinite-horizon case, conditions under which `stable' points exist (wealth can be predicted to move toward a `target'; alternatively, there is a `balanced growth' equilibrium) either for individual consumers or for the aggregate.  The requirement for stability is always that the model's parameters satisfy a `Growth Impatience Condition' whose details depend on the quantity whose stability is of interest.  A model with stable points qualifies as a `buffer stock' model.\footnote{Buffer stock models are neither a subset nor a superset of~\cite{bewleyPIH} models.  But closed economies in which capital accumulation is limited by declining marginal productivity are always `buffer stock' economies, because the declining marginal product of capital guarantees that a Growth Impatience Condition will hold in equilibrium (see below).  The less obvious applications are to populations (or economies) whose marginal saving behavior does not determine the relevant interest rate, or in which the marginal product of capital does not fall as capital is accumulated (again, see below).}
+But the main theoretical contribution is to identify, for the infinite-horizon case, conditions under which `stable' points exist (wealth will move toward a `target'; alternatively, there is a `balanced growth' equilibrium) either for individual consumers or for the aggregate.  The requirement for stability is always that the model's parameters satisfy a `Growth Impatience Condition' whose details depend on the quantity whose stability is of interest.  A model with such stable points qualifies as a `buffer stock' model.\footnote{Buffer stock models are neither a subset nor a superset of~\cite{bewleyPIH} models.  But closed economies in which capital accumulation is limited by declining marginal productivity are always `buffer stock' economies, because the declining marginal product of capital guarantees that a Growth Impatience Condition will hold in equilibrium (see below).  The less obvious applications are to populations (or economies) whose marginal saving behavior does not determine the relevant interest rate, or in which the marginal product of capital does not fall as capital is accumulated (again, see below).}
 
 \hypertarget{KMP}{} Even without a formal proof of its existence, buffer stock saving has been intuitively understood to underlie key results in heterogeneous agent macroeconomics; for example, the logic of target saving is central to the claim by~\cite{kmpHandbook} in the \textit{Handbook of Macroeconomics} that such models explain why, during the Great Recession, middle-class consumers cut their spending more than the poor or the rich.  Theory below provides the rigorous basis for this claim:  Learning that the future has become more uncertain does not change the urgent imperatives of the poor (their high $\uFunc^{\prime}(\cNrm)$ means they --- optimally --- have little room to maneuver).  And, increased labor income uncertainty does not much change the behavior of the rich because it poses little risk to their consumption.  Only people in the middle have both the motivation and the wiggle-room to respond to uncertainty by substantially reducing their spending.  Analytical derivations required for the proofs also explain many other results familiar from the numerical literature.
 
@@ -242,7 +248,7 @@ Now, in a one-time deviation from the notational convention established in the l
 %    \end{align*}
   \end{split}
 \end{equation}
-where $\Rnorm_{t+1}\equiv (\Rfree/\PGro_{t+1})$ is a `permanent-income-growth-normalized' return factor, and the reformulated problem's first order condition is\footnote{Leaving aside their assumptions about the marginal utility function and liquidity constraints, it is tempting to view this as a special case of the model of MST, with our $\Rnorm_{t+1}=\Rfree/\PGro_{t+1}$ (defined below equation~\eqref{eq:veqn}) corresponding to their stochastic rate of return on capital and the {\VAF} $\DiscFac \PGro_{t+1}^{1-\CRRA}$ defined below~\eqref{eq:FVAC} corresponding to their stochastic discount factor.  A caveat is that, here, $\Rnorm_{t+1}$ and the modified discount factor are intimately connected (through $\PGro_{t+1}$), which has profound effects.}%  It would be interesting, and should not be too difficult, to examine the case with independent shocks to the rate of return and productivity growth.
+where $\Rnorm_{t+1}\equiv (\Rfree/\PGro_{t+1})$ is a `permanent-income-growth-normalized' return factor, and the reformulated problem's first order condition is\footnote{Leaving aside their assumptions about the marginal utility function and liquidity constraints, it is tempting to view this as a special case of the model of MST, with our $\Rnorm_{t+1}=\Rfree/\PGro_{t+1}$ (defined below equation~\eqref{eq:veqn}) corresponding to their stochastic rate of return on capital and the {\VAFDfn} $\DiscFac \PGro_{t+1}^{1-\CRRA}$ defined below~\eqref{eq:FVAC} corresponding to their stochastic discount factor.  A caveat is that, here, $\Rnorm_{t+1}$ and the modified discount factor are intimately connected (through $\PGro_{t+1}$), which has profound effects.}%  It would be interesting, and should not be too difficult, to examine the case with independent shocks to the rate of return and productivity growth.
 \begin{align}
   c_{t}^{-\CRRA}  & = \Rfree \DiscFac \Ex_{t}[ {\PGro}_{t+1}^{-\CRRA} {\cNrm}
                     _{t+1}^{-\CRRA}].  \label{eq:scaledeuler}
@@ -283,7 +289,7 @@ The dynamic budget constraint, strictly positive marginal utility, and the can't
 \begin{align}
   \mathrm{PDV}_{t}(\cLvl)  & = \overbrace{\mLvl_{t}-\pLvl_{t}}^{\bLvl_{t}}+\overbrace{\mathrm{PDV}_{t}(\pLvl)}^{\hLvl_{t}}, \label{eq:IBCFinite}
 \end{align} \hypertarget{FHWF}{}
-where $\bLvl$ is nonhuman wealth, and with a constant $\Rnorm \equiv \Rfree/\PGro$ `human wealth' is
+where $\bLvl$ is beginning-of-period `market' balances, with$\Rnorm \equiv \Rfree/\PGro$ `human wealth' is
 \begin{align}
   \hLvl_{t}  & = \pLvl_{t}+\Rnorm^{-1} \pLvl_{t} + \Rnorm^{-2} \pLvl_{t} + \cdots + \Rnorm^{t-T} \pLvl_{t} \notag
   \\  & = \underbrace{\left(\frac{1-\Rnorm^{-(T-t+1)}}{1-\Rnorm^{-1}}\right)}_{\equiv \hNrm_{t}}\pLvl_{t} \label{eq:HDef}.
@@ -301,18 +307,18 @@ Without constraints, the consumption Euler equation always holds; with $\uP(\cLv
 \begin{align}
   \cLvl_{t+1}/\cLvl_{t}  & = \underbrace{{(\Rfree\DiscFac)}^{1/\CRRA}}_{\equiv \Pat}   \label{eq:Pat}
 \end{align}
-where the archaic letter \href{https://en.wikipedia.org/wiki/Thorn_(letter)}{`thorn'} represents what we will call the `Absolute Patience Factor' \hypertarget{APF}{({\APF})} because, if the `absolute impatience condition' (\AIC) holds,\footnote{Impatience conditions have figured in intertemporal optimization problems since the beginning, e.g.\ in~\cite{ramseySave}.  These issues are so central that it would be hopeless to attempt to cite conditions in every other paper that correspond to conditions named and briefly exposited here.  I make no claim to novelty for any condition aside from those implicated in my theorems, whose forerunners \textit{will} be articulated.}
+where the archaic letter \href{https://en.wikipedia.org/wiki/Thorn_(letter)}{`thorn'} represents what we will call the `Absolute Patience Factor' \hypertarget{APFDfn}{({\APFDfn})} because, if the `absolute impatience condition' (\AIC) holds,\footnote{Impatience conditions have figured in intertemporal optimization problems since the beginning, e.g.\ in~\cite{ramseySave}.  These issues are so central that it would be hopeless to attempt to cite conditions in every other paper that correspond to conditions named and briefly exposited here.  I make no claim to novelty for any condition aside from those implicated in my theorems, whose forerunners \textit{will} be articulated.}
 \begin{align}
   \label{eq:AIC}
 \text{\AIC:~~}  \Pat  & < 1, \phantom{\text{\AIC:~~}}
 \end{align}
-the consumer's level of spending will be too large to sustain indefinitely.  We call such a consumer `absolutely impatient.'\hypertarget{RPF}{}
+the consumer's level of spending will be too large to sustain indefinitely.  We call such a consumer `absolutely impatient.'\hypertarget{RPFDfn}{}
 
 %(Here, we interpret the time preference factor $\DiscFac$ as inclusive of any discounting that reflects the standard \cite{BlanchardFinite}-\cite{yaari1965uncertain} Poisson-Bernoulli mortality).
 
-A `Return Patience Factor' ({\RPF}) relates absolute patience to the return factor:
+A `Return Patience Factor' ({\RPFDfn}) relates absolute patience to the return factor:
 \begin{align}
-\text{\RPF:~~}  \PatR  & \equiv  {\Pat}/\Rfree \phantom{\text{\RPF:~~}}\label{eq:PatR}
+\text{\RPFDfn:~~}  \PatR  & \equiv  {\Pat}/\Rfree \phantom{\text{\RPF:~~}}\label{eq:PatR}
 \end{align}
 and since consumption is growing by $\Pat$ but discounted by $\Rfree$:
 \begin{align}
@@ -328,9 +334,9 @@ defining a normalized finite-horizon perfect foresight consumption function:
   \bar{\cFunc}_{T-n}(\mNrm_{T-n})  & = (\overbrace{\mNrm_{T-n}-1}^{
                                      \equiv\bNrm_{T-n}}+\hNrm_{T-n})\MinMPC_{T-n}
 \end{align}
-where $\MinMPC_{t}$ is the marginal propensity to consume (MPC) --- it answers the question `if the consumer had an extra unit of resources, how much more spending would occur?'  ($\bar{\cFunc}$'s overbar signfies that $\bar{\cFunc}$ will be an upper bound as we modify the problem to incorporate constraints and uncertainty; analogously, $\MinMPC$ is a lower bound for the MPC).
+where $\MinMPC_{t}$ is the marginal propensity to consume (MPC) --- it answers the question `if the consumer had an extra unit of resources, how much more spending would occur?'  ($\bar{\cFunc}$'s overbar signifies that $\bar{\cFunc}$ will be an upper bound as we modify the problem to incorporate constraints and uncertainty; analogously, $\MinMPC$ is a lower bound for the MPC).
 
-The denominator of~\eqref{eq:WDef} is the reason that, for $\underbar{\MPC}$ to be strictly positive as $n=T-t$ goes to infinity, we must impose the Return Impatience Condition:
+The denominator of~\eqref{eq:WDef} is why, for $\underbar{\MPC}$ to be strictly positive as $n=T-t$ goes to infinity, we must impose the Return Impatience Condition:
 \begin{align}
 \text{\RIC:~~}  \PatR  & < 1,   \phantom{\text{\RIC:~~}} \label{eq:RIC}
 \end{align}
@@ -346,27 +352,25 @@ The {\RIC} thus implies that the consumer cannot be so pathologically patient as
 \subsubsection{Nondegenerate PF Unconstrained Solution Requires {\FHWC}}\label{subsec:PFUncon}
 \hypertarget{AIC}{}
 
-
 Given that the {\RIC}~holds, and (as before) defining limiting objects by the absence of a time subscript, the limiting upper bound consumption function will be
 \begin{align}\label{eq:cFuncPFUnc}
   \bar{\cFunc}(\mNrm)  & = (\mNrm+\hNrm-1)\MinMPC,
 \end{align}
 and so in order to rule out the degenerate limiting solution $\bar{\cFunc}(\mNrm) = \infty$ we need $\hNrm$ to be finite; that is, we must impose the Finite Human Wealth Condition~\eqref{eq:FHWC}.
 
-\hypertarget{GPFRaw}{}\hypertarget{GIC}{}
-\subsubsection{The Growth Impatience Condition ({\GIC})}\label{subsubsec:GIC}
-By analogy to the \RPF, we define a `growth patience factor' as
+\hypertarget{GPFRawDfn}{}\hypertarget{GIC}{}
+\subsubsection{The Growth Impatience Condition ({\GICRaw})}\label{subsubsec:GIC}
+By analogy to the \RPFDfn, we define a `growth patience factor' as
 \begin{equation}\begin{gathered}\begin{aligned}
- \text{{\GPFRaw}:~~} && \PatPGro= {\Pat}/\PGro,  &   \label{eq:GPFRaw}
+ \text{{\GPFRawDfn}:~~} && \PatPGro= {\Pat}/\PGro,  &   \label{eq:GPFRaw}
 \end{aligned}\end{gathered}\end{equation}
-and define a `growth impatience condition':
+which defines a `growth impatience condition':
 \begin{verbatimwrite}{\EqDir/GICRaw}
 \begin{equation}\begin{gathered}\begin{aligned}
-    \text{\GIC:~~}  &&  \PatPGro  < 1 \phantom{/\PGro}&  \phantom{\text{\GIC:~~}} \label{eq:GICRaw}
+    \text{\GIC:~~}  &&  \PatPGro  < 1. \phantom{/\PGro}&  \phantom{\text{\GIC:~~}} \label{eq:GICRaw}
 \end{aligned}\end{gathered}\end{equation}
 \end{verbatimwrite}
 \input{\LtxDir\EqDir/GICRaw}
-which is equivalent to~\eqref{eq:LiqConstrBinds} (exponentiate both sides by $1/\CRRA$).
 
 \hypertarget{ValuePFAnalytical}{}
 \hypertarget{Autarky-Value-PF}{}
@@ -381,17 +385,17 @@ Under `autarky,' capital markets do not exist; the consumer has no choice but to
 \end{aligned}\end{gathered}\end{equation}
 which (for $\PGro>0$) asymptotes to a finite number as $n=T-t$ approaches $+\infty$ if any of these equivalent conditions holds:
 \begin{equation}\begin{gathered}\begin{aligned}  \label{eq:PFFVAC}
-\text{\PFFVAC:~~}      \overbrace{\DiscFac \PGro^{1-\CRRA} }^{\equiv \DiscAlt} < & 1  \phantom{\text{\PFFVAC:~~}} \notag 
+\text{\PFFVAC:~~}      \overbrace{\DiscFac \PGro^{1-\CRRA} }^{\equiv \DiscAlt} < & 1  \phantom{\text{\PFFVAC:~~}} 
 \\    \DiscFac \Rfree \PGro^{-\CRRA}   <  & \Rfree/\PGro   \equiv \Rnorm
-      \\  \PatR    < & \Rnorm^{1-1/\CRRA},  \notag
+      \\  \PatR    < & \Rnorm^{1-1/\CRRA},  
 \end{aligned}\end{gathered}\end{equation}
-where we call $\DiscAlt$\footnote{This is another kind of discount factor, so we use the Hebrew `bet' which is a cognate of the Greek `beta'.} the `Perfect Foresight Value Of Autarky Factor' ({\PFVAF}), and the variants of~\eqref{eq:PFFVAC} constitute alternative versions of the Perfect Foresight Finite Value of Autarky Condition, \PFFVAC; they guarantee that a perfect-foresight consumer who always spends all permanent income `has finite autarky value.'\footnote{This is related to the key impatience condition in~\cite{asHomogeneous}.} % chktex 13
+where we call $\DiscAlt$\footnote{This is another kind of discount factor, so we use the Hebrew `bet' which is a cognate of the Greek `beta'.} the `Perfect Foresight Value Of Autarky Factor' ({\PFVAFDfn}), and the variants of~\eqref{eq:PFFVAC} constitute alternative versions of the Perfect Foresight Finite Value of Autarky Condition; they guarantee that a perfect-foresight consumer who always spends all permanent income `has finite autarky value.'\footnote{This is related to the key impatience condition in~\cite{asHomogeneous}.} % chktex 13
 
 If the {\FHWC} is satisfied, the {\PFFVAC} implies that the {\RIC} is satisfied.\footnote{Divide both sides of the second inequality in~\eqref{eq:PFFVAC} by $\Rfree$:
   \begin{align}
     \Pat/\Rfree & < {(\PGro/\Rfree)}^{1-1/\CRRA}  \label{eq:FHWCandPFFVACimplyRIC}
   \end{align}
-  and {\FHWC} $\Rightarrow$ the RHS is $< 1$ because $(\PGro/\Rfree) < 1$ (and the RHS is raised to a positive power (because $\CRRA>1$)).}  Likewise, if the {\FHWC} and the {\GIC} are both satisfied, {\PFFVAC} follows:
+  and {\FHWC} $\Rightarrow$ the RHS is $< 1$ because $(\PGro/\Rfree) < 1$ (and the RHS is raised to a positive power (because $\CRRA>1$)).}  Likewise, if the {\FHWC} and the {\GICRaw} are both satisfied, {\PFFVAC} follows:
 \begin{equation}\label{eq:GICandFHWCimplyPFFVAC}
   \begin{split}
     \Pat & < \PGro < \Rfree
@@ -400,7 +404,7 @@ If the {\FHWC} is satisfied, the {\PFFVAC} implies that the {\RIC} is satisfied.
 \end{equation}
 (the last line holds because {\FHWC} $\Rightarrow 0 \leq (\PGro/\Rfree) < 1$ and $\CRRA > 1 \Rightarrow 0 < 1-1/\CRRA < 1$).
 
-The first panel of Table~\ref{table:Required} summarizes: The PF-Unconstrained model has a nondegenerate limiting solution if we impose the {\RIC} and {\FHWC} (these conditions are necessary as well as sufficient).  Together the {\PFFVAC} and the {\FHWC} imply the {\RIC}.  If we impose the {\GIC} and the {\FHWC}, both the {\PFFVAC} and the {\RIC} follow, so {\GIC}+{\FHWC} are also sufficient.  But there are circumstances under which the {\RIC} and {\FHWC} can hold while the {\PFFVAC} fails (`\cncl{\PFFVAC}').  For example, if $\PGro=0$, the problem is a standard `cake-eating' problem with a nondegenerate solution under the {\RIC} (when the consumer has access to capital markets).% chktex 10
+The first panel of Table~\ref{table:Required} summarizes: The PF-Unconstrained model has a nondegenerate limiting solution if we impose the {\RIC} and {\FHWC} (these conditions are necessary as well as sufficient).  Together the {\PFFVAC} and the {\FHWC} imply the {\RIC}.  If we impose the {\GICRaw} and the {\FHWC}, both the {\PFFVAC} and the {\RIC} follow, so {\GICRaw}+{\FHWC} are also sufficient.  But there are circumstances under which the {\RIC} and {\FHWC} can hold while the {\PFFVAC} fails (`\cncl{\PFFVAC}').  For example, if $\PGro=0$, the problem is a standard `cake-eating' problem with a nondegenerate solution under the {\RIC} (when the consumer has access to capital markets).% chktex 10
 
 More useful than this prose or a table is the diagrammatic relation of the conditions shown in Figure~\ref{fig:RelatePFGICFHWCRICPFFVAC}.  Each node represents a quantity considered in the foregoing analysis.  The arrow associated with each inequality reflects imposition of that condition.  For example, one way we wrote the {\PFFVAC} in equation~\eqref{eq:PFFVAC} is $\Pat < \Rfree^{1/\CRRA} \PGro^{1-1/\CRRA}$, so imposition of the {\PFFVAC} is captured by the diagonal arrow connecting $\Pat$ and $\Rfree^{1/\CRRA}\PGro^{1-1/\CRRA}$.  Traversing the boundary of the diagram clockwise starting at $\Pat$ involves imposing first the {\GICRaw} then the {\FHWC}, and the consequent arrival at the bottom right node tells us that these two conditions jointly imply the {\PFFVAC}.  Reversal of a condition reverses the arrow's direction; so, for example, the bottom-most arrow going to $\Rfree^{1/\CRRA}\PGro^{1-1/\CRRA}$ imposes {\cncl{\FHWC}}; but we can cancel the cancellation and reverse the arrow.  This would allow us to traverse the diagram in a clockwise direction from $\Pat$  through $\PGro$ to $\Rfree^{1/\CRRA}\PGro^{1-1/\CRRA}$ to $\Rfree$, revealing that imposition of {\GICRaw} and {\FHWC} (and, redundantly, {\FHWC} again) let us conclude that the {\RIC} holds because the starting point is $\Pat$ and the endpoint is $\Rfree$.  (Consult Appendix~\ref{sec:ApndxConditionDiagrams} for a detailed exposition of diagrams of this type).
 
@@ -420,11 +424,11 @@ If a liquidity constraint requiring $\bNrm \geq 0$ is ever to be relevant, it mu
 \begin{align}
   1^{-\CRRA}  & > \Rfree \DiscFac \PGro^{-\CRRA}1^{-\CRRA},  \label{eq:LiqConstrBinds}
 \end{align}
-which is just a restatement of the {\GIC}.
+which is just a restatement of the {\GICRaw}.
 
 We now examine implications of possible configurations of the conditions.
 
-\textit{\cncl{\GICRaw} and {\RIC}.}  If the {\GICRaw} fails but the {\RIC}~\eqref{eq:RIC} holds, Appendix~\ref{sec:ApndxLiqConstr} shows that, for some $0 < \mNrm_{\#} < 1$, an unconstrained consumer behaving according to~\eqref{eq:cFuncPFUnc} would choose $\cNrm < \mNrm$ for all $\mNrm > \mNrm_{\#}$.  In this case the solution to the constrained consumer's problem is simple: For any $\mNrm \geq \mNrm_{\#}$ the constraint does not bind (and will never bind in the future); for such $\mNrm$ the constrained consumption function is identical to the unconstrained one.  If the consumer were somehow\footnote{``Somehow'' because $\mNrm<1$ could only be obtained by entering the period with $\bNrm < 0$ which the constraint forbids.} to arrive at an $\mNrm < \mNrm_{\#} < 1$ the constraint would bind and the consumer would consume $\cNrm=\mNrm$.  Using $\cnstr{\bullet}$ for the version of a function $\bullet$ in the presence of constraints (and recalling that $\bar{\cFunc}(\mNrm)$ is the unconstrained perfect foresight solution):
+\textit{\cncl{\GICRaw} and {\RIC}.}  If the {\GICRaw} fails but the {\RIC}~\eqref{eq:RIC} holds, Appendix~\ref{sec:ApndxLiqConstr} shows that, for some $0 < \mNrm_{\#} < 1$, an unconstrained consumer behaving according to the perfect foresight solution~\eqref{eq:cFuncPFUnc} would choose $\cNrm < \mNrm$ for all $\mNrm > \mNrm_{\#}$.  In this case the solution to the constrained consumer's problem is simple: For any $\mNrm \geq \mNrm_{\#}$ the constraint does not bind (and will never bind in the future); for such $\mNrm$ the constrained consumption function is identical to the unconstrained one.  If the consumer were somehow\footnote{``Somehow'' because $\mNrm<1$ could only be obtained by entering the period with $\bNrm < 0$ which the constraint forbids.} to arrive at an $\mNrm < \mNrm_{\#} < 1$ the constraint would bind and the consumer would consume $\cNrm=\mNrm$.  Using $\cnstr{\bullet}$ for the version of a function $\bullet$ in the presence of constraints (and recalling that $\bar{\cFunc}(\mNrm)$ is the unconstrained perfect foresight solution):
 \begin{equation*}
   \cnstr{\cFunc}(\mNrm)=
   \begin{cases}
@@ -435,7 +439,7 @@ We now examine implications of possible configurations of the conditions.
 
 \textit{{\GICRaw} and {\RIC}.}  More useful is the case where the return impatience and {\GICRaw} conditions both hold.  In this case Appendix~\ref{sec:ApndxLiqConstr} shows that the limiting constrained consumption function is piecewise linear, with $\cnstr{\cFunc}(\mNrm)=\mNrm$ up to a first `kink point' at $\mNrm_{\#}^{0}>1$, and with discrete declines in the MPC at a set of kink points $\{\mNrm_{\#}^{1},\mNrm_{\#}^{2},\ldots\}$.  As $\mNrm \uparrow \infty$ the constrained consumption function $\cnstr{\cFunc}(\mNrm)$ becomes arbitrarily close to the unconstrained $\bar{\cFunc}(\mNrm)$, and the marginal propensity to consume function $\cnstr{\MPCFunc}(\mNrm) \equiv \cnstr{\cFunc}^{\prime}(\mNrm)$ limits to $\MinMPC$.\footnote{See~\cite{chkLiqConstr} for details.}  Similarly, the value function $\cnstr{\vFunc}(\mNrm)$ is nondegenerate and limits into the value function of the unconstrained consumer.
 
-This logic holds even when the finite human wealth condition fails (\cncl{\FHWC}), because the constraint prevents the (limiting) consumer\footnote{That is, one obeying $\cFunc(\mNrm) = \lim_{n \uparrow \infty} \cFunc_{T-n}(\mNrm)$.} from borrowing against unbounded human wealth to finance unbounded current consumption.  Under these circumstances, the consumer who starts with any $\bNrm_{t} > 0$ will, over time, run those resources down so that by some finite number of periods $\tau$ in the future the consumer will reach $\bNrm_{t+\tau} = 0$, and thereafter will set $\cLvl = \pLvl$ for eternity (which the {\PFFVAC} says yields finite value).  Using the same steps as for equation~\eqref{eq:ValuePFAnalyticalAutarky}, value of the interim program is also finite: \hypertarget{PFFVAC}{} \hypertarget{PFVAF}{}
+This logic holds even when the finite human wealth condition fails (\cncl{\FHWC}), because the constraint prevents the (limiting) consumer\footnote{That is, one obeying $\cFunc(\mNrm) = \lim_{n \uparrow \infty} \cFunc_{T-n}(\mNrm)$.} from borrowing against unbounded human wealth to finance unbounded current consumption.  Under these circumstances, the consumer who starts with any $\bNrm_{t} > 0$ will, over time, run those resources down so that by some finite number of periods $\tau$ in the future the consumer will reach $\bNrm_{t+\tau} = 0$, and thereafter will set $\cLvl = \pLvl$ for eternity (which the {\PFFVAC} says yields finite value).  Using the same steps as for equation~\eqref{eq:ValuePFAnalyticalAutarky}, value of the interim program is also finite: \hypertarget{PFFVAC}{} \hypertarget{PFVAFDfn}{}
 \begin{align*}
   \vLvl_{t+\tau} 
   & = \PGro^{\tau(1-\CRRA)} \uFunc(\pLvl_{t})\left(\frac{1-{(\DiscFac \PGro^{1-\CRRA})}^{T-(t+\tau)+1}}{1-\DiscFac \PGro^{1-\CRRA}}\right).
@@ -447,14 +451,14 @@ So, even under \cncl{\FHWC}, the limiting consumer's value for any finite $\mNrm
 
 Tables~\ref{table:Comparison} and~\ref{table:Required} (and appendix table~\ref{table:LiqConstrScenarios}) codify.
 
-We now examine the case with uncertainty but without constraints, which will turn out to be a close parallel to the model with constraints but without uncertainty.
+We now examine the case with uncertainty but without constraints, which turns out to be a close parallel to the model with constraints but without uncertainty.
 
 \hypertarget{Uncertainty-Modified-Conditions}{}
 \subsection{Uncertainty-Modified Conditions}\label{subsec:UncertaintyModifiedConditions}
 \hypertarget{GICNrm}{}
 \subsubsection{A Normalized Growth Impatience Condition ({\GICNrm})}
 
-When uncertainty is introduced, the expectation of beginning-of-period bank balances $\bNrm_{t+1}$ can be rewritten as:
+When noncapital income uncertainty is introduced, the expectation of beginning-of-period bank balances $\bNrm_{t+1}$ can be rewritten as:
 \begin{align*}
   \Ex_{t}[\bNrm_{t+1}]  & =  \aNrm_{t}\Ex_{t}[(\Rfree/\PGro_{t+1})] = \aNrm_{t}(\Rfree/\PGro)\Ex_{t}[\pShk_{t+1}^{-1}] %\label{eq:EbNrm}
 \end{align*}
@@ -463,37 +467,37 @@ where Jensen's inequality guarantees that the expectation of the inverse of the 
   \InvEpShkInv  & \equiv  {(\EpShkInv)}^{-1} \label{eq:InvEpShkInv}
 \end{align}
 which satisfies $\InvEpShkInv < 1$ (thanks again to Mr.\ Jensen), so it is convenient to define
-\begin{verbatimwrite}{\EqDir/PGroAdj}
+\begin{verbatimwrite}{\EqDir/PermGroFacAdj}
   \begin{align}
-    \PGroAdj & \equiv \PGro \InvEpShkInv < \PGro \notag %\label{eq:PGroAdj}
+    \PermGroFacAdj & \equiv \PGro \InvEpShkInv < \PGro \notag %\label{eq:PermGroFacAdj}
   \end{align}
 \end{verbatimwrite}
-\input{\LtxDir\EqDir/PGroAdj}
-because this allows us to write uncertainty-adjusted versions of equations and conditions in a manner exactly parallel to those for the perfect foresight case; for example, we define a normalized Growth Patience Factor:
-\hypertarget{GICNrmI}{}\hypertarget{PermGroAdj}{}\hypertarget{GPFNrm}{}
-\begin{verbatimwrite}{\EqDir/PatPGroAdj}
+\input{\LtxDir\EqDir/PermGroFacAdj}
+because this allows us to write uncertainty-adjusted versions of earlier equations and conditions in a manner exactly parallel to those for the perfect foresight case; for example, we define a normalized Growth Patience Factor:
+\hypertarget{GICNrmI}{}\hypertarget{PermGroAdj}{}\hypertarget{GPFNrmDfn}{}
+\begin{verbatimwrite}{\EqDir/PatPermGroFacAdj}
   \begin{align}
-\text{{\GPFNrm}:~~}    \PatPGroAdj  & = \Pat/\PGroAdj = \Ex[\Pat/(\PGro\pShk)]  \phantom{\text{{\GPFNrm}:~~}} \label{eq:GPFNrm}
+\text{{\GPFNrmDfn}:~~}    \PatPermGroFacAdj  & = \Pat/\PermGroFacAdj = \Ex[\Pat/(\PGro\pShk)]  \phantom{\text{{\GPFNrm}:~~}} \label{eq:GPFNrm}
   \end{align}
 \end{verbatimwrite}
-\input{\LtxDir\EqDir/PatPGroAdj}
+\input{\LtxDir\EqDir/PatPermGroFacAdj}
 \begin{comment}
   and the proof of Theorem~\ref{thm:MSSBalExists} below yields the conclusion that
   \begin{align*}
-    \lim_{\mNrm_{t} \rightarrow \infty} \Ex_{t}[\mNrm_{t+1}/\mNrm_{t}]  & = \PatPGroAdj,
+    \lim_{\mNrm_{t} \rightarrow \infty} \Ex_{t}[\mNrm_{t+1}/\mNrm_{t}]  & = \PatPermGroFacAdj,
   \end{align*}
   which implies that if we wish to prevent $\mNrm$ from heading to infinity (that is, if we want $\mNrm$ to be expected to fall for some large enough value of $m$) we must impose a modified version of the Growth Impatience Condition~\eqref{eq:GICRaw}; we call the `Normalized Growth Impatience Condition' (\GICNrm) the requirement that the Normalized Growth Patience Factor~\eqref{eq:GPFNrm} must be less than 1:\footnote{Under our assumption that $\CRRA>1$, equation~\eqref{eq:GICNrm} is a bit easier to satisfy than the similar condition imposed by Deaton~\citeyearpar{deatonLiqConstr}: $\left(\Ex[\pShk^{-\CRRA}]\right)^{1/\CRRA} \PatPGro < 1$ to guarantee that his problem defined a contraction mapping.}
 \end{comment}
-and a normalized version of the Growth Impatience Condition:
+with a corresponding normalized version of the Growth Impatience Condition:
 \begin{verbatimwrite}{\EqDir/GICNrm}
   \begin{align}
-\text{{\GICNrm}:~~}    \PatPGroAdj  & < 1, \phantom{\text{{\GICNrm}:~~}}\label{eq:GICNrm}
+\text{{\GICNrm}:~~}    \PatPermGroFacAdj  & < 1, \phantom{\text{{\GICNrm}:~~}}\label{eq:GICNrm}
   \end{align}\end{verbatimwrite}
 \input{\LtxDir\EqDir/GICNrm}
-that is stronger than the perfect foresight version~\eqref{eq:GICRaw} because $\PGroAdj < \PGro$.
+that is stronger than the perfect foresight version~\eqref{eq:GICRaw} because $\PermGroFacAdj < \PGro$.
 \begin{comment}
   \begin{align}
-    \PGroAdj & < \PGro \label{eq:PGroAdjLTPGro}.
+    \PermGroFacAdj & < \PGro \label{eq:PermGroFacAdjLTPGro}.
   \end{align}
 \end{comment}
 
@@ -512,23 +516,23 @@ suggesting the definition of a utility-compensated equivalent of the permanent s
 which will satisfy $\uInvEpShkuInv < 1$ for $\CRRA>1$ and nondegenerate $\pShk$.% (and $\uInvEpShkuInv < \InvEpShkInv$ for the reasonable (though not required) case of $\CRRA > 2$);
 \hypertarget{DiscAltuAdj}{} Defining
 \begin{equation}
-  \label{eq:PGrouAdj}
-  \PGrouAdj = \PGro \uInvEpShkuInv,
+  \label{eq:PermGroFacAdj}
+  \PermGroFacAdj = \PGro \uInvEpShkuInv,
 \end{equation}
 $\vLvl_{t}$ will be positive and finite as $T$ approaches $\infty$ if\hypertarget{FVAC}{}
 \begin{verbatimwrite}{\EqDir/FVAC}
   \begin{equation}\label{eq:FVAC}
     \begin{split}
-\text{{\FVAC}:~~}      0 < \overbrace{\DiscFac \PGrouAdj^{1-\CRRA} }^{\equiv \DiscAltuAdj~=~\text{\VAF}}  & < 1 \phantom{\text{{\FVAC}:~~}}
-      \\ 0 < \DiscFac  & < \PGrouAdj^{\CRRA-1} .
+\text{{\FVAC}:~~}      0 < \overbrace{\DiscFac \PermGroFacAdj^{1-\CRRA} }^{\equiv \DiscAltuAdj~=~\text{\VAFDfn}}  & < 1 \phantom{\text{{\FVAC}:~~}}
+      \\ 0 < \DiscFac  & < \PermGroFacAdj^{\CRRA-1} .
     \end{split}
   \end{equation}
 \end{verbatimwrite}
 {\input{\LtxDir\EqDir/FVAC}}
 
-We call \eqref{eq:FVAC} the `finite value of autarky condition' because it guarantees that value is finite for a consumer who always consumes their (now stochastic) permanent income (and $\DiscAltuAdj$ is the `Value of Autarky Factor' (or `{\VAF}')).\footnote{In a stationary environment --- that is, with $\PGrouAdj=1$ --- this corresponds to an impatience condition imposed by~\cite{mstIncFluct}; but their remaining conditions do not correspond to those here, because their problem differs and their method of proof differs.}  For nondegenerate $\pShk$, this condition is stronger (harder to satisfy in the sense of requiring lower $\DiscFac$) than the perfect foresight version~\eqref{eq:PFFVAC} because $\PGrouAdj < \PGro$.\footnote{Rewrite~\eqref{eq:FVAC} as
+We call \eqref{eq:FVAC} the `finite value of autarky condition' because it guarantees that value is finite for a consumer who always consumes their (now stochastic) permanent income (and $\DiscAltuAdj$ is the `Value of Autarky Factor' (or `{\VAFDfn}')).\footnote{In a stationary environment --- that is, with $\PermGroFacAdj=1$ --- this corresponds to an impatience condition imposed by~\cite{mstIncFluct}; but their remaining conditions do not correspond to those here, because their problem differs and their method of proof differs.}  For nondegenerate $\pShk$, this condition is stronger (harder to satisfy in the sense of requiring lower $\DiscFac$) than the perfect foresight version~\eqref{eq:PFFVAC} because $\PermGroFacAdj < \PGro$.\footnote{Rewrite~\eqref{eq:FVAC} as
   \begin{align*}
-    \DiscFac \Rfree & < \Rfree \PGrouAdj^{\CRRA-1}
+    \DiscFac \Rfree & < \Rfree \PermGroFacAdj^{\CRRA-1}
     \\ {(\DiscFac \Rfree)}^{1/\CRRA}  & < \Rfree^{1/\CRRA} \PGro^{1-1/\CRRA} \uInvEpShkuInv^{1-1/\CRRA}
     \\ \PatPGro & < {(\Rfree/\PGro)}^{1/\CRRA} \uInvEpShkuInv^{1-1/\CRRA}
   \end{align*}
@@ -558,9 +562,9 @@ In the figure, the consumption rules appear to converge to a nondegenerate $\usu
 
 \subsection{Concave Consumption Function Characteristics}\label{sec:cExists}
 
-A precondition for the main proof is that the maximization problem defines a sequence of continuously differentiable strictly increasing strictly concave\footnote{With one obvious exception: $\usual{\cFunc}_{T}(\mNrm)$ is linear (and so only weakly concave).} functions $\{\cFunc_{T},\cFunc_{T-1},\ldots\}$.  The straightforward but tedious proof is relegated to Appendix~\ref{sec:ApndxcExists}.  For present purposes, the most important point is that the income process induces what~\cite{aiyagari:ge} dubbed a `natural borrowing constraint':  $\usual{\cFunc}_{t}(\mNrm) < m$ for all periods $t < T$ because a consumer who spent all available resources would arrive in period $t+1$ with balances $b_{t+1}$ of zero, and then might earn zero income over the remaining horizon, risking the possibility of a requirement to spend zero, yielding negative infinite utility.  To avoid this calamity, the consumer never spends everything.~~\cite{zeldesStochastic} seems to have been the first to argue, based on his numerical results, that the natural borrowing constraint was a quantitatively plausible alternative to `artificial' or `ad hoc' borrowing constraints.\footnote{The same (numerical) point applies for infinite horizon models (calibrated to actual empirical data on household income dynamics); cf.~\cite{carrollBrookings}.}
+A precondition for the main theorem is that the maximization problem defines a sequence of continuously differentiable strictly increasing strictly concave\footnote{With one obvious exception: $\usual{\cFunc}_{T}(\mNrm)$ is linear (and so only weakly concave).} functions $\{\cFunc_{T},\cFunc_{T-1},\ldots\}$.  The straightforward but tedious proof is relegated to Appendix~\ref{sec:ApndxcExists}.  For present purposes, the important point is that the income process induces what~\cite{aiyagari:ge} dubbed a `natural borrowing constraint':  $\usual{\cFunc}_{t}(\mNrm) < m$ for all periods $t < T$ because a consumer who spent all available resources would arrive in period $t+1$ with balances $b_{t+1}$ of zero, and then might earn zero income over the remaining horizon, risking the possibility of a requirement to spend zero, yielding negative infinite utility.  To avoid this calamity, the consumer never spends everything.~~\cite{zeldesStochastic} seems to have been the first to argue, based on his numerical results, that the natural borrowing constraint was a quantitatively plausible alternative to `artificial' or `ad hoc' borrowing constraints.\footnote{The same (numerical) point applies for infinite horizon models (calibrated to actual empirical data on household income dynamics); cf.~\cite{carrollBrookings}.}
 
-Strict concavity and continuous differentiability of the consumption function are key elements in many of the arguments below, but are not characteristics of models with `artificial' borrowing constraints (we will see below that the analytical convenience of these features is considerable).% --- a point that may appeal to theorists when they realize (cf.\ Section~\ref{sec:LiqConstrAsLimit} below) that the solution to this congenial problem is arbitraily close to the solution to the constrained but less wieldy problem with explicit constraints.
+Strict concavity and continuous differentiability of the consumption function are key elements in many of the arguments below, but are not characteristics of models with `artificial' borrowing constraints (though the analytical convenience of these features is considerable -- see below).
 
 \hypertarget{Bounds-for-the-Consumption-Functions}{}
 \subsection{Bounds for the Consumption Functions}\label{subsec:cFuncBounds}
@@ -576,7 +580,7 @@ Under our imposed assumption that human wealth is finite, the MPC bound as wealt
 \end{align}
 \subsubsection{The Weak RIC Condition ({\WRIC})}{}\label{sec:WRIC}
 \hypertarget{MPCnvrsUpper}{}
-\hypertarget{WRIC}{}\hypertarget{WRPF}{}
+\hypertarget{WRIC}{}\hypertarget{WRPFDfn}{}
 Appendix equation~\eqref{eq:MaxMPCInvApndx} presents a parallel expression for the limiting maximal MPC as $\mNrm_{t} \downarrow 0$:
 \begin{align}
   \MaxMPC_{t}^{-1}  & = 1+\MinMPS \MaxMPC_{t+1}^{-1} \label{eq:MaxMPCInv}
@@ -592,7 +596,7 @@ We are now in position to observe that the optimal consumption function must sat
 \begin{align}
   \MinMinMPC_{t} \mNrm_{t} ~ \leq & ~  \usual{\cFunc}_{t}(\mNrm_{t})  \leq  ~ \MaxMPC_{t} \mNrm_{t} \label{eq:cBounds}
 \end{align}
-because consumption starts at zero and is continuously differentiable, is strictly concave,\footnote{\cite{ckConcavity}} and always exhibits a slope between $\MinMinMPC_{t}$ and $\MaxMPC_{t}$ (the formal proof is in Appendix~\ref{sec:Tcomplete}).
+because consumption starts at zero and is continuously differentiable, is strictly concave,\footnote{\cite{ckConcavity}} and always exhibits a slope between $\MinMinMPC_{t}$ and $\MaxMPC_{t}$ (formal proof: Appendix~\ref{sec:Tcomplete}).
 
 \hypertarget{Conditions-Under-Which-the-Problem-Defines-a-Contraction-Mapping}{}
 \subsection{The Problem Is a Contraction Mapping Under {\WRIC} and {\FVAC}}\label{subsec:contraction}
@@ -715,16 +719,16 @@ In the perfect foresight problem (Section~\ref{subsec:PFUncon}), the \RIC~was ne
     \\  \Rfree/\PGro  & < \uInvEpShkuInv
   \end{split}
 \end{equation}
-but since $\uInvEpShkuInv < 1$ (cf.\ the argument below~\eqref{eq:uInvEpShkuInv}), this requires $\Rfree/\PGro < 1$; so, given the \FVAC, the \RIC~can fail only if human wealth is unbounded.  As an illustration of the usefulness of our diagrams, note that this algebraically complicated conclusion could be easily reached diagrammatically in figure~\ref{fig:Inequalities} by starting at the $\Rfree$ node and imposing $\cncl{\RIC}$, reversing the {\RIC} arrow and then traversing the diagram along any clockwise path to the {\PFVAF} node at which point we realize that we \textit{cannot} impose the {\FHWC} because that would let us conclude $\Rfree > \Rfree$.
+but since $\uInvEpShkuInv < 1$ (cf.\ the argument below~\eqref{eq:uInvEpShkuInv}), this requires $\Rfree/\PGro < 1$; so, given the \FVAC, the \RIC~can fail only if human wealth is unbounded.  As an illustration of the usefulness of our diagrams, note that this algebraically complicated conclusion could be easily reached diagrammatically in figure~\ref{fig:Inequalities} by starting at the $\Rfree$ node and imposing $\cncl{\RIC}$, reversing the {\RIC} arrow and then traversing the diagram along any clockwise path to the {\PFVAFDfn} node at which point we realize that we \textit{cannot} impose the {\FHWC} because that would let us conclude $\Rfree > \Rfree$.
 
-As in the perfect foresight constrained problem, unbounded limiting human wealth (\cncl{\FHWC}) here does not lead to a degenerate limiting consumption function (finite human wealth is not required for the convergence theorem).  But, from equation~\eqref{eq:MinMPCInv} and the discussion surrounding it, an implication of \cncl{\RIC} is that $\lim_{m \uparrow \infty} \usual{\cFunc}^{\prime}(\mNrm) = 0$.  Thus, interestingly, in the special $\{\cncl{\RIC},\cncl{\FHWC}\}$ case (unavailable in the perfect foresight model) the presence of uncertainty both permits unlimited human wealth (in the $n\uparrow\infty$ limit) and at the same time prevents unlimited human wealth from resulting in (limiting) infinite consumption (at any finite $\mNrm$).  Intutively, in the presence of uncertainty, pathological patience (which in the perfect foresight model results in a limiting consumption function of $\usual{\cFunc}(\mNrm)=0$ for finite $\mNrm$) plus unbounded human wealth (which the perfect foresight model prohibits because it leads to a limiting consumption function $\usual{\cFunc}(\mNrm)=\infty$ for any finite $\mNrm$) combine to yield a unique finite limiting (as $n \uparrow \infty$) level of consumption and MPC for any finite value of $\mNrm$.  Note the close parallel to the conclusion in the perfect foresight liquidity constrained model in the \{\GICRaw,\cncl{\RIC}\} case.  There, too, the tension between infinite human wealth and pathological patience was resolved with a nondegenerate consumption function whose limiting MPC was zero.\footnote{\cite{maTodaRich} derive conditions under which the limiting MPC is zero in an even more general case where there is also capital income risk.}
+As in the perfect foresight constrained problem, unbounded limiting human wealth (\cncl{\FHWC}) here does not lead to a degenerate limiting consumption function (finite human wealth is not required for the convergence theorem).  But, from equation~\eqref{eq:MinMPCInv} and the discussion surrounding it, an implication of \cncl{\RIC} is that $\lim_{m \uparrow \infty} \usual{\cFunc}^{\prime}(\mNrm) = 0$.  Thus, interestingly, in the special $\{\cncl{\RIC},\cncl{\FHWC}\}$ case (unavailable in the perfect foresight model) the presence of uncertainty both permits unlimited human wealth (in the $n\uparrow\infty$ limit) and at the same time prevents unlimited human wealth from resulting in (limiting) infinite consumption (at any finite $\mNrm$).  Intutively, in the presence of uncertainty, pathological patience (which in the perfect foresight model results in a limiting consumption function of $\usual{\cFunc}(\mNrm)=0$) plus unbounded human wealth (which the perfect foresight model prohibits because it leads to a limiting consumption function $\usual{\cFunc}(\mNrm)=\infty$ for any finite $\mNrm$) combine to yield a unique finite limiting (as $n \uparrow \infty$) level of consumption and MPC for any finite value of $\mNrm$.  Note the close parallel to the conclusion in the perfect foresight liquidity constrained model in the \{\GICRaw,~\cncl{\RIC}\} case.  There, too, the tension between infinite human wealth and pathological patience was resolved with a nondegenerate consumption function whose limiting MPC was zero.\footnote{\cite{maTodaRich} derive conditions under which the limiting MPC is zero in an even more general case where there is also capital income risk.}
 
 \hypertarget{When-the-RIC-Holds}{}
 \subsubsection{When the {\RIC} Holds}\label{subsubsec:WhenTheGICNrmFails}\label{subsubsec:WhenTheRICHolds}
 
 \indent \textbf{\FHWC}.  If the {\RIC} and {\FHWC} both hold, a perfect foresight solution exists (see~\ref{subsec:PFUncon} above).  As $\mNrm \uparrow \infty$ the limiting consumption function and value function become arbitrarily close to those in the perfect foresight model, because human wealth pays for a vanishingly small portion of spending.  This will be the main case analyzed in detail below.
 
-\noindent \textbf{\cncl{\FHWC}}.  The more exotic case is where {\FHWC} does not hold; in the perfect foresight model, \{{\RIC},\cncl{\FHWC}\} is the degenerate case with limiting $\bar{\cFunc}(\mNrm)=\infty$.  Here, the {\FVAC} implies that the {\PFFVAC} holds (traverse Figure~\ref{fig:Inequalities} clockwise from $\Pat$ by imposing {\FVAC} and continue to the {\PFVAF} node):  Reversing the arrow connecting the $\Rfree$ and {\PFVAF} nodes implies that under $\cncl{\FHWC}$:
+\noindent \textbf{\cncl{\FHWC}}.  The more exotic case is where {\FHWC} does not hold; in the perfect foresight model, \{{\RIC},\cncl{\FHWC}\} is the degenerate case with limiting $\bar{\cFunc}(\mNrm)=\infty$.  Here, the {\FVAC} implies that the {\PFFVAC} holds (traverse Figure~\ref{fig:Inequalities} clockwise from $\Pat$ by imposing {\FVAC} and continue to the {\PFVAFDfn} node):  Reversing the arrow connecting the $\Rfree$ and {\PFVAF} nodes implies that under $\cncl{\FHWC}$:
 \begin{align*}
   & \overbrace{\Pat < {(\Rfree/\PGro)}^{1/\CRRA}\PGro}^{\PFFVAC}
   \\ & \Pat < \PGro
@@ -749,7 +753,7 @@ Figure~\ref{fig:cGroTargetFig} shows the expected growth factors for consumption
 
 Three points are worth highlighting.  % features of behavior are captured, or suggested, by the figures.
 
-First, as $\mNrm_{t} \uparrow \infty$ the expected consumption growth factor goes to ${\Pat}$, indicated by the lower bound in Figure~\ref{fig:cGroTargetFig}, and the marginal propensity to consume approaches $\MinMPC=(1-\PatR)$ (see Figure~\ref{fig:mpclimits}) --- the same as the perfect foresight MPC.\@  Second, as $\mNrm_{t}$ approaches zero the consumption growth factor approaches $\infty$ (Figure~\ref{fig:cGroTargetFig}) and the MPC approaches $\MaxMPC=(1-\pZero^{1/\CRRA}\PatR)$ (Figure~\ref{fig:mpclimits}).  Third, there is a value of the market resources ratio $\mNrm_{t} = \mBalLvl$ at which the expected growth rate of the level of market resources $\mLvl$ matches the expected growth rate of permanent income $\PGro$, and a different (larger) target ratio $\mTrgNrm$ where $\Ex[\mNrm_{t+1}/\mNrm_{t}]=1$ and the expected growth rate of consumption is lower than $\PGro$.  Thus, at the individual level, this model does not have a single $\mNrm$ at which $\pLvl,~\mLvl,~$ and $\cLvl$ all grow at the same rate.
+First, as $\mNrm_{t} \uparrow \infty$ the expected consumption growth factor goes to ${\Pat}$, indicated by the lower bound in Figure~\ref{fig:cGroTargetFig}, and the marginal propensity to consume approaches $\MinMPC=(1-\PatR)$ (see Figure~\ref{fig:mpclimits}) --- the same as the perfect foresight MPC.\@  Second, as $\mNrm_{t}$ approaches zero the consumption growth factor approaches $\infty$ (Figure~\ref{fig:cGroTargetFig}) and the MPC approaches $\MaxMPC=(1-\pZero^{1/\CRRA}\PatR)$ (Figure~\ref{fig:mpclimits}).  Third, there is a value of the market resources ratio $\mNrm_{t} = \mBalLvl$ at which the expected growth rate of the level of market resources $\mLvl$ matches the expected growth rate of permanent income $\PGro$, and a different (larger) target ratio $\mTrgNrm$ where $\Ex[\mNrm_{t+1}/\mNrm_{t}]=1$ (and the expected growth rate of consumption is lower than $\PGro$).  Thus, at the individual level, this model does not have a single $\mNrm$ at which $\pLvl,~\mLvl,~$ and $\cLvl$ all are expected to grow at the same rate.
 
 \begin{comment}
   Third (Figure~\ref{fig:cGroTargetFig}), there are two special values of $\mNrm$, which we will call the `individual balanced growth' point $\mBalLvl$ because it is the point where expected consumption growth and expected permanent income growth are balanced, and the `individual target' $\mTrgNrm$ such that if $\mNrm_t = \mTrgNrm$ then $\Ex_t [{\mNrm}_{t+1}] = \mNrm_t$.  %As indicated by the arrows of motion on the $\Ex_{t}[\cLvl_{t+1}/\cLvl_{t}]$ curve, the model's dynamics are `stable' around this target in the sense that if $\mNrm_{t} < \mTrgNrm$ then $\mNrm$ will rise (in expectation), while if $\mNrm_{t} > \mTrgNrm$, it will fall (in expectation).Fourth (Figure~\ref{fig:cGroTargetFig}), at the market resources target $\mTrgNrm$, the expected rate of growth of consumption is slightly less than the expected growth rate
@@ -771,7 +775,7 @@ Define
 \end{align*}
 which is the solution to an infinite-horizon problem with no noncapital income ($\tShkAll_{t+n} = 0~\forall~n\geq1$); clearly $\ushort{\cFunc}(\mNrm) < \usual{\cFunc}(\mNrm)$, since allowing the possibility of future noncapital income cannot reduce current consumption.  Our imposition of the {\RIC} guarantees that $\MinMPC > 0$, so this solution satisfies our definition of nondegeneracy, and because this solution is always available it defines a lower bound on both the consumption and value functions.%\footnote{We will assume the \RIC~holds here and subsequently so that $\MinMPC > 0$; the situation is a bit more complex when the \RIC~does not hold.  In that case the bound on consumption is given by the spending that would be undertaken by a consumer who faced binding liquidity constraints.}
 
-Assuming the \FHWC~holds, the infinite horizon perfect foresight solution~\eqref{eq:cFuncPFUnc} constitutes an upper bound on consumption in the presence of uncertainty, since the introduction of uncertainty strictly decreases the level of consumption at any $\mNrm$ (\cite{ckConcavity}).  Thus, we can write
+Assuming the \FHWC~holds, the infinite horizon perfect foresight solution~\eqref{eq:cFuncPFUnc} constitutes an upper bound on consumption in the presence of uncertainty, since the introduction of uncertainty strictly decreases the level of consumption at any $\mNrm$ (\cite{ckConcavity}).  Thus,
 \begin{equation} \label{eq:lowerltupper}
   \begin{split}
     \ushort{\cFunc}(\mNrm) < & \usual{\cFunc}(\mNrm)  < \bar{\cFunc}(\mNrm)  \\
@@ -926,7 +930,7 @@ Since $\mNrm_{t+1}=(\mNrm_{t}-\cFunc(\mNrm_{t}))\Rnorm_{t+1}+\tShk_{t+1}$, the i
 \subsubsection{Individual Balanced-Growth `pseudo steady state' \texorpdfstring{$\mBalLvl$}{m}}\label{subsubsec:mSteadyState}
 Our second definition of `stability' derives from a traditional question in macroeconomic models: whether there is a `balanced growth' equilibrium in which aggregate variables (income, consumption, market resources) all grow forever by the same factor $\PGro$.  For our model, Figure~\ref{fig:cGroTargetFig} showed that there is no single $\mNrm$ for which $\Ex_{t}[\mLvl_{t+1}]/\mLvl_{t} = \Ex_{t}[\cLvl_{t+1}]/\cLvl_{t} = \PGro$~for an individual consumer.  Nevertheless, the next section will show that economies populated by heterogeneous collections of such consumers can exhibit balanced growth in the aggregate, and in the cross-section of households.
 
-As an input to that analysis, we show here that if the {\GIC} holds, the problem will exhibit what we call a balanced growth `pseudo-steady-state' point, by which we mean that there is some ${\mBalLvl}$ such that, for all $\mNrm_{t}>{\mBalLvl}$, $\Ex_{t}[\mLvl_{t+1}/\mLvl_{t}] < \PGro$, and conversely if $\mNrm_{t}<{\mBalLvl}$ then $\Ex_{t}[\mLvl_{t+1}/\mLvl_{t}] > \PGro$.
+As an input to that analysis, we show here that if the {\GICRaw} holds, the problem will exhibit what we call a balanced growth `pseudo-steady-state' point, by which we mean that there is some ${\mBalLvl}$ such that, for all $\mNrm_{t}>{\mBalLvl}$, $\Ex_{t}[\mLvl_{t+1}/\mLvl_{t}] < \PGro$, and conversely if $\mNrm_{t}<{\mBalLvl}$ then $\Ex_{t}[\mLvl_{t+1}/\mLvl_{t}] > \PGro$.
 
 \hypertarget{balgrostable}{}
 \hypertarget{balgrostableSolve}{}
@@ -951,7 +955,7 @@ The only difference between~\eqref{eq:balgrostable} and~\eqref{eq:mTargImplicit}
 Theorem~\ref{thm:MSSBalExists}~formally states the relevant proposition.
 \begin{verbatimwrite}{\EqDir/TheoremMSSBalExists}
   \begin{theorem}\label{thm:MSSBalExists}
-    For the nondegenerate solution to the problem defined in Section~\ref{subsec:Setup} when {\FVAC}, {\WRIC}, and {\GIC} all hold, there exists a unique pseudo-steady-state cash-on-hand-to-income ratio $\mBalLvl>0$ such that
+    For the nondegenerate solution to the problem defined in Section~\ref{subsec:Setup} when {\FVAC}, {\WRIC}, and {\GICRaw} all hold, there exists a unique pseudo-steady-state cash-on-hand-to-income ratio $\mBalLvl>0$ such that
     \begin{equation}
       \Ex_t [\pShk_{t+1}{\mNrm}_{t+1}/\mNrm_t] = 1 \mbox{~if~} \mNrm_t = \mBalLvl.
       \label{eq:mBalLvl}
@@ -976,7 +980,7 @@ Theorem~\ref{thm:MSSBalExists}~formally states the relevant proposition.
 
   \begin{verbatimwrite}{\EqDir/TheoremGroIsStable}
     \begin{theorem}\label{thm:TheoremGroIsStable}
-      For the nondegenerate solution to the problem defined in Section~\ref{subsec:Setup} when {\FVAC}, {\WRIC}, and {\GICLog} all hold, there exists a unique cash-on-hand-to-permanent-income ratio $\mBalLvl>0$ such that
+      For the nondegenerate solution to the problem defined in Section~\ref{subsec:Setup} when {\FVAC}, {\WRIC}, and {\GICRaw} all hold, there exists a unique cash-on-hand-to-permanent-income ratio $\mBalLvl>0$ such that
       \begin{equation}
         \Ex_t [\log {\mLvl}_{t+1} ] = \log \mLvl_t \mbox{~if~} \mLvl_t = \mBalLvl.
         \label{eq:mTarget}
@@ -992,7 +996,7 @@ Theorem~\ref{thm:MSSBalExists}~formally states the relevant proposition.
   \end{verbatimwrite}
   \input{\LtxDir\EqDir/TheoremGroIsStable}
 
-  with two associated Lemmas demonstrating that $\mBalLvl < \Gro{\mNrm}$ and $\mBalLvl < \$\mTrgNrm$.
+with two associated Lemmas demonstrating that $\mBalLvl < \mBalLog$ and $\mBalLvl < \$\mTrgNrm$.
 \end{comment}
 
 The proofs of the theorems are almost completely parallel; to save space, they are relegated to Appendix~\ref{sec:ApndxMTargetIsStable}.  They involve three steps:
@@ -1022,9 +1026,9 @@ An illuminating exception is exhibited in Figure~\ref{fig:GICNrmFailsButGICRawHo
 \hypertarget{\figFile}{}
 \input{\FigDir/GICNrmFailsButGICRawHolds}
 
-The pseudo-steady-state still exists because it turns off realizations of the permanent shock.  But the next section will show that an aggregate balanced growth equilibrium will exist even when realizations of the permanent shock are not turned off: The required condition for aggregate balanced growth is the regular {\GIC}, not the normalied {\GICNrm}.
+The pseudo-steady-state still exists because it turns off realizations of the permanent shock.  But the next section will show that an aggregate balanced growth equilibrium will exist even when realizations of the permanent shock are not turned off: The required condition for aggregate balanced growth is the regular {\GICRaw}, not the normalied {\GICNrm}.
 
-Before we get to the formal arguments, the key insight can be understood by considering the evolution of an economy that starts, at date $t$, with the entire population at $\mNrm_{t}=\mBalLvl$, but then evolves according to the model's assumed dynamics between $t$ and $t+1$.  Equation~\eqref{eq:balgrostable} will still hold, so for this first period, at least, the economy will exhibit balanced growth: the growth factor for aggregate $\mLvl$ will match the growth factor for permanent income $\PGro$.  It is true that there will be people for whom $\bNrm_{t+1}=\aNrm_{t}\Rfree/(\PGro\pShk_{t+1})$ is boosted by a small draw of $\pShk_{t+1}$.  But their contribution to the \textit{level} of the aggregate variable is given by $\bLvl_{t+1}=\bNrm_{t+1}\pShk_{t+1}$, so their $\bLvl_{t+1}$ is reweighted by an amount that exactly unwinds that boosting.  This is how it is possible for each individual consumer to have a target wealth ratio of infinity, and yet for the economy as a whole to have a balanced growth equilibrium with a finite aggregate balanced growth steady state (which, for symmetry with the pseudo-steady-state, we will call $\BalGroFac{\MLvl}$).  This is not numerically the same as the individual \href{https://econ-ark.github.io/BufferStockTheory/#pseudo-steady-state}{pseudo-steady-state} ratio $\mBalLvl$ because of the consequences of the nonlinearities that manifest themselves in the simulation and aggregation.\footnote{Still, the pseudo-steady-state can be calculated immediately from the policy function without any simulation, and therefore would likely serve as an excellent and low-cost starting point for the numerical simulation process.}
+Before we get to the formal arguments, the key insight can be understood by considering the evolution of an economy that starts, at date $t$, with the entire population at $\mNrm_{t}=\mBalLvl$, but then evolves according to the model's assumed dynamics between $t$ and $t+1$.  Equation~\eqref{eq:balgrostable} will still hold, so for this first period, at least, the economy will exhibit balanced growth: the growth factor for aggregate $\mLvl$ will match the growth factor for permanent income $\PGro$.  It is true that there will be people for whom $\bNrm_{t+1}=\aNrm_{t}\Rfree/(\PGro\pShk_{t+1})$ is boosted by a small draw of $\pShk_{t+1}$.  But their contribution to the \textit{level} of the aggregate variable is given by $\bLvl_{t+1}=\bNrm_{t+1}\pShk_{t+1}$, so their $\bNrm_{t+1}$ is reweighted by an amount that exactly unwinds that boosting.  This is how it is possible for each individual consumer to have a target wealth ratio of infinity, and yet for the economy as a whole to have a balanced growth equilibrium with a finite aggregate balanced growth steady state (which, for symmetry with the pseudo-steady-state, we will call $\BalGroFac{\MLvl}$).  This is not numerically the same as the individual \href{https://econ-ark.github.io/BufferStockTheory/#pseudo-steady-state}{pseudo-steady-state} ratio $\mBalLvl$ because of the consequences of the nonlinearities that manifest themselves in the simulation and aggregation.\footnote{Still, the pseudo-steady-state can be calculated immediately from the policy function without any simulation, and therefore would likely serve as an excellent and low-cost starting point for the numerical simulation process.}
 
 
 
@@ -1039,7 +1043,7 @@ Before we get to the formal arguments, the key insight can be understood by cons
 
 % Microeconomic distributional relationships are increasingly central to macroeconomic research (see, e.g., \cite{violante_marginal_2021}'s recent Laffont lectures on relationship between the marginal propensity to consume and the distribution of assets).  But mapping from micro data to macro models can be subtle.  Hence this final section's aim of carefully describing those relationships in the paper's simple model.
 
-Assume a continuum of \textit{ex ante} identical households on the unit interval, with constant total mass normalized to one and indexed by $i \in [0,1]$, all behaving according to the model specified above.
+Assume a continuum of \textit{ex ante} identical households on the unit interval, with constant total mass normalized to one and indexed by $i \in [0,1]$ (all behaving according to the model specified above).
 
 
 Szeidl~\citeyearpar{szeidlInvariant} proved that such a population will be characterized by invariant distributions of $\mNrm$, $\cNrm$, and $\aNrm$ under the condition\footnote{\cite{szeidlInvariant}'s equation (9), in our notation, is:
@@ -1053,16 +1057,16 @@ Szeidl~\citeyearpar{szeidlInvariant} proved that such a population will be chara
 \begin{align}
   \PatPGro & < e^{\Ex [\log \pShk]} \label{eq:GICSzeidl}
 \end{align}
-which is stronger than our {\GIC} condition $\PatPGro < 1$ (under the imposed assumption $\Ex[\log \pShk]<0$).\footnote{Under our default (though not required) assumption that $\log \pShk \sim \mathcal{N}(-\sigma^{2}_{\pShk}/2,\sigma^{2}_{\pShk})$; the {\GICNrm} in this case, is $\PatPGro < \exp(-\sigma^{2})$, so if the {\GICNrm} holds then Szeidl's condition will hold.}  %Below we designate these the `Szeidl-invariant' distributions $\Nvrnt({\mNrm})$, $\Nvrnt({\aNrm})$, and $\Nvrnt({\cNrm})$.%\footnote{Szeidl's proof supplants simulation evidence of ergodicity that appeared in an earlier version of this paper.}
+which is stronger than our {\GICRaw} condition $\PatPGro < 1$ (under the imposed assumption $\Ex[\log \pShk]<0$).\footnote{Under our default (though not required) assumption that $\log \pShk \sim \mathcal{N}(-\sigma^{2}_{\pShk}/2,\sigma^{2}_{\pShk})$; the {\GICNrm} in this case, is $\PatPGro < \exp(-\sigma^{2})$, so if the {\GICNrm} holds then Szeidl's condition will hold.}  %Below we designate these the `Szeidl-invariant' distributions $\Nvrnt({\mNrm})$, $\Nvrnt({\aNrm})$, and $\Nvrnt({\cNrm})$.%\footnote{Szeidl's proof supplants simulation evidence of ergodicity that appeared in an earlier version of this paper.}
 
 % A earlier draft of this paper~\cite{BufferStockTheoryQESubmit} conjectured that
 \hypertarget{Growth-Rates-of-Aggregate-Income-and-Consumption}{}
 
-\cite{harmenbergInvariant} substitutes a clever change of probability-measure into Szeidl's proof to show that under the {\GIC}, invariant \emph{permanent-income-weighted} distributions exist.\footnote{Harmenberg in a nutshell:  If $\pShk$ is described by density function $f_\pShk(\pShk)$, define the \emph{permanent-income-neutral measure} by $\Harm{f}_\pShk(\pShk) \equiv \pShk f_\pShk(\pShk)$.  Following derivations parallel to those in the previous foonote, the condition for the existence of invariant permanent-income-weighted distributions is
+\cite{harmenbergInvariant} substitutes a clever change of probability-measure into Szeidl's proof to show that under the {\GICRaw}, invariant \emph{permanent-income-weighted} distributions exist.\footnote{Harmenberg in a nutshell:  If $\pShk$ is described by density function $f_\pShk(\pShk)$, define the \emph{permanent-income-neutral measure} by $\Harm{f}_\pShk(\pShk) \equiv \pShk f_\pShk(\pShk)$.  Following derivations parallel to those in the previous foonote, the condition for the existence of invariant permanent-income-weighted distributions is
   \begin{align*}
     \log \PatPGro  & < \Harm{\Ex} \log \pShk
   \end{align*}
-  where the $\sim$ over the expectations operator indicates that the expectation is being taken with respect to $f_\pShk(\pShk)$.  But by assumption $\Harm{\Ex} \log \pShk = 0$ so exponentiating both sides of this equation turns it into $\PatPGro < 1$ which is the {\GIC}.}  This allows him to prove a conjecture from an earlier draft of this paper (\cite{BufferStockTheoryQESubmit}) that under the {\GIC}, aggregate consumption grows at the same rate $\PGro$ as aggregate noncapital income in the long run (with the corollary that aggregate assets and market resources grow at that same rate). \hypertarget{test-Harmenbergs-method}{}
+  where the $\sim$ over the expectations operator indicates that the expectation is being taken with respect to $f_\pShk(\pShk)$.  But by assumption $\Harm{\Ex} \log \pShk = 0$ so exponentiating both sides of this equation turns it into $\PatPGro < 1$ which is the {\GICRaw}.}  This allows him to prove a conjecture from an earlier draft of this paper (\cite{BufferStockTheoryQESubmit}) that under the {\GICRaw}, aggregate consumption grows at the same rate $\PGro$ as aggregate noncapital income in the long run (with the corollary that aggregate assets and market resources grow at that same rate). \hypertarget{test-Harmenbergs-method}{}
 % Given the terminology developed earlier, the natural designation for the stable ratio of aggregate market resources to noncapital income is the `aggregate steady state' ratio, $\BalGroFac{M}$.  This is not numerically the same as the individual \href{https://econ-ark.github.io/BufferStockTheory/#pseudo-steady-state}{pseudo-steady-state} ratio $\mBalLvl$ because the nonlinearities involved in simulation and aggregation will have consequences.\footnote{Still, the pseudo-steady-state can be calculated immediately from the policy function without any simulation, and therefore would likely serve as an excellent and low-cost starting point for the numerical simulation process.}
 \cite{harmenbergInvariant} shows\footnote{The test of the Harmenberg method currently implemented in the Econ-ARK toolkit shows that Harmenberg's method reduces the standard error of the simulated aggregate consumption series by a factor of more than 8 (using identical computational resources); see the last part of \href{https://github.com/econ-ark/BufferStockTheory/blob/master/Code/Python/test_Harmenbergs_method.sh}{\texttt{test\_Harmenbergs\_method.sh}}.} that his reformulation of the problem can reduce costs of calculation enormously.  % The idea also appears to be promisingly generalizable: For any statistic $\mathcal{S}$ that is the key focus of an analysis, it should be possible to improve the efficiency of simulations aimed at calculating that statistic by constructing an $\mathcal{S}$-weighted distribution rather than a neutral distribution.
 
@@ -1118,7 +1122,7 @@ Consider a date-$t$ Harmenberg-converged economy, and define the mean value of t
     \\  \CLvl_{t+2} & = \Mean[\cNrm_{t+2}\pLvl_{t+2}] = \cRatAvg_{t+2}\PGro^{2} + \cv_{t+2}(\cNrm_{t+2}, \pLvl_{t+2})
   \end{split}
 \end{equation}
-and Harmenberg's proof that $\CLvl_{t+2}-\PGro \CLvl_{t+1}=0$ allows us to subtract $\PGro \CLvl_{t+1}$ from $\CLvl_{t+2}$ to obtain:
+and Harmenberg's proof that $\CLvl_{t+2}-\PGro \CLvl_{t+1}=0$ allows us to obtain:
 \begin{equation} \label{eq:cNrmvsCov}\begin{split}
     % 0 & = \cRatAvg_{t+2}\PGro^{2} + \cv_{t+2}-\PGro\left(\PGro\cRatAvg_{t+1} + \cv_{t+1}\right)\\ %
     % \cRatAvg_{t+2}\PGro^{2} + \cv_{t+2}   & =\cRatAvg_{t+1}\PGro^{2} + \PGro \cv_{t+1}\\
@@ -1208,7 +1212,7 @@ For macroeconomists who want to build microfoundations by comparing the microeco
   \hypertarget{Consumption-and-Income-Growth-at-the-Household-Level}{}
   \subsection{Identical Growth in Income, Consumption, and Wealth}\label{subsec:cGroEqPGroIndQ}
 
-  Unfortunately, the {\GICNrm} condition that we imposed which yielded all of these intuitive propositions at once is rather restrictive.  Modeling experience indicates that it is not always possible to find plausible combinations of parameter values that satisfy that condition.  Furthermore, while the {\GIC} is a considerably looser condition, as noted above (and as
+  Unfortunately, the {\GICNrm} condition that we imposed which yielded all of these intuitive propositions at once is rather restrictive.  Modeling experience indicates that it is not always possible to find plausible combinations of parameter values that satisfy that condition.  Furthermore, while the {\GICRaw} is a considerably looser condition, as noted above (and as
 
   % The foregoing analysis is motivated by the emerging realization of the importance of understanding of covariance relationships in microeconomic populations (between the marginal propensity to consume and the level of wealth, e.g.).
 \end{comment}
@@ -1237,7 +1241,7 @@ The simplest alternative to Blanchard is to follow Modigliani in constructing a 
 
 Even if bequests are accidental, a macroeconomic model must make some assumption about how they are disposed of: As windfalls to heirs, estate tax proceeds, etc. We again consider the simplest choice, because it represents something of a polar alternative to Blanchard: Without a bequest motive, there are no behavioral effects of a 100 percent estate tax; we assume such a tax is imposed and that the revenues are effectively thrown in the ocean:  The estate-related wealth effectively vanishes from the economy.
 
-The chief appeal of this approach is the simplicity of the change it makes in the condition required for the economy to exhibit a balanced growth equilibrium (for consumers without a life cycle income profile).  If $\Alive$ is the probability of remaining alive, the condition changes from the plain {\GIC} to a looser mortality-adjusted {\GIC}:
+The chief appeal of this approach is the simplicity of the change it makes in the condition required for the economy to exhibit a balanced growth equilibrium (for consumers without a life cycle income profile).  If $\Alive$ is the probability of remaining alive, the condition changes from the plain {\GICRaw} to a looser mortality-adjusted {\GICRaw}:
 \hypertarget{GICLivMod}{}
 \begin{align}
   \Alive  \Pat_{\PGro} & < 1. \label{eq:GICLivMod}
@@ -1251,7 +1255,7 @@ With no income growth, what is required to prohibit unbounded growth in aggregat
 
 Numerical solutions to optimal consumption problems, in both life cycle and infinite horizon contexts, have become standard tools since the first reasonably realistic models were constructed in the late 1980s. One contribution of this paper is to show that finite horizon (`life cycle') versions of the simplest such models, with assumptions about income shocks (transitory and permanent) dating back to~\cite{friedmanATheory} and standard specifications of preferences --- and without plausible (but computationally and mathematically inconvenient) complications like liquidity constraints --- have attractive properties (like continuous differentiability of the consumption function, and analytical limiting MPC's as resources approach their minimum and maximum possible values).%, and that (more widely used) models with liquidity constraints can be viewed as a particular limiting case of this simpler model.
 
-The main focus of the paper, though, is on the limiting solution of the finite horizon model as the horizon extends to infinity.  The paper shows that the simple model has other appealing features: A \href{https://econ-ark.github.io/BufferStockTheory#FVAC}{`Finite Value of Autarky'} condition guarantees convergence of the consumption function, under the mild additional requirement of a `Weak Return Impatience Condition' that will never bind for plausible parameterizations, but provides intuition for the bridge between this model and models with explicit liquidity constraints. The paper also provides a roadmap for the model's relationships to the perfect foresight model without and with constraints.  The constrained perfect foresight model provides an upper bound to the consumption function (and value function) for the model with uncertainty, which explains why the conditions for the model to have a nondegenerate solution closely parallel those required for the perfect foresight constrained model to have a nondegenerate solution.
+The main focus of the paper, though, is on the limiting solution of the finite horizon model as the horizon extends to infinity.  The simple model has other appealing features: A \href{https://econ-ark.github.io/BufferStockTheory#FVAC}{`Finite Value of Autarky'} condition guarantees convergence of the consumption function, under the mild additional requirement of a `Weak Return Impatience Condition' that will never bind for plausible parameterizations, but provides intuition for the bridge between this model and models with explicit liquidity constraints. The paper also provides a roadmap for the model's relationships to the perfect foresight model without and with constraints.  The constrained perfect foresight model provides an upper bound to the consumption function (and value function) for the model with uncertainty, which explains why the conditions for the model to have a nondegenerate solution closely parallel those required for the perfect foresight constrained model to have a nondegenerate solution.
 
 The main use of infinite horizon versions of such models is in heterogeneous agent macroeconomics. The paper articulates intuitive \href{https://econ-ark.github.io/BufferStockTheory#GICAgg}{`Growth Impatience Conditions'} under which populations of such agents, with Blanchardian (tighter) or Modiglianian (looser) mortality will exhibit balanced growth.  Finally, the paper provides the analytical basis for many results about buffer-stock saving models that are so well understood that even without analytical foundations researchers uncontroversially use them as explanations of real-world phenomena like the cross-sectional pattern of consumption dynamics in the Great Recession.
 

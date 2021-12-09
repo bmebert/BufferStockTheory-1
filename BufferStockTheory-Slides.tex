@@ -1,15 +1,16 @@
 \input{./econtexRoot}\documentclass[pdflatex]{beamer}
+\usepackage{econark}
 \providecommand{\texname}{BufferStockTheory-Slides}% Indicate the keyname for the bibtex entry corresponding to this document
-\providecommand{\texnameMaster}{BufferStockTheory}% Indicate the keyname for the bibtex entry corresponding to this document
-\newif\ifdvi\dvifalse
-
-%\usepackage{optional}
+\providecommand{\texMaster}{BufferStockTheory}% Indicate the keyname for the bibtex entry corresponding to this document
 \usepackage{ifthen}%\usepackage{\econtexRoot/BufferStockTeory}
+\newif\ifdvi\dvifalse
 
 % Can't read in BufferStockTheory.sty because some packages conflict with Beamer
 % So need to redefine everything here
 
+\usepackage{econark}
 \usepackage{\econtexShortcuts}
+\usepackage{\LaTeXInputs/\texMaster-Shortcuts}
 \usepackage{natbib,amsmath,amssymb,rotating,subfigure}
 \usepackage{verbatim,moreverb,graphicx}
 \usepackage{wasysym}
@@ -22,6 +23,7 @@
 \providecommand{\TableDir}{\econtexRoot/Tables}
 \providecommand{\ApndxDir}{\econtexRoot/Appendices}
 \providecommand{\Ex}{\mathbb{E}}
+
 
 %\usepackage{natbib}\newcommand*{\newblock}{}
 
@@ -168,7 +170,7 @@ Definitions: \smallskip
    Name                                 & \multicolumn{3}{c|}{Condition}    & Implication 
 \\ \hline (\AIC) Absolute Impatience Condition  & $\Pat$  & $<$ & 1 & $\cLvl$ $\downarrow$ over time
 \\ (\RIC) Return Impatience Condition    & $\PatR$ & $<$ & 1 & $\cLvl/\aLvl$ $\downarrow$ over time
-\\ (\GIC) Growth Impatience Condition & $\PatPGro$ & $<$ & 1 & $\cLvl/\pLvl$ $\downarrow$ over time
+\\ (\GICRaw) Growth Impatience Condition & $\PatPGro$ & $<$ & 1 & $\cLvl/\pLvl$ $\downarrow$ over time
 \end{tabular}
 
 \medskip
@@ -245,10 +247,10 @@ Finite Value of Autarky Condition: Same As In Liq Constr Problem!
 \frametitle{Requirement For Existence Of A Target}
 
 Definitions: `Uncertainty-Adjusted' Growth:
-\input \LtxDir\EqDir/PGroAdj
+\input \LtxDir\EqDir/PermGroFacAdj
 
 Adjusted Growth Patience Factor:
-\input \LtxDir\EqDir/PatPGroAdj
+\input \LtxDir\EqDir/PatPermGroFacAdj
 
 Growth Impatience Condition:
 \input \LtxDir\EqDir/GICNrm~
@@ -257,7 +259,7 @@ Growth Impatience Condition:
 
 Why?  Because it can be shown that
 \begin{eqnarray}
- \lim_{\mNrm_{t} \rightarrow \infty} \Ex_{t}\left[\frac{\mNrm_{t+1}}{\mNrm_{t}}\right] & = & \PatPGroAdj  \label{eq:mGrowth}
+ \lim_{\mNrm_{t} \rightarrow \infty} \Ex_{t}\left[\frac{\mNrm_{t+1}}{\mNrm_{t}}\right] & = & \PatPermGroFacAdj  \label{eq:mGrowth}
 \end{eqnarray}
 
 \end{frame}
@@ -297,7 +299,7 @@ Why?  Because it can be shown that
 \subsection{The Consumption Function and Target Wealth}
 \begin{frame}
 \frametitle{The Consumption Function and Target Wealth}
-\centerline{\includegraphics[width=4in]{\FigDir/cNrmTargetFig.pdf}}
+\centerline{\includegraphics[width=4in]{\FigDir/cRatTargetFig.pdf}}
 \end{frame}
 
 
@@ -389,23 +391,27 @@ Paper Proves:
 
 \tiny 
 
-\bibliography{\texnameMaster,\econtexBib}
+\bibliography{\texMaster,\econtexBib}
 
 \end{frame}
 \end{document}\endinput
 
 % Local Variables:
-% eval: (setq TeX-command-list  (remove '("Biber" "biber %s" TeX-run-Biber nil  (plain-tex-mode latex-mode doctex-mode ams-tex-mode texinfo-mode)  :help "Run Biber") TeX-command-list))
-% eval: (setq TeX-command-list  (remove '("BibTeX" "%(bibtex) %s" TeX-run-BibTeX nil t                                                                              :help "Run BibTeX") TeX-command-list))
-% eval: (setq TeX-command-list  (remove '("BibTeX" "%(bibtex) %s" TeX-run-BibTeX nil (plain-tex-mode latex-mode doctex-mode ams-tex-mode texinfo-mode context-mode) :help "Run BibTeX") TeX-command-list))
-% eval: (setq TeX-command-list  (remove '("BibTeX" "%(bibtex) ../LaTeX/%s" TeX-run-BibTeX nil t :help "Run BibTeX")   TeX-command-list))
-% eval: (add-to-list 'TeX-command-list	'("BibTeX" "%(bibtex) LaTeX/%s" TeX-run-BibTeX nil t :help "Run BibTeX") t)
-% eval: (cond ((string-equal system-type "darwin") (progn (setq TeX-view-program-list '(("Skim" "/Applications/Skim.app/Contents/SharedSupport/displayline -b %n LaTeX/%o %b"))))))
+% TeX-master-file: t
+% eval: (setq TeX-command-list  (assq-delete-all (car (assoc "BibTeX" TeX-command-list)) TeX-command-list))
+% eval: (setq TeX-command-list  (assq-delete-all (car (assoc "Biber"  TeX-command-list)) TeX-command-list))
+% eval: (setq TeX-command-list  (remove '("BibTeX" "%(bibtex) ../LaTeX/%s"    TeX-run-BibTeX nil t :help "Run BibTeX") TeX-command-list))
+% eval: (setq TeX-command-list  (remove '("BibTeX"    "bibtex ../LaTeX/%s"    TeX-run-BibTeX nil (plain-tex-mode latex-mode doctex-mode ams-tex-mode texinfo-mode context-mode)  :help "Run BibTeX") TeX-command-list))
+% eval: (setq TeX-command-list  (remove '("BibTeX" "bibtex ../LaTeX/%s"    TeX-run-BibTeX nil t :help "Run BibTeX") TeX-command-list))
+% eval: (add-to-list 'TeX-command-list '("BibTeX" "bibtex LaTeX/%s" TeX-run-BibTeX nil t                                                                              :help "Run BibTeX") t)
+% eval:  (add-to-list 'TeX-command-list '("BibTeX" "bibtex LaTeX/%s" TeX-run-BibTeX nil (plain-tex-mode latex-mode doctex-mode ams-tex-mode texinfo-mode context-mode) :help "Run BibTeX") t)
 % TeX-PDF-mode: t
 % TeX-file-line-error: t
 % TeX-debug-warnings: t
-% LaTeX-command-style: (("" "%(PDF)%(latex) %(file-line-error) %(extraopts) -output-directory=LaTeX %S%(PDFout)"))
+% LaTeX-command-style: (("" "%(PDF)%(latex) %(file-line-error) %(extraopts) -output-directory=./LaTeX %S%(PDFout)"))
 % TeX-source-correlate-mode: t
-% TeX-source-correlate-start-server: 0
 % TeX-parse-self: t
-% End:
+% TeX-parse-all-errors: t
+% eval: (cond ((string-equal system-type "darwin") (progn (setq TeX-view-program-list '(("Skim" "/Applications/Skim.app/Contents/SharedSupport/displayline -b %n LaTeX/%o %b"))))))
+% eval: (cond ((string-equal system-type "gnu/linux") (progn (setq TeX-view-program-list '(("Evince" "evince --page-index=%(outpage) LaTeX/%o"))))))
+% eval: (cond ((string-equal system-type "gnu/linux") (progn (setq TeX-view-program-selection '((output-pdf "Evince"))))))

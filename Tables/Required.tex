@@ -15,7 +15,7 @@
     \\ \multicolumn{1}{|r|}{\href{https://\owner.github.io/BufferStockTheory\#PF-Unconstrained-Solution}{Section \ref{subsec:PFUncon}:}}         &                                         & \RIC prevents $\bar{\cFunc}(\mNrm)=\underline{\cFunc}(\mNrm)=0$
     \\ \multicolumn{1}{|r|}{\href{https://\owner.github.io/BufferStockTheory\#PF-Unconstrained-Solution}{Section \ref{subsec:PFUncon}:}}         &                                         & {\FHWC} prevents $\bar{\cFunc}(\mNrm)=\infty$
     \\ \multicolumn{1}{|r|}{Eq \eqref{eq:FHWCandPFFVACimplyRIC}:}                                                                              &                                         & {\PFFVAC}+{\FHWC} $\Rightarrow$ {\RIC}
-    \\ \multicolumn{1}{|r|}{{Eq \eqref{eq:GICandFHWCimplyPFFVAC}}:}                                                                              &                                         & {\GIC}+{\FHWC} $\Rightarrow$ {\PFFVAC}
+    \\ \multicolumn{1}{|r|}{{Eq \eqref{eq:GICandFHWCimplyPFFVAC}}:}                                                                              &                                         & {\GICRaw}+{\FHWC} $\Rightarrow$ {\PFFVAC}
     \\ \hline\hline \multicolumn{1}{|l|}{$\cnstr{\cFunc}(m)$: PF Constrained}                                              & \cncl{\GICRaw}, \RIC                    & {\FHWC} holds $(\PGro < \Pat < \Rfree \Rightarrow \PGro < \Rfree)$
     \\
 \multicolumn{1}{|r|}{\href{https://\owner.github.io/BufferStockTheory\#PF-Constrained-Solution}{Section \ref{subsec:PFCon}:}}                &                                         & $\cnstr{\cFunc}(\mNrm)=\bar{\cFunc}(\mNrm)$ for $\mNrm > \mNrm_{\#} < 1$
@@ -30,20 +30,20 @@
     \\                                                                                                                      & Section \ref{subsec:LimitsAsmtToZero}   & $\underline{\vFunc}(\mNrm) < \usual{\vFunc}(\mNrm) < \bar{\vFunc}(\mNrm)$ %
   % \\ \hline\hline \multicolumn{1}{|l|}{$\usual{\cFunc}(\mNrm)$: Friedman/Muth}                                          & \FVAC, \WRIC                            & \WRIC is weaker than \RIC
 %   \\ {``Buffer Stock'' Subset}                                                                                       &                                         & \GICNrm $\Rightarrow \exists $ `individual target' $\mTrgNrm$
-%   \\ { Section \ref{subsec:onetarget}}                                                                             &                                         & \GIC $\Rightarrow \exists $ `individual steady-state' $\mBalLvl$
+%   \\ { Section \ref{subsec:onetarget}}                                                                             &                                         & \GICRaw $\Rightarrow \exists $ `individual steady-state' $\mBalLvl$
 
   \\ \cline{2-3}\multicolumn{1}{|r|}{Section \ref{subsec:contraction}:}                            & \FVAC, \WRIC                      & Sufficient for Contraction
  \\ \multicolumn{1}{|r|}{Section \ref{sec:discussConvergence}:}                               &                      & \WRIC is weaker than \RIC
 \\  \multicolumn{1}{|r|}{Figure \ref{fig:Inequalities}:}                                        &                                 & \FVAC is stronger than \PFFVAC
   \\ \multicolumn{1}{|r|}{Section \ref{subsubsec:WhenTheRICHolds}:}
-                                            &                                 & \cncl{\FHWC}+RIC $\Rightarrow $\GIC$, \lim_{\mNrm \rightarrow \infty} \usual{\MPCFunc}(\mNrm)=\MinMPC$
+                                            &                                 & \cncl{\FHWC}+RIC $\Rightarrow $\GICRaw$, \lim_{\mNrm \rightarrow \infty} \usual{\MPCFunc}(\mNrm)=\MinMPC$
   \\  \multicolumn{1}{|r|}{Section \ref{subsubsec:WhenTheRICFails}:}                                        &                                 & \cncl{\RIC}  $\Rightarrow $\cncl{\FHWC}$, \lim_{\mNrm \rightarrow \infty} \usual{\MPCFunc}(\mNrm)=0$
   \\ \cline{3-3}\multicolumn{1}{|r|}{Section \ref{subsec:onetarget}:}                                        &                                 & ``Buffer Stock Saving'' Conditions
-  \\ \multicolumn{1}{|r|}{Section \ref{subsubsec:mSteadyState}:}                                        &                                 & \phantom{-Nrm}{\GIC} $\Rightarrow \exists 0 < \mBalLvl < \infty$ %: Steady-State
+  \\ \multicolumn{1}{|r|}{Section \ref{subsubsec:mSteadyState}:}                                        &                                 & \phantom{-Nrm}{\GICRaw} $\Rightarrow \exists 0 < \mBalLvl < \infty$ %: Steady-State
   \\ \multicolumn{1}{|r|}{Section \ref{subsubsec:mTarget}:}                                        &                                 & {\GICNrm} $\Rightarrow \exists 0 < \mTrgNrm < \infty$ %: Target
 %  \\ \hline\hline \multicolumn{1}{|l|}{$\usual{\cFunc}(\mNrm)$: Friedman/Muth} & \RIC, \FHWC                      & $\underline{\cFunc}(\mNrm) < \usual{\cFunc}(\mNrm) < \bar{\cFunc}(\mNrm)$
 %  \\ {``Buffer Stock'' Subset}                                         &                                 & \GICNrm $\Rightarrow \exists $ `individual target' $\mTrgNrm$
-%\\ { Section \ref{subsec:onetarget}}                                         &                                 & \GIC~$\Rightarrow \exists $ `individual steady-state' $\mBalLvl$
+%\\ { Section \ref{subsec:onetarget}}                                         &                                 & \GICRaw~$\Rightarrow \exists $ `individual steady-state' $\mBalLvl$
 
 \\ \hline \multicolumn{3}{c}{}
 \end{tabular}

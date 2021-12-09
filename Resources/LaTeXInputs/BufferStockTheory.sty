@@ -1,8 +1,9 @@
 \input{\ResourcesDir/owner} % Owned by llorracc (draft) or econ-ark (published) ?
-\newboolean{AddRefsExists}
-\newboolean{economicsExists}
-\newboolean{BothExist}
-\newboolean{NeitherExists}
+%\usepackage{econark}
+\provideboolean{AddRefsExists}
+\provideboolean{economicsExists}
+\provideboolean{BothExist}
+\provideboolean{NeitherExists}
 \setboolean{BothExist}{true}
 \setboolean{NeitherExists}{true}
 
@@ -58,7 +59,7 @@
 %  }
 % \makeatother
 
-\let\ushort\undefined
+%\let\ushort\undefined
 \usepackage{footmisc}
 \usepackage{datetime2}
 \usepackage{refcount}
@@ -67,11 +68,12 @@
 \usepackage{makecell}
 
 % Sets up default definitions that must be renewcommanded to override in master
-\newcommand{\onlyinsubfile}[1]{#1}\newcommand{\notinsubfile}[1]{}
+\providecommand{\onlyinsubfile}{}\renewcommand{\onlyinsubfile}[1]{#1}
+\providecommand{\notinsubfile}{}\renewcommand{\notinsubfile}[1]{}
 
 
 % Implement a standard setup and shortcuts, e.g. for the \CRRA
-\usepackage{\econtexSetup}
+%\usepackage{\econtexSetup}
 
 \newtheorem{defn}{Definition}
 \newtheorem{theorem}{Theorem}
@@ -79,17 +81,10 @@
 
 \usepackage{\econtexShortcuts}
 
-\newcommand{\cLvl}{\pmb{\mathrm{c}}}
-\newcommand{\pLvl}{\pmb{\mathrm{p}}}
+%\newcommand{\cLvl}{\pmb{\mathrm{c}}}
+%\newcommand{\pLvl}{\pmb{\mathrm{p}}}
 
 \usepackage{rotating}\usepackage{subfigure}
-% Embed metadata
-\hypersetup{pdfauthor={Christopher D. Carroll <ccarroll@jhu.edu>},
-  pdftitle={Theoretical Foundations of Buffer Stock Saving},
-  pdfkeywords={Precautionary saving, buffer-stock saving, consumption, marginal propensity to consume, permanent income hypothesis, income fluctuation problem},
-  pdfcreator = {ccarroll@jhu.edu}
-}
-
 \IfFileExists{\EqDir/Problem.md}{
   \GenericWarning{}{Reconfigure to use pdflatex -output-directory=LaTeX
     or build with latexmk
@@ -102,20 +97,6 @@
 
 \bibliographystyle{\econtexBibStyle}
 
-
-% Paper-specific macros
-\newcommand{\BoydT}{\mathsf{T}} % Contraction mapping operator
-\newcommand{\Shrinker}{\alpha}  % Contraction mapping shrinker
-
-%\newcommand{\mBal}{\check{\mRat}}
-%\newcommand{\mBalLvl}{\check}
-%\newcommand{\mmBalLvl}{\check{m}}
-%\renewcommand{\aRatBF}{\ensuremath{\pmb{\mathrm{a}}}}
-%\renewcommand{\mRatBF}{\ensuremath{\pmb{\mathrm{m}}}}
-%\renewcommand{\bRatBF}{\ensuremath{\pmb{\mathrm{b}}}}
-%\newcommand{\Grw}{\Omega}
-\newcommand{\usual}{}
-\newcommand{\cRatAvg}{\pmb{\mathfrak{\cRat}}}
 
 % Automatically create hypertargets for sections
 \DefineFamilyKey[.section]{KOMAarg}{hypertarget}{%
@@ -130,144 +111,7 @@
   \hypertarget{#1}{}%
 }
 
+\usepackage{econtexSetup}
 % Layers at top of page make no sense if there is no page
 \ifthenelse{\boolean{Web}}{}{\usepackage{scrlayer-scrpage}}
 
-% \ifthenelse{\boolean{Web}}{ % Web and PDF spacing differ
-% }{ % else PDF, which needs different spacing 
-% \RedeclareSectionCommand[
-% tocindent=0cm,
-% tocnumwidth=0.6cm
-% ]{section}
-% \RedeclareSectionCommand[
-% tocindent=0.6cm,
-% tocnumwidth=0.8cm
-% ]{subsection}
-% \RedeclareSectionCommand[
-% tocindent=0.6cm,
-% tocnumwidth=1.4cm
-% ]{subsubsection}
-% } % End Web
-
-% %\providecommand does not rewrite a command if a definition already exists
-% \providecommand{\FHWC}{\href{{\BSTpaperLink}\#FHWC}{\textrm{FHWC}}}
-% \providecommand{\GPFRaw}{\href{{\BSTpaperLink}\#GPFRaw}{\textrm{GPF}}}
-% \providecommand{\GICRaw}{\href{{\BSTpaperLink}\#GICRaw}{\textrm{GIC}}}
-% \providecommand{\GPFNrm}{\href{{\BSTpaperLink}\#GPFNrm}{\textrm{GPF-Nrm}}}
-% \providecommand{\GICNrm}{\href{{\BSTpaperLink}\#GICNrm}{\textrm{GIC-Nrm}}}
-% \providecommand{\RIC}{\href{{\BSTpaperLink}\#RIC}{\textrm{RIC}}}
-% \providecommand{\PFFVAC}{\href{{\BSTpaperLink}\#PFFVAC}{\textrm{PF-FVAC}}}
-% \providecommand{\FVAC}{\href{{\BSTpaperLink}\#FVAC}{\textrm{FVAC}}}
-% \providecommand{\VAF}{\href{{\BSTpaperLink}\#VAF}{\textrm{VAF}}}
-% \providecommand{\APF}{\href{{\BSTpaperLink}\#APF}{\textrm{APF}}}
-% \providecommand{\RPF}{\href{{\BSTpaperLink}\#RPF}{\textrm{RPF}}}
-% \providecommand{\AIC}{\href{{\BSTpaperLink}\#AIC}{\textrm{AIC}}}
-% \providecommand{\GIC}{\href{{\BSTpaperLink}\#GIC}{\textrm{GIC}}}
-% \providecommand{\WRPF}{\href{{\BSTpaperLink}\#WRPF}{\textrm{WRPF}}}
-% \providecommand{\WRIC}{\href{{\BSTpaperLink}\#WRIC}{\textrm{WRIC}}}
-
-\providecommand{\boundFunc}{\ensuremath{\digamma}}
-%\providecommand{\DiscLiv}{\beta}
-\providecommand{\Alive}{}
-\renewcommand{\Alive}{\cncl{\DieFac}}
-\providecommand{\RfreeAgg}{}
-\renewcommand{\RfreeAgg}{\Agg{\Rfree}}
-
-\providecommand{\aNrm}{a}
-\providecommand{\AMPS}{}
-\renewcommand{\AMPS}{\avg{\aFunc}^{\prime}}
-\providecommand{\AMPSP}{{\avg{\aFunc}^{\prime\prime}}}
-
-\newcommand{\Nvrnt}{F}
-\newcommand{\nvrnt}{f}
-\newcommand{\Harm}{\tilde}
-\newcommand{\HarmWide}{\widetilde}
-%\provideboolean{Metin}\setboolean{Metin}{true}\newcommand{\Metin}[2]{\ifthenelse{\boolean{Metin}}{\marginpar{\large Metin}\{{#1}\} $\rightarrow$ \{{#2}\}}{#2}}% PrivateMsg: Comments by Metin Uyanik
-
-\providecommand{\DiscFacAlt}{\beth}
-\providecommand{\DiscFacRaw}{\beta}
-\providecommand{\DiscFacLiv}{\underline{\DiscFacRaw}}
-\providecommand{\RfreeEff}{\bar{\Rfree}}
-
-%\providecommand{\mNrm}{m}
-%\newcommand{\mTrgNrm}{\check{\mNrm}}
-%\newcommand{\Trg}{\hat}
-%\newcommand{\mBalLvl}{\check}
-%\newcommand{\mGro}{}
-%\newcommand{\mBal}{}
-%\newcommand{\Grw}{}
-%\newcommand{\avg}{}
-%\newcommand{\Gro}{}
-%\newcommand{\mBal}{}
-%\newcommand{\mBalLvl}{\check}
-
-
-\providecommand{\aLvl}{\aLevBF}
-\providecommand{\bLvl}{\bLevBF}
-\providecommand{\cLvl}{\cLevBF}
-\providecommand{\dLvl}{\dLevBF}
-\providecommand{\eLvl}{\eLevBF}
-\providecommand{\fLvl}{\fLevBF}
-\providecommand{\hLvl}{\hLevBF}
-\providecommand{\iLvl}{\iLevBF}
-\providecommand{\jLvl}{\jLevBF}
-\providecommand{\kLvl}{\kLevBF}
-\providecommand{\mLvl}{\mLevBF}
-\providecommand{\pLvl}{\pLevBF}
-\providecommand{\sLvl}{\sLevBF}
-\providecommand{\vLvl}{\vLevBF}
-\providecommand{\yLvl}{\yLevBF}
-\providecommand{\zLvl}{\zLevBF}
-
-\providecommand{\ALvl}{\ALevBF}
-\providecommand{\BLvl}{\BLevBF}
-\providecommand{\CLvl}{\CLevBF}
-\providecommand{\DLvl}{\DLevBF}
-\providecommand{\ELvl}{\ELevBF}
-\providecommand{\FLvl}{\FLevBF}
-\providecommand{\HLvl}{\HLevBF}
-\providecommand{\ILvl}{\ILevBF}
-\providecommand{\JLvl}{\JLevBF}
-\providecommand{\KLvl}{\KLevBF}
-\providecommand{\MLvl}{\MLevBF}
-\providecommand{\PLvl}{\PLevBF}
-\providecommand{\SLvl}{\SLevBF}
-\providecommand{\VLvl}{\VLevBF}
-\providecommand{\YLvl}{\YLevBF}
-\providecommand{\ZLvl}{\ZLevBF}
-
-
-\providecommand{\aNrm}{\aRat}
-\providecommand{\bNrm}{\bRat}
-\providecommand{\cNrm}{\cRat}
-\providecommand{\dNrm}{\dRat}
-\providecommand{\eNrm}{\eRat}
-\providecommand{\fNrm}{\fRat}
-\providecommand{\hNrm}{\hRat}
-\providecommand{\iNrm}{\iRat}
-\providecommand{\jNrm}{\jRat}
-\providecommand{\kNrm}{\kRat}
-\providecommand{\mNrm}{\mRat}
-\providecommand{\pNrm}{\pRat}
-\providecommand{\sNrm}{\sRat}
-\providecommand{\vNrm}{\vRat}
-\providecommand{\yNrm}{\yRat}
-\providecommand{\zNrm}{\zRat}
-
-\providecommand{\ANrm}{\ARat}
-\providecommand{\BNrm}{\BRat}
-\providecommand{\CNrm}{\CRat}
-\providecommand{\DNrm}{\DRat}
-\providecommand{\ENrm}{\ERat}
-\providecommand{\FNrm}{\FRat}
-\providecommand{\HNrm}{\HRat}
-\providecommand{\INrm}{\IRat}
-\providecommand{\JNrm}{\JRat}
-\providecommand{\KNrm}{\KRat}
-\providecommand{\MNrm}{\MRat}
-\providecommand{\PNrm}{\PRat}
-\providecommand{\SNrm}{\SRat}
-\providecommand{\VNrm}{\VRat}
-\providecommand{\YNrm}{\YRat}
-\providecommand{\ZNrm}{\ZRat}
-\newcommand{\cNrmAvg}{\cRatAvg}

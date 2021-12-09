@@ -112,9 +112,9 @@ Now, we show that (given our other assumptions) $\difFunc^{\prime}(\mNrm)$ is de
   \bar{\Rnorm}\left(1-\cFunc^{\prime}({\mNrm}_t)\right) - 1 & <  \bar{\Rnorm}(1-\underbrace{(1-\PatR)}_{\MinMPC}) - 1  \\
                                                             & = \bar{\Rnorm}\PatR - 1 \\
                                                             & = \Ex_{t}\left[\frac{\Rfree}{\PGro \pShk}\frac{\Pat}{\Rfree}\right] - 1 \\
-                                                            & = \underbrace{\Ex_{t}\left[\frac{\Pat}{\PGro \pShk}\right]}_{= \PatPGroAdj} - 1 
+                                                            & = \underbrace{\Ex_{t}\left[\frac{\Pat}{\PGro \pShk}\right]}_{= \PatPermGroFacAdj} - 1 
 \end{align*}
-which is negative because the {\GICNrm} says $\PatPGroAdj < 1$.  
+which is negative because the {\GICNrm} says $\PatPermGroFacAdj < 1$.  
 
 \textbf{If {\RIC} fails.}
 Under \cncl{\RIC}, recall that $\lim_{\mNrm \uparrow \infty} \cFunc^{\prime}(\mNrm) = 0$.  Concavity of the consumption function means that $\cFunc^{\prime}$ is a decreasing function, so everywhere 
@@ -127,7 +127,7 @@ which means that $\difFunc^{\prime}(\mNrm_{t})$ from~\eqref{eq:difFuncmNrmDecrea
 \end{align}
 But the combination of the {\GICNrm} holding and the {\RIC} failing can be written:
 \begin{align*}
-  \overbrace{\Ex_{t}\left[\frac{\Pat}{\PGro \pShk}\right]}^{\PatPGroAdj} & < 1 < \overbrace{\frac{\Pat}{\Rfree}}^{{\PatR}},
+  \overbrace{\Ex_{t}\left[\frac{\Pat}{\PGro \pShk}\right]}^{\PatPermGroFacAdj} & < 1 < \overbrace{\frac{\Pat}{\Rfree}}^{{\PatR}},
 \end{align*}
 and multiplying all three elements by $\Rfree/\Pat$ gives 
 \begin{align*}

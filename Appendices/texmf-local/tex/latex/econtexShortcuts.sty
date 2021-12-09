@@ -644,10 +644,12 @@
 
 
 % Ensure that you're in math mode when using the \cancel command (otherwise tex4ht produces bad output)
-\newcommand\cncl[1]{\ensuremath{\cancel{#1}}}
+\providecommand{\cncl}{}
+\renewcommand\cncl[1]{\ensuremath{\cancel{#1}}}
 
 % Define the handles for the various conditions
-\newcommand{\constr}[1]{\grave{#1}}
+\providecommand{\constr}{}
+\renewcommand{\constr}[1]{\grave{#1}}
 
 %\renewcommand{\PFGPF}{{\mbox{PF-GPF}}}
 %\renewcommand{\PFGIC}{{\mbox{PF-GIC}}}

@@ -33,7 +33,7 @@
 \RequirePackage{snapshot} % Creates list of external files used by a LaTeX document
 \RequirePackage{ifthen}
 \RequirePackage{changepage}
-\RequirePackage{/Volumes/Data/Papers/BufferStockTheory/BufferStockTheory-Latest/Resources/LaTeXInputs/econark}
+%\RequirePackage{/Volumes/Data/Papers/BufferStockTheory/BufferStockTheory-Latest/Resources/LaTeXInputs/econark}
 % If unspecified whether pdf output (instead of dvi) is being used, determine that it SHOULD be
 \newif\ifdvi\dvitrue
 \@ifundefined{pdfoutput}{}{\ifnum\pdfoutput>0 \dvifalse\fi}
