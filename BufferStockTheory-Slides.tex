@@ -128,10 +128,10 @@ Limit as horizon $T$ goes to infinity of
 
 \input \LtxDir\EqDir/DBCparts
 
-\input \LtxDir\EqDir/tShkDef
+\input \LtxDir\EqDir/TranShkDef
 
 \begin{itemize}
-\item $\util(\bullet)=\bullet^{1-\CRRA}/(1-\CRRA)$; $\Ex_{t}[\pShk_{t+n}]=\Ex_{t}[\tShk_{t+n}]=1~\forall~n>0$; $\beta < 1, \CRRA > 1$
+\item $\util(\bullet)=\bullet^{1-\CRRA}/(1-\CRRA)$; $\Ex_{t}[\PermShk_{t+n}]=\Ex_{t}[\TranShk_{t+n}]=1~\forall~n>0$; $\beta < 1, \CRRA > 1$
 \end{itemize}
 
 \end{frame}
@@ -159,18 +159,18 @@ Limit as horizon $T$ goes to infinity of
 Definitions: \smallskip
 
 \begin{tabular}{llcl}
-   Absolute Patience Factor & $\Pat$ & = & $(\Rfree \Discount)^{1/\CRRA}$
-\\ Return Patience Factor & $\PatR$ & = & \Pat/\Rfree
-\\ Perfect Foresight Growth Patience Factor & $\PatPGro$ & = & \Pat/\PGro
+   Absolute Patience Factor & $\APFac$ & = & $(\Rfree \Discount)^{1/\CRRA}$
+\\ Return Patience Factor & $\RPFac$ & = & \APFac/\Rfree
+\\ Perfect Foresight Growth Patience Factor & $\GPFacRaw$ & = & \APFac/\PermGroFac
 \end{tabular}
 
 \medskip
 
 \begin{tabular}{l|lcl|l} \hline
    Name                                 & \multicolumn{3}{c|}{Condition}    & Implication 
-\\ \hline (\AIC) Absolute Impatience Condition  & $\Pat$  & $<$ & 1 & $\cLvl$ $\downarrow$ over time
-\\ (\RIC) Return Impatience Condition    & $\PatR$ & $<$ & 1 & $\cLvl/\aLvl$ $\downarrow$ over time
-\\ (\GICRaw) Growth Impatience Condition & $\PatPGro$ & $<$ & 1 & $\cLvl/\pLvl$ $\downarrow$ over time
+\\ \hline (\AIC) Absolute Impatience Condition  & $\APFac$  & $<$ & 1 & $\cLvl$ $\downarrow$ over time
+\\ (\RIC) Return Impatience Condition    & $\RPFac$ & $<$ & 1 & $\cLvl/\aLvl$ $\downarrow$ over time
+\\ (\GICRaw) Growth Impatience Condition & $\GPFacRaw$ & $<$ & 1 & $\cLvl/\PermLvl$ $\downarrow$ over time
 \end{tabular}
 
 \medskip
@@ -182,13 +182,13 @@ Definitions: \smallskip
 
 Finite Human Wealth (\FHWC) condition:
 \begin{eqnarray}
-\PGro & < & \Rfree
+\PermGroFac & < & \Rfree
 \end{eqnarray}
 
 \pause\medskip
 Return Impatience Condition:
 \begin{eqnarray}
-\PatR & < & \Rfree
+\RPFac & < & \Rfree
 \end{eqnarray}
 
 \end{frame}
@@ -204,7 +204,7 @@ Return Impatience Condition:
 
 `Perfect Foresight Finite Value of Autarky Condition (\PFFVAC)':
 \begin{eqnarray}
-\beta \PGro^{1-\CRRA} & < & 1  
+\beta \PermGroFac^{1-\CRRA} & < & 1  
 \end{eqnarray}
 
 \item Without \RIC, Constraints Are Irrelevant
@@ -238,7 +238,7 @@ Finite Value of Autarky Condition: Same As In Liq Constr Problem!
 `Weak Return Impatience Condition' (\WRIC)
 
 \begin{eqnarray}
- 0 \leq & \pZero^{1/\CRRA} \PatR & < 1 \label{eq:WRIC}
+ 0 \leq & \pZero^{1/\CRRA} \RPFac & < 1 \label{eq:WRIC}
 \end{eqnarray}
 
 \end{frame}
@@ -250,7 +250,7 @@ Definitions: `Uncertainty-Adjusted' Growth:
 \input \LtxDir\EqDir/PermGroFacAdj
 
 Adjusted Growth Patience Factor:
-\input \LtxDir\EqDir/PatPermGroFacAdj
+\input \LtxDir\EqDir/GPFacNrm
 
 Growth Impatience Condition:
 \input \LtxDir\EqDir/GICNrm~
@@ -259,7 +259,7 @@ Growth Impatience Condition:
 
 Why?  Because it can be shown that
 \begin{eqnarray}
- \lim_{\mNrm_{t} \rightarrow \infty} \Ex_{t}\left[\frac{\mNrm_{t+1}}{\mNrm_{t}}\right] & = & \PatPermGroFacAdj  \label{eq:mGrowth}
+ \lim_{\mNrm_{t} \rightarrow \infty} \Ex_{t}\left[\frac{\mNrm_{t+1}}{\mNrm_{t}}\right] & = & \GPFacNrm  \label{eq:mGrowth}
 \end{eqnarray}
 
 \end{frame}
@@ -270,10 +270,10 @@ Why?  Because it can be shown that
 \frametitle{Five Propositions}
 
 \begin{enumerate}
-\item $\lim_{\mNrm_{t} \rightarrow \infty} \Ex_{t}[\cLvl_{t+1}/\cLvl_{t}] = \Pat$
+\item $\lim_{\mNrm_{t} \rightarrow \infty} \Ex_{t}[\cLvl_{t+1}/\cLvl_{t}] = \APFac$
 \item $\lim_{\mNrm_{t} \rightarrow 0} \Ex_{t}[\cLvl_{t+1}/\cLvl_{t}] = \infty$
 \item $\exists$ a unique target value of $\mNrm$, called $\check{\mNrm}$
-\item $\Ex_{t}[\cLvl_{t+1}/\cLvl_{t} | \mNrm_{t} = \check{m}] = \PGro - \epsilon$
+\item $\Ex_{t}[\cLvl_{t+1}/\cLvl_{t} | \mNrm_{t} = \check{m}] = \PermGroFac - \epsilon$
 \item $\left(\frac{d \Ex_{t}[\cLvl_{t+1}/\cLvl_{t}]}{d \mNrm_{t}}\right) < 0$
 \end{enumerate}
 
@@ -326,7 +326,7 @@ $\mNrm, \cNrm, \aNrm,$ etc.
 
 Achieved When Cross Section Distribution Reaches Invariance
 \begin{eqnarray}
-  \YLvl_{t+1}/\YLvl_{t} = \CLvl_{t+1}/\CLvl_{t} & = & \PGro
+  \YLvl_{t+1}/\YLvl_{t} = \CLvl_{t+1}/\CLvl_{t} & = & \PermGroFac
 \end{eqnarray}
 
 Fisherian Separation Fails, Even Without Liquidity Constraints!

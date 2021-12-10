@@ -21,14 +21,14 @@
 Main Condition     &\multicolumn{3}{c|}{~}         & \\ % & Example \\
 ~~~~Subcondition   & \multicolumn{3}{c|}{Math}             & \multicolumn{1}{c|}{ Outcome, Comments or Results} % & Example 
 \\ \hline
-\cncl{\GICRaw}      & $\phantom{\Pat/\Rfree}$ & $\phantom{~<~}1        {~<~}$ & $        {\Pat/\PGro}$  & Constraint never binds for $\mNrm \geq 1$ %& %$\{\Pat,\PGro\}=\{1,0.98\}$
-\\ ~~~~ and \RIC~          & $        {\Pat/\Rfree}$ & $        {~<~}1\phantom{~<~}$ & $\phantom{\Pat/\PGro}$  & ~~~\FHWC~holds ($\Rfree > \PGro$); $\cnstr{\cFunc}(\mNrm) = \bar{\cFunc}(\mNrm)$ for $\mNrm \geq 1$ % & $\{\Rfree,\Discount, \PGro \} = $
-\\ ~~~~ and \cncl{\RIC}   & $\phantom{\Pat/\Rfree}$ & $\phantom{~<~}1        {~<~}$ & $        {\Pat/\Rfree}$ & ~~~~$\cnstr{\cFunc}(\mNrm)$ is degenerate: $\cnstr{\cFunc}(\mNrm)=0$  %&
-\\ \GICRaw~            & $        {\Pat/\PGro}$ & $        {~<~}1\phantom{~<~}$ & $\phantom{\Pat/\Rfree}$  & Constraint binds in finite time for any $\mNrm$ % &
-\\ ~~~~ and \RIC~           & $        {\Pat/\Rfree}$  & $      {~<~}1\phantom{~<~}$ & $\phantom{\Pat/\PGro}$   & ~~~~\FHWC~may or may not hold
+\cncl{\GICRaw}      & $\phantom{\APFac/\Rfree}$ & $\phantom{~<~}1        {~<~}$ & $        {\APFac/\PermGroFac}$  & Constraint never binds for $\mNrm \geq 1$ %& %$\{\APFac,\PermGroFac\}=\{1,0.98\}$
+\\ ~~~~ and \RIC~          & $        {\APFac/\Rfree}$ & $        {~<~}1\phantom{~<~}$ & $\phantom{\APFac/\PermGroFac}$  & ~~~\FHWC~holds ($\Rfree > \PermGroFac$); $\cnstr{\cFunc}(\mNrm) = \bar{\cFunc}(\mNrm)$ for $\mNrm \geq 1$ % & $\{\Rfree,\Discount, \PermGroFac \} = $
+\\ ~~~~ and \cncl{\RIC}   & $\phantom{\APFac/\Rfree}$ & $\phantom{~<~}1        {~<~}$ & $        {\APFac/\Rfree}$ & ~~~~$\cnstr{\cFunc}(\mNrm)$ is degenerate: $\cnstr{\cFunc}(\mNrm)=0$  %&
+\\ \GICRaw~            & $        {\APFac/\PermGroFac}$ & $        {~<~}1\phantom{~<~}$ & $\phantom{\APFac/\Rfree}$  & Constraint binds in finite time for any $\mNrm$ % &
+\\ ~~~~ and \RIC~           & $        {\APFac/\Rfree}$  & $      {~<~}1\phantom{~<~}$ & $\phantom{\APFac/\PermGroFac}$   & ~~~~\FHWC~may or may not hold
 \\ ~~~~               &                          &                             &                          & ~~~~~~~$\lim_{m \uparrow \infty}\bar{\cFunc}(\mNrm) - \cnstr{\cFunc}(\mNrm) = 0$ % & ~~$\{1.02,1.02^{-1},1.02\}$
 \\ ~~~~               &                          &                             &                          & ~~~~~~~$\lim_{m \uparrow \infty}\cnstr{\MPCFunc}(\mNrm) = \MinMPC$ % & ~~$\{1.02,1.02^{-1},1.02\}$
-\\ ~~~~ and \cncl{\RIC}   &                          & $\phantom{~<~}1         ~<~ $ & $         \Pat/\Rfree$ & $\cncl{\FHWC}$
+\\ ~~~~ and \cncl{\RIC}   &                          & $\phantom{~<~}1         ~<~ $ & $         \APFac/\Rfree$ & $\cncl{\FHWC}$
 \\ ~~~~~~             &                          &                             &                          & ~~~~~$\lim_{\mNrm \uparrow \infty} \cnstr{\MPCFunc}(\mNrm) =  0$               % & ~~$\{0.98,1.00, 0.99, 2\} $
 \\ \hline
 \end{tabular}
@@ -74,14 +74,14 @@ Main Condition     &\multicolumn{3}{c|}{~}         & \\ % & Example \\
 \begin{tabular}{|c|c|}\hline
 Perfect Foresight Versions & Uncertainty Versions\\ \hline
 \multicolumn{2}{|c|}{Finite Human Wealth Condition (\FHWC)} \\ \hline
-$\PGro/\Rfree < 1$                                                          & $\PGro/\Rfree < 1$ \\
-\multirow{3}{75mm}{\thead{The growth factor for permanent income \\ $\PGro$ must be smaller than the discounting \\ factor $\Rfree$ for human wealth to be finite. }} &
+$\PermGroFac/\Rfree < 1$                                                          & $\PermGroFac/\Rfree < 1$ \\
+\multirow{3}{75mm}{\thead{The growth factor for permanent income \\ $\PermGroFac$ must be smaller than the discounting \\ factor $\Rfree$ for human wealth to be finite. }} &
 \multirow{3}{75mm}{\thead{The model's risks are mean-preserving \\ spreads, so the PDV of future income is \\ unchanged by their introduction.}} \\
 &  \\
 &  \\
 &  \\ \hline
 \multicolumn{2}{|c|}{Absolute Impatience Condition (\AIC)} \\ \hline
-$\Pat < 1$                                        &  $\Pat < 1$ \\
+$\APFac < 1$                                        &  $\APFac < 1$ \\
 \multirow{4}{75mm}{\thead{The unconstrained consumer is \\ sufficiently impatient that the level of \\ consumption will be declining over time:}} &
 \multirow{4}{75mm}{\thead{\textit{If wealth is large enough,} the \textit{expectation} \\ of consumption next period will be \\ smaller than this period's consumption:}} \\
 & \\
@@ -91,32 +91,32 @@ $\cLvl_{t+1} < \cLvl_{t}$ & $\lim_{m_{t} \rightarrow \infty} \Ex_{t} [\cLvl_{t+1
 & \\ \hline
 \multicolumn{2}{|c|}{Return Impatience Conditions} \\ \hline
 \multicolumn{1}{|c|}{Return Impatience Condition (\RIC)} & \multicolumn{1}{c|}{Weak \RIC~(\WRIC)} \\ \hline
-$\Pat/\Rfree < 1$                                          & $\pZero^{1/\CRRA}\Pat/\Rfree < 1$ \\
-\multirow{3}{75mm}{\thead{The growth factor for consumption $\Pat$ \\ must be smaller than the discounting \\ factor $\Rfree$, so that the PDV of current and \\ future consumption will be finite:}}  &
+$\APFac/\Rfree < 1$                                          & $\pZero^{1/\CRRA}\APFac/\Rfree < 1$ \\
+\multirow{3}{75mm}{\thead{The growth factor for consumption $\APFac$ \\ must be smaller than the discounting \\ factor $\Rfree$, so that the PDV of current and \\ future consumption will be finite:}}  &
 \multirow{3}{75mm}{\thead{If the probability of the zero-income \\ event is $\pZero=1$ then income is always zero \\ and the condition becomes identical to \\ the \RIC.  Otherwise, weaker.}} \\
 & \\
 & \\
 & \\
 & \\
-$\cFunc^{\prime}(m) = 1-\Pat/\Rfree < 1$              & $\cFunc^{\prime}(m) < 1-\pZero^{1/\CRRA}\Pat/\Rfree < 1$ \\
+$\cFunc^{\prime}(m) = 1-\APFac/\Rfree < 1$              & $\cFunc^{\prime}(m) < 1-\pZero^{1/\CRRA}\APFac/\Rfree < 1$ \\
 & \\ \hline
 \multicolumn{2}{|c|}{Growth Impatience Conditions} \\ \hline
 \multicolumn{1}{|c|}{\GICRaw} & \multicolumn{1}{c|}{\GICNrm} \\ \hline
-$\Pat/\PGro < 1$                                         & $\Pat\Ex[\pShk^{-1}]/\PGro < 1 $ \\
+$\APFac/\PermGroFac < 1$                                         & $\APFac\Ex[\PermShk^{-1}]/\PermGroFac < 1 $ \\
 \multirow{4}{75mm}{\thead{Guarantees that for an unconstrained \\ consumer, the ratio of consumption to \\ permanent income will fall over time.  For ~~~\\ a constrained consumer, guarantees the \\ constraint will eventually be binding.}} &
 \multirow{4}{75mm}{\thead{By Jensen's inequality, stronger than \\the \GICRaw. \\  Ensures consumers will not \\ expect to accumulate $\mNrm$ unboundedly.}} \\
 & \\
 & \\
 & \\
-& $\lim_{\mNrm_{t} \rightarrow \infty} \Ex_{t}[\mNrm_{t+1}/\mNrm_{t}] = \PatPermGroFacAdj $
+& $\lim_{\mNrm_{t} \rightarrow \infty} \Ex_{t}[\mNrm_{t+1}/\mNrm_{t}] = \GPFacNrm $
  \\
 & \\ \hline
 \multicolumn{2}{|c|}{Finite Value of Autarky Conditions} \\ \hline
 \multicolumn{1}{|c|}{\PFFVAC} & \multicolumn{1}{c|}{\FVAC} \\ \hline
-$\beta \PGro^{1-\CRRA} < 1$                                                 & $\beta \PGro^{1-\CRRA}\Ex[\pshk^{1-\CRRA}] < 1$  \\
-equivalently $\Pat/\PGro  < (\Rfree/\PGro)^{1/\CRRA}$ & \\
+$\beta \PermGroFac^{1-\CRRA} < 1$                                                 & $\beta \PermGroFac^{1-\CRRA}\Ex[\pshk^{1-\CRRA}] < 1$  \\
+equivalently $\APFac/\PermGroFac  < (\Rfree/\PermGroFac)^{1/\CRRA}$ & \\
 \multirow{3}{75mm}{\thead{The discounted utility of constrained \\ consumers who spend their permanent \\ income each period should be finite.}} &
-\multirow{3}{75mm}{\thead{By Jensen's inequality, stronger than the \\ \PFFVAC~because for $\CRRA>1$ and \\ nondegenerate $\pShk$, $\Ex[\pShk^{1-\CRRA}] > 1$.} } \\
+\multirow{3}{75mm}{\thead{By Jensen's inequality, stronger than the \\ \PFFVAC~because for $\CRRA>1$ and \\ nondegenerate $\PermShk$, $\Ex[\PermShk^{1-\CRRA}] > 1$.} } \\
 & \\
                            & \\
 &  \\ \hline

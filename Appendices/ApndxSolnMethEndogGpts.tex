@@ -11,11 +11,11 @@
 The model is solved using an extension of the method of endogenous gridpoints (\cite{carrollEGM}): A grid of possible values of end-of-period assets $\vec{\aNrm}$ is defined, and at these points, marginal end-of-period-$t$ value is computed as the discounted next-period expected marginal utility of consumption (which the Envelope theorem says matches expected marginal value).  The results are then used to identify the corresponding levels of consumption at the beginning of the period:\footnote{The software can also solve a version of the model with explicit liquidity constraints, where the Envelope condition does not hold.}
 
 \begin{equation}\begin{gathered}\begin{aligned}
-  \uP(\cEndFunc_{t}(\vec{\aNrm}))  & = \Rfree \beta \Ex_{t}[ \uP(\PGro_{t+1}
-  \cFunc_{t+1}(\Rnorm_{t+1}\vec{\aNrm} + \tShk_{t+1}))] \label{eq:cEulerEndog}
-\\ \vec{c}_{t} \equiv \cEndFunc_{t}(\vec{\aNrm})  & = {\left(\Rfree \beta \Ex_{t}\left[ {\left(\PGro_{t+1}
+  \uP(\cEndFunc_{t}(\vec{\aNrm}))  & = \Rfree \beta \Ex_{t}[ \uP(\PermGroFac_{t+1}
+  \cFunc_{t+1}(\Rnorm_{t+1}\vec{\aNrm} + \TranShk_{t+1}))] \label{eq:cEulerEndog}
+\\ \vec{c}_{t} \equiv \cEndFunc_{t}(\vec{\aNrm})  & = {\left(\Rfree \beta \Ex_{t}\left[ {\left(\PermGroFac_{t+1}
       \cFunc_{t+1}(\Rnorm_{t+1}\vec{\aNrm} +
-      \tShk_{t+1})\right)}^{-\CRRA}\right]\right)}^{-1/\CRRA}. \notag
+      \TranShk_{t+1})\right)}^{-\CRRA}\right]\right)}^{-1/\CRRA}. \notag
 \end{aligned}\end{gathered}\end{equation}
 
 The dynamic budget constraint can then be used to generate the corresponding $\mNrm$'s:
@@ -25,9 +25,9 @@ The dynamic budget constraint can then be used to generate the corresponding $\m
 
 An approximation to the consumption function could be constructed by linear interpolation between the $\{\vec{\mNrm},\vec{\cNrm}\}$ points.  But a vastly more accurate approximation can be made (for a given number of gridpoints) if the interpolation is constructed so that it also matches the marginal propensity to consume at the gridpoints. Differentiating~\eqref{\localorexternallabel{eq:cEulerEndog}} with respect to $\aNrm$ (and dropping policy function arguments for simplicity) yields a marginal propensity to \textit{have consumed} $\cEndFunc^{\aNrm}$ at each gridpoint:
 \begin{equation}\begin{gathered}\begin{aligned}
-\uPP(\cEndFunc_{t})\cEndFunc_{t}^{\aNrm}  & = \Rfree \beta \Ex_{t}[\uPP(\PGro_{t+1} \cFunc_{t+1})\PGro_{t+1} \cFunc^{\mNrm}_{t+1}\Rnorm_{t+1}] \notag
-\\  & = \Rfree \beta \Ex_{t}[\uPP(\PGro_{t+1} \cFunc_{t+1}) \Rfree \cFunc^{\mNrm}_{t+1}] \notag
-\\ \cEndFunc_{t}^{\aNrm}  & = \Rfree \beta \Ex_{t}[\uPP(\PGro_{t+1}  \cFunc_{t+1}) \Rfree \cFunc^{\mNrm}_{t+1}]/\uPP(\cEndFunc_{t}) \label{eq:MPTHC}
+\uPP(\cEndFunc_{t})\cEndFunc_{t}^{\aNrm}  & = \Rfree \beta \Ex_{t}[\uPP(\PermGroFac_{t+1} \cFunc_{t+1})\PermGroFac_{t+1} \cFunc^{\mNrm}_{t+1}\Rnorm_{t+1}] \notag
+\\  & = \Rfree \beta \Ex_{t}[\uPP(\PermGroFac_{t+1} \cFunc_{t+1}) \Rfree \cFunc^{\mNrm}_{t+1}] \notag
+\\ \cEndFunc_{t}^{\aNrm}  & = \Rfree \beta \Ex_{t}[\uPP(\PermGroFac_{t+1}  \cFunc_{t+1}) \Rfree \cFunc^{\mNrm}_{t+1}]/\uPP(\cEndFunc_{t}) \label{eq:MPTHC}
 \end{aligned}\end{gathered}\end{equation}
 and the marginal propensity to consume at the beginning of the period is obtained from the marginal
 propensity to have consumed by noting that, if we define $\mathfrak{m}(a) = \cEndFunc(a)-a$,

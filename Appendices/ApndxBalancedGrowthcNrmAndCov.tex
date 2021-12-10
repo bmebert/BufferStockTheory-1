@@ -10,14 +10,14 @@
 \begin{document}
 
 \hypertarget{ApndxBalancedGrowthcNrmAndCov}{}
-\section{Balanced Growth in \texorpdfstring{$\cNrmAvg$}{c} and \texorpdfstring{$\cov(\cNrm,\pLvl)$}{cov(c,p)}}\label{sec:ApndxBalancedGrowthcNrmAndCov}
+\section{Balanced Growth in \texorpdfstring{$\cNrmAvg$}{c} and \texorpdfstring{$\cov(\cNrm,\PermLvl)$}{cov(c,p)}}\label{sec:ApndxBalancedGrowthcNrmAndCov}
 
 %\providecommand{\GroFac}{\Omega}\renewcommand{\GroFac}{\Omega}
 
-Section~\ref{subsec:Covariances} demonstrates some propositions under the assumption that, when an economy satisfies the {\GICRaw}, there will be constant growth factors $\GroFac_{\cNrmAvg}$ and $\GroFac_{\cov}$ respectively for $\cNrmAvg$ (the average value of the consumption ratio) and $\cov(\cNrm,\pLvl)$.  In the case of a Szeidl-invariant economy, the main text shows that these are $\GroFac_{\cNrmAvg}=1$ and $\GroFac_{\cov}=\PGro$.  If the economy is Harmenberg- but not Szeidl-invariant, no proof is offered that these growth factors will be constant.
+Section~\ref{subsec:Covariances} demonstrates some propositions under the assumption that, when an economy satisfies the {\GICRaw}, there will be constant growth factors $\GroFac_{\cNrmAvg}$ and $\GroFac_{\cov}$ respectively for $\cNrmAvg$ (the average value of the consumption ratio) and $\cov(\cNrm,\PermLvl)$.  In the case of a Szeidl-invariant economy, the main text shows that these are $\GroFac_{\cNrmAvg}=1$ and $\GroFac_{\cov}=\PermGroFac$.  If the economy is Harmenberg- but not Szeidl-invariant, no proof is offered that these growth factors will be constant.
 
-\subsection{\texorpdfstring{$\log \cNrm$}{log c} and \texorpdfstring{$\log \left(\cov(\cNrm,\pLvl)\right)$}{log cov(c,p)} Grow Linearly}
-Figures~\ref{fig:logcNrm} and~\ref{fig:logcov} plot the results of simulations of an economy that satisfies Harmenberg- but not Szeidl-invariance with a population of 4 million agents over the last 1000 periods (of a 2000 period simulation).  The first figure shows that $\log \cNrmAvg$ increases apparently linearly.  The second figure shows that $\log (-\cov(\cNrm,\pLvl))$ also increases apparently linearly.  (These results are produced by the notebook \href{https://github.com/econ-ark/BufferStockTheory/blob/master/Code/Python/ApndxBalancedGrowthcNrmAndCov.ipynb}{\texttt{ApndxBalancedGrowthcNrmAndCov.ipynb}}).
+\subsection{\texorpdfstring{$\log \cNrm$}{log c} and \texorpdfstring{$\log \left(\cov(\cNrm,\PermLvl)\right)$}{log cov(c,p)} Grow Linearly}
+Figures~\ref{fig:logcNrm} and~\ref{fig:logcov} plot the results of simulations of an economy that satisfies Harmenberg- but not Szeidl-invariance with a population of 4 million agents over the last 1000 periods (of a 2000 period simulation).  The first figure shows that $\log \cNrmAvg$ increases apparently linearly.  The second figure shows that $\log (-\cov(\cNrm,\PermLvl))$ also increases apparently linearly.  (These results are produced by the notebook \href{https://github.com/econ-ark/BufferStockTheory/blob/master/Code/Python/ApndxBalancedGrowthcNrmAndCov.ipynb}{\texttt{ApndxBalancedGrowthcNrmAndCov.ipynb}}).
 
 \pagebreak
 \begin{figure}[ht]
@@ -30,7 +30,7 @@ Figures~\ref{fig:logcNrm} and~\ref{fig:logcov} plot the results of simulations o
   \centerline{
     \includegraphics[width=4in]{\FigDir/logcov}
   }
-  \caption{$\log ~-\cov(\cNrm,\pLvl)$ Appears to Grow Linearly}\label{fig:logcov}
+  \caption{$\log ~-\cov(\cNrm,\PermLvl)$ Appears to Grow Linearly}\label{fig:logcov}
 \end{figure}
 
 
