@@ -115,6 +115,10 @@
   ,appendix
 }
 
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+ 
 \DeclareInstance{enotez-list}{superscriptednotes}{paragraph}
 {
   number = \textsuperscript{#1}

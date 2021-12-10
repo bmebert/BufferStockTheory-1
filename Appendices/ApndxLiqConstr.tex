@@ -108,7 +108,7 @@ $\cNrm$ must have been growing according to $\GPFacRaw$, so consumption $n$ peri
 The PDV of consumption from $t-n$ until $t$ can thus be computed as
 \begin{equation}\begin{gathered}\begin{aligned}
   \mathbb{C}_{t-n}^{t}  & = \cNrm_{t-n}(1+\APFac/\Rfree+ \cdots + {(\APFac/\Rfree)}^{n}) \notag
-  % \\   \mathbb{C}_{t-n}^{t}  & = \cNrm_{t-n}(1+\GPFacRaw/\Rnorm+ \cdots + (\GPFac/\Rnorm)^{n}) \notag
+  % \\   \mathbb{C}_{t-n}^{t}  & = \cNrm_{t-n}(1+\GPFacRaw/\RNrm+ \cdots + (\GPFac/\RNrm)^{n}) \notag
   \\  & = \cNrm_{\#}^{n}(1+\RPFac+ \cdots + \RPFac^{n}) \notag
   \\  & = \GPFacRaw^{-n}\left(\frac{1-\RPFac^{n+1}}{1-\RPFac}\right) \label{PDVc}
   \\  & = \left(\frac{\GPFacRaw^{-n}-\RPFac}{1-\RPFac}\right) 
@@ -117,7 +117,7 @@ and note that the consumer's human wealth between $t-n$ and $t$ (the relevant
 time horizon, because from $t$ onward the consumer will be constrained
 and unable to access post-$t$ income) is
 \begin{equation}\begin{gathered}\begin{aligned}
-  \hNrm_{\#}^{n}  & = 1+ \cdots +\Rnorm^{-n}
+  \hNrm_{\#}^{n}  & = 1+ \cdots +\RNrm^{-n}
 \end{aligned}\end{gathered}\end{equation}
 while the intertemporal budget constraint says
 \begin{eqnarray*}
@@ -128,7 +128,7 @@ the consumer with $\bNrm_{t-n} = \bNrm_{\#}^{n}$ would
 unconstrainedly plan (in period $t-n$) to arrive in period $t$ with
 $\bNrm_{t}=0$:
 \begin{equation}\begin{gathered}\begin{aligned}
-  \bNrm_{\#}^{n} & =  \mathbb{C}_{t-n}^{t} - \overbrace{\left(\frac{1-\Rnorm^{-(n+1)}}{1-\Rnorm^{-1}}\right)}^{\hNrm_{\#}^{n}} \label{eq:bPound}.
+  \bNrm_{\#}^{n} & =  \mathbb{C}_{t-n}^{t} - \overbrace{\left(\frac{1-\RNrm^{-(n+1)}}{1-\RNrm^{-1}}\right)}^{\hNrm_{\#}^{n}} \label{eq:bPound}.
 \end{aligned}\end{gathered}\end{equation}
 
 Defining $\mNrm_{\#}^{n}=\bNrm_{\#}^{n}+1$, consider the function
@@ -150,10 +150,10 @@ In order for a unique consumption function to be defined by this sequence~\eqref
 \end{aligned}\end{gathered}\end{equation}
 
 \subsubsection{If \FHWC~Holds}
-The \FHWC~requires $\Rnorm^{-1} < 1$, in which case the second term in~\eqref{\localorexternallabel{eq:bPound}} limits to a constant as $n \uparrow \infty$, and~\eqref{\localorexternallabel{eq:bToInfty}} reduces to a requirement that
+The \FHWC~requires $\RNrm^{-1} < 1$, in which case the second term in~\eqref{\localorexternallabel{eq:bPound}} limits to a constant as $n \uparrow \infty$, and~\eqref{\localorexternallabel{eq:bToInfty}} reduces to a requirement that
 \begin{eqnarray*}
   \lim_{n \rightarrow \infty} \left(\frac{\GPFacRaw^{-n}-{(\RPFac/\GPFac)}^{n}\RPFac}{1-\RPFac}\right)  & = \infty
-  \\  \lim_{n \rightarrow \infty} \left(\frac{\GPFacRaw^{-n}-\Rnorm^{-n}\RPFac}{1-\RPFac}\right)  & = \infty
+  \\  \lim_{n \rightarrow \infty} \left(\frac{\GPFacRaw^{-n}-\RNrm^{-n}\RPFac}{1-\RPFac}\right)  & = \infty
   \\  \lim_{n \rightarrow \infty} \left(\frac{\GPFacRaw^{-n}}{1-\RPFac}\right)  & = \infty.
 \end{eqnarray*}
 Given the \GICRaw~$\GPFacRaw^{-1}>1$, this will hold iff the \RIC~holds, $\RPFac < 1$.  But given that the \FHWC~$\Rfree > \PermGroFac$ holds, the {\GICRaw} is stronger (harder to satisfy) than the \RIC;\@ thus, the~\FHWC~and the \GICRaw~together imply the \RIC, and so a well-defined solution exists.  Furthermore, in the limit as $n$ approaches infinity, the difference between the limiting constrained consumption function and the unconstrained consumption function becomes vanishingly small, because the date at which the constraint binds becomes arbitrarily distant, so the effect of that constraint on current behavior shrinks to nothing.  That is,
@@ -180,20 +180,20 @@ If the \FHWC~fails, matters are a bit more complex.
 
 Given failure of \FHWC,~\eqref{\localorexternallabel{eq:bToInfty}} requires
 \begin{equation}\begin{gathered}\begin{aligned}
-  % \lim_{n \rightarrow \infty} \left(\frac{\GPFacRaw^{-n}-\Rnorm^{-n}\RPFac}{1-\RPFac}\right) + \left(\frac{1-\Rnorm^{-(n+1)}}{\Rnorm^{-1}-1}\right)  & = \infty \\
-  \lim_{n \rightarrow \infty} \left(\frac{\Rnorm^{-n}\RPFac-\GPFacRaw^{-n}}{\RPFac-1}\right) + \left(\frac{1-\Rnorm^{-(n+1)}}{\Rnorm^{-1}-1}\right)  & = \infty \notag
-  \\   \lim_{n \rightarrow \infty} \left(\frac{\RPFac}{\RPFac-1}-\frac{\Rnorm^{-1}}{\Rnorm^{-1}-1}\right)\Rnorm^{-n}-\left(\frac{\GPFacRaw^{-n}}{\RPFac-1}\right)  & = \infty \label{eq:FHWCfails} 
-  % \\   \lim_{n \rightarrow \infty} \left(\frac{\RPFac(\Rnorm^{-1}-1)}{(\Rnorm^{-1}-1)(\RPFac-1)}-\frac{\Rnorm^{-1}(\Rnorm^{-1}-1)}{(\Rnorm^{-1}-1)(\RPFac-1)}\right)\Rnorm^{-n}-\left(\frac{\GPFacRaw^{-n}}{\RPFac-1}\right)  & = \infty. 
+  % \lim_{n \rightarrow \infty} \left(\frac{\GPFacRaw^{-n}-\RNrm^{-n}\RPFac}{1-\RPFac}\right) + \left(\frac{1-\RNrm^{-(n+1)}}{\RNrm^{-1}-1}\right)  & = \infty \\
+  \lim_{n \rightarrow \infty} \left(\frac{\RNrm^{-n}\RPFac-\GPFacRaw^{-n}}{\RPFac-1}\right) + \left(\frac{1-\RNrm^{-(n+1)}}{\RNrm^{-1}-1}\right)  & = \infty \notag
+  \\   \lim_{n \rightarrow \infty} \left(\frac{\RPFac}{\RPFac-1}-\frac{\RNrm^{-1}}{\RNrm^{-1}-1}\right)\RNrm^{-n}-\left(\frac{\GPFacRaw^{-n}}{\RPFac-1}\right)  & = \infty \label{eq:FHWCfails} 
+  % \\   \lim_{n \rightarrow \infty} \left(\frac{\RPFac(\RNrm^{-1}-1)}{(\RNrm^{-1}-1)(\RPFac-1)}-\frac{\RNrm^{-1}(\RNrm^{-1}-1)}{(\RNrm^{-1}-1)(\RPFac-1)}\right)\RNrm^{-n}-\left(\frac{\GPFacRaw^{-n}}{\RPFac-1}\right)  & = \infty. 
 \end{aligned}\end{gathered}\end{equation}
 \hypertarget{PFGICHoldsFHWCFailsRICFailsDiscuss}{}
 
 \noindent {\bf If \RIC~Holds}.  When the \RIC~holds, rearranging~\eqref{\localorexternallabel{eq:FHWCfails}} gives
 \begin{eqnarray*}
-  \lim_{n \rightarrow \infty} \left(\frac{\GPFacRaw^{-n}}{1-\RPFac}\right)-\Rnorm^{-n}\left(\frac{\RPFac}{1-\RPFac}+\frac{\Rnorm^{-1}}{\Rnorm^{-1}-1}\right)  & = \infty
+  \lim_{n \rightarrow \infty} \left(\frac{\GPFacRaw^{-n}}{1-\RPFac}\right)-\RNrm^{-n}\left(\frac{\RPFac}{1-\RPFac}+\frac{\RNrm^{-1}}{\RNrm^{-1}-1}\right)  & = \infty
 \end{eqnarray*}
 and for this to be true we need
 \begin{eqnarray*}
-  \GPFacRaw^{-1}  & > \Rnorm^{-1}
+  \GPFacRaw^{-1}  & > \RNrm^{-1}
   \\ \PermGroFac/\APFac  & > \PermGroFac/\Rfree
   \\ 1  & > \APFac/\Rfree
 \end{eqnarray*}
@@ -205,7 +205,7 @@ we can even calculate the limiting MPC from
 which with a bit of algebra\footnote{
   Calculate the limit of
   \begin{equation}\begin{gathered}\begin{aligned}
-    \left(\frac{\GPFacRaw^{-n}}{\GPFac^{-n}/(1-\RPFac) - (1-\Rnorm^{-1}\Rnorm^{-n})/(1-\Rnorm^{-1})}\right)  & = \left(\frac{1}{1/(1-\RPFac) + \Rnorm^{-n}\Rnorm^{-1}/(1-\Rnorm^{-1})}\right)
+    \left(\frac{\GPFacRaw^{-n}}{\GPFac^{-n}/(1-\RPFac) - (1-\RNrm^{-1}\RNrm^{-n})/(1-\RNrm^{-1})}\right)  & = \left(\frac{1}{1/(1-\RPFac) + \RNrm^{-n}\RNrm^{-1}/(1-\RNrm^{-1})}\right)
   \end{aligned}\end{gathered}\end{equation}} can be shown to asymptote to the MPC in the perfect foresight model:\footnote{For an example of this configuration of parameters, see the notebook \texttt{doApndxLiqConstr.nb} in the Mathematica software  archive.}
 \begin{equation}\begin{gathered}\begin{aligned}
   \lim_{m \rightarrow \infty} \cnstr{\pmb{\MPC}}(\mNrm)  & = 1-\RPFac.
@@ -213,21 +213,21 @@ which with a bit of algebra\footnote{
 
 \noindent {\bf If \RIC~Fails}.  Consider now the \cncl{\RIC} case, $\RPFac > 1$.  We can rearrange~\eqref{\localorexternallabel{eq:FHWCfails}}as
 \begin{eqnarray}
-  \lim_{n \rightarrow \infty} \left(\frac{\RPFac(\Rnorm^{-1}-1)}{(\Rnorm^{-1}-1)(\RPFac-1)}-\frac{\Rnorm^{-1}(\RPFac-1)}{(\Rnorm^{-1}-1)(\RPFac-1)}\right)\Rnorm^{-n}-\left(\frac{\GPFacRaw^{-n}}{\RPFac-1}\right)  & = \infty.  
+  \lim_{n \rightarrow \infty} \left(\frac{\RPFac(\RNrm^{-1}-1)}{(\RNrm^{-1}-1)(\RPFac-1)}-\frac{\RNrm^{-1}(\RPFac-1)}{(\RNrm^{-1}-1)(\RPFac-1)}\right)\RNrm^{-n}-\left(\frac{\GPFacRaw^{-n}}{\RPFac-1}\right)  & = \infty.  
 \end{eqnarray}
-which makes clear that with $\cncl{\FHWC} \Rightarrow \Rnorm^{-1} > 1$ and $\cncl{\RIC} \Rightarrow \RPFac > 1$ the numerators and denominators of both terms multiplying $\Rnorm^{-n}$ can be seen transparently to be positive.  So, the terms multiplying
-$\Rnorm^{-n}$ in~\eqref{\localorexternallabel{eq:FHWCfails}} will be positive if
+which makes clear that with $\cncl{\FHWC} \Rightarrow \RNrm^{-1} > 1$ and $\cncl{\RIC} \Rightarrow \RPFac > 1$ the numerators and denominators of both terms multiplying $\RNrm^{-n}$ can be seen transparently to be positive.  So, the terms multiplying
+$\RNrm^{-n}$ in~\eqref{\localorexternallabel{eq:FHWCfails}} will be positive if
 \begin{eqnarray*}
-  \RPFac \Rnorm^{-1} - \RPFac  & > & \Rnorm^{-1}\RPFac-\Rnorm^{-1}
-  \\ \Rnorm^{-1}  & > & \RPFac
+  \RPFac \RNrm^{-1} - \RPFac  & > & \RNrm^{-1}\RPFac-\RNrm^{-1}
+  \\ \RNrm^{-1}  & > & \RPFac
   \\ \PermGroFac  & > & \APFac
 \end{eqnarray*}
 which is merely the \GICRaw~which we are maintaining.  So the first term's limit is $+\infty$.  The
-combined limit will be $+\infty$ if the term involving $\Rnorm^{-n}$
+combined limit will be $+\infty$ if the term involving $\RNrm^{-n}$
 goes to $+\infty$ faster than the term involving $-\GPFacRaw^{-n}$ goes to
 $-\infty$; that is, if
 \begin{eqnarray*}
-  \Rnorm^{-1}  & > & \GPFacRaw^{-1}
+  \RNrm^{-1}  & > & \GPFacRaw^{-1}
   \\ \PermGroFac/\Rfree  & > & \PermGroFac/\APFac
   \\ \APFac/\Rfree  & > & 1
 \end{eqnarray*}
@@ -259,22 +259,22 @@ but that limit is approached gradually, starting from a positive value, and cons
     \\  & =  \left(\frac{\GPFacRaw^{-n}-\RPFac\PermGroFac^{n}/\Rfree^{n}}{1-\RPFac}\right)
     \\  & =  \left(\frac{(\PermGroFac/\APFac)^{n}-\RPFac(\PermGroFac/\Rfree)^{n}}{1-\RPFac}\right)
     \\  & =  (\PermGroFac/\Rfree)^{n}\left(\frac{(\Rfree/\APFac)^{n}-\RPFac}{1-\RPFac}\right)
-    \\ \Rnorm^{n}\mathbb{C}_{t-n}^{t}   & =  \left(\frac{(\Rfree/\APFac)^{n}-\RPFac}{1-\RPFac}\right)
+    \\ \RNrm^{n}\mathbb{C}_{t-n}^{t}   & =  \left(\frac{(\Rfree/\APFac)^{n}-\RPFac}{1-\RPFac}\right)
   \end{eqnarray*}
   but \cncl{\RIC} implies that $\APFac > \Rfree$ so
   \begin{eqnarray*}
-    \lim_{n \rightarrow \infty} \Rnorm^{n}\mathbb{C}_{t-n}^{t}   & =  \left(\frac{-\RPFac}{1-\RPFac}\right)
+    \lim_{n \rightarrow \infty} \RNrm^{n}\mathbb{C}_{t-n}^{t}   & =  \left(\frac{-\RPFac}{1-\RPFac}\right)
   \end{eqnarray*}
   which means that in the limit
   \begin{equation}\begin{gathered}\begin{aligned}
-    \lim_{n \rightarrow \infty} \Rnorm^{n}\bNrm_{\#}^{n}  & =  \left(\frac{-\RPFac}{1-\RPFac}\right) - \Rnorm^{n}\left(\frac{1-\Rnorm^{-1}\Rnorm^{-n}}{1-\Rnorm^{-1}}\right) %\label{eq:bPoundLim}
-    \\  & = \left(\frac{-\RPFac}{1-\RPFac} + \frac{-\Rnorm^{-1}}{1-\Rnorm^{-1}}\right) - \left(\frac{\Rnorm^{n}}{1-\Rnorm^{-1}}\right)
+    \lim_{n \rightarrow \infty} \RNrm^{n}\bNrm_{\#}^{n}  & =  \left(\frac{-\RPFac}{1-\RPFac}\right) - \RNrm^{n}\left(\frac{1-\RNrm^{-1}\RNrm^{-n}}{1-\RNrm^{-1}}\right) %\label{eq:bPoundLim}
+    \\  & = \left(\frac{-\RPFac}{1-\RPFac} + \frac{-\RNrm^{-1}}{1-\RNrm^{-1}}\right) - \left(\frac{\RNrm^{n}}{1-\RNrm^{-1}}\right)
   \end{aligned}\end{gathered}\end{equation}
   so we can solve for the limiting $n$ as a function of $\bNrm$ via
   \begin{equation}\begin{gathered}\begin{aligned}
-    \bNrm + \left(\frac{1}{1-\Rnorm^{-1}}\right)  & = \Rnorm^{-\hat{n}}\left(\frac{-\RPFac}{1-\RPFac} + \frac{-\Rnorm^{-1}}{1-\Rnorm^{-1}}\right)
-    \\ \log \left(\bNrm + \left(\frac{1}{1-\Rnorm^{-1}}\right)\right)  & = -\hat{n} \log \Rnorm + \log \left(\frac{-\RPFac}{1-\RPFac} + \frac{-\Rnorm^{-1}}{1-\Rnorm^{-1}}\right)
-    \\ \frac{\log \left(\frac{-\RPFac}{1-\RPFac} + \frac{-\Rnorm^{-1}}{1-\Rnorm^{-1}}\right)-\log \left(\bNrm + \left(\frac{1}{1-\Rnorm^{-1}}\right)\right)}{\log \Rnorm }  & = \hat{n}
+    \bNrm + \left(\frac{1}{1-\RNrm^{-1}}\right)  & = \RNrm^{-\hat{n}}\left(\frac{-\RPFac}{1-\RPFac} + \frac{-\RNrm^{-1}}{1-\RNrm^{-1}}\right)
+    \\ \log \left(\bNrm + \left(\frac{1}{1-\RNrm^{-1}}\right)\right)  & = -\hat{n} \log \RNrm + \log \left(\frac{-\RPFac}{1-\RPFac} + \frac{-\RNrm^{-1}}{1-\RNrm^{-1}}\right)
+    \\ \frac{\log \left(\frac{-\RPFac}{1-\RPFac} + \frac{-\RNrm^{-1}}{1-\RNrm^{-1}}\right)-\log \left(\bNrm + \left(\frac{1}{1-\RNrm^{-1}}\right)\right)}{\log \RNrm }  & = \hat{n}
   \end{aligned}\end{gathered}\end{equation}
   which defines $\hat{\nFunc}(\bNrm)$ which yields an approximation to the
   value of $n$ associated with a given $\bNrm$.
@@ -290,9 +290,9 @@ but that limit is approached gradually, starting from a positive value, and cons
 
   We can obtain a more exact approximation to the correct ${n}$ by defining
   \begin{equation}\begin{gathered}\begin{aligned}
-    \nabla(n) \equiv   \lim_{n \rightarrow \infty}\Rnorm^{n}\mathbb{C}_{t-n}^{t}-\Rnorm^{n}\mathbb{C}_{t-n}^{t}  & =  \left(\frac{\RPFac^{-n}}{1-\RPFac}\right).
+    \nabla(n) \equiv   \lim_{n \rightarrow \infty}\RNrm^{n}\mathbb{C}_{t-n}^{t}-\RNrm^{n}\mathbb{C}_{t-n}^{t}  & =  \left(\frac{\RPFac^{-n}}{1-\RPFac}\right).
   \end{aligned}\end{gathered}\end{equation}
-  from which we can obtain the difference between the approximate and the exact $\mathbb{C}_{t-n}^{t}$ as $\Rnorm^{-n}\nabla(n)$ and
+  from which we can obtain the difference between the approximate and the exact $\mathbb{C}_{t-n}^{t}$ as $\RNrm^{-n}\nabla(n)$ and
 
 
   For this $n$ and
@@ -305,7 +305,7 @@ but that limit is approached gradually, starting from a positive value, and cons
 
   The limiting difference can be obtained by realizing that
   \begin{equation}\begin{gathered}\begin{aligned}
-    \nabla(n) \equiv   \lim_{n \rightarrow \infty}\Rnorm^{n}\mathbb{C}_{t-n}^{t}-\Rnorm^{n}\mathbb{C}_{t-n}^{t}  & =  \left(\frac{\RPFac^{-n}}{1-\RPFac}\right).
+    \nabla(n) \equiv   \lim_{n \rightarrow \infty}\RNrm^{n}\mathbb{C}_{t-n}^{t}-\RNrm^{n}\mathbb{C}_{t-n}^{t}  & =  \left(\frac{\RPFac^{-n}}{1-\RPFac}\right).
   \end{aligned}\end{gathered}\end{equation}
   and so
 

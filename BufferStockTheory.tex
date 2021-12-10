@@ -16,12 +16,10 @@
 
 \pagebreak
 \ifthenelse{\boolean{Web}}{}{\chead[Appendices]{Appendices}}
+\appendixpage
 \appendix
 \hypertarget{Appendices}{} % Allows link to [url-of-paper]#Appendices
-% \ifthenelse{\boolean{Web}}{% Web
-%   \section{Appendices}}{   % PDF
-%   %\section[nonumber=true]{Appendices}
-% }
+\addcontentsline{toc}{section}{Appendices}
 
 \subfile{\ApndxDir/ApndxLiqConstr}
 \subfile{\ApndxDir/ApndxConcaveCFunc}

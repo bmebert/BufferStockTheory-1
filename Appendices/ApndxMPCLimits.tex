@@ -63,9 +63,9 @@ and we will therefore call $\MaxMPC$ the `limiting maximal MPC.'
 
 The minimal MPC's are obtained by considering the case where $\mNrm_{t} \uparrow \infty$.  If the \FHWC~holds, then as $\mNrm_{t} \uparrow \infty$ the proportion of current and future consumption that will be financed out of capital approaches 1.  Thus, the terms involving $\TranShkAll_{t+1}$ in~\eqref{\localorexternallabel{eq:eFuncEuler}} can be neglected, leading to a revised limiting Euler equation
 \begin{eqnarray*}
- {({\mNrm_{t}}\eFunc_{t}(\mNrm_{t}))}^{-\CRRA}  & = \DiscFac \Rfree \Ex_{t}\left[{\left(\eFunc_{t+1}(\aFunc_{t}(\mNrm_{t})\Rnorm_{t+1})\left({\Rfree \aFunc_{t}(\mNrm_{t})}\right)\right)}^{-\CRRA}\right]
+ {({\mNrm_{t}}\eFunc_{t}(\mNrm_{t}))}^{-\CRRA}  & = \DiscFac \Rfree \Ex_{t}\left[{\left(\eFunc_{t+1}(\aFunc_{t}(\mNrm_{t})\RNrm_{t+1})\left({\Rfree \aFunc_{t}(\mNrm_{t})}\right)\right)}^{-\CRRA}\right]
 \end{eqnarray*}
-and using L'H\^opital's rule $\lim_{\mNrm_{t} \rightarrow \infty} \eFunc_{t}(\mNrm_{t}) = \MinMPC_{t}$, and $\lim_{\mNrm_{t} \rightarrow \infty} \eFunc_{t+1}(\aFunc_{t}(\mNrm_{t})\Rnorm_{t+1}) = \MinMPC_{t+1}$ so a further limit of the Euler equation is\hypertarget{MPCnvrs}{}
+and using L'H\^opital's rule $\lim_{\mNrm_{t} \rightarrow \infty} \eFunc_{t}(\mNrm_{t}) = \MinMPC_{t}$, and $\lim_{\mNrm_{t} \rightarrow \infty} \eFunc_{t+1}(\aFunc_{t}(\mNrm_{t})\RNrm_{t+1}) = \MinMPC_{t+1}$ so a further limit of the Euler equation is\hypertarget{MPCnvrs}{}
 \begin{eqnarray*}
   {(\mNrm_{t}\MinMPC_{t})}^{-\CRRA}  & = & \DiscFac \Rfree {\left(\MinMPC_{t+1} \Rfree (1-\MinMPC_{t})\mNrm_{t}\right)}^{-\CRRA}
 \\ \underbrace{{\Rfree}^{-1}{\APFac}}_{\equiv \MaxMPS = (1-\underline{\MPC})} \MinMPC_{t}  & = & (1-\MinMPC_{t}) \MinMPC_{t+1}
