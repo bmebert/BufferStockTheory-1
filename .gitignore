@@ -269,3 +269,5 @@ _region_.*
 /Old/
 src/
 /src
+
+requirements.out
