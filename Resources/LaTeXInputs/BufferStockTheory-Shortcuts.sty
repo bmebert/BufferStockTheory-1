@@ -47,9 +47,8 @@
 % \providecommand{\WRIC}{\href{{\BSTpaperLink}\#WRIC}{\textrm{WRIC}}}
 
 \providecommand{\boundFunc}{\ensuremath{\digamma}}
-%\providecommand{\DiscLiv}{\beta}
 \providecommand{\Alive}{}
-\renewcommand{\Alive}{\cncl{\DieFac}}
+\renewcommand{\Alive}{\mathcal{L}}
 \providecommand{\RfreeAgg}{}
 \renewcommand{\RfreeAgg}{\Agg{\Rfree}}
 
@@ -152,6 +151,7 @@
 \providecommand{\ZNrm}{\ZRat}
 \newcommand{\cNrmAvg}{\cRatAvg}
 
+\renewcommand{\PGro}{\pmb{\Phi}}
 \newcommand{\PermGroFacAdj}{\PGroAdj}
 \providecommand{\PermGroFac}{}\renewcommand{\PermGroFac}{\PGro}
 \newcommand{\PatPermGroFacAdj}{}\renewcommand{\PatPermGroFacAdj}{\PatPGroAdj}
@@ -161,9 +161,9 @@
 \providecommand{\permShkAgg}{\PermShkAgg}
 \providecommand{\permShkInd}{\PermShkInd}
 \providecommand{\permLvlAgg}{\PermLvlAgg}
-\providecommand{\PermGroRte}{\pmb{\varphi}}
+%\providecommand{\PermGroRte}{\pmb{\varphi}}
 \providecommand{\permGroFacAgg}{\pmb{\Phi}}
-\providecommand{\patPGro}{\pat_{\PermGroRte}}
+%\providecommand{\patPGro}{\pat_{\PermGroRte}}
 
 \providecommand{\APFac}{\Pat}
 \providecommand{\RPFDefn}{\RPF}
@@ -206,6 +206,16 @@
 
 \providecommand{\RNrm}{\Rnorm}
 
-\renewcommand{\permGroFacAgg}{\Phi}
-\newcommand{\permGroFacInd}{\phi}
-\renewcommand{\PermGroFac}{\pmb{\permGroFacInd}}
+\renewcommand{\permGroFacAgg}{\phi}
+%\renewcommand{\permGroFacInd}{\varphi}
+\renewcommand{\PermGroFac}{\pmb{\Phi}}
+
+\newcommand{\MPCmin}{\MinMPC}
+\newcommand{\MPCmax}{\MaxMPC}
+\newcommand{\MPCmaxmax}{\MaxMaxMPC}
+\newcommand{\MPCmaxmin}{\MaxMinMPC}
+\newcommand{\MPCminmin}{\MinMinMPC}
+
+\newcommand{\MPSmin}{\MinMPS}
+\newcommand{\MPSmax}{\MaxMPS}
+

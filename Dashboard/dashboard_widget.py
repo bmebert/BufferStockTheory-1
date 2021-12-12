@@ -21,12 +21,12 @@ base_params['CRRA'] = CRRA = 2.00  # Coefficient of relative risk aversion
 # Probability of unemployment (e.g. Probability of Zero Income in the paper)
 base_params['UnempPrb'] = UnempPrb = 0.005
 base_params['IncUnemp'] = IncUnemp = 0.0   # Induces natural borrowing constraint
-base_params['permShkStd'] = [0.1]   # Standard deviation of log permanent income shocks
+base_params['PermShkStd'] = [0.1]   # Standard deviation of log permanent income shocks
 base_params['TranShkStd'] = [0.1]   # Standard deviation of log transitory income shocks
 # %%
 # Uninteresting housekeeping and details
 # Make global variables for the things that were lists above -- uninteresting housekeeping
-PermGroFac, permShkStd, TranShkStd = base_params['PermGroFac'][0], base_params['permShkStd'][0], base_params['TranShkStd'][0]
+PermGroFac, PermShkStd, TranShkStd = base_params['PermGroFac'][0], base_params['PermShkStd'][0], base_params['TranShkStd'][0]
 
 # Some technical settings that are not interesting for our purposes
 base_params['LivPrb'] = [1.0]   # 100 percent probability of living to next period
@@ -34,8 +34,8 @@ base_params['CubicBool'] = True    # Use cubic spline interpolation
 base_params['BoroCnstArt'] = None    # No artificial borrowing constraint
 
 # Settings to speed up the calcs for the widgets (at the cost of accuracy)
-base_params['tranShkCount'] = 2    # 2 shocks instead of 7 speeds things up a lot!
-base_params['permShkCount'] = 2    #
+base_params['TranShkCount'] = 2    # 2 shocks instead of 7 speeds things up a lot!
+base_params['PermShkCount'] = 2    #
 base_params['aXtraCount'] = 20     # not very many gridpoints
 
 fssml, fsmid, fsbig = 18, 22, 26
@@ -178,13 +178,13 @@ IncUnemp_widget = [
     for i in range(5)
 ]
 
-# Define a slider for permShkStd
-permShkStd_widget = [
+# Define a slider for PermShkStd
+PermShkStd_widget = [
     widgets.FloatSlider(
         min=0.01,
         max=0.30,  # Go up to twice the default value
         step=0.01,
-        value=permShkStd,
+        value=PermShkStd,
         continuous_update=False,
         readout_format=".2f",
         description="$\sigma_\psi$",
@@ -192,8 +192,8 @@ permShkStd_widget = [
     for i in range(5)
 ]
 
-# Define an alternative slider for permShkStd
-permShkStd_alt_start_widget = [
+# Define an alternative slider for PermShkStd
+PermShkStd_alt_start_widget = [
     widgets.FloatSlider(
         min=0.01,
         max=0.3,
@@ -221,14 +221,14 @@ TranShkStd_widget = [
 ]
 
 
-def makeConvergencePlot(DiscFac, CRRA, Rfree, permShkStd):
+def makeConvergencePlot(DiscFac, CRRA, Rfree, PermShkStd):
     # Construct finite horizon agent with baseline parameters
     baseAgent_Fin = IndShockConsumerType(
         quietly=True, messaging_level=logging.CRITICAL, **base_params)
     baseAgent_Fin.DiscFac = DiscFac
     baseAgent_Fin.CRRA = CRRA
     baseAgent_Fin.Rfree = Rfree
-    baseAgent_Fin.permShkStd = [permShkStd]
+    baseAgent_Fin.PermShkStd = [PermShkStd]
     baseAgent_Fin.cycles = 100
     baseAgent_Fin.solve(quietly=True, messaging_level=logging.CRITICAL)
     baseAgent_Fin.unpack('cFunc')
@@ -271,14 +271,14 @@ def makeConvergencePlot(DiscFac, CRRA, Rfree, permShkStd):
     return None
 
 
-def makeGICFailExample(DiscFac, permShkStd, UnempPrb):
+def makeGICFailExample(DiscFac, PermShkStd, UnempPrb):
     # replace default params with passed
     GIC_fails_dict = deepcopy(base_params)
     GIC_fails_dict['DiscFac'] = DiscFac
-    GIC_fails_dict['permShkStd'] = [permShkStd]
+    GIC_fails_dict['PermShkStd'] = [PermShkStd]
     GIC_fails_dict['UnempPrb'] = UnempPrb
 
-    GIC_fails_dict['permShkCount'] = 7  # Need more accuracy
+    GIC_fails_dict['PermShkCount'] = 7  # Need more accuracy
 
     GICFailsExample = IndShockConsumerType(
         **GIC_fails_dict, quietly=True, messaging_level=logging.WARNING)
@@ -440,11 +440,11 @@ def cGroTargetFig_make(PermGroFac, DiscFac):
     return None
 
 
-def makeBoundsFigure(UnempPrb, permShkStd, TranShkStd, DiscFac, CRRA):
+def makeBoundsFigure(UnempPrb, PermShkStd, TranShkStd, DiscFac, CRRA):
     inf_hor = IndShockConsumerType(quietly=True, messaging_level=logging.CRITICAL,
                                    **base_params)
     inf_hor.UnempPrb = UnempPrb
-    inf_hor.permShkStd = [permShkStd]
+    inf_hor.PermShkStd = [PermShkStd]
     inf_hor.TranShkStd = [TranShkStd]
     inf_hor.DiscFac = DiscFac
     inf_hor.CRRA = CRRA
@@ -501,12 +501,12 @@ def makeBoundsFigure(UnempPrb, permShkStd, TranShkStd, DiscFac, CRRA):
     return None
 
 
-def makeTargetMfig(Rfree, DiscFac, CRRA, permShkStd, TranShkStd):
+def makeTargetMfig(Rfree, DiscFac, CRRA, PermShkStd, TranShkStd):
     inf_hor = IndShockConsumerType(quietly=True, **base_params)
     inf_hor.Rfree = Rfree
     inf_hor.DiscFac = DiscFac
     inf_hor.CRRA = CRRA
-    inf_hor.permShkStd = [permShkStd]
+    inf_hor.PermShkStd = [PermShkStd]
     inf_hor.TranShkStd = [TranShkStd]
     inf_hor.update_income_process()
     mPlotMin = 0

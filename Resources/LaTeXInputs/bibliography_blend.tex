@@ -25,6 +25,8 @@
   \setboolean{BothExist}{false}
 }
 
+\ifthenelse{\boolean{Web}}{}{\clearpairofpagestyles} % No header for references pages
+
 \ifthenelse{\boolean{BothExist}}{
   % then use both
   \typeout{bibliography{\econtexRoot/Add-Refs,\econtexRoot/\texname,economics}}

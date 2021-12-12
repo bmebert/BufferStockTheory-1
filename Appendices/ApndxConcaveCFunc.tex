@@ -5,7 +5,7 @@
 \onlyinsubfile{\externaldocument{\LaTeXGenerated/BufferStockTheory}} % Get xrefs -- esp to appendix -- from main file; only works properly if main file has already been compiled;
 \begin{document}
 
-\section{Existence of Concave \texorpdfstring{$\cFunc$}{c} Function}\label{sec:ApndxcExists}
+\section{Existence of Concave \texorpdfstring{$\cFunc$}{c} Function}\label{sec:ApndxConcaveCFunc}
 
 To show that~\eqref{\localorexternallabel{eq:veqn}} defines a sequence of continuously differentiable strictly increasing concave functions $\{\cFunc_{T},\cFunc_{T-1},\ldots,\cFunc_{T-k}\}$, we start with a definition.  We will say that a function $\nFunc(z)$ is `nice' if it satisfies
 \begin{quote}
@@ -33,6 +33,7 @@ implies $\vFunc_{t}$ is also nice; this is sufficient to establish that
 $\vFunc_{t-n}$ is nice by induction for all $n > 0$ because $\vFunc_{T}(\mNrm)
 =\uFunc(\mNrm) $ and $\uFunc(\mNrm)=\mNrm^{1-\CRRA}/(1-\CRRA)$ is nice by inspection.
 
+\hypertarget{BoroCnstNat}{}
 Now define an end-of-period value function $\mathfrak{v}_{t}(a) $ as
 \begin{equation}
 \mathfrak{v}_{t}(a) =\DiscFac \Ex_{t}\left[{\PermGroFac}_{t+1}^{1-\CRRA}\vFunc_{t+1}( {\mathcal{R}}_{t+1} a+{\TranShkAll}_{t+1}) \right]. \label{eq:vEnd}
@@ -157,13 +158,13 @@ Boyd's operator $\BoydT$ maps from $\mathcal{C}_{\boundFunc}(\mathscr{A},\mathsc
 Consider condition (1). For this problem,
 \begin{align*}
 \{\TMap{\mathfrak{\xFunc}}\}(\mNrm_{t}) &\mbox{~is}\underset{\cNrm_{t} \in
-[\MinMinMPC \mNrm_{t}, \MaxMPC \mNrm_{t}]
+[\MPCminmin \mNrm_{t}, \MPCmax \mNrm_{t}]
 }\max \left\{
 \uFunc(c_{t})+\DiscFac \Ex_{t}\left[ {\PermGroFac}_{t+1}^{1-\CRRA }{\mathfrak{\xFunc}}
 \left( {\mNrm}_{t+1}\right) \right] \right\}  \notag  \label{eq:condition1}
 \\
 \{\TMap{\mathfrak{\yFunc}}\}(\mNrm_{t}) &\mbox{~is}\underset{\cNrm_{t} \in
-[\MinMinMPC \mNrm_{t}, \MaxMPC \mNrm_{t}]
+[\MPCminmin \mNrm_{t}, \MPCmax \mNrm_{t}]
 }\max \left\{
 \uFunc(c_{t})+\DiscFac \Ex_{t}\left[ {\PermGroFac}_{t+1}^{1-\CRRA }{\mathfrak{\yFunc}}
 \left( {\mNrm}_{t+1}\right) \right] \right\} ,  \notag
@@ -174,12 +175,12 @@ stochastic shocks.}
 Condition (2) requires that $\{\TMap\mathbf{0}\}\in \mathcal{C}_{\boundFunc}\left(\mathscr{A},\mathscr{B}\right)$. By definition,
 \begin{equation*}
 \{\TMap \mathbf{0}\}(\mNrm_{t}) = \max_{\cNrm_{t} \in
-[\MinMinMPC \mNrm_{t}, \MaxMPC \mNrm_{t}]
+[\MPCminmin \mNrm_{t}, \MPCmax \mNrm_{t}]
 }\left\{ \left( \frac{\cNrm_{t}^{1-\CRRA }}{1-\CRRA }\right) +\DiscFac 0\right\}
 \end{equation*}
 the solution to which is patently
-$\uFunc(\MaxMPC \mNrm_{t})$. Thus, condition (2)
-will hold if ${(\MaxMPC \mNrm_{t})}^{1-\CRRA}$ is $\boundFunc$-bounded.  We use
+$\uFunc(\MPCmax \mNrm_{t})$. Thus, condition (2)
+will hold if ${(\MPCmax \mNrm_{t})}^{1-\CRRA}$ is $\boundFunc$-bounded.  We use
 the bounding function
 \begin{equation}\begin{gathered}\begin{aligned}
   \label{eq:boundFunc}
@@ -187,7 +188,7 @@ the bounding function
 \end{aligned}\end{gathered}\end{equation}
 for some real scalar $\eta > 0$ whose value will be determined in the
 course of the proof. Under this definition of $\boundFunc$,
-$\{\TMap\mathbf{0}\}(\mNrm_{t})= \uFunc(\MaxMPC \mNrm_{t})$
+$\{\TMap\mathbf{0}\}(\mNrm_{t})= \uFunc(\MPCmax \mNrm_{t})$
 is clearly
 $\boundFunc$-bounded.
 
@@ -236,11 +237,11 @@ But since $\eta$ is an arbitrary constant that we can pick, the proof thus reduc
 \begin{equation}\begin{gathered}\begin{aligned}%
   \lefteqn{\pNotZero\DiscFac\Ex_{t}\left[{\PermGroFac}_{t+1}^{1-\CRRA}{(\hat{\aNrm}_{t}\RNrm_{t+1}+\TranShkEmp_{t+1}/\pNotZero)}^{1-\CRRA}\right]
  +\pZero\DiscFac\Ex_{t}\left[{\PermGroFac}_{t+1}^{1-\CRRA}{(\hat{\aNrm}_{t}\RNrm_{t+1})}^{1-\CRRA}\right]-\mNrm_{t}^{1-\CRRA}\notag~~~}  \\ 
- ~~~\leq & \pNotZero\DiscFac\Ex_{t}\left[{\PermGroFac}_{t+1}^{1-\CRRA}{((1-\MaxMPC)\mNrm_{t}\RNrm_{t+1}+\TranShkEmp_{t+1}/\pNotZero)}^{1-\CRRA}\right]
- +\pZero\DiscFac\Rfree^{1-\CRRA}{((1-\MaxMPC)\mNrm_{t})}^{1-\CRRA}-\mNrm_{t}^{1-\CRRA}\notag\\
- ~~~= & \pNotZero\DiscFac\Ex_{t}\left[{\PermGroFac}_{t+1}^{1-\CRRA}{((1-\MaxMPC)\mNrm_{t}\RNrm_{t+1}+\TranShkEmp_{t+1}/\pNotZero)}^{1-\CRRA}\right]
+ ~~~\leq & \pNotZero\DiscFac\Ex_{t}\left[{\PermGroFac}_{t+1}^{1-\CRRA}{((1-\MPCmax)\mNrm_{t}\RNrm_{t+1}+\TranShkEmp_{t+1}/\pNotZero)}^{1-\CRRA}\right]
+ +\pZero\DiscFac\Rfree^{1-\CRRA}{((1-\MPCmax)\mNrm_{t})}^{1-\CRRA}-\mNrm_{t}^{1-\CRRA}\notag\\
+ ~~~= & \pNotZero\DiscFac\Ex_{t}\left[{\PermGroFac}_{t+1}^{1-\CRRA}{((1-\MPCmax)\mNrm_{t}\RNrm_{t+1}+\TranShkEmp_{t+1}/\pNotZero)}^{1-\CRRA}\right]
  +\mNrm_{t}^{1-\CRRA}\left(\pZero\DiscFac\Rfree^{1-\CRRA}{\left(\pZero^{1/\CRRA}\frac{{(\Rfree\DiscFac)}^{1/\CRRA}}{\Rfree}\right)}^{1-\CRRA}-1\right)\notag\\
- ~~~ =  & \pNotZero\DiscFac\Ex_{t}\left[{\PermGroFac}_{t+1}^{1-\CRRA}{((1-\MaxMPC)\mNrm_{t}\RNrm_{t+1}+\TranShkEmp_{t+1}/\pNotZero)}^{1-\CRRA}\right]
+ ~~~ =  & \pNotZero\DiscFac\Ex_{t}\left[{\PermGroFac}_{t+1}^{1-\CRRA}{((1-\MPCmax)\mNrm_{t}\RNrm_{t+1}+\TranShkEmp_{t+1}/\pNotZero)}^{1-\CRRA}\right]
  +\mNrm_{t}^{1-\CRRA}\left(\underbrace{\pZero^{1/\CRRA}\frac{{(\Rfree\DiscFac)}^{1/\CRRA}}{\Rfree}}_{<1~\text{by
        \WRIC}}-1\right) \label{eq:WRICBites} \\
  ~~~< &\pNotZero\DiscFac\Ex_{t}\left[{\PermGroFac}_{t+1}^{1-\CRRA}{(\underline{\TranShkEmp}/\pNotZero)}^{1-\CRRA}\right]=\DiscAlt\pNotZero^{\CRRA}\underline{\TranShkEmp}^{1-\CRRA} \notag
@@ -261,37 +262,37 @@ now complete.
   \texorpdfstring{$\TMap$}{T} and \texorpdfstring{$\vFunc$}{v}}
 
 In defining our operator $\TMap$ we made the restriction
-$\MinMinMPC \mNrm_{t} \leq c_{t} \leq \MaxMPC \mNrm_{t}$.  However,
+$\MPCminmin \mNrm_{t} \leq c_{t} \leq \MPCmax \mNrm_{t}$.  However,
 in the discussion of the consumption function bounds, we
-showed only (in~\eqref{\localorexternallabel{eq:cBounds}}) that $\MinMinMPC_{t} \mNrm_{t} \leq \cFunc_{t}(\mNrm_{t})
-\leq \MaxMPC_{t} \mNrm_{t}$.  (The difference is in the presence
+showed only (in~\eqref{\localorexternallabel{eq:cBounds}}) that $\MPCminmin_{t} \mNrm_{t} \leq \cFunc_{t}(\mNrm_{t})
+\leq \MPCmax_{t} \mNrm_{t}$.  (The difference is in the presence
 or absence of time subscripts on the MPC's.)
   We have therefore
 not proven (yet) that the sequence of value functions~\eqref{\localorexternallabel{eq:veqn}} defines a contraction mapping.
 
 Fortunately, the proof of that proposition is identical to the proof above, except that we must replace
-$\MaxMPC$ with $\MaxMPC_{T-1}$ and the \WRIC~must be
+$\MPCmax$ with $\MPCmax_{T-1}$ and the \WRIC~must be
 replaced by a slightly stronger (but still quite weak) condition.  The place where these
 conditions have force is in the step at~\eqref{\localorexternallabel{eq:WRICBites}}.
 Consideration of the prior two equations reveals that
 a sufficient stronger condition is
 \begin{align*}
-    \pZero \DiscFac {(\Rfree (1-\MaxMPC_{T-1}))}^{1-\CRRA}  & < 1
-\\  {(\pZero \DiscFac)}^{1/(1-\CRRA)}  (1-\MaxMPC_{T-1})  & > 1
-\\  {(\pZero \DiscFac)}^{1/(1-\CRRA)}  (1-{(1+\MinMPS)}^{-1})  & > 1
+    \pZero \DiscFac {(\Rfree (1-\MPCmax_{T-1}))}^{1-\CRRA}  & < 1
+\\  {(\pZero \DiscFac)}^{1/(1-\CRRA)}  (1-\MPCmax_{T-1})  & > 1
+\\  {(\pZero \DiscFac)}^{1/(1-\CRRA)}  (1-{(1+\MPSmin)}^{-1})  & > 1
 \end{align*}
-where we have used~\eqref{\localorexternallabel{eq:MaxMPCInv}} for $\MaxMPC_{T-1}$ (and in the second step the reversal of the inequality occurs because we have assumed $\CRRA > 1$ so that we are exponentiating both sides by the negative number $1-\CRRA$).  To see that this is a weak condition, note that for small values of
-$\pZero$ this expression can be further simplified using ${(1+\MinMPS)}^{-1}
-\approx 1-\MinMPS$ so that it becomes
+where we have used~\eqref{\localorexternallabel{eq:MPCmaxInv}} for $\MPCmax_{T-1}$ (and in the second step the reversal of the inequality occurs because we have assumed $\CRRA > 1$ so that we are exponentiating both sides by the negative number $1-\CRRA$).  To see that this is a weak condition, note that for small values of
+$\pZero$ this expression can be further simplified using ${(1+\MPSmin)}^{-1}
+\approx 1-\MPSmin$ so that it becomes
 \begin{align*}
-  {(\pZero \DiscFac)}^{1/(1-\CRRA)}  \MinMPS  & > 1
+  {(\pZero \DiscFac)}^{1/(1-\CRRA)}  \MPSmin  & > 1
 \\  (\pZero \DiscFac)  \pZero^{(1-\CRRA)/\CRRA} \RPFac^{1-\CRRA}  & < 1
 \\  \DiscFac  \pZero^{1/\CRRA} \RPFac^{1-\CRRA}  & < 1.
 \end{align*}
 
 Calling the weak return patience factor $\RPFac^{\wp}=\wp^{1/\CRRA}\RPFac$ and recalling that the \WRIC~was $\RPFac^{\wp}<1$, the expression on the LHS above is $\DiscFac \RPFac^{-\CRRA}$ times the WRPFacDefn.\@ Since we usually assume $\DiscFac$ not far below 1 and parameter values such that $\RPFac \approx 1$, this condition is clearly not very different from the \WRIC.\@
 
-The upshot is that under these slightly stronger conditions the value functions for the original problem define a contraction mapping with a unique $\vFunc(\mNrm)$.  But since $\lim_{n \rightarrow \infty} \MinMinMPC_{T-n} = \MinMinMPC$ and $\lim_{n \rightarrow \infty} \MaxMPC_{T-n} = \MaxMPC$, it must be the case that the $\vFunc(\mNrm)$ toward which these $\vFunc_{T-n}$'s are converging is the \textit{same} $\vFunc(\mNrm)$ that was the endpoint of the contraction defined by our operator $\TMap$.  Thus, under our slightly stronger (but still quite weak) conditions, not only do the value functions defined by~\eqref{\localorexternallabel{eq:veqn}} converge, they converge to the same unique $\vFunc$ defined by $\TMap$.\footnote{It seems likely that convergence of the value functions for the original problem could be proven even if only the \WRIC~were imposed; but that proof is not an essential part of the enterprise of this paper and is therefore left for future work.}
+The upshot is that under these slightly stronger conditions the value functions for the original problem define a contraction mapping with a unique $\vFunc(\mNrm)$.  But since $\lim_{n \rightarrow \infty} \MPCminmin_{T-n} = \MPCminmin$ and $\lim_{n \rightarrow \infty} \MPCmax_{T-n} = \MPCmax$, it must be the case that the $\vFunc(\mNrm)$ toward which these $\vFunc_{T-n}$'s are converging is the \textit{same} $\vFunc(\mNrm)$ that was the endpoint of the contraction defined by our operator $\TMap$.  Thus, under our slightly stronger (but still quite weak) conditions, not only do the value functions defined by~\eqref{\localorexternallabel{eq:veqn}} converge, they converge to the same unique $\vFunc$ defined by $\TMap$.\footnote{It seems likely that convergence of the value functions for the original problem could be proven even if only the \WRIC~were imposed; but that proof is not an essential part of the enterprise of this paper and is therefore left for future work.}
 
 \onlyinsubfile{\pagebreak\input{\LaTeXInputs/bibliography_blend}}
 

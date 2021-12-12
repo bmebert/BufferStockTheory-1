@@ -1,11 +1,8 @@
-  \let\TableWidth\relax
-  \newlength\TableWidth
   \iflabelexists{table:Comparison}{}{\label{table:Comparison}} % Don't define it if already defined
-  \newsavebox{\ComparisonSub}
   \begin{table}[!th]
     \centering
 \caption{Definitions and Comparisons of Conditions}\label{table:Comparison}
-  \sbox{\ComparisonSub}{
+  \sbox{\Tbl}{
 \begin{tabular}{|c|c|}\hline
 Perfect Foresight Versions & Uncertainty Versions\\ \hline
 \multicolumn{2}{|c|}{Finite Human Wealth Condition (\FHWC)} \\ \hline
@@ -57,6 +54,17 @@ equivalently $\APFac  < \Rfree^{1/\CRRA}\PermGroFac^{1-1/\CRRA}$ & \\
 &  \\ \hline
 \end{tabular}
 } % End \sbox
-\settowidth\TableWidth{\usebox{\ComparisonSub}}
-\usebox{\ComparisonSub}
+
+    \settowidth\TableWidth{\usebox{\Tbl}}
+    \savebox{\TblShrunkBox}{
+      \settowidth{\TblShrunk}{\usebox{\Tbl}}
+      \resizebox{0.9\textwidth}{!}{\begin{minipage}{\TblShrunk}
+          \usebox{\Tbl}
+        \end{minipage}}
+    }
+
+    \usebox{\TblShrunkBox}
+
+
+%    \parbox{\textwidth}{\footnotesize The \href{https://econ-ark.org/materials/bufferstocktheory-dashboard?launch}{dashboard} permits experimentation with alternative parameter values.}
 \end{table}

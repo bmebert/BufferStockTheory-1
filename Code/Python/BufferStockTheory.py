@@ -147,7 +147,7 @@ def makeFig(figure_name, target_dir="../../Figures"):
 base_params = deepcopy(init_idiosyncratic_shocks)
 # Uninteresting housekeeping and details
 # Make global variables for the things that were lists above 
-PermGroFac, permShkStd, tranShkStd = base_params['PermGroFac'][0], base_params['permShkStd'][0], base_params['tranShkStd'][0]
+PermGroFac, PermShkStd, TranShkStd = base_params['PermGroFac'][0], base_params['PermShkStd'][0], base_params['TranShkStd'][0]
 
 # Some technical settings that are not interesting for our purposes
 base_params['LivPrb'] = [1.0]   # 100 percent chance of living to next period
@@ -191,17 +191,17 @@ base_params['BoroCnstArt'] = None    # No artificial borrowing constraint
 # \newcommand{\PermGroFac}{\Gamma}
 # \newcommand{\PermGroFacAdj}{\tilde{\Gamma}}
 # \newcommand{\PermShkStd}{\sigma_\Psi}
-# \newcommand{\permShkStd}{\sigma_\psi}
+# \newcommand{\PermShkStd}{\sigma_\psi}
 # \newcommand{\PermShk}{\Psi} % New
-# \newcommand{\permShk}{\psi} % New
+# \newcommand{\PermShk}{\psi} % New
 # \newcommand{\Rfree}{\mathsf{R}}
 # \newcommand{\Trg}{\hat}
 # \newcommand{\Bal}{\check}
 # \newcommand{\Thorn}{\pmb{\TH}}
 # \newcommand{\TranShkStd}{\sigma_\Theta}
 # \newcommand{\TranShk}{\Theta}
-# \newcommand{\tranShk}{\theta}
-# \newcommand{\tranShkStd}{\sigma_{\theta}}
+# \newcommand{\TranShk}{\theta}
+# \newcommand{\TranShkStd}{\sigma_{\theta}}
 # \newcommand{\UnempPrb}{\wp}
 # \newcommand\maththorn{\mathord{\pmb{\text{\TH}}}}
 # \end{align}
@@ -213,8 +213,8 @@ base_params['BoroCnstArt'] = None    # No artificial borrowing constraint
 # | $\DiscFac$ | Time Preference Factor | $\texttt{DiscFac}$ | 0.96 |
 # | $\CRRA$ | Coeﬃcient of Relative Risk Aversion| $\texttt{CRRA}$ | 2 |
 # | $\UnempPrb$ | Probability of Unemployment | $\texttt{UnempPrb}$ | 0.005 |
-# | $\tranShk^{\large u}$ | Income when Unemployed | $\texttt{IncUnemp}$ | 0. |
-# | $\permShkStd$ | Std Dev of Log Permanent Shock| $\texttt{PermShkStd}$ | 0.1 |
+# | $\TranShk^{\large u}$ | Income when Unemployed | $\texttt{IncUnemp}$ | 0. |
+# | $\PermShkStd$ | Std Dev of Log Permanent Shock| $\texttt{PermShkStd}$ | 0.1 |
 # | $\TranShkStd$ | Std Dev of Log Transitory Shock| $\texttt{TranShkStd}$ | 0.1 |
 #
 # that define the preferences and environment of microeconomic consumers as detailed below.
@@ -238,33 +238,33 @@ base_params['BoroCnstArt'] = None    # No artificial borrowing constraint
 # \aLvl_{t}   &=&\mLvl_{t}-\cLvl_{t}. \notag
 # \end{eqnarray}
 #
-# The consumer's __**p**__ermanent noncapital income $\pLvl$ grows by a predictable factor $\PermGroFac$ and is subject to an unpredictable multiplicative shock $\Ex_{t}[\permShk_{t+1}]=1$,
+# The consumer's __**p**__ermanent noncapital income $\pLvl$ grows by a predictable factor $\PermGroFac$ and is subject to an unpredictable multiplicative shock $\Ex_{t}[\PermShk_{t+1}]=1$,
 #
 # \begin{eqnarray}
-# \pLvl_{t+1} & = & \pLvl_{t} \PermGroFac \permShk_{t+1}, \notag
+# \pLvl_{t+1} & = & \pLvl_{t} \PermGroFac \PermShk_{t+1}, \notag
 # \end{eqnarray}
 #
-# and, if the consumer is employed, actual income is permanent income multiplied by a transitory shock $\tranShk^{\large e}$.  There is also a probability $\UnempPrb$ that the consumer will be temporarily unemployed and experience income of $\tranShk^{\large u}  = 0$.  We construct $\tranShk^{\large e}$ so that its mean value is $1/(1-\UnempPrb)$ because in that case the mean level of the transitory shock (accounting for both unemployed and employed states) is exactly
+# and, if the consumer is employed, actual income is permanent income multiplied by a transitory shock $\TranShk^{\large e}$.  There is also a probability $\UnempPrb$ that the consumer will be temporarily unemployed and experience income of $\TranShk^{\large u}  = 0$.  We construct $\TranShk^{\large e}$ so that its mean value is $1/(1-\UnempPrb)$ because in that case the mean level of the transitory shock (accounting for both unemployed and employed states) is exactly
 #
 # \begin{eqnarray}
-# \Ex_{t}[\tranShk_{t+1}] & = & \tranShk^{\large{u}}  \times \UnempPrb + (1-\UnempPrb) \times \Ex_{t}[\tranShk^{\large{e}}_{t+1}] \notag
+# \Ex_{t}[\TranShk_{t+1}] & = & \TranShk^{\large{u}}  \times \UnempPrb + (1-\UnempPrb) \times \Ex_{t}[\TranShk^{\large{e}}_{t+1}] \notag
 # \\ & = & 0 \times \UnempPrb + (1-\UnempPrb) \times 1/(1-\UnempPrb)  \notag
 # \\ & = & 1. \notag
 # \end{eqnarray}
 #
-#   We can combine the unemployment shock $\tranShk^{\large u}$ and the transitory shock to employment income $\tranShk^{\large e}$ into $\tranShk _{t+1}$, so that next period's market resources are
+#   We can combine the unemployment shock $\TranShk^{\large u}$ and the transitory shock to employment income $\TranShk^{\large e}$ into $\TranShk _{t+1}$, so that next period's market resources are
 # \begin{eqnarray}
-#     \mLvl_{t+1} &=& \aLvl_{t}\Rfree +\pLvl_{t+1}\tranShk_{t+1}.  \notag
+#     \mLvl_{t+1} &=& \aLvl_{t}\Rfree +\pLvl_{t+1}\TranShk_{t+1}.  \notag
 # \end{eqnarray}
 
 # %% [markdown]
 # When the consumer has a CRRA utility function $u(\cLvl)=\frac{\cLvl^{1-\CRRA}}{1-\CRRA}$, the paper shows that the problem can be written in terms of ratios (nonbold font) of level (bold font) variables to permanent income, e.g. $m_{t} \equiv \mLvl_{t}/\pLvl_{t}$, and the Bellman form of [the problem reduces to](https://econ-ark.github.io/BufferStockTheory/#The-Related-Problem):
 #
 # \begin{eqnarray*}
-# v_t(m_t) &=& \max_{c_t}~~ u(c_t) + \DiscFac~\Ex_{t} [(\PermGroFac\permShk_{t+1})^{1-\CRRA} v_{t+1}(m_{t+1}) ] \\
+# v_t(m_t) &=& \max_{c_t}~~ u(c_t) + \DiscFac~\Ex_{t} [(\PermGroFac\PermShk_{t+1})^{1-\CRRA} v_{t+1}(m_{t+1}) ] \\
 # & s.t. & \\
 # a_t &=& m_t - c_t \\
-# m_{t+1} &=& a_t \Rfree/(\PermGroFac \permShk_{t+1}) + \tranShk_{t+1} \\
+# m_{t+1} &=& a_t \Rfree/(\PermGroFac \PermShk_{t+1}) + \TranShk_{t+1} \\
 # \end{eqnarray*}
 
 # %% {"jupyter": {"source_hidden": true}, "tags": []}
@@ -276,8 +276,8 @@ base_params['CRRA'] = CRRA = 2.00  # Coefficient of relative risk aversion
 # Probability of unemployment (e.g. Probability of Zero Income in the paper)
 base_params['UnempPrb'] = UnempPrb = 0.005
 base_params['IncUnemp'] = IncUnemp = 0.0   # Induces natural borrowing constraint
-base_params['permShkStd'] = [0.1]   # Standard deviation of log permanent income shocks
-base_params['tranShkStd'] = [0.1]   # Standard deviation of log transitory income shocks
+base_params['PermShkStd'] = [0.1]   # Standard deviation of log permanent income shocks
+base_params['TranShkStd'] = [0.1]   # Standard deviation of log transitory income shocks
 # %% [markdown]
 # ## Convergence of the Consumption Rules
 #
@@ -401,7 +401,7 @@ makeFig('cFuncsConverge')  # Comment out if you want to run uninterrupted
 # \end{eqnarray}
 # and whether the $c$ is falling or rising over time depends on whether $\APF_{\PermGroFac}$ is below or above 1.
 #
-# An analogous condition can be defined when there is uncertainty about permanent income.  Defining $\tilde{\PermGroFac} = (\Ex[\permShk^{-1}])^{-1}\PermGroFac$, the
+# An analogous condition can be defined when there is uncertainty about permanent income.  Defining $\tilde{\PermGroFac} = (\Ex[\PermShk^{-1}])^{-1}\PermGroFac$, the
 # ['Growth Impatience Condition'](https://econ-ark.github.io/BufferStockTheory/#GIC) determines whether, _in expectation_, the stochastic value of $c$ is rising, constant, or falling over time:
 #
 # \begin{eqnarray}
@@ -414,13 +414,13 @@ makeFig('cFuncsConverge')  # Comment out if you want to run uninterrupted
 # The paper [shows](https://econ-ark.github.io/BufferStockTheory/#Autarky-Value) that a consumer who planned to spend his permanent noncapital income $\{ \pLvl_{t}, \pLvl_{t+1}, ...\} $ in every period would have value defined by
 #
 # \begin{equation*}
-# \vLvl_{t}^{\text{autarky}} = \uFunc(\pLvl_{t})\left(\frac{1}{1-\DiscFac \PermGroFac^{1-\CRRA} \Ex[\permShk^{1-\CRRA}]}\right)
+# \vLvl_{t}^{\text{autarky}} = \uFunc(\pLvl_{t})\left(\frac{1}{1-\DiscFac \PermGroFac^{1-\CRRA} \Ex[\PermShk^{1-\CRRA}]}\right)
 # \end{equation*}
 #
 # and defines the ['Finite Value of Autarky Condition'](https://econ-ark.github.io/BufferStockTheory/#Autarky-Value) as the requirement that the denominator be a positive finite number:
 #
 # \begin{equation*}
-# \DiscFac \PermGroFac^{1-\CRRA} \Ex[\permShk^{1-\CRRA}] < 1
+# \DiscFac \PermGroFac^{1-\CRRA} \Ex[\PermShk^{1-\CRRA}] < 1
 # \end{equation*}
 
 # %% [markdown]
@@ -529,7 +529,7 @@ base_params['cycles'] = 0  # revert to default of infinite horizon
 GICNrmFailsButGICRawHolds_params = dict(base_params)
 
 # Increase patience by increasing risk
-GICNrmFailsButGICRawHolds_params['permShkStd'] = [0.2]
+GICNrmFailsButGICRawHolds_params['PermShkStd'] = [0.2]
 
 # Create an agent with these parameters
 GICNrmFailsButGICRawHolds = \
@@ -640,7 +640,7 @@ c_Stable_Trg_color = "black"  # or "red"
 
 cVals_Lmting = cFunc(mPltVals)
 c_Stable_Trg = E_tp1_.c_where_E_Next_m_tp1_minus_m_t_eq_0(mPltVals)
-c_Stable_Bal = E_tp1_.c_where_E_Next_permShk_tp1_times_m_tp1_minus_m_t_eq_0(
+c_Stable_Bal = E_tp1_.c_where_E_Next_PermShk_tp1_times_m_tp1_minus_m_t_eq_0(
     mPltVals)
 
 cVals_Lmting_lbl, = ax.plot(mPltVals, cVals_Lmting, color=cVals_Lmting_color)
@@ -678,7 +678,7 @@ print('Finite mBalLvl but infinite mNrmFacTrg')
 
 
 # %% [markdown]
-# In the [interactive dashboard](#interactive-dashboard), see what happens as changes in the time preference rate (or changes in risk $\permShkStd$) change the consumer from _normalized-growth-patient_ $(\APF > \tilde{\PermGroFac})$ to _normalized-growth-impatient_ ($\APF < \tilde{\PermGroFac}$)
+# In the [interactive dashboard](#interactive-dashboard), see what happens as changes in the time preference rate (or changes in risk $\PermShkStd$) change the consumer from _normalized-growth-patient_ $(\APF > \tilde{\PermGroFac})$ to _normalized-growth-impatient_ ($\APF < \tilde{\PermGroFac}$)
 
 # %% [markdown]
 # As a foundation for the remaining figures, we define another instance of the class $\texttt{IndShockConsumerType}$, which has the same parameter values as the instance $\texttt{baseAgent}$ defined previously but is solved to convergence (our definition of an infinite horizon agent type) instead of only 100 periods
@@ -708,8 +708,8 @@ baseAgent_Inf = IndShockConsumerType(
 #
 # \begin{eqnarray*}
 # \Ex_{t}[\cLvl_{t+1}/\cLvl_{t}] & = & \Ex_{t}\left[\frac{\pLvl_{t+1}\cFunc(m_{t+1})}{\pLvl_{t}\cFunc(m_{t})}\right] \\
-# % & = & \Ex_{t}\left[\frac{\PermGroFac \permShk_{t+1} \pLvl_{t}}{\pLvl_{t}}\frac{\cFunc(m_{t+1})}{\cFunc(m_{t})}\right] \\
-# & = & \left[\frac{\PermGroFac \permShk_{t+1} \cFunc(m_{t+1})}{\cFunc(m_{t})}\right]
+# % & = & \Ex_{t}\left[\frac{\PermGroFac \PermShk_{t+1} \pLvl_{t}}{\pLvl_{t}}\frac{\cFunc(m_{t+1})}{\cFunc(m_{t})}\right] \\
+# & = & \left[\frac{\PermGroFac \PermShk_{t+1} \cFunc(m_{t+1})}{\cFunc(m_{t})}\right]
 # \end{eqnarray*}
 
 # %% [markdown] {"tags": []}
@@ -717,10 +717,10 @@ baseAgent_Inf = IndShockConsumerType(
 #
 # \begin{eqnarray*}
 # \Ex_{t}[\mLvl_{t+1}/\mLvl_{t}]
-# & = & \Ex_{t}\left[\frac{\PermGroFac \permShk_{t+1} \mNrm_{t+1}} {\mNrm_{t}} \right]
-# \\ & = & \Ex_{t}\left[\frac{\PermGroFac \permShk_{t+1} (\aNrm_{t}\Rfree/(\PermGroFac \permShk_{t+1}))+\PermGroFac \permShk_{t+1}\tranShk_{t+1}}
+# & = & \Ex_{t}\left[\frac{\PermGroFac \PermShk_{t+1} \mNrm_{t+1}} {\mNrm_{t}} \right]
+# \\ & = & \Ex_{t}\left[\frac{\PermGroFac \PermShk_{t+1} (\aNrm_{t}\Rfree/(\PermGroFac \PermShk_{t+1}))+\PermGroFac \PermShk_{t+1}\TranShk_{t+1}}
 # {\mNrm_{t}}\right]
-# \\ & = & \Ex_{t}\left[\frac{\PermGroFac (\aNrm_{t}\RNrm+\permShk_{t+1}\tranShk_{t+1})}
+# \\ & = & \Ex_{t}\left[\frac{\PermGroFac (\aNrm_{t}\RNrm+\PermShk_{t+1}\TranShk_{t+1})}
 # {\mNrm_{t}}\right]
 # \\ & = & \PermGroFac \left[\frac{\aNrm_{t}\RNrm+1}{\mNrm_{t}}\right]
 # \end{eqnarray*}
@@ -729,28 +729,28 @@ baseAgent_Inf = IndShockConsumerType(
 # For $\mNrm$ things are only slightly more complicated:
 # \begin{eqnarray*}
 # \Ex_{t}[m_{t+1}]
-# & = & \Ex_{t}\left[(m_{t}-c_{t})(\Rfree/(\permShk_{t+1}\PermGroFac)) +\tranShk_{t+1}\right]\\
-# & = & a_{t}\Rfree\Ex_{t}\left[(\permShk_{t+1}\PermGroFac)^{-1}\right] +1 \\
-# \Ex_{t}\left[\frac{m_{t+1}}{m_{t}}\right] & = & \left(\frac{a_{t}\Rfree\Ex_{t}\left[(\permShk_{t+1}\PermGroFac)^{-1}\right]+1}{\mNrm_{t}}\right)
+# & = & \Ex_{t}\left[(m_{t}-c_{t})(\Rfree/(\PermShk_{t+1}\PermGroFac)) +\TranShk_{t+1}\right]\\
+# & = & a_{t}\Rfree\Ex_{t}\left[(\PermShk_{t+1}\PermGroFac)^{-1}\right] +1 \\
+# \Ex_{t}\left[\frac{m_{t+1}}{m_{t}}\right] & = & \left(\frac{a_{t}\Rfree\Ex_{t}\left[(\PermShk_{t+1}\PermGroFac)^{-1}\right]+1}{\mNrm_{t}}\right)
 # \end{eqnarray*}
 
 # %% [markdown] {"tags": []}
 # The expectation of the growth in the log of $\mLvl$ is a downward-adjusted value of the log of the growth factor:
 # \begin{eqnarray*}
 # \Ex_{t}[\log(\mLvl_{t+1}/\mLvl_{t})]
-# & = & \Ex_{t}\left[\log \PermGroFac \permShk_{t+1} \mNrm_{t+1}\right] - \log \mNrm_{t}
-# \\ & = & \Ex_{t}\left[\log \PermGroFac \left(\permShk_{t+1} (\aNrm_{t}\Rfree/(\PermGroFac \permShk_{t+1}))+\permShk_{t+1}\tranShk_{t+1}\right)\right]-\log \mNrm_{t}
-# \\ & = & \Ex_{t}\left[\log \PermGroFac (\aNrm_{t}\RNrm+\permShk_{t+1}\tranShk_{t+1}+1-1)\right] - \log 
+# & = & \Ex_{t}\left[\log \PermGroFac \PermShk_{t+1} \mNrm_{t+1}\right] - \log \mNrm_{t}
+# \\ & = & \Ex_{t}\left[\log \PermGroFac \left(\PermShk_{t+1} (\aNrm_{t}\Rfree/(\PermGroFac \PermShk_{t+1}))+\PermShk_{t+1}\TranShk_{t+1}\right)\right]-\log \mNrm_{t}
+# \\ & = & \Ex_{t}\left[\log \PermGroFac (\aNrm_{t}\RNrm+\PermShk_{t+1}\TranShk_{t+1}+1-1)\right] - \log 
 # {\mNrm_{t}}
 # \\ & = & 
 # \log \left(\PermGroFac 
 # (\aNrm_{t}\RNrm+1)\Ex_{t}\left[\left(
-# 1+\frac{\permShk_{t+1}\tranShk_{t+1}-1}{(\aNrm_{t}\RNrm+1)}
+# 1+\frac{\PermShk_{t+1}\TranShk_{t+1}-1}{(\aNrm_{t}\RNrm+1)}
 # \right)
 # \right]\right) - \log {\mNrm_{t}}
 # \\ & = & \log \underbrace{\PermGroFac \left[\frac{\aNrm_{t}\RNrm+1}{\mNrm_{t}}\right]}_{\Ex_{t}[\mLvl_{t+1}/\mLvl_{t}]}+
 # \log \Ex_{t}\left[\left(1+
-# \frac{\permShk_{t+1}\tranShk_{t+1}-1}{(\aNrm_{t}\RNrm+1)}
+# \frac{\PermShk_{t+1}\TranShk_{t+1}-1}{(\aNrm_{t}\RNrm+1)}
 # \right)
 # \right]
 # \end{eqnarray*}

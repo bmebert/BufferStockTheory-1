@@ -3,20 +3,21 @@
 \usepackage{econark}
 \newcommand{\texname}{BufferStockTheory}% Keyname for the paper
 \usepackage{\LaTeXInputs/\texname}% Styling for whole paper (and subfiles)
-\usepackage{\LaTeXInputs/\texname-Shortcuts}% Styling for whole paper (and subfiles)
+\usepackage{\LaTeXInputs/\texname-Shortcuts}% LaTeX Shortcuts for whole paper
 \begin{document}
 
-% Redefine command from \texname.sty file 
-% This lets any submaterial called from here it is not standalone
-% So that if it IS standalone, e.g., it can make a bibliography
+% Redefine \onlyinsubfile command from \texname.sty file:
+% This lets any submaterial called from here know that it is not standalone
+% So that if it IS standalone, it can make a bibliography (or other content)
 \renewcommand{\onlyinsubfile}[1]{}\renewcommand{\notinsubfile}[1]{#1}
 
 \subfile{BufferStockTheory-NoAppendix} % Main body of paper
 
-
 \pagebreak
-\ifthenelse{\boolean{Web}}{}{\chead[Appendices]{Appendices}}
-\appendixpage
+\ifthenelse{\boolean{Web}}{}{% Web version has no page headers
+  \chead[Appendices]{Appendices} % but PDF version does
+} 
+\appendixpage % Reset formatting for appendices
 \appendix
 \hypertarget{Appendices}{} % Allows link to [url-of-paper]#Appendices
 \addcontentsline{toc}{section}{Appendices}
