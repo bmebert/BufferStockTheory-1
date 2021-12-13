@@ -59,7 +59,7 @@ DiscFac_growth_widget = [
         min=0.94,
         max=0.99,
         step=0.005,
-        value=DiscFac,  # Default value
+        value=0.98,  # Default value
         continuous_update=False,
         readout_format=".3f",
         description="\u03B2",
@@ -70,7 +70,7 @@ DiscFac_growth_widget = [
 # Define a slider for relative risk aversion
 CRRA_widget = [
     widgets.FloatSlider(
-        min=1.0,
+        min=1.1,
         max=5.0,
         step=0.1,
         value=CRRA,  # Default value
@@ -100,12 +100,12 @@ Rfree_widget = [
 PermGroFac_widget = [
     widgets.FloatSlider(
         min=1.00,
-        max=1.04,
+        max=1.03,
         step=0.01,
         value=PermGroFac,  # Default value
         continuous_update=False,
         readout_format=".2f",
-        description="\u0393",
+        description="\u03D5",
     )
     for i in range(5)
 ]
@@ -116,10 +116,10 @@ PermGroFac_growth_widget = [
         min=1.00,
         max=1.04,
         step=0.005,
-        value=PermGroFac,  # Default value
+        value=1.02,  # Default value
         continuous_update=False,
         readout_format=".3f",
-        description="\u0393",
+        description="\u03D5",
     )
     for i in range(5)
 ]
@@ -289,10 +289,10 @@ def makeGICFailExample(DiscFac, PermShkStd, UnempPrb):
     # Shortcuts/aliases
     soln = GICFailsExample.solution[0]  # solution
     cFunc, Bilt, E_Next_ = soln.cFunc, soln.Bilt, soln.E_Next_
-    mNrmBalLvl, mNrmTrg = Bilt.mNrmBalLvl, Bilt.mNrmTrg
+    mBalLvl, mTrgNrm = Bilt.mBalLvl, Bilt.mTrgNrm
 
     E_d_mtp1_0 = E_Next_.c_where_E_Next_m_tp1_minus_m_t_eq_0
-    E_MGro_Bal = E_Next_.c_where_E_Next_permGroShk_times_m_tp1_minus_m_t_eq_0
+    E_MGro_Bal = E_Next_.c_where_E_Next_PermShk_tp1_times_m_tp1_minus_m_t_eq_0
 
     mPlotMin, mPlotMax = 0, 20
     cPlotMin, cPlotMax = 0, 1.1 * E_d_mtp1_0(mPlotMax)
@@ -306,24 +306,24 @@ def makeGICFailExample(DiscFac, PermShkStd, UnempPrb):
     plt.figure(figsize=(12, 8))
     plt.plot(mVec, c_Limt, label="$c(m_{t})$", color="black")
     plt.plot(mVec, c_E_d_mtp1_0, label="$\mathsf{E}_{t}[\Delta m_{t+1}] = 0$", color="orange")
-    plt.plot(mVec, c_E_MGro_Bal, label="$\mathsf{E}_{t}[M_{t+1}/M_{t}] = \Gamma$", color="green")
+    plt.plot(mVec, c_E_MGro_Bal, label="$\mathsf{E}_{t}[M_{t+1}/M_{t}] = {\Phi}$", color="green")
 
     plt.xlim(mPlotMin, mPlotMax)
     plt.ylim(cPlotMin, cPlotMax)
 
     if Bilt.GICLiv:  # Growth impatience condition (including mortality)
-        plt.axvline(Bilt.mNrmBalLvl, label="mNrmBalLvl exists", color="orange", linestyle="dashed")
+        plt.axvline(Bilt.mBalLvl, label="mBalLvl exists", color="orange", linestyle="dashed")
 
     if Bilt.GICNrm:  # Normalized GIC
-        plt.axvline(Bilt.mNrmTrg, label="mNrmTrg exists", color="green", linestyle="dashed")
+        plt.axvline(Bilt.mTrgNrm, label="mTrgNrm exists", color="green", linestyle="dashed")
 
     plt.tick_params(
         labelbottom=False, labelleft=False, left="on", right="off",  # bottom="off",
         top="off"
     )
 
-    _log.critical(f'mNrmTrg: {mNrmTrg:.3f}')
-    _log.critical(f'mNrmBalLvl: {mNrmBalLvl:.3f}')
+    _log.critical(f'mTrgNrm: {mTrgNrm:.3f}')
+    _log.critical(f'mBalLvl: {mBalLvl:.3f}')
 
     plt.legend(fontsize='medium')
     plt.show()
@@ -356,7 +356,7 @@ def cGroTargetFig_make(PermGroFac, DiscFac):
     mPlotMin, mCalcMax, mPlotMax = 0.3, 50, 8
 
     # Get StE and target values
-    mNrmBalLvl, mNrmTrg = Bilt.mNrmBalLvl, Bilt.mNrmTrg
+    mBalLvl, mTrgNrm = Bilt.mBalLvl, Bilt.mTrgNrm
 
     pts_num = 200  # Plot this many points
 
@@ -402,27 +402,27 @@ def cGroTargetFig_make(PermGroFac, DiscFac):
     # Axes limits
     GroFacMin, GroFacMax, xMin = 0.96, 1.08, 1.1
 
-    if mNrmBalLvl and mNrmBalLvl < mPlotMax:
-        ax.plot(mNrmBalLvl, PermGroFac, marker=".", markersize=15, color="black")
+    if mBalLvl and mBalLvl < mPlotMax:
+        ax.plot(mBalLvl, PermGroFac, marker=".", markersize=15, color="black")
 
-#    mLvlGro, = ax.plot([mNrmBalLvl, mNrmBalLvl], [0, GroFacMax], color=color_mrktLev,
+#    mLvlGro, = ax.plot([mBalLvl, mBalLvl], [0, GroFacMax], color=color_mrktLev,
 #                       label=r'$\mathbf{m}$-Level-Growth: $\mathbb{E}_{t}[{\mathbf{m}}_{t+1}/{\mathbf{m}}_{t}]$')
 #    ax.legend(handles=[mLvlGro])
 
     ax.set_xlim(xMin, mPlotMax * 1.2)
     ax.set_ylim(GroFacMin, GroFacMax)
 
-#    mNrmGro, = ax.plot([mNrmTrg, mNrmTrg], [0, GroFacMax], color=color_mrktRat,
+#    mNrmGro, = ax.plot([mTrgNrm, mTrgNrm], [0, GroFacMax], color=color_mrktRat,
     ax.legend(handles=[mLvlGro_lbl, mNrmGro_lbl])
     ax.legend(prop=dict(size=fssml))
 
     ax.text(mPlotMax+0.01, PermGroFac,
-            r"$\Gamma$", fontsize=fssml, fontweight='bold')
+            r"${\Phi}$", fontsize=fssml, fontweight='bold')
 
 #    ax.text(mPlotMax+0.01, Ex_cLvlGro[-1],
 #            r"$\mathsf{E}_{t}[\mathbf{c}_{t+1}/\mathbf{c}_{t}]$", fontsize=fssml, fontweight='bold')
     ax.text(mPlotMax+0.01, APF-0.003,
-            r'$\Phi = (R\beta)^{1/\rho}$', fontsize=fssml, fontweight='bold')
+            r'$(R\beta)^{1/\rho}$', fontsize=fssml, fontweight='bold')
 
     # Ticks
 #    ax.tick_params(labelbottom=False, labelleft=True, left='off',
@@ -430,8 +430,8 @@ def cGroTargetFig_make(PermGroFac, DiscFac):
                    right='on', bottom='on', top='off')
     plt.setp(ax.get_yticklabels(), fontsize=fssml)
 
-    _log.critical(f'mNrmTrg: {mNrmTrg:.3f}')
-    _log.critical(f'mNrmBalLvl: {mNrmBalLvl:.3f}')
+    _log.critical(f'mTrgNrm: {mTrgNrm:.3f}')
+    _log.critical(f'mBalLvl: {mBalLvl:.3f}')
 
     plt.legend(fontsize='medium')
     ax.set_ylabel('Growth Factors', fontsize=fsmid)
@@ -525,7 +525,7 @@ def makeTargetMfig(Rfree, DiscFac, CRRA, PermShkStd, TranShkStd):
     def EmDelEq0(mVec): return (EPermGroFac/Rfree)+(1.0-EPermGroFac/Rfree)*mVec
     cBelwStE_Best = cFunc(mBelwStE)  # "best" = optimal c
     cBelwStE_Sstn = EmDelEq0(mBelwStE)               # "sustainable" c
-    mNrmBalLvl = Bilt.mNrmBalLvl
+    mBalLvl = Bilt.mBalLvl
 
     plt.figure(figsize=(12, 8))
     plt.plot(mBelwStE, cBelwStE_Best, label="$c(m_{t})$")
@@ -533,7 +533,7 @@ def makeTargetMfig(Rfree, DiscFac, CRRA, PermShkStd, TranShkStd):
     plt.xlim(mPlotMin, mPlotMax)
     plt.ylim(cPlotMin, cFunc(mPlotMax))
     plt.plot(
-        [mNrmBalLvl, mNrmBalLvl],
+        [mBalLvl, mBalLvl],
         [0, 2.5],
         color="black",
         linestyle="--",
@@ -548,7 +548,7 @@ def makeTargetMfig(Rfree, DiscFac, CRRA, PermShkStd, TranShkStd):
     )
     plt.text(0, 1.47, r"$c$", fontsize=26)
     plt.text(3.02, 0, r"$m$", fontsize=26)
-    plt.text(mNrmBalLvl - 0.05, -0.1, "m̌", fontsize=26)
+    plt.text(mBalLvl - 0.05, -0.1, "m̌", fontsize=26)
     plt.legend(fontsize='x-large')
     plt.show()
     return None

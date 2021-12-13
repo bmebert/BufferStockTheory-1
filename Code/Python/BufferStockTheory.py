@@ -71,7 +71,7 @@
 # %% [markdown]
 # `# Setup Python Below`
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # This cell does some setup
 
 # Import required python packages
@@ -188,8 +188,8 @@ base_params['BoroCnstArt'] = None    # No artificial borrowing constraint
 # \newcommand{\Ex}{\mathbb{E}}
 # \newcommand{\IncUnemp}{\mu}
 # \newcommand{\MPC}{\kappa}
-# \newcommand{\PermGroFac}{\Gamma}
-# \newcommand{\PermGroFacAdj}{\tilde{\Gamma}}
+# \newcommand{\PermGroFac}{\pmb{\Phi}}
+# \newcommand{\PermGroFacAdj}{\tilde{\Phi}}
 # \newcommand{\PermShkStd}{\sigma_\Psi}
 # \newcommand{\PermShkStd}{\sigma_\psi}
 # \newcommand{\PermShk}{\Psi} % New
@@ -267,7 +267,7 @@ base_params['BoroCnstArt'] = None    # No artificial borrowing constraint
 # m_{t+1} &=& a_t \Rfree/(\PermGroFac \PermShk_{t+1}) + \TranShk_{t+1} \\
 # \end{eqnarray*}
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # Set the parameters for the baseline results in the paper
 base_params['PermGroFac'] = [1.03]  # Permanent income growth factor
 base_params['Rfree'] = Rfree = 1.04  # Interest factor on assets
@@ -381,7 +381,7 @@ makeFig('cFuncsConverge')  # Comment out if you want to run uninterrupted
 # %% [markdown] {"tags": []}
 # ### [Absolute Patience and the AIC](https://econ-ark.github.io/BufferStockTheory/#AIC)
 #
-# The paper defines the Absolute Patience Factor [(APF)](https://econ-ark.github.io/BufferStockTheory/#APF) as being equal to the ratio $\cLvl_{t+1}/\cLvl_{t}$ for a perfect foresight consumer.  (The Old English character [Thorn](https://en.wikipedia.org/wiki/Thorn_(letter)) used for this object in the paper cannot reliably be rendered in Jupyter notebooks; it may appear as capital Phi):
+# The paper defines the Absolute Patience Factor [(APF)](https://econ-ark.github.io/BufferStockTheory/#APF) as being equal to the ratio $\cLvl_{t+1}/\cLvl_{t}$ for a perfect foresight consumer.  (The Old English character [Thorn](https://en.wikipedia.org/wiki/Thorn_(letter)) used for this object in the paper cannot reliably be rendered in Jupyter notebooks; it may appear as capital Omega):
 #
 # \begin{equation}
 # \PatFac = (\Rfree \DiscFac)^{1/\CRRA}
@@ -539,7 +539,7 @@ GICNrmFailsButGICRawHolds = \
 # %% [markdown]
 # `# Solve that consumer's problem:`
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # Solve the model for these parameter values
 GICNrmFailsButGICRawHolds.tolerance = 0.0001   # How close is enough
 
@@ -607,7 +607,7 @@ print('\ndistance_now < distance_original: ' +
 # %% [markdown]
 # `# Plot the results:`
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # Plot https://econ-ark.github.io/BufferStockTheory/#GICNrmFailsButGICRawHolds
 
 soln = GICNrmFailsButGICRawHolds.solution[0]  # Short alias for solution
@@ -632,7 +632,7 @@ if latexExists:
     c_Stable_Bal_txt = "$\Ex_{t}[{\mathbf{m}}_{t+1}/{\mathbf{m}}_{t}] = \PermGroFac$"
 else:
     c_Stable_Trg_txt = "$\mathsf{E}_{t}[\Delta m_{t+1}] = 0$"
-    c_Stable_Bal_txt = "$\mathsf{E}_{t}[\mathbf{m}_{t+1}/\mathbf{m}_{t}] = \Gamma$"
+    c_Stable_Bal_txt = "$\mathsf{E}_{t}[\mathbf{m}_{t+1}/\mathbf{m}_{t}] = \PermGroFac$"
 
 cVals_Lmting_color = "black"
 c_Stable_Bal_color = "black"  # or "blue"
@@ -686,7 +686,7 @@ print('Finite mBalLvl but infinite mNrmFacTrg')
 # %% [markdown]
 # `# Construct infinite horizon solution for consumer with baseline parameters:`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # Find the infinite horizon solution
 
 base_params['aXtraCount'] = base_params['aXtraCount'] * 20
@@ -735,7 +735,7 @@ baseAgent_Inf = IndShockConsumerType(
 # \end{eqnarray*}
 
 # %% [markdown] {"tags": []}
-# The expectation of the growth in the log of $\mLvl$ is a downward-adjusted value of the log of the growth factor:
+# <!-- The expectation of the growth in the log of $\mLvl$ is a downward-adjusted value of the log of the growth factor:
 # \begin{eqnarray*}
 # \Ex_{t}[\log(\mLvl_{t+1}/\mLvl_{t})]
 # & = & \Ex_{t}\left[\log \PermGroFac \PermShk_{t+1} \mNrm_{t+1}\right] - \log \mNrm_{t}
@@ -754,6 +754,7 @@ baseAgent_Inf = IndShockConsumerType(
 # \right)
 # \right]
 # \end{eqnarray*}
+# -->
 
 # %% [markdown]
 # `# Solve problem of consumer with baseline parameters:`
@@ -771,7 +772,7 @@ baseAgent_Inf.solve(
 # %% [markdown]
 # `# Plot growth factors for various model elements at steady state:`
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # Plot growth rates
 
 soln = baseAgent_Inf.solution[0]
@@ -813,14 +814,14 @@ Ex_mLogGroExp = np.exp(Ex_mLog_tp1_minus_mLog_t_from_m_t)
 
 # Absolute Patience Factor = lower bound of consumption growth factor
 # https://econ-ark.github.io/BufferStockTheory/#APF
-APF = Bilt.APF
+APFac = Bilt.APFac
 
 # Init figure and axes
 fig, ax = plt.subplots(figsize=(12, 8))
 plt.rcParams['font.size'], plt.rcParams['font.weight'] = fsmid, 'bold'
 
 # Plot the Absolute Patience Factor line
-ax.plot([0, mPlotMax], [APF, APF], color=color_cons)
+ax.plot([0, mPlotMax], [APFac, APFac], color=color_cons)
 
 # Plot the Permanent Income Growth Factor line
 ax.plot([0, mPlotMax], [G, G]    , color=color_perm)
@@ -853,15 +854,15 @@ if latexExists:
     mNrmGroFac_lbl = r"$\Ex_{t}[\mNrm_{t+1}/\mNrm_{t}] ^{\nearrow}$"
     mLvlGroFac_lbl = r"$\Ex_{t}[\mLvl_{t+1}/\mLvl_{t}]$"
     mBalLvl_lbl = r"$\check{\mNrm}_{\searrow}~$"    
-    cLvlAPF_lbl = r'$\pmb{\text{\TH}} = (\Rfree\DiscFac)^{1/\CRRA}$'
+    cLvlAPFac_lbl = r'$\pmb{\text{\TH}} = (\Rfree\DiscFac)^{1/\CRRA}$'
 else:
     mNrmFacTrg_lbl = r'$\mathsf{E}_{t}[m_{t+1}/m_{t}]:~ \hat{m} \rightarrow~~$'
-    PermGro_lbl = r"$\Gamma$"
+    PermGro_lbl = r"$\PermGroFac$"
     cLvlGroFac_lbl = r"$\mathsf{E}_{t}[\mathbf{c}_{t+1}/\mathbf{c}_{t}]$"
     mNrmGroFac_lbl = r"$\mathsf{E}_{t}[m_{t+1}/m_{t}]^{\nearrow}$"
     mLvlGroFac_lbl = r"$\mathsf{E}_{t}[\mathbf{m}_{t+1}/\mathbf{m}_{t}]$"
     mBalLvl_lbl = r"$m\check_{\searrow}$"    
-    cLvlAPF_lbl = Thorn + r'$= (\mathsf{R}\beta)^{1/\rho}$'
+    cLvlAPFac_lbl = Thorn + r'$= (\mathsf{R}\beta)^{1/\rho}$'
 
 
 if mNrmFacTrg:  # Do not try to plot it if it does not exist!
@@ -879,7 +880,7 @@ mNrmGroFac_lbl_yVal = soln.E_Next_.m_tp1_Over_m_t(mNrmGroFac_lbl_xVal)
 
 ax.text(mPlotMax+0.01, G-0.001,PermGro_lbl)
 ax.text(mPlotMax+0.01, Ex_cLvlGroFac[-1]  ,cLvlGroFac_lbl)
-ax.text(mPlotMax+0.01, APF-0.001       ,cLvlAPF_lbl)
+ax.text(mPlotMax+0.01, APFac-0.001       ,cLvlAPFac_lbl)
 ax.text(mBalLvl-0.06, G+0.001,mBalLvl_lbl              ,va='bottom',ha='left')
 ax.text(mNrmGroFac_lbl_xVal-0.01, mNrmGroFac_lbl_yVal-0.003,mNrmGroFac_lbl,va='bottom',ha='right')
 ax.text(mLvlGroFac_lbl_xVal+0.01, mLvlGroFac_lbl_yVal+0.001,mLvlGroFac_lbl,va='top')
@@ -904,7 +905,7 @@ makeFig('cGroTargetFig')
 # %% [markdown] {"tags": []}
 # `# Define bounds for figure:`
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # Define mpc_Min, h_inf and PF consumption function, upper and lower bound of c function
 
 baseAgent_Inf = IndShockConsumerType(**base_params, quietly=True)  # construct it silently
@@ -914,10 +915,14 @@ soln = baseAgent_Inf.solution[0]
 UnempPrb = Pars.IncShkDstn.parameters['UnempPrb']
 
 # Return Patience Factor
-RPF = ((Rfree * DiscFac)**(1.0/CRRA)/Rfree)
+RPFacRaw = ((Rfree * DiscFac)**(1.0/CRRA)/Rfree)
+RPFac = baseAgent_Inf.solution[0].Bilt.RPFac
 
-mpc_Min = 1.0-RPF
-mpc_Max = 1.0 - (UnempPrb**(1/CRRA)) * RPF
+# https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#MPCminDefn
+mpc_Min = 1.0-RPFac 
+# https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#MPCmaxDefn
+mpc_Max = 1.0 - (UnempPrb**(1/CRRA)) * RPFac
+# https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#hNrmDefn
 h_inf = (1.0/(1.0-G/Rfree))
 
 def cFunc_Uncnst(m): return mpc_Min * m + (h_inf - 1) * mpc_Min
@@ -928,7 +933,7 @@ def cFunc_BotBnd(m): return mpc_Min * m
 # %% [markdown]
 # `# Plot figure showing bounds`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # Plot the consumption function and its bounds
 
 cMaxLabel = r'$\overline{c}(m)= (m-1+h)\tilde{\kappa}$'
@@ -965,10 +970,10 @@ plt.text(mPlotMax+0.1, mPlotMin, "$m$", fontsize=22)
 plt.text(2.5, 1, r'$c(m)$', fontsize=22, fontweight='bold')
 upper_upper_bound_m = 4.6
 if latexExists:
-    plt.text(upper_upper_bound_m+0.1, cFunc_TopBnd(upper_upper_bound_m), r'$~\leftarrow \overline{\overline{c}}(m)= \overline{\MPC}m = (1-\UnempPrb^{1/\CRRA}\pmb{\text{\TH}}_{R})m$',
+    plt.text(upper_upper_bound_m+0.6, cFunc_TopBnd(upper_upper_bound_m+0.5), r'$\leftarrow \overline{\overline{c}}(m)= \overline{\MPC}m = (1-\UnempPrb^{1/\CRRA}\pmb{\text{\TH}}_{R})m$',
              fontsize=22, fontweight='bold')
 else:
-    plt.text(6, 5, r'$\overline{\overline{c}}(m)= \overline{\kappa}m = (1-\wp^{1/\rho}$'+Thorn+'$_{R})m$',
+    plt.text(upper_upper_bound_m+0.6, cFunc_TopBnd(upper_upper_bound_m+0.5), r'$\overline{\overline{c}}(m)= \overline{\kappa}m = (1-\wp^{1/\rho}$'+Thorn+'$_{R})m$',
              fontsize=22, fontweight='bold')
 upper_bound_m = 12
 plt.text(
@@ -984,8 +989,6 @@ plt.arrow(lower_unc_bound_m, lower_unc_bound_c, -0.5, 0.1, head_width=0.05, widt
 plt.arrow(upper_bound_m, cFunc_Uncnst(upper_bound_m)-0.2, -0.8, 0.05, head_width=0.1, width=0.015,
           facecolor='black', length_includes_head='True')
 unconst_m = 4.5
-plt.arrow(5.95, 5.05, -0.4, mPlotMin, head_width=0.05, width=0.001,
-          facecolor='black', length_includes_head='True')
 plt.arrow(14, 0.70, 0.5, -0.1, head_width=0.05, width=0.001,
           facecolor='black', length_includes_head='True')
 
@@ -1006,6 +1009,7 @@ makeFig('cFuncBounds')
 # %% {"jupyter": {"source_hidden": true}, "tags": []}
 # The last figure shows the upper and lower limits of the MPC
 
+mPlotMin = 0
 mPlotMax = 8
 
 plt.figure(figsize=(12, 8))
@@ -1038,7 +1042,7 @@ if latexExists:
 else:
     plt.text(1.5, 0.6, r'$\kappa(m) \equiv c^{\prime}(m)$', fontsize=26, fontweight='bold')
     plt.text(5, 0.87, r'$(1-\wp^{1/\rho}$'+Thorn+'${R})\equiv \bar{\kappa}$',
-             fontsize=26, fontweight='bold')  # Use Phi instead of Thorn (alas)
+             fontsize=26, fontweight='bold')  # Use Omega instead of Thorn (alas)
 
 plt.text(0.5, 0.07, kappaDef, fontsize=26, fontweight='bold')
 plt.text(mPlotMax+0.05, mPlotMin, "$m$", fontsize=26)
