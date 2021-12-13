@@ -8,7 +8,7 @@
 
 % Redefine \onlyinsubfile command from \texname.sty file:
 % This lets any submaterial called from here know that it is not standalone
-% So that if it IS standalone, it can make a bibliography (or other content)
+% If not called from here and IS standalone, can make bib (or other content)
 \renewcommand{\onlyinsubfile}[1]{}\renewcommand{\notinsubfile}[1]{#1}
 
 \subfile{BufferStockTheory-NoAppendix} % Main body of paper
@@ -18,9 +18,10 @@
   \chead[Appendices]{Appendices} % but PDF version does
 } 
 \appendixpage % Reset formatting for appendices
-\appendix
 \hypertarget{Appendices}{} % Allows link to [url-of-paper]#Appendices
-\addcontentsline{toc}{section}{Appendices}
+
+\appendix
+\addcontentsline{toc}{section}{Appendices} % Say "Appendices"
 
 \subfile{\ApndxDir/ApndxLiqConstr}
 \subfile{\ApndxDir/ApndxConcaveCFunc}

@@ -12,41 +12,41 @@
 \usepackage{xr-hyper}
 \usepackage{hhline}
 \usepackage{makecell}
-\usepackage{rotating}\usepackage{subfigure}
+\usepackage{rotating}
+\usepackage{subfigure}
 
-% Sets up default definitions that must be renewcommanded to override in master
+% Default definitions that must be renewcommanded to override in main file
 \providecommand{\onlyinsubfile}{}\renewcommand{\onlyinsubfile}[1]{#1}
 \providecommand{\notinsubfile}{}\renewcommand{\notinsubfile}[1]{}
-
 
 % Implement a standard setup and shortcuts, e.g. for the \CRRA
 \usepackage{\econtexShortcuts}
 
-\IfFileExists{\EqDir/Problem.md}{
-  \GenericWarning{}{Reconfigure to use pdflatex -output-directory=LaTeX
-    or build with latexmk
-    \MessageBreak
-    see https://mg.readthedocs.io/latexmk.html\MessageBreak}
-  }{
-    % If Problem.md does not exist, that's because it's correctly looking
-    % in LaTeX/Equations, where that file is not present
-}
+% \IfFileExists{\EqDir/Problem.md}{
+%   \GenericWarning{}{Reconfigure to use pdflatex -output-directory=LaTeX
+%     or build with latexmk
+%     \MessageBreak
+%     see https://mg.readthedocs.io/latexmk.html\MessageBreak}
+%   }{
+%     % If Problem.md does not exist, that's because it's correctly looking
+%     % in LaTeX/Equations, where that file is not present
+% }
 
 \bibliographystyle{\econtexBibStyle}
 
 
-% Automatically create hypertargets for sections
-\DefineFamilyKey[.section]{KOMAarg}{hypertarget}{%
-  \hypertarget{#1}{}%
-}
-\DefineFamilyMember[.subsection]{KOMAarg}
-\DefineFamilyKey[.subsection]{KOMAarg}{hypertarget}{%
-  \hypertarget{#1}{}%
-}
-\DefineFamilyMember[.subsubsection]{KOMAarg}
-\DefineFamilyKey[.subsubsection]{KOMAarg}{hypertarget}{%
-  \hypertarget{#1}{}%
-}
+% % Automatically create hypertargets for sections
+% \DefineFamilyKey[.section]{KOMAarg}{hypertarget}{%
+%   \hypertarget{#1}{}%
+% }
+% \DefineFamilyMember[.subsection]{KOMAarg}
+% \DefineFamilyKey[.subsection]{KOMAarg}{hypertarget}{%
+%   \hypertarget{#1}{}%
+% }
+% \DefineFamilyMember[.subsubsection]{KOMAarg}
+% \DefineFamilyKey[.subsubsection]{KOMAarg}{hypertarget}{%
+%   \hypertarget{#1}{}%
+% }
 
 \usepackage{\econtexSetup}
 % Layers at top of page make no sense if there is no page
