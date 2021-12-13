@@ -376,12 +376,12 @@ def cGroTargetFig_make(PermGroFac, DiscFac):
     Ex_mNrmGro = np.array(Ex_m_tp1_from_a_t)/m_pts
 
     # Absolute Patience Factor = lower bound of consumption growth factor
-    APF = (Rfree*DiscFac)**(1.0/CRRA)
+    APFac = (Rfree*DiscFac)**(1.0/CRRA)
 
     fig, ax = plt.subplots(figsize=(12, 4))
 
     # Plot the Absolute Patience Factor line
-    ax.plot([0, mPlotMax], [APF, APF], color=color_cons, linestyle='dashed')
+    ax.plot([0, mPlotMax], [APFac, APFac], color=color_cons, linestyle='dashed')
 
     # Plot the Permanent Income Growth Factor line
     ax.plot([0, mPlotMax], [G, G], color=color_perm)
@@ -421,7 +421,7 @@ def cGroTargetFig_make(PermGroFac, DiscFac):
 
 #    ax.text(mPlotMax+0.01, Ex_cLvlGro[-1],
 #            r"$\mathsf{E}_{t}[\mathbf{c}_{t+1}/\mathbf{c}_{t}]$", fontsize=fssml, fontweight='bold')
-    ax.text(mPlotMax+0.01, APF-0.003,
+    ax.text(mPlotMax+0.01, APFac-0.003,
             r'$(R\beta)^{1/\rho}$', fontsize=fssml, fontweight='bold')
 
     # Ticks
