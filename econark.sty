@@ -1,3 +1,4 @@
+% Get references right whether compiled as subfile or main file
 % https://tex.stackexchange.com/questions/463699/proper-reference-numbers-with-subfiles
 \newcommand\labelprefix{}
 \newcommand\localorexternallabel[1]{%
@@ -6,6 +7,7 @@
   \fi #1%
 }
 
+% Suppress useless warning "PDF inclusion: multiple PDFs with page group"
 \pdfsuppresswarningpagegroup=1
 
 % Appendices and body are subfiles
@@ -16,36 +18,12 @@
 \newcommand{\iflabelexists}[3]{\@ifundefined{r@#1}{\G@refundefinedtrue{#3}}{#2}}
 \makeatother
 
-% %Define handles for various conditions
-% \newcommand{\PFGPF}{{\mbox{PF-GPF}}}
-% \newcommand{\PFGIC}{{\mbox{PF-GIC}}}
-% \newcommand{\AIC}{{\mbox{AIC}}}
-% \newcommand{\PFFVAC}{{\mbox{PF-FVAC}}}
-% \newcommand{\PFVAF}{{\mbox{PF-VAF}}}
-% \newcommand{\FVAC}{{\mbox{FVAC}}}
-% \newcommand{\FVAF}{{\mbox{FVAF}}}
-% \newcommand{\GIC}{{\mbox{GIC}}}
-% \newcommand{\GICAgg}{{\mbox{GIC-Agg}}}
-% \newcommand{\RIC}{{\mbox{RIC}}}
-% \newcommand{\WRIC}{{\mbox{WRIC}}}
-% \newcommand{\FHWC}{{\mbox{FHWC}}}
-% \newcommand{\RPF}{{\mbox{RPF}}}
-% \newcommand{\GPF}{{\mbox{GPF}}}
-% \newcommand{\FHWF}{\mbox{FHWF}}
-% \newcommand{\GICRaw}{\mbox{GIC}}
-% \newcommand{\GPFRaw}{\mbox{GPF}}
-% \newcommand{\GICNrm}{\mbox{GIC-Nrm}}
-% \newcommand{\GICLog}{\mbox{GIC-Log}}
-
 \providecommand{\avg}{\bar}
 \newcommand{\cv}{\textup{cov}}
+\providecommand{\cov}{}\renewcommand{\cov}{\textup{cov}}
 \providecommand{\Abve}{\bar}
 \providecommand{\Belw}{\ushort}
-%\providecommand{\Trg}{\hat}
-%\providecommand{\Gro}{\acute}
 \providecommand{\GroFac}{\Omega}
-%\providecommand{\mTrgNrm}{\Trg{\mNrm}}
-%\providecommand{\mGro}{\Gro{\mNrm}}
 \providecommand{\IncUnemp}{\mu}
 \providecommand{\Lvl}{\pmb}
 
@@ -80,4 +58,152 @@
 \newcommand{\WRPF}{\href{{\BSTpaperLink}\#WRPFDefn}{\textrm{WRPF}}}
 \newcommand{\WRIC}{\href{{\BSTpaperLink}\#WRICDefn}{\textrm{WRIC}}}
 
+
+\providecommand{\aLvl}{\mathbf{a}}
+\providecommand{\bLvl}{\mathbf{b}}
+\providecommand{\cLvl}{\mathbf{c}}
+\providecommand{\dLvl}{\mathbf{d}}
+\providecommand{\eLvl}{\mathbf{e}}
+\providecommand{\fLvl}{\mathbf{f}}
+\providecommand{\hLvl}{\mathbf{h}}
+\providecommand{\iLvl}{\mathbf{i}}
+\providecommand{\jLvl}{\mathbf{j}}
+\providecommand{\kLvl}{\mathbf{k}}
+\providecommand{\mLvl}{\mathbf{m}}
+\providecommand{\pLvl}{\mathbf{p}}
+\providecommand{\sLvl}{\mathbf{s}}
+\providecommand{\rLvl}{\mathbf{r}}
+\providecommand{\vLvl}{\mathbf{v}}
+\providecommand{\yLvl}{\mathbf{y}}
+\providecommand{\zLvl}{\mathbf{z}}
+
+\providecommand{\ALvl}{\mathbf{A}}
+\providecommand{\BLvl}{\mathbf{B}}
+\providecommand{\CLvl}{\mathbf{C}}
+\providecommand{\DLvl}{\mathbf{D}}
+\providecommand{\ELvl}{\mathbf{E}}
+\providecommand{\FLvl}{\mathbf{F}}
+\providecommand{\HLvl}{\mathbf{H}}
+\providecommand{\ILvl}{\mathbf{I}}
+\providecommand{\JLvl}{\mathbf{J}}
+\providecommand{\KLvl}{\mathbf{K}}
+\providecommand{\MLvl}{\mathbf{M}}
+\providecommand{\PLvl}{\mathbf{P}}
+\providecommand{\RLvl}{\mathbf{R}}
+\providecommand{\SLvl}{\mathbf{S}}
+\providecommand{\VLvl}{\mathbf{V}}
+\providecommand{\YLvl}{\mathbf{Y}}
+\providecommand{\ZLvl}{\mathbf{Z}}
+
+\providecommand{\aNrm}{a}
+\providecommand{\bNrm}{b}
+\providecommand{\cNrm}{c}
+\providecommand{\dNrm}{d}
+\providecommand{\eNrm}{e}
+\providecommand{\fNrm}{f}
+\providecommand{\hNrm}{h}
+\providecommand{\iNrm}{i}
+\providecommand{\jNrm}{j}
+\providecommand{\kNrm}{k}
+\providecommand{\mNrm}{m}
+\providecommand{\pNrm}{p}
+\providecommand{\rNrm}{s}
+\providecommand{\sNrm}{s}
+\providecommand{\vNrm}{v}
+\providecommand{\yNrm}{y}
+\providecommand{\zNrm}{z}
+
+\providecommand{\ANrm}{A}
+\providecommand{\BNrm}{B}
+\providecommand{\CNrm}{C}
+\providecommand{\DNrm}{D}
+\providecommand{\ENrm}{E}
+\providecommand{\FNrm}{F}
+\providecommand{\HNrm}{H}
+\providecommand{\INrm}{I}
+\providecommand{\JNrm}{J}
+\providecommand{\KNrm}{K}
+\providecommand{\MNrm}{M}
+\providecommand{\PNrm}{P}
+\providecommand{\RNrm}{R}
+\providecommand{\SNrm}{S}
+\providecommand{\VNrm}{V}
+\providecommand{\YNrm}{Y}
+\providecommand{\ZNrm}{Z}
+
+
+\providecommand{\tranShkInd}{\theta} % Formerly tranShkInd
+\providecommand{\tranShkAgg}{\Theta} % Formerly TranShkAgg
+\providecommand{\permShkAgg}{\Psi}   % Formerly PermShkAgg
+\providecommand{\permShkInd}{\psi}   % Formerly PermShkInd
+\providecommand{\permLvlAgg}{P}      % Formerly PermLvlAgg
+
+\providecommand{\PermShk}{\Psi}
+\providecommand{\PermLvl}{\pLvl}
+\providecommand{\PermLvlAgg}{\PLvl}
+
+\providecommand{\TranShkEmp}{\theta} % Former tShkEmp
+\providecommand{\TranShkAll}{\xi}    % Former tShkAll
+\providecommand{\TranShk}{\pmb{\xi}}       
+
+\providecommand{\MPCmin}{\ensuremath{\uline{\kappa}}}
+\providecommand{\MPCmax}{\ensuremath{\bar{\kappa}}}
+\providecommand{\MPCmaxmax}{\ensuremath{\bar{\bar{\kappa}}}}
+\providecommand{\MPCmaxmin}{\ensuremath{\hat{\underline{\kappa}}}}
+\providecommand{\MPCminmin}{\ensuremath{\underline{\kappa}}}
+
+\providecommand{\MPSmin}{\pZero^{1/\CRRA} \RPFac}
+\providecommand{\MPSmax}{\RPFac}
+\providecommand{\permGroFacAgg}{\Phi}
+\providecommand{\PermGroFac}{\pmb{\Phi}}
+\providecommand{\PermGroFacAdj}{\underline{\pGro}}
+
+\providecommand{\Alive}{\mathcal{L}}\renewcommand{\Alive}{\mathcal{L}}
+\providecommand{\RfreeAgg}{}\renewcommand{\RfreeAgg}{\Agg{\Rfree}}
+
+\providecommand{\DiscFacAlt}{\beth}
+\providecommand{\DiscFacRaw}{\beta}
+\providecommand{\DiscFacLiv}{\underline{\DiscFacRaw}}
+
+\providecommand{\APFac}{\text{\pmb{\Thorn}}} % Former \Pat
+\providecommand{\APFDefn}{\href{{\BSTpaperLink}\#APFDefn}{\textrm{APF}}}
+
+\providecommand{\APFacDefn}{\APF}
+\providecommand{\GPFDefn}{\GPF}
+\providecommand{\GPFRawDefn}{\GPFRaw}
+\providecommand{\GPFacRawDefn}{\GPFRaw}
+\providecommand{\GPFacNrmDefn}{\GPFNrm}
+\providecommand{\PFVAFDefn}{\PFVAF}
+\providecommand{\PFVAFacDefn}{\PFVAF}
+\providecommand{\VAFDefn}{\VAF}
+\providecommand{\GPFNrmDefn}{\GPFNrm}
+\providecommand{\GPFacNrm}{\PatPGroAdj}
+\providecommand{\GPFacRaw}{\PatPGro}
+\providecommand{\GPFac}{\PatPGro}
+\providecommand{\RPFac}{\PatR}
+
+\providecommand{\RPFacDefn}{\RPF}
+\providecommand{\APFDefn}{\APF}
+\providecommand{\APFacDefn}{\APF}
+\providecommand{\GPFDefn}{\GPF}
+\providecommand{\GPFRawDefn}{\GPFRaw}
+\providecommand{\GPFacRawDefn}{\GPFRaw}
+\providecommand{\GPFacRaw}{\GPFRaw}
+\providecommand{\GPFacNrmDefn}{\GPFNrm}
+\providecommand{\GPFacNrm}{\GPFNrm}
+\providecommand{\PFVAFDefn}{\PFVAF}
+\providecommand{\PFVAFacDefn}{\PFVAF}
+\providecommand{\VAFDefn}{\VAF}
+\providecommand{\GPFac}{\PatPGro}
+
+\providecommand{\RPRte}{\text{\thorn}_{\rfree}}
+\providecommand{\GPRte}{\text{\thorn}_{\PermGroFac}}
+\providecommand{\APRte}{\text{\thorn}}
+
+
+\providecommand{\EPermShkInv}{\Ex[\PermShk^{-1}]}  % Formerly EpShkInv
+\providecommand{\InvEPermShkInv}{\underline{\psi}} % Formerly InvEpShkInv
+\providecommand{\uInvEuPermShk}{\underline{\underline{\psi}}} % Formerly {\uInvEpShkuInv}
+
+\providecommand{\RfreeEff}{\bar{\Rfree}} % Blanchard-adjusted interest rate
 

@@ -1115,17 +1115,17 @@ Harmenberg has a brief discussion demonstrating that the covariance between the 
 Consider a date-$t$ Harmenberg-converged economy, and define the mean value of the consumption ratio as $\cRatAvg_{t+n} \equiv \Mean[\cNrm_{t+n}]$.  Normalizing period-$t$ aggregate permanent income to $\PermLvlAgg_{t}=1$, total consumption at $t+1$ and $t+2$ are
 \begin{equation}\label{eq:atp2vsatp1}
   \begin{split}
-    % \CLvl_{t}  % & l= \bar{\tilde{\cNrm}}_{t} = \Mean[\cNrm_{t}\PermLvl_{t}] = \Mean[\cNrm_{t}]\Mean[\PermLvl_{t}] + \cv_{t}(\cNrm_{t}, \PermLvl_{t}) \\
+    % \CLvl_{t}  % & l= \bar{\tilde{\cNrm}}_{t} = \Mean[\cNrm_{t}\PermLvl_{t}] = \Mean[\cNrm_{t}]\Mean[\PermLvl_{t}] + \cov_{t}(\cNrm_{t}, \PermLvl_{t}) \\
     % & = %\bar{\tilde{\cNrm}}_{t} =
-    % \Mean[\cNrm_{t}\PermLvl_{t}] = \Mean[\cNrm_{t}]\overbrace{\Mean[\PermLvl_{t}]}^{=1} + \cv_{t}(\cNrm_{t}, \PermLvl_{t})  \\
-    \CLvl_{t+1} & = \Mean[\cNrm_{t+1}\PermLvl_{t+1}] = \cRatAvg_{t+1}\PermGroFac^{1} + \cv_{t+1}(\cNrm_{t+1}, \PermLvl_{t+1})
-    \\  \CLvl_{t+2} & = \Mean[\cNrm_{t+2}\PermLvl_{t+2}] = \cRatAvg_{t+2}\PermGroFac^{2} + \cv_{t+2}(\cNrm_{t+2}, \PermLvl_{t+2})
+    % \Mean[\cNrm_{t}\PermLvl_{t}] = \Mean[\cNrm_{t}]\overbrace{\Mean[\PermLvl_{t}]}^{=1} + \cov_{t}(\cNrm_{t}, \PermLvl_{t})  \\
+    \CLvl_{t+1} & = \Mean[\cNrm_{t+1}\PermLvl_{t+1}] = \cRatAvg_{t+1}\PermGroFac^{1} + \cov_{t+1}(\cNrm_{t+1}, \PermLvl_{t+1})
+    \\  \CLvl_{t+2} & = \Mean[\cNrm_{t+2}\PermLvl_{t+2}] = \cRatAvg_{t+2}\PermGroFac^{2} + \cov_{t+2}(\cNrm_{t+2}, \PermLvl_{t+2})
   \end{split}
 \end{equation}
 and Harmenberg's proof that $\CLvl_{t+2}-\PermGroFac \CLvl_{t+1}=0$ allows us to obtain:
 \begin{equation} \label{eq:cNrmvsCov}\begin{split}
-    % 0 & = \cRatAvg_{t+2}\PermGroFac^{2} + \cv_{t+2}-\PermGroFac\left(\PermGroFac\cRatAvg_{t+1} + \cv_{t+1}\right)\\ %
-    % \cRatAvg_{t+2}\PermGroFac^{2} + \cv_{t+2}   & =\cRatAvg_{t+1}\PermGroFac^{2} + \PermGroFac \cv_{t+1}\\
+    % 0 & = \cRatAvg_{t+2}\PermGroFac^{2} + \cov_{t+2}-\PermGroFac\left(\PermGroFac\cRatAvg_{t+1} + \cov_{t+1}\right)\\ %
+    % \cRatAvg_{t+2}\PermGroFac^{2} + \cov_{t+2}   & =\cRatAvg_{t+1}\PermGroFac^{2} + \PermGroFac \cov_{t+1}\\
     \left(\cRatAvg_{t+2} - \cRatAvg_{t+1}\right)\PermGroFac^{2} & = \PermGroFac \cov_{t+1} - \cov_{t+2} .
   \end{split}\end{equation}
 
@@ -1134,11 +1134,11 @@ In the special case of a Szeidl-invariant economy, $\cRatAvg_{t+2} = \cRatAvg_{t
   \cov_{t+2} & = \PermGroFac \cov_{t+1}.
 \end{align}
 
-The more interesting case is when the economy is Harmenberg- but not Szeidl-invariant.  In that case, if the $\cv$ and the $\cRatAvg$ terms have constant growth factors $\GroFac_{\cov}$ and $\GroFac_{\cRatAvg}$,\footnote{This `if' is a conjecture, not something proven by Harmenberg (or anyone else).  But see appendix~\ref{sec:ApndxBalancedGrowthcNrmAndCov} for an example of a Harmenberg-invariant economy in which simulations suggest this proposition holds.} an equation corresponding to \eqref{eq:cNrmvsCov} will hold in $t+n$:
+The more interesting case is when the economy is Harmenberg- but not Szeidl-invariant.  In that case, if the $\cov$ and the $\cRatAvg$ terms have constant growth factors $\GroFac_{\cov}$ and $\GroFac_{\cRatAvg}$,\footnote{This `if' is a conjecture, not something proven by Harmenberg (or anyone else).  But see appendix~\ref{sec:ApndxBalancedGrowthcNrmAndCov} for an example of a Harmenberg-invariant economy in which simulations suggest this proposition holds.} an equation corresponding to \eqref{eq:cNrmvsCov} will hold in $t+n$:
 \begin{equation} \label{eq:aNrmGrovsCovGronm1}
   \begin{split}
-    (\overbrace{\GroFac_{\cRatAvg}^{n}\cRatAvg_{t}}^{\cRatAvg_{t+n}}-\GroFac^{n-1}_{\cNrm}\cRatAvg_{t})\PermGroFac^{n} & = \left(\PermGroFac\GroFac_{\cv}^{n-1} -\GroFac_{\cv}^{n}\right)\cv_{t}
-    \\ (\GroFac_{\cRatAvg}\PermGroFac)^{n-1} (\GroFac_{\cRatAvg}-1)\cRatAvg_{t}\PermGroFac & = \GroFac_{\cv}^{n-1}(\PermGroFac - \GroFac_{\cv}) \cv_{t}
+    (\overbrace{\GroFac_{\cRatAvg}^{n}\cRatAvg_{t}}^{\cRatAvg_{t+n}}-\GroFac^{n-1}_{\cNrm}\cRatAvg_{t})\PermGroFac^{n} & = \left(\PermGroFac\GroFac_{\cov}^{n-1} -\GroFac_{\cov}^{n}\right)\cov_{t}
+    \\ (\GroFac_{\cRatAvg}\PermGroFac)^{n-1} (\GroFac_{\cRatAvg}-1)\cRatAvg_{t}\PermGroFac & = \GroFac_{\cov}^{n-1}(\PermGroFac - \GroFac_{\cov}) \cov_{t}
   \end{split}
 \end{equation}
 so for the LHS and RHS to grow at the same rates we need
@@ -1148,31 +1148,31 @@ so for the LHS and RHS to grow at the same rates we need
 This is intuitive.  In the Szeidl-invariant economy, this just reproduces our result above that the covariance exhibits balanced growth because $\GroFac_{\cRatAvg}=1$.  The revised result just says that in the Harmenberg case where the mean value $\cRatAvg$ of the consumption ratio $\cNrm$ can grow, the covariance must rise in proportion to any ongoing expansion of $\cRatAvg$ (as well as in proportion to the growth in $\PermLvl$).
 \begin{comment}
   \begin{align*}
-    \overbrace{\GroFac_{\cRatAvg}^{n} \cRatAvg_{t}}^{\cRatAvg_{t+n}}(\GroFac_{\cRatAvg} - 1)\PermGroFac^{n} & =(\GroFac_{\cv} - \PermGroFac) \overbrace{\cv_{t}\GroFac_{\cv}^{n}}^{\cv_{t+n}}
+    \overbrace{\GroFac_{\cRatAvg}^{n} \cRatAvg_{t}}^{\cRatAvg_{t+n}}(\GroFac_{\cRatAvg} - 1)\PermGroFac^{n} & =(\GroFac_{\cov} - \PermGroFac) \overbrace{\cov_{t}\GroFac_{\cov}^{n}}^{\cov_{t+n}}
     \\
-    (\GroFac_{\cRatAvg}\PermGroFac/\GroFac_{\cv})^{n} \cRatAvg_{t}(\GroFac_{\cRatAvg} - 1) & =(\GroFac_{\cv} - \PermGroFac) \cv_{t}
+    (\GroFac_{\cRatAvg}\PermGroFac/\GroFac_{\cov})^{n} \cRatAvg_{t}(\GroFac_{\cRatAvg} - 1) & =(\GroFac_{\cov} - \PermGroFac) \cov_{t}
   \end{align*}
   and a corresponding equation will hold in $t+1$:
   \begin{align*}
-    \\  \overbrace{\GroFac_{\cRatAvg} \cRatAvg_{t}}^{\cRatAvg_{t+1}}(\GroFac_{\cRatAvg} - 1)\PermGroFac & =(\GroFac_{\cv} - \PermGroFac) \overbrace{\cv_{t}\GroFac_{\cv}}^{\cv_{t+1}}
+    \\  \overbrace{\GroFac_{\cRatAvg} \cRatAvg_{t}}^{\cRatAvg_{t+1}}(\GroFac_{\cRatAvg} - 1)\PermGroFac & =(\GroFac_{\cov} - \PermGroFac) \overbrace{\cov_{t}\GroFac_{\cov}}^{\cov_{t+1}}
   \end{align*}
   \begin{align*}
-    (\GroFac_{\cRatAvg} - 1)\cRatAvg_{t}(\GroFac_{\cRatAvg} - 1)\PermGroFac & =(\GroFac_{\cv} - \PermGroFac) \cv_{t}(\GroFac_{\cv} - 1)
+    (\GroFac_{\cRatAvg} - 1)\cRatAvg_{t}(\GroFac_{\cRatAvg} - 1)\PermGroFac & =(\GroFac_{\cov} - \PermGroFac) \cov_{t}(\GroFac_{\cov} - 1)
   \end{align*}
 
   \begin{align*}
-    (\GroFac_{\cRatAvg} - 1)\cRatAvg_{t}(\GroFac_{\cRatAvg} - 1)\PermGroFac & =(\GroFac_{\cv} - \PermGroFac) \cv_{t}(\GroFac_{\cv} - 1)
+    (\GroFac_{\cRatAvg} - 1)\cRatAvg_{t}(\GroFac_{\cRatAvg} - 1)\PermGroFac & =(\GroFac_{\cov} - \PermGroFac) \cov_{t}(\GroFac_{\cov} - 1)
   \end{align*}
   \begin{align}
-    % \GroFac_{\cRatAvg} - 1 & = \GroFac_{\cv} - \PermGroFac \\
-    % \GroFac_{\cRatAvg} + \PermGroRte & = \GroFac_{\cv}  \\
-    \GroFac_{\cv} & = \GroFac_{\cRatAvg} + (\PermGroFac - 1) \label{eq:aNrmGroVscov}
+    % \GroFac_{\cRatAvg} - 1 & = \GroFac_{\cov} - \PermGroFac \\
+    % \GroFac_{\cRatAvg} + \PermGroRte & = \GroFac_{\cov}  \\
+    \GroFac_{\cov} & = \GroFac_{\cRatAvg} + (\PermGroFac - 1) \label{eq:aNrmGroVscov}
   \end{align}
   \begin{align*}
-    \CLvl_{t}  % & l= \bar{\tilde{\cNrm}}_{t} = \Harm{\Mean}_{t+1}[\cNrm_{t}\PermLvl_{t}] = \Harm{\Mean}_{t+1}[\cNrm_{t}]\Harm{\Mean}_{t+1}[\PermLvl_{t}] + \cv_{t}(\cNrm_{t}, \PermLvl_{t}) \\
+    \CLvl_{t}  % & l= \bar{\tilde{\cNrm}}_{t} = \Harm{\Mean}_{t+1}[\cNrm_{t}\PermLvl_{t}] = \Harm{\Mean}_{t+1}[\cNrm_{t}]\Harm{\Mean}_{t+1}[\PermLvl_{t}] + \cov_{t}(\cNrm_{t}, \PermLvl_{t}) \\
                  & = %\bar{\tilde{\cNrm}}_{t} =
-                   \Harm{\Mean}_{t\phantom{+1}}[\cNrm]\phantom{\PermGroFac} = \Mean[\cNrm_{t\phantom{t+1}}]\phantom{\PermGroFac} + \cv_{t}(\cNrm_{t}, \PermLvl_{t})  \\
-    \CLvl_{t+1} & = \Harm{\Mean}_{t         +1 }[\cNrm]         \PermGroFac  = \cRatAvg_{t+1}\PermGroFac  + \cv_{t+1}(\cNrm_{t+1}, \PermLvl_{t+1})
+                   \Harm{\Mean}_{t\phantom{+1}}[\cNrm]\phantom{\PermGroFac} = \Mean[\cNrm_{t\phantom{t+1}}]\phantom{\PermGroFac} + \cov_{t}(\cNrm_{t}, \PermLvl_{t})  \\
+    \CLvl_{t+1} & = \Harm{\Mean}_{t         +1 }[\cNrm]         \PermGroFac  = \cRatAvg_{t+1}\PermGroFac  + \cov_{t+1}(\cNrm_{t+1}, \PermLvl_{t+1})
   \end{align*}
 
   Still, both of these quantitites are in priniciple measurable in microdata.  %Indeed, in principle, the Harmenberg-invariant distribution itself could be measured in such data.
@@ -1180,14 +1180,14 @@ This is intuitive.  In the Szeidl-invariant economy, this just reproduces our re
 \end{comment}
 
 \begin{comment}
-  which is the point where $\HarmWide{\cv}_{t}$ is the covariance calculated according to the Harmenberg measure.
+  which is the point where $\HarmWide{\cov}_{t}$ is the covariance calculated according to the Harmenberg measure.
 
   As Harmenberg points out, a convenient feature of his measure is that $\Harm{\Mean}_{t+n}[\PermLvl_{t+n}]=\PermGroFac^{n}$.  Using this, if by date $t=0$ the economy had achieved a Harmenberg-invariant state then we could define $\cRatAvg=\Harm{\Mean}_{t}[\cNrm_ {t}]$ and use the fact that thereafter assets grow at the constant rate $\PermGroFac$ to obtain
   \begin{equation}
     \begin{split}\label{eq:covProblem}
       \CLvl_{t+1} & = \PermGroFac \CLvl_{t}\notag \\
-      \cRatAvg\PermGroFac +\HarmWide{\cv}(\cNrm_{t+1},\PermLvl_{t+1})   & = \PermGroFac \left( \cRatAvg    +  \HarmWide{\cv}(\cNrm_{t},\PermLvl_{t})\right)
-      \\  \HarmWide{\cv}(\cNrm_{t+1},\PermLvl_{t+1})   & = \HarmWide{\cv}(\cNrm_{t},\PermLvl_{t})  \notag
+      \cRatAvg\PermGroFac +\HarmWide{\cov}(\cNrm_{t+1},\PermLvl_{t+1})   & = \PermGroFac \left( \cRatAvg    +  \HarmWide{\cov}(\cNrm_{t},\PermLvl_{t})\right)
+      \\  \HarmWide{\cov}(\cNrm_{t+1},\PermLvl_{t+1})   & = \HarmWide{\cov}(\cNrm_{t},\PermLvl_{t})  \notag
     \end{split}
   \end{equation}
 
