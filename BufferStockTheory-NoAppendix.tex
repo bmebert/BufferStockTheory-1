@@ -1,3 +1,4 @@
+% -*- mode: LaTeX; TeX-PDF-mode: t; -*-
 \input{./econtexRoot}\documentclass[BufferStockTheory]{subfiles}
 % WARNING: AuCTeX local variables only get reset when file is loaded
 % and differ between this file and BufferStockTheory.tex
@@ -55,7 +56,7 @@
 }
 
 % \date{\today}
-\renewcommand{\forcedate}{December 12, 2021}\date{\forcedate}
+\renewcommand{\forcedate}{December 14, 2021}\date{\forcedate}
 
 \maketitle
 \hypertarget{abstract}{}
@@ -308,7 +309,7 @@ Without constraints, the consumption Euler equation always holds; with $\uP(\cLv
 \begin{align}
   \cLvl_{t+1}/\cLvl_{t}  & = \underbrace{{(\Rfree\DiscFac)}^{1/\CRRA}}_{\equiv \APFac}   \label{eq:APFac}
 \end{align}
-where the archaic letter \href{https://en.wikipedia.org/wiki/Thorn_(letter)}{`thorn'} represents what we will call the `Absolute Patience Factor' \hypertarget{APFacDefn}{({\APFacDefn})} because, if the `absolute impatience condition' holds,\footnote{Impatience conditions have figured in intertemporal optimization problems since the beginning, e.g.\ in~\cite{ramseySave}.  These issues are so central that it would be hopeless to attempt to cite conditions in every other paper that correspond to conditions named and briefly exposited here.  I make no claim to novelty for any condition aside from those implicated in my theorems, whose forerunners \textit{will} be articulated.}
+where the archaic letter \href{https://en.wikipedia.org/wiki/Thorn_(letter)}{`thorn'} represents what we will call the `Absolute Patience Factor' because, if the `absolute impatience condition' holds,\footnote{Impatience conditions have figured in intertemporal optimization problems since the beginning, e.g.\ in~\cite{ramseySave}.  These issues are so central that it would be hopeless to attempt to cite conditions in every other paper that correspond to conditions named and briefly exposited here.  I make no claim to novelty for any condition aside from those implicated in my theorems, whose forerunners \textit{will} be articulated.}
 \begin{align}
   \label{eq:AIC}
   \text{\AIC:~~}  \APFac  & < 1, \phantom{\text{\AIC:~~}}
@@ -322,22 +323,22 @@ A `Return Patience Factor' relates absolute patience to the return factor:
   \text{\RPFacDefn:~~}  \RPFac  & \equiv  {\APFac}/\Rfree \phantom{\text{\RPFacDefn:~~}}\label{eq:RPFac}
 \end{align}
 and since consumption is growing by $\APFac$ but discounted by $\Rfree$:
-\begin{align}
+\begin{align*}
   \mathrm{PDV}_{t}(\cLvl)  & = \left(\frac{1-\RPFac^{T-t+1}}{1-\RPFac}\right)\cLvl_{t}
-\end{align}
+\end{align*}
 from which the IBC~\eqref{eq:IBCFinite} implies
 \begin{align}
   \cLvl_{t}  & = \overbrace{\left(\frac{1-\RPFac}{1-\RPFac^{T-t+1}}\right)}^{\equiv \MPCmin_{t}}
                (\bLvl_{t}+\hLvl_{t})   \label{eq:WDef}
 \end{align}
 defining a normalized finite-horizon perfect foresight consumption function:\hypertarget{MPCminDefn}{}
-\begin{align}
+\begin{align*}
   \bar{\cFunc}_{T-n}(\mNrm_{T-n})  & = (\overbrace{\mNrm_{T-n}-1}^{
                                      \equiv\bNrm_{T-n}}+\hNrm_{T-n})\MPCmin_{T-n}
-\end{align}
+\end{align*}
 where $\MPCmin_{t}$ is the marginal propensity to consume (MPC) --- answering the question `if the consumer had an extra unit of resources, how much more spending would occur?'  (The overbar signifies that $\bar{\cFunc}$ will be an upper bound as we modify the problem to incorporate constraints and uncertainty; analogously, $\MPCmin$ is a lower bound for the MPC).
 
-The horizon-exponentiated term in the denominator of~\eqref{eq:WDef} is why, for $\underbar{\MPC}$ to be strictly positive as $n=T-t$ goes to infinity, we must impose the Return Impatience Condition:
+The horizon-exponentiated term in the denominator of~\eqref{eq:WDef} is why, for $\underline{\MPC}$ to be strictly positive as $n=T-t$ goes to infinity, we must impose the Return Impatience Condition:
 \begin{align}
   \text{\RIC:~~}  \RPFac  & < 1,   \phantom{\text{\RIC:~~}} \label{eq:RIC}
 \end{align}
@@ -777,7 +778,7 @@ Define
 \end{align*}
 which is the solution to an infinite-horizon problem with no noncapital income ($\TranShkAll_{t+n} = 0~\forall~n\geq1$); clearly $\ushort{\cFunc}(\mNrm) < \usual{\cFunc}(\mNrm)$, since allowing the possibility of future noncapital income cannot reduce current consumption.  Our imposition of the {\RIC} guarantees that $\MPCmin > 0$, so this solution satisfies our definition of nondegeneracy, and because this solution is always available it defines a lower bound on both the consumption and value functions.%\footnote{We will assume the \RIC~holds here and subsequently so that $\MPCmin > 0$; the situation is a bit more complex when the \RIC~does not hold.  In that case the bound on consumption is given by the spending that would be undertaken by a consumer who faced binding liquidity constraints.}
 
-Assuming the \FHWC~holds, the infinite horizon perfect foresight solution~\eqref{eq:cFuncPFUnc} constitutes an upper bound on consumption in the presence of uncertainty, since the introduction of uncertainty strictly decreases the level of consumption at any $\mNrm$ (\cite{ckConcavity}).  Thus,
+Assuming the {\FHWC}~holds, the infinite horizon perfect foresight solution~\eqref{eq:cFuncPFUnc} constitutes an upper bound on consumption in the presence of uncertainty, since the introduction of uncertainty strictly decreases the level of consumption at any $\mNrm$ (\cite{ckConcavity}).  Thus,
 \begin{equation} \label{eq:lowerltupper}
   \begin{split}
     \ushort{\cFunc}(\mNrm) < & \usual{\cFunc}(\mNrm)  < \bar{\cFunc}(\mNrm)  \\
@@ -1096,11 +1097,11 @@ Because this economy is Szeidl-converged, distributions of $\cNrm_{t}$ and $\cNr
   \Mean\left[\Delta \log \cLvl_{t+1}\right]  & = \Mean\left[ \Delta \log \PermLvl_{t+1}\right] = \log \PermGroFac \label{eq:MeanDeltaLogCeqMeanDeltaLogP}.
 \end{align}
 
-In a Harmenberg-invariant economy (and therefore also any Szeidl-invariant economy), a similar proposition holds in the cross-section as a direct implication of the fact that a constant proportion of total permanent income is accounted for by the successive sets of consumers with any particular $\mNrm$.  This fact is one way of interpreting Harmenberg's definition of the density of the permanent-income-invariant distribution of $\mNrm$; call this density~$\pHarm(\mNrm)$.\footnote{In his notation, this is $\tilde{\psi}^{\mNrm}$.}  Call $\cLvl_{t}(\mNrm)$ the total amount of consumption at date $t$ by persons with market resources $\mNrm$, and note that in the invariant economy this is given by the converged consumption function $\cFunc(\mNrm)$ multiplied by the amount of permanent income accruing to such people $\pHarm(\mNrm)\PermLvlAgg_{t}$.  Since $\pHarm(\mNrm)$ is invariant and aggregate permanent income grows according to $\PermLvlAgg_{t+1} = \PermGroFac \PermLvlAgg_{t}$,
+In a Harmenberg-invariant economy (and therefore also any Szeidl-invariant economy), a similar proposition holds in the cross-section as a direct implication of the fact that a constant proportion of total permanent income is accounted for by the successive sets of consumers with any particular $\mNrm$.  This fact is one way of interpreting Harmenberg's definition of the density of the permanent-income-invariant distribution of $\mNrm$; call this density~$\pHarm(\mNrm)$.\footnote{In his notation, this is $\tilde{\psi}^{\mNrm}$.}  Call $\cLvl_{t}(\mNrm)$ the total amount of consumption at date $t$ by persons with market resources $\mNrm$, and note that in the invariant economy this is given by the converged consumption function $\cFunc(\mNrm)$ multiplied by the amount of permanent income accruing to such people $\pHarm(\mNrm)\permLvlAgg_{t}$.  Since $\pHarm(\mNrm)$ is invariant and aggregate permanent income grows according to $\permLvlAgg_{t+1} = \PermGroFac \permLvlAgg_{t}$,
 \begin{equation*}
   \begin{split}
     \log \cLvl_{t+1}(\mNrm) - \log \cLvl_{t}(\mNrm) &  \notag
-    = \log \cFunc(\mNrm) \pHarm(\mNrm)\PermLvlAgg_{t+1} - \log \cFunc(\mNrm)\pHarm(\mNrm)\PermLvlAgg_{t} \\
+    = \log \cFunc(\mNrm) \pHarm(\mNrm)\permLvlAgg_{t+1} - \log \cFunc(\mNrm)\pHarm(\mNrm)\permLvlAgg_{t} \\
     & = \log \PermGroFac
   \end{split}
 \end{equation*}
@@ -1112,7 +1113,7 @@ will hold for any $\mNrm$.
 
 Harmenberg has a brief discussion demonstrating that the covariance between the individual consumption ratio $\cNrm$ and the idiosyncratic component of permanent income $\PermLvl$ does not shrink to zero over time; so covariances constitute another potential measurement that can be used for construction of microfoundations.  % Here we draw out some of those implications.
 
-Consider a date-$t$ Harmenberg-converged economy, and define the mean value of the consumption ratio as $\cRatAvg_{t+n} \equiv \Mean[\cNrm_{t+n}]$.  Normalizing period-$t$ aggregate permanent income to $\PermLvlAgg_{t}=1$, total consumption at $t+1$ and $t+2$ are
+Consider a date-$t$ Harmenberg-converged economy, and define the mean value of the consumption ratio as $\cRatAvg_{t+n} \equiv \Mean[\cNrm_{t+n}]$.  Normalizing period-$t$ aggregate permanent income to $\permLvlAgg_{t}=1$, total consumption at $t+1$ and $t+2$ are
 \begin{equation}\label{eq:atp2vsatp1}
   \begin{split}
     % \CLvl_{t}  % & l= \bar{\tilde{\cNrm}}_{t} = \Mean[\cNrm_{t}\PermLvl_{t}] = \Mean[\cNrm_{t}]\Mean[\PermLvl_{t}] + \cov_{t}(\cNrm_{t}, \PermLvl_{t}) \\
