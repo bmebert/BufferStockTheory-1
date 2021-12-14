@@ -20,13 +20,14 @@
 \makeatother
 
 \providecommand{\avg}{\bar}
+\newcommand{\cv}{\textup{cov}}
 \providecommand{\cov}{}\renewcommand{\cov}{\textup{cov}}
 \providecommand{\Abve}{\bar}
 \providecommand{\Belw}{\ushort}
 \providecommand{\GroFac}{\Omega} % Generic for growth factor
 \providecommand{\GroRte}{\omega} % Generic for growth rate 
 \providecommand{\IncUnemp}{\mu}  % Income in unemployment
-\providecommand{\Lvl}{\mathbf}      % Levels of variables are bold
+\providecommand{\Lvl}{\pmb}      % Levels of variables are bold
 
 % Constrained
 \newcommand{\cnstr}[1]{\grave{#1}}
@@ -42,22 +43,49 @@
 \newcommand{\BSTpaperLink}{https://\owner.github.io/BufferStockTheory/BufferStockTheory3.html} % Frame 3
 
 % Suffix of Defn indicates reference to text name and source doc Defn
-\newcommand{\FHWC}{\href{{\BSTpaperLink}\#FHWC}{\textrm{FHWC}}}
-\newcommand{\FHWFacDefn}{\href{{\BSTpaperLink}\#FHWFDefn}{\textrm{FHWF}}}
+\newcommand{\FHWC}{\href{{\BSTpaperLink}\#FHWCDefn}{\textrm{FHWC}}}
+\newcommand{\FHWCDefn}{\FHWC}
+\newcommand{\FHWF}{\href{{\BSTpaperLink}\#FHWFDefn}{\textrm{FHWF}}}
+\newcommand{\FHWFacDefn}{\FHWF}
+%\newcommand{\FHWFDefn}{\FHWF}
 \newcommand{\GICRaw}{\href{{\BSTpaperLink}\#GICRawDefn}{\textrm{GIC}}}
-\newcommand{\GPFacRawDefn}{\href{{\BSTpaperLink}\#GPFRawDefn}{\textrm{GPF}}}
-\newcommand{\GPFacNrmDefn}{\href{{\BSTpaperLink}\#GPFacNrmDefn}{\textrm{GPF-Nrm}}}
+\newcommand{\GICRawDefn}{\GICRaw}
+\newcommand{\GPFRaw}{\href{{\BSTpaperLink}\#GPFRawDefn}{\textrm{GPF}}}
+%\newcommand{\GPFRawDefn}{\GPFRaw}
+\newcommand{\GPFacRawDefn}{\GPFRaw}
+\newcommand{\GPF}{\href{{\BSTpaperLink}\#GPFacRawDefn}{\textrm{GPF}}}
+\newcommand{\GPFNrm}{\href{{\BSTpaperLink}\#GPFacNrmDefn}{\textrm{GPF-Nrm}}}
+%\newcommand{\GPFNrmDefn}{\GPFNrm}
+\newcommand{\GPFacNrmDefn}{\GPFNrm}
 \newcommand{\GICNrm}{\href{{\BSTpaperLink}\#GICNrmDefn}{\textrm{GIC-Nrm}}}
-\newcommand{\RIC}{\href{{\BSTpaperLink}\#RIC}{\textrm{RIC}}}
-\newcommand{\PFFVAC}{\href{{\BSTpaperLink}\#PFFVAC}{\textrm{PF-FVAC}}}
-\newcommand{\PFVAFacDefn}{\href{{\BSTpaperLink}\#PFVAFDefn}{\textrm{PF-VAF}}}
-\newcommand{\FVAC}{\href{{\BSTpaperLink}\#FVAC}{\textrm{FVAC}}}
+\newcommand{\GICNrmDefn}{\GICNrm}
+\newcommand{\RIC}{\href{{\BSTpaperLink}\#RICDefn}{\textrm{RIC}}}
+\newcommand{\RICDefn}{\RIC}
+\newcommand{\PFFVAC}{\href{{\BSTpaperLink}\#PFFVACDefn}{\textrm{PF-FVAC}}}
+\newcommand{\PFFVACDefn}{\PFFVAC}
+\newcommand{\PFVAF}{\href{{\BSTpaperLink}\#PFVAFDefn}{\textrm{PF-VAF}}}
+%\newcommand{\PFVAFDefn}{\PFVAF}
+\newcommand{\PFVAFacDefn}{\PFVAF}
+\newcommand{\FVAC}{\href{{\BSTpaperLink}\#FVACDefn}{\textrm{FVAC}}}
+\newcommand{\FVACDefn}{\FVAC}
+\newcommand{\VAF}{\href{{\BSTpaperLink}\#VAFDefn}{\textrm{VAF}}}
+%\newcommand{\VAFDefn}{\href{{\BSTpaperLink}\#VAFDefn}{\textrm{VAF}}}
 \newcommand{\VAFacDefn}{\href{{\BSTpaperLink}\#VAFacDefn}{\textrm{VAF}}}
-\newcommand{\APFacDefn}{\href{{\BSTpaperLink}\#APFDefn}{\textrm{APF}}}
-\newcommand{\RPFacDefn}{\href{{\BSTpaperLink}\#RPFDefn}{\textrm{RPF}}}
-\newcommand{\AIC}{\href{{\BSTpaperLink}\#AIC}{\textrm{AIC}}}
-\newcommand{\WRPFacDefn}{\href{{\BSTpaperLink}\#WRPFDefn}{\textrm{WRPF}}}
-\newcommand{\WRIC}{\href{{\BSTpaperLink}\#WRIC}{\textrm{WRIC}}}
+\newcommand{\APF}{\href{{\BSTpaperLink}\#APFDefn}{\textrm{APF}}}
+\newcommand{\APFDefn}{\APF}
+\newcommand{\APFacDefn}{\APF}
+\newcommand{\RPF}{\href{{\BSTpaperLink}\#RPFDefn}{\textrm{RPF}}}
+%\newcommand{\RPFDefn}{\RPF}
+\newcommand{\RPFacDefn}{\RPF}
+\newcommand{\AIC}{\href{{\BSTpaperLink}\#AICDefn}{\textrm{AIC}}}
+\newcommand{\AICDefn}{\AIC}
+\newcommand{\GIC}{\href{{\BSTpaperLink}\#GICDefn}{\textrm{GIC}}}
+\newcommand{\GICDefn}{\GIC}
+\newcommand{\WRPF}{\href{{\BSTpaperLink}\#WRPFDefn}{\textrm{WRPF}}}
+%\newcommand{\WRPFDefn}{\WRPF}
+\newcommand{\WRPFacDefn}{\WRPF}
+\newcommand{\WRIC}{\href{{\BSTpaperLink}\#WRICDefn}{\textrm{WRIC}}}
+\newcommand{\WRICDefn}{\WRIC}
 
 % Levels are boldface
 \providecommand{\aLvl}{\mathbf{a}}
@@ -235,9 +263,32 @@
 \providecommand{\APFac}{\text{\pmb{\Thorn}}} % Former \Pat
 \providecommand{\APFDefn}{\href{{\BSTpaperLink}\#APFDefn}{\textrm{APF}}}
 
-\providecommand{\GPFacRaw}{\APFac_{\PermGroFac}}
-\providecommand{\GPFacNrm}{\APFac_{\PermGroFacAdj}}
-\providecommand{\RPFac}{\APFac_{\Rfree}}
+\providecommand{\APFacDefn}{\APF}
+\providecommand{\GPFDefn}{\GPF}
+\providecommand{\GPFRawDefn}{\GPFRaw}
+\providecommand{\GPFacRawDefn}{\GPFRaw}
+\providecommand{\GPFacNrmDefn}{\GPFNrm}
+\providecommand{\PFVAFDefn}{\PFVAF}
+\providecommand{\PFVAFacDefn}{\PFVAF}
+\providecommand{\VAFDefn}{\VAF}
+\providecommand{\GPFNrmDefn}{\GPFNrm}
+\providecommand{\GPFacRaw}{\text{\pmb{\Thorn}}_{\PermGroFac}}
+\providecommand{\GPFac}{\text{\pmb{\Thorn}}_{\PermGroFac}}
+\providecommand{\RPFac}{\text{\pmb{\Thorn}}_{\Rfree}}
+
+\providecommand{\RPFacDefn}{\RPF}
+\providecommand{\APFDefn}{\APF}
+\providecommand{\APFacDefn}{\APF}
+\providecommand{\GPFDefn}{\GPF}
+\providecommand{\GPFRawDefn}{\GPFRaw}
+\providecommand{\GPFacRawDefn}{\GPFRaw}
+\providecommand{\GPFacRaw}{\GPFRaw}
+\providecommand{\GPFacNrmDefn}{\GPFNrm}
+\providecommand{\GPFacNrm}{\GPFNrm}
+\providecommand{\PFVAFDefn}{\PFVAF}
+\providecommand{\PFVAFacDefn}{\PFVAF}
+\providecommand{\VAFDefn}{\VAF}
+\providecommand{\GPFac}{\PatPGro}
 
 \providecommand{\RPRte}{\text{\thorn}_{\rfree}}
 \providecommand{\GPRte}{\text{\thorn}_{\PermGroFac}}

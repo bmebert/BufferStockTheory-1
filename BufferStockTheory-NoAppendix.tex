@@ -250,7 +250,7 @@ Now, in a one-time deviation from the notational convention established in the l
     % \end{align*}
   \end{split}
 \end{equation}
-where $\RNrm_{t+1}\equiv (\Rfree/\PermGroFac_{t+1})$ is a `permanent-income-growth-normalized' return factor, and the reformulated problem's first order condition is\footnote{Leaving aside their assumptions about the marginal utility function and liquidity constraints, it is tempting to view this as a special case of the model of MST, with our $\RNrm_{t+1}=\Rfree/\PermGroFac_{t+1}$ (defined below equation~\eqref{eq:veqn}) corresponding to their stochastic rate of return on capital and the {\VAFDefn} $\DiscFac \PermGroFac_{t+1}^{1-\CRRA}$ defined below~\eqref{eq:FVAC} corresponding to their stochastic discount factor.  A caveat is that, here, $\RNrm_{t+1}$ and the modified discount factor are intimately connected (through $\PermGroFac_{t+1}$), which has profound effects.}%  It would be interesting, and should not be too difficult, to examine the case with independent shocks to the rate of return and productivity growth.
+where $\RNrm_{t+1}\equiv (\Rfree/\PermGroFac_{t+1})$ is a `permanent-income-growth-normalized' return factor, and the reformulated problem's first order condition is\footnote{Leaving aside their assumptions about the marginal utility function and liquidity constraints, it is tempting to view this as a special case of the model of MST, with our $\RNrm_{t+1}=\Rfree/\PermGroFac_{t+1}$ (defined below equation~\eqref{eq:veqn}) corresponding to their stochastic rate of return on capital and the {\VAFacDefn} $\DiscFac \PermGroFac_{t+1}^{1-\CRRA}$ defined below~\eqref{eq:FVAC} corresponding to their stochastic discount factor.  A caveat is that, here, $\RNrm_{t+1}$ and the modified discount factor are intimately connected (through $\PermGroFac_{t+1}$), which has profound effects.}%  It would be interesting, and should not be too difficult, to examine the case with independent shocks to the rate of return and productivity growth.
 \begin{align}
   c_{t}^{-\CRRA}  & = \Rfree \DiscFac \Ex_{t}[ {\PermGroFac}_{t+1}^{-\CRRA} {\cNrm}
                     _{t+1}^{-\CRRA}].  \label{eq:scaledeuler}
@@ -295,14 +295,14 @@ where $\bLvl$ is beginning-of-period `market' balances; with $\RNrm \equiv \Rfre
 \begin{align}
   \hLvl_{t}  & = \PermLvl_{t}+\RNrm^{-1} \PermLvl_{t} + \RNrm^{-2} \PermLvl_{t} + \cdots + \RNrm^{t-T} \PermLvl_{t} \notag
   \\  & = \underbrace{\left(\frac{1-\RNrm^{-(T-t+1)}}{1-\RNrm^{-1}}\right)}_{\equiv \hNrm_{t}}\PermLvl_{t} \label{eq:HDef}.
-\end{align}\hypertarget{FHWCDefn}{}
+\end{align}\hypertarget{FHWC}{}
 For $\hNrm \equiv \lim_{n \rightarrow \infty} \hNrm_{T-n}$ to be finite, we need the Finite Human Wealth Condition:
 \begin{align}
   \text{{\FHWC}:~~}  \underbrace{\PermGroFac/\Rfree}_{\equiv \RNrm^{-1}}  & < 1 \phantom{\text{{\FHWC}:~~}}\label{eq:FHWC}.
 \end{align}
 Intuitively, finite human wealth requires a growth rate of (noncapital) income smaller than the interest rate at which that income is being discounted.
 
-\hypertarget{RICDefn}{}
+\hypertarget{RIC}{}
 \subsubsection{The Return Impatience Condition ({\RIC})} \label{subsubsec:RIC} 
 
 Without constraints, the consumption Euler equation always holds; with $\uP(\cLvl)=\cLvl^{-\CRRA}$, \hypertarget{APFacDefn}{}
@@ -352,7 +352,7 @@ The {\RIC} thus implies that the consumer cannot be so pathologically patient as
 
 \hypertarget{Unconstrained-Solution}{}\hypertarget{PF-Unconstrained-Solution}{}
 \subsubsection{Nondegenerate PF Unconstrained Solution Requires {\FHWC}}\label{subsec:PFUncon}
-\hypertarget{AICDefn}{}
+\hypertarget{AIC}{}
 
 Given that the {\RIC}~holds, and (as before) defining limiting objects by the absence of a time subscript, the limiting upper bound consumption function will be
 \begin{align}\label{eq:cFuncPFUnc}
@@ -364,12 +364,12 @@ and so in order to rule out the degenerate limiting solution $\bar{\cFunc}(\mNrm
 \subsubsection{The Growth Impatience Condition ({\GICRaw})}\label{subsubsec:GIC}
 By analogy to the \RPFacDefn, we define a `growth patience factor' as
 \begin{equation}\begin{gathered}\begin{aligned}
-      \text{{\GPFacRawDefn}:~~} && \GPFacRaw= {\APFac}/\PermGroFac,  &   \label{eq:GPFRaw}
+      \text{{\GPFacRawDefn}:~~} && \GPFacRaw= {\APFac}/\PermGroFac,  &   \label{eq:GPFacRawDefn}
     \end{aligned}\end{gathered}\end{equation}
 which defines a `growth impatience condition':
 \begin{verbatimwrite}{\EqDir/GICRaw}
   \begin{equation}\begin{gathered}\begin{aligned}
-        \text{\GIC:~~}  &&  \GPFacRaw  < 1. \phantom{/\PermGroFac}&  \phantom{\text{\GIC:~~}} \label{eq:GICRaw}
+        \text{\GICRaw:~~}  &&  \GPFacRaw  < 1. \phantom{/\PermGroFac}&  \phantom{\text{\GICRaw:~~}} \label{eq:GICRaw}
       \end{aligned}\end{gathered}\end{equation}
 \end{verbatimwrite}
 \input{\LtxDir\EqDir/GICRaw}
@@ -441,7 +441,7 @@ We now examine implications of possible configurations of the conditions.
 
 \textit{{\GICRaw} and {\RIC}.}  More interesting is the case where the return impatience and {\GICRaw} conditions both hold.  In this case Appendix~\ref{sec:ApndxLiqConstr} shows that the limiting constrained consumption function is piecewise linear, with $\cnstr{\cFunc}(\mNrm)=\mNrm$ up to a first `kink point' at $\mNrm_{\#}^{0}>1$, and with discrete declines in the MPC at a set of kink points $\{\mNrm_{\#}^{1},\mNrm_{\#}^{2},\ldots\}$.  As $\mNrm \uparrow \infty$ the constrained consumption function $\cnstr{\cFunc}(\mNrm)$ becomes arbitrarily close to the unconstrained $\bar{\cFunc}(\mNrm)$, and the marginal propensity to consume function $\cnstr{\MPCFunc}(\mNrm) \equiv \cnstr{\cFunc}^{\prime}(\mNrm)$ limits to $\MPCmin$.\footnote{See~\cite{chkLiqConstr} for details.}  Similarly, the value function $\cnstr{\vFunc}(\mNrm)$ is nondegenerate and limits into the value function of the unconstrained consumer.
 
-This logic holds even when the finite human wealth condition fails (\cncl{\FHWC}), because the constraint prevents the (limiting) consumer\footnote{That is, one obeying $\cFunc(\mNrm) = \lim_{n \uparrow \infty} \cFunc_{T-n}(\mNrm)$.} from borrowing against unbounded human wealth to finance unbounded current consumption.  Under these circumstances, the consumer who starts with any $\bNrm_{t} > 0$ will, over time, run those resources down so that by some finite number of periods $\tau$ in the future the consumer will reach $\bNrm_{t+\tau} = 0$, and thereafter will set $\cLvl = \PermLvl$ for eternity (which the {\PFFVAC} says yields finite value).  Using the same steps as for equation~\eqref{eq:ValuePFAnalyticalAutarky}, value of the interim program is also finite: \hypertarget{PFFVACDefn}{} \hypertarget{PFVAFacDefn}{}
+This logic holds even when the finite human wealth condition fails (\cncl{\FHWC}), because the constraint prevents the (limiting) consumer\footnote{That is, one obeying $\cFunc(\mNrm) = \lim_{n \uparrow \infty} \cFunc_{T-n}(\mNrm)$.} from borrowing against unbounded human wealth to finance unbounded current consumption.  Under these circumstances, the consumer who starts with any $\bNrm_{t} > 0$ will, over time, run those resources down so that by some finite number of periods $\tau$ in the future the consumer will reach $\bNrm_{t+\tau} = 0$, and thereafter will set $\cLvl = \PermLvl$ for eternity (which the {\PFFVAC} says yields finite value).  Using the same steps as for equation~\eqref{eq:ValuePFAnalyticalAutarky}, value of the interim program is also finite: \hypertarget{PFFVAC}{} \hypertarget{PFVAFacDefn}{}
 \begin{align*}
   \vLvl_{t+\tau} 
   & = \PermGroFac^{\tau(1-\CRRA)} \uFunc(\PermLvl_{t})\left(\frac{1-{(\DiscFac \PermGroFac^{1-\CRRA})}^{T-(t+\tau)+1}}{1-\DiscFac \PermGroFac^{1-\CRRA}}\right).
@@ -479,7 +479,7 @@ because this allows us to write uncertainty-adjusted versions of earlier equatio
 \hypertarget{PermGroAdjDefn}{}\hypertarget{GPFacNrmDefn}{}
 \begin{verbatimwrite}{\EqDir/GPFacNrm}
   \begin{align}
-    \text{{\GPFacNrmDefn}:~~}    \GPFacNrm  & = \APFac/\PermGroFacAdj = \Ex[\APFac/(\PermGroFac\PermShk)]  \phantom{\text{{\GPFNrm}:~~}} \label{eq:GPFNrm}
+    \text{{\GPFacNrmDefn}:~~}    \GPFacNrm  & = \APFac/\PermGroFacAdj = \Ex[\APFac/(\PermGroFac\PermShk)]  \phantom{\text{{\GPFacNrmDefn}:~~}} \label{eq:GPFacNrmDefn}
   \end{align}
 \end{verbatimwrite}
 \input{\LtxDir\EqDir/GPFacNrm}
@@ -488,7 +488,7 @@ because this allows us to write uncertainty-adjusted versions of earlier equatio
   \begin{align*}
     \lim_{\mNrm_{t} \rightarrow \infty} \Ex_{t}[\mNrm_{t+1}/\mNrm_{t}]  & = \GPFacNrm,
   \end{align*}
-  which implies that if we wish to prevent $\mNrm$ from heading to infinity (that is, if we want $\mNrm$ to be expected to fall for some large enough value of $m$) we must impose a modified version of the Growth Impatience Condition~\eqref{eq:GICRaw}; we call the `Normalized Growth Impatience Condition' (\GICNrm) the requirement that the Normalized Growth Patience Factor~\eqref{eq:GPFNrm} must be less than 1:\footnote{Under our assumption that $\CRRA>1$, equation~\eqref{eq:GICNrm} is a bit easier to satisfy than the similar condition imposed by Deaton~\citeyearpar{deatonLiqConstr}: $\left(\Ex[\PermShk^{-\CRRA}]\right)^{1/\CRRA} \GPFacRaw < 1$ to guarantee that his problem defined a contraction mapping.}
+  which implies that if we wish to prevent $\mNrm$ from heading to infinity (that is, if we want $\mNrm$ to be expected to fall for some large enough value of $m$) we must impose a modified version of the Growth Impatience Condition~\eqref{eq:GICRaw}; we call the `Normalized Growth Impatience Condition' (\GICNrm) the requirement that the Normalized Growth Patience Factor~\eqref{eq:GPFacNrmDefn} must be less than 1:\footnote{Under our assumption that $\CRRA>1$, equation~\eqref{eq:GICNrm} is a bit easier to satisfy than the similar condition imposed by Deaton~\citeyearpar{deatonLiqConstr}: $\left(\Ex[\PermShk^{-\CRRA}]\right)^{1/\CRRA} \GPFacRaw < 1$ to guarantee that his problem defined a contraction mapping.}
 \end{comment}
 with a corresponding normalized version of the Growth Impatience Condition:
 \begin{verbatimwrite}{\EqDir/GICNrm}
@@ -521,18 +521,18 @@ which will satisfy $\uInvEuPermShk < 1$ for $\CRRA>1$ and nondegenerate $\PermSh
   \label{eq:PermGroFacAdj}
   \PermGroFacAdj = \PermGroFac \uInvEuPermShk,
 \end{equation}
-$\vLvl_{t}$ will be positive and finite as $T$ approaches $\infty$ if\hypertarget{FVACDefn}{}
+$\vLvl_{t}$ will be positive and finite as $T$ approaches $\infty$ if\hypertarget{FVAC}{}
 \begin{verbatimwrite}{\EqDir/FVAC}
   \begin{equation}\label{eq:FVAC}
     \begin{split}
-      \text{{\FVAC}:~~}      0 < \overbrace{\DiscFac \PermGroFacAdj^{1-\CRRA} }^{\equiv \DiscAltuAdj~=~\text{\VAFDefn}}  & < 1 \phantom{\text{{\FVAC}:~~}}
+      \text{{\FVAC}:~~}      0 < \overbrace{\DiscFac \PermGroFacAdj^{1-\CRRA} }^{\equiv \DiscAltuAdj~=~\text{\VAFacDefn}}  & < 1 \phantom{\text{{\FVAC}:~~}}
       \\ 0 < \DiscFac  & < \PermGroFacAdj^{\CRRA-1} .
     \end{split}
   \end{equation}
 \end{verbatimwrite}
 {\input{\LtxDir\EqDir/FVAC}}
 
-We call \eqref{eq:FVAC} the `finite value of autarky condition' because it guarantees that value is finite for a consumer who always consumes their (now stochastic) permanent income (and $\DiscAltuAdj$ is the `Value of Autarky Factor' (or `{\VAFDefn}')).\footnote{In a stationary environment --- that is, with $\PermGroFacAdj=1$ --- this corresponds to an impatience condition imposed by~\cite{mstIncFluct}; but their remaining conditions do not correspond to those here, because their problem differs and their method of proof differs.}  For nondegenerate $\PermShk$, this condition is stronger (harder to satisfy in the sense of requiring lower $\DiscFac$) than the perfect foresight version~\eqref{eq:PFFVAC} because $\PermGroFacAdj < \PermGroFac$.\footnote{Rewrite~\eqref{eq:FVAC} as
+We call \eqref{eq:FVAC} the `finite value of autarky condition' because it guarantees that value is finite for a consumer who always consumes their (now stochastic) permanent income (and $\DiscAltuAdj$ is the `Value of Autarky Factor' (or `{\VAFacDefn}')).\footnote{In a stationary environment --- that is, with $\PermGroFacAdj=1$ --- this corresponds to an impatience condition imposed by~\cite{mstIncFluct}; but their remaining conditions do not correspond to those here, because their problem differs and their method of proof differs.}  For nondegenerate $\PermShk$, this condition is stronger (harder to satisfy in the sense of requiring lower $\DiscFac$) than the perfect foresight version~\eqref{eq:PFFVAC} because $\PermGroFacAdj < \PermGroFac$.\footnote{Rewrite~\eqref{eq:FVAC} as
   \begin{align*}
     \DiscFac \Rfree & < \Rfree \PermGroFacAdj^{\CRRA-1}
     \\ {(\DiscFac \Rfree)}^{1/\CRRA}  & < \Rfree^{1/\CRRA} \PermGroFac^{1-1/\CRRA} \uInvEuPermShk^{1-1/\CRRA}
@@ -583,7 +583,7 @@ Under our imposed assumption that human wealth is finite, the MPC bound as wealt
 \hypertarget{MPCmax}{}
 \subsubsection{The Weak RIC Condition ({\WRIC})}{}\label{sec:WRIC}
 \hypertarget{MPCnvrsUpperDefn}{}
-\hypertarget{WRICDefn}{}\hypertarget{WRPFacDefn}{}
+\hypertarget{WRIC}{}\hypertarget{WRPFacDefn}{}
 Appendix equation~\eqref{eq:MPCmaxInvApndx} presents a parallel expression for the limiting maximal MPC as $\mNrm_{t} \downarrow 0$:
 \begin{align}
   \MPCmax_{t}^{-1}  & = 1+\MPSmin \MPCmax_{t+1}^{-1} \label{eq:MPCmaxInv}
@@ -731,7 +731,7 @@ As in the perfect foresight constrained problem, unbounded limiting human wealth
 
 \indent \textbf{\FHWC}.  If the {\RIC} and {\FHWC} both hold, a perfect foresight solution exists (see~\ref{subsec:PFUncon} above).  As $\mNrm \uparrow \infty$ the limiting consumption function and value function become arbitrarily close to those in the perfect foresight model, because human wealth pays for a vanishingly small portion of spending.  This will be the main case analyzed in detail below.
 
-\noindent \textbf{\cncl{\FHWC}}.  The more exotic case is where {\FHWC} does not hold; in the perfect foresight model, \{{\RIC},\cncl{\FHWC}\} is the degenerate case with limiting $\bar{\cFunc}(\mNrm)=\infty$.  Here, the {\FVAC} implies that the {\PFFVAC} holds (traverse Figure~\ref{fig:Inequalities} clockwise from $\APFac$ by imposing {\FVAC} and continue to the {\PFVAFacDefn} node):  Reversing the arrow connecting the $\Rfree$ and {\PFVAF} nodes implies that under $\cncl{\FHWC}$:
+\noindent \textbf{\cncl{\FHWC}}.  The more exotic case is where {\FHWC} does not hold; in the perfect foresight model, \{{\RIC},\cncl{\FHWC}\} is the degenerate case with limiting $\bar{\cFunc}(\mNrm)=\infty$.  Here, the {\FVAC} implies that the {\PFFVAC} holds (traverse Figure~\ref{fig:Inequalities} clockwise from $\APFac$ by imposing {\FVAC} and continue to the {\PFVAFacDefn} node):  Reversing the arrow connecting the $\Rfree$ and {\PFVAFacDefn} nodes implies that under $\cncl{\FHWC}$:
 \begin{align*}
   & \overbrace{\APFac < {(\Rfree/\PermGroFac)}^{1/\CRRA}\PermGroFac}^{\PFFVAC}
   \\ & \APFac < \PermGroFac

@@ -102,13 +102,13 @@ We can construct the entire `prehistory' of this consumer leading up to $t$ as f
 Maintaining the assumption that the constraint has never bound in the past,
 $\cNrm$ must have been growing according to $\GPFacRaw$, so consumption $n$ periods in the past must have been
 \begin{equation}\begin{gathered}\begin{aligned}
-  \cNrm_{\#}^{n}  & = \GPFacRaw^{-n} \cNrm_{t} = \GPFac^{-n}. \label{eq:cPreHist}
+  \cNrm_{\#}^{n}  & = \GPFacRaw^{-n} \cNrm_{t} = \GPFacRaw^{-n}. \label{eq:cPreHist}
 \end{aligned}\end{gathered}\end{equation}
 
 The PDV of consumption from $t-n$ until $t$ can thus be computed as
 \begin{equation}\begin{gathered}\begin{aligned}
   \mathbb{C}_{t-n}^{t}  & = \cNrm_{t-n}(1+\APFac/\Rfree+ \cdots + {(\APFac/\Rfree)}^{n}) \notag
-  % \\   \mathbb{C}_{t-n}^{t}  & = \cNrm_{t-n}(1+\GPFacRaw/\RNrm+ \cdots + (\GPFac/\RNrm)^{n}) \notag
+  % \\   \mathbb{C}_{t-n}^{t}  & = \cNrm_{t-n}(1+\GPFacRaw/\RNrm+ \cdots + (\GPFacRaw/\RNrm)^{n}) \notag
   \\  & = \cNrm_{\#}^{n}(1+\RPFac+ \cdots + \RPFac^{n}) \notag
   \\  & = \GPFacRaw^{-n}\left(\frac{1-\RPFac^{n+1}}{1-\RPFac}\right) \label{PDVc}
   \\  & = \left(\frac{\GPFacRaw^{-n}-\RPFac}{1-\RPFac}\right) 
@@ -152,7 +152,7 @@ In order for a unique consumption function to be defined by this sequence~\eqref
 \subsubsection{If \FHWC~Holds}
 The \FHWC~requires $\RNrm^{-1} < 1$, in which case the second term in~\eqref{\localorexternallabel{eq:bPound}} limits to a constant as $n \uparrow \infty$, and~\eqref{\localorexternallabel{eq:bToInfty}} reduces to a requirement that
 \begin{eqnarray*}
-  \lim_{n \rightarrow \infty} \left(\frac{\GPFacRaw^{-n}-{(\RPFac/\GPFac)}^{n}\RPFac}{1-\RPFac}\right)  & = \infty
+  \lim_{n \rightarrow \infty} \left(\frac{\GPFacRaw^{-n}-{(\RPFac/\GPFacRaw)}^{n}\RPFac}{1-\RPFac}\right)  & = \infty
   \\  \lim_{n \rightarrow \infty} \left(\frac{\GPFacRaw^{-n}-\RNrm^{-n}\RPFac}{1-\RPFac}\right)  & = \infty
   \\  \lim_{n \rightarrow \infty} \left(\frac{\GPFacRaw^{-n}}{1-\RPFac}\right)  & = \infty.
 \end{eqnarray*}
@@ -205,7 +205,7 @@ we can even calculate the limiting MPC from
 which with a bit of algebra\footnote{
   Calculate the limit of
   \begin{equation}\begin{gathered}\begin{aligned}
-    \left(\frac{\GPFacRaw^{-n}}{\GPFac^{-n}/(1-\RPFac) - (1-\RNrm^{-1}\RNrm^{-n})/(1-\RNrm^{-1})}\right)  & = \left(\frac{1}{1/(1-\RPFac) + \RNrm^{-n}\RNrm^{-1}/(1-\RNrm^{-1})}\right)
+    \left(\frac{\GPFacRaw^{-n}}{\GPFacRaw^{-n}/(1-\RPFac) - (1-\RNrm^{-1}\RNrm^{-n})/(1-\RNrm^{-1})}\right)  & = \left(\frac{1}{1/(1-\RPFac) + \RNrm^{-n}\RNrm^{-1}/(1-\RNrm^{-1})}\right)
   \end{aligned}\end{gathered}\end{equation}} can be shown to asymptote to the MPC in the perfect foresight model:\footnote{For an example of this configuration of parameters, see the notebook \texttt{doApndxLiqConstr.nb} in the Mathematica software  archive.}
 \begin{equation}\begin{gathered}\begin{aligned}
   \lim_{m \rightarrow \infty} \cnstr{\pmb{\MPC}}(\mNrm)  & = 1-\RPFac.
@@ -255,7 +255,7 @@ but that limit is approached gradually, starting from a positive value, and cons
 \begin{comment}
   We can rewrite the expression for $\mathbb{C}$ from \eqref{\localorexternallabel{PDVc}} as:
   \begin{eqnarray*}
-    \mathbb{C}_{t-n}^{t}  & =  \left(\frac{\GPFacRaw^{-n}-\GPFac^{-n}\RPFac^{n+1}}{1-\RPFac}\right)
+    \mathbb{C}_{t-n}^{t}  & =  \left(\frac{\GPFacRaw^{-n}-\GPFacRaw^{-n}\RPFac^{n+1}}{1-\RPFac}\right)
     \\  & =  \left(\frac{\GPFacRaw^{-n}-\RPFac\PermGroFac^{n}/\Rfree^{n}}{1-\RPFac}\right)
     \\  & =  \left(\frac{(\PermGroFac/\APFac)^{n}-\RPFac(\PermGroFac/\Rfree)^{n}}{1-\RPFac}\right)
     \\  & =  (\PermGroFac/\Rfree)^{n}\left(\frac{(\Rfree/\APFac)^{n}-\RPFac}{1-\RPFac}\right)
