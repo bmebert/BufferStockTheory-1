@@ -8,7 +8,6 @@
 \setboolean{BothExist}{true}
 \setboolean{NeitherExists}{true}
 
-
 \IfFileExists{\econtexRoot/Add-Refs.bib}{
   % then
   \typeout{References in Add-Refs.bib will take precedence over those elsewhere}
@@ -33,7 +32,9 @@
   \setboolean{BothExist}{false}
 }
 
-\ifthenelse{\boolean{Web}}{}{\clearpairofpagestyles} % No header for references pages
+\ifthenelse{\boolean{showPageHead}}{ %then
+  \clearpairofpagestyles % No header for references pages
+  }{} % No head has been set to clear
 
 \ifthenelse{\boolean{BothExist}}{
   % then use both
@@ -49,6 +50,6 @@
       \typeout{bibliography{\econtexRoot/Add-Refs,\econtexRoot/\texname}}
       \bibliography{\econtexRoot/Add-Refs,\econtexRoot/\texname}}{
       \typeout{bibliography{\econtexRoot/\texname,economics}}
-      \bibliography{         \econtexRoot/\texname,economics}}
+      \bibliography{        \econtexRoot/\texname,economics}}
   } % end of picking the one that exists
 } % end of testing whether neither exists

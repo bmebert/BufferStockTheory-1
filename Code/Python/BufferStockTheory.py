@@ -71,7 +71,7 @@
 # %% [markdown]
 # `# Setup Python Below`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # This cell does some setup
 
 # Import required python packages
@@ -105,7 +105,7 @@ if os.path.isdir('binder'):  # Folder defining requirements exists
 # %% [markdown]
 # `# Setup HARK Below`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # Import required HARK tools
 from HARK import __version__ as HARKversion
 from HARK.utilities import (
@@ -290,7 +290,7 @@ base_params['TranShkStd'] = [0.1]   # Standard deviation of log transitory incom
 # %% [markdown]
 # `# Create a buffer stock consumer instance:`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # Create a buffer stock consumer instance by invoking the IndShockConsumerType class
 # with the parameter dictionary "base_params"
 
@@ -309,7 +309,7 @@ cFunc = baseAgent_Fin.cFunc    # Shorthand
 # %% [markdown]
 # `# Plot the consumption rules:`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # Plot the different consumption rules for the different periods
 
 mPlotMin = 0
@@ -381,7 +381,7 @@ makeFig('cFuncsConverge')  # Comment out if you want to run uninterrupted
 # %% [markdown] {"tags": []}
 # ### [Absolute Patience and the AIC](https://econ-ark.github.io/BufferStockTheory/#AIC)
 #
-# The paper defines the Absolute Patience Factor [(APF)](https://econ-ark.github.io/BufferStockTheory/#APF) as being equal to the ratio $\cLvl_{t+1}/\cLvl_{t}$ for a perfect foresight consumer.  (The Old English character [Thorn](https://en.wikipedia.org/wiki/Thorn_(letter)) used for this object in the paper cannot reliably be rendered in Jupyter notebooks; it may appear as capital Omega):
+# The paper defines the Absolute Patience Factor [(APF)](https://econ-ark.github.io/BufferStockTheory/#APF) as being equal to the ratio $\cLvl_{t+1}/\cLvl_{t}$ for a perfect foresight consumer.  (The Old English character [Thorn](https://en.wikipedia.org/wiki/Thorn_(letter)) used for this object in the paper cannot reliably be rendered in Jupyter notebooks; it may appear as capital Phi):
 #
 # \begin{equation}
 # \PatFac = (\Rfree \DiscFac)^{1/\CRRA}
@@ -522,7 +522,7 @@ makeFig('cFuncsConverge')  # Comment out if you want to run uninterrupted
 # %% [markdown]
 # `# Create an example consumer instance where the GICNrm fails but the GIC Holds:`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # GICNrmFailsButGICRawHolds Example
 
 base_params['cycles'] = 0  # revert to default of infinite horizon
@@ -539,7 +539,7 @@ GICNrmFailsButGICRawHolds = \
 # %% [markdown]
 # `# Solve that consumer's problem:`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # Solve the model for these parameter values
 GICNrmFailsButGICRawHolds.tolerance = 0.0001   # How close is enough
 
@@ -607,7 +607,7 @@ print('\ndistance_now < distance_original: ' +
 # %% [markdown]
 # `# Plot the results:`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # Plot https://econ-ark.github.io/BufferStockTheory/#GICNrmFailsButGICRawHolds
 
 soln = GICNrmFailsButGICRawHolds.solution[0]  # Short alias for solution
@@ -702,7 +702,7 @@ baseAgent_Inf = IndShockConsumerType(
 # %% [markdown] {"tags": []}
 # ### [Expected Consumption Growth, and Permanent Income Growth](https://econ-ark.github.io/BufferStockTheory/#AnalysisoftheConvergedConsumptionFunction)
 #
-# The next figure, [Analysis of the Converged Consumption Function](https://econ-ark.github.io/BufferStockTheory/#cGroTargetFig), shows expected growth factors for the levels of consumption $\cLvl$ and market resources $\mLvl$ as a function of the market resources ratio $\mNrm$ for a consumer behaving according to the converged consumption rule, along with the growth factor for $\mNrm$ itself, and the (constant) growth factors for consumption and expected permanent income, $\APF$ and $\PermGroFac$.
+# The next figure, [Analysis of the Converged Consumption Function](https://econ-ark.github.io/BufferStockTheory/#cNrmTargetFig), shows expected growth factors for the levels of consumption $\cLvl$ and market resources $\mLvl$ as a function of the market resources ratio $\mNrm$ for a consumer behaving according to the converged consumption rule, along with the growth factor for $\mNrm$ itself, and the (constant) growth factors for consumption and expected permanent income, $\APF$ and $\PermGroFac$.
 #
 # The growth factor for consumption can be computed without knowing the _level_ of the consumer's permanent income:
 #
@@ -759,7 +759,7 @@ baseAgent_Inf = IndShockConsumerType(
 # %% [markdown]
 # `# Solve problem of consumer with baseline parameters:`
 
-# %% {"jupyter": {"source_hidden": true}, "pycharm": {"name": "#%%\n"}, "tags": []}
+# %% {"pycharm": {"name": "#%%\n"}, "tags": []}
 # Solve baseline parameters agent
 tweaked_params = deepcopy(base_params)
 tweaked_params['DiscFac'] = 0.970  # Tweak to make figure clearer
@@ -772,7 +772,7 @@ baseAgent_Inf.solve(
 # %% [markdown]
 # `# Plot growth factors for various model elements at steady state:`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # Plot growth rates
 
 soln = baseAgent_Inf.solution[0]
@@ -893,7 +893,7 @@ plt.setp(ax.get_yticklabels(), fontsize=fssml)
 plt.axvline(x=mNrmFacTrg,label='Individual Target', linestyle='dotted')
 plt.legend()
 ax.set_ylabel('Growth Factors')
-makeFig('cGroTargetFig')
+makeFig('cNrmTargetFig')
 
 # %% [markdown] {"tags": []}
 # ### [Consumption Function Bounds](https://econ-ark.github.io/BufferStockTheory/#AnalysisOfTheConvergedConsumptionFunction)
@@ -905,7 +905,7 @@ makeFig('cGroTargetFig')
 # %% [markdown] {"tags": []}
 # `# Define bounds for figure:`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # Define mpc_Min, h_inf and PF consumption function, upper and lower bound of c function
 
 baseAgent_Inf = IndShockConsumerType(**base_params, quietly=True)  # construct it silently
@@ -1006,7 +1006,7 @@ makeFig('cFuncBounds')
 # %% [markdown]
 # `# Make and plot figure showing the upper and lower limites of the MPC:`
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 # The last figure shows the upper and lower limits of the MPC
 
 mPlotMin = 0
@@ -1042,7 +1042,7 @@ if latexExists:
 else:
     plt.text(1.5, 0.6, r'$\kappa(m) \equiv c^{\prime}(m)$', fontsize=26, fontweight='bold')
     plt.text(5, 0.87, r'$(1-\wp^{1/\rho}$'+Thorn+'${R})\equiv \bar{\kappa}$',
-             fontsize=26, fontweight='bold')  # Use Omega instead of Thorn (alas)
+             fontsize=26, fontweight='bold')  # Use Phi instead of Thorn (alas)
 
 plt.text(0.5, 0.07, kappaDef, fontsize=26, fontweight='bold')
 plt.text(mPlotMax+0.05, mPlotMin, "$m$", fontsize=26)
@@ -1081,7 +1081,7 @@ makeFig('MPCLimits')
 #
 # [Perfect Foresight Liquidity Constrained Solution](https://econ-ark.github.io/BufferStockTheory/#ApndxLiqConstr)
 
-# %% {"jupyter": {"source_hidden": true}, "tags": []}
+# %% {"tags": []}
 PFGICRawHoldsFHWCFailsRICFails_par = deepcopy(init_perfect_foresight)
 
 # Replace parameters.

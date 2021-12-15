@@ -1,3 +1,12 @@
+% Define a few objects that are unique to the BST paper
+\input{\ResourcesDir/owner} % Owned by llorracc (draft) or econ-ark (published) ?
+%
+\providecommand{\onlyinsubfile}{}\renewcommand{\onlyinsubfile}[1]{#1}
+\providecommand{\notinsubfile}{}\renewcommand{\notinsubfile}[1]{}
+
+\newboolean{showPageHead}
+\setboolean{showPageHead}{true}
+
 \newcommand{\BoydT}{\mathsf{T}} % Contraction mapping operator
 \newcommand{\Shrinker}{\alpha}  % Contraction mapping shrinker
 \newcommand{\usual}{}
@@ -8,7 +17,11 @@
 
 \newcommand{\Nvrnt}{F} % Invariant CDF
 \newcommand{\nvrnt}{f} % invariant PDF
-\newcommand{\Harm}{\tilde}
+\newcommand{\Harm}{\tilde} % Harmenberg uses tilde 
 \newcommand{\HarmWide}{\widetilde}
 
-\providecommand{\pHarm}{p}
+\providecommand{\pHarm}{p} % Probability 
+\newsavebox{\Tbl}
+\newlength{\TblShrunk}
+\newsavebox{\TblShrunkBox}
+\newcommand{\cNrmAvg}{\mathfrak{c}}

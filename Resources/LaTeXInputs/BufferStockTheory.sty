@@ -1,31 +1,26 @@
+% Define a few objects that are unique to the BST paper
 \input{\ResourcesDir/owner} % Owned by llorracc (draft) or econ-ark (published) ?
-% Default definitions that must be renewcommanded to override in main file
+%
 \providecommand{\onlyinsubfile}{}\renewcommand{\onlyinsubfile}[1]{#1}
 \providecommand{\notinsubfile}{}\renewcommand{\notinsubfile}[1]{}
 
-% Implement a standard setup and shortcuts, e.g. for the \CRRA
-% Configure various useful things, like boolean{Web}
+\newboolean{showPageHead}
+\setboolean{showPageHead}{true}
 
+\newcommand{\BoydT}{\mathsf{T}} % Contraction mapping operator
+\newcommand{\Shrinker}{\alpha}  % Contraction mapping shrinker
+\newcommand{\usual}{}
 
-% % https://tex.stackexchange.com/questions/389473/redefine-section-to-include-hypertarget-and-tooltip
-% % Automatically create hypertargets for sections
-% \DefineFamilyKey[.section]{KOMAarg}{hypertarget}{%
-%   \hypertarget{#1}{}%
-% }
-% \DefineFamilyMember[.subsection]{KOMAarg}
-% \DefineFamilyKey[.subsection]{KOMAarg}{hypertarget}{%
-%   \hypertarget{#1}{}%
-% }
-% \DefineFamilyMember[.subsubsection]{KOMAarg}
-% \DefineFamilyKey[.subsubsection]{KOMAarg}{hypertarget}{%
-%   \hypertarget{#1}{}%
-% }
+\providecommand{\boundFunc}{\ensuremath{\digamma}}
+\providecommand{\AMPS}{}\renewcommand{\AMPS}{\avg{\aFunc}^{\prime}} % Average MPS
+\providecommand{\AMPSP}{{\avg{\aFunc}^{\prime\prime}}} % Average MPS prime
 
-% Layers at top of page make no sense if there is no page
-\ifthenelse{\boolean{Web}}{}{\usepackage{scrlayer-scrpage}}
+\newcommand{\Nvrnt}{F} % Invariant CDF
+\newcommand{\nvrnt}{f} % invariant PDF
+\newcommand{\Harm}{\tilde} % Harmenberg uses tilde 
+\newcommand{\HarmWide}{\widetilde}
 
-% Some of the tables would be too large to fit on a page unless
-% shrunken.  Provide reusable register space for shrinking:
+\providecommand{\pHarm}{p} % Probability 
 \newsavebox{\Tbl}
 \newlength{\TblShrunk}
 \newsavebox{\TblShrunkBox}

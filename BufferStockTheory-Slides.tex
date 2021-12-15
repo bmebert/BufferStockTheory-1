@@ -1,23 +1,26 @@
 % -*- mode: LaTeX; TeX-PDF-mode: t; -*-
-\input{./econtexRoot}\documentclass[pdflatex]{beamer}
+\input{./econtexRoot}\input{\ResourcesDir/owner}
+\documentclass[pdflatex]{beamer}
+\usepackage{ifthen}
+\newboolean{Web}\setboolean{Web}{false}
 \usepackage{econark}
-\providecommand{\texname}{BufferStockTheory-Slides}% Indicate the keyname for the bibtex entry corresponding to this document
-\providecommand{\texMaster}{BufferStockTheory}% Indicate the keyname for the bibtex entry corresponding to this document
-\usepackage{ifthen}%\usepackage{\econtexRoot/BufferStockTeory}
-\newif\ifdvi\dvifalse
+\providecommand{\texname}{BufferStockTheory-Slides}% 
 
 % Can't read in BufferStockTheory.sty because some packages conflict with Beamer
 % So need to redefine everything here
 
 \usepackage{econark}
 \usepackage{\econtexShortcuts}
-\usepackage{\LaTeXInputs/\texMaster-Shortcuts}
+\usepackage{\LaTeXInputs/\texname}
+
+\setboolean{showPageHead}{false}
+
 \usepackage{natbib,amsmath,amssymb,rotating,subfigure}
 \usepackage{verbatim,moreverb,graphicx}
 \usepackage{wasysym}
 \usepackage{dcolumn}
 \usepackage{cancel}
-%\providecommand{\LtxDir\EqDir}{\econtexRoot/Equations}
+%\renewcommand{\LtxDir\EqDir}{\econtexRoot/Equations}
 \providecommand{\FigsRaw}{\econtexRoot/Code/Python/Figures}
 \providecommand{\CodeDir}{\econtexRoot/Code}
 \providecommand{\CalibrationDir}{\econtexRoot/Calibration}
@@ -125,11 +128,11 @@ Restrictions On Parameter Values Such That \pause
 \begin{frame}
 
 Limit as horizon $T$ goes to infinity of 
-%\input \LtxDir\EqDir/supfn
+\input{\LtxDir\EqDir/supfn}
 
-\input \LtxDir\EqDir/DBCparts
+\input{\LtxDir\EqDir/DBCparts}
 
-\input \LtxDir\EqDir/TranShkDef
+\input{\LtxDir\EqDir/TranShkDef}
 
 \begin{itemize}
 \item $\util(\bullet)=\bullet^{1-\CRRA}/(1-\CRRA)$; $\Ex_{t}[\PermShk_{t+n}]=\Ex_{t}[\TranShk_{t+n}]=1~\forall~n>0$; $\beta < 1, \CRRA > 1$
@@ -161,17 +164,17 @@ Definitions: \smallskip
 
 \begin{tabular}{llcl}
    Absolute Patience Factor & $\APFac$ & = & $(\Rfree \Discount)^{1/\CRRA}$
-\\ Return Patience Factor & $\RPFac$ & = & \APFac/\Rfree
-\\ Perfect Foresight Growth Patience Factor & $\GPFacRaw$ & = & \APFac/\PermGroFac
+\\ Return Patience Factor & $\RPFac$ & = & $\APFac/\Rfree$
+\\ Perfect Foresight Growth Patience Factor & $\GPFacRaw$ & = & $\APFac/\PermGroFac$
 \end{tabular}
 
 \medskip
 
 \begin{tabular}{l|lcl|l} \hline
    Name                                 & \multicolumn{3}{c|}{Condition}    & Implication 
-\\ \hline (\AIC) Absolute Impatience Condition  & $\APFac$  & $<$ & 1 & $\cLvl$ $\downarrow$ over time
-\\ (\RIC) Return Impatience Condition    & $\RPFac$ & $<$ & 1 & $\cLvl/\aLvl$ $\downarrow$ over time
-\\ (\GICRaw) Growth Impatience Condition & $\GPFacRaw$ & $<$ & 1 & $\cLvl/\PermLvl$ $\downarrow$ over time
+\\ \hline ($\AIC$) Absolute Impatience Condition  & $\APFac$  & $<$ & 1 & $\cLvl$ $\downarrow$ over time
+\\ ($\RIC$) Return Impatience Condition    & $\RPFac$ & $<$ & 1 & $\cLvl/\aLvl$ $\downarrow$ over time
+\\ ($\GICRaw$) Growth Impatience Condition & $\GPFacRaw$ & $<$ & 1 & $\cLvl/\PermLvl$ $\downarrow$ over time
 \end{tabular}
 
 \medskip
@@ -181,7 +184,7 @@ Definitions: \smallskip
 \begin{frame}
 \frametitle{When Does A Useful Limiting Solution Exist?}
 
-Finite Human Wealth (\FHWC) condition:
+Finite Human Wealth ($\FHWC$) condition:
 \begin{eqnarray}
 \PermGroFac & < & \Rfree
 \end{eqnarray}
@@ -222,7 +225,7 @@ Return Impatience Condition:
 \begin{itemize}
 \item Introduce permanent shocks to income
 \item Finite Value of Autarky Condition Becomes
-\input \LtxDir\EqDir/FVAC
+\input \EqDir/FVAC
 \end{itemize}
 
 \end{frame}
@@ -236,7 +239,7 @@ Return Impatience Condition:
 Finite Value of Autarky Condition: Same As In Liq Constr Problem!
 \input \LtxDir\EqDir/FVAC
 
-`Weak Return Impatience Condition' (\WRIC)
+`Weak Return Impatience Condition' ($\WRIC$)
 
 \begin{eqnarray}
  0 \leq & \pZero^{1/\CRRA} \RPFac & < 1 \label{eq:WRIC}
@@ -283,7 +286,7 @@ Why?  Because it can be shown that
 \subsection{The Target Saving Figure}
 \begin{frame}
 \frametitle{The Target Saving Figure}
-\centerline{\includegraphics[width=4in]{\FigDir/cGroTargetFig.pdf}}
+\centerline{\includegraphics[width=4in]{\FigDir/cNrmTargetFig.pdf}}
 \end{frame}
 
 \subsection{Bounds On The Consumption Function}
@@ -373,7 +376,7 @@ Paper Proves:
 \begin{itemize}
 \item Defined Conditions Under Which Widely Used Problem Has Solution
 \begin{itemize}
-\item Finite Value of Autarky Condition Guarantees Contraction (with \WRIC)
+\item Finite Value of Autarky Condition Guarantees Contraction (with $\WRIC$)
 \item Growth Impatience Condition Prevents $m \rightarrow \infty$
 \end{itemize}
 \item Economy Of Buffer Stock Consumers Exhibits Balanced Growth
@@ -392,7 +395,8 @@ Paper Proves:
 
 \tiny 
 
-\bibliography{\texMaster,\econtexBib}
+
+\pagebreak\input{\LaTeXInputs/bibliography_blend}
 
 \end{frame}
 \end{document}\endinput

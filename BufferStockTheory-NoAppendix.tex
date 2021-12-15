@@ -56,7 +56,7 @@
 }
 
 % \date{\today}
-\renewcommand{\forcedate}{December 14, 2021}\date{\forcedate}
+\renewcommand{\forcedate}{December 15, 2021}\date{\forcedate}
 
 \maketitle
 \hypertarget{abstract}{}
@@ -174,7 +174,7 @@ and the consumer cannot die in debt,
 \hypertarget{DBCparts}{}
 In the usual exposition, a dynamic budget constraint (DBC) combines several distinct events that jointly determine next period's $\mLvl$ (given this period's choices); for the detailed analysis here, we disarticulate and describe every separate step:
 \begin{verbatimwrite}{\EqDir/DBCparts}
-  \begin{equation}\label{eq:DBCparts}
+  \begin{equation}\iflabelexists{eq:DBCparts}{}{\label{eq:DBCparts}} % Don't define it if already defined
     \begin{split}
       \aLvl_{t}     & = \mLvl_{t}-\cLvl_{t}  
       \\     \kLvl_{t+1}   & = \aLvl_{t} \notag
@@ -523,7 +523,7 @@ which will satisfy $\uInvEuPermShk < 1$ for $\CRRA>1$ and nondegenerate $\PermSh
 \end{equation}
 $\vLvl_{t}$ will be positive and finite as $T$ approaches $\infty$ if\hypertarget{FVAC}{}
 \begin{verbatimwrite}{\EqDir/FVAC}
-  \begin{equation}\label{eq:FVAC}
+  \begin{equation}  \iflabelexists{eq:FVAC}{}{\label{eq:FVAC}} % Don't define it if already defined
     \begin{split}
       \text{{\FVAC}:~~}      0 < \overbrace{\DiscFac \PermGroFacAdj^{1-\CRRA} }^{\equiv \DiscAltuAdj~=~\text{\VAFacDefn}}  & < 1 \phantom{\text{{\FVAC}:~~}}
       \\ 0 < \DiscFac  & < \PermGroFacAdj^{\CRRA-1} .
@@ -750,24 +750,24 @@ We have now established the principal points of comparison between the perfect f
 \hypertarget{AnalysisoftheConvergedConsumptionFunction}{}
 \section{Analysis of the Converged Consumption Function}\label{sec:convergedcfunc}
 
-Figures~\ref{fig:cGroTargetFig}-\ref{fig:cFuncBounds} capture the main properties of the converged consumption rule when the \RIC, \GICNrm, and \FHWC~all hold.\footnote{These figures reflect the converged rule corresponding to the parameter values indicated in Table~\ref{table:Calibration}.}
+Figures~\ref{fig:cNrmTargetFig}-\ref{fig:cFuncBounds} capture the main properties of the converged consumption rule when the \RIC, \GICNrm, and \FHWC~all hold.\footnote{These figures reflect the converged rule corresponding to the parameter values indicated in Table~\ref{table:Calibration}.}
 
-Figure~\ref{fig:cGroTargetFig} shows the expected growth factors for consumption, the level of market resources, and the market resources ratio, $\Ex_{t}[\cLvl_{t+1}/\cLvl_{t}]$ and $\Ex_{t}[\mLvl_{t+1}/\mLvl_{t}]$, and $\Ex_{t}[\mNrm_{t+1}/\mNrm_{t}]$, for a consumer behaving according to the converged consumption rule, while Figures~\ref{fig:mpclimits}---\ref{fig:cFuncBounds} illustrate theoretical bounds for the consumption function and the MPC.
+Figure~\ref{fig:cNrmTargetFig} shows the expected growth factors for consumption, the level of market resources, and the market resources ratio, $\Ex_{t}[\cLvl_{t+1}/\cLvl_{t}]$ and $\Ex_{t}[\mLvl_{t+1}/\mLvl_{t}]$, and $\Ex_{t}[\mNrm_{t+1}/\mNrm_{t}]$, for a consumer behaving according to the converged consumption rule, while Figures~\ref{fig:mpclimits}---\ref{fig:cFuncBounds} illustrate theoretical bounds for the consumption function and the MPC.
 
 Three points are worth highlighting.  % features of behavior are captured, or suggested, by the figures.
 
-First, as $\mNrm_{t} \uparrow \infty$ the expected consumption growth factor goes to ${\APFac}$, indicated by the lower bound in Figure~\ref{fig:cGroTargetFig}, and the marginal propensity to consume approaches $\MPCmin=(1-\RPFac)$ (see Figure~\ref{fig:mpclimits}) --- the same as the perfect foresight MPC.\@  Second, as $\mNrm_{t}$ approaches zero the consumption growth factor approaches $\infty$ (Figure~\ref{fig:cGroTargetFig}) and the MPC approaches $\MPCmax=(1-\pZero^{1/\CRRA}\RPFac)$ (Figure~\ref{fig:mpclimits}).  Third, there is a value of the market resources ratio $\mNrm_{t} = \mBalLvl$ at which the expected growth rate of the level of market resources $\mLvl$ matches the expected growth rate of permanent income $\PermGroFac$, and a different (larger) target ratio $\mTrgNrm$ where $\Ex[\mNrm_{t+1}/\mNrm_{t}]=1$ (and the expected growth rate of consumption is lower than $\PermGroFac$).  Thus, at the individual level, this model does not have a single $\mNrm$ at which $\PermLvl,~\mLvl,~$ and $\cLvl$ all are expected to grow at the same rate.
+First, as $\mNrm_{t} \uparrow \infty$ the expected consumption growth factor goes to ${\APFac}$, indicated by the lower bound in Figure~\ref{fig:cNrmTargetFig}, and the marginal propensity to consume approaches $\MPCmin=(1-\RPFac)$ (see Figure~\ref{fig:mpclimits}) --- the same as the perfect foresight MPC.\@  Second, as $\mNrm_{t}$ approaches zero the consumption growth factor approaches $\infty$ (Figure~\ref{fig:cNrmTargetFig}) and the MPC approaches $\MPCmax=(1-\pZero^{1/\CRRA}\RPFac)$ (Figure~\ref{fig:mpclimits}).  Third, there is a value of the market resources ratio $\mNrm_{t} = \mBalLvl$ at which the expected growth rate of the level of market resources $\mLvl$ matches the expected growth rate of permanent income $\PermGroFac$, and a different (larger) target ratio $\mTrgNrm$ where $\Ex[\mNrm_{t+1}/\mNrm_{t}]=1$ (and the expected growth rate of consumption is lower than $\PermGroFac$).  Thus, at the individual level, this model does not have a single $\mNrm$ at which $\PermLvl,~\mLvl,~$ and $\cLvl$ all are expected to grow at the same rate.
 
 \begin{comment}
-  Third (Figure~\ref{fig:cGroTargetFig}), there are two special values of $\mNrm$, which we will call the `individual balanced growth' point $\mBalLvl$ because it is the point where expected consumption growth and expected permanent income growth are balanced, and the `individual target' $\mTrgNrm$ such that if $\mNrm_t = \mTrgNrm$ then $\Ex_t [{\mNrm}_{t+1}] = \mNrm_t$.  %As indicated by the arrows of motion on the $\Ex_{t}[\cLvl_{t+1}/\cLvl_{t}]$ curve, the model's dynamics are `stable' around this target in the sense that if $\mNrm_{t} < \mTrgNrm$ then $\mNrm$ will rise (in expectation), while if $\mNrm_{t} > \mTrgNrm$, it will fall (in expectation).Fourth (Figure~\ref{fig:cGroTargetFig}), at the market resources target $\mTrgNrm$, the expected rate of growth of consumption is slightly less than the expected growth rate
+  Third (Figure~\ref{fig:cNrmTargetFig}), there are two special values of $\mNrm$, which we will call the `individual balanced growth' point $\mBalLvl$ because it is the point where expected consumption growth and expected permanent income growth are balanced, and the `individual target' $\mTrgNrm$ such that if $\mNrm_t = \mTrgNrm$ then $\Ex_t [{\mNrm}_{t+1}] = \mNrm_t$.  %As indicated by the arrows of motion on the $\Ex_{t}[\cLvl_{t+1}/\cLvl_{t}]$ curve, the model's dynamics are `stable' around this target in the sense that if $\mNrm_{t} < \mTrgNrm$ then $\mNrm$ will rise (in expectation), while if $\mNrm_{t} > \mTrgNrm$, it will fall (in expectation).Fourth (Figure~\ref{fig:cNrmTargetFig}), at the market resources target $\mTrgNrm$, the expected rate of growth of consumption is slightly less than the expected growth rate
   of permanent noncapital income.  (The individual consumer does not expect `balanced growth' at $\mTrgNrm$).
 
-  The final proposition suggested by Figure~\ref{fig:cGroTargetFig} is that the expected consumption growth factor is declining in the level of the cash-on-hand ratio $\mNrm_{t}$.  This turns out to be true in the absence of permanent shocks, but in extreme cases it can be false if permanent shocks are present.\footnote{Throughout the remaining analysis I make a final assumption that is not strictly justified by the foregoing.  We have seen that the finite-horizon consumption functions $\usual{\cFunc}_{T-n}(\mNrm)$ are twice continuously differentiable and strictly concave, and that they converge to a continuous function $\usual{\cFunc}(\mNrm)$.  It does not strictly follow that the limiting function $\usual{\cFunc}(\mNrm)$ is twice continuously differentiable, but I will assume that it is.}
+  The final proposition suggested by Figure~\ref{fig:cNrmTargetFig} is that the expected consumption growth factor is declining in the level of the cash-on-hand ratio $\mNrm_{t}$.  This turns out to be true in the absence of permanent shocks, but in extreme cases it can be false if permanent shocks are present.\footnote{Throughout the remaining analysis I make a final assumption that is not strictly justified by the foregoing.  We have seen that the finite-horizon consumption functions $\usual{\cFunc}_{T-n}(\mNrm)$ are twice continuously differentiable and strictly concave, and that they converge to a continuous function $\usual{\cFunc}(\mNrm)$.  It does not strictly follow that the limiting function $\usual{\cFunc}(\mNrm)$ is twice continuously differentiable, but I will assume that it is.}
 \end{comment}
 
-\renewcommand{\figFile}{cGroTargetFig}
+\renewcommand{\figFile}{cNrmTargetFig}
 \hypertarget{\figFile}{}
-\input{\FigDir/cGroTargetFig}
+\input{\FigDir/cNrmTargetFig}
 
 \hypertarget{LimitsAsmtToInfty}{}
 \subsection{Limits as \texorpdfstring{$\mNrm$}{m} Approaches Infinity}\label{subsec:LimitsAsmtToInfty}
@@ -899,14 +899,15 @@ Theorems whose substance is described here (and whose details are in an appendix
 One kind of `stable' point is a `target' value $\mTrgNrm$ such that if $\mNrm_{t}=\mTrgNrm$, then $\Ex_{t}[\mNrm_{t+1}]=\mNrm_{t}$.  Existence of such a target turns out to require the {\GICNrm} condition.
 
 \begin{verbatimwrite}{\EqDir/TheoremMTargetIsStable}
-  \begin{theorem}\label{thm:target}
+  \begin{theorem}\iflabelexists{thm:target}{}{\label{thm:target}} % Don't define it if already defined
     For the nondegenerate solution to the problem defined in Section~\ref{subsec:Setup} when {\FVAC}, {\WRIC}, and {\GICNrm} all hold, there exists a unique cash-on-hand-to-permanent-income ratio $\mTrgNrm>0$ such that
     \begin{equation}
       \Ex_t [{\mNrm}_{t+1}/\mNrm_t] = 1 \mbox{~if~} \mNrm_t = \mTrgNrm.
-      \label{eq:mTarget}
+      \iflabelexists{eq:mTarget}{}{\label{eq:mTarget}} % Don't define it if already defined
     \end{equation}
     Moreover, $\mTrgNrm$ is a point of `stability' in the sense that
-    \begin{equation} \label{eq:stability}
+    \begin{equation}
+      \iflabelexists{eq:stability}{}{\label{eq:stability}} % Don't define it if already defined
       \begin{split}
         \forall {\mNrm}_t\in(0,\mTrgNrm),      \,\,& \Ex_t [{\mNrm}_{t+1}] > {\mNrm}_t  \\
         \forall {\mNrm}_t\in(\mTrgNrm,\infty), \,\,& \Ex_t [{\mNrm}_{t+1}] < {\mNrm}_t.
@@ -929,7 +930,7 @@ Since $\mNrm_{t+1}=(\mNrm_{t}-\cFunc(\mNrm_{t}))\RNrm_{t+1}+\TranShk_{t+1}$, the
 \hypertarget{Collective-Stability}{}
 \hypertarget{pseudo-steady-state}{}
 \subsubsection{Individual Balanced-Growth `pseudo steady state' \texorpdfstring{$\mBalLvl$}{m}}\label{subsubsec:mSteadyState}
-Our second definition of `stability' derives from a traditional question in macroeconomic models: whether there is a `balanced growth' equilibrium in which aggregate variables (income, consumption, market resources) all grow forever by the same factor $\PermGroFac$.  For our model, Figure~\ref{fig:cGroTargetFig} showed that there is no single $\mNrm$ for which $\Ex_{t}[\mLvl_{t+1}]/\mLvl_{t} = \Ex_{t}[\cLvl_{t+1}]/\cLvl_{t} = \PermGroFac$~for an individual consumer.  Nevertheless, the next section will show that economies populated by heterogeneous collections of such consumers can exhibit balanced growth in the aggregate, and in the cross-section of households.
+Our second definition of `stability' derives from a traditional question in macroeconomic models: whether there is a `balanced growth' equilibrium in which aggregate variables (income, consumption, market resources) all grow forever by the same factor $\PermGroFac$.  For our model, Figure~\ref{fig:cNrmTargetFig} showed that there is no single $\mNrm$ for which $\Ex_{t}[\mLvl_{t+1}]/\mLvl_{t} = \Ex_{t}[\cLvl_{t+1}]/\cLvl_{t} = \PermGroFac$~for an individual consumer.  Nevertheless, the next section will show that economies populated by heterogeneous collections of such consumers can exhibit balanced growth in the aggregate, and in the cross-section of households.
 
 As an input to that analysis, we show here that if the {\GICRaw} holds, the problem will exhibit what we call a balanced growth `pseudo-steady-state' point, by which we mean that there is some ${\mBalLvl}$ such that, for all $\mNrm_{t}>{\mBalLvl}$, $\Ex_{t}[\mLvl_{t+1}/\mLvl_{t}] < \PermGroFac$, and conversely if $\mNrm_{t}<{\mBalLvl}$ then $\Ex_{t}[\mLvl_{t+1}/\mLvl_{t}] > \PermGroFac$.
 
@@ -955,14 +956,16 @@ The only difference between~\eqref{eq:balgrostable} and~\eqref{eq:mTargImplicit}
 
 Theorem~\ref{thm:MSSBalExists}~formally states the relevant proposition.
 \begin{verbatimwrite}{\EqDir/TheoremMSSBalExists}
-  \begin{theorem}\label{thm:MSSBalExists}
+  \begin{theorem}
+    \iflabelexists{thm:MSSBalExists}{}{\label{thm:MSSBalExists}} % Don't define it if already defined
     For the nondegenerate solution to the problem defined in Section~\ref{subsec:Setup} when {\FVAC}, {\WRIC}, and {\GICRaw} all hold, there exists a unique pseudo-steady-state cash-on-hand-to-income ratio $\mBalLvl>0$ such that
     \begin{equation}
       \Ex_t [\PermShk_{t+1}{\mNrm}_{t+1}/\mNrm_t] = 1 \mbox{~if~} \mNrm_t = \mBalLvl.
-      \label{eq:mBalLvl}
+    \iflabelexists{eq:mBalLvl}{}{\label{eq:mBalLvl}} % Don't define it if already defined
     \end{equation}
     Moreover, $\mBalLvl$ is a point of stability in the sense that
-    \begin{equation}\label{eq:stabilityStE}
+    \begin{equation}
+    \iflabelexists{eq:stabilityStE}{}{\label{eq:stabilityStE}} % Don't define it if already defined
       \begin{split}
         \forall {\mNrm}_t\in(0,\mBalLvl),      \,\,& \Ex_{t}[\mLvl_{t+1}]/\mLvl_{t} > \PermGroFac \\
         \forall {\mNrm}_t\in(\mBalLvl,\infty), \,\,& \Ex_{t}[\mLvl_{t+1}]/\mLvl_{t} < \PermGroFac.
@@ -980,14 +983,14 @@ Theorem~\ref{thm:MSSBalExists}~formally states the relevant proposition.
   A final point of stability will be indicated by a $\sim$ accent; this is the $\mNrm$ at which the expectation of $\log \mLvl$ is unchanging.
 
   \begin{verbatimwrite}{\EqDir/TheoremGroIsStable}
-    \begin{theorem}\label{thm:TheoremGroIsStable}
+    \begin{theorem}\iflabelexists{thm:TheoremGroIsStable}{}{\label{thm:TheoremGroIsStable}}
       For the nondegenerate solution to the problem defined in Section~\ref{subsec:Setup} when {\FVAC}, {\WRIC}, and {\GICRaw} all hold, there exists a unique cash-on-hand-to-permanent-income ratio $\mBalLvl>0$ such that
       \begin{equation}
         \Ex_t [\log {\mLvl}_{t+1} ] = \log \mLvl_t \mbox{~if~} \mLvl_t = \mBalLvl.
-        \label{eq:mTarget}
+        \iflabelexists{eq:mTarget}{}{\label{eq:mTarget}}
       \end{equation}
       Moreover, $\mBalLvl$ is a point of stability in the sense that
-      \begin{equation} \label{eq:stability}
+      \begin{equation} \label{eq:stabilityLog}
         \begin{split}
           \forall {\mNrm}_t\in(0,\mBalLvl),      \,\,& \Ex_t [\log {\mLvl}_{t+1}] > \log {\mLvl}_t  \\
           \forall {\mNrm}_t\in(\mBalLvl,\infty), \,\,& \Ex_t [\log {\mLvl}_{t+1}] < \log {\mLvl}_t.
@@ -1018,7 +1021,7 @@ The proofs of the theorems are almost completely parallel; to save space, they a
 
 \subsection{Example With Balanced-Growth \texorpdfstring{$\mBalLvl$}{m} But No Target~\texorpdfstring{$\mTrgNrm$}{m}}
 
-Because the equations defining target and pseudo-steady-state $\mNrm$,~\eqref{eq:mTargImplicit} and~\eqref{eq:balgrostable}, differ only by substitution of $\RNrm$ for $\bar{\RNrm}=\RNrm \Ex[\PermShk^{-1}]$, if there are no permanent shocks ($\PermShk \equiv 1$), the conditions are identical.  For many parameterizations (e.g., under the baseline parameter values used for constructing figure~\ref{fig:cGroTargetFig}), $\mTrgNrm$ and $\mBalLvl$ will not differ much.
+Because the equations defining target and pseudo-steady-state $\mNrm$,~\eqref{eq:mTargImplicit} and~\eqref{eq:balgrostable}, differ only by substitution of $\RNrm$ for $\bar{\RNrm}=\RNrm \Ex[\PermShk^{-1}]$, if there are no permanent shocks ($\PermShk \equiv 1$), the conditions are identical.  For many parameterizations (e.g., under the baseline parameter values used for constructing figure~\ref{fig:cNrmTargetFig}), $\mTrgNrm$ and $\mBalLvl$ will not differ much.
 
 An illuminating exception is exhibited in Figure~\ref{fig:GICNrmFailsButGICRawHolds}, which modifies the baseline parameter values by quadrupling the variance of the permanent shocks, enough to cause failure of the \GICNrm; now there is no target wealth level $\mTrgNrm$ (precautionary motives keep $\cFunc(m)$ everywhere below the level that would keep expected $\mNrm$ constant).
 

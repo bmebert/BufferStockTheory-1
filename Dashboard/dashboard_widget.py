@@ -330,7 +330,7 @@ def makeGICFailExample(DiscFac, PermShkStd, UnempPrb):
     return None
 
 
-def cGroTargetFig_make(PermGroFac, DiscFac):
+def cNrmTargetFig_make(PermGroFac, DiscFac):
 
     gro_params = deepcopy(base_params)
     gro_params['PermGroFac'] = [PermGroFac]

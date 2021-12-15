@@ -1,19 +1,30 @@
 % -*- mode: LaTeX; TeX-PDF-mode: t; -*- # Tell editor the file type
 
-\newcommand{\texname}{BufferStockTheory}% Keyname for the paper
 \input{./econtexRoot} % Set paths (like, \LaTeXInputs for resources)
-\documentclass[titlepage, % Some doc do not need a title page 
-headings=optiontotocandhead]{\econtex} % allow headers
+\newcommand{\texname}{BufferStockTheory}% Keyname for the paper
+
+% Document with title page and tables of contents
+\documentclass[titlepage, headings=optiontotocandhead]{\econtex}
+
+% Extra standardized packages for specilized content
 \usepackage{footmisc,datetime2,refcount,xr-hyper,hhline,rotating,subfigure,makecell}
-\usepackage{econark} % Mostly shortcuts (LaTeX macros)
-%\usepackage{\econtexShortcuts}
-\usepackage{\econtexSetup}
-\usepackage{\LaTeXInputs/\texname}% Styling for paper named \texname (and subfiles)
-\usepackage{\LaTeXInputs/\texname-Shortcuts}% LaTeX Shortcuts for whole paper
+
+% Extra custom packages 
+\usepackage{econark}       % Mostly shortcuts (LaTeX macros)
+\usepackage{\econtexSetup} % Gets, configures often-used packages
+
+% \usepackage{\LaTeXInputs/\texname}% Styling for paper named \texname (and subfiles)
+\usepackage{\LaTeXInputs/\texname}% LaTeX Shortcuts for whole paper
 \bibliographystyle{\econtexBibStyle}
+
+% econtexSetup sets boolean Web=true if compilation type is dvi
+\ifthenelse{\boolean{Web}}{}{   % 
+  \usepackage{scrlayer-scrpage} % Package for page headers
+}
+
 \begin{document}
 
-% Redefine \onlyinsubfile command from \texname.sty file:
+% Redefine \onlyinsubfile command defined in \texname.sty file:
 % This lets any submaterial called from here know that it is not standalone
 % If not called from here and IS standalone, can make bib (or other content)
 \renewcommand{\onlyinsubfile}[1]{}\renewcommand{\notinsubfile}[1]{#1}
@@ -21,8 +32,8 @@ headings=optiontotocandhead]{\econtex} % allow headers
 \subfile{BufferStockTheory-NoAppendix} % Main body of paper
 
 \pagebreak
-\ifthenelse{\boolean{Web}}{}{% Web version has no page headers
-  \chead[Appendices]{Appendices} % but PDF version does
+\ifthenelse{\boolean{showPageHead}}{}{% Web version has no page headers
+  \chead[Appendices]{Appendices}      % but PDF version does
 } 
 \appendixpage % Reset formatting for appendices
 \hypertarget{Appendices}{} % Allows link to [url-of-paper]#Appendices
