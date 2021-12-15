@@ -219,20 +219,20 @@ But we showed in Section~\ref{subsec:UncertaintyModifiedConditions} that the onl
 A footnote in~Section~\ref{sec:convergedcfunc} mentions the possibility of calculating growth in the expectation of the log of $\mNrm$ rather than the expectation of the ratio.  Here we show that one way of doing that is to calculate a nonlinear adjustment factor for the expectation of the ratio.
 \begin{align*}
 \log \left(\mLvl_{t+1}/\mLvl_{t}\right) & = \log (\PermGroFac \PermShk_{t+1} \mNrm_{t+1})- \log \mNrm_{t} 
-\\ & = \log \PermGroFac (\aNrm_{t}\RNrm+\permShk_{t+1}\TranShk_{t+1})- \log \mNrm_{t} 
-\\ & = \log \PermGroFac (\aNrm_{t}\RNrm+1+(\permShk_{t+1}\TranShk_{t+1}-1))- \log \mNrm_{t}
+\\ & = \log \PermGroFac (\aNrm_{t}\RNrm+\PermShk_{t+1}\TranShk_{t+1})- \log \mNrm_{t} 
+\\ & = \log \PermGroFac (\aNrm_{t}\RNrm+1+(\PermShk_{t+1}\TranShk_{t+1}-1))- \log \mNrm_{t}
 \end{align*}
 
 Now define $\BalGroRte{\mNrm}_{t+1}=\aNrm_{t}\RNrm+1$, and compute the expectation:
 \begin{align*}
   \Ex_{t}[\log \left(\mLvl_{t+1}/\mLvl_{t}\right)]
-   & = \Ex_{t}\left[\log \PermGroFac (\BalGroRte{\mNrm}_{t+1}+(\permShk_{t+1}\TranShk_{t+1}-1))\right]- \log \mNrm_{t} 
-\\ & = \log \PermGroFac + \Ex_{t}\left[\log (\BalGroRte{\mNrm}_{t+1}(1+\BalGroRte{\mNrm}_{t+1}^{-1}(\permShk_{t+1}\TranShk_{t+1}-1))\right]- \log \mNrm_{t} 
-\\ & = \underbrace{\log \PermGroFac + \log \BalGroRte{\mNrm}_{t+1} - \log \mNrm_{t}}_{\equiv \log \Ex_{t}[\mLvl_{t+1}/\mLvl_{t}]} + \Ex_{t}\left[ \log (1+\BalGroRte{\mNrm}_{t+1}^{-1}(\permShk_{t+1}\TranShk_{t+1}-1))\right]
+   & = \Ex_{t}\left[\log \PermGroFac (\BalGroRte{\mNrm}_{t+1}+(\PermShk_{t+1}\TranShk_{t+1}-1))\right]- \log \mNrm_{t} 
+\\ & = \log \PermGroFac + \Ex_{t}\left[\log (\BalGroRte{\mNrm}_{t+1}(1+\BalGroRte{\mNrm}_{t+1}^{-1}(\PermShk_{t+1}\TranShk_{t+1}-1))\right]- \log \mNrm_{t} 
+\\ & = \underbrace{\log \PermGroFac + \log \BalGroRte{\mNrm}_{t+1} - \log \mNrm_{t}}_{\equiv \log \Ex_{t}[\mLvl_{t+1}/\mLvl_{t}]} + \Ex_{t}\left[ \log (1+\BalGroRte{\mNrm}_{t+1}^{-1}(\PermShk_{t+1}\TranShk_{t+1}-1))\right]
 \end{align*}
 and exponentiating tells us that
 \begin{align}
-  \exp(\Ex_{t}[\log \mLvl_{t+1}/\mLvl_{t}]) & = \Ex_{t}[\mLvl_{t+1}/\mLvl_{t}]\exp( \Ex_{t}\left[ \log (1+\BalGroRte{\mNrm}_{t+1}^{-1}(\permShk_{t+1}\TranShk_{t+1}-1))\right])
+  \exp(\Ex_{t}[\log \mLvl_{t+1}/\mLvl_{t}]) & = \Ex_{t}[\mLvl_{t+1}/\mLvl_{t}]\exp( \Ex_{t}\left[ \log (1+\BalGroRte{\mNrm}_{t+1}^{-1}(\PermShk_{t+1}\TranShk_{t+1}-1))\right])
 \end{align}
 and this latter factor is a number that approaches 1 from below as $\mNrm_{t}$ rises.  Thus the expected growth rate of the log is smaller than the log of the growth rate of the expected ratio.
 

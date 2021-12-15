@@ -1,6 +1,14 @@
 % Allows two (optional) supplements to hard-wired \texname.bib bibfile:
 % economics.bib is a default bibfile that supplies anything missing elsewhere
 % Add-Refs.bib is an override bibfile that supplants anything in \texfile.bib or economics.bib
+\provideboolean{AddRefsExists}
+\provideboolean{economicsExists}
+\provideboolean{BothExist}
+\provideboolean{NeitherExists}
+\setboolean{BothExist}{true}
+\setboolean{NeitherExists}{true}
+
+
 \IfFileExists{\econtexRoot/Add-Refs.bib}{
   % then
   \typeout{References in Add-Refs.bib will take precedence over those elsewhere}

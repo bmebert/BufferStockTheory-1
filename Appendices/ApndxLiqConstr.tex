@@ -20,21 +20,21 @@ Under perfect foresight in the presence of a liquidity constraint requiring $\bN
 A consumer is `growth patient' if the perfect foresight growth
 impatience condition fails (\cncl{\GICRaw}, $1 < \APFac/\PermGroFac$).  Under
 \cncl{\GICRaw} the constraint does not bind at the lowest feasible value of $\mNrm_{t}=1$ because
-$1 < {(\Rfree\Discount)}^{1/\CRRA}/\PermGroFac$ implies that spending
+$1 < {(\Rfree\DiscFacRaw)}^{1/\CRRA}/\PermGroFac$ implies that spending
 everything today (setting $\cNrm_{t}=\mNrm_{t}=1$) produces lower
 marginal utility than is obtainable by reallocating a marginal unit of
 resources to the next period at return $\Rfree$:\footnote{The point at
   which the constraint would bind (if that point could be attained) is
   the $\mNrm=\cNrm$ for which $\uFunc^{\prime}(\cNrm_{\#}) = \Rfree
-  \Discount \uFunc^{\prime}(\PermGroFac)$ which is $\cNrm_{\#} =
-  \PermGroFac/{(\Rfree \Discount)}^{1/\CRRA}$ and the consumption function
+  \DiscFacRaw \uFunc^{\prime}(\PermGroFac)$ which is $\cNrm_{\#} =
+  \PermGroFac/{(\Rfree \DiscFacRaw)}^{1/\CRRA}$ and the consumption function
   will be defined by
   $\cnstr{\cFunc}(\mNrm)=\min[\mNrm,\cNrm_{\#}+(\mNrm-\cNrm_{\#})\MPCmin
   ]$.}
 \begin{equation}\begin{gathered}\begin{aligned}
-  1  & < {(\Rfree \Discount)}^{1/\CRRA}\PermGroFac^{-1}    \notag
-  \\ 1  & < \Rfree \Discount \PermGroFac^{-\CRRA} \notag
-  \\  \uFunc^{\prime}(1)  & < \Rfree \Discount \uFunc^{\prime}(\PermGroFac)   \label{eq:EulerGICRawFailsEnd}.
+  1  & < {(\Rfree \DiscFacRaw)}^{1/\CRRA}\PermGroFac^{-1}    \notag
+  \\ 1  & < \Rfree \DiscFacRaw \PermGroFac^{-\CRRA} \notag
+  \\  \uFunc^{\prime}(1)  & < \Rfree \DiscFacRaw \uFunc^{\prime}(\PermGroFac)   \label{eq:EulerGICRawFailsEnd}.
 \end{aligned}\end{gathered}\end{equation}
 
 Similar logic shows that under these circumstances the constraint will never bind at $\mNrm=1$ for a constrained consumer with a finite horizon of $n$ periods, so for $\mNrm \geq 1$ such a consumer's consumption function will be the same as for the unconstrained case examined in the main text.
@@ -246,7 +246,7 @@ implies a limiting MPC of zero,
 \begin{equation}\begin{gathered}\begin{aligned}
   \lim_{\mNrm \rightarrow \infty} \cnstr{\pmb{\MPC}}(\mNrm)   & = 0,
 \end{aligned}\end{gathered}\end{equation}
-but that limit is approached gradually, starting from a positive value, and consequently the consumption function is \textit{not} the degenerate $\cnstr{\cFunc}(\mNrm)=0$.  (Figure~\ref{fig:PFGICHoldsFHWCFailsRICFails} presents an example for $\CRRA=2$, $\Rfree=0.98$, $\Discount = 1.00$, $\PermGroFac = 0.99$; note that the horizontal axis is bank balances $\bNrm = \mNrm-1$; the part of the consumption function below the depicted points is uninteresting --- $\cNrm = \mNrm$ --- so not worth plotting).
+but that limit is approached gradually, starting from a positive value, and consequently the consumption function is \textit{not} the degenerate $\cnstr{\cFunc}(\mNrm)=0$.  (Figure~\ref{fig:PFGICHoldsFHWCFailsRICFails} presents an example for $\CRRA=2$, $\Rfree=0.98$, $\DiscFacRaw = 1.00$, $\PermGroFac = 0.99$; note that the horizontal axis is bank balances $\bNrm = \mNrm-1$; the part of the consumption function below the depicted points is uninteresting --- $\cNrm = \mNrm$ --- so not worth plotting).
 
 
 \input{\FigDir/PFGICHoldsFHWCFailsRICFails}

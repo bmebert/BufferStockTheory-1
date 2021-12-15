@@ -1,10 +1,16 @@
-% -*- mode: LaTeX; TeX-PDF-mode: t; -*-
-\input{./econtexRoot} % Set paths (like, \LaTeXInputs) for various resources
-\documentclass[titlepage,headings=optiontotocandhead]{\econtex}
-\usepackage{econark}
+% -*- mode: LaTeX; TeX-PDF-mode: t; -*- # Tell editor the file type
+
 \newcommand{\texname}{BufferStockTheory}% Keyname for the paper
-\usepackage{\LaTeXInputs/\texname}% Styling for whole paper (and subfiles)
+\input{./econtexRoot} % Set paths (like, \LaTeXInputs for resources)
+\documentclass[titlepage, % Some doc do not need a title page 
+headings=optiontotocandhead]{\econtex} % allow headers
+\usepackage{footmisc,datetime2,refcount,xr-hyper,hhline,rotating,subfigure,makecell}
+\usepackage{econark} % Mostly shortcuts (LaTeX macros)
+%\usepackage{\econtexShortcuts}
+\usepackage{\econtexSetup}
+\usepackage{\LaTeXInputs/\texname}% Styling for paper named \texname (and subfiles)
 \usepackage{\LaTeXInputs/\texname-Shortcuts}% LaTeX Shortcuts for whole paper
+\bibliographystyle{\econtexBibStyle}
 \begin{document}
 
 % Redefine \onlyinsubfile command from \texname.sty file:

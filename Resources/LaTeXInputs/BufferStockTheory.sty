@@ -1,44 +1,25 @@
 \input{\ResourcesDir/owner} % Owned by llorracc (draft) or econ-ark (published) ?
-\provideboolean{AddRefsExists}
-\provideboolean{economicsExists}
-\provideboolean{BothExist}
-\provideboolean{NeitherExists}
-\setboolean{BothExist}{true}
-\setboolean{NeitherExists}{true}
-
-\usepackage{footmisc}
-\usepackage{datetime2}
-\usepackage{refcount}
-\usepackage{xr-hyper}
-\usepackage{hhline}
-\usepackage{makecell}
-\usepackage{rotating}
-\usepackage{subfigure}
-
 % Default definitions that must be renewcommanded to override in main file
 \providecommand{\onlyinsubfile}{}\renewcommand{\onlyinsubfile}[1]{#1}
 \providecommand{\notinsubfile}{}\renewcommand{\notinsubfile}[1]{}
 
 % Implement a standard setup and shortcuts, e.g. for the \CRRA
-\usepackage{\econtexShortcuts}
 % Configure various useful things, like boolean{Web}
-\usepackage{\econtexSetup}
 
-\bibliographystyle{\econtexBibStyle}
 
-% https://tex.stackexchange.com/questions/389473/redefine-section-to-include-hypertarget-and-tooltip
-% Automatically create hypertargets for sections
-\DefineFamilyKey[.section]{KOMAarg}{hypertarget}{%
-  \hypertarget{#1}{}%
-}
-\DefineFamilyMember[.subsection]{KOMAarg}
-\DefineFamilyKey[.subsection]{KOMAarg}{hypertarget}{%
-  \hypertarget{#1}{}%
-}
-\DefineFamilyMember[.subsubsection]{KOMAarg}
-\DefineFamilyKey[.subsubsection]{KOMAarg}{hypertarget}{%
-  \hypertarget{#1}{}%
-}
+% % https://tex.stackexchange.com/questions/389473/redefine-section-to-include-hypertarget-and-tooltip
+% % Automatically create hypertargets for sections
+% \DefineFamilyKey[.section]{KOMAarg}{hypertarget}{%
+%   \hypertarget{#1}{}%
+% }
+% \DefineFamilyMember[.subsection]{KOMAarg}
+% \DefineFamilyKey[.subsection]{KOMAarg}{hypertarget}{%
+%   \hypertarget{#1}{}%
+% }
+% \DefineFamilyMember[.subsubsection]{KOMAarg}
+% \DefineFamilyKey[.subsubsection]{KOMAarg}{hypertarget}{%
+%   \hypertarget{#1}{}%
+% }
 
 % Layers at top of page make no sense if there is no page
 \ifthenelse{\boolean{Web}}{}{\usepackage{scrlayer-scrpage}}
@@ -48,3 +29,4 @@
 \newsavebox{\Tbl}
 \newlength{\TblShrunk}
 \newsavebox{\TblShrunkBox}
+\newcommand{\cNrmAvg}{\mathfrak{c}}
