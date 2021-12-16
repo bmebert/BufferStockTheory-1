@@ -13,12 +13,14 @@
 % Appendices and body are subfiles
 \usepackage{subfiles}
 
-% Command to define a label only if it does not yet exist (suppresses useless 
-% warnings  when material created in subfiles is read in twice)
+% Command to define a label only if it does not yet exist (suppresses misleading
+% warnings when material created in subfiles is read in while references already
+% exist from master document)
 \makeatletter
 \newcommand{\iflabelexists}[3]{\@ifundefined{r@#1}{\G@refundefinedtrue{#3}}{#2}}
 \makeatother
 
+% Define various generically useful terms and items
 \providecommand{\avg}{\bar}
 \providecommand{\cov}{}\renewcommand{\cov}{\textup{cov}}
 \providecommand{\Abve}{\bar}
@@ -26,8 +28,7 @@
 \providecommand{\CDF}{\mathcal{F}}
 \providecommand{\GroFac}{\Omega} % Generic for growth factor
 \providecommand{\GroRte}{\omega} % Generic for growth rate 
-\providecommand{\IncUnemp}{\mu}  % Income in unemployment
-\providecommand{\Lvl}{\mathbf}      % Levels of variables are bold
+\providecommand{\Lvl}{\mathbf}   % Levels of variables are bold
 
 % Constrained
 \newcommand{\cnstr}[1]{\grave{#1}}
@@ -43,7 +44,7 @@
 % Create links to explanations in text
 \newcommand{\BSTpaperLink}{https://\owner.github.io/BufferStockTheory/BufferStockTheory3.html} % Frame 3
 
-% Suffix of Defn indicates reference to text name and source doc Defn
+% Suffix of Defn indicates reference to text name and source doc definition
 \newcommand{\FHWC}{\href{{\BSTpaperLink}\#FHWC}{\textrm{FHWC}}}
 \newcommand{\FHWFacDefn}{\href{{\BSTpaperLink}\#FHWFDefn}{\textrm{FHWF}}}
 \newcommand{\GICRaw}{\href{{\BSTpaperLink}\#GICRawDefn}{\textrm{GIC}}}
@@ -207,9 +208,11 @@
 \providecommand{\PermLvl}{\pLvl}
 \providecommand{\PermLvlAgg}{\PLvl}
 
-\providecommand{\TranShkEmp}{\theta} % Former tShkEmp
-\providecommand{\TranShkAll}{\xi}    % Former tShkAll
+% More specialized variables
 \providecommand{\TranShk}{\pmb{\xi}}       
+\providecommand{\TranShkEmp}{\theta}    % Former tShkEmp
+\providecommand{\TranShkAll}{\pmb{\xi}} % Former tShkAll
+\providecommand{\IncUnemp}{\mu}  % Income in unemployment
 
 \providecommand{\MPCmin}{{\uline{\kappa}}}
 \providecommand{\MPCmax}{{\bar{\kappa}}}
