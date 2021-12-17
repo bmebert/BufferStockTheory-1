@@ -38,6 +38,7 @@
 \newcommand{\TargetNrm}{\hat}   % Target 
 \newcommand{\ABalLvl}{\BalGroFac{\ALvl}} % m where mLvl grows by PermGroFac
 \newcommand{\mBalLvl}{\BalGroFac{\mNrm}} % m where mLvl grows by PermGroFac
+\newcommand{\MBalLvl}{\BalGroFac{\MNrm}} % m where MLvl grows by PermGroFac
 \newcommand{\mBalLog}{\BalGroRte{\mNrm}} % m where mLog grows by PermGroRte
 \newcommand{\mTrgNrm}{\TargetNrm{\mNrm}} % m where E[m_{t+1}]=m_{t}
 
@@ -47,10 +48,11 @@
 % Suffix of Defn indicates reference to text name and source doc definition
 \newcommand{\FHWC}{\href{{\BSTpaperLink}\#FHWC}{\textrm{FHWC}}}
 \newcommand{\FHWFacDefn}{\href{{\BSTpaperLink}\#FHWFDefn}{\textrm{FHWF}}}
-\newcommand{\GICRaw}{\href{{\BSTpaperLink}\#GICRawDefn}{\textrm{GIC}}}
+\newcommand{\GICRaw}{\href{{\BSTpaperLink}\#GICRaw}{\textrm{GIC}}}
 \newcommand{\GPFacRawDefn}{\href{{\BSTpaperLink}\#GPFRawDefn}{\textrm{GPF}}}
 \newcommand{\GPFacNrmDefn}{\href{{\BSTpaperLink}\#GPFacNrmDefn}{\textrm{GPF-Nrm}}}
-\newcommand{\GICNrm}{\href{{\BSTpaperLink}\#GICNrmDefn}{\textrm{GIC-Nrm}}}
+\newcommand{\GICNrm}{\href{{\BSTpaperLink}\#GICNrm}{\textrm{GIC-Nrm}}}
+\newcommand{\GICHarm}{\href{{\BSTpaperLink}\#GICHarm}{\textrm{GIC-Harm}}}
 \newcommand{\RIC}{\href{{\BSTpaperLink}\#RIC}{\textrm{RIC}}}
 \newcommand{\PFFVAC}{\href{{\BSTpaperLink}\#PFFVAC}{\textrm{PF-FVAC}}}
 \newcommand{\PFVAFacDefn}{\href{{\BSTpaperLink}\#PFVAFDefn}{\textrm{PF-VAF}}}
@@ -198,21 +200,33 @@
 % Ind and Agg varaibles begin with lower case
 \providecommand{\tranShkInd}{\theta} % Formerly tranShkInd
 \providecommand{\tranShkAgg}{\Theta} % Formerly TranShkAgg
-\providecommand{\permShkAgg}{\Psi}   % Formerly PermShkAgg
 \providecommand{\permShkInd}{\psi}   % Formerly PermShkInd
-\providecommand{\permLvlAgg}{\mathrm{P}}      % Formerly PermLvlAgg
-\providecommand{\permLvlInd}{\mathrm{p}}      % Formerly permLvlInd
+\providecommand{\permShkAgg}{\Psi}   % Formerly PermShkAgg
+\providecommand{\tranShkAgg}{\Theta} % Formerly TranShkAgg
+\providecommand{\permShkInd}{\psi}   % Formerly PermShkInd
+\providecommand{\permShkAgg}{\Psi}   % Formerly PermShkAgg
+\providecommand{\tranShkIndStd}{\sigma_{\tranShkInd}} % Formerly tranShkInd
+\providecommand{\tranShkIndVar}{\sigma^{2}_{\tranShkInd}} % Formerly tranShkInd
+\providecommand{\tranShkAggStd}{\sigma_{\tranShkAgg}} % Formerly tranShkAgg
+\providecommand{\tranShkAggVar}{\sigma^{2}_{\tranShkAgg}} % Formerly tranShkInd
 
 % Combo variables (combining Ind and Agg) 
 \providecommand{\PermShk}{\mathbf{\Psi}}
+\providecommand{\PermShkStd}{\sigma_{\PermShk}}
+\providecommand{\PermShkVar}{\sigma^{2}_{\PermShk}}
 \providecommand{\PermLvl}{\pLvl}
 \providecommand{\PermLvlAgg}{\PLvl}
 
 % More specialized variables
 \providecommand{\TranShk}{\pmb{\xi}}       
+\providecommand{\TranShkStd}{\sigma_{\TranShk}}
+\providecommand{\TranShkVar}{\sigma^{2}_{\TranShk}}
 \providecommand{\TranShkEmp}{\pmb{\theta}}    % Former tShkEmp
 \providecommand{\TranShkAll}{\pmb{\xi}} % Former tShkAll
 \providecommand{\IncUnemp}{\mu}  % Income in unemployment
+
+\providecommand{\permLvlAgg}{\mathrm{P}}      % Formerly PermLvlAgg
+\providecommand{\permLvlInd}{\mathrm{p}}      % Formerly permLvlInd
 
 \providecommand{\MPCmin}{{\uline{\kappa}}}
 \providecommand{\MPCmax}{{\bar{\kappa}}}

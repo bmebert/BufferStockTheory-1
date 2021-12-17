@@ -22,7 +22,7 @@
 \newcommand{\thankstext}{
   The paper's results \href{https://\owner.github.io/nbreproduce}{can be automatically reproduced} using the \href{https://econ-ark/HARK}{Econ-ARK/HARK} toolkit, which can be cited per our references (\cite{carroll_et_al-proc-scipy-2018}); for reference to the toolkit itself see \href{https://econ-ark.org/acknowledging/}{Acknowleding Econ-ARK}.  Thanks to the \href{https://consumerfinance.gov}{Consumer Financial Protection Bureau} for funding the original creation of the \href{https://econ-ark.org}{Econ-ARK} toolkit; and to the \href{https://sloan.org}{Sloan Foundation} for funding Econ-ARK's \href{https://sloan.org/grant-detail/8071}{extensive further development} that brought it to the point where it could be used for this project.  The toolkit can be cited with its digital object identifier, \href{https://doi.org/10.5281/zenodo.1001067}{10.5281/zenodo.1001067}, as is done in the paper's own references as \cite{carroll_et_al-proc-scipy-2018}.  Thanks to Will Du, James Feigenbaum, Joseph Kaboski, Miles Kimball, Qingyin Ma, Misuzu Otsuka, Damiano Sandri, John Stachurski, Adam Szeidl, Alexis Akira Toda, Metin Uyanik, Mateo Vel\'asquez-Giraldo, Weifeng Wu,  Jiaxiong Yao, and Xudong Zheng for comments on earlier versions of this paper, John Boyd for help in applying his weighted contraction mapping theorem, Ryoji  Hiraguchi for extraordinary mathematical insight that improved the  paper greatly, David Zervos for early guidance to the literature, and participants in a seminar at the Johns Hopkins University, a presentation at the 2009 meetings of the Society of Economic Dynamics for their insights, and at a presentation at the Australian National University.}
 
-%\newcommand{\inframe}{https://\owner.github.io/BufferStockTheory/BufferStockTheory3.html}
+% \newcommand{\inframe}{https://\owner.github.io/BufferStockTheory/BufferStockTheory3.html}
 
 % Embed metadata
 \hypersetup{pdfauthor={Christopher D. Carroll <ccarroll@jhu.edu>},
@@ -56,7 +56,7 @@
 }
 
 % \date{\today}
-\renewcommand{\forcedate}{December 16, 2021}\date{\forcedate}
+\renewcommand{\forcedate}{December 17, 2021}\date{\forcedate}
 
 \maketitle
 \hypertarget{abstract}{}
@@ -80,7 +80,7 @@
         \texttt{~~~GitHub:~} \> \> \texttt{\href{https://github.com/\owner/BufferStockTheory}{https://github.com/\owner/BufferStockTheory}} \\
       \end{tabbing}
     \end{center}
-%    The \href{https://econ-ark.org/materials/bufferstocktheory\?dashboard}{dashboard} lets users see consequences of alternative parameters in an interactive framework.
+    % The \href{https://econ-ark.org/materials/bufferstocktheory\?dashboard}{dashboard} lets users see consequences of alternative parameters in an interactive framework.
   } % end \parbox{\textwidth}
 \end{footnotesize}
 
@@ -247,7 +247,7 @@ Now, in a one-time deviation from the notational convention established in the l
     \\ {\kNrm}_{t+1} & = \aNrm_{t}/\PermGroFac_{t+1}
     \\ {\bNrm}_{t+1}  & = {\kNrm}_{t+1}\Rfree = (\Rfree/\PermGroFac_{t+1})\aNrm_{t}  ~ = ~ \RNrm_{t+1}\aNrm_{t}
     \\ \mNrm_{t+1}  & = \bNrm_{t+1}+\TranShkAll_{t+1}  ,
-    % \end{align*}
+                      %       \end{align*}
   \end{split}
 \end{equation}
 where $\RNrm_{t+1}\equiv (\Rfree/\PermGroFac_{t+1})$ is a `permanent-income-growth-normalized' return factor, and the reformulated problem's first order condition is\footnote{Leaving aside their assumptions about the marginal utility function and liquidity constraints, it is tempting to view this as a special case of the model of MST, with our $\RNrm_{t+1}=\Rfree/\PermGroFac_{t+1}$ (defined below equation~\eqref{eq:veqn}) corresponding to their stochastic rate of return on capital and the {\VAFacDefn} $\DiscFac \PermGroFac_{t+1}^{1-\CRRA}$ defined below~\eqref{eq:FVAC} corresponding to their stochastic discount factor.  A caveat is that, here, $\RNrm_{t+1}$ and the modified discount factor are intimately connected (through $\PermGroFac_{t+1}$), which has profound effects.}%  It would be interesting, and should not be too difficult, to examine the case with independent shocks to the rate of return and productivity growth.
@@ -718,7 +718,7 @@ In the perfect foresight problem (Section~\ref{subsec:PFUncon}), the \RIC~was ne
   \begin{split}
     \Rfree   & < \overbrace{{(\Rfree \DiscFac)}^{1/\CRRA} ~ < ~ {(\Rfree {(\PermGroFac \uInvEuPermShk)}^{\CRRA-1})}^{1/\CRRA}}^{\text{implied by \FVAC}}
     \\  \Rfree   & < {(\Rfree/\PermGroFac)}^{1/\CRRA}\PermGroFac \uInvEuPermShk^{1-1/\CRRA}
-    % \\  \Rfree/\PermGroFac  & < {(\Rfree/\PermGroFac)}^{1/\CRRA}\uInvEuPermShk^{1-1/\CRRA}
+                   %         \\  \Rfree/\PermGroFac  & < {(\Rfree/\PermGroFac)}^{1/\CRRA}\uInvEuPermShk^{1-1/\CRRA}
     \\  \Rfree/\PermGroFac  & < \uInvEuPermShk
   \end{split}
 \end{equation}
@@ -961,11 +961,11 @@ Theorem~\ref{thm:MSSBalExists}~formally states the relevant proposition.
     For the nondegenerate solution to the problem defined in Section~\ref{subsec:Setup} when {\FVAC}, {\WRIC}, and {\GICRaw} all hold, there exists a unique pseudo-steady-state cash-on-hand-to-income ratio $\mBalLvl>0$ such that
     \begin{equation}
       \Ex_t [\PermShk_{t+1}{\mNrm}_{t+1}/\mNrm_t] = 1 \mbox{~if~} \mNrm_t = \mBalLvl.
-    \iflabelexists{eq:mBalLvl}{}{\label{eq:mBalLvl}} % Don't define it if already defined
+      \iflabelexists{eq:mBalLvl}{}{\label{eq:mBalLvl}} % Don't define it if already defined
     \end{equation}
     Moreover, $\mBalLvl$ is a point of stability in the sense that
     \begin{equation}
-    \iflabelexists{eq:stabilityStE}{}{\label{eq:stabilityStE}} % Don't define it if already defined
+      \iflabelexists{eq:stabilityStE}{}{\label{eq:stabilityStE}} % Don't define it if already defined
       \begin{split}
         \forall {\mNrm}_t\in(0,\mBalLvl),      \,\,& \Ex_{t}[\mLvl_{t+1}]/\mLvl_{t} > \PermGroFac \\
         \forall {\mNrm}_t\in(\mBalLvl,\infty), \,\,& \Ex_{t}[\mLvl_{t+1}]/\mLvl_{t} < \PermGroFac.
@@ -1061,18 +1061,23 @@ Szeidl~\citeyearpar{szeidlInvariant} proved that such a population will be chara
 \begin{align}
   \GPFacRaw & < e^{\Ex [\log \PermShk]} \label{eq:GICSzeidl}
 \end{align}
-which is stronger than our {\GICRaw} condition $\GPFacRaw < 1$ (under the imposed assumption $\Ex[\log \PermShk]<0$).\footnote{Under our default (though not required) assumption that $\log \PermShk \sim \mathcal{N}(-\sigma^{2}_{\PermShk}/2,\sigma^{2}_{\PermShk})$; the {\GICNrm} in this case, is $\GPFacRaw < \exp(-\sigma^{2})$, so if the {\GICNrm} holds then Szeidl's condition will hold.}  %Below we designate these the `Szeidl-invariant' distributions $\Nvrnt({\mNrm})$, $\Nvrnt({\aNrm})$, and $\Nvrnt({\cNrm})$.%\footnote{Szeidl's proof supplants simulation evidence of ergodicity that appeared in an earlier version of this paper.}
+which is stronger than our {\GICRaw} condition $\GPFacRaw < 1$ (under the imposed assumption $\Ex[\log \PermShk]<0$) but weaker than our {\GICNrm} condition $\GPFacNrm < 1$.\footnote{Under our default (though not required) assumption that $\log \PermShk \sim \mathcal{N}(-\sigma^{2}_{\PermShk}/2,\sigma^{2}_{\PermShk})$; the {\GICNrm} in this case, is $\GPFacRaw < \exp(-\sigma^{2})$, so if the {\GICNrm} holds then Szeidl's condition will hold.}  %Below we designate these the `Szeidl-invariant' distributions $\Nvrnt({\mNrm})$, $\Nvrnt({\aNrm})$, and $\Nvrnt({\cNrm})$.%\footnote{Szeidl's proof supplants simulation evidence of ergodicity that appeared in an earlier version of this paper.}
 
-% A earlier draft of this paper~\cite{BufferStockTheoryQESubmit} conjectured that
 \hypertarget{Growth-Rates-of-Aggregate-Income-and-Consumption}{}
 
-\cite{harmenbergInvariant} substitutes a clever change of probability-measure into Szeidl's proof to show that under the {\GICRaw}, invariant \emph{permanent-income-weighted} distributions exist.\footnote{Harmenberg in a nutshell:  If $\PermShk$ is described by density function $f_\PermShk(\PermShk)$, define the \emph{permanent-income-neutral measure} by $\Harm{f}_\PermShk(\PermShk) \equiv \PermShk f_\PermShk(\PermShk)$.  Following derivations parallel to those in the previous foonote, the condition for the existence of invariant permanent-income-weighted distributions is
-  \begin{align*}
-    \log \GPFacRaw  & < \Harm{\Ex} \log \PermShk
-  \end{align*}
- where the $\sim$ over the expectations operator indicates that the expectation is being taken with respect to $f_{\PermShk}(\PermShk)$.  But by assumption $\Harm{\Ex} \log \PermShk = 0$ so exponentiating both sides of this equation turns it into $\GPFacRaw < 1$ which is the {\GICRaw}.}  This allows him to prove a conjecture from an earlier draft of this paper (\cite{BufferStockTheoryQESubmit}) that under the {\GICRaw}, aggregate consumption grows at the same rate $\PermGroFac$ as aggregate noncapital income in the long run (with the corollary that aggregate assets and market resources grow at that same rate). \hypertarget{test-Harmenbergs-method}{}
+\cite{harmenbergInvariant} substitutes a clever change of probability-measure into Szeidl's proof to show that under the {\GICRaw}, invariant \emph{permanent-income-weighted} distributions exist.
+
+In a nutshell: If $\PermShk$ is described by density function $f_\PermShk(\PermShk)$, Harmenberg defines the \emph{permanent-income-neutral measure} by $\Harm{f}_\PermShk(\PermShk) \equiv \PermShk f_\PermShk(\PermShk)$.  Following derivations parallel to those in the previous foonote, the condition for the existence of invariant permanent-income-weighted distributions is\hypertarget{GICHarm}{}
+\begin{align} 
+   \text{\GICHarm:~~} \log \GPFacRaw  & < \Harm{\Ex} \log \PermShk \label{eq:GICHarm}
+\end{align}
+where the {$\sim$} over the expectations operator indicates that the expectation is being taken with respect to $\Harm{f}_{\PermShk}(\PermShk)$.  Under our baseline assumption that the permanent shocks are lognormally distributed, it is possible to show that $\Harm{\Ex} \log \PermShk = \PermShkStd^{2}/2,$ so exponentiating both sides of this equation turns it into $\GPFacRaw < e^{\PermShkVar/2}$ which is \textit{weaker} than the {\GICRaw} because $1 < e^{\PermShkVar/2}$.\footnote{A proof that {\GICHarm}is always weaker than the {\GICRaw} follows from the fact that $x \log x$ is a convex function so that the expectation of the permanent-income-weighted distribution is always greater when there is risk than in the absence of risk, thanks again to the invaluable Mr Taylor.}
+
+This allows him to prove a conjecture from an earlier draft of this paper (\cite{BufferStockTheoryQESubmit}) that under the {\GICRaw}, aggregate consumption grows at the same rate $\PermGroFac$ as aggregate noncapital income in the long run (with the corollary that aggregate assets and market resources grow at that same rate). \hypertarget{test-Harmenbergs-method}{}
 % Given the terminology developed earlier, the natural designation for the stable ratio of aggregate market resources to noncapital income is the `aggregate steady state' ratio, $\BalGroFac{M}$.  This is not numerically the same as the individual \href{{https://\owner.github.io/BufferStockTheory/BufferStockTheory3.html}#pseudo-steady-state}{pseudo-steady-state} ratio $\mBalLvl$ because the nonlinearities involved in simulation and aggregation will have consequences.\footnote{Still, the pseudo-steady-state can be calculated immediately from the policy function without any simulation, and therefore would likely serve as an excellent and low-cost starting point for the numerical simulation process.}
 \cite{harmenbergInvariant} shows\footnote{The test of the Harmenberg method currently implemented in the Econ-ARK toolkit shows that Harmenberg's method reduces the standard error of the simulated aggregate consumption series by a factor of more than 8 (using identical computational resources); see the last part of \href{https://github.com/econ-ark/BufferStockTheory/blob/master/Code/Python/test_Harmenbergs_method.sh}{\texttt{test\_Harmenbergs\_method.sh}}.} that his reformulation of the problem can reduce costs of calculation enormously.  % The idea also appears to be promisingly generalizable: For any statistic $\mathcal{S}$ that is the key focus of an analysis, it should be possible to improve the efficiency of simulations aimed at calculating that statistic by constructing an $\mathcal{S}$-weighted distribution rather than a neutral distribution.
+
+Even more interesting is the fact that if \eqref{eq:GICHarm} holds, the economy will exhibit an \textit{aggregate} `steady-state' value of $\MBalLvl$ (different from the individual `pseudo-steady-state' $\mBalLvl$) -- and that so long as \eqref{eq:GICHarm} holds, such an aggregate steady-state $\MBalLvl$ exists even if the {\GICRaw} fails so that the idiosyncratic pseudo-steady-state does not exist.
 
 The remainder of this section briefly draws out some implications of these points.
 
@@ -1090,7 +1095,7 @@ Consider an economy that satisfies the Szeidl impatience condition~\eqref{eq:GIC
 \begin{equation}\label{eq:MeanDeltaLogC}
   \begin{split}
     \Mean\left[\Delta \log \cLvl_{t+1}\right]  & = \Mean\left[ \log {\cNrm}_{t+1}\PermLvl_{t+1} - \log c_{t}\PermLvl_{t}\right]  \\
-    % & = \Mean\left[ \log \PermLvl_{t+1}- \log \PermLvl_{t} + \log {\cNrm}_{t+1} - \log c_{t}\right]  \notag \\
+        %                            & = \Mean\left[ \log \PermLvl_{t+1}- \log \PermLvl_{t} + \log {\cNrm}_{t+1} - \log c_{t}\right]  \notag \\
     & = \Mean\left[ \log \PermLvl_{t+1}- \log \PermLvl_{t}\right] + \Mean\left[ \log {\cNrm}_{t+1} - \log c_{t}\right].
   \end{split}
 \end{equation}
@@ -1119,17 +1124,17 @@ Harmenberg has a brief discussion demonstrating that the covariance between the 
 Consider a date-$t$ Harmenberg-converged economy, and define the mean value of the consumption ratio as $\cNrmAvg_{t+n} \equiv \Mean[\cNrm_{t+n}]$.  Normalizing period-$t$ aggregate permanent income to $\permLvlAgg_{t}=1$, total consumption at $t+1$ and $t+2$ are
 \begin{equation}\label{eq:atp2vsatp1}
   \begin{split}
-    % \CLvl_{t}  % & l= \bar{\tilde{\cNrm}}_{t} = \Mean[\cNrm_{t}\PermLvl_{t}] = \Mean[\cNrm_{t}]\Mean[\PermLvl_{t}] + \cov_{t}(\cNrm_{t}, \PermLvl_{t}) \\
-    % & = %\bar{\tilde{\cNrm}}_{t} =
-    % \Mean[\cNrm_{t}\PermLvl_{t}] = \Mean[\cNrm_{t}]\overbrace{\Mean[\PermLvl_{t}]}^{=1} + \cov_{t}(\cNrm_{t}, \PermLvl_{t})  \\
+      %       \CLvl_{t}  % & l= \bar{\tilde{\cNrm}}_{t} = \Mean[\cNrm_{t}\PermLvl_{t}] = \Mean[\cNrm_{t}]\Mean[\PermLvl_{t}] + \cov_{t}(\cNrm_{t}, \PermLvl_{t}) \\
+        %                            & = %\bar{\tilde{\cNrm}}_{t} =
+                                       %                                        \Mean[\cNrm_{t}\PermLvl_{t}] = \Mean[\cNrm_{t}]\overbrace{\Mean[\PermLvl_{t}]}^{=1} + \cov_{t}(\cNrm_{t}, \PermLvl_{t})  \\
     \CLvl_{t+1} & = \Mean[\cNrm_{t+1}\PermLvl_{t+1}] = \cNrmAvg_{t+1}\PermGroFac^{1} + \cov_{t+1}(\cNrm_{t+1}, \PermLvl_{t+1})
     \\  \CLvl_{t+2} & = \Mean[\cNrm_{t+2}\PermLvl_{t+2}] = \cNrmAvg_{t+2}\PermGroFac^{2} + \cov_{t+2}(\cNrm_{t+2}, \PermLvl_{t+2})
   \end{split}
 \end{equation}
 and Harmenberg's proof that $\CLvl_{t+2}-\PermGroFac \CLvl_{t+1}=0$ allows us to obtain:
 \begin{equation} \label{eq:cNrmvsCov}\begin{split}
-    % 0 & = \cNrmAvg_{t+2}\PermGroFac^{2} + \cov_{t+2}-\PermGroFac\left(\PermGroFac\cNrmAvg_{t+1} + \cov_{t+1}\right)\\ %
-    % \cNrmAvg_{t+2}\PermGroFac^{2} + \cov_{t+2}   & =\cNrmAvg_{t+1}\PermGroFac^{2} + \PermGroFac \cov_{t+1}\\
+                      %                       0 & = \cNrmAvg_{t+2}\PermGroFac^{2} + \cov_{t+2}-\PermGroFac\left(\PermGroFac\cNrmAvg_{t+1} + \cov_{t+1}\right)\\ %
+        %         \cNrmAvg_{t+2}\PermGroFac^{2} + \cov_{t+2}   & =\cNrmAvg_{t+1}\PermGroFac^{2} + \PermGroFac \cov_{t+1}\\
     \left(\cNrmAvg_{t+2} - \cNrmAvg_{t+1}\right)\PermGroFac^{2} & = \PermGroFac \cov_{t+1} - \cov_{t+2} .
   \end{split}\end{equation}
 
@@ -1150,6 +1155,7 @@ so for the LHS and RHS to grow at the same rates we need
   \GroFac_{\cov}  & = \GroFac_{\cNrmAvg}\PermGroFac \label{eq:aNrmGrovscovGro}.
 \end{align}
 This is intuitive.  In the Szeidl-invariant economy, this just reproduces our result above that the covariance exhibits balanced growth because $\GroFac_{\cNrmAvg}=1$.  The revised result just says that in the Harmenberg case where the mean value $\cNrmAvg$ of the consumption ratio $\cNrm$ can grow, the covariance must rise in proportion to any ongoing expansion of $\cNrmAvg$ (as well as in proportion to the growth in $\PermLvl$).
+
 \begin{comment}
   \begin{align*}
     \overbrace{\GroFac_{\cNrmAvg}^{n} \cNrmAvg_{t}}^{\cNrmAvg_{t+n}}(\GroFac_{\cNrmAvg} - 1)\PermGroFac^{n} & =(\GroFac_{\cov} - \PermGroFac) \overbrace{\cov_{t}\GroFac_{\cov}^{n}}^{\cov_{t+n}}
@@ -1168,8 +1174,8 @@ This is intuitive.  In the Szeidl-invariant economy, this just reproduces our re
     (\GroFac_{\cNrmAvg} - 1)\cNrmAvg_{t}(\GroFac_{\cNrmAvg} - 1)\PermGroFac & =(\GroFac_{\cov} - \PermGroFac) \cov_{t}(\GroFac_{\cov} - 1)
   \end{align*}
   \begin{align}
-    % \GroFac_{\cNrmAvg} - 1 & = \GroFac_{\cov} - \PermGroFac \\
-    % \GroFac_{\cNrmAvg} + \PermGroRte & = \GroFac_{\cov}  \\
+                                                                              %                                                                               \GroFac_{\cNrmAvg} - 1 & = \GroFac_{\cov} - \PermGroFac \\
+        %         \GroFac_{\cNrmAvg} + \PermGroRte & = \GroFac_{\cov}  \\
     \GroFac_{\cov} & = \GroFac_{\cNrmAvg} + (\PermGroFac - 1) \label{eq:aNrmGroVscov}
   \end{align}
   \begin{align*}
