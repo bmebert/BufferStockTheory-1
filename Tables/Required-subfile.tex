@@ -21,7 +21,7 @@
     \centering
     \caption{Sufficient Conditions for Nondegenerate$^{\ddagger}$ Solution} 
     \iflabelexists{table:Required}{}{\label{table:Required}} % Don't define it if already defined
-    \sbox{\Tbl}{
+    \sbox{\TblBox}{
       \begin{tabular}{|l|l|l|} \hline
         \multicolumn{1}{|l|}{Consumption Model(s)}                                                                             & \multicolumn{1}{c|}{Conditions}         & \multicolumn{1}{c|}{Comments}
         % \\\multicolumn{1}{|r|}{ Reference            }                                                                         &                                         & \multicolumn{1}{c|}{Logic}
@@ -66,11 +66,11 @@
       \end{tabular}
     } % End \sbox
 
-    \settowidth\TableWidth{\usebox{\Tbl}}
+    \settowidth\TableWidth{\usebox{\TblBox}}
     \savebox{\TblShrunkBox}{
-      \settowidth{\TblShrunk}{\usebox{\Tbl}}
+      \settowidth{\TblShrunk}{\usebox{\TblBox}}
       \resizebox{\textwidth}{!}{\begin{minipage}{\TblShrunk}
-          \usebox{\Tbl}
+          \usebox{\TblBox}
         \end{minipage}}
     }
 

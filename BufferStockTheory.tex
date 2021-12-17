@@ -1,4 +1,4 @@
-% -*- mode: LaTeX; TeX-PDF-mode: t; -*- # Tell editor the file type
+% -*- mode: LaTeX; TeX-PDF-mode: t; -*- # Tell emacs the file type (for syntax)
 
 \input{./econtexRoot} % Set paths (like, \LaTeXInputs for resources)
 \newcommand{\texname}{BufferStockTheory}% Keyname for the paper
@@ -13,15 +13,15 @@
 \usepackage{econark}       % Mostly shortcuts (LaTeX macros)
 \usepackage{\econtexSetup} % Gets, configures often-used packages
 
-% \usepackage{\LaTeXInputs/\texname}% Styling for paper named \texname (and subfiles)
 \usepackage{\LaTeXInputs/\texname}% LaTeX Shortcuts for whole paper
-\bibliographystyle{\econtexBibStyle}
 
-% econtexSetup sets boolean Web=true if compilation type is dvi
+% \usepackage{econtexSetup} sets boolean Web=true if compilation type is dvi
 \ifthenelse{\boolean{Web}}{
   \setboolean{showPageHead}{false}}{   % 
-  \usepackage{scrlayer-scrpage} % Package for page headers
+  \usepackage{scrlayer-scrpage} % Package for page headers if PDF
 }
+
+\bibliographystyle{\econtexBibStyle} % Custom author (year) bib style
 
 \begin{document}
 
@@ -55,11 +55,10 @@
 \subfile{\ApndxDir/ApndxMTargetIsStable}
 \subfile{\ApndxDir/ApndxBalancedGrowthcNrmAndCov}
 
+\small
 \pagebreak\input{\LaTeXInputs/bibliography_blend}\end{document}
 
 \endinput % not needed here; useful if end of doc moves up (ignore rest of file)
-
-% Stuff below configures compilation for AucTeX in Emacs
 
 % Local Variables:
 % TeX-master-file: t
@@ -68,8 +67,8 @@
 % eval: (setq TeX-command-list  (remove '("BibTeX" "%(bibtex) ../LaTeX/%s"    TeX-run-BibTeX nil t :help "Run BibTeX") TeX-command-list))
 % eval: (setq TeX-command-list  (remove '("BibTeX"    "bibtex ../LaTeX/%s"    TeX-run-BibTeX nil (plain-tex-mode latex-mode doctex-mode ams-tex-mode texinfo-mode context-mode)  :help "Run BibTeX") TeX-command-list))
 % eval: (setq TeX-command-list  (remove '("BibTeX" "bibtex ../LaTeX/%s"    TeX-run-BibTeX nil t :help "Run BibTeX") TeX-command-list))
-% eval: (add-to-list 'TeX-command-list '("BibTeX" "bibtex %s" TeX-run-BibTeX nil t                                                                              :help "Run BibTeX") t)
-% eval:  (add-to-list 'TeX-command-list '("BibTeX" "bibtex %s" TeX-run-BibTeX nil (plain-tex-mode latex-mode doctex-mode ams-tex-mode texinfo-mode context-mode) :help "Run BibTeX") t)
+% eval: (add-to-list 'TeX-command-list '("BibTeX" "bibtex LaTeX/%s" TeX-run-BibTeX nil t                                                                              :help "Run BibTeX") t)
+% eval:  (add-to-list 'TeX-command-list '("BibTeX" "bibtex LaTeX/%s" TeX-run-BibTeX nil (plain-tex-mode latex-mode doctex-mode ams-tex-mode texinfo-mode context-mode) :help "Run BibTeX") t)
 % TeX-PDF-mode: t
 % TeX-file-line-error: t
 % TeX-debug-warnings: t
@@ -77,9 +76,7 @@
 % TeX-source-correlate-mode: t
 % TeX-parse-self: t
 % TeX-parse-all-errors: t
-% eval: (cond ((string-equal system-type "darwin") (progn (setq TeX-view-program-list '(("Skim" "/Applications/Skim.app/Contents/SharedSupport/displayline -b %n       %o %b"))))))
+% eval: (cond ((string-equal system-type "darwin") (progn (setq TeX-view-program-list '(("Skim" "/Applications/Skim.app/Contents/SharedSupport/displayline -b %n LaTeX/%o %b"))))))
 % eval: (cond ((string-equal system-type "gnu/linux") (progn (setq TeX-view-program-list '(("Evince" "evince --page-index=%(outpage) LaTeX/%o"))))))
 % eval: (cond ((string-equal system-type "gnu/linux") (progn (setq TeX-view-program-selection '((output-pdf "Evince"))))))
 % End:
-
-\endinput

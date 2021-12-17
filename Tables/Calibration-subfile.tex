@@ -1,7 +1,7 @@
 % -*- mode: LaTeX; TeX-PDF-mode: t; -*-
 \input{./econtexRoot}\documentclass[\econtexRoot/BufferStockTheory]{subfiles}
 \input{./econtexRoot}\input{\LaTeXInputs/econtex_onlyinsubfile}
-\providecommand{\Tbl}{}\providecommand{\TblName}{}
+\providecommand{\TblBox}{}\providecommand{\TblName}{}
 \renewcommand{\TblName}{Calibration}
 \onlyinsubfile{\externaldocument{\LaTeXGenerated/BufferStockTheory}}
 
@@ -23,7 +23,7 @@
     \centering
     \renewcommand{\arraystretch}{1.3}
     \caption{Model Characteristics Calculated from Parameters}\label{table:Calibration}
-    \sbox{\Tbl}{
+    \sbox{\TblBox}{
       \begin{tabular}{|c|ccl|c|}
         \hline
         % \multicolumn{5}{|l|}{Model Characteristics Calculated From Parameters}  \\ \hline
@@ -45,11 +45,11 @@
       \end{tabular}
     } % End \sbox
 
-    \settowidth\TableWidth{\usebox{\Tbl}}
+    \settowidth\TableWidth{\usebox{\TblBox}}
     \savebox{\TblShrunkBox}{
-      \settowidth{\TblShrunk}{\usebox{\Tbl}}
+      \settowidth{\TblShrunk}{\usebox{\TblBox}}
       \resizebox{0.9\textwidth}{!}{\begin{minipage}{\TblShrunk}
-          \usebox{\Tbl}
+          \usebox{\TblBox}
         \end{minipage}}
     }
 

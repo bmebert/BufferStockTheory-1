@@ -11,16 +11,17 @@
 \setboolean{showPageHead}{true}
 
 % Terms unique to BufferStockTheory paper 
-\newcommand{\BoydT}{\mathsf{T}} % Contraction mapping operator
-\newcommand{\Shrinker}{\alpha}  % Contraction mapping shrinker
 \newcommand{\usual}{}
 
-\providecommand{\boundFunc}{\ensuremath{\digamma}}
+\newcommand{\BoydT}{\mathsf{T}} % Contraction mapping operator
+\newcommand{\Shrinker}{\alpha}  % Contraction mapping shrinker
+\providecommand{\boundFunc}{\ensuremath{\digamma}} % Boyd bounding function
 \providecommand{\AMPS}{}\renewcommand{\AMPS}{\avg{\aFunc}^{\prime}} % Average MPS
 \providecommand{\AMPSP}{{\avg{\aFunc}^{\prime\prime}}} % Average MPS prime
 
 \newcommand{\cNrmAvg}{\mathfrak{c}}
 
+% Harmenberg items
 \newcommand{\Nvrnt}{F} % Invariant CDF
 \newcommand{\nvrnt}{f} % invariant PDF
 \newcommand{\Harm}{\tilde} % Harmenberg uses tilde 
@@ -29,6 +30,6 @@
 \providecommand{\pHarm}{p} % Probability density of permanent income
 
 % Declare registers for manipulation of tables (to fit page)
-\newsavebox{\Tbl}
+\newsavebox{\TblBox}
 \newlength{\TblShrunk}
 \newsavebox{\TblShrunkBox}

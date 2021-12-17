@@ -2,7 +2,7 @@
   \begin{table}[!th]
     \centering
 \caption{Definitions and Comparisons of Conditions}\label{table:Comparison}
-  \sbox{\Tbl}{
+  \sbox{\TblBox}{
 \begin{tabular}{|c|c|}\hline
 Perfect Foresight Versions & Uncertainty Versions\\ \hline
 \multicolumn{2}{|c|}{Finite Human Wealth Condition (\FHWC)} \\ \hline
@@ -55,11 +55,11 @@ equivalently $\APFac  < \Rfree^{1/\CRRA}\PermGroFac^{1-1/\CRRA}$ & \\
 \end{tabular}
 } % End \sbox
 
-    \settowidth\TableWidth{\usebox{\Tbl}}
+    \settowidth\TableWidth{\usebox{\TblBox}}
     \savebox{\TblShrunkBox}{
-      \settowidth{\TblShrunk}{\usebox{\Tbl}}
+      \settowidth{\TblShrunk}{\usebox{\TblBox}}
       \resizebox{0.9\textwidth}{!}{\begin{minipage}{\TblShrunk}
-          \usebox{\Tbl}
+          \usebox{\TblBox}
         \end{minipage}}
     }
 

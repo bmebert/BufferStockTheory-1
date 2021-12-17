@@ -22,9 +22,10 @@ Main Condition     &\multicolumn{3}{c|}{~}         & \\ % & Example \\
 ~~~~Subcondition   & \multicolumn{3}{c|}{Math}             & \multicolumn{1}{c|}{ Outcome, Comments or Results} % & Example 
 \\ \hline
 \cncl{\GICRaw}      & $\phantom{\APFac/\Rfree}$ & $\phantom{~<~}1        {~<~}$ & $        {\APFac/\PermGroFac}$  & Constraint never binds for $\mNrm \geq 1$ %& %$\{\APFac,\PermGroFac\}=\{1,0.98\}$
-\\ ~~~~ and \RIC~          & $        {\APFac/\Rfree}$ & $        {~<~}1\phantom{~<~}$ & $\phantom{\APFac/\PermGroFac}$  & ~~~\FHWC~holds ($\Rfree > \PermGroFac$); $\cnstr{\cFunc}(\mNrm) = \bar{\cFunc}(\mNrm)$ for $\mNrm \geq 1$ % & $\{\Rfree,\Discount, \PermGroFac \} = $
-\\ ~~~~ and \cncl{\RIC}   & $\phantom{\APFac/\Rfree}$ & $\phantom{~<~}1        {~<~}$ & $        {\APFac/\Rfree}$ & ~~~~$\cnstr{\cFunc}(\mNrm)$ is degenerate: $\cnstr{\cFunc}(\mNrm)=0$  %&
-\\ \GICRaw~            & $        {\APFac/\PermGroFac}$ & $        {~<~}1\phantom{~<~}$ & $\phantom{\APFac/\Rfree}$  & Constraint binds in finite time for any $\mNrm$ % &
+      \\ ~~~~ and \RIC~          & $        {\APFac/\Rfree}$ & $        {~<~}1\phantom{~<~}$ & $\phantom{\APFac/\PermGroFac}$  & ~~~\FHWC~holds ($\Rfree > \PermGroFac$); %$\cnstr{\cFunc}(\mNrm) = \bar{\cFunc}(\mNrm)$ for $\mNrm \geq 1$ 
+      \\                         &                           &                               & $\phantom{\APFac/\PermGroFac}$  & ~~~$\cnstr{\cFunc}(\mNrm) = \bar{\cFunc}(\mNrm)$ for $\mNrm \geq 1$ 
+      \\ ~~~~ and \cncl{\RIC}   & $\phantom{\APFac/\Rfree}$ & $\phantom{~<~}1        {~<~}$  & $        {\APFac/\Rfree}$       & ~~~$\cnstr{\cFunc}(\mNrm)$ is degenerate: $\cnstr{\cFunc}(\mNrm)=0$  %&
+\\ \GICRaw~            & $        {\APFac/\PermGroFac}$ & $        {~<~}1\phantom{~<~}$ & $\phantom{\APFac/\Rfree}$  & Constraint binds in finite time $\forall~\mNrm$ % &
 \\ ~~~~ and \RIC~           & $        {\APFac/\Rfree}$  & $      {~<~}1\phantom{~<~}$ & $\phantom{\APFac/\PermGroFac}$   & ~~~~\FHWC~may or may not hold
 \\ ~~~~               &                          &                             &                          & ~~~~~~~$\lim_{m \uparrow \infty}\bar{\cFunc}(\mNrm) - \cnstr{\cFunc}(\mNrm) = 0$ % & ~~$\{1.02,1.02^{-1},1.02\}$
 \\ ~~~~               &                          &                             &                          & ~~~~~~~$\lim_{m \uparrow \infty}\cnstr{\MPCFunc}(\mNrm) = \MPCmin$ % & ~~$\{1.02,1.02^{-1},1.02\}$
