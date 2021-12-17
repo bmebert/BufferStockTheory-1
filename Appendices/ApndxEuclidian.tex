@@ -10,7 +10,7 @@
   \texorpdfstring{$\vFunc_{t}$}{vFunc-{t}}}\label{sec:vEuclidian}
 
 Boyd's theorem shows that $\TMap$ defines a contraction mapping
-in a $\boundFunc$-bounded space. We now show that $\TMap$ also
+in an $\boundFunc$-bounded space. We now show that $\TMap$ also
 defines a contraction mapping in Euclidian space.
 
 Calling $\vFunc^{\ast}$ the unique fixed point of the operator $\TMap$, since $\vFunc^{\ast }(\mNrm)=\TMap {\vFunc}^{\ast }(\mNrm)$,
@@ -42,10 +42,10 @@ Given the proof that the value functions converge, we now show the
 pointwise convergence of consumption functions
 $\left\{\cFunc_{T-n+1}(\mNrm)\right\} _{n=1}^{\infty }$.
 
-Consider any convergent subsequence $\left\{\cFunc_{T-n(i)}(\mNrm)\right\}$ of $\left\{\cFunc_{T-n+1}(\mNrm)\right\} _{n=1}^{\infty }$ converging to $c^*$. By the definition of $\cFunc_{T-n}(\mNrm)$, we have  wtf
+Consider any convergent subsequence $\left\{\cFunc_{T-n(i)}(\mNrm)\right\}$ of $\left\{\cFunc_{T-n+1}(\mNrm)\right\} _{n=1}^{\infty }$ converging to $c^*$. By the definition of $\cFunc_{T-n}(\mNrm)$, we have
 \begin{align}
   \begin{split}
-    \uFunc(c_{T - n(i)}(\mNrm)) + & \DiscFac \Ex_{T - n(i)}[{\PermGroFac}_{T-n(i)+1}^{1 - \CRRA}\vFunc_{T-n(i)+1}(\mNrm)]  \geq  \\ & \uFunc(c_{T - n(i)}) + \DiscFac \Ex_{T - n(i)}[{\PermGroFac}_{T-n(i)+1}^{1 - \CRRA}\vFunc_{T-n(i)+1}(\mNrm)], 
+    \uFunc(c_{T - n(i)}(\mNrm)) + & \DiscFac \Ex_{T - n(i)}[{\PermGroFac}_{T-n(i)+1}^{1 - \CRRA}\vFunc_{T-n(i)+1}(\mNrm)]  \\ & \geq  \uFunc(c_{T - n(i)}) + \DiscFac \Ex_{T - n(i)}[{\PermGroFac}_{T-n(i)+1}^{1 - \CRRA}\vFunc_{T-n(i)+1}(\mNrm)], 
     \end{split}
 \end{align}
 for any $\cNrm_{T - n(i)} \in [\MPCminmin \mNrm,\MPCmax \mNrm]$. Now letting $n(i)$ go to infinity, it follows that the left hand side converges to $\uFunc(\cNrm^*) + \DiscFac \Ex_{t}[{\PermGroFac}_{t}^{1 - \CRRA}\vFunc(\mNrm)]$, and the right hand side converges to $\uFunc(\cNrm_{T - n(i)}) + \DiscFac \Ex_{t}[{\PermGroFac}_{t}^{1 - \CRRA}\vFunc(\mNrm)]$. So the limit of the preceding inequality as $n(i)$ approaches infinity implies 
