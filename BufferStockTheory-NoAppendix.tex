@@ -56,7 +56,7 @@
 }
 
 % \date{\today}
-\renewcommand{\forcedate}{December 17, 2021}\date{\forcedate}
+\renewcommand{\forcedate}{December 18, 2021}\date{\forcedate}
 
 \maketitle
 \hypertarget{abstract}{}
@@ -120,7 +120,7 @@
 
 In the presence of realistic transitory and permanent shocks to income \textit{a la}~\cite{friedmanATheory} and~\cite{muthOptimal}, only one further ingredient is required to construct a microeconomically testable model of consumption: A description of preferences.  Zeldes~\citeyearpar{zeldesStochastic} was the first to calibrate a quantitatively plausible example, spawning a literature showing that such models' predictions can match household life cycle data reasonably well, whether or not explicit liquidity constraints are imposed.\footnote{See~\cite{carrollBSLCPIH} or~\cite{gpLifeCycle} for arguments that models with only `natural' constraints (see below) match a wide variety of facts; for a model with explicit constraints that produces very similar results, see, e.g.~\cite{Cagetti}.}
 
-A connected literature, starting with~\cite{bewleyPIH}, has derived limiting properties of related infinite-horizon problems -- but only in models more complex than the case with just shocks and preferences, because standard contraction mapping theorems (beginning with~\cite{bellmanDynamicProgramming}, and including those building on Stokey et~al.~\citeyearpar{slpMethods}) cannot be applied when utility and/or marginal utility are unbounded. Many proof methods also rule out permanent shocks \textit{a la}~\cite{friedmanATheory} and~\cite{muthOptimal} (and~Zeldes).\footnote{See \hyperlink{DiffFromLit}{the fuller discussion} at the end of Section~\ref{subsec:Setup}.}
+A connected literature, starting with~\cite{bewleyPIH}, has derived limiting properties of related infinite-horizon problems -- but only in models more complex than the Friedman-Muth case with just shocks and preferences, because standard contraction mapping theorems (from \cite{bellmanDynamicProgramming} through Stokey et~al.~\citeyearpar{slpMethods} and beyond) cannot be applied when utility and/or marginal utility are unbounded. Many proof methods also rule out permanent shocks \textit{a la}~\cite{friedmanATheory} and~\cite{muthOptimal}.\footnote{See \hyperlink{DiffFromLit}{the fuller discussion} at the end of Section~\ref{subsec:Setup}.}
 
 This paper's first contribution is to articulate conditions under which the infinite-horizon Friedman-Muth(-Zeldes) problem (without complications like a consumption floor or liquidity constraints) defines a contraction mapping whose limit is \href{{https://\owner.github.io/BufferStockTheory/BufferStockTheory3.html}#useful}{useful} (neither zero nor $\infty$ everywhere) as the horizon recedes.  A \hyperlink{FVAC}{`Finite Value of Autarky Condition'} is mostly sufficient (the \hyperlink{WRIC}{`Weak Return Impatience Condition'}\footnote{This is a generalization of a condition in~\cite{mstIncFluct}.} is unlikely to bind).  Because the infinite-horizon solution is the limit of finite-horizon recursions, many intermediate results are also applicable to finite-horizon problems.
 
@@ -1059,32 +1059,30 @@ Szeidl~\citeyearpar{szeidlInvariant} proved that such a population will be chara
   which, exponentiated, yields~\eqref{eq:GICSzeidl}.}
 \hypertarget{GICSzeidl}{}
 \begin{align}
-  \GPFacRaw & < e^{\Ex [\log \PermShk]} \label{eq:GICSzeidl}
+  \text{GIC-Szeidl:~~}  \log \GPFacRaw & < \Ex [\log \PermShk] \label{eq:GICSzeidl}
 \end{align}
 which is stronger than our {\GICRaw} condition $\GPFacRaw < 1$ (under the imposed assumption $\Ex[\log \PermShk]<0$) but weaker than our {\GICNrm} condition $\GPFacNrm < 1$.\footnote{Under our default (though not required) assumption that $\log \PermShk \sim \mathcal{N}(-\sigma^{2}_{\PermShk}/2,\sigma^{2}_{\PermShk})$; the {\GICNrm} in this case, is $\GPFacRaw < \exp(-\sigma^{2})$, so if the {\GICNrm} holds then Szeidl's condition will hold.}  %Below we designate these the `Szeidl-invariant' distributions $\Nvrnt({\mNrm})$, $\Nvrnt({\aNrm})$, and $\Nvrnt({\cNrm})$.%\footnote{Szeidl's proof supplants simulation evidence of ergodicity that appeared in an earlier version of this paper.}
 
 \hypertarget{Growth-Rates-of-Aggregate-Income-and-Consumption}{}
 
-\cite{harmenbergInvariant} substitutes a clever change of probability-measure into Szeidl's proof to show that under the {\GICRaw}, invariant \emph{permanent-income-weighted} distributions exist.
-
-In a nutshell: If $\PermShk$ is described by density function $f_\PermShk(\PermShk)$, Harmenberg defines the \emph{permanent-income-neutral measure} by $\Harm{f}_\PermShk(\PermShk) \equiv \PermShk f_\PermShk(\PermShk)$.  Following derivations parallel to those in the previous foonote, the condition for the existence of invariant permanent-income-weighted distributions is\hypertarget{GICHarm}{}
+\cite{harmenbergInvariant} substitutes a clever change of probability-measure into Szeidl's proof to show that under the {\GICRaw}, invariant \emph{permanent-income-weighted} distributions exist.  In a nutshell: If $\PermShk$ is described by density function $f_\PermShk(\PermShk)$, Harmenberg defines the \emph{permanent-income-neutral measure} by $\Harm{f}_\PermShk(\PermShk) \equiv \PermShk f_\PermShk(\PermShk)$.  Following derivations parallel to those in the previous foonote, the condition for the existence of invariant permanent-income-weighted distributions is\hypertarget{GICHarm}{}
 \begin{align} 
-   \text{\GICHarm:~~} \log \GPFacRaw  & < \Harm{\Ex} \log \PermShk \label{eq:GICHarm}
+   \text{\GICHarm:~~} \log \GPFacRaw  & < \Harm{\Ex}[ \log \PermShk] \label{eq:GICHarm}
 \end{align}
-where the {$\sim$} over the expectations operator indicates that the expectation is being taken with respect to $\Harm{f}_{\PermShk}(\PermShk)$.  Under our baseline assumption that the permanent shocks are lognormally distributed, it is possible to show that $\Harm{\Ex} \log \PermShk = \PermShkStd^{2}/2,$ so exponentiating both sides of this equation turns it into $\GPFacRaw < e^{\PermShkVar/2}$ which is \textit{weaker} than the {\GICRaw} because $1 < e^{\PermShkVar/2}$.\footnote{A proof that {\GICHarm}is always weaker than the {\GICRaw} follows from the fact that $x \log x$ is a convex function so that the expectation of the permanent-income-weighted distribution is always greater when there is risk than in the absence of risk, thanks again to the invaluable Mr Taylor.}
+where the {$\sim$} over the expectations operator indicates that the expectation is being taken with respect to $\Harm{f}_{\PermShk}(\PermShk)$.  Under our baseline assumption that the permanent shocks are lognormally distributed, it is possible to show that $\Harm{\Ex} \log \PermShk = \PermShkStd^{2}/2,$ so exponentiating both sides of this equation turns it into $\GPFacRaw < e^{\PermShkVar/2}$ which is \textit{weaker} than the {\GICRaw} because $1 < e^{\PermShkVar/2}$.\footnote{A proof that {\GICHarm} is always weaker than the {\GICRaw} follows from the fact that $x \log x$ is a convex function so that the expectation of the permanent-income-weighted distribution is always greater when there is risk than in the absence of risk, thanks again to the invaluable Mr Jensen.}
 
 This allows him to prove a conjecture from an earlier draft of this paper (\cite{BufferStockTheoryQESubmit}) that under the {\GICRaw}, aggregate consumption grows at the same rate $\PermGroFac$ as aggregate noncapital income in the long run (with the corollary that aggregate assets and market resources grow at that same rate). \hypertarget{test-Harmenbergs-method}{}
 % Given the terminology developed earlier, the natural designation for the stable ratio of aggregate market resources to noncapital income is the `aggregate steady state' ratio, $\BalGroFac{M}$.  This is not numerically the same as the individual \href{{https://\owner.github.io/BufferStockTheory/BufferStockTheory3.html}#pseudo-steady-state}{pseudo-steady-state} ratio $\mBalLvl$ because the nonlinearities involved in simulation and aggregation will have consequences.\footnote{Still, the pseudo-steady-state can be calculated immediately from the policy function without any simulation, and therefore would likely serve as an excellent and low-cost starting point for the numerical simulation process.}
 \cite{harmenbergInvariant} shows\footnote{The test of the Harmenberg method currently implemented in the Econ-ARK toolkit shows that Harmenberg's method reduces the standard error of the simulated aggregate consumption series by a factor of more than 8 (using identical computational resources); see the last part of \href{https://github.com/econ-ark/BufferStockTheory/blob/master/Code/Python/test_Harmenbergs_method.sh}{\texttt{test\_Harmenbergs\_method.sh}}.} that his reformulation of the problem can reduce costs of calculation enormously.  % The idea also appears to be promisingly generalizable: For any statistic $\mathcal{S}$ that is the key focus of an analysis, it should be possible to improve the efficiency of simulations aimed at calculating that statistic by constructing an $\mathcal{S}$-weighted distribution rather than a neutral distribution.
 
-Even more interesting is the fact that if \eqref{eq:GICHarm} holds, the economy will exhibit an \textit{aggregate} `steady-state' value of $\MBalLvl$ (different from the individual `pseudo-steady-state' $\mBalLvl$) -- and that so long as \eqref{eq:GICHarm} holds, such an aggregate steady-state $\MBalLvl$ exists even if the {\GICRaw} fails so that the idiosyncratic pseudo-steady-state does not exist.
+Even more interesting is the fact that if \eqref{eq:GICHarm} holds, the economy will exhibit an \textit{aggregate} `steady-state' ratio of market resources to income $\MBalLvl$ (different from the individual `pseudo-steady-state' $\mBalLvl$) -- and that so long as \eqref{eq:GICHarm} holds, such an aggregate steady-state $\MBalLvl$ exists even if the {\GICRaw} fails so that the idiosyncratic pseudo-steady-state does not exist.
 
 The remainder of this section briefly draws out some implications of these points.
 
 \hypertarget{Growth-Rates-of-Individual-Income-and-Consumption}{}
 \subsection{Individual Balanced Growth of  Income, Consumption, and Wealth}\label{subsec:cGroEqPermGroFacQ}
 
-Say that $\Mean\left[\bullet\right]$ yields the mean of its argument in the population (as distinct from the expectations operator $\Ex\left[\bullet\right]$ which represents beliefs about the future).  Using boldface capitals for aggregates, the growth factor for aggregate noncapital income is:
+Define $\Mean\left[\bullet\right]$ to yield the mean of its argument in the population (as distinct from the expectations operator $\Ex\left[\bullet\right]$ which represents beliefs about the future).  Using boldface capitals for aggregates, the growth factor for aggregate noncapital income is:
 \begin{align*}
   \YLvl_{t+1}/\YLvl_{t}  & = \Mean\left[\TranShkAll_{t+1}\PermGroFac \PermShk_{t+1}\PermLvl_{t}\right]/\Mean\left[\PermLvl_{t}\TranShkAll_{t}\right]  \\
                          & = \PermGroFac
@@ -1105,7 +1103,7 @@ Because this economy is Szeidl-converged, distributions of $\cNrm_{t}$ and $\cNr
   \Mean\left[\Delta \log \cLvl_{t+1}\right]  & = \Mean\left[ \Delta \log \PermLvl_{t+1}\right] = \log \PermGroFac \label{eq:MeanDeltaLogCeqMeanDeltaLogP}.
 \end{align}
 
-In a Harmenberg-invariant economy (and therefore also any Szeidl-invariant economy), a similar proposition holds in the cross-section as a direct implication of the fact that a constant proportion of total permanent income is accounted for by the successive sets of consumers with any particular $\mNrm$.  This fact is one way of interpreting Harmenberg's definition of the density of the permanent-income-invariant distribution of $\mNrm$; call this density~$\pHarm(\mNrm)$.\footnote{In his notation, this is $\tilde{\psi}^{\mNrm}$.}  Call $\cLvl_{t}(\mNrm)$ the total amount of consumption at date $t$ by persons with market resources $\mNrm$, and note that in the invariant economy this is given by the converged consumption function $\cFunc(\mNrm)$ multiplied by the amount of permanent income accruing to such people $\pHarm(\mNrm)\permLvlAgg_{t}$.  Since $\pHarm(\mNrm)$ is invariant and aggregate permanent income grows according to $\permLvlAgg_{t+1} = \PermGroFac \permLvlAgg_{t}$,
+In a Harmenberg-invariant economy (and therefore also any Szeidl-invariant economy), a similar proposition holds in the cross-section as a direct implication of the fact that a constant proportion of total permanent income is accounted for by the successive sets of consumers with any particular $\mNrm$.  This fact is one way of interpreting Harmenberg's definition of the density of the permanent-income-invariant distribution of $\mNrm$; call this density~$\pHarm(\mNrm)$.\footnote{In his notation, this is $\tilde{\psi}^{\mNrm}$.}  Call $\cLvl_{t}(\mNrm)$ the total amount of consumption at date $t$ by persons with market resources $\mNrm$, and note that in the invariant economy this is given by the converged consumption function $\cFunc(\mNrm)$ multiplied by the amount of permanent income accruing to such people $\pHarm(\mNrm)\PermLvl_{t}$.  Since $\pHarm(\mNrm)$ is invariant and aggregate permanent income grows according to $\permLvlAgg_{t+1} = \PermGroFac \permLvlAgg_{t}$,
 \begin{equation*}
   \begin{split}
     \log \cLvl_{t+1}(\mNrm) - \log \cLvl_{t}(\mNrm) &  \notag
@@ -1119,7 +1117,7 @@ will hold for any $\mNrm$.
 \hypertarget{Balanced-Growth-Of-Covariances}{}
 \subsection{Aggregate Balanced Growth and Idiosyncratic Covariances}\label{subsec:Covariances}
 
-Harmenberg has a brief discussion demonstrating that the covariance between the individual consumption ratio $\cNrm$ and the idiosyncratic component of permanent income $\PermLvl$ does not shrink to zero over time; so covariances constitute another potential measurement that can be used for construction of microfoundations.  % Here we draw out some of those implications.
+Harmenberg notes that the covariance between the individual consumption ratio $\cNrm$ and the idiosyncratic component of permanent income $\PermLvl$ does not shrink to zero over time; this implies that covariances constitute another potential measurement that can be used for construction of microfoundations.  % Here we draw out some of those implications.
 
 Consider a date-$t$ Harmenberg-converged economy, and define the mean value of the consumption ratio as $\cNrmAvg_{t+n} \equiv \Mean[\cNrm_{t+n}]$.  Normalizing period-$t$ aggregate permanent income to $\permLvlAgg_{t}=1$, total consumption at $t+1$ and $t+2$ are
 \begin{equation}\label{eq:atp2vsatp1}
@@ -1154,7 +1152,7 @@ so for the LHS and RHS to grow at the same rates we need
 \begin{align}
   \GroFac_{\cov}  & = \GroFac_{\cNrmAvg}\PermGroFac \label{eq:aNrmGrovscovGro}.
 \end{align}
-This is intuitive.  In the Szeidl-invariant economy, this just reproduces our result above that the covariance exhibits balanced growth because $\GroFac_{\cNrmAvg}=1$.  The revised result just says that in the Harmenberg case where the mean value $\cNrmAvg$ of the consumption ratio $\cNrm$ can grow, the covariance must rise in proportion to any ongoing expansion of $\cNrmAvg$ (as well as in proportion to the growth in $\PermLvl$).
+This is intuitive:  In the Szeidl-invariant economy, it just reproduces our result above that the covariance exhibits balanced growth because $\GroFac_{\cNrmAvg}=1$.  The revised result just says that in the Harmenberg case where the mean value $\cNrmAvg$ of the consumption ratio $\cNrm$ can grow, the covariance must rise in proportion to any ongoing expansion of $\cNrmAvg$ (as well as in proportion to the growth in $\PermLvl$).
 
 \begin{comment}
   \begin{align*}
@@ -1231,7 +1229,7 @@ Death can solve this problem.
 
 
 \hypertarget{Mortality}{}
-\subsection{Mortality}\label{sec:Mortality}
+\subsection{Mortality Yields Invariance}\label{sec:Mortality}
 
 \hypertarget{Blanchard-Lives}{}
 Most heterogeneous-agent models incorporate a constant positive probability of death, following \cite{blanchardFinite} and \cite{yaari1965uncertain}.  In the Blanchardian model, if the probability of death exceeds a threshold that depends on the size of the permanent shocks,~\cite{cstwMPC} show that the limiting distribution of permanent income has a finite variance.  \cite{blanchardFinite} assumes the existence of a universal annuitization scheme in which estates of dying consumers are redistributed to survivors in proportion to survivors' wealth, giving the recipients a higher effective rate of return. This treatment has several analytical advantages, most notably that the effect of mortality on the time preference factor is the exact inverse of its effect on the (effective) interest factor.  That is, if the `pure' time preference factor is $\DiscFacRaw$ and probability of remaining alive (not dead) is $\Alive$, then the assumption that no utility accrues after death makes the effective discount factor $\DiscFacLiv=\DiscFacRaw\Alive$  while the enhancement to the rate of return from the annuity scheme yields an effective interest factor $\RfreeEff=\Rfree/\Alive$ (recall that because of white-noise mortality, the average wealth of the two groups is identical).  Combining these, the effective patience factor in the new economy $\DiscFacLiv \RfreeEff$ is unchanged from its value in the infinite horizon model:% chktex 2
