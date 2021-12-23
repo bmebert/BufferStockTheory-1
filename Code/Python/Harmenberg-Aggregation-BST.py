@@ -9,9 +9,9 @@
 #       format_version: '1.3'
 #       jupytext_version: 1.11.2
 #   kernelspec:
-#     display_name: Python 3
+#     display_name: Python 3.8 (XPython)
 #     language: python
-#     name: python3
+#     name: xpython
 # ---
 
 # %% [markdown]
@@ -24,7 +24,7 @@
 # %% [markdown]
 # `# Set Up the Computational Environment: (in JupyterLab, click the dots)`
 
-# %% code_folding=[0] jupyter={"source_hidden": true} tags=[]
+# %% code_folding=[0] tags=[]
 # Preliminaries
 from HARK.ConsumptionSaving.ConsIndShockModel import (
     IndShockConsumerType
@@ -38,7 +38,7 @@ import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
 
-# %% [markdown] jp-MarkdownHeadingCollapsed=true tags=[]
+# %% [markdown] jp-MarkdownHeadingCollapsed=true tags=[] jp-MarkdownHeadingCollapsed=true
 # # Description of the problem
 #
 # $\newcommand{\pLvl}{\mathbf{p}}$
@@ -185,6 +185,9 @@ example.cycles = 0
 # Solve for the consumption function
 example.solve()
 
+example.t_sim=1
+example.AgentCount=10
+
 # Simulation under the base measure
 example.initialize_sim()
 
@@ -198,6 +201,12 @@ example.neutral_measure = True
 example.update_income_process()
 example.initialize_sim()
 example.simulate()
+
+# %%
+example.state_now.values()
+
+# %%
+stop
 
 # %% [markdown] tags=[]
 # All we had to do differently to simulate using the permanent-income-neutral measure was to set the agent's property `neutral_measure=True`.
