@@ -14,7 +14,8 @@
 \newsavebox{\LiqConstrScenarios}
 \begin{table}[b]
   \centering
-  \caption{Taxonomy of Perfect Foresight Liquidity Constrained Model Outcomes}\label{table:LiqConstrScenarios}
+  \caption{Taxonomy of Perfect Foresight Liquidity Constrained Model Outcomes}
+    \iflabelexists{table:Required}{}{\label{table:LiqConstrScenarios}} % Don't define it if already defined
   \sbox{\LiqConstrScenarios}{
     \begin{tabular}{|l|rcl|l|}
       \multicolumn{5}{c}{For constrained $\cnstr{c}$ and unconstrained $\bar{\cFunc}$ consumption functions } \\ \hline 
@@ -65,85 +66,4 @@ Main Condition     &\multicolumn{3}{c|}{~}         & \\ % & Example \\
 % TeX-source-correlate-start-server: 0
 % TeX-parse-self: t
 % eval: (cond ((string-equal system-type "darwin") (progn (setq TeX-view-program-list '(("Skim" "/Applications/Skim.app/Contents/SharedSupport/displayline -b %n ../LaTeX/%o %b"))))))
-% End:
-
-
-  \begin{table}[!th]
-    \centering
-\caption{Definitions and Comparisons of Conditions}\label{table:Comparison}
-  \sbox{\ComparisonSub}{
-\begin{tabular}{|c|c|}\hline
-Perfect Foresight Versions & Uncertainty Versions\\ \hline
-\multicolumn{2}{|c|}{Finite Human Wealth Condition (\FHWC)} \\ \hline
-$\PermGroFac/\Rfree < 1$                                                          & $\PermGroFac/\Rfree < 1$ \\
-\multirow{3}{75mm}{\thead{The growth factor for permanent income \\ $\PermGroFac$ must be smaller than the discounting \\ factor $\Rfree$ for human wealth to be finite. }} &
-\multirow{3}{75mm}{\thead{The model's risks are mean-preserving \\ spreads, so the PDV of future income is \\ unchanged by their introduction.}} \\
-&  \\
-&  \\
-&  \\ \hline
-\multicolumn{2}{|c|}{Absolute Impatience Condition (\AIC)} \\ \hline
-$\APFac < 1$                                        &  $\APFac < 1$ \\
-\multirow{4}{75mm}{\thead{The unconstrained consumer is \\ sufficiently impatient that the level of \\ consumption will be declining over time:}} &
-\multirow{4}{75mm}{\thead{\textit{If wealth is large enough,} the \textit{expectation} \\ of consumption next period will be \\ smaller than this period's consumption:}} \\
-& \\
-& \\
-& \\
-$\cLvl_{t+1} < \cLvl_{t}$ & $\lim_{m_{t} \rightarrow \infty} \Ex_{t} [\cLvl_{t+1}] < \cLvl_{t}$ \\
-& \\ \hline
-\multicolumn{2}{|c|}{Return Impatience Conditions} \\ \hline
-\multicolumn{1}{|c|}{Return Impatience Condition (\RIC)} & \multicolumn{1}{c|}{Weak \RIC~(\WRIC)} \\ \hline
-$\APFac/\Rfree < 1$                                          & $\pZero^{1/\CRRA}\APFac/\Rfree < 1$ \\
-\multirow{3}{75mm}{\thead{The growth factor for consumption $\APFac$ \\ must be smaller than the discounting \\ factor $\Rfree$, so that the PDV of current and \\ future consumption will be finite:}}  &
-\multirow{3}{75mm}{\thead{If the probability of the zero-income \\ event is $\pZero=1$ then income is always zero \\ and the condition becomes identical to \\ the \RIC.  Otherwise, weaker.}} \\
-& \\
-& \\
-& \\
-& \\
-$\cFunc^{\prime}(m) = 1-\APFac/\Rfree < 1$              & $\cFunc^{\prime}(m) < 1-\pZero^{1/\CRRA}\APFac/\Rfree < 1$ \\
-& \\ \hline
-\multicolumn{2}{|c|}{Growth Impatience Conditions} \\ \hline
-\multicolumn{1}{|c|}{\GICRaw} & \multicolumn{1}{c|}{\GICNrm} \\ \hline
-$\APFac/\PermGroFac < 1$                                         & $\APFac\Ex[\PermShk^{-1}]/\PermGroFac < 1 $ \\
-\multirow{4}{75mm}{\thead{Guarantees that for an unconstrained \\ consumer, the ratio of consumption to \\ permanent income will fall over time.  For ~~~\\ a constrained consumer, guarantees the \\ constraint will eventually be binding.}} &
-\multirow{4}{75mm}{\thead{By Jensen's inequality, stronger than \\the \GICRaw. \\  Ensures consumers will not \\ expect to accumulate $\mNrm$ unboundedly.}} \\
-& \\
-& \\
-& \\
-& $\lim_{\mNrm_{t} \rightarrow \infty} \Ex_{t}[\mNrm_{t+1}/\mNrm_{t}] = \GPFacNrm $
- \\
-& \\ \hline
-\multicolumn{2}{|c|}{Finite Value of Autarky Conditions} \\ \hline
-\multicolumn{1}{|c|}{\PFFVAC} & \multicolumn{1}{c|}{\FVAC} \\ \hline
-$\beta \PermGroFac^{1-\CRRA} < 1$                                                 & $\beta \PermGroFac^{1-\CRRA}\Ex[\PermShk^{1-\CRRA}] < 1$  \\
-equivalently $\APFac/\PermGroFac  < (\Rfree/\PermGroFac)^{1/\CRRA}$ & \\
-\multirow{3}{75mm}{\thead{The discounted utility of constrained \\ consumers who spend their permanent \\ income each period should be finite.}} &
-\multirow{3}{75mm}{\thead{By Jensen's inequality, stronger than the \\ \PFFVAC~because for $\CRRA>1$ and \\ nondegenerate $\PermShk$, $\Ex[\PermShk^{1-\CRRA}] > 1$.} } \\
-& \\
-                           & \\
-&  \\ \hline
-\end{tabular}
-} % End \sbox
-\settowidth\TableWidth{\usebox{\ComparisonSub}}
-\usebox{\ComparisonSub}
-\end{table}
-
-% Delete up to four existing variants of BibTeX 
-% Local Variables:
-% eval: (setq TeX-command-list  (remove '("Biber" "biber %s" TeX-run-Biber nil  (plain-tex-mode latex-mode doctex-mode ams-tex-mode texinfo-mode)  :help "Run Biber") TeX-command-list))
-% eval: (setq TeX-command-list  (assq-delete-all (car (assoc "BibTeX" TeX-command-list)) TeX-command-list))
-% eval: (setq TeX-command-list  (assq-delete-all (car (assoc "BibTeX" TeX-command-list)) TeX-command-list))
-% eval: (setq TeX-command-list  (assq-delete-all (car (assoc "BibTeX" TeX-command-list)) TeX-command-list))
-% eval: (setq TeX-command-list  (assq-delete-all (car (assoc "BibTeX" TeX-command-list)) TeX-command-list))
-% eval: (setq TeX-command-list  (assq-delete-all (car (assoc "Biber"  TeX-command-list)) TeX-command-list))
-% eval: (add-to-list 'TeX-command-list	'("BibTeX" "%(bibtex) ../LaTeX/%s" TeX-run-BibTeX nil t :help "Run BibTeX") t)
-% TeX-PDF-mode: t
-% TeX-file-line-error: t
-% TeX-debug-warnings: t
-% LaTeX-command-style: (("" "%(PDF)%(latex) %(file-line-error) %(extraopts) -output-directory=../LaTeX %S%(PDFout)"))
-% TeX-source-correlate-mode: t
-% TeX-source-correlate-start-server: 0
-% TeX-parse-self: t
-% eval: (cond ((string-equal system-type "darwin") (progn (setq TeX-view-program-list '(("Skim" "/Applications/Skim.app/Contents/SharedSupport/displayline -b %n ../LaTeX/%o %b"))))))
-% eval: (cond ((string-equal system-type "gnu/linux") (progn (setq TeX-view-program-list '(("Evince" "evince --page-index=%(outpage) ../LaTeX/%o"))))))
-% eval: (cond ((string-equal system-type "gnu/linux") (progn (setq TeX-view-program-selection '((output-pdf "Evince"))))))
 % End:
