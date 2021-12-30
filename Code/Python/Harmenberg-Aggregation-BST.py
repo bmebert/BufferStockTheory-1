@@ -185,9 +185,6 @@ example.cycles = 0
 # Solve for the consumption function
 example.solve()
 
-example.t_sim=1
-example.AgentCount=10
-
 # Simulation under the base measure
 example.initialize_sim()
 

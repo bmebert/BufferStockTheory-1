@@ -60,6 +60,7 @@ This follows from:
 \subsubsection{Existence of \texorpdfstring{$\mNrm$}{m} where \texorpdfstring{$\Ex_t [{\mNrm}_{t+1}/\mNrm_t] < 1$}{E[m{t+1}/m{t}}}
     
 \textbf{If {\RIC} holds.}  Logic exactly parallel to that of Section~\ref{subsec:LimitsAsmtToInfty} leading to equation~\eqref{eq:xtp1toinfty}, but dropping the $\PermGroFac_{t+1}$ from the RHS, establishes that
+\begin{samepage}
 \begin{align}
   \lim_{\mNrm_{t} \uparrow \infty} \Ex_{t}[{\mNrm}_{t+1}/\mNrm_{t}]  & =   
                                                                        \lim_{\mNrm_{t} \uparrow \infty} 
@@ -68,6 +69,7 @@ This follows from:
   \\  & = \Ex_{t}[{\APFac}/{\PermGroFac}_{t+1}]  \label{eq:emgro}
   \\  & < 1 \notag
 \end{align}
+\end{samepage}
 where the inequality reflects imposition of the \GICNrm~\eqref{eq:GICNrm}.
 
 \textbf{If {\RIC} fails.}  When the {\RIC} fails, the fact that $\lim_{\mNrm^{\uparrow} \infty} \cFunc^{\prime}(\mNrm) = 0$ (see equation~\eqref{eq:MPCminInv}) means that the limit of the RHS of~\eqref{eq:emgro} as $\mNrm \uparrow \infty$ is $\bar{\RNrm}=\Ex_{t}[\RNrm_{t+1}]$.  In the next step of this proof, we will prove that the combination {\GICNrm} and \cncl{\RIC} implies $\bar{\RNrm} < 1$.
@@ -216,26 +218,36 @@ But we showed in Section~\ref{subsec:UncertaintyModifiedConditions} that the onl
 
 \subsection{A Third Measure}
 
-A footnote in~Section~\ref{sec:convergedcfunc} mentions the possibility of calculating growth in the expectation of the log of $\mNrm$ rather than the expectation of the ratio.  Here we show that one way of doing that is to calculate a nonlinear adjustment factor for the expectation of the ratio.
+A footnote in~Section~\ref{sec:convergedcfunc} mentions reasons why it may be useful to calculate $\Ex_{t}[\log (\mLvl_{t+1}/\log \mLvl_{t})]$.  Here we show that one way of doing that is to calculate a nonlinear adjustment factor for the expectation of the growth factor.
 \begin{align*}
 \log \left(\mLvl_{t+1}/\mLvl_{t}\right) & = \log (\PermGroFac \PermShk_{t+1} \mNrm_{t+1})- \log \mNrm_{t} 
 \\ & = \log \PermGroFac (\aNrm_{t}\RNrm+\PermShk_{t+1}\TranShk_{t+1})- \log \mNrm_{t} 
 \\ & = \log \PermGroFac (\aNrm_{t}\RNrm+1+(\PermShk_{t+1}\TranShk_{t+1}-1))- \log \mNrm_{t}
 \end{align*}
 
-Now define $\BalGroRte{\mNrm}_{t+1}=\aNrm_{t}\RNrm+1$, and compute the expectation:
+Now define $\breve{\mNrm}_{t+1}=\aNrm_{t}\RNrm+1$, and compute the expectation:
 \begin{align*}
   \Ex_{t}[\log \left(\mLvl_{t+1}/\mLvl_{t}\right)]
-   & = \Ex_{t}\left[\log \PermGroFac (\BalGroRte{\mNrm}_{t+1}+(\PermShk_{t+1}\TranShk_{t+1}-1))\right]- \log \mNrm_{t} 
-\\ & = \log \PermGroFac + \Ex_{t}\left[\log (\BalGroRte{\mNrm}_{t+1}(1+\BalGroRte{\mNrm}_{t+1}^{-1}(\PermShk_{t+1}\TranShk_{t+1}-1))\right]- \log \mNrm_{t} 
-\\ & = \underbrace{\log \PermGroFac + \log \BalGroRte{\mNrm}_{t+1} - \log \mNrm_{t}}_{\equiv \log \Ex_{t}[\mLvl_{t+1}/\mLvl_{t}]} + \Ex_{t}\left[ \log (1+\BalGroRte{\mNrm}_{t+1}^{-1}(\PermShk_{t+1}\TranShk_{t+1}-1))\right]
+   & = \Ex_{t}\left[\log \PermGroFac (\breve{\mNrm}_{t+1}+(\PermShk_{t+1}\TranShk_{t+1}-1))\right]- \log \mNrm_{t} 
+\\ & = \log \PermGroFac + \Ex_{t}\left[\log \breve{\mNrm}_{t+1}\left(1+(\PermShk_{t+1}\TranShk_{t+1}-1)\breve{\mNrm}_{t+1}^{-1}\right)\right]- \log \mNrm_{t} 
+\\ & = \underbrace{\log \PermGroFac + \log \breve{\mNrm}_{t+1} - \log \mNrm_{t}}_{\equiv \log \Ex_{t}[\mLvl_{t+1}/\mLvl_{t}]} + \Ex_{t}\left[ \log (1+(\PermShk_{t+1}\TranShk_{t+1}-1)\breve{\mNrm}_{t+1}^{-1})\right]
 \end{align*}
 and exponentiating tells us that
-\begin{align}
-  \exp(\Ex_{t}[\log \mLvl_{t+1}/\mLvl_{t}]) & = \Ex_{t}[\mLvl_{t+1}/\mLvl_{t}]\exp( \Ex_{t}\left[ \log (1+\BalGroRte{\mNrm}_{t+1}^{-1}(\PermShk_{t+1}\TranShk_{t+1}-1))\right])
+\begin{align}\label{eq:mBalLogVSmBalLvl}
+  \exp(\Ex_{t}[\log \mLvl_{t+1}/\mLvl_{t}]) & = \Ex_{t}[\mLvl_{t+1}/\mLvl_{t}]\exp( \Ex_{t}\left[ \log (1+(\PermShk_{t+1}\TranShk_{t+1}-1)\breve{\mNrm}_{t+1}^{-1})\right])
 \end{align}
-and this latter factor is a number that approaches 1 from below as $\mNrm_{t}$ rises.  Thus the expected growth rate of the log is smaller than the log of the growth rate of the expected ratio.
+and this latter factor is a number that approaches 1 from below as $\mNrm_{t}$ rises.  Thus the expected growth rate of the log is smaller than the log of the growth rate of the expected growth factor.  This implies that the $\mNrm$ at which `balanced growth' can be expected in the log, $\mBalLog$, exceeds the corresponding point for the ratio, $\mBalLvl$.
 
+Furthermore, in the limit as $\mLvl_{t}$ gets arbitrarily large, if the {\RIC} holds and thus $\MPCmin > 0$, $\aNrm_{t+1}$ rises without bound, as does $\breve{\mNrm}_{t+1}=\aNrm_{t+1}\RNrm+1$, so the approximation $\log (1+\epsilon) \approx \epsilon$ becomes arbitrarily good.  Consequently, the last term on the RHS of \eqref{eq:mBalLogVSmBalLvl} can be approximated as
+\begin{align*}
+  \Ex_{t}\left[ \log (1+(\PermShk_{t+1}\TranShk_{t+1}-1)\breve{\mNrm}_{t+1}^{-1})\right]) & \approx \Ex_{t}\left[ (\PermShk_{t+1}\TranShk_{t+1}-1)\breve{\mNrm}_{t+1}^{-1})\right])
+                                                                                            \\ & = 0
+\end{align*}
+
+This demonstrates that
+\begin{align}
+  \lim_{\mLvl_{t} \uparrow \infty}   \exp(\Ex_{t}[\log \mLvl_{t+1}/\mLvl_{t}]) & = \Ex_{t}[\mLvl_{t+1}/\mLvl_{t}]
+\end{align}
 % Abandoned efforts to prove that this target exists; it surely does, but that is not so easy to prove because it requires quantifying the competition between the fact that the first term being multiplied decreases with the fact that the second term increases.  
 
 \subsection{Proof of Lemma}%~\ref{lemma:orderingPartOne}-\ref{lemma:orderingPartTwo}}

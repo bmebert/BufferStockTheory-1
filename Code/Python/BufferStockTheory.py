@@ -12,7 +12,7 @@
 #       format_version: '1.3'
 #       jupytext_version: 1.11.5
 #   kernelspec:
-#     display_name: Python 3 (ipykernel)
+#     display_name: Python 3
 #     language: python
 #     name: python3
 #   language_info:
@@ -190,20 +190,19 @@ base_params['BoroCnstArt'] = None    # No artificial borrowing constraint
 # \newcommand{\MPC}{\kappa}
 # \newcommand{\PermGroFac}{\pmb{\Phi}}
 # \newcommand{\PermGroFacAdj}{\tilde{\Phi}}
-# \newcommand{\PermShkStd}{\sigma_\Psi}
-# \newcommand{\PermShkStd}{\sigma_\psi}
-# \newcommand{\PermShk}{\Psi} % New
-# \newcommand{\PermShk}{\psi} % New
+# \newcommand{\PermShk}{\pmb{\Psi}} % New
+# \newcommand{\PermShkStd}{\sigma_{\PermShk}}
 # \newcommand{\Rfree}{\mathsf{R}}
 # \newcommand{\Trg}{\hat}
 # \newcommand{\Bal}{\check}
 # \newcommand{\Thorn}{\pmb{\TH}}
 # \newcommand{\TranShkStd}{\sigma_\Theta}
-# \newcommand{\TranShk}{\Theta}
-# \newcommand{\TranShk}{\theta}
-# \newcommand{\TranShkStd}{\sigma_{\theta}}
+# \newcommand{\TranShk}{\pmb{\theta}}
+# \newcommand{\TranShkEmp}{\xi}
+# \newcommand{\TranShkStd}{\sigma_{\TranShk}}
 # \newcommand{\UnempPrb}{\wp}
 # \newcommand\maththorn{\mathord{\pmb{\text{\TH}}}}
+# \newcommand{\BalGroRte}{\tilde}
 # \end{align}
 #
 # | Parameter | Description | Python Variable | Value |
@@ -391,7 +390,7 @@ makeFig('cFuncsConverge')  # Comment out if you want to run uninterrupted
 #
 #
 
-# %% [markdown]
+# %% [markdown] {"jp-MarkdownHeadingCollapsed": true, "tags": []}
 # ### [Growth Patience and the GICRaw](https://econ-ark.github.io/BufferStockTheory/#GIC)
 #
 # For a [perfect foresight consumer](https://www.econ2.jhu.edu/people/ccarroll/public/lecturenotes/consumption/PerfForesightCRRA), whether the ratio $c$=__**c**__/__**p**__ is rising, constant, or falling depends on the relative growth rates of consumption and permanent income; that ratio is measured by the [Perfect Foresight Growth Patience Factor](https://econ-ark.github.io/BufferStockTheory/#PFGPF):
@@ -534,7 +533,7 @@ GICNrmFailsButGICRawHolds_params['PermShkStd'] = [0.2]
 # Create an agent with these parameters
 GICNrmFailsButGICRawHolds = \
     IndShockConsumerType(**GICNrmFailsButGICRawHolds_params,
-                         quietly=False,  # If True, output suppressed
+                         quietly=True,messaging_level=logging.INFO  # If True, output suppressed
                          )
 # %% [markdown]
 # `# Solve that consumer's problem:`
@@ -593,7 +592,7 @@ GICNrmFailsButGICRawHolds.aXtraCount = GICNrmFailsButGICRawHolds.aXtraCount * 2
 GICNrmFailsButGICRawHolds.update_assets_grid()
 
 # and decrease error tolerance
-GICNrmFailsButGICRawHolds.tolerance = GICNrmFailsButGICRawHolds.tolerance/10
+GICNrmFailsButGICRawHolds.tolerance = GICNrmFailsButGICRawHolds.tolerance/100
 
 GICNrmFailsButGICRawHolds.solution[0].stge_kind['iter_status'] = 'iterator'
 # continue solving
@@ -607,7 +606,7 @@ print('\ndistance_now < distance_original: ' +
 # %% [markdown]
 # `# Plot the results:`
 
-# %% {"tags": []}
+# %% {"pycharm": {"is_executing": true}, "tags": []}
 # Plot https://econ-ark.github.io/BufferStockTheory/#GICNrmFailsButGICRawHolds
 
 soln = GICNrmFailsButGICRawHolds.solution[0]  # Short alias for solution
@@ -618,6 +617,18 @@ Bilt, Pars, E_tp1_ = soln.Bilt, soln.Pars, soln.E_Next_
 # consumption function
 cFunc = Bilt.cFunc
 
+def cFunc_Uncnst(m): return mpc_Min * m + (h_inf - 1) * mpc_Min
+
+RPFac = Bilt.RPFac
+G = Pars.PermGroFac
+
+# https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#MPCminDefn
+mpc_Min = 1.0-RPFac 
+# https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#hNrmDefn
+h_inf = (1.0/(1.0-G/Rfree))
+
+def cFunc_Uncnst(m): return mpc_Min * m + (h_inf - 1) * mpc_Min
+
 # Initialize figure setup
 fig, ax = plt.subplots(figsize=(12, 8))
 
@@ -625,30 +636,40 @@ fig, ax = plt.subplots(figsize=(12, 8))
 yMin = 0.0
 yMax = E_tp1_.c_where_E_Next_m_tp1_minus_m_t_eq_0(xMax)*1.3
 
-mPltVals = np.linspace(xMin, xMax, mPts)
+mPtsSml=500
+mPltVals = np.linspace(xMin, xMax, mPtsSml)
 
 if latexExists:
-    c_Stable_Trg_txt = "$\Ex_{t}[\Delta m_{t+1}] = 0$"
-    c_Stable_Bal_txt = "$\Ex_{t}[{\mathbf{m}}_{t+1}/{\mathbf{m}}_{t}] = \PermGroFac$"
+    c_Stable_TrgNrm_txt = "$\Ex_{t}[\Delta m_{t+1}] = 0$"
+    c_Stable_BalLvl_txt = "$\Ex_{t}[{\mathbf{m}}_{t+1}/{\mathbf{m}}_{t}] = \PermGroFac$"
+    c_Stable_BalLog_txt = "$\Ex_{t}[\log {\mathbf{m}}_{t+1} - \log {\mathbf{m}}_{t}] = \log \PermGroFac$"
+#    c_Unconstrained_txt = ""
 else:
-    c_Stable_Trg_txt = "$\mathsf{E}_{t}[\Delta m_{t+1}] = 0$"
-    c_Stable_Bal_txt = "$\mathsf{E}_{t}[\mathbf{m}_{t+1}/\mathbf{m}_{t}] = \PermGroFac$"
+    c_Stable_TrgNrm_txt = "$\mathsf{E}_{t}[\Delta m_{t+1}] = 0$"
+    c_Stable_BalLvl_txt = "$\mathsf{E}_{t}[\mathbf{m}_{t+1}/\mathbf{m}_{t}] = \PermGroFac$"
+    c_Stable_BalLog_txt = "$\mathsf{E}_{t}[\log \mathbf{m}_{t+1} - \log \mathbf{m}_{t}] = \log \PermGroFac$"
+#    c_Unconstrained_txt = ""
 
 cVals_Lmting_color = "black"
-c_Stable_Bal_color = "black"  # or "blue"
-c_Stable_Trg_color = "black"  # or "red"
+c_Stable_BalLvl_color = "black"  # or "blue"
+c_Stable_BalLog_color = "blue"  # or "blue"
+c_Stable_TrgNrm_color = "black"  # or "red"
+#c_Unconstrained_color = "black"  # or "red"
 
 cVals_Lmting = cFunc(mPltVals)
-c_Stable_Trg = E_tp1_.c_where_E_Next_m_tp1_minus_m_t_eq_0(mPltVals)
-c_Stable_Bal = E_tp1_.c_where_E_Next_PermShk_tp1_times_m_tp1_minus_m_t_eq_0(
-    mPltVals)
+c_Stable_TrgNrm = E_tp1_.c_where_E_Next_m_tp1_minus_m_t_eq_0(mPltVals)
+c_Stable_BalLvl = E_tp1_.c_where_E_Next_PermShk_tp1_times_m_tp1_minus_m_t_eq_0(mPltVals)
+#c_Stable_BalLog = list(map(lambda mPltVal: soln.c_where_E_Next_mLog_tp1_minus_mLog_t_eq_0(mPltVal), mPltVals))
+# c_Unconstrained = list(map(lambda mPltVal: cFunc_Uncnst(mPltVal), mPltVals))
 
 cVals_Lmting_lbl, = ax.plot(mPltVals, cVals_Lmting, color=cVals_Lmting_color)
-c_Stable_Trg_lbl, = ax.plot(mPltVals, c_Stable_Trg,
-                            color=c_Stable_Trg_color, linestyle="dashed", label=c_Stable_Trg_txt)
-c_Stable_Bal_lbl, = ax.plot(mPltVals, c_Stable_Bal,
-                            color=c_Stable_Bal_color, linestyle="dotted", label=c_Stable_Bal_txt)
-
+c_Stable_TrgNrm_lbl, = ax.plot(mPltVals, c_Stable_TrgNrm,
+                            color=c_Stable_TrgNrm_color, linestyle="dashed", label=c_Stable_TrgNrm_txt)
+c_Stable_BalLvl_lbl, = ax.plot(mPltVals, c_Stable_BalLvl,
+                            color=c_Stable_BalLvl_color, linestyle="dotted", label=c_Stable_BalLvl_txt)
+#c_Stable_BalLog_lbl, = ax.plot(mPltVals, c_Stable_BalLog,
+#                            color=c_Stable_BalLog_color, linestyle="dotted", label=c_Stable_BalLog_txt)
+# c_Unconstrained_lbl, = ax.plot(mPltVals, c_Unconstrained,color=c_Unconstrained_color, linestyle="dashdot", label=c_Unconstrained_txt)
 ax.set_xlim(xMin, xMax)
 ax.set_ylim(yMin, yMax)
 ax.set_xlabel("$\mathit{m}$", fontweight='bold', fontsize=fsmid, loc="right")
@@ -657,37 +678,27 @@ ax.set_ylabel("$\mathit{c}$", fontweight='bold', fontsize=fsmid, loc="top", rota
 ax.tick_params(labelbottom=False, labelleft=False, left='off',
                right='off', bottom='off', top='off')
 
-ax.legend(handles=[c_Stable_Trg_lbl, c_Stable_Bal_lbl])
+ax.legend(handles=[c_Stable_TrgNrm_lbl, c_Stable_BalLvl_lbl])
+#ax.legend(handles=[c_Stable_TrgNrm_lbl, c_Stable_BalLvl_lbl, c_Stable_BalLog_lbl])
 ax.legend(prop=dict(size=fsmid))
 
 mBalLvl = Bilt.mBalLvl
-cNrmFacBal = c_Stable_Bal = cFunc(mBalLvl)
+cNrmFacBalLvl = c_Stable_BalNrm = cFunc(mBalLvl)
 
-ax.plot(mBalLvl, cNrmFacBal, marker=".", markersize=15, color="black")  # Dot at Bal point
+ax.plot(mBalLvl, cNrmFacBalLvl, marker=".", markersize=15, color="black")  # Dot at Bal point
 ax.text(1, 0.6, "$\mathrm{c}(m_{t})$", fontsize=fsmid)  # label cFunc
 
 if latexExists:
-    ax.text(mBalLvl+0.02, cNrmFacBal-0.10, r"$\nwarrow$", fontsize=fsmid)
-    ax.text(mBalLvl+0.25, cNrmFacBal-0.18, r"$\hat{m}~$", fontsize=fsmid)
+    ax.text(mBalLvl+0.02, cNrmFacBalLvl-0.10, r"$\nwarrow$", fontsize=fsmid)
+    ax.text(mBalLvl+0.25, cNrmFacBalLvl-0.18, r"$\hat{m}~$", fontsize=fsmid)
 else:
-    ax.text(mBalLvl+0.02, cNrmFacBal-0.10, r"$\nwarrow$", fontsize=fsmid)
-    ax.text(mBalLvl+0.25, cNrmFacBal-0.18, r"$\check{m}~$", fontsize=fsmid)
+    ax.text(mBalLvl+0.02, cNrmFacBalLvl-0.10, r"$\nwarrow$", fontsize=fsmid)
+    ax.text(mBalLvl+0.25, cNrmFacBalLvl-0.18, r"$\check{m}~$", fontsize=fsmid)
 
 makeFig('GICNrmFailsButGICRawHolds')
-print('Finite mBalLvl but infinite mNrmFacTrg')
+print('Finite mBalLvl but infinite mNrmFacTrgNrm')
 
 
-# %%
-soln.mBalLog_find(soln)
-
-# %%
-soln.Bilt.mBalLog
-
-# %%
-stop
-
-# %%
-E_tp1_.c_where_E_Next_m_tp1_minus_m_t_eq_0(mPltVals)
 
 # %% [markdown]
 # In the [interactive dashboard](#interactive-dashboard), see what happens as changes in the time preference rate (or changes in risk $\PermShkStd$) change the consumer from _normalized-growth-patient_ $(\APF > \tilde{\PermGroFac})$ to _normalized-growth-impatient_ ($\APF < \tilde{\PermGroFac}$)
@@ -698,7 +709,7 @@ E_tp1_.c_where_E_Next_m_tp1_minus_m_t_eq_0(mPltVals)
 # %% [markdown]
 # `# Construct infinite horizon solution for consumer with baseline parameters:`
 
-# %% {"tags": []}
+# %% {"pycharm": {"is_executing": true}, "tags": []}
 # Find the infinite horizon solution
 
 base_params['aXtraCount'] = base_params['aXtraCount'] * 20
@@ -714,6 +725,7 @@ baseAgent_Inf = IndShockConsumerType(
 # %% [markdown] {"tags": []}
 # ### [Expected Consumption Growth, and Permanent Income Growth](https://econ-ark.github.io/BufferStockTheory/#AnalysisoftheConvergedConsumptionFunction)
 #
+# $\renewcommand{\PermShk}{\pmb{\Psi}}$
 # The next figure, [Analysis of the Converged Consumption Function](https://econ-ark.github.io/BufferStockTheory/#cNrmTargetFig), shows expected growth factors for the levels of consumption $\cLvl$ and market resources $\mLvl$ as a function of the market resources ratio $\mNrm$ for a consumer behaving according to the converged consumption rule, along with the growth factor for $\mNrm$ itself, and the (constant) growth factors for consumption and expected permanent income, $\APF$ and $\PermGroFac$.
 #
 # The growth factor for consumption can be computed without knowing the _level_ of the consumer's permanent income:
@@ -727,7 +739,7 @@ baseAgent_Inf = IndShockConsumerType(
 # %% [markdown] {"tags": []}
 # and similarly the growth factor for market resources is:
 #
-# \begin{eqnarray*}
+# \begin{eqnarray*}\renewcommand{\PermShk}{\pmb{\Psi}}
 # \Ex_{t}[\mLvl_{t+1}/\mLvl_{t}]
 # & = & \Ex_{t}\left[\frac{\PermGroFac \PermShk_{t+1} \mNrm_{t+1}} {\mNrm_{t}} \right]
 # \\ & = & \Ex_{t}\left[\frac{\PermGroFac \PermShk_{t+1} (\aNrm_{t}\Rfree/(\PermGroFac \PermShk_{t+1}))+\PermGroFac \PermShk_{t+1}\TranShk_{t+1}}
@@ -739,7 +751,7 @@ baseAgent_Inf = IndShockConsumerType(
 
 # %% [markdown]
 # For $\mNrm$ things are only slightly more complicated:
-# \begin{eqnarray*}
+# \begin{eqnarray*}\renewcommand{\PermShk}{\pmb{\Psi}}
 # \Ex_{t}[m_{t+1}]
 # & = & \Ex_{t}\left[(m_{t}-c_{t})(\Rfree/(\PermShk_{t+1}\PermGroFac)) +\TranShk_{t+1}\right]\\
 # & = & a_{t}\Rfree\Ex_{t}\left[(\PermShk_{t+1}\PermGroFac)^{-1}\right] +1 \\
@@ -771,7 +783,7 @@ baseAgent_Inf = IndShockConsumerType(
 # %% [markdown]
 # `# Solve problem of consumer with baseline parameters:`
 
-# %% {"pycharm": {"name": "#%%\n"}, "tags": []}
+# %% {"pycharm": {"is_executing": true, "name": "#%%\n"}, "tags": []}
 # Solve baseline parameters agent
 tweaked_params = deepcopy(base_params)
 tweaked_params['DiscFac'] = 0.970  # Tweak to make figure clearer
@@ -784,7 +796,7 @@ baseAgent_Inf.solve(
 # %% [markdown]
 # `# Plot growth factors for various model elements at steady state:`
 
-# %% {"tags": []}
+# %% {"pycharm": {"is_executing": true}, "tags": []}
 # Plot growth rates
 
 soln = baseAgent_Inf.solution[0]
@@ -917,7 +929,7 @@ makeFig('cNrmTargetFig')
 # %% [markdown] {"tags": []}
 # `# Define bounds for figure:`
 
-# %% {"tags": []}
+# %% {"pycharm": {"is_executing": true}, "tags": []}
 # Define mpc_Min, h_inf and PF consumption function, upper and lower bound of c function
 
 baseAgent_Inf = IndShockConsumerType(**base_params, quietly=True)  # construct it silently
@@ -945,14 +957,14 @@ def cFunc_BotBnd(m): return mpc_Min * m
 # %% [markdown]
 # `# Plot figure showing bounds`
 
-# %% {"tags": []}
+# %% {"pycharm": {"is_executing": true}, "tags": []}
 # Plot the consumption function and its bounds
 
 cMaxLabel = r'$\overline{c}(m)= (m-1+h)\tilde{\kappa}$'
-cMinLabel = r'Lower Bound: $\tilde{c}(m)= (1-\pmb{\text{\TH}}_{R})\tilde{\kappa}m$'
+cMinLabel = r'Lower Bound: $\tilde{c}(m)= (1-\pmb{\text{\TH}}_{\mathsf{R}})\tilde{\kappa}m$'
 if not latexExists:
     cMaxLabel = r'$\bar{c}(m) = (m-1+h)\kappa$'  # Use unicode kludge
-    cMinLabel = r'Lower Bound: c̲$(m)= (1-$'+Thorn+r'$_{R})m = \kappa m$'
+    cMinLabel = r'Lower Bound: c̲$(m)= (1-$'+Thorn+r'$_{\mathsf{R}})m = \kappa m$'
 
 mPlotMin = 0.0
 mPlotMax = 25
@@ -982,10 +994,12 @@ plt.text(mPlotMax+0.1, mPlotMin, "$m$", fontsize=22)
 plt.text(2.5, 1, r'$c(m)$', fontsize=22, fontweight='bold')
 upper_upper_bound_m = 4.6
 if latexExists:
-    plt.text(upper_upper_bound_m+0.6, cFunc_TopBnd(upper_upper_bound_m+0.5), r'$\leftarrow \overline{\overline{c}}(m)= \overline{\MPC}m = (1-\UnempPrb^{1/\CRRA}\pmb{\text{\TH}}_{R})m$',
+    plt.text(upper_upper_bound_m+0.6, cFunc_TopBnd(upper_upper_bound_m+0.5), 
+             r'$\leftarrow \overline{\overline{c}}(m)= \overline{\MPC}m = (1-\UnempPrb^{1/\CRRA}\pmb{\text{\TH}}_{\mathsf{R}})m$',
              fontsize=22, fontweight='bold')
 else:
-    plt.text(upper_upper_bound_m+0.6, cFunc_TopBnd(upper_upper_bound_m+0.5), r'$\overline{\overline{c}}(m)= \overline{\kappa}m = (1-\wp^{1/\rho}$'+Thorn+'$_{R})m$',
+    plt.text(upper_upper_bound_m+0.6, cFunc_TopBnd(upper_upper_bound_m+0.5), 
+             r'$\overline{\overline{c}}(m)= \overline{\kappa}m = (1-\wp^{1/\rho}$'+Thorn+'$_{\mathsf{R}})m$',
              fontsize=22, fontweight='bold')
 upper_bound_m = 12
 plt.text(
@@ -1018,7 +1032,7 @@ makeFig('cFuncBounds')
 # %% [markdown]
 # `# Make and plot figure showing the upper and lower limites of the MPC:`
 
-# %% {"tags": []}
+# %% {"pycharm": {"is_executing": true}, "tags": []}
 # The last figure shows the upper and lower limits of the MPC
 
 mPlotMin = 0
@@ -1037,9 +1051,9 @@ MPC = soln.cFunc.derivative(m)
 # Define the lower bound of MPC
 #MPCLower = mpc_Min
 
-kappaDef = r'$\tilde{\kappa}\equiv(1-\pmb{\text{\TH}}_{R})$'
+kappaDef = r'$\tilde{\kappa}\equiv(1-\pmb{\text{\TH}}_{\mathsf{R}})$'
 if not latexExists:
-    kappaDef = r'κ̲$\equiv(1-$'+Thorn+'$_{R})$'
+    kappaDef = r'κ̲$\equiv(1-$'+Thorn+'$_{\mathsf{R}})$'
 
 plt.plot(m, MPC, color='black')
 plt.plot([mPlotMin, mPlotMax], [mpc_Max, mpc_Max], color='black')
@@ -1049,7 +1063,7 @@ plt.ylim(0, 1)  # MPC bounds are between 0 and 1
 
 if latexExists:
     plt.text(1.5, 0.6, r'$\MPC(m) \equiv c^{\prime}(m)$', fontsize=26, fontweight='bold')
-    plt.text(5, 0.87, r'$(1-\UnempPrb^{1/\CRRA}\pmb{\text{\TH}})\equiv \overline{\MPC}$',
+    plt.text(5, 0.87, r'$(1-\UnempPrb^{1/\CRRA}\pmb{\text{\TH}}_{\mathsf{R}})\equiv \overline{\MPC}$',
              fontsize=26, fontweight='bold')  # Use Thorn character
 else:
     plt.text(1.5, 0.6, r'$\kappa(m) \equiv c^{\prime}(m)$', fontsize=26, fontweight='bold')
@@ -1093,7 +1107,7 @@ makeFig('MPCLimits')
 #
 # [Perfect Foresight Liquidity Constrained Solution](https://econ-ark.github.io/BufferStockTheory/#ApndxLiqConstr)
 
-# %% {"tags": []}
+# %% {"pycharm": {"is_executing": true}, "tags": []}
 PFGICRawHoldsFHWCFailsRICFails_par = deepcopy(init_perfect_foresight)
 
 # Replace parameters.

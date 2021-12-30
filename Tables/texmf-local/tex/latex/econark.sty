@@ -20,6 +20,8 @@
 \newcommand{\iflabelexists}[3]{\@ifundefined{r@#1}{\G@refundefinedtrue{#3}}{#2}}
 \makeatother
 
+\providecommand{\ARKurl}{\href{https://econ-ark.org}{Econ-ARK}}
+
 % Define various generically useful terms and items
 \providecommand{\avg}{\bar}
 \providecommand{\cov}{}\renewcommand{\cov}{\textup{cov}}
@@ -53,7 +55,7 @@
 \newcommand{\GPFacNrmDefn}{\href{{\BSTpaperLink}\#GPFacNrmDefn}{\textrm{GPF-Nrm}}}
 \newcommand{\GICNrm}{\href{{\BSTpaperLink}\#GICNrm}{\textrm{GIC-Nrm}}}
 \newcommand{\GICHarm}{\href{{\BSTpaperLink}\#GICHarm}{\textrm{GIC-Harm}}}
-\newcommand{\GICSzeidl}{\href{{\BSTpaperLink}\#GICSzeidl}{\textrm{GIC-Szeidl}}}
+\newcommand{\GICSdl}{\href{{\BSTpaperLink}\#GICSdl}{\textrm{GIC-Szeidl}}}
 \newcommand{\RIC}{\href{{\BSTpaperLink}\#RIC}{\textrm{RIC}}}
 \newcommand{\PFFVAC}{\href{{\BSTpaperLink}\#PFFVAC}{\textrm{PF-FVAC}}}
 \newcommand{\PFVAFacDefn}{\href{{\BSTpaperLink}\#PFVAFDefn}{\textrm{PF-VAF}}}
@@ -238,6 +240,7 @@
 \providecommand{\permGroFacInd}{\pmb{\phi}}
 \providecommand{\PermGroFac}{\pmb{\Phi}}
 \providecommand{\PermGroFacAdj}{\underline{\PermGroFac}}
+\providecommand{\PermGroFacuAdj}{\underline{\underline{\PermGroFac}}}
 \providecommand{\PermGroRte}{\varphi}
 
 \providecommand{\Alive}{\mathcal{L}}\renewcommand{\Alive}{\mathcal{L}}
@@ -266,8 +269,8 @@
 
 
 \providecommand{\EPermShkInv}{\Ex[\PermShk^{-1}]}  % Formerly EpShkInv
-\providecommand{\InvEPermShkInv}{\underline{\psi}} % Formerly InvEpShkInv
-\providecommand{\uInvEuPermShk}{\underline{\underline{\psi}}} % Formerly {\uInvEpShkuInv}
+\providecommand{\InvEPermShkInv}{\underline{\PermShk}} % Formerly InvEpShkInv
+\providecommand{\uInvEuPermShk}{\underline{\underline{\PermShk}}} % Formerly {\uInvEpShkuInv}
 
 \providecommand{\RfreeEff}{\bar{\Rfree}} % Blanchard-adjusted interest rate
 
