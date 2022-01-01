@@ -9,9 +9,9 @@
 #       format_version: '1.3'
 #       jupytext_version: 1.11.5
 #   kernelspec:
-#     display_name: Python 3.8 (XPython)
+#     display_name: Python 3 (ipykernel)
 #     language: python
-#     name: xpython
+#     name: python3
 # ---
 
 # %% [markdown]
@@ -26,17 +26,15 @@
 
 # %% code_folding=[0] tags=[]
 # Preliminaries
-from HARK.ConsumptionSaving.ConsIndShockModel import (
-    IndShockConsumerType
-)
-
-from HARK.ConsumptionSaving.tests.test_IndShockConsumerType import (
-    dict_harmenberg    
-)
-
 import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
+from copy import copy, deepcopy
+
+from HARK.distribution import calc_expectation
+from HARK.ConsumptionSaving.ConsIndShockModel import (
+    IndShockConsumerType,init_idiosyncratic_shocks
+)
 
 # %% [markdown] jp-MarkdownHeadingCollapsed=true tags=[] jp-MarkdownHeadingCollapsed=true
 # # Description of the problem
@@ -131,7 +129,7 @@ from matplotlib import pyplot as plt
 #
 # The first of Harmenberg's insights is that the previous integral can be rearranged as
 # \begin{equation*}
-# \CLvl_t = \int_{\pLvl} \cFunc(\mNrm)\left(\int \pLvl \times \mpLvlDstn_t(\mNrm,\pLvl) \, d\pLvl\right) \, d\mNrm.
+# \CLvl_t = \int_{\mNrm} \cFunc(\mNrm)\left(\int \pLvl \times \mpLvlDstn_t(\mNrm,\pLvl) \, d\pLvl\right) \, d\mNrm.
 # \end{equation*}
 # The inner integral, $\int_{\pLvl} \pLvl \times \mpLvlDstn_t(\mNrm,\pLvl) \, d\pLvl$, is a function of $\mNrm$ and it measures *the total amount of permanent income accruing to agents with normalized market resources of* $\mNrm$. De-trending this object by the deterministic component of growth in permanent income $\PermGroFac$, Harmenberg defines the *permanent-income-weighted distribution* $\mWgtDstnMarg(\cdot)$ as
 #
@@ -145,7 +143,7 @@ from matplotlib import pyplot as plt
 # \CLvl_{t} = \PermGroFac^t \int_{m} \cFunc(\mNrm) \times \mWgtDstnMarg_t(\mNrm) \, dm.
 # \end{equation}
 #
-# There are no computational advances yet: We have merely hidden the joint distribution of $(\pLvl,\mNrm)$ inside the $\mWgtDstnMarg$ object we have defined. This helps us notice that $\mWgtDstnMarg$ is the only object besides the solution that we need in order to compute aggregate consumption. But we still have no practial way of computing or approximating $\mWgtDstnMarg$.
+# There are no computational advances yet: We have merely hidden the joint distribution of $(\mNrm,\pLvl)$ inside the $\mWgtDstnMarg$ object we have defined. This helps us notice that $\mWgtDstnMarg$ is the only object besides the solution that we need in order to compute aggregate consumption. But we still have no practial way of computing or approximating $\mWgtDstnMarg$.
 #
 # ## Second insight
 #
@@ -154,9 +152,9 @@ from matplotlib import pyplot as plt
 # We start with the density function of $\mNrm_{t+1}$ given $\mNrm_t$ and $\PermShk_{t+1}$, $\kernel(\mNrm_{t+1}|\mNrm_t,\PermShk_{t+1})$. This density will depend on the model's transition equations and draws of random variables like transitory shocks to income in $t+1$ or random returns to savings between $t$ and $t+1$. If we can simulate those things, then we can sample from $\kernel(\cdot|\mNrm_t,\PermShk_{t+1})$.
 #
 # Harmenberg shows that
-# \begin{equation}\label{eq:transition}
+# \begin{equation*}\label{eq:transition}
 # \texttt{transition:    }\mWgtDstnMarg_{t+1}(\mNrm_{t+1}) = \int \kernel(\mNrm_{t+1}|\mNrm_t, \PermShk_t) \pShkNeutDstn(\PermShk_{t+1}) \mWgtDstnMarg_t(\mNrm_t)\, d\mNrm_t\, d\PermShk_{t+1},
-# \end{equation}
+# \end{equation*}
 # where $\pShkNeutDstn$ is an altered density function for the permanent income shocks $\PermShk$, which he calls the *permanent-income-neutral* measure, and which relates to the original density $f_{\PermShk}$ through $$\pShkNeutDstn(\PermShk_{t+1})\def \PermShk_{t+1}f_{\PermShk}(\PermShk_{t+1})\,\,\, \forall \PermShk_{t+1}.$$
 #
 # What's remarkable about this equation is that it gives us a way to obtain a distribution $\mWgtDstnMarg_{t+1}$ from $\mWgtDstnMarg_t$:
@@ -177,33 +175,47 @@ from matplotlib import pyplot as plt
 # %% [markdown]
 # `# Implementation in HARK:`
 
-# %% code_folding=[] tags=[]
-# Create an infinite horizon agent with the default parametrization
-example = IndShockConsumerType(**dict_harmenberg, verbose = 0)
-example.cycles = 0
+# %% [markdown] code_folding=[] tags=[]
+# #### Farther down in the notebook, code like this solves the standard model:
+#
+# ```python
+# # Create a population with the default parametrization
+#
+# popn = IndShockConsumerType(**params)
+#
+# # Specify which variables to track in the simulation
+# popn.track_vars=[
+#     'mNrm',  # mLvl normalized by permanent income (mLvl = market resources)
+#     'cNrm',  # cLvl normalized by permanent income (cLvl = consumption)
+#     'pLvl']  # pLvl: permanent income
+#
+# popn.cycles = 0  # No life cycles -- an infinite horizon
+#
+# # Solve for the consumption function
+# popn.solve()
+#
+# # Simulate under the base measure
+# popn.initialize_sim()
+# popn.simulate()
+# ```
 
-# Solve for the consumption function
-example.solve()
-
-# Simulation under the base measure
-example.initialize_sim()
-
-# %% code_folding=[] tags=[]
-example.simulate()
-
-# Harmenberg permanent-income-neutral simulation
-
-# Change the income process to use the neutral measure
-example.neutral_measure = True
-example.update_income_process()
-example.initialize_sim()
-example.simulate()
-
-# %%
-example.state_now.values()
-
-# %%
-stop
+# %% [markdown] code_folding=[] tags=[]
+# #### Later, code like this simulates using the permanent-income-neutral measure
+# ```python
+# # Harmenberg permanent-income-neutral simulation
+#
+# # Make a clone of the population weighted solution
+# ntrl = deepcopy(popn)
+#
+# # Change the income process to use the neutral measure
+#
+# ntrl.neutral_measure = True
+# ntrl.update_income_process()
+#
+# # Simulate
+# ntrl.initialize_sim()
+# ntrl.simulate()
+# ```
 
 # %% [markdown] tags=[]
 # All we had to do differently to simulate using the permanent-income-neutral measure was to set the agent's property `neutral_measure=True`.
@@ -230,12 +242,12 @@ stop
 # \end{equation}
 #
 # If we could simulate the economy with a continuum of agents we would find that, over time, our estimate of aggregate market resources $\MLvlest_t$ would converge to $\MLvl$ and $\CLvlest_t$ would converge to $\CLvl$. Therefore, if we computed our aggregate estimates at different periods in time we would find them to be close:
-# \begin{equation}
+# \begin{equation*}
 #     \MLvlest_t \approx \MLvlest_{t+n} \approx \MLvl \,\,
 #     \text{and} \,\,
 #     \CLvlest_t \approx \CLvlest_{t+n} \approx \CLvl, \,\,
 #     \text{for } n>0 \text{ and } t \text{ large enough}.
-# \end{equation}
+# \end{equation*}
 #
 # In practice, however, we rely on approximations using a finite number of agents $I$. Our estimates of aggregate market resources and consumption at time $t$ are
 # \begin{equation}
@@ -266,19 +278,31 @@ stop
 
 # %% Experiment setup tags=[]
 # How long to run the economies without sampling? T_0
-burnin = 2000
+# Because we start the population at mBalLvl which turns out to be close
+# to MBalLvl so we don't need a long burn in period
+burn_in = 200
 # Fixed intervals between sampling aggregates, Δt
-sample_every = 50
+sample_every = 1 # periods - increase this if worried about serial correlation
 # How many times to sample the aggregates? n
-n_sample = 100
+n_sample = 200 # times; minimum
 
 # Create a vector with all the times at which we'll sample
-sample_periods = np.arange(start=burnin,
-                           stop = burnin+sample_every*n_sample,
-                           step = sample_every, dtype = int)
+sample_periods_lvl = \
+    np.arange(start = burn_in,
+              stop  = burn_in + \
+                      sample_every * n_sample,
+              step  = sample_every, dtype = int)
+# Corresponding periods when object is first difference not level
+sample_periods_dff = \
+    np.arange(start = burn_in,
+              stop  = burn_in + \
+                      sample_every * n_sample-1, # 1 fewer diff
+              step  = sample_every, dtype = int)
 
-# Maximum number of aggents that we will use for our approximations
-max_agents = 10000
+# Maximum number of agents that we will use for our approximations
+max_agents = 100000
+# Minimum number of agents for comparing methods in plots
+min_agents = 100
 
 # %% [markdown]
 # `# Define tool to calculate summary statistics:`
@@ -288,26 +312,24 @@ max_agents = 10000
 # and computes all the summary statistics we need
 
 def sumstats(sims, sample_periods):
-    
-    # sims will be an array in the shape of hark's
-    # agent.history elements
-    
+    # sims will be an array in the shape of [economy].history elements
     # Columns are different agents and rows are different times.
-    # Subset the times at which we'll sample and transpose.
-    samples = pd.DataFrame(sims[sample_periods,].T)
     
-    # Get rolling averages over agents. This will tell us
-    # What our aggregate estimate would be if we had each possible
-    # sample size
-    avgs = samples.expanding(1).mean()
+    # Subset the times at which we'll sample and transpose.
+    samples_lvl = pd.DataFrame(sims[sample_periods,].T)
+
+    # Get averages over agents. This will tell us what our
+    # aggregate estimate would be if we had each possible sim size
+    avgs_lvl = samples_lvl.expanding(1).mean()
     
     # Now get the mean and standard deviations across time with
     # every number of agents
-    means = avgs.mean(axis = 1)
-    stds = avgs.std(axis = 1)
-    
-    # Also return the full sampl on the last simulation period
-    return {'means':  means, 'stds': stds, 'dist_last': sims[-1,]}
+    mean_lvl = avgs_lvl.mean(axis = 1)
+    vars_lvl = avgs_lvl.std(axis = 1)**2
+
+    # Also return the full sample on the last simulation period
+    return {'mean_lvl': mean_lvl, 'vars_lvl': vars_lvl,
+            'dist_last': sims[-1,]}
 
 
 # %% [markdown]
@@ -315,14 +337,18 @@ def sumstats(sims, sample_periods):
 
 # %% Create and simulate agent tags=[]
 # Create and solve agent
-dict_harmenberg.update(
-    {'T_sim': max(sample_periods)+1, 'AgentCount': max_agents,
-     'track_vars': [ 'mNrm','cNrm','pLvl']}
-)
 
-example = IndShockConsumerType(**dict_harmenberg, verbose = 0)
-example.cycles = 0
-example.solve()
+popn = IndShockConsumerType(**init_idiosyncratic_shocks)
+
+# Modify default parameters
+popn.T_sim = max(sample_periods_lvl)+1
+popn.AgentCount = max_agents
+popn.track_vars = ['mNrm', 'cNrm', 'pLvl']
+popn.LivPrb=[1.0]
+popn.cycles = 0
+
+# Solve (but do not yet simulate)
+popn.solve()
 
 # %% [markdown]
 # Under the basic simulation strategy, we have to de-normalize market resources and consumption multiplying them by permanent income. Only then we construct our statistics of interest.
@@ -336,28 +362,29 @@ example.solve()
 # We now check both conditions with our parametrization.
 
 # %% tags=[]
-from HARK.distribution import calc_expectation
-
-thorn_G = (example.Rfree * example.DiscFac) ** (1/example.CRRA) / example.PermGroFac[0]
-GPFacRaw = example.solution[0].Bilt.GPFacRaw
-GPFacRaw-thorn_G
-
-# %% tags=[]
-e_log_psi_base = calc_expectation(example.PermShkDstn[0], func = lambda x: np.log(x))
-# E_pin[g(eta)] = E_base[eta*g(eta)]
-e_log_psi_pin = calc_expectation(example.PermShkDstn[0], func = lambda x: x*np.log(x))
-
-szeidl_cond = np.log(thorn_G) < e_log_psi_base
-harmen_cond = np.log(thorn_G) < e_log_psi_pin
-
-if szeidl_cond:
-    print("Szeidl's condition is satisfied, there is a stable invariant distribution of normalized market resources")
-else:
-    print("Warning: Szeidl's condition is not satisfied")
-if harmen_cond:
-    print("Harmenberg's condition is satisfied, there is a stable invariant permanent-income-weighted distribution")
-else:
-    print("Warning: Harmenberg's condition is not satisfied")
+# Two versions for different HARK versions
+try: # This works with HARK 2.0 pre-alpha
+    Bilt = popn.solution[0].Bilt
+    APFac = Bilt.APFac
+    GPFacRaw = Bilt.GPFacRaw
+    soln=popn.solution[0]
+    soln.check_GICSdl(soln,quietly=False)
+    soln.check_GICHrm(soln,quietly=False)
+except: # This one for HARK 0.12 or later
+    APFac = popn.thorn
+    GPFacRaw = popn.GPFRaw
+    e_log_PermShk_popn = calc_expectation(popn.PermShkDstn[0], func = lambda x:   np.log(x))
+    e_log_PermShk_ntrl = calc_expectation(popn.PermShkDstn[0], func = lambda x: x*np.log(x))
+    szeidl_cond = np.log(GPFacRaw) < e_log_PermShk_popn
+    harmen_cond = np.log(GPFacRaw) < e_log_PermShk_ntrl
+    if szeidl_cond:
+        print("Szeidl's condition is satisfied, there is a stable invariant distribution of normalized market resources")
+    else:
+        print("Warning: Szeidl's condition is not satisfied")
+    if harmen_cond:
+        print("Harmenberg's condition is satisfied, there is a stable invariant permanent-income-weighted distribution")
+    else:
+        print("Warning: Harmenberg's condition is not satisfied")
 
 # %% [markdown]
 # Knowing that the conditions are satisfied, we are ready to perform our experiments.
@@ -366,105 +393,115 @@ else:
 
 # %% tags=[]
 # Base simulation
-example.initialize_sim()
-example.simulate()
 
-M_base = sumstats(example.history['mNrm'] * example.history['pLvl'],
-                  sample_periods)
-m_base = sumstats(example.history['mNrm'], sample_periods)
-C_base = sumstats(example.history['cNrm'] * example.history['pLvl'],
-                  sample_periods)
+# Start assets at m balanced growth (levels) point
+try: # Accommodate syntax for old and new versions of HARK
+    Bilt=popn.solution[0].Bilt
+    popn.aNrmInitMean = np.log(Bilt.mBalLvl-1)  
+except:
+    popn.aNrmInitMean = np.log(popn.solution[0].mNrmStE-1)
+    
+popn.aNrmInitStd = 0.
+
+popn.initialize_sim()
+popn.simulate()
+
+# Retrieve history
+mNrm_popn = popn.history['mNrm']
+mLvl_popn = popn.history['mNrm'] * popn.history['pLvl']
+cLvl_popn = popn.history['cNrm'] * popn.history['pLvl']
 
 # %% [markdown]
 # Update and simulate using Harmenberg's strategy. This time, not multiplying by permanent income.
 
 # %% tags=[]
-# Harmenberg PIN simulation
-example.neutral_measure = True
-example.update_income_process()
-example.track_vars = [ 'mNrm','cNrm']
-example.initialize_sim()
-example.simulate()
+# Harmenberg permanent income neutral simulation
 
-M_pin = sumstats(example.history['mNrm'], sample_periods)
-C_pin = sumstats(example.history['cNrm'], sample_periods)
+# Start by duplicating the previous setup
+ntrl = deepcopy(popn)
+
+# Recompute income process to use neutral measure
+ntrl.neutral_measure = True
+ntrl.update_income_process()
+
+ntrl.initialize_sim()
+ntrl.simulate()
+
+# Retrieve history 
+cLvl_ntrl = ntrl.history['cNrm']
+mLvl_ntrl = ntrl.history['mNrm']
 
 # %% [markdown]
-# We can now compare the two methods my plotting our measure of precision for different numbers of simulated agents.
-
-# %% Plots code_folding=[0] tags=[]
-# Plots
-nagents = np.arange(1,max_agents+1,1)
-
-# Market resources
-fig, axs = plt.subplots(2, figsize = (10,7), constrained_layout=True)
-
-fig.suptitle('Estimates of Aggregate Market Resources', fontsize=16)
-axs[0].plot(nagents, M_base['stds'], label = 'Base')
-axs[0].plot(nagents, M_pin['stds'], label = 'Perm. Inc. Neutral')
-axs[0].set_yscale('log')
-axs[0].set_xscale('log')
-axs[0].set_title('Variance', fontsize=14)
-axs[0].set_ylabel(r'$Var\left(\{\hat{M}_t\}_{t\in\mathcal{T}}\right)$', fontsize = 14)
-axs[0].set_xlabel('Number of Agents', fontsize=12)
-axs[0].grid()
-axs[0].legend(fontsize=12)
-
-axs[1].plot(nagents, M_base['means'], label = 'Base')
-axs[1].plot(nagents, M_pin['means'], label = 'Perm. Inc. Neutral')
-axs[1].set_xscale('log')
-axs[1].set_title('Average', fontsize=14)
-axs[1].set_ylabel(r'$Avg\left(\{\hat{M}_t\}_{t\in\mathcal{T}}\right)$', fontsize=14)
-axs[1].set_xlabel('Number of Agents', fontsize=12)
-axs[1].grid()
-plt.show()
-
-# %% [markdown] tags=[]
-# The previous plot highlights the gain in efficiency from Harmenberg's method: it attains any given level of precission ($\text{Var}\left(\{\MLvlest_t\}_{t\in\mathcal{T}}\right)$) with roughly **one tenth** of the agents needed by the standard method to achieve that same level.
+# # Now Compare the Variances of Simulated Outcomes
 #
-# We now examine consumption.
+# Harmenberg (2021) and Szeidl (2013) prove that with an infinite population size, models of this kind will have constant and identical growth rates of aggregate consumption, market resources, and noncapital income.
+#
+# A method of comparing the efficiency of the two methods is therefore to calculate the variance of the simulated aggregate variables, and see how many agents must be simulated using each of them in order to achieve a given variance.  (An infinite number of agents would be required to achieve zero variance).
+#
+# The plots below show the (logs of) the estimated variances for the two methods as a function of the (logs of) the number of agents.
 
 # %% code_folding=[0] tags=[]
-# Consumption
-fig, axs = plt.subplots(2, figsize = (10,7), constrained_layout=True)
+# Plots
 
-fig.suptitle('Estimates of Aggregate Consumption', fontsize=16)
-axs[0].plot(nagents, C_base['stds'], label = 'Base')
-axs[0].plot(nagents, C_pin['stds'], label = 'Perm. Inc. Neutral')
+# Construct aggregate levels and growth rates 
+## Cumulate levels and divide by number of agents to get average
+CAvg_popn=np.cumsum(cLvl_popn, axis=1)/np.arange(1, max_agents+1)
+CAvg_ntrl=np.cumsum(cLvl_ntrl, axis=1)/np.arange(1, max_agents+1)
+MAvg_popn=np.cumsum(mLvl_popn, axis=1)/np.arange(1, max_agents+1)
+MAvg_ntrl=np.cumsum(mLvl_ntrl, axis=1)/np.arange(1, max_agents+1)
+## First difference the logs to get aggregate growth rates
+CGro_popn=np.diff(np.log(CAvg_popn).T).T
+CGro_ntrl=np.diff(np.log(CAvg_ntrl).T).T
+MGro_popn=np.diff(np.log(MAvg_popn).T).T
+MGro_ntrl=np.diff(np.log(MAvg_ntrl).T).T
+## Calculate statistics for them
+CGro_popn_stats=sumstats(CGro_popn, sample_periods_dff)
+CGro_ntrl_stats=sumstats(CGro_ntrl, sample_periods_dff)
+MGro_popn_stats=sumstats(MGro_popn, sample_periods_dff)
+MGro_ntrl_stats=sumstats(MGro_ntrl, sample_periods_dff)
+
+# Count the agents
+nagents = np.arange(1,max_agents+1,1)
+
+# Plot
+fig, axs = plt.subplots(2, figsize=(10, 7), constrained_layout=True)
+fig.suptitle('Variances of Aggregate Growth Rates', fontsize=16)
+axs[0].plot(nagents[min_agents:], np.array(CGro_popn_stats['vars_lvl'])[min_agents:], label='Base')
+axs[0].plot(nagents[min_agents:], np.array(CGro_ntrl_stats['vars_lvl'])[min_agents:], label='Perm. Inc. Neutral')
 axs[0].set_yscale('log')
 axs[0].set_xscale('log')
-axs[0].set_title('Variance', fontsize=14)
-axs[0].set_ylabel(r'$Var\left(\{\hat{C}_t\}_{t\in\mathcal{T}}\right)$', fontsize = 14)
-axs[0].set_xlabel('Number of Agents', fontsize=12)
+axs[0].set_title('Consumption', fontsize=14)
+axs[0].set_ylabel(r'$\Delta \log \left(\{\hat{C}_t\}_{t\in\mathcal{T}}\right)$', fontsize = 14)
+axs[0].set_xlabel('Number of Agents', fontsize=10)
 axs[0].grid()
 axs[0].legend(fontsize=12)
 
-axs[1].plot(nagents, C_base['means'], label = 'Base')
-axs[1].plot(nagents, C_pin['means'], label = 'Perm. Inc. Neutral')
+axs[1].plot(nagents[min_agents:], np.array(MGro_popn_stats['vars_lvl'])[min_agents:], label = 'Base')
+axs[1].plot(nagents[min_agents:], np.array(MGro_ntrl_stats['vars_lvl'])[min_agents:], label = 'Perm. Inc. Neutral')
+axs[1].set_yscale('log')
 axs[1].set_xscale('log')
-axs[1].set_title('Average', fontsize=14)
-axs[1].set_ylabel(r'$Avg\left(\{\hat{C}_t\}_{t\in\mathcal{T}}\right)$', fontsize=14)
-axs[1].set_xlabel('Number of Agents', fontsize=12)
+axs[1].set_title('Market Resources', fontsize=14)
+axs[1].set_ylabel(r'$\Delta \log \left(\{\hat{M}_t\}_{t\in\mathcal{T}}\right)$', fontsize = 14)
+axs[1].set_xlabel('Number of Agents', fontsize=10)
 axs[1].grid()
+axs[1].legend(fontsize=12)
+
 plt.show()
 
-# %% [markdown]
-# The variance plot shows that the efficiency gains are even greater for consumption: Harmenberg's method requires roughly **one-hundredth** of the agents that the standard method would require for a given precision, and at a fixed number of agents it is **ten times more precise**!
 
-# %% [markdown]
-# # Permanent-income-weighted measure and market-resources distribution are different things!
+# %% [markdown] tags=[]
+# # Harmenberg's Method Produces Large Gains in Efficiency
 #
-# We have learned that 
-# \begin{equation}
-# \MLvl_t = \int_{\mNrm} \int_{\pLvl} \mNrm \times \pLvl \times \mpLvlDstn_t(\mNrm,\pLvl) \, d\pLvl \, d\mNrm = \PermGroFac^t \int \mNrm \times \mWgtDstnMarg_t(\mNrm) \, d\mNrm.
-# \end{equation}
-# This equivalence might lead us to thing that, in our simulations, $\mNrm$ under the permanent-income-weighted measure ($\mWgtDstnMarg$) is equivalent to $\mLvl = \mNrm\times \pLvl$ under the base measure. However, **this is not the case**: $\mWgtDstnMarg_t(x)$ is the total (de-trended) amount of permanent income earned by people with normalized resources $\mNrm = x$, **not** the measure of agents with non-normalized resources $\mLvl = x$.
+# The number of agents required to achieve a given variance is revealed by choosing that variance and then finding the points on the horizontal axis that correspond to the two methods.
 #
-# To visualize this point, it suffices to examine our simulations. We now plot density estimates of $\mNrm$ in the permanent-income-neutral simulation and $\mNrm \times \pLvl$ under the base simulation. It is clear that the densities are not the same!
+# The upper variance plot shows that the efficiency gains are very large for consumption: The horizontal gap between the two loci is generally more than two orders of magnitude.  That is, Harmenberg's method requires less than **one-hundredth** as many agents as the standard method would require for a given precision.  Alternatively, for a given number of agents it is typically more than 10 times as precise.
+#
+# The improvement in variance is smaller for market resources, likely because in a buffer stock model the point of consumers' actions is to use assets to absorb shocks.  But even for $\MLvl$, the Harmenberg method attains any given level of precision ($\text{Var}\left(\{\MLvlest_t\}_{t\in\mathcal{T}}\right)$) with roughly **one tenth** of the agents needed by the standard method to achieve that same level.
+#
+# Of course, these results apply only to the particular configuration of parameter values that is the default in the HARK toolkit (but which were chosen long before Harmenberg developed his method).  The degree of improvement will vary depending on the calibration -- for example, if the magnitude of permanent shocks is small or zero, the method will yield little or no improvement.
 
-# %% tags=[]
-mdists = pd.DataFrame({'Base m*P': M_base['dist_last'],
-                       'Perm.-Inc.-weighted m': M_pin['dist_last']})
+# %%
+# Execute the line below to see that there's little drift from mBalLvl as starting point
+# (after setting burn_in to zero above).  This means burn_in does not need to be large:
 
-mdists.plot.kde()
-plt.xlim([0,10])
+# plt.plot(np.arange(1,len(np.mean(MAvg_ntrl,axis=1))+1),np.mean(MAvg_ntrl,axis=1).T)
