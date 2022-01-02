@@ -291,7 +291,7 @@ where $\bLvl$ is beginning-of-period `market' balances; with $\RNrm \equiv \Rfre
   \hLvl_{t}  & = \PermLvl_{t}+\RNrm^{-1} \PermLvl_{t} + \RNrm^{-2} \PermLvl_{t} + \cdots + \RNrm^{t-T} \PermLvl_{t} \notag
   \\  & = \underbrace{\left(\frac{1-\RNrm^{-(T-t+1)}}{1-\RNrm^{-1}}\right)}_{\equiv \hNrm_{t}}\PermLvl_{t} \label{eq:HDef}.
 \end{align}\hypertarget{FHWC}{}
-For $\hNrm \equiv \lim_{n \rightarrow \infty} \hNrm_{T-n}$ to be finite, we need the Finite Human Wealth Condition:
+For $\hNrm \equiv \lim_{n \rightarrow \infty} \hNrm_{T-n}$ to be finite, we need the \href{{https://\owner.github.io/BufferStockTheory/BufferStockTheory3.html}#FHWC}{Finite Human Wealth Condition}:
 \begin{align}
   \text{{\FHWC}:~~}  \underbrace{\PermGroFac/\Rfree}_{\equiv \RNrm^{-1}}  & < 1 \phantom{\text{{\FHWC}:~~}}\label{eq:FHWC}.
 \end{align}
@@ -299,6 +299,7 @@ Intuitively, finite human wealth requires a growth rate of (noncapital) income s
 
 \hypertarget{RIC}{}
 \subsubsection{The Return Impatience Condition ({\RIC})} \label{subsubsec:RIC} 
+\hypertarget{AIC}{}
 
 Without constraints, the consumption Euler equation always holds; with $\uP(\cLvl)=\cLvl^{-\CRRA}$, \hypertarget{APFacDefn}{}
 \begin{align}
@@ -347,7 +348,6 @@ The {\RIC} thus implies that the consumer cannot be so pathologically patient as
 
 \hypertarget{Unconstrained-Solution}{}\hypertarget{PF-Unconstrained-Solution}{}
 \subsubsection{Nondegenerate PF Unconstrained Solution Requires {\FHWC}}\label{subsec:PFUncon}
-\hypertarget{AIC}{}
 
 Given that the {\RIC}~holds, and (as before) defining limiting objects by the absence of a time subscript, the limiting upper bound consumption function will be
 \begin{align}\label{eq:cFuncPFUnc}
@@ -452,7 +452,7 @@ We now examine the case with uncertainty but without constraints, which turns ou
 
 \hypertarget{Uncertainty-Modified-Conditions}{}
 \subsection{Uncertainty-Modified Conditions}\label{subsec:UncertaintyModifiedConditions}
-\hypertarget{GICNrmDefn}{}
+\hypertarget{GICNrm}{}
 \subsubsection{A Normalized Growth Impatience Condition ({\GICNrm})}
 
 When noncapital income uncertainty is introduced, the expectation of beginning-of-period bank balances $\bNrm_{t+1}$ can be rewritten as:
@@ -1056,7 +1056,7 @@ Szeidl~\citeyearpar{szeidlInvariant} proved that such a population will be chara
   which, exponentiated, yields~\eqref{eq:GICSdl}.}
 \hypertarget{GICSdl}{}
 \begin{align}
-  \text{\GICSdl:~~}  \log~\dGPFacRaw & < \Ex [\log \PermShk] \label{eq:GICSdl}
+  \text{\GICSdl:~~}  \log~\GPFacRaw & < \Ex [\log \PermShk] \label{eq:GICSdl}
 \end{align}
 which is stronger than our {\GICRaw} ($\GPFacRaw < 1$), but weaker than our {\GICNrm} ($\GPFacNrm < 1$).\footnote{Under our default (though not required) assumption that $\log \PermShk \sim \mathcal{N}(-\sigma^{2}_{\PermShk}/2,\sigma^{2}_{\PermShk})$; the {\GICNrm} in this case, is $\GPFacRaw < \exp(-\sigma^{2})$, so if the {\GICNrm} holds then Szeidl's condition will hold.}  %Below we designate these the `Szeidl-invariant' distributions $\Nvrnt({\mNrm})$, $\Nvrnt({\aNrm})$, and $\Nvrnt({\cNrm})$.%\footnote{Szeidl's proof supplants simulation evidence of ergodicity that appeared in an earlier version of this paper.}
 

@@ -1,6 +1,8 @@
 # ---
 # jupyter:
 #   jupytext:
+#     cell_metadata_filter: ExecuteTime,-autoscroll,collapsed
+#     notebook_metadata_filter: all,-widgets,-varInspector
 #     text_representation:
 #       extension: .py
 #       format_name: percent
@@ -10,6 +12,16 @@
 #     display_name: Python 3
 #     language: python
 #     name: python3
+#   language_info:
+#     codemirror_mode:
+#       name: ipython
+#       version: 3
+#     file_extension: .py
+#     mimetype: text/x-python
+#     name: python
+#     nbconvert_exporter: python
+#     pygments_lexer: ipython3
+#     version: 3.8.5
 # ---
 
 # %% [markdown]
@@ -88,7 +100,7 @@ Harmenberg_Dict={
 # %% [markdown]
 # # Solve
 
-# %% jupyter={"outputs_hidden": true, "source_hidden": true}
+# %% collapsed=true jupyter={"outputs_hidden": true, "source_hidden": true}
 fast = IndShockConsumerType(**Harmenberg_Dict, verbose = 1 )
 fast.cycles = 0
 fast.Rfree = 1.2**.25
@@ -101,7 +113,7 @@ fast.solve(verbose=False)
 # %% [markdown]
 # # Calculate Patience Conditions
 
-# %% jupyter={"outputs_hidden": true}
+# %% collapsed=true jupyter={"outputs_hidden": true}
 fast.check_conditions(verbose=True)
 
 # %% jupyter={"source_hidden": true}
