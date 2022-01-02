@@ -1,15 +1,15 @@
 #!/bin/bash
 
-scriptDir="$(dirname "$0")"
-cd "$scriptDir/.."
+scriptDir="$(dirname "$0")" # Get the path to the directory this script is in
 
-echo '' ; echo 'Installing requirements' ; echo ''
-[[ ! -e binder/requirements.out ]] && pip install -r binder/requirements.txt | tee binder/requirements.out 
+cd "$scriptDir/.."  # Move to its parent 
+
+[[ ! -e binder/requirements.out ]] && echo ''  && echo 'Installing requirements' && echo '' && pip install -r binder/requirements.txt | tee binder/requirements.out 
 
 echo '' ; echo 'Producing figures' ; echo ''
 
 cd "."
-ipython BufferStockTheory.ipynb
+ipython BufferStockTheory-Problems-and-Solutions-Source.py
 
 [[ -e latexdefs.tex ]] && rm -f latexdefs.tex # Delete junk file that might be created
 
@@ -40,3 +40,9 @@ if [[ "$#" -gt 0 ]]; then
 	fi
     fi
 fi
+
+# Delete the flag saying the requirements have been installed
+# In case requirements have changed since last compilation
+[[ -e binder/requirements.out ]] && rm -f binder/requirements.out
+[[ -e src ]] && rm -Rf src
+

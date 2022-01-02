@@ -36,7 +36,7 @@ base_params['BoroCnstArt'] = None    # No artificial borrowing constraint
 # Settings to speed up the calcs for the widgets (at the cost of accuracy)
 base_params['TranShkCount'] = 2    # 2 shocks instead of 7 speeds things up a lot!
 base_params['PermShkCount'] = 2    #
-base_params['aXtraCount'] = 20     # not very many gridpoints
+base_params['aXtraCount'] = 20     # not very many gridpoints; solution not too accurate
 
 fssml, fsmid, fsbig = 18, 22, 26
 
@@ -45,7 +45,7 @@ DiscFac_widget = [
     widgets.FloatSlider(
         min=0.90,
         max=0.99,
-        step=0.01,
+        step=0.015,
         value=DiscFac,  # Default value
         continuous_update=False,
         readout_format=".3f",
@@ -58,7 +58,7 @@ DiscFac_growth_widget = [
     widgets.FloatSlider(
         min=0.94,
         max=0.99,
-        step=0.005,
+        step=0.01,
         value=0.98,  # Default value
         continuous_update=False,
         readout_format=".3f",
@@ -195,9 +195,9 @@ PermShkStd_widget = [
 # Define an alternative slider for PermShkStd
 PermShkStd_alt_start_widget = [
     widgets.FloatSlider(
-        min=0.01,
-        max=0.3,
-        step=0.01,
+        min=0.10,
+        max=0.20,
+        step=0.02,
         value=0.2,
         continuous_update=False,
         readout_format=".2f",
@@ -209,9 +209,9 @@ PermShkStd_alt_start_widget = [
 # Define a slider for the std of the transitory shock
 TranShkStd_widget = [
     widgets.FloatSlider(
-        min=0.01,
+        min=0.00,
         max=0.30,  # Go up to twice the default value
-        step=0.01,
+        step=0.025,
         value=TranShkStd,
         continuous_update=False,
         readout_format=".2f",
