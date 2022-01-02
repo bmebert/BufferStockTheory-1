@@ -1,0 +1,8 @@
+User-agent: *
+Allow: *
+Disallow: BufferStockTheory?*.svg
+Disallow: .DS_Store
+
+
+
+

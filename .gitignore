@@ -271,3 +271,9 @@ src/
 /src
 
 requirements.out
+
+*.out.ps
+*.lg
+.DS_Store
+.spyproject
+Old
