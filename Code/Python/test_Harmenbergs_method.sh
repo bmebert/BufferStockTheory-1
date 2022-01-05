@@ -2,7 +2,6 @@
 
 # Install requirements for Harmenberg test, if not already installed
 if [ ! -e requirements_Harmenberg.out ]; then
-#    pip freeze --user > requirements_user.txt # Store original setup
     export PYTHONPATH=$(python -c "import site, os; print(os.path.join(site.USER_SITE,'lib','python','site-packages'))"):$PYTHONPATH:./HarKmenberg/
     mkdir HarKmenberg
     pip install --target HarKmenberg -r requirements_Harmenberg.txt | tee requirements_Harmenberg.out
