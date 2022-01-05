@@ -3,7 +3,7 @@
 # Install requirements for Harmenberg test, if not already installed
 if [ ! -e requirements_Harmenberg.out ]; then
     export PYTHONPATH=$(python -c "import site, os; print(os.path.join(site.USER_SITE,'lib','python','site-packages'))"):$PYTHONPATH:./HarKmenberg/
-    mkdir HarKmenberg
+    [[ ! -e HarKmenberg ]] && mkdir HarKmenberg
     pip install --target HarKmenberg -r requirements_Harmenberg.txt | tee requirements_Harmenberg.out
 fi
 
