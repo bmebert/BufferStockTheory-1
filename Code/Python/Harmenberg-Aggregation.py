@@ -242,7 +242,7 @@ from HARK.ConsumptionSaving.ConsIndShockModel import (
 # Simple!
 
 # %% [markdown]
-# # The eficiency gain from using Harmenberg's method
+# # The efficiency gain from using Harmenberg's method
 #
 # To demonstrate the gain in efficiency from using Harmenberg's method, we will set up the following experiment.
 #
