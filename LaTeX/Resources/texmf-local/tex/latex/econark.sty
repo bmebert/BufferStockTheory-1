@@ -20,6 +20,8 @@
 \newcommand{\iflabelexists}[3]{\@ifundefined{r@#1}{\G@refundefinedtrue{#3}}{#2}}
 \makeatother
 
+\providecommand{\ARKurl}{\href{https://econ-ark.org}{Econ-ARK}}
+
 % Define various generically useful terms and items
 \providecommand{\avg}{\bar}
 \providecommand{\cov}{}\renewcommand{\cov}{\textup{cov}}
@@ -47,6 +49,7 @@
 
 % Suffix of Defn indicates reference to text name and source doc definition
 \newcommand{\FHWC}{\hyperlink{FHWC}{\textrm{FHWC}}}
+%\newcommand{\FHWFacDefn}{\hyperlink{FHWFacDefn}{\textrm{FHWF}}}
 \newcommand{\FHWFacDefn}{\hyperlink{FHWFacDefn}{\textrm{FHWF}}}
 \newcommand{\GICRaw}{\hyperlink{GICRaw}{\textrm{GIC}}}
 \newcommand{\GPFacRawDefn}{\hyperlink{GPFacRawDefn}{\textrm{GPF}}}
@@ -238,6 +241,7 @@
 \providecommand{\permGroFacInd}{\pmb{\phi}}
 \providecommand{\PermGroFac}{\pmb{\Phi}}
 \providecommand{\PermGroFacAdj}{\underline{\PermGroFac}}
+\providecommand{\PermGroFacuAdj}{\underline{\underline{\PermGroFac}}}
 \providecommand{\PermGroRte}{\varphi}
 
 \providecommand{\Alive}{\mathcal{L}}\renewcommand{\Alive}{\mathcal{L}}
@@ -266,8 +270,8 @@
 
 
 \providecommand{\EPermShkInv}{\Ex[\PermShk^{-1}]}  % Formerly EpShkInv
-\providecommand{\InvEPermShkInv}{\underline{\psi}} % Formerly InvEpShkInv
-\providecommand{\uInvEuPermShk}{\underline{\underline{\psi}}} % Formerly {\uInvEpShkuInv}
+\providecommand{\InvEPermShkInv}{\underline{\PermShk}} % Formerly InvEpShkInv
+\providecommand{\uInvEuPermShk}{\underline{\underline{\PermShk}}} % Formerly {\uInvEpShkuInv}
 
 \providecommand{\RfreeEff}{\bar{\Rfree}} % Blanchard-adjusted interest rate
 
