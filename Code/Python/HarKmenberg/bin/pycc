@@ -1,0 +1,3 @@
+#!/Volumes/Sync/Sys/OSX/linked/root/usr/local/bin/anaconda/envs/py388_hark_QE/bin/python
+from numba.pycc import main
+main()
