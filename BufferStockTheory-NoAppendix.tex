@@ -152,7 +152,7 @@ The infinite horizon solution is the (limiting) first-period solution to a seque
 \hypertarget{sensible}{}\hypertarget{useful}{}
 That is, for the value function, fixing a terminal date $T$,  we are interested in $\vLvl_{T-n}$ in the sequence of value functions $\{\vLvl_{T},\vLvl_{T-1},\ldots,\vLvl_{T-n}\}$.  We will say that the problem has a `nondegenerate' infinite horizon solution if, corresponding to that $\vLvl$, as $n \uparrow \infty$ there is a limiting consumption function $\usual{\cFunc}(\mNrm) = \lim_{n \uparrow \infty} \cFunc_{T-n}$ which is neither $\usual{\cFunc}(\mNrm)=0$ everywhere (for all $\mNrm$) nor $\usual{\cFunc}(\mNrm)=\infty$ everywhere (a `sensible' solution).
 
-Concretely, a consumer born $n$ periods before date $T$ solves the problem\footnote{Notation throughout follows guidelines specified for the {\ARKurl} toolkit; see \href{https://github.com/econ-ark/HARK/blob/master/Documentation/NARK/NARK.pdf}{Notation in the ARK} for rationales and details.  (The main advantage is that there is a direct mapping between choices in the paper and objects in the code.)}
+Concretely, a consumer born $n$ periods before date $T$ solves the problem\footnote{Notation throughout follows guidelines specified for the {\ARKurl} toolkit; see \href{https://github.com/econ-ark/HARK/blob/master/Documentation/NARK/NARK.pdf}{Notation in the ARK} for rationales and details.  (Consequently, there is an exact mapping between objects in the paper and objects in the code.)}
 \begin{verbatimwrite}{\EqDir/supfn}
   \begin{align*}
     \vLvl_{T-n} & = \max~ \Ex_{t}\left[\sum_{i=0}^{n} \DiscFac^{i} \uFunc(\cLvl_{t+i})\right]
@@ -358,7 +358,7 @@ Given that the {\RIC}~holds, and (as before) defining limiting objects by the ab
 and so in order to rule out the degenerate limiting solution $\bar{\cFunc}(\mNrm) = \infty$ we need $\hNrm$ to be finite; that is, we must impose the Finite Human Wealth Condition ({\FHWC}), eq. \eqref{eq:FHWC}.
 
 \hypertarget{GPFacRawDefn}{}\hypertarget{GIC}{}\hypertarget{GICRawDefn}{}
-\subsubsection{The Growth Impatience Condition ({GICRaw})}\label{subsubsec:GIC}
+\subsubsection{The Growth Impatience Condition ({GIC})}\label{subsubsec:GIC}
 By analogy to the \RPFacDefn, we define a `growth patience factor' as
 \begin{equation}\begin{gathered}\begin{aligned}
       \text{{\GPFacRawDefn}:~~} && \GPFacRaw= {\APFac}/\PermGroFac,  &   \label{eq:GPFacRawDefn}
@@ -436,7 +436,7 @@ We now examine implications of possible configurations of the conditions.
   \end{cases}
 \end{equation*}
 
-\textit{{\GICRaw} and {\RIC}.}  More interesting is the case where the return impatience and {\GICRaw} conditions both hold.  In this case Appendix~\ref{sec:ApndxLiqConstr} shows that the limiting constrained consumption function is piecewise linear, with $\cnstr{\cFunc}(\mNrm)=\mNrm$ up to a first `kink point' at $\mNrm_{\#}^{0}>1$, and with discrete declines in the MPC at a set of kink points $\{\mNrm_{\#}^{1},\mNrm_{\#}^{2},\ldots\}$.  As $\mNrm \uparrow \infty$ the constrained consumption function $\cnstr{\cFunc}(\mNrm)$ becomes arbitrarily close to the unconstrained $\bar{\cFunc}(\mNrm)$, and the marginal propensity to consume function $\cnstr{\MPCFunc}(\mNrm) \equiv \cnstr{\cFunc}^{\prime}(\mNrm)$ limits to $\MPCmin$.\footnote{See~\cite{chkLiqConstr} for details.}  Similarly, the value function $\cnstr{\vFunc}(\mNrm)$ is nondegenerate and limits into the value function of the unconstrained consumer.
+\textit{{\GICRaw} and {\RIC}.}  When the {\RIC} and {\GICRaw} both hold, Appendix~\ref{sec:ApndxLiqConstr} shows that the limiting constrained consumption function is piecewise linear, with $\cnstr{\cFunc}(\mNrm)=\mNrm$ up to a first `kink point' at $\mNrm_{\#}^{0}>1$, and with discrete declines in the MPC at a set of kink points $\{\mNrm_{\#}^{1},\mNrm_{\#}^{2},\ldots\}$.  As $\mNrm \uparrow \infty$ the constrained consumption function $\cnstr{\cFunc}(\mNrm)$ becomes arbitrarily close to the unconstrained $\bar{\cFunc}(\mNrm)$, and the marginal propensity to consume function $\cnstr{\MPCFunc}(\mNrm) \equiv \cnstr{\cFunc}^{\prime}(\mNrm)$ limits to $\MPCmin$.\footnote{See~\cite{chkLiqConstr} for details.}  Similarly, the value function $\cnstr{\vFunc}(\mNrm)$ is nondegenerate and limits into the value function of the unconstrained consumer.
 
 This logic holds even when the finite human wealth condition fails (\cncl{\FHWC}), because the constraint prevents the (limiting) consumer\footnote{That is, one obeying $\cFunc(\mNrm) = \lim_{n \uparrow \infty} \cFunc_{T-n}(\mNrm)$.} from borrowing against unbounded human wealth to finance unbounded current consumption.  Under these circumstances, the consumer who starts with any $\bNrm_{t} > 0$ will, over time, run those resources down so that after some finite number of periods $\tau$ the consumer will reach $\bNrm_{t+\tau} = 0$, and thereafter will set $\cLvl = \PermLvl$ for eternity (which the {\PFFVAC} says yields finite value).  Using the same steps as for equation~\eqref{eq:ValuePFAnalyticalAutarky}, value of the interim program is also finite: \hypertarget{PFFVAC}{} \hypertarget{PFVAFacDefn}{}
 \begin{align*}
@@ -444,11 +444,11 @@ This logic holds even when the finite human wealth condition fails (\cncl{\FHWC}
   & = \PermGroFac^{\tau(1-\CRRA)} \uFunc(\PermLvl_{t})\left(\frac{1-{(\DiscFac \PermGroFac^{1-\CRRA})}^{T-(t+\tau)+1}}{1-\DiscFac \PermGroFac^{1-\CRRA}}\right).
 \end{align*}
 % Note that the last version of the \PFFVAC~in~\eqref{eq:PFFVAC} implies the \GICRaw~$\GPFacRaw < 1$ whenever \cncl{\FHWC} ($\Rfree < \PermGroFac$) holds.
-So, even under \cncl{\FHWC}, the limiting consumer's value for any finite $\mNrm$ will be the sum of two finite numbers: The component due to the unconstrained choice made over the finite horizon leading up to $\bNrm_{t+\tau} = 0$, and the finite component due to the value of consuming all $\PermLvl_{t+\tau}$ thereafter.
+So, even under \cncl{\FHWC}, the limiting consumer's value for any finite $\mNrm$ will be the sum of two finite numbers: One due to the unconstrained choice made over the finite horizon leading up to $\bNrm_{t+\tau} = 0$, and one reflecting the value of consuming $\PermLvl_{t+\tau}$ thereafter.
 
 \hypertarget{RICandFHWCFail}{} \textit{{\GICRaw} and {\cncl{\RIC}}}.  The most peculiar possibility occurs when the \RIC~fails.  Under these circumstances the \FHWC~must also fail (Appendix~\ref{sec:ApndxLiqConstr}), and the constrained consumption function is nondegenerate.  (See appendix Figure~\ref{fig:PFGICHoldsFHWCFailsRICFails} for a numerical example).  While $\lim_{m \uparrow \infty} \cnstr{\MPCFunc}(\mNrm) = 0$, nevertheless the limiting constrained consumption function $\cnstr{\cFunc}(\mNrm)$ is finite, strictly positive, and strictly increasing in $\mNrm$.  This result interestingly reconciles the conflicting intuitions from the unconstrained case, where \cncl{\RIC} would suggest a degenerate limit of $\cnstr{\cFunc}(\mNrm)=0$ while \cncl{\FHWC} would suggest a degenerate limit of $\cnstr{\cFunc}(\mNrm)=\infty$.
 
-Tables~\ref{table:Comparison} and~\ref{table:Required} (and appendix table~\ref{table:LiqConstrScenarios}) codify.
+%Tables~\ref{table:Comparison} and~\ref{table:Required} (and appendix table~\ref{table:LiqConstrScenarios}) codify.
 
 We now examine the case with uncertainty but without constraints, which turns out to be a close parallel to the model with constraints but without uncertainty.
 
@@ -646,6 +646,16 @@ Our operator $\TMap$ satisfies the conditions that Boyd requires of his operator
 \end{theorem}
 
 Intuitively, Boyd's theorem shows that if you can find a $\boundFunc$ that is everywhere finite but goes to infinity `as fast or faster' than the function you are normalizing with $\boundFunc$, the normalized problem defines a contraction mapping.  The intuition for the {\FVAC} condition is that, with an infinite horizon, with any strictly positive initial amount of bank balances $\bNrm_{0}$, in the limit your value can always be made greater than you would get by consuming exactly the sustainable amount (say, by consuming $(\rfree/\Rfree)\bNrm_{0}-\epsilon$ for some arbitrarily small $\epsilon>0$).
+
+We use the bounding function
+\begin{verbatimwrite}{\EqDir/boundFunc}
+\begin{equation}\begin{gathered}\begin{aligned}
+      \iflabelexists{eq:boundFunc}{}{\label{eq:boundFunc}} % Don't define it if already defined
+      \boundFunc(\mNrm)  & = \eta + \mNrm^{1-\CRRA},
+    \end{aligned}\end{gathered}\end{equation}
+\end{verbatimwrite}
+\input{\LtxDir\EqDir/boundFunc}{\noindent}
+for some real scalar $\eta > 0$ whose value is determined in the course of the proof.\footnote{Thanks to John Boyd for suggesting this bounding function.} Under this definition of $\boundFunc$, $\{\TMap\mathbf{0}\}(\mNrm_{t})= \uFunc(\MPCmax \mNrm_{t})$ is clearly $\boundFunc$-bounded.  
 
 The cumbersome details of the proof are relegated to Appendix~\ref{sec:Tcomplete}.  Given that the value function converges, Appendix~\ref{subsec:cConverges} shows that the consumption functions converge.\footnote{MST's proof is for convergence of the consumption policy function directly, rather than of the value function, which is why their conditions are on $\uFunc^{\prime}$, which governs behavior.}
 
@@ -1046,7 +1056,7 @@ Before we get to the formal arguments, the key insight can be understood by cons
 
 % Microeconomic distributional relationships are increasingly central to macroeconomic research (see, e.g., \cite{violante_marginal_2021}'s recent Laffont lectures on relationship between the marginal propensity to consume and the distribution of assets).  But mapping from micro data to macro models can be subtle.  Hence this final section's aim of carefully describing those relationships in the paper's simple model.
 
-Assume a continuum of \textit{ex ante} identical households on the unit interval, with constant total mass normalized to one and indexed by $i \in [0,1]$ (all behaving according to the model specified above).
+Assume a continuum of \textit{ex ante} identical buffer-stock households on the unit interval, with constant total mass normalized to one and indexed by $i \in [0,1]$.% (all behaving according to the model specified above).
 
 Szeidl~\citeyearpar{szeidlInvariant} proved that such a population will be characterized by invariant distributions of $\mNrm$, $\cNrm$, and $\aNrm$ under the condition\footnote{\cite{szeidlInvariant}'s equation (9), in our notation, is:
   \begin{align*}
