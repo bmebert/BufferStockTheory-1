@@ -9,11 +9,11 @@ cd "$scriptDir/.."  # Move to its parent
 echo '' ; echo 'Producing figures' ; echo ''
 
 cd "."
-ipython BufferStockTheory-Problems-and-Solutions-Source.py
+ipython BufferStockTheory.py
 
 [[ -e latexdefs.tex ]] && rm -f latexdefs.tex # Delete junk file that might be created
 
-./test_Harmenbergs_method.sh
+cd ./Code/Python; ./test_Harmenbergs_method.sh
 
 # Execute sims showing near-constant growth of mean c and cov(c,p), Ω_{M[c]} and Ω_{cov}
 if [[ "$#" -gt 0 ]]; then
