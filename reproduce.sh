@@ -75,7 +75,7 @@ echo ''
 if [[ -e "$output_directory/$texname.pdf" ]]; then
     echo "Paper has been compiled to $output_directory/$texname.pdf"
     echo "and copied to ./$texname.pdf"
-    cp "$output_directory/$texname.pdf" "./$texname.pdf"
+    cp "$output_directory/$texname.pdf ./$texname.pdf"
 else
     echo "Something went wrong and the paper is not in $output_directory/$texname.pdf"
 fi
