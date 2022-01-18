@@ -1,0 +1,3 @@
+#!/Volumes/Sync/Sys/OSX/linked/root/usr/local/bin/anaconda/bin/python
+from numba.pycc import main
+main()
