@@ -452,8 +452,8 @@ We now examine the case with uncertainty but without constraints, which turns ou
 
 \hypertarget{Uncertainty-Modified-Conditions}{}
 \subsection{Uncertainty-Modified Conditions}\label{subsec:UncertaintyModifiedConditions}
-\hypertarget{GICNrm}{}
-\subsubsection{A Normalized Growth Impatience Condition (GIC-Nrm))}
+\hypertarget{GICMod}{}
+\subsubsection{A Uncertainty-Modified Growth Impatience Condition (GIC-Mod))}
 
 When noncapital income uncertainty is introduced, the expectation of beginning-of-period bank balances $\bNrm_{t+1}$ can be rewritten as:
 \begin{align*}
@@ -470,11 +470,11 @@ which satisfies $\InvEPermShkInv < 1$ (thanks again to Mr.\ Jensen), so it is co
   \end{align}
 \end{verbatimwrite}
 \input{\LtxDir\EqDir/PermGroFacAdj}
-because this allows us to write uncertainty-adjusted versions of earlier equations and conditions in a manner exactly parallel to those for the perfect foresight case; for example, we define a normalized Growth Patience Factor:
-\hypertarget{PermGroAdjDefn}{}\hypertarget{GPFacNrmDefn}{}
+because this allows us to write uncertainty-modified versions of earlier equations and conditions in a manner exactly parallel to those for the perfect foresight case; for example, we define a modified Growth Patience Factor:
+\hypertarget{PermGroAdjDefn}{}\hypertarget{GPFacModDefn}{}
 \begin{verbatimwrite}{\EqDir/GPFacNrm}
   \begin{align}
-    \text{{\GPFacNrmDefn}:~~}    \GPFacNrm  & = \APFac/\PermGroFacAdj = \Ex[\APFac/(\PermGroFac\PermShk)]  \phantom{\text{{\GPFacNrmDefn}:~~}} \label{eq:GPFacNrmDefn}
+    \text{{\GPFacModDefn}:~~}    \GPFacNrm  & = \APFac/\PermGroFacAdj = \Ex[\APFac/(\PermGroFac\PermShk)]  \phantom{\text{{\GPFacModDefn}:~~}} \label{eq:GPFacModDefn}
   \end{align}
 \end{verbatimwrite}
 \input{\LtxDir\EqDir/GPFacNrm}
@@ -483,14 +483,14 @@ because this allows us to write uncertainty-adjusted versions of earlier equatio
   \begin{align*}
     \lim_{\mNrm_{t} \rightarrow \infty} \Ex_{t}[\mNrm_{t+1}/\mNrm_{t}]  & = \GPFacNrm,
   \end{align*}
-  which implies that if we wish to prevent $\mNrm$ from heading to infinity (that is, if we want $\mNrm$ to be expected to fall for some large enough value of $m$) we must impose a modified version of the Growth Impatience Condition~\eqref{eq:GICRaw}; we call the `Normalized Growth Impatience Condition' (\GICNrm) the requirement that the Normalized Growth Patience Factor~\eqref{eq:GPFacNrmDefn} must be less than 1:\footnote{Under our assumption that $\CRRA>1$, equation~\eqref{eq:GICNrm} is a bit easier to satisfy than the similar condition imposed by Deaton~\citeyearpar{deatonLiqConstr}: $\left(\Ex[\PermShk^{-\CRRA}]\right)^{1/\CRRA} \GPFacRaw < 1$ to guarantee that his problem defined a contraction mapping.}
+  which implies that if we want to guarantee that we can find an $\mNrm$ large enough that $\Ex_{t}[\mNrm_{t+1}] < \mNrm_{t}$ we must impose a modified version of the Growth Impatience Condition~\eqref{eq:GICRaw}; we call the `Uncertainty-Modified Growth Impatience Condition' (\GICMod) the requirement that the Modified Growth Patience Factor~\eqref{eq:GPFacModDefn} must be less than 1:%\footnote{Under our assumption that $\CRRA>1$, equation~\eqref{eq:GICMod} is a bit easier to satisfy than the similar condition imposed by Deaton~\citeyearpar{deatonLiqConstr}: $\left(\Ex[\PermShk^{-\CRRA}]\right)^{1/\CRRA} \GPFacRaw < 1$ to guarantee that his problem defined a contraction mapping.}
 \end{comment}
-with a corresponding normalized version of the Growth Impatience Condition:
-\begin{verbatimwrite}{\EqDir/GICNrm}
+with a corresponding modified version of the Growth Impatience Condition:
+\begin{verbatimwrite}{\EqDir/GICMod}
   \begin{align}
-    \text{{\GICNrm}:~~}    \GPFacNrm  & < 1, \phantom{\text{{\GICNrm}:~~}}\label{eq:GICNrm}
+    \text{{\GICMod}:~~}    \GPFacNrm  & < 1, \phantom{\text{{\GICMod}:~~}}\label{eq:GICMod}
   \end{align}\end{verbatimwrite}
-\input{\LtxDir\EqDir/GICNrm}
+\input{\LtxDir\EqDir/GICMod}
 that is stronger than the perfect foresight version~\eqref{eq:GICRaw} because $\PermGroFacAdj < \PermGroFac$.
 \begin{comment}
   \begin{align}
@@ -738,7 +738,7 @@ but since $\uInvEuPermShk < 1$ (cf.\ the argument below~\eqref{eq:uInvEuPermShk}
 As in the perfect foresight constrained problem, unbounded limiting human wealth (\cncl{\FHWC}) here does not lead to a degenerate limiting consumption function (finite human wealth is not required for the convergence theorem).  But, from equation~\eqref{eq:MPCminInv} and the discussion surrounding it, an implication of \cncl{\RIC} is that $\lim_{m \uparrow \infty} \usual{\cFunc}^{\prime}(\mNrm) = 0$.  Thus, interestingly, in the special $\{\cncl{\RIC},~\cncl{\FHWC}\}$ case (unavailable in the perfect foresight model) the presence of uncertainty both permits unlimited human wealth (in the $n\uparrow\infty$ limit) and at the same time prevents unlimited human wealth from resulting in (limiting) infinite consumption (at any finite $\mNrm$).  Intuitively, in the presence of uncertainty, pathological patience (which in the perfect foresight model results in a limiting consumption function of $\usual{\cFunc}(\mNrm)=0$) plus unbounded human wealth (which the perfect foresight model prohibits because it leads to a limiting consumption function $\usual{\cFunc}(\mNrm)=\infty$ for any finite $\mNrm$) combine to yield a unique finite limiting (as $n \uparrow \infty$) level of consumption and MPC for any finite value of $\mNrm$.  Note the close parallel to the conclusion in the perfect foresight liquidity constrained model in the \{\GICRaw,~\cncl{\RIC}\} case.  There, too, the tension between infinite human wealth and pathological patience was resolved with a nondegenerate consumption function whose limiting MPC was zero.\footnote{\cite{maTodaRich} derive conditions under which the limiting MPC is zero in an even more general case where there is also capital income risk.}
 
 \hypertarget{When-the-RIC-Holds}{}
-\subsubsection{When the {RIC} Holds}\label{subsubsec:WhenTheGICNrmFails}\label{subsubsec:WhenTheRICHolds}
+\subsubsection{When the {RIC} Holds}\label{subsubsec:WhenTheGICModFails}\label{subsubsec:WhenTheRICHolds}
 
 \textbf{\FHWC}.  If the {\RIC} and {\FHWC} both hold, a perfect foresight solution exists (see~\ref{subsec:PFUncon} above).  As $\mNrm \uparrow \infty$ the limiting $\cFunc$ and $\vFunc$ functions become arbitrarily close to those in the perfect foresight model, because human wealth pays for a vanishingly small portion of spending.  This will be the main case analyzed in detail below.
 
@@ -747,7 +747,7 @@ As in the perfect foresight constrained problem, unbounded limiting human wealth
   & \overbrace{\APFac < {(\Rfree/\PermGroFac)}^{1/\CRRA}\PermGroFac}^{\PFFVAC}
   \\ & \APFac < \PermGroFac
 \end{align*}
-where the transition from the first to the second lines is justified because $\cncl{\FHWC} \Rightarrow {(\Rfree/\PermGroFac)}^{1/\CRRA}<1$.  So, \{\RIC, \cncl{\FHWC}\} implies the {\GICRaw} holds.  However, we are not entitled to conclude that the {\GICNrm} holds: $\APFac < \PermGroFac$ does not imply $\APFac < \InvEPermShkInv \PermGroFac$ where $\InvEPermShkInv<1$.  
+where the transition from the first to the second lines is justified because $\cncl{\FHWC} \Rightarrow {(\Rfree/\PermGroFac)}^{1/\CRRA}<1$.  So, \{\RIC, \cncl{\FHWC}\} implies the {\GICRaw} holds.  However, we are not entitled to conclude that the {\GICMod} holds: $\APFac < \PermGroFac$ does not imply $\APFac < \InvEPermShkInv \PermGroFac$ where $\InvEPermShkInv<1$.  
 
 We have now established the principal points of comparison between the perfect foresight solutions and the solutions under uncertainty; these are codified in the remaining parts of Tables~\ref{table:Comparison} and~\ref{table:Required}.
 
@@ -758,7 +758,7 @@ We have now established the principal points of comparison between the perfect f
 \hypertarget{AnalysisoftheConvergedConsumptionFunction}{}
 \section{Analysis of the Converged Consumption Function}\label{sec:convergedcfunc}
 
-Figures~\ref{fig:cNrmTargetFig}-\ref{fig:cFuncBounds} capture the main properties of the converged consumption rule when the \RIC, \GICNrm, and \FHWC~all hold.\footnote{These figures reflect the converged rule corresponding to the parameter values indicated in Table~\ref{table:Calibration}.}
+Figures~\ref{fig:cNrmTargetFig}-\ref{fig:cFuncBounds} capture the main properties of the converged consumption rule when the \RIC, \GICMod, and \FHWC~all hold.\footnote{These figures reflect the converged rule corresponding to the parameter values indicated in Table~\ref{table:Calibration}.}
 
 Figure~\ref{fig:cNrmTargetFig} shows the expected growth factors for consumption, the level of market resources, and the market resources ratio, $\Ex_{t}[\cLvl_{t+1}/\cLvl_{t}]$ and $\Ex_{t}[\mLvl_{t+1}/\mLvl_{t}]$, and $\Ex_{t}[\mNrm_{t+1}/\mNrm_{t}]$, for a consumer behaving according to the converged consumption rule, while Figures~\ref{fig:mpclimits}---\ref{fig:cFuncBounds} illustrate theoretical bounds for the consumption function and the MPC.
 
@@ -904,11 +904,11 @@ where the second-to-last line follows because  $\lim_{\mNrm_{t} \downarrow 0} \E
 Theorems whose substance is described here (and whose details are in an appendix) articulate alternative (but closely related) stability criteria.
 
 \subsubsection{`Individual Target Wealth' \texorpdfstring{$\mTrgNrm$}{m}}\label{subsubsec:mTarget}
-One kind of `stable' point is a `target' value $\mTrgNrm$ such that if $\mNrm_{t}=\mTrgNrm$, then $\Ex_{t}[\mNrm_{t+1}]=\mNrm_{t}$.  Existence of such a target turns out to require the {\GICNrm} condition.
+One kind of `stable' point is a `target' value $\mTrgNrm$ such that if $\mNrm_{t}=\mTrgNrm$, then $\Ex_{t}[\mNrm_{t+1}]=\mNrm_{t}$.  Existence of such a target turns out to require the {\GICMod} condition.
 
 \begin{verbatimwrite}{\EqDir/TheoremMTargetIsStable}
   \begin{theorem}\iflabelexists{thm:target}{}{\label{thm:target}} % Don't define it if already defined
-    For the nondegenerate solution to the problem defined in Section~\ref{subsec:Setup} when {\FVAC}, {\WRIC}, and {\GICNrm} all hold, there exists a unique cash-on-hand-to-permanent-income ratio $\mTrgNrm>0$ such that
+    For the nondegenerate solution to the problem defined in Section~\ref{subsec:Setup} when {\FVAC}, {\WRIC}, and {\GICMod} all hold, there exists a unique cash-on-hand-to-permanent-income ratio $\mTrgNrm>0$ such that
     \begin{equation}
       \Ex_t [{\mNrm}_{t+1}/\mNrm_t] = 1 \mbox{~if~} \mNrm_t = \mTrgNrm.
       \iflabelexists{eq:mTarget}{}{\label{eq:mTarget}} % Don't define it if already defined
@@ -935,7 +935,7 @@ Since $\mNrm_{t+1}=(\mNrm_{t}-\cFunc(\mNrm_{t}))\RNrm_{t+1}+\TranShk_{t+1}$, the
   \end{split}
 \end{equation}
 
-This is the most restictive among several competing definitions of stability.  %Parameterizations that satisfy the {\GICNrm} are well-behaved for almost any quantitative purpose.
+This is the most restictive among several competing definitions of stability.  %Parameterizations that satisfy the {\GICMod} are well-behaved for almost any quantitative purpose.
 
 \hypertarget{Collective-Stability}{}
 \hypertarget{pseudo-steady-state}{}
@@ -1033,11 +1033,11 @@ The proofs of these theorems are intuitive, and almost completely parallel; to s
 
 Because the equations defining target and pseudo-steady-state $\mNrm$,~\eqref{eq:mTargImplicit} and~\eqref{eq:balgrostable}, differ only by substitution of $\RNrm$ for $\bar{\RNrm}=\RNrm \Ex[\PermShk^{-1}]$, if there are no permanent shocks ($\PermShk \equiv 1$), the conditions are identical.  For many parameterizations (e.g., under the baseline parameter values used for constructing figure~\ref{fig:cNrmTargetFig}), $\mTrgNrm$ and $\mBalLvl$ will not differ much.
 
-\renewcommand{\figFile}{GICNrmFailsButGICRawHolds}
+\renewcommand{\figFile}{GICModFailsButGICRawHolds}
 \hypertarget{\figFile}{}
-\input{\FigDir/GICNrmFailsButGICRawHolds}
+\input{\FigDir/GICModFailsButGICRawHolds}
 
-An illuminating exception is exhibited in Figure~\ref{fig:GICNrmFailsButGICRawHolds}, which modifies the baseline parameter values by quadrupling the variance of the permanent shocks, enough to cause failure of the \GICNrm; now there is no target wealth level $\mTrgNrm$.  But the pseudo-steady-state still exists because it turns off realizations of the permanent shock.  It is tempting to conclude that the reason target $\mTrgNrm$ does not exist is that the increase in the size of the shocks induces a precautionary motive that increases the consumer's effective patience.  But that interpretation is cannot be correct, because as market resources approach infinity, precautionary saving against noncapital income risk becomes negligible (as the proportion of consumption financed out of such income approaches zero).  The correct explanation is more prosaic: The increase in uncertainty boosts the expected uncertainty-adjusted rate of return factor from $\RNrm$ to $\bar{\RNrm}>\RNrm$ which reflects the fact that in the presence of uncertainty the expectation of the inverse of the growth factor increases: $\PermGroFacAdj > \PermGroFac$.  That is, in the limit as $\mNrm \uparrow \infty$ the increase in effective impatience reflected in $\GPFacNrm < \GPFacRaw$ is entirely due to the certainty-equivalence growth adjustment, not to a (limiting) change in precaution.  In fact, the next section will show that an aggregate balanced growth equilibrium will exist even when realizations of the permanent shock are not turned off: The required condition for aggregate balanced growth is the regular {\GICRaw}, which ignores the magnitude of permanent shocks, not the {\GICNrm}.\footnote{\cite{szeidlInvariant}'s impatience condition, discussed below, also tightens as uncertainty increases, but this is also not a consequence of a precaution-induced increase in patience -- it represents an increase in the tightness of the requirements of the `mixing condition' used in his proof.}
+An illuminating exception is exhibited in Figure~\ref{fig:GICModFailsButGICRawHolds}, which modifies the baseline parameter values by quadrupling the variance of the permanent shocks, enough to cause failure of the \GICMod; now there is no target wealth level $\mTrgNrm$.  But the pseudo-steady-state still exists because it turns off realizations of the permanent shock.  It is tempting to conclude that the reason target $\mTrgNrm$ does not exist is that the increase in the size of the shocks induces a precautionary motive that increases the consumer's effective patience.  But that interpretation is cannot be correct, because as market resources approach infinity, precautionary saving against noncapital income risk becomes negligible (as the proportion of consumption financed out of such income approaches zero).  The correct explanation is more prosaic: The increase in uncertainty boosts the expected uncertainty-modified rate of return factor from $\RNrm$ to $\bar{\RNrm}>\RNrm$ which reflects the fact that in the presence of uncertainty the expectation of the inverse of the growth factor increases: $\PermGroFacAdj > \PermGroFac$.  That is, in the limit as $\mNrm \uparrow \infty$ the increase in effective impatience reflected in $\GPFacNrm < \GPFacRaw$ is entirely due to the certainty-equivalence growth adjustment, not to a (limiting) change in precaution.  In fact, the next section will show that an aggregate balanced growth equilibrium will exist even when realizations of the permanent shock are not turned off: The required condition for aggregate balanced growth is the regular {\GICRaw}, which ignores the magnitude of permanent shocks, not the {\GICMod}.\footnote{\cite{szeidlInvariant}'s impatience condition, discussed below, also tightens as uncertainty increases, but this is also not a consequence of a precaution-induced increase in patience -- it represents an increase in the tightness of the requirements of the `mixing condition' used in his proof.}
 
 Before we get to the formal arguments, the key insight can be understood by considering an economy that starts, at date $t$, with the entire population at $\mNrm_{t}=\mBalLvl$, but then evolves according to the model's assumed dynamics between $t$ and $t+1$.  Equation~\eqref{eq:balgrostable} will still hold, so for this first period, at least, the economy will exhibit balanced growth: the growth factor for aggregate $\mLvl$ will match the growth factor for permanent income $\PermGroFac$.  It is true that there will be people for whom $\bNrm_{t+1}=\aNrm_{t}\Rfree/(\PermGroFac\PermShk_{t+1})$ is boosted by a small draw of $\PermShk_{t+1}$.  But their contribution to the \textit{level} of the aggregate variable is given by $\bLvl_{t+1}=\bNrm_{t+1}\PermShk_{t+1}$, so their $\bNrm_{t+1}$ is reweighted by an amount that exactly unwinds that divisor-boosting.  This means that it is possible for each individual consumer to have a target wealth ratio of infinity, and yet for the economy as a whole to exhibit a balanced growth equilibrium with a finite aggregate balanced growth steady state $\BalGroFac{\MNrm}$ (whis is not numerically the same as the individual \hyperlink{pseudo-steady-state}{pseudo-steady-state} ratio $\mBalLvl$ because the problem's nonlinearities have consequences when aggregated).\footnote{Still, the pseudo-steady-state can be calculated from the policy function without any simulation, and therefore serves as a low-cost starting point for the numerical simulation process; see \href{https://econ-ark.org/materials/harmenberg-aggregation?launch}{Harmenberg-Aggregation} for an example.}
 
@@ -1067,7 +1067,7 @@ Szeidl~\citeyearpar{szeidlInvariant} proved that such a population will be chara
 \begin{align}
   \text{\GICSdl:~~}  \log~\GPFacRaw & < \Ex [\log \PermShk] \label{eq:GICSdl}
 \end{align}
-which is stronger than our {\GICRaw} ($\GPFacRaw < 1$), but weaker than our {\GICNrm} ($\GPFacNrm < 1$).\footnote{Under our default (though not required) assumption that $\log \PermShk \sim \mathcal{N}(-\sigma^{2}_{\PermShk}/2,\sigma^{2}_{\PermShk})$; the {\GICNrm} in this case, is $\GPFacRaw < \exp(-\sigma^{2})$, so if the {\GICNrm} holds then Szeidl's condition will hold.}  %Below we designate these the `Szeidl-invariant' distributions $\Nvrnt({\mNrm})$, $\Nvrnt({\aNrm})$, and $\Nvrnt({\cNrm})$.%\footnote{Szeidl's proof supplants simulation evidence of ergodicity that appeared in an earlier version of this paper.}
+which is stronger than our {\GICRaw} ($\GPFacRaw < 1$), but weaker than our {\GICMod} ($\GPFacNrm < 1$).\footnote{Under our default (though not required) assumption that $\log \PermShk \sim \mathcal{N}(-\sigma^{2}_{\PermShk}/2,\sigma^{2}_{\PermShk})$; the {\GICMod} in this case, is $\GPFacRaw < \exp(-\sigma^{2})$, so if the {\GICMod} holds then Szeidl's condition will hold.}  %Below we designate these the `Szeidl-invariant' distributions $\Nvrnt({\mNrm})$, $\Nvrnt({\aNrm})$, and $\Nvrnt({\cNrm})$.%\footnote{Szeidl's proof supplants simulation evidence of ergodicity that appeared in an earlier version of this paper.}
 
 \hypertarget{Growth-Rates-of-Aggregate-Income-and-Consumption}{}
 
@@ -1225,7 +1225,7 @@ For macroeconomists who want to build microfoundations by comparing the microeco
   \hypertarget{Consumption-and-Income-Growth-at-the-Household-Level}{}
   \subsection{Identical Growth in Income, Consumption, and Wealth}\label{subsec:cGroEqPermGroFacIndQ}
 
-  Unfortunately, the {\GICNrm} condition that we imposed which yielded all of these intuitive propositions at once is rather restrictive.  Modeling experience indicates that it is not always possible to find plausible combinations of parameter values that satisfy that condition.  Furthermore, while the {\GICRaw} is a considerably looser condition, as noted above (and as
+  Unfortunately, the {\GICMod} condition that we imposed which yielded all of these intuitive propositions at once is rather restrictive.  Modeling experience indicates that it is not always possible to find plausible combinations of parameter values that satisfy that condition.  Furthermore, while the {\GICRaw} is a considerably looser condition, as noted above (and as
 
   % The foregoing analysis is motivated by the emerging realization of the importance of understanding of covariance relationships in microeconomic populations (between the marginal propensity to consume and the level of wealth, e.g.).
 \end{comment}

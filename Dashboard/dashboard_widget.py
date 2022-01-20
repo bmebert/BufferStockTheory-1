@@ -314,7 +314,7 @@ def makeGICFailExample(DiscFac, PermShkStd, UnempPrb):
     if Bilt.GICLiv:  # Growth impatience condition (including mortality)
         plt.axvline(Bilt.mBalLvl, label="mBalLvl exists", color="orange", linestyle="dashed")
 
-    if Bilt.GICNrm:  # Normalized GIC
+    if Bilt.GICMod:  # Normalized GIC
         plt.axvline(Bilt.mTrgNrm, label="mTrgNrm exists", color="green", linestyle="dashed")
 
     plt.tick_params(
@@ -517,8 +517,8 @@ def makeTargetMfig(Rfree, DiscFac, CRRA, PermShkStd, TranShkStd):
     Bilt, cFunc = soln.Bilt, soln.cFunc
     cPlotMin = 0, cFunc(mPlotMax)
 
-    if Bilt.GICNrm:  # tattle
-        soln.check_GICNrm(soln, quietly=False, messaging_level=logging.WARNING)
+    if Bilt.GICMod:  # tattle
+        soln.check_GICMod(soln, quietly=False, messaging_level=logging.WARNING)
 
     mBelwStE = np.linspace(mPlotMin, mPlotMax, 1000)
     EPermGroFac = inf_hor.PermGroFac[0]

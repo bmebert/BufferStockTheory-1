@@ -70,9 +70,9 @@ This follows from:
   \\  & < 1 \notag
 \end{align}
 \end{samepage}
-where the inequality reflects imposition of the \GICNrm~\eqref{eq:GICNrm}.
+where the inequality reflects imposition of the \GICMod~\eqref{eq:GICMod}.
 
-\textbf{If {\RIC} fails.}  When the {\RIC} fails, the fact that $\lim_{\mNrm^{\uparrow} \infty} \cFunc^{\prime}(\mNrm) = 0$ (see equation~\eqref{eq:MPCminInv}) means that the limit of the RHS of~\eqref{eq:emgro} as $\mNrm \uparrow \infty$ is $\bar{\RNrm}=\Ex_{t}[\RNrm_{t+1}]$.  In the next step of this proof, we will prove that the combination {\GICNrm} and \cncl{\RIC} implies $\bar{\RNrm} < 1$.
+\textbf{If {\RIC} fails.}  When the {\RIC} fails, the fact that $\lim_{\mNrm^{\uparrow} \infty} \cFunc^{\prime}(\mNrm) = 0$ (see equation~\eqref{eq:MPCminInv}) means that the limit of the RHS of~\eqref{eq:emgro} as $\mNrm \uparrow \infty$ is $\bar{\RNrm}=\Ex_{t}[\RNrm_{t+1}]$.  In the next step of this proof, we will prove that the combination {\GICMod} and \cncl{\RIC} implies $\bar{\RNrm} < 1$.
 
 So we have $\lim_{\mNrm \uparrow \infty} \Ex_{t}[\mNrm_{t+1}/\mNrm_{t}] < 1$ whether the {\RIC} holds or fails.
 
@@ -116,7 +116,7 @@ Now, we show that (given our other assumptions) $\difFunc^{\prime}(\mNrm)$ is de
                                                             & = \Ex_{t}\left[\frac{\Rfree}{\PermGroFac \PermShk}\frac{\APFac}{\Rfree}\right] - 1 \\
                                                             & = \underbrace{\Ex_{t}\left[\frac{\APFac}{\PermGroFac \PermShk}\right]}_{= \GPFacNrm} - 1 
 \end{align*}
-which is negative because the {\GICNrm} says $\GPFacNrm < 1$.  
+which is negative because the {\GICMod} says $\GPFacNrm < 1$.  
 
 \textbf{If {\RIC} fails.}
 Under \cncl{\RIC}, recall that $\lim_{\mNrm \uparrow \infty} \cFunc^{\prime}(\mNrm) = 0$.  Concavity of the consumption function means that $\cFunc^{\prime}$ is a decreasing function, so everywhere 
@@ -127,7 +127,7 @@ which means that $\difFunc^{\prime}(\mNrm_{t})$ from~\eqref{eq:difFuncmNrmDecrea
 \begin{align}
   \bar{\RNrm} \equiv \Ex_{t}\left[\frac{\Rfree}{\PermGroFac \PermShk}\right] & < 1  \label{eq:RbarBelowOne}.
 \end{align}
-But the combination of the {\GICNrm} holding and the {\RIC} failing can be written:
+But the combination of the {\GICMod} holding and the {\RIC} failing can be written:
 \begin{align*}
   \overbrace{\Ex_{t}\left[\frac{\APFac}{\PermGroFac \PermShk}\right]}^{\GPFacNrm} & < 1 < \overbrace{\frac{\APFac}{\Rfree}}^{{\RPFac}},
 \end{align*}
