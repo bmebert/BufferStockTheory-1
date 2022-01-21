@@ -19,6 +19,7 @@
 \ifthenelse{\boolean{Web}}{
   \setboolean{showPageHead}{false}}{   % 
   \usepackage{scrlayer-scrpage} % Package for page headers if PDF
+  \usepackage{caption} % allow suppression of appendix figures in NoAppendix PDF
 }
 
 \bibliographystyle{\econtexBibStyle} % Custom author (year) bib style
@@ -34,10 +35,10 @@
 
 \pagebreak
 \hypertarget{Appendices}{} % Allows link to [url-of-paper]#Appendices
-\ifthenelse{\boolean{Web}}{}{% Web version has no page headers
+%\ifthenelse{\boolean{Web}}{}{% Web version has no page headers
   \chead[Appendices]{Appendices}      % but PDF version does
   \appendixpage % Reset formatting for appendices
-} 
+%} 
 
 \appendix
 \addcontentsline{toc}{section}{Appendices} % Say "Appendices"

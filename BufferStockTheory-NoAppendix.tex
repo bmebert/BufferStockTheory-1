@@ -32,8 +32,6 @@
   pdfcreator = {ccarroll@jhu.edu}
 }
 
-
-
 \begin{document}
 
 % Attempted to make all lines used for Web version contain {Web} (or version with only single curly brace at end) so can be removed with sed
@@ -1288,8 +1286,8 @@ The main use of infinite horizon versions of such models is in heterogeneous age
 
 \onlyinsubfile{\input{\LaTeXInputs/bibliography_blend}}
 % Do not include appendix figures and tables in ToC unless for Web version
-\ifWeb{}{
-\onlyinsubfile{\captionsetup[figure]{list=no}} 
+\ifthenelse{\boolean{Web}}{}{
+\onlyinsubfile{\captionsetup[figure]{list=no}}
 \onlyinsubfile{\captionsetup[table]{list=no}}
 }
 \end{document}
