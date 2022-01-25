@@ -5,7 +5,7 @@
 \onlyinsubfile{\externaldocument{\LaTeXGenerated/BufferStockTheory}} % Get xrefs -- esp to appendix -- from main file; only works properly if main file has already been compiled;
 \begin{document}
 
-\section{Existence of Concave \texorpdfstring{$\cFunc$}{c} Function}\label{sec:ApndxConcaveCFunc}
+\section{\texorpdfstring{$\cFunc$}{c} Functions Exist, are Concave, and Differentible}\label{sec:ApndxConcaveCFunc}
 
 To show that~\eqref{\localorexternallabel{eq:veqn}} defines a sequence of continuously differentiable strictly increasing concave functions $\{\cFunc_{T},\cFunc_{T-1},\ldots,\cFunc_{T-k}\}$, we start with a definition.  We will say that a function $\nFunc(z)$ is `nice' if it satisfies
 \begin{quote}
@@ -35,9 +35,9 @@ $\vFunc_{t-n}$ is nice by induction for all $n > 0$ because $\vFunc_{T}(\mNrm)
 
 \hypertarget{BoroCnstNat}{}
 Now define an end-of-period value function $\mathfrak{v}_{t}(a) $ as
-\begin{equation}
-  \mathfrak{v}_{t}(a) =\DiscFac \Ex_{t}\left[{\PermGroFac}_{t+1}^{1-\CRRA}\vFunc_{t+1}( {\mathcal{R}}_{t+1} a+{\TranShkAll}_{t+1}) \right]. \label{eq:vEnd}
-\end{equation}
+\begin{equation*}
+  \mathfrak{v}_{t}(a) =\DiscFac \Ex_{t}\left[{\PermGroFac}_{t+1}^{1-\CRRA}\vFunc_{t+1}( {\mathcal{R}}_{t+1} a+{\TranShkAll}_{t+1}) \right].% \label{eq:vEnd}
+\end{equation*}
 
 Since there is a positive probability that $\TranShkAll_{t+1}$ will
 attain its minimum of zero and since $\mathcal{R}_{t+1}>0$, it
@@ -285,7 +285,9 @@ $\pZero$ this expression can be further simplified using ${(1+\MPSmin)}^{-1}
 
 Calling the weak return patience factor $\RPFac^{\wp}=\wp^{1/\CRRA}\RPFac$ and recalling that the \WRIC~was $\RPFac^{\wp}<1$, the expression on the LHS above is $\DiscFac \RPFac^{-\CRRA}$ times the {\WRPFacDefn}.\@ Since we usually assume $\DiscFac$ not far below 1 and parameter values such that $\RPFac \approx 1$, this condition is clearly not very different from the \WRIC.\@
 
-The upshot is that under these slightly stronger conditions the value functions for the original problem define a contraction mapping with a unique $\vFunc(\mNrm)$.  But since $\lim_{n \rightarrow \infty} \MPCminmin_{T-n} = \MPCminmin$ and $\lim_{n \rightarrow \infty} \MPCmax_{T-n} = \MPCmax$, it must be the case that the $\vFunc(\mNrm)$ toward which these $\vFunc_{T-n}$'s are converging is the \textit{same} $\vFunc(\mNrm)$ that was the endpoint of the contraction defined by our operator $\TMap$.  Thus, under our slightly stronger (but still quite weak) conditions, not only do the value functions defined by~\eqref{\localorexternallabel{eq:veqn}} converge, they converge to the same unique $\vFunc$ defined by $\TMap$.\footnote{It seems likely that convergence of the value functions for the original problem could be proven even if only the \WRIC~were imposed; but that proof is not an essential part of the enterprise of this paper and is therefore left for future work.}
+The upshot is that under these slightly stronger conditions the value functions for the original problem define a contraction mapping in $\boundFunc-$bounded space with a unique $\vFunc(\mNrm)$.  But since $\lim_{n \rightarrow \infty} \MPCminmin_{T-n} = \MPCminmin$ and $\lim_{n \rightarrow \infty} \MPCmax_{T-n} = \MPCmax$, it must be the case that the $\vFunc(\mNrm)$ toward which these $\vFunc_{T-n}$'s are converging is the \textit{same} $\vFunc(\mNrm)$ that was the endpoint of the contraction defined by our operator $\TMap$.  Thus, under our slightly stronger (but still quite weak) conditions, not only do the value functions defined by~\eqref{\localorexternallabel{eq:veqn}} converge, they converge to the same unique $\vFunc$ defined by $\TMap$.\footnote{It seems likely that convergence of the value functions for the original problem could be proven even if only the \WRIC~were imposed; but that proof is not an essential part of the enterprise of this paper and is therefore left for future work.}
+
+%\href{https://econ-ark.github.io/BufferStockTheory/Appendices/ApndxEuclidian.pdf}{A brief supplemental appendix} demonstrates that convergence in $\boundFunc$-bounded space implies convergence in Euclidian space.
 
 \onlyinsubfile{\pagebreak\input{\LaTeXInputs/bibliography_blend}}
 

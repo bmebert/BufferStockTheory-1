@@ -17,6 +17,7 @@ bst
 .gitkeep
 auto
 economics.bib
+economics.bib~
 
 ./bibtex/bib/auto:
 economics.el

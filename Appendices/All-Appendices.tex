@@ -8,25 +8,27 @@
 \renewcommand{\onlyinsubfile}[1]{}\renewcommand{\notinsubfile}[1]{#1}
 
 \hypertarget{Appendices}{}
-\appendix \centerline{\LARGE Appendices}\vspace{0.2in}
+\appendix \centerline{\LARGE Main Appendices}\vspace{0.2in}
 \subfile{\ApndxDir/ApndxConcaveCFunc}
-\subfile{\ApndxDir/ApndxMTargetIsStable}
-\subfile{\ApndxDir/ApndxLiqConstr}
 \subfile{\ApndxDir/ApndxEuclidian}
-\subfile{\ApndxDir/ApndxCGroIsPermGroFac}
-\subfile{\ApndxDir/ApndxMPCLimits}
+\subfile{\ApndxDir/ApndxLiqConstr}
 \subfile{\ApndxDir/ApndxLiqConstrAsLimit}
+\subfile{\ApndxDir/ApndxMTargetIsStable}
+\subfile{\ApndxDir/ApndxMPCLimits}
+\subfile{\ApndxDir/ApndxConditionDiagrams}
+\subfile{\ApndxDir/ApndxBalancedGrowthcNrmAndCov}
+
+\centerline{\LARGE Supplemental Appendices}\vspace{0.2in}
+\subfile{\ApndxDir/ApndxCGroIsPermGroFac}
 \subfile{\ApndxDir/ApndxSolnMethEndogGpts}
 \subfile{\ApndxDir/ApndxSolnMethTermFunc}
-\subfile{\ApndxDir/ApndxConditionDiagrams}
 \subfile{\ApndxDir/ApndxCGrowthDeclines}
-\subfile{\ApndxDir/ApndxBalancedGrowthcNrmAndCov}
+\subfile{\ApndxDir/ApndxHarKmenberg}
 
 \clearpage\vfill\eject
 
 \normalsize
-
-\pagebreak\bibliography{\econtexRoot/\texname,\econtexBib}
+\pagebreak\input{\LaTeXInputs/bibliography_blend}\end{document}
 
 \end{document}
 \endinput
