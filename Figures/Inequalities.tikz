@@ -14,6 +14,6 @@
         \draw[->] (pThorn) to node [above]{because $\wp < 1$} (thorn);
         \draw[->] (pThorn) to node [swap] {${\WRIC}$} (rfree);
         \draw[->] (compgamma) to node [rotate=-35,xshift=-2.2cm,yshift=+0.05cm]{because $\underline{\psi} < 1$ and $\uline{\PGro} \equiv \underline{\psi} \PGro$} (gamma);
-        \draw[->] (thorn) to node {${\GICNrm}$} (compgamma);
+        \draw[->] (thorn) to node {${\GICMod}$} (compgamma);
         \draw[->] (fvacFac) to node [rotate=-90,xshift=-1.6cm,yshift=0.25cm]{because $\PGrouAdj < \PGro$} (pffvacFac);
         \draw[->] (thorn) to node {${\FVAC}$} (fvacFac);
