@@ -2,4 +2,5 @@ numpy==1.21.1
 voila==0.2.10
 matplotlib==3.4.2
 ipywidgets==7.6.3
+daal==2021.4.0
 -e git+https://github.com/econ-ark/HARK.git@BST-HARK-pre-release-v4#egg=econ-ark

@@ -1,11 +1,17 @@
-#!/bin/bash
+>#!/bin/bash
 # Reproduce results then text of the paper 
 scriptDir="$(dirname "$0")"
+
+pip install -r ./binder/requirements.txt
 
 # Regenerate computed results (figs) needed for compiling paper
 ./reproduce/computed.sh MIN # Replace with MAX to execute ApndxBalancedGrowthcNrmAndCov.ipynb
 
 echo '' ; echo 'Reproduce text of paper:' ; echo ''
+
+# Make sure tlmgr (texlive manager) is installed and initialized
+[[ "$(which tlmgr)" == "" ]] && echo 'tlmgr is not available; insall texlive and rerun'
+[[ "$(which ~/.tlpkg)" == "" ]] && tlmgr init-usertree
 
 texname=BufferStockTheory
 output_directory='LaTeX'
@@ -17,6 +23,9 @@ cd Figures
 for fName_tikzMake in *Make.tex; do # names of all files ending in Make.tex
     echo "Processing figure $fName_tikzMake"
     fName=${fName_tikzMake%_tikzMake.tex} # Remove the '_tikzMake.tex' part of the filename
+    dep="texliveonfly $fName_tikzMake"
+    echo "$dep"
+    eval "$dep"
     cmd="pdflatex -halt-on-error --output-format pdf -output-directory=../$output_directory $fName_tikzMake"
     echo "$cmd"
     eval "$cmd"
@@ -27,6 +36,9 @@ cd ..
 # Compile LaTeX files in root directory
 for file in "$texname" "$texname"-NoAppendix "$texname"-Slides; do
     echo '' ; echo "Compiling $file" ; echo ''
+    dep="texliveonfly $file"
+    echo "$dep"
+    eval "$dep"
     cmd="pdflatex -halt-on-error -output-directory=$output_directory $file"
     eval "$cmd"
     eval "$cmd > /dev/null" # Hide second output to reduce clutter
@@ -38,6 +50,9 @@ done
 
 # Compile All-Figures and All-Tables
 for type in Figures Tables; do
+    dep="texliveonfly $type/All-$type"
+    echo "$dep"
+    eval "$dep"
     cmd="pdflatex -halt-on-error -output-directory=$output_directory $type/All-$type"
     echo "$cmd" ; eval "$cmd"
     # If there is a .bib file, make the references
@@ -55,6 +70,9 @@ find ./Appendices -name '*.tex' ! -name '*econtexRoot*' ! -name '*econtexPath*' 
 
 while read appendixName; do
     filename=$(basename ${appendixName%.*}) # Strip the path and the ".tex"
+    dep="texliveonfly $appendixName"
+    eval "$dep"
+    echo "$dep"
     cmd="pdflatex -halt-on-error                 --output-directory=$output_directory $appendixName"
     echo "$cmd"
     eval "$cmd"
