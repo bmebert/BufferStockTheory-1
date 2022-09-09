@@ -3,6 +3,9 @@
 \input{./econtexRoot} % Set paths (like, \LaTeXInputs to find resources)
 \newcommand{\texname}{BufferStockTheory}% Keyname for the paper
 
+% Allow importing stuff from ./texmf-local if needed
+\makeatletter\def\input@path{./,./texmf-local/,../texmf-local}\makeatother
+
 % Document with title page and tables of contents:
 \documentclass[titlepage, headings=optiontotocandhead]{\econtex}
 

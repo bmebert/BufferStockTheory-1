@@ -31,6 +31,7 @@ unsrtnatTitlesFirst.bst
 
 ./tex:
 .gitkeep
+abcd.sty
 latex
 plain
 
@@ -42,6 +43,7 @@ articleNoRefHead.cls
 auto
 bibMake.tex
 cvBibMake.tex
+econark.sty
 econtex.cls
 econtex.log
 econtex.sty
