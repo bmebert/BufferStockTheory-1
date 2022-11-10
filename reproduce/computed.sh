@@ -9,11 +9,12 @@ cd "$scriptDir/.."  # Move to its parent
 echo '' ; echo 'Producing figures' ; echo ''
 
 cd "."
-[[ ! -e BufferStockTheory.py ]] && jupyter nbconvert --to script BufferStockTheory-Problems-And-Solutions-Source.ipynb 
-ipython BufferStockTheory.py
+[[ ! -e BufferStockTheor*.py ]] && jupyter nbconvert --to script BufferStockTheor*.ipynb 
+ipython BufferStockTheor*.py
 
 [[ -e latexdefs.tex ]] && rm -f latexdefs.tex # Delete junk file that might be created
 
+cp -r ./src ./src
 cd ./Code/Python; ./test_Harmenbergs_method.sh
 
 # Execute sims showing near-constant growth of mean c and cov(c,p), Ω_{M[c]} and Ω_{cov}
