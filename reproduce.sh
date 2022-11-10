@@ -10,7 +10,7 @@ pip install -r ./binder/requirements.txt
 echo '' ; echo 'Reproduce text of paper:' ; echo ''
 
 # Make sure tlmgr (texlive manager) is installed and initialized
-[[ "$(which tlmgr)" == "" ]] && echo 'tlmgr is not available; insall texlive and rerun'
+[[ "$(which tlmgr)" == "" ]] && echo 'tlmgr is not available; install texlive and rerun'
 [[ "$(which ~/.tlpkg)" == "" ]] && tlmgr init-usertree
 
 texname=BufferStockTheory

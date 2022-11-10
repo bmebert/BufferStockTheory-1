@@ -2,15 +2,20 @@
 
 \input{./econtexRoot} % Set paths (like, \LaTeXInputs to find resources)
 \newcommand{\texname}{BufferStockTheory}% Keyname for the paper
+% Allow importing stuff from ./texmf-local if needed
+%\makeatletter\def\input@path{./,./texmf-local/,./texmf-local/tex/latex/,../texmf-local/,../texmf-local/tex/latex/,./texmf-local/tex/}\makeatother
 
 % Document with title page and tables of contents:
 \documentclass[titlepage, headings=optiontotocandhead]{\econtex}
+\usepackage{subfiles}
+
 
 % Extra standardized packages for specialized content
 \usepackage{footmisc,datetime2,refcount,xr-hyper,hhline,rotating,subfigure,makecell}
 
-% Extra custom packages 
-\usepackage{econark}       % Mostly shortcuts (LaTeX macros)
+% Extra custom packages
+
+\usepackage{\econark}       % Mostly shortcuts (LaTeX macros)
 \usepackage{\econtexSetup} % Gets, configures often-used packages
 
 \usepackage{\LaTeXInputs/\texname}% LaTeX Shortcuts for whole paper

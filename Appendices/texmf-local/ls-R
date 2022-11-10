@@ -31,7 +31,6 @@ unsrtnatTitlesFirst.bst
 
 ./tex:
 .gitkeep
-abcd.sty
 latex
 plain
 

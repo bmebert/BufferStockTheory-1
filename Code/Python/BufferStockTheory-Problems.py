@@ -539,7 +539,7 @@ GICModFailsButGICRawHolds = \
 # %% [markdown]
 # `# Solve that consumer's problem:`
 
-# %% {"tags": []}
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # Solve the model for these parameter values
 GICModFailsButGICRawHolds.tolerance = 0.0001  # Declare victory at ...
 # Suppress output during solution
@@ -610,7 +610,7 @@ print('\ndistance_now < distance_original: ' +
 # %% [markdown]
 # `# Plot the results:`
 
-# %% {"pycharm": {"is_executing": true}, "tags": []}
+# %% {"jupyter": {"source_hidden": true}, "pycharm": {"is_executing": true}, "tags": []}
 # Plot https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#GICModFailsButGICRawHolds
 
 soln = GICModFailsButGICRawHolds.solution[0]  # Short alias for solution
@@ -798,7 +798,7 @@ baseAgent_Inf.solve(
 # %% [markdown] {"tags": []}
 # `# Plot growth factors for various model elements at steady state:`
 
-# %% {"pycharm": {"is_executing": true}, "tags": []}
+# %% {"jupyter": {"source_hidden": true}, "pycharm": {"is_executing": true}, "tags": []}
 # Plot growth rates
 
 soln = baseAgent_Inf.solution[0]
@@ -933,7 +933,7 @@ makeFig('cNrmTargetFig')
 # %% [markdown] {"tags": []}
 # `# Define bounds for figure:`
 
-# %% {"pycharm": {"is_executing": true}, "tags": []}
+# %% {"jupyter": {"source_hidden": true}, "pycharm": {"is_executing": true}, "tags": []}
 # Define mpc_Min, h_inf and PF consumption function, upper and lower bound of c function
 
 # construct and solve it silently
@@ -962,7 +962,7 @@ def cFunc_BotBnd(m): return mpc_Min * m
 # %% [markdown]
 # `# Plot figure showing bounds`
 
-# %% {"pycharm": {"is_executing": true}, "tags": []}
+# %% {"jupyter": {"source_hidden": true}, "pycharm": {"is_executing": true}, "tags": []}
 # Plot the consumption function and its bounds
 cMaxLabel = r'$\overline{c}(m)= (m-1+h)\tilde{\kappa}$'
 cMinLabel = r'Lower Bound: $\tilde{c}(m)= (1-\pmb{\text{\TH}}_{\mathsf{R}})\tilde{\kappa}m$'
@@ -1043,7 +1043,7 @@ makeFig('cFuncBounds')
 # %% [markdown]
 # `# Make and plot figure showing the upper and lower limits of the MPC:`
 
-# %% {"pycharm": {"is_executing": true}, "tags": []}
+# %% {"jupyter": {"source_hidden": true}, "pycharm": {"is_executing": true}, "tags": []}
 # The last figure shows the upper and lower limits of the MPC
 
 mPlotMin = 0

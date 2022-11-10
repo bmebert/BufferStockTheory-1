@@ -1,7 +1,7 @@
 #!/bin/bash
 
 scriptDir="$(dirname "$0")" # Get the path to the directory this script is in
-
+# scriptDir=/Volumes/Data/Papers/BufferStockTheory/BufferStockTheory-Latest/reproduce/
 cd "$scriptDir/.."  # Move to its parent 
 
 [[ ! -e binder/requirements.out ]] && echo ''  && echo 'Installing requirements' && echo '' && pip install -r binder/requirements.txt | tee binder/requirements.out 
@@ -9,6 +9,7 @@ cd "$scriptDir/.."  # Move to its parent
 echo '' ; echo 'Producing figures' ; echo ''
 
 cd "."
+[[ ! -e BufferStockTheory.py ]] && jupyter nbconvert --to script BufferStockTheory-Problems-And-Solutions-Source.ipynb 
 ipython BufferStockTheory.py
 
 [[ -e latexdefs.tex ]] && rm -f latexdefs.tex # Delete junk file that might be created
