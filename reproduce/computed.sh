@@ -4,7 +4,7 @@ scriptDir="$(dirname "$0")" # Get the path to the directory this script is in
 # scriptDir=/Volumes/Data/Papers/BufferStockTheory/BufferStockTheory-Latest/reproduce/
 cd "$scriptDir/.."  # Move to its parent 
 
-[[ ! -e binder/requirements.out ]] && echo ''  && echo 'Installing requirements' && echo '' && pip install -r binder/requirements.txt | tee binder/requirements.out 
+[[ ! -e ./binder/requirements.out ]] && echo ''  && echo 'Installing requirements' && echo '' && pip install -r ./binder/requirements.txt | tee binder/requirements.out 
 
 echo '' ; echo 'Producing figures' ; echo ''
 

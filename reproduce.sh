@@ -1,6 +1,7 @@
 #!/bin/bash
 # Reproduce results then text of the paper 
 scriptDir="$(dirname "$0")"
+cd "$(realpath $scriptDir)"
 
 pip install -r ./binder/requirements.txt
 
