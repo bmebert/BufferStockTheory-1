@@ -1,6 +1,6 @@
 % Allows two (optional) supplements to hard-wired \texname.bib bibfile:
 % economics.bib is a default bibfile that supplies anything missing elsewhere
-% Add-Refs.bib is an override bibfile that supplants anything in \texfile.bib or economics.bib
+% Add-Refs.bib is an override bibfile that supplants anything in \texname.bib or economics.bib
 \provideboolean{AddRefsExists}
 \provideboolean{economicsExists}
 \provideboolean{BothExist}
@@ -53,3 +53,4 @@
       \bibliography{        \econtexRoot/\texname,\economics}}
   } % end of picking the one that exists
 } % end of testing whether neither exists
+\small

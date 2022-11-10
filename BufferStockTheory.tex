@@ -1,28 +1,23 @@
-% -*- mode: LaTeX; TeX-PDF-mode: t; -*- # Tell emacs the file type (for syntax)
+% -*- mode: LaTeX; TeX-PDF-mode: t; -*- # Tell emacs the file type (for syntax coloring)
 
 \input{./econtexRoot} % Set paths (like, \LaTeXInputs to find resources)
 \newcommand{\texname}{BufferStockTheory}% Keyname for the paper
-% Allow importing stuff from ./texmf-local if needed
-%\makeatletter\def\input@path{./,./texmf-local/,./texmf-local/tex/latex/,../texmf-local/,../texmf-local/tex/latex/,./texmf-local/tex/}\makeatother
 
-% Document with title page and tables of contents:
-\documentclass[titlepage, headings=optiontotocandhead]{\econtex}
-\usepackage{subfiles}
-
-
-% Extra standardized packages for specialized content
-\usepackage{footmisc,datetime2,refcount,xr-hyper,hhline,rotating,subfigure,makecell}
+% Declare document with title page and table of contents (toc):
+\documentclass[titlepage, headings=optiontocandhead]{\econtex}
+\usepackage{subfiles} % Allow appendices, tables, etc as standalone subfiles
 
 % Extra custom packages
-
-\usepackage{\econark}       % Mostly shortcuts (LaTeX macros)
+\usepackage{\econark}      % Mostly shortcuts defining variables (LaTeX macros)
 \usepackage{\econtexSetup} % Gets, configures often-used packages
 
-\usepackage{\LaTeXInputs/\texname}% LaTeX Shortcuts for whole paper
+\usepackage{\LaTeXInputs/\texname}% LaTeX shortcuts for whole paper
+\usepackage{\LaTeXInputs/pdf-suppress-runtime} % dont include timestamp in pdf
 
-% \usepackage{econtexSetup} sets boolean Web=true if compilation type is dvi
-\ifthenelse{\boolean{Web}}{
-  \setboolean{showPageHead}{false}}{   % 
+% \econtexSetup sets boolean variable 'Web' to true if making html not pdf
+\ifthenelse{\boolean{Web}}{ % then
+  \setboolean{showPageHead}{false} % no pages, so no page head, on web
+}{ % else not for web
   \usepackage{scrlayer-scrpage} % Package for page headers if PDF
   \usepackage{caption} % allow suppression of appendix figures in NoAppendix PDF
 }
@@ -31,22 +26,22 @@
 
 \begin{document}
 
-% Redefine \onlyinsubfile command defined in \texname.sty file:
-% This lets any submaterial called from here know that it is not standalone
-% If not called from here and IS standalone, can make bib (or other content)
+% Redefine \onlyinsubfile command defined in \LaTeXInputs/\texname.sty:
+% This lets any subfile called from here know that it is not standalone
+% (So: if it is NOT called from here and IS standalone, knows it can make bib)
 \renewcommand{\onlyinsubfile}[1]{}\renewcommand{\notinsubfile}[1]{#1}
 
 \subfile{BufferStockTheory-NoAppendix} % Main body of paper
 
 \pagebreak
-\hypertarget{Appendices}{} % Allows link to [url-of-paper]#Appendices
+\hypertarget{Appendices}{} % Creates link to [url-of-paper]#Appendices
 \ifthenelse{\boolean{Web}}{}{% Web version has no page headers
   \chead[Appendices]{Appendices}      % but PDF version does
   \appendixpage % Reset formatting for appendices
 } 
 
-\appendix
-\addcontentsline{toc}{section}{Appendices} % Say "Appendices"
+\appendix % Declare beginning
+\addcontentsline{toc}{section}{Appendices} % print label "Appendices"
 
 \subfile{\ApndxDir/ApndxConcaveCFunc}
 \subfile{\ApndxDir/ApndxEuclidian}
@@ -62,10 +57,8 @@
 \subfile{\ApndxDir/ApndxBalancedGrowthcNrmAndCov}
 %\subfile{\ApndxDir/ApndxHarKmenberg}
 
-\small
 \pagebreak\input{\LaTeXInputs/bibliography_blend}\end{document}
 
-\small
 \sloppy
 
 \endinput
