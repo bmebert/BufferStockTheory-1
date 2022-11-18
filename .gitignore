@@ -364,3 +364,4 @@ requirements.out # Ensures that fresh install will insist on new HARK
 .idea
 .pytest_cache
 Old/
+HarKmenberg/
