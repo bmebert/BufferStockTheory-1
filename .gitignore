@@ -32,6 +32,7 @@
 ## Auxiliary and intermediate files from other packages:
 # algorithms
 *.alg
+# *.dep
 *.loa
 
 # achemso
@@ -190,10 +191,12 @@ _region_.*
 # Custom for CDC papers
 *.bibkey
 *.tmp
-#economics.bib
+economics.bib
 
-# Custom for ShareLaTeX
-# latexmkrc
+# BufferStockBib should be of zero size here
+# so that it will be populated by the global economics.bib
+# The makePublic script should populate it with the references
+BufferStockTheory.bib
 
 # Things marked _pri or private are kept locally only
 *_pri
@@ -209,7 +212,8 @@ _region_.*
 *.dep
 
 # economics.bib will be nonexistent on local machine, but should exist and be of zero size on remote
-# This requires it to exist but be empty on first commit, and ignored thereafter 
+# This requires it to exist but be empty on first commit, and ignored thereafter
+economics.bib
 *.tmp
 
 
@@ -230,7 +234,7 @@ _region_.*
 *.png binary
 *.gif binary
 
-*.cs -text diff=csharp 
+*.cs -text diff=csharp
 *.vb -text
 *.c -text
 *.cpp -text
@@ -258,7 +262,6 @@ _region_.*
 *.fs -text
 *.fsx -text
 *.hs -text
-
 .spyproject*
 .spyproject/
 =======
@@ -266,14 +269,97 @@ _region_.*
 .spyderproject
 .spyproject
 
-/Old/
-src/
-/src
+/*Old/*
+/Old
+*.pyc
+
+BufferStockTheory.pdf
+BufferStockTheory-NoAppendix.pdf
+BufferStockTheory-Slides.pdf
+
+Equations/*.tex
+Appendices/All-Appendices-Add.bib
+Appendices/All-Appendices.pdf
+Appendices/ApndxCGroIsPGro.pdf
+Appendices/ApndxCGrowthDeclines.pdf
+Appendices/ApndxConcaveCFunc.pdf
+Appendices/ApndxConditionDiagrams.pdf
+Appendices/ApndxEuclidian.pdf
+Appendices/ApndxLiqConstr.pdf
+Appendices/ApndxLiqConstrAsLimit.pdf
+Appendices/ApndxMPCLimits.pdf
+Appendices/ApndxMTargetIsStable.pdf
+Appendices/ApndxSolnMethEndogGpts.pdf
+Appendices/ApndxSolnMethTermFunc.pdf
+Figures/All-Figures-Add.bib
+Figures/All-Figures.pdf
+LaTeX/All-Appendices-Add.bib
+LaTeX/All-Appendices.bib
+LaTeX/All-Appendices.pdf
+LaTeX/All-Figures-Add.bib
+LaTeX/All-Figures.bib
+LaTeX/All-Figures.pdf
+LaTeX/All-Tables-Add.bib
+LaTeX/All-Tables.bib
+LaTeX/All-Tables.pdf
+LaTeX/ApndxCGroIsPGro-Add.bib
+LaTeX/ApndxCGroIsPGro.bib
+LaTeX/ApndxCGroIsPGro.pdf
+LaTeX/ApndxCGrowthDeclines-Add.bib
+LaTeX/ApndxCGrowthDeclines.bib
+LaTeX/ApndxCGrowthDeclines.pdf
+LaTeX/ApndxConcaveCFunc-Add.bib
+LaTeX/ApndxConcaveCFunc.bib
+LaTeX/ApndxConcaveCFunc.pdf
+LaTeX/ApndxConditionDiagrams-Add.bib
+LaTeX/ApndxConditionDiagrams.bib
+LaTeX/ApndxConditionDiagrams.pdf
+LaTeX/ApndxEuclidian-Add.bib
+LaTeX/ApndxEuclidian.bib
+LaTeX/ApndxEuclidian.pdf
+LaTeX/ApndxLiqConstr-Add.bib
+LaTeX/ApndxLiqConstr.bib
+LaTeX/ApndxLiqConstr.pdf
+LaTeX/ApndxLiqConstrAsLimit-Add.bib
+LaTeX/ApndxLiqConstrAsLimit.bib
+LaTeX/ApndxLiqConstrAsLimit.pdf
+LaTeX/ApndxMPCLimits-Add.bib
+LaTeX/ApndxMPCLimits.bib
+LaTeX/ApndxMPCLimits.pdf
+LaTeX/ApndxMTargetIsStable-Add.bib
+LaTeX/ApndxMTargetIsStable.bib
+LaTeX/ApndxMTargetIsStable.pdf
+LaTeX/ApndxSolnMethEndogGpts-Add.bib
+LaTeX/ApndxSolnMethEndogGpts.bib
+LaTeX/ApndxSolnMethEndogGpts.pdf
+LaTeX/ApndxSolnMethTermFunc-Add.bib
+LaTeX/ApndxSolnMethTermFunc.bib
+LaTeX/ApndxSolnMethTermFunc.pdf
+LaTeX/BufferStockTheory-Add.bib
+LaTeX/BufferStockTheory-NoAppendix-Add.bib
+LaTeX/BufferStockTheory-NoAppendix.bib
+LaTeX/BufferStockTheory-Slides-Add.bib
+LaTeX/BufferStockTheory-Slides.bib
+LaTeX/BufferStockTheory.bib
+Tables/All-Tables-Add.bib
+Tables/All-Tables.pdf
 
 requirements.out
+src
+src/
 
-*.out.ps
-*.lg
-.DS_Store
-.spyproject
-Old
+LaTeX/Comparisoon-subfile.pdf
+LaTeX/Inequalities-numer_tikzMake.pdf
+LaTeX/Inequalities-tikzMake.pdf
+LaTeX/Inequalities_tikzMake.pdf
+LaTeX/InequalityPFGICFHWCRIC-tikzMake.pdf
+LaTeX/InequalityPFGICFHWCRIC_tikzMake.pdf
+LaTeX/RelatePFGICFHWCRICPFFVAC-tikzMake.pdf
+LaTeX/RelatePFGICFHWCRICPFFVAC_tikzMake.pdf
+LaTeX/ApndxLiqConstr-last.pdf
+LaTeX/ApndxLiqConstr-last.pdftotext-nofirstline
+
+requirements.out # Ensures that fresh install will insist on new HARK
+# ignore stuff generated as byproducts of running code
+.idea
+.pytest_cache
