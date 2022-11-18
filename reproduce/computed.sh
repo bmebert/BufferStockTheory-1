@@ -8,11 +8,11 @@ cd "$scriptDir/.."  # Move to its parent
 
 echo '' ; echo 'Producing figures' ; echo ''
 
-[[ ! -d ./src ]] && mkdir -p ./src
+[[ ! -d ./Code/Python/src ]] && mkdir -p ./Code/Python/src
 
-cp -r ./src/* ./src
+cp -r ./src/* ./Code/Python/src
 
-cd "."
+cd "./Code/Python"
 [[ ! -e BufferStockTheor*.py ]] && jupyter nbconvert --to script BufferStockTheor*.ipynb 
 ipython BufferStockTheor*.py
 
