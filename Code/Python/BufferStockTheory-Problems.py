@@ -1,32 +1,75 @@
-#!/usr/bin/env python
-# coding: utf-8
+# -*- coding: utf-8 -*-
+# ---
+# jupyter:
+#   jupytext:
+#     cell_metadata_filter: ExecuteTime,-autoscroll,collapsed
+#     cell_metadata_json: true
+#     formats: ipynb,py:percent
+#     notebook_metadata_filter: all,-widgets,-varInspector
+#     text_representation:
+#       extension: .py
+#       format_name: percent
+#       format_version: '1.3'
+#       jupytext_version: 1.11.5
+#   kernelspec:
+#     display_name: Python 3
+#     language: python
+#     name: python3
+#   language_info:
+#     codemirror_mode:
+#       name: ipython
+#       version: 3
+#     file_extension: .py
+#     mimetype: text/x-python
+#     name: python
+#     nbconvert_exporter: python
+#     pygments_lexer: ipython3
+#     version: 3.9.5
+#   latex_envs:
+#     LaTeX_envs_menu_present: true
+#     autoclose: false
+#     autocomplete: false
+#     bibliofile: biblio.bib
+#     cite_by: apalike
+#     current_citInitial: 1
+#     eqLabelWithNumbers: true
+#     eqNumInitial: 1
+#     hotkeys:
+#       equation: Ctrl-E
+#       itemize: Ctrl-I
+#     labels_anchors: false
+#     latex_user_defs: false
+#     report_style_numbering: false
+#     user_envs_cfg: false
+# ---
 
+# %% [markdown]
 # # Theoretical Foundations of Buffer Stock Saving
-# 
+#
 # <cite data-cite="6202365/8AH9AXN2"></cite>
-# 
+#
 # <p style="text-align: center;"><small><small><small>Generator: BufferStockTheory-make/notebooks_byname</small></small></small></p>
-# 
+#
 # [![econ-ark.org](https://img.shields.io/badge/Powered%20by-Econ--ARK-3e8acc.svg)](https://econ-ark.org/materials/bufferstocktheory)
-# 
+#
 
+# %% [markdown]
 # <a id='interactive-dashboard'></a>
-# 
+#
 # [This notebook](https://econ-ark.org/materials/bufferstocktheory?launch) uses the [Econ-ARK/HARK](https://github.com/econ-ark/HARK) toolkit to reproduce and illustrate key results of the paper [Theoretical Foundations of Buffer Stock Saving](https://econ-ark.github.io/BufferStockTheory/).
-# 
+#
 # An [interactive dashboard](https://econ-ark.org/materials/bufferstocktheory?dashboard) allows you to modify parameters to see how (some of) the figures change.
-# 
-# 
+#
+#
 # - In JupyterLab, click on the $\bullet$$\bullet$$\bullet$ patterns to expose the runnable code
 # - in either a Jupyter notebook or JupyterLab:
-# 
+#
 #     * Click the double triangle <span class=reload>&#x23e9;</span> above to execute the code and generate the figures
 
+# %% [markdown]
 # `# Setup Python Below`
 
-# In[1]:
-
-
+# %% {"tags": []}
 # Import required python packages
 import os.path
 import sys
@@ -53,12 +96,10 @@ if os.path.isdir('binder'):  # Folder defining requirements exists
             print(output.decode("utf8"))
             print(e.output.decode("utf8"),e.returncode)
 
-
+# %% [markdown]
 # `# Setup HARK Below`
 
-# In[2]:
-
-
+# %% {"tags": []}
 from HARK import __version__ as HARKversion
 from HARK.utilities import (
     plot_funcs, find_gui, make_figs, determine_platform,
@@ -107,10 +148,11 @@ base_params['BoroCnstArt'] = None    # No artificial borrowing constraint
 
 
 
+# %% [markdown] {"jp-MarkdownHeadingCollapsed": true, "tags": []}
 # ## [The Problem](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory/BufferStockTheory3.html#The-Problem)
-# 
+#
 # The paper [calibrates](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#Calibration) a small set of parameters:
-# 
+#
 # \begin{align}
 #  &
 # \newcommand\maththorn{\mathord{\pmb{\text{\TH}}}}
@@ -154,7 +196,7 @@ base_params['BoroCnstArt'] = None    # No artificial borrowing constraint
 # \newcommand{\vNrm}{{v}}
 # \renewcommand{\APFac}{\pmb{\unicode[0.55,0.05]{0x00DE}}}
 # \end{align}
-# 
+#
 # | Parameter | Description | Python Variable | Value |
 # |:---:      | :---:       | :---:  | :---: |
 # | $\PermGroFac$ | Permanent Income Growth Factor | $\texttt{PermGroFac}$ | 1.03 |
@@ -165,47 +207,50 @@ base_params['BoroCnstArt'] = None    # No artificial borrowing constraint
 # | $\TranShk^{\large u}$ | Income when Unemployed | $\texttt{IncUnemp}$ | 0. |
 # | $\PermShkStd$ | Std Dev of Log Permanent Shock| $\texttt{PermShkStd}$ | 0.1 |
 # | $\TranShkStd$ | Std Dev of Log Transitory Shock| $\texttt{TranShkStd}$ | 0.1 |
-# 
+#
 # that define the preferences and environment of microeconomic consumers as detailed below.  (For notational conventions used here and in the paper, see the [NARK](https://github.com/econ-ark/HARK/blob/BST-HARK-pre-release-v4/Documentation/NARK/NARK.pdf).)
-# 
+#
 # The objective of such a consumer with a horizon of $n$ periods is to maximize the value obtained from the sequence of consumption choices __**c**__ from period $t=T-n$ to a terminal period $T$:
-# 
+#
 # \begin{equation}
 # \mathbf{v}_{t} = \sum_{i=0}^{n} \DiscFac^{n}\mathrm{u}(\mathbf{c}_{t+n})
 # \end{equation}
-# 
+#
 # The infinite-horizon solution is defined as the limit of the first period solution $\mathrm{c}_{T-n}$ as the horizon $n$ goes to infinity.
 
+# %% [markdown] {"tags": []}
 # ### Details
 # For a microeconomic consumer who begins period $t$ with __**m**__arket resources boldface $\mLvl_{t}$ (=net worth plus current income), the amount that remains after __**c**__onsumption of $\cLvl_{t}$ will be end-of-period __**a**__ssets $\aLvl_{t}$,
-# 
+#
 # <!-- Next period's 'Balances' $B_{t+1}$ reflect this period's $\aLvl_{t}$ augmented by return factor $R$:-->
 
+# %% [markdown]
 # \begin{eqnarray}
 # \aLvl_{t}   &=&\mLvl_{t}-\cLvl_{t}. \notag
 # \end{eqnarray}
-# 
+#
 # The consumer's __**p**__ermanent noncapital income $\pLvl$ grows by a predictable factor $\PermGroFac$ and is subject to an unpredictable multiplicative shock $\Ex_{t}[\PermShk_{t+1}]=1$,
-# 
+#
 # \begin{eqnarray}
 # \pLvl_{t+1} & = & \pLvl_{t} \PermGroFac \PermShk_{t+1}, \notag
 # \end{eqnarray}
-# 
+#
 # and, if the consumer is employed, actual income is permanent income multiplied by a transitory shock $\TranShk^{\large e}$.  There is also a probability $\UnempPrb$ that the consumer will be temporarily unemployed and experience income of $\TranShk^{\large u}  = 0$.  We construct $\TranShk^{\large e}$ so that its mean value is $1/(1-\UnempPrb)$ because in that case the mean level of the transitory shock (accounting for both unemployed and employed states) is exactly
-# 
+#
 # \begin{eqnarray}
 # \Ex_{t}[\TranShk_{t+1}] & = & \TranShk^{\large{u}}  \times \UnempPrb + (1-\UnempPrb) \times \Ex_{t}[\TranShk^{\large{e}}_{t+1}] \notag
 # \\ & = & 0 \times \UnempPrb + (1-\UnempPrb) \times 1/(1-\UnempPrb)  \notag
 # \\ & = & 1. \notag
 # \end{eqnarray}
-# 
+#
 #   We can combine the unemployment shock $\TranShk^{\large u}$ and the transitory shock to employment income $\TranShk^{\large e}$ into $\TranShkAll_{t+1}$, so that next period's market resources are
 # \begin{eqnarray}
 #     \mLvl_{t+1} &=& \aLvl_{t}\Rfree +\pLvl_{t+1}\TranShkAll_{t+1}.  \notag
 # \end{eqnarray}
 
+# %% [markdown]
 # When the consumer has a CRRA utility function $u(\cLvl)=\frac{\cLvl^{1-\CRRA}}{1-\CRRA}$, the paper shows that the problem can be written in terms of ratios (nonbold font) of level (bold font) variables to permanent income, e.g. $m_{t} \equiv \mLvl_{t}/\pLvl_{t}$, and the Bellman form of [the problem reduces to](https://econ-ark.github.io/BufferStockTheory/#The-Related-Problem):
-# 
+#
 # \begin{eqnarray*}
 # v_t(m_t) &=& \max_{c_t}~~ u(c_t) + \DiscFac~\Ex_{t} [(\PermGroFac\PermShk_{t+1})^{1-\CRRA} v_{t+1}(m_{t+1}) ] \\
 # & s.t. & \\
@@ -213,9 +258,7 @@ base_params['BoroCnstArt'] = None    # No artificial borrowing constraint
 # m_{t+1} &=& a_t \Rfree/(\PermGroFac \PermShk_{t+1}) + \TranShkAll_{t+1} \\
 # \end{eqnarray*}
 
-# In[3]:
-
-
+# %% {"tags": []}
 # Set the parameters for the baseline results in the paper
 base_params['PermGroFac'] = [1.03]         # Permanent income growth factor
 base_params['Rfree'] = Rfree = 1.04        # Interest factor on assets
@@ -226,21 +269,19 @@ base_params['UnempPrb'] = UnempPrb = 0.005
 base_params['IncUnemp'] = IncUnemp = 0.0   # Induces natural borrowing constraint
 base_params['PermShkStd'] = [0.1]          # Standard deviation of log permanent income shocks
 base_params['TranShkStd'] = [0.1]          # Standard deviation of log transitory income shocks
-
-
+# %% [markdown] {"tags": []}
 # ## Convergence of the Consumption Rules
-# 
+#
 # Under the given parameter values, [the paper's first figure](https://econ-ark.github.io/BufferStockTheory/#Convergence-of-the-Consumption-Rules) depicts the successive consumption rules that apply in the last period of life $(c_{T}(m))$, the second-to-last period, and earlier periods $(c_{T-n})$.  The consumption function to which these converge is $c(m)$:
-# 
+#
 # \begin{equation}
 # c(m) = \lim_{n \uparrow \infty} c_{T-n}(m) \notag
 # \end{equation}
 
+# %% [markdown]
 # `# Create a buffer stock consumer instance:`
 
-# In[4]:
-
-
+# %% {"tags": []}
 # Create a buffer stock consumer instance by invoking the IndShockConsumerType class
 # with the parameter dictionary "base_params"
 
@@ -256,11 +297,10 @@ baseAgent_Fin.unpack('cFunc')  # Retrieve consumption functions
 cFunc = baseAgent_Fin.cFunc    # Shortcut
 
 
+# %% [markdown]
 # `# Plot the consumption rules:`
 
-# In[5]:
-
-
+# %% {"tags": []}
 # Plot the different consumption rules for the different periods
 
 mPlotMin = 0
@@ -308,159 +348,183 @@ plt.text(xMax+0.1, 0, "$m$", fontsize=fsbig)
 # Save the figure
 makeFig('cFuncsConverge')  # Comment out if you want to run uninterrupted
 
-
+# %% [markdown] {"slideshow": {"slide_type": "slide"}}
 # Use the [interactive dashboard](#interactive-dashboard) to explore the effects of changes in patience, risk aversion, or risk
 
+# %% [markdown] {"tags": []}
+# ### PROBLEM: Natural Borrowing Constraint Approaches Artificial Constraint
+#
+# Show numerically the result that is proven analytically in [The-Liquidity-Constrained-Solution-as-a-Limit](https://econ-ark.github.io/BufferStockTheory/#The-Liquidity-Constrained-Solution-as-a-Limit), by solving the model for successively smaller values of $\UnempPrb$.
+#    * You need only to solve for the second-to-last period of life to do this
+#       * `TwoPeriodModel = IndShockConsumerType(**base_params)`
+#       * `TwoPeriodModel.cycles = 2   # Make this type have a two period horizon (Set T = 2)`
+#
+#    * You should show the consumption rules for different values of $\UnempPrb$ on the same graph
+#       * To make this easier, you will want to use the plot_funcs command:
+#          * `from HARK.utilities import plot_funcs_der, plot_funcs`
+#
+# Create a cell or cells in the notebook below this cell and put your solution there; comment on the size of $\UnempPrb$ needed to make the two models visually indistinguishable
+
+# %% [markdown] {"tags": []}
 # ## Factors and Conditions
-# 
+#
 # ### [The Finite Human Wealth Condition](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#Human-Wealth)
-# 
+#
 # Human wealth for a perfect foresight consumer is the present discounted value of future noncapital income:
-# 
+#
 # \begin{eqnarray}\notag
 # \hLvl_{t} & = & \Ex_{t}[\pLvl_{t} + \Rfree^{-1} \pLvl_{t+1} + \Rfree^{2} \pLvl_{t+2} ... ] \\ \notag
 #       & = & \pLvl_{t} \left(1 + (\PermGroFac/\Rfree) + (\PermGroFac/\Rfree)^{2} ... \right)
 # \end{eqnarray}
-# 
+#
 # which approaches infinity as the horizon extends if $\PermGroFac/\Rfree \geq 1$.  We say that the 'Finite Human Wealth Condition' [(FHWC)](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#FHWC) holds if
 # $0 \leq (\PermGroFac/\Rfree) < 1$.
 
+# %% [markdown] {"tags": []}
 # ### [Absolute Patience and the AIC](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#AIC)
-# 
+#
 # The paper defines the Absolute Patience Factor [(APF)](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#APFac) as being equal to the ratio $\cLvl_{t+1}/\cLvl_{t}$ for a perfect foresight consumer.  (The Old English character [Thorn](https://en.wikipedia.org/wiki/Thorn_(letter)) used for this object in the paper cannot reliably be rendered in Jupyter notebooks; it may appear as capital Phi):
-# 
+#
 # \begin{equation}
 # \PatFac = (\Rfree \DiscFac)^{1/\CRRA}
 # \end{equation}
-# 
+#
 # If $\APFac = 1$, a perfect foresight consumer will spend at exactly the level of $\cLvl$ that can be sustained perpetually (given their current and future resources).  If $\APFac < 1$ (the consumer is 'absolutely impatient'; or, 'the absolute impatience condition holds'), the consumer is consuming more than the sustainable amount, so consumption will fall, and if the consumer is 'absolutely patient' with $\APFac > 1$ consumption will grow over time.
-# 
-# 
+#
+#
 
+# %% [markdown] {"tags": []}
 # ### [Growth Patience and the GICRaw](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#GIC)
-# 
+#
 # For a [perfect foresight consumer](https://www.econ2.jhu.edu/people/ccarroll/public/lecturenotes/consumption/PerfForesightCRRA), whether the ratio $c$=__**c**__/__**p**__ is rising, constant, or falling depends on the relative growth rates of consumption and permanent income; that ratio is measured by the [Perfect Foresight Growth Patience Factor](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#PFGPF):
-# 
+#
 # \begin{eqnarray}
 # \APFac_{\PermGroFac} & = & \APFac/\PermGroFac
 # \end{eqnarray}
 # and whether the $c$ is falling or rising over time depends on whether $\APFac_{\PermGroFac}$ is below or above 1.
-# 
+#
 # An analogous condition can be defined when there is uncertainty about permanent income.  Defining $\tilde{\PermGroFac} = (\Ex[\PermShk^{-1}])^{-1}\PermGroFac$, the
 # ['Growth Impatience Condition'](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#GIC) determines whether, _in expectation_, the stochastic value of $c$ is rising, constant, or falling over time:
-# 
+#
 # \begin{eqnarray}
 #   \APFac/\tilde{\PermGroFac} & < & 1.
 # \end{eqnarray}
-# 
+#
 # ### [The Finite Value of Autarky Condition (FVAC)](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#Autarky-Value)
 
+# %% [markdown]
 # The paper [shows](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#Autarky-Value) that a consumer who planned to spend his permanent noncapital income $\{ \pLvl_{t}, \pLvl_{t+1}, ...\} $ in every period would have value defined by
-# 
+#
 # \begin{equation*}
 # \vLvl_{t}^{\text{autarky}} = \uFunc(\pLvl_{t})\left(\frac{1}{1-\DiscFac \PermGroFac^{1-\CRRA} \Ex[\PermShk^{1-\CRRA}]}\right)
 # \end{equation*}
-# 
+#
 # and defines the ['Finite Value of Autarky Condition'](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#Autarky-Value) as the requirement that the denominator be a positive finite number:
-# 
+#
 # \begin{equation*}
 # \DiscFac \PermGroFac^{1-\CRRA} \Ex[\PermShk^{1-\CRRA}] < 1
 # \end{equation*}
 
+# %% [markdown]
 # ### [The Weak Return Impatience Condition (WRIC)](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#WRIC)
-# 
+#
 # The [Return Impatience Condition](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#RIC) $\APFac/\Rfree < 1$ has long been understood to be required for the perfect foresight model to have a nondegenerate solution (a common special case is when $\CRRA=1$; in this case $\APFac = \Rfree \DiscFac$ so $\APFac<1$ reduces to the familiar condition $\DiscFac < \Rfree$).
-# 
+#
 # If the RIC does not hold, the consumer is so patient that the optimal consumption function approaches zero as the horizon extends indefinitely.
-# 
+#
 # When the probability of unemployment is $\UnempPrb$, the paper articulates an analogous (but weaker) return impatience condition:
-# 
+#
 # \begin{eqnarray}
 #  \UnempPrb^{1/\CRRA} \APFac/\Rfree & < & 1
 # \end{eqnarray}
 
+# %% [markdown]
 # # Key Results
-# 
+#
 # ## [Nondegenerate Solution Requires FVAC and WRIC](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#Sufficient-Conditions-For-Nondegenerate-Solution)
-# 
+#
 # A main result of the paper is that the conditions required for the model to have a nondegenerate limiting solution ($0 < c(m) < \infty$ for feasible $m$) are that the Finite Value of Autarky (FVAC) and Weak Return Impatience Condition (WRIC) hold.
 
+# %% [markdown]
 # ## [Natural Borrowing Constraint limits to Artificial Borrowing Constraint](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#The-Liquidity-Constrained-Solution-as-a-Limit)
 
+# %% [markdown]
 # Defining $\chi(\UnempPrb)$ as the consumption function associated with any particular probability of a zero-income shock $\UnempPrb,$ and defining $\hat{\chi}$ as the consumption function that would apply in the absence of the transitory zero-income shocks but in the presence of an 'artificial' borrowing constraint requiring $a \geq 0$ (_a la_ Deaton (1991)), the paper shows that
-# 
+#
 # \begin{eqnarray}
 # \lim_{\UnempPrb \downarrow 0}~\chi(\UnempPrb) & = & \hat{\chi}
 # \end{eqnarray}
-# 
+#
 # That is, as $\UnempPrb$ approaches zero the problem with uncertainty becomes identical to the problem that instead has constraints.  (See [Precautionary Saving and Liquidity Constraints](https://econ-ark.github.io/LiqConstr) for a full treatment of the relationship between precautionary saving and liquidity constraints).
 
+# %% [markdown]
 # ## [$\cFunc(m)$ can be Finite Even When Human Wealth Is Infinite](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#When-The-GICRaw-Fails)
-# 
+#
 # In the perfect foresight model, if $\Rfree < \PermGroFac$ the PDV of future labor income approaches infinity as the horizon extends and so the limiting consumption function is $c(m) = \infty$ for all $m$.  Many models have no well-defined limiting solution when human wealth is infinite.
-# 
+#
 # The presence of uncertainty changes this: Even when limiting human wealth is infinite, the limiting consumption function is finite for all values of $m$.
-# 
+#
 # This is because uncertainty imposes a "natural borrowing constraint" that deters the consumer from borrowing against their unbounded (but uncertain) future labor income.
 
+# %% [markdown]
 # A [table](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#Sufficient-Conditions-For-Nondegenerate-Solution) puts this result in the context of implications of other conditions and restrictions.
-# 
-# 
+#
+#
 
+# %% [markdown]
 # ## [Unique and Stable Values of $\mNrm$](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#Unique-Stable-Points)
-# 
+#
 # Assuming that the **FVAC** and **WRIC** hold so that the problem has a nondegenerate solution, under more stringent conditions its dynamics can also be shown to exhibit certain kinds of stability.  Two particularly useful kinds of stability are existence of a 'target' value of market resources $\Trg{\mNrm}$ (`mNrmFacTrg` in the toolkit) and a 'pseudo-steady-state' value $\Bal{\mNrm}$ (`mBalLvl` in the toolkit).
-# 
+#
 # ### [If the GIC-Nrm Holds, $\exists$ a finite 'target' $\mNrm$](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#onetarget)
-# 
+#
 # Section [Individual Target Wealth](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#onetarget) shows that, under parameter values for which the limiting consumption function exists, if the [GICMod](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#GICMod) holds then there will be a value $\Trg{m}$ such that:
-# 
+#
 # \begin{eqnarray*}
 # \Ex[m_{t+1}] & > & m_{t}~\text{if $m_{t} < \Trg{m}$} \\
 # \Ex[m_{t+1}] & < & m_{t}~\text{if $m_{t} > \Trg{m}$} \\
 # \Ex[m_{t+1}] & = & m_{t}~\text{if $m_{t} = \Trg{m}$}
 # \end{eqnarray*}
-# 
+#
 # [An equation](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#mTargImplicit) in the paper tells us that, for the expected normalized interest factor $\bar{\RNrm}=\mathbb{E}[\Rfree/(\PermGroFac \PermShk)]$, if $\mNrm_{t}=\Trg{m}$ then:
-# 
+#
 # \begin{align}
 # (\Trg{\mNrm}-\cFunc(\Trg{\mNrm}))\bar{\RNrm}+1 & = \Trg{\mNrm}
 # %\\ \Trg{\mNrm}(1-\bar{\RNrm}^{-1})+\bar{\RNrm}^{-1} & = \Trg{\cNrm}
 # %\\ \Trg{\cNrm} & = \Trg{\mNrm} - (\Trg{\mNrm} - 1)\bar{\RNrm}^{-1}
 # \end{align}
-# 
+#
 # which can be solved numerically for the unique $\Trg{\mNrm}$ that satisfies it.
-# 
+#
 # ### [If the GIC-Raw Holds, $\exists$ a balanced growth 'pseudo-steady-state' $\mNrm$](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#pseudo-steady-state)
-# 
+#
 # Section [Individual Balanced-Growth 'pseudo steady state'](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#pseudo-steady-state) shows that, under parameter values for which the limiting consumption function exists, if the **GIC** holds then there will be a value $\Bal{m}$ such that:
-# 
+#
 # \begin{eqnarray*}
 # \Ex_{t}[\mLvl_{t+1}/\mLvl_{t}] & > & \PermGroFac~\text{if $m_{t} < \Bal{m}$} \\
 # \Ex_{t}[\mLvl_{t+1}/\mLvl_{t}] & < & \PermGroFac~\text{if $m_{t} > \Bal{m}$} \\
 # \Ex_{t}[\mLvl_{t+1}/\mLvl_{t}] & = & \PermGroFac~\text{if $m_{t} = \Bal{m}$}
 # \end{eqnarray*}
-# 
+#
 # [An equation](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#balgrostableSolve) in the paper tells us that if $\mNrm_{t}=\Bal{m}$ then:
-# 
+#
 # \begin{align}
 # (\Bal{\mNrm}-\cFunc(\Bal{\mNrm}))\RNrm+1 & = \Bal{\mNrm}
 # \end{align}
-# 
+#
 # which can be solved numerically for the unique $\Bal{\mNrm}$ that satisfies it.
-# 
-# 
+#
+#
 # ### [Example With Finite Pseudo-Steady-State But Infinite Target Wealth](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#GICModFailsButGICRawHolds)
-# 
+#
 # [A figure](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#GICModFailsButGICRawHolds) depicts a solution when the **FVAC** [(Finite Value of Autarky Condition)](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#FVAC) and [**WRIC**](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#FVAC) hold (so that the model has a solution), the [**GIC**](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#GICRaw) holds, so the model has a pseudo-steady-state $\Bal{\mNrm}$, but the [**GIC-Nrm**](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#GICMod) fails, so the model does not have an individual target wealth ratio $\Trg{\mNrm}$ (or, rather, the target wealth ratio is infinity, as can be seen by the fact that the level of $\cNrm$ is always below the level that would keep $\Ex_{t}[\Delta \mNrm_{t+1}] = 0$).
-# 
+#
 # This example was constructed by quadrupling the variance of the permanent shocks from the baseline parameterization.  The extra precautionary saving induced by increased uncertainty is what pushes the agent into the region without a target wealth ratio.
 
+# %% [markdown]
 # `# Create an example consumer instance where the GICMod fails but the GIC Holds:`
 
-# In[7]:
-
-
+# %% {"tags": []}
 # GICModFailsButGICRawHolds Example
 
 base_params['cycles'] = 0  # revert to default of infinite horizon
@@ -474,13 +538,10 @@ GICModFailsButGICRawHolds = \
     IndShockConsumerType(**GICModFailsButGICRawHolds_params,
                          quietly=True,messaging_level=logging.CRITICAL  # If True, output suppressed
                          )
-
-
+# %% [markdown]
 # `# Solve that consumer's problem:`
 
-# In[8]:
-
-
+# %% {"jupyter": {"source_hidden": true}, "tags": []}
 # Solve the model for these parameter values
 GICModFailsButGICRawHolds.tolerance = 0.0001  # Declare victory at ...
 # Suppress output during solution
@@ -548,12 +609,10 @@ distance_now = GICModFailsButGICRawHolds.solution[0].distance_last
 print('\ndistance_now < distance_original: ' +
       str(distance_now < distance_original))
 
-
+# %% [markdown]
 # `# Plot the results:`
 
-# In[9]:
-
-
+# %% {"jupyter": {"source_hidden": true}, "pycharm": {"is_executing": true}, "tags": []}
 # Plot https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#GICModFailsButGICRawHolds
 
 soln = GICModFailsButGICRawHolds.solution[0]  # Short alias for solution
@@ -645,16 +704,16 @@ else:
 makeFig('GICModFailsButGICRawHolds')
 print('Finite mBalLvl but infinite mNrmFacTrgNrm')
 
-
+# %% [markdown]
 # In the [interactive dashboard](#interactive-dashboard), see what happens as changes in the time preference rate (or changes in risk $\PermShkStd$) change the consumer from _normalized-growth-patient_ $(\APFac > \PermGroFac)$ to _normalized-growth-impatient_ ($\APFac < \PermGroFac$)
 
+# %% [markdown]
 # As a foundation for the remaining figures, we define another instance of the class $\texttt{IndShockConsumerType}$, which has the same parameter values as the instance $\texttt{baseAgent}$ defined previously but is solved to convergence (our definition of an infinite horizon agent type) instead of only 100 periods
 
+# %% [markdown]
 # `# Construct infinite horizon solution for consumer with baseline parameters:`
 
-# In[10]:
-
-
+# %% {"pycharm": {"is_executing": true}, "tags": []}
 # Find the infinite horizon solution
 
 base_params['aXtraCount'] = base_params['aXtraCount'] * 20
@@ -667,21 +726,23 @@ baseAgent_Inf = IndShockConsumerType(
     quietly=True, messaging_level=logging.CRITICAL)  # construct it silently
 
 
+# %% [markdown] {"tags": []}
 # ### [Expected Consumption Growth, and Permanent Income Growth](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#AnalysisoftheConvergedConsumptionFunction)
-# 
+#
 # $\renewcommand{\PermShk}{\pmb{\Psi}}$
 # The next figure, [Analysis of the Converged Consumption Function](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#cNrmTargetFig), shows expected growth factors for the levels of consumption $\cLvl$ and market resources $\mLvl$ as a function of the market resources ratio $\mNrm$ for a consumer behaving according to the converged consumption rule, along with the growth factor for $\mNrm$ itself, and the (constant) growth factors for consumption and expected permanent income, $\APFac$ and $\PermGroFac$.
-# 
+#
 # The growth factor for consumption can be computed without knowing the _level_ of the consumer's permanent income:
-# 
+#
 # \begin{eqnarray*}
 # \Ex_{t}[\cLvl_{t+1}/\cLvl_{t}] & = & \Ex_{t}\left[\frac{\pLvl_{t+1}\cFunc(m_{t+1})}{\pLvl_{t}\cFunc(m_{t})}\right] \\
 # % & = & \Ex_{t}\left[\frac{\PermGroFac \PermShk_{t+1} \pLvl_{t}}{\pLvl_{t}}\frac{\cFunc(m_{t+1})}{\cFunc(m_{t})}\right] \\
 # & = & \left[\frac{\PermGroFac \PermShk_{t+1} \cFunc(m_{t+1})}{\cFunc(m_{t})}\right]
 # \end{eqnarray*}
 
+# %% [markdown] {"tags": []}
 # and similarly the growth factor for the level of market resources is:
-# 
+#
 # \begin{eqnarray*}\renewcommand{\PermShk}{\pmb{\Psi}}
 # \Ex_{t}[\mLvl_{t+1}/\mLvl_{t}]
 # & = & \Ex_{t}\left[\frac{\PermGroFac \PermShk_{t+1} \mNrm_{t+1}} {\mNrm_{t}} \right]
@@ -692,6 +753,7 @@ baseAgent_Inf = IndShockConsumerType(
 # \\ & = & \PermGroFac \left[\frac{\aNrm_{t}\RNrm+1}{\mNrm_{t}}\right]
 # \end{eqnarray*}
 
+# %% [markdown]
 # For the ratio $\mNrm$ things are only slightly more complicated:
 # \begin{eqnarray*}\renewcommand{\PermShk}{\pmb{\Psi}}
 # \Ex_{t}[m_{t+1}]
@@ -700,6 +762,7 @@ baseAgent_Inf = IndShockConsumerType(
 # \Ex_{t}\left[m_{t+1}/m_{t}\right] & = & \left(\frac{a_{t}\bar{\RNrm}+1}{\mNrm_{t}}\right)
 # \end{eqnarray*}
 
+# %% [markdown] {"tags": []}
 # <!-- The expectation of the growth in the log of $\mLvl$ is a downward-adjusted value of the log of the growth factor:
 # \begin{eqnarray*}
 # \Ex_{t}[\log(\mLvl_{t+1}/\mLvl_{t})]
@@ -721,11 +784,10 @@ baseAgent_Inf = IndShockConsumerType(
 # \end{eqnarray*}
 # -->
 
+# %% [markdown]
 # `# Solve problem of consumer with baseline parameters:`
 
-# In[11]:
-
-
+# %% {"pycharm": {"is_executing": true, "name": "#%%\n"}, "tags": []}
 # Solve baseline parameters agent
 tweaked_params = deepcopy(base_params)
 tweaked_params['DiscFac'] = 0.970  # Tweak to make figure clearer
@@ -735,12 +797,10 @@ baseAgent_Inf = IndShockConsumerType(
 baseAgent_Inf.solve(
     quietly=False, messaging_level=logging.INFO)  # Solve it with info
 
-
+# %% [markdown] {"tags": []}
 # `# Plot growth factors for various model elements at steady state:`
 
-# In[ ]:
-
-
+# %% {"jupyter": {"source_hidden": true}, "pycharm": {"is_executing": true}, "tags": []}
 # Plot growth rates
 
 soln = baseAgent_Inf.solution[0]
@@ -865,18 +925,17 @@ plt.legend()
 ax.set_ylabel('Growth Factors')
 makeFig('cNrmTargetFig')
 
-
+# %% [markdown] {"tags": []}
 # ### [Consumption Function Bounds](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#AnalysisOfTheConvergedConsumptionFunction)
 # [The next figure](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#cFuncBounds)
 # illustrates theoretical bounds for the consumption function.
-# 
+#
 # We define two useful variables: the lower bound of $\tilde{\MPC}$ (marginal propensity to consume) and the limit of $h$ (Human wealth), along with some functions such as the limiting perfect foresight consumption function $\bar{c}(m)$, the upper bound function $\bar{\bar c}(m)$, and the lower bound function $\tilde{c}$(m).
 
+# %% [markdown] {"tags": []}
 # `# Define bounds for figure:`
 
-# In[ ]:
-
-
+# %% {"jupyter": {"source_hidden": true}, "pycharm": {"is_executing": true}, "tags": []}
 # Define mpc_Min, h_inf and PF consumption function, upper and lower bound of c function
 
 # construct and solve it silently
@@ -902,11 +961,10 @@ def cFunc_TopBnd(m): return mpc_Max * m
 def cFunc_BotBnd(m): return mpc_Min * m
 
 
+# %% [markdown]
 # `# Plot figure showing bounds`
 
-# In[ ]:
-
-
+# %% {"jupyter": {"source_hidden": true}, "pycharm": {"is_executing": true}, "tags": []}
 # Plot the consumption function and its bounds
 cMaxLabel = r'$\overline{c}(m)= (m-1+h)\tilde{\kappa}$'
 cMinLabel = r'Lower Bound: $\tilde{c}(m)= (1-\pmb{\text{\TH}}_{\mathsf{R}})\tilde{\kappa}m$'
@@ -976,18 +1034,18 @@ plt.arrow(14, 0.70, 0.5, -0.1, head_width=0.05, width=0.001,
 makeFig('cFuncBounds')
 
 
+# %% [markdown]
 # ### [Upper and Lower Limits of the Marginal Propensity to Consume](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#MPCLimits)
-# 
+#
 # The paper shows that as $m_{t}~\uparrow~\infty$ the consumption function in the presence of risk gets arbitrarily close to the perfect foresight consumption function.  Defining $\tilde{κ}$
 # as the perfect foresight model's MPC, this implies that $\lim_{m_{t}~\uparrow~\infty} c^{\prime}(m) = \tilde{\kappa}$.
-# 
+#
 # The paper also derives an analytical limit $\bar{\MPC}$ for the MPC as $m$ approaches 0., its bounding value.  Strict concavity of the consumption function implies that the consumption function will be everywhere below a function $\bar{\MPC}m$, and strictly declining everywhere.  The last figure plots the MPC between these two limits.
 
+# %% [markdown]
 # `# Make and plot figure showing the upper and lower limits of the MPC:`
 
-# In[ ]:
-
-
+# %% {"jupyter": {"source_hidden": true}, "pycharm": {"is_executing": true}, "tags": []}
 # The last figure shows the upper and lower limits of the MPC
 
 mPlotMin = 0
@@ -1031,12 +1089,14 @@ plt.arrow(4.95, 0.895, -0.2, 0.03, head_width=0.02, width=0.001,
 makeFig('MPCLimits')
 
 
+# %% [markdown]
 # # Summary
-# 
+#
 # [Two tables in the paper](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#Factors-Defined-And-Compared) summarize the various definitions, and then articulate conditions required for the problem to have a nondegenerate solution.  Among the nondegenerate cases, the most interesting result is that if the Growth Impatience Condition holds there will be a target level of wealth.
 
+# %% [markdown] {"heading_collapsed": "true", "tags": []}
 # ### Appendix: Options for Interacting With This Notebook <a id='optionsForInstalling'></a>
-# 
+#
 # 1. [View (static version)](https://nbviewer.org/github/econ-ark/BufferStockTheory/blob/master/BufferStockTheory.ipynb)
 # 1. [Launch Online Interactive Version](https://econ-ark.org/materials/bufferstocktheory?launch)
 # 1. For fast (local) execution, install [econ-ark](http://github.com/econ-ark) on your computer ([QUICK START GUIDE](https://github.com/econ-ark/HARK/blob/master/README.md)) then follow these instructions to retrieve the full contents of the `BufferStockTheory` [REMARK](https://github.com/econ-ark/BufferStockTheory):
@@ -1047,15 +1107,14 @@ makeFig('MPCLimits')
 #    1. `cd BufferStockTheory`
 #    1. `jupyter lab BufferStockTheory.ipynb`
 
+# %% [markdown] {"tags": []}
 # ### Appendix: Perfect foresight agent failing both the FHWC and RIC
-# 
+#
 # An appendix shows the solution for the problem of a perfect foresight consumer whose parameters fail to satisfy both the FHWC and the RIC
-# 
+#
 # [Perfect Foresight Liquidity Constrained Solution](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#ApndxLiqConstr)
 
-# In[ ]:
-
-
+# %% {"pycharm": {"is_executing": true}, "tags": []}
 PFGICRawHoldsFHWCFailsRICFails_par = deepcopy(init_perfect_foresight)
 
 # Replace parameters.
@@ -1092,4 +1151,3 @@ plt.xlim(mPlotMin-1, mPlotMax-1)
 plt.ylim(mPlotMin, 1.016)
 
 makeFig('PFGICRawHoldsFHWCFailsRICFails')
-
