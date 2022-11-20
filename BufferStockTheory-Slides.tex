@@ -127,11 +127,11 @@ Restrictions On Parameter Values Such That \pause
 \begin{frame}
 
 Limit as horizon $T$ goes to infinity of 
-\input{\LtxDir\EqDir/supfn}
+\input{\econtexRoot/\EqDir/supfn}
 
-\input{\LtxDir\EqDir/DBCparts}
+\input{\econtexRoot/\EqDir/DBCparts}
 
-\input{\LtxDir\EqDir/TranShkDef}
+\input{\econtexRoot/\EqDir/TranShkDef}
 
 \begin{itemize}
 \item $\util(\bullet)=\bullet^{1-\CRRA}/(1-\CRRA)$; $\Ex_{t}[\PermShk_{t+n}]=\Ex_{t}[\TranShk_{t+n}]=1~\forall~n>0$; $\beta < 1, \CRRA > 1$
@@ -236,7 +236,7 @@ Return Impatience Condition:
 \frametitle{Contraction Mapping Requirements}
 
 Finite Value of Autarky Condition: Same As In Liq Constr Problem!
-\input \LtxDir\EqDir/FVAC
+\input{\econtexRoot/\EqDir/FVAC}
 
 `Weak Return Impatience Condition' ($\WRIC$)
 
@@ -250,13 +250,13 @@ Finite Value of Autarky Condition: Same As In Liq Constr Problem!
 \frametitle{Requirement For Existence Of A Target}
 
 Definitions: `Uncertainty-Adjusted' Growth:
-\input \LtxDir\EqDir/PermGroFacAdj
+\input{\econtexRoot/\EqDir/PermGroFacAdj}
 
 Adjusted Growth Patience Factor:
-\input \LtxDir\EqDir/GPFacNrm
+\input{\econtexRoot/\EqDir/GPFacNrm}
 
 Growth Impatience Condition:
-\input \LtxDir\EqDir/GICMod~
+\input{\econtexRoot/\EqDir/GICMod}
 
 
 
@@ -404,15 +404,15 @@ Paper Proves:
 % TeX-master-file: t
 % eval: (setq TeX-command-list  (assq-delete-all (car (assoc "BibTeX" TeX-command-list)) TeX-command-list))
 % eval: (setq TeX-command-list  (assq-delete-all (car (assoc "Biber"  TeX-command-list)) TeX-command-list))
-% eval: (setq TeX-command-list  (remove '("BibTeX" "%(bibtex) ../LaTeX/%s"    TeX-run-BibTeX nil t :help "Run BibTeX") TeX-command-list))
-% eval: (setq TeX-command-list  (remove '("BibTeX"    "bibtex ../LaTeX/%s"    TeX-run-BibTeX nil (plain-tex-mode latex-mode doctex-mode ams-tex-mode texinfo-mode context-mode)  :help "Run BibTeX") TeX-command-list))
-% eval: (setq TeX-command-list  (remove '("BibTeX" "bibtex ../LaTeX/%s"    TeX-run-BibTeX nil t :help "Run BibTeX") TeX-command-list))
-% eval: (add-to-list 'TeX-command-list '("BibTeX" "bibtex LaTeX/%s" TeX-run-BibTeX nil t                                                                              :help "Run BibTeX") t)
-% eval:  (add-to-list 'TeX-command-list '("BibTeX" "bibtex LaTeX/%s" TeX-run-BibTeX nil (plain-tex-mode latex-mode doctex-mode ams-tex-mode texinfo-mode context-mode) :help "Run BibTeX") t)
+% eval: (setq TeX-command-list  (remove '("BibTeX" "%(bibtex) ./LaTeX/%s"    TeX-run-BibTeX nil t :help "Run BibTeX") TeX-command-list))
+% eval: (setq TeX-command-list  (remove '("BibTeX"    "bibtex ./LaTeX/%s"    TeX-run-BibTeX nil (plain-tex-mode latex-mode doctex-mode ams-tex-mode texinfo-mode context-mode)  :help "Run BibTeX") TeX-command-list))
+% eval: (setq TeX-command-list  (remove '("BibTeX" "bibtex ./LaTeX/%s"    TeX-run-BibTeX nil t :help "Run BibTeX") TeX-command-list))
+% eval: (add-to-list 'TeX-command-list '("BibTeX" "bibtex ./LaTeX/%s" TeX-run-BibTeX nil t                                                                              :help "Run BibTeX") t)
+% eval:  (add-to-list 'TeX-command-list '("BibTeX" "bibtex ./LaTeX/%s" TeX-run-BibTeX nil (plain-tex-mode latex-mode doctex-mode ams-tex-mode texinfo-mode context-mode) :help "Run BibTeX") t)
 % TeX-PDF-mode: t
 % TeX-file-line-error: t
 % TeX-debug-warnings: t
-% LaTeX-command-style: (("" "%(PDF)%(latex) %(file-line-error) %(extraopts) -output-directory=./LaTeX %S%(PDFout)"))
+% eval: (setq LaTeX-command-style (("" "%(PDF)%(latex) %(file-line-error) %(extraopts) -output-directory=./LaTeX %S%(PDFout)")))
 % TeX-source-correlate-mode: t
 % TeX-parse-self: t
 % TeX-parse-all-errors: t
