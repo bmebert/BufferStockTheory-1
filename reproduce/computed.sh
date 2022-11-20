@@ -16,6 +16,8 @@ cd "./Code/Python"
 [[ ! -e BufferStockTheor*.py ]] && jupyter nbconvert --to script BufferStockTheor*.ipynb 
 ipython BufferStockTheor*.py
 
+rm BufferStockTheor*.py # Delete it to prevent jupytext conflicts
+
 [[ -e latexdefs.tex ]] && rm -f latexdefs.tex # Delete junk file that might be created
 
 cd ./Code/Python; ./test_Harmenbergs_method.sh
