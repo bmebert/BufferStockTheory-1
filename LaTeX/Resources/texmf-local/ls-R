@@ -55,6 +55,7 @@ handoutBibMake.tex
 handoutSetup.sty
 handoutShortcuts.sty
 makePostHandoutsStart.tex
+pdfsuppressruntime.sty
 printvrb.sty
 snapshot.sty
 tex4ht
