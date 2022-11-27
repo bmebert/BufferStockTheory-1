@@ -32,6 +32,7 @@
 \NeedsTeXFormat{LaTeX2e}
 % \RequirePackage{rotating}
 \RequirePackage{snapshot} % Creates list of external files used by a LaTeX document
+\RequirePackage{etoolbox}
 \RequirePackage{ifthen}
 \RequirePackage{changepage}
 
