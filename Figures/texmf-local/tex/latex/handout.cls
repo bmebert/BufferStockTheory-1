@@ -32,7 +32,7 @@
 \NeedsTeXFormat{LaTeX2e}
 % \RequirePackage{rotating}
 \RequirePackage{snapshot} % Creates list of external files used by a LaTeX document
-\RequirePackage{ifthen}
+\RequirePackage{etoolbox}
 \RequirePackage{changepage}
 
 % If unspecified whether pdf output (instead of dvi) is being used, determine that it SHOULD be
