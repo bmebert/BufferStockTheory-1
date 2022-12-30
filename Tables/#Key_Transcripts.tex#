@@ -1,0 +1,20 @@
+  \begin{table}[!th]
+   \centering
+\iflabelexists{table:Key_Transcripts}{}{\label{table:Key_Transcripts}}
+  \begin{tabular}{|llll|}
+\hline
+\multicolumn{4}{|l|}{Key Transcripts in Endometrial Carcinoma with "Hot" Immune Prescence} \\ \hline
+\multicolumn{1}{|l|}{Transcript} & \multicolumn{1}{l|}{Protein Type} & \multicolumn{1}{l|}{Specific Function} & Role \\ \hline
+\multicolumn{1}{|l|}{CD8B} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}T-cell Surface\\ Glycoprotein\end{tabular}} & \multicolumn{1}{l|}{Activates CD4+ CTLs} & Immune function \\ \hline
+\multicolumn{1}{|l|}{CX3CR1} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Immature WBCs\\ Chemokine Receptor\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Recruits NK cells\\ through inflammation\end{tabular}} & \begin{tabular}[c]{@{}l@{}}Immune function\\ Chemotaxis\end{tabular} \\ \hline
+\multicolumn{1}{|l|}{TGFB1} & \multicolumn{1}{l|}{Growth Factor} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Promotes Th17 \\ \& Tregs cells\end{tabular}} & \begin{tabular}[c]{@{}l@{}}Immune function\\ Normal Development\end{tabular} \\ \hline
+\multicolumn{1}{|l|}{CD69} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}T cell, B cell, NK cell\\ Post-activation Antigen\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Promotes lymphocyte \\ proliferation\end{tabular}} & Immune function \\ \hline
+\multicolumn{1}{|l|}{IL-6} & \multicolumn{1}{l|}{Cytokine} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Stimulates B cells\\ Differentiates CD4 T cells\end{tabular}} & \begin{tabular}[c]{@{}l@{}}Immune function\\ Tissue Regeneration\end{tabular} \\ \hline
+\multicolumn{1}{|l|}{PRF1} & \multicolumn{1}{l|}{Perforin Protein} & \multicolumn{1}{l|}{Creates pore in cell} & Programmed Death \\ \hline
+\multicolumn{1}{|l|}{CD1C} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}T-cell Surface \\ Glycoprotein\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Presents antigen to \\ TCR and NK cells\end{tabular}} & Immune function \\ \hline
+\multicolumn{1}{|l|}{CXCL11} & \multicolumn{1}{l|}{Chemokine} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Attracts \& induces Ca+ \\ release in activated T cells\end{tabular}} & \begin{tabular}[c]{@{}l@{}}Immune function\\ Chemotaxis\end{tabular} \\ \hline
+\multicolumn{1}{|l|}{TGFB3} & \multicolumn{1}{l|}{Growth Factor} & \multicolumn{1}{l|}{Stimulates Growth} & \begin{tabular}[c]{@{}l@{}}Immune function\\ Normal Development\end{tabular} \\ \hline
+\end{tabular}
+\caption{textbf\Key Transcripts in ECMA Local Tumer Immune Microenvironment}
+(it\ FPKM Data {cite\CCLE:2022} {cite\TCGA:2020})
+\end{table}

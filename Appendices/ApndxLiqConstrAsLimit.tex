@@ -1,8 +1,8 @@
 % -*- mode: LaTeX; TeX-PDF-mode: t; -*-
-\input{./econtexRoot}\documentclass[\econtexRoot/BufferStockTheory]{subfiles}
+\input{./econtexRoot}\documentclass[\econtexRoot/Endo]{subfiles}
 \input{./econtexRoot}\input{\LaTeXInputs/econtex_onlyinsubfile}
 
-\onlyinsubfile{\externaldocument{BufferStockTheory}} % Get xrefs -- esp to appendix -- from main file; only works properly if main file has already been compiled;
+\onlyinsubfile{\externaldocument{Endo}} % Get xrefs -- esp to appendix -- from main file; only works properly if main file has already been compiled;
 \begin{document}
 
 \section{The Perfect Foresight Liquidity Constrained Solution as a Limit}\label{sec:LiqConstrAsLimit}
@@ -41,7 +41,7 @@ $\cnstr{\aFunc}_{T-1}^{*}(\mNrm)$ therefore answers the question ``With what lev
 \begin{equation}\begin{gathered}\begin{aligned}
       \cnstr{\aFunc}_{T-1}(\mNrm)  & = \max[0,\cnstr{\aFunc}^{*}_{T-1}(\mNrm)], \notag
     \end{aligned}\end{gathered}\end{equation}
-reflecting the inability of the restrained consumer to spend more than current resources, and note (as pointed out by \cite{deatonLiqConstr}) that
+reflecting the inability of the restrained consumer to spend more than current resources, and note (as pointed out by Deaton~\citeyearpar{deatonLiqConstr}) that
 \begin{equation}\begin{gathered}\begin{aligned}
       \mNrm^{1}_{\#}  & = {\left( \cnstr{\mathfrak{v}}_{T-1}^{\prime}(0)\right)}^{-1/\CRRA} \notag
     \end{aligned}\end{gathered}\end{equation}

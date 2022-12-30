@@ -1,4 +1,2 @@
-texlive-latex-recommended
-texlive-fonts-recommended
-cm-super
+texlive-full
 dvipng

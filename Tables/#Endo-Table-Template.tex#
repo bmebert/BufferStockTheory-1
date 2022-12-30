@@ -1,0 +1,34 @@
+  \begin{table}
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \caption{Title of Table Goes Here}\label{table:Calibration}
+    \sbox{\TblBox}{
+      \begin{tabular}{|c|c|c|}
+        \hline
+        \hline
+        \hyperlink{FHWFacDefn}{Finite Human Wealth Factor}                 & $\RNrm^{-1}$ & $\equiv$ & $\PermGroFac/\Rfree$                    & 0.990 \\ \hline
+      \end{tabular}
+    } % End \sbox
+
+    \settowidth\TableWidth{\usebox{\TblBox}}
+    \savebox{\TblShrunkBox}{
+      \settowidth{\TblShrunk}{\usebox{\TblBox}}
+      \resizebox{0.9\textwidth}{!}{\begin{minipage}{\TblShrunk}
+          \usebox{\TblBox}
+        \end{minipage}}
+    }
+
+    \usebox{\TblShrunkBox}
+
+
+%    \parbox{\textwidth}{\footnotesize The \href{https://econ-ark.org/materials/bufferstocktheory-dashboard?launch}{dashboard} permits experimentation with alternative parameter values.}
+  \end{table\begin{table}
+  \centering
+  \sbox{\TblBox}{
+  \begin{tabular}{ |c|c|c| }
+    \hline
+    cell1 & cell2 & cell3 \\
+    \hline
+  \end{tabular}
+  }
+\end{table}

@@ -10,14 +10,14 @@ See [Econ-ARK/HARK](https://hark.readthedocs.io/en/latest/readme.html#Installing
 toolkit. Once it is installed, change to the Code/Python directory and generate the figures using either of these methods:
 
 1. Using ipython
-   * From a command line, execute `ipython BufferStockTheory.py`
-1. Open `BufferStockTheory.ipynb` using a [Jupyter Notebook](https://jupyter.org)
+   * From a command line, execute `ipython Endo.py`
+1. Open `Endo.ipynb` using a [Jupyter Notebook](https://jupyter.org)
 
 ## Wolfram Mathematica
 
-The figures produced by the Mathematica code are at Code/Mathematica/Results/BufferStockTheory/Figures
+The figures produced by the Mathematica code are at Code/Mathematica/Results/Endo/Figures
 
-The Mathematica code that generates the results is at Code/Mathematica/Results/BufferStockTheory
+The Mathematica code that generates the results is at Code/Mathematica/Results/Endo
 
 If you have Wolfram Mathematica installed:
 

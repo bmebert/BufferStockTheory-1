@@ -1,22 +1,15 @@
 #!/bin/bash
 
 scriptDir="$(dirname "$0")" # Get the path to the directory this script is in
-# scriptDir=/Volumes/Data/Papers/BufferStockTheory/BufferStockTheory-Latest/reproduce/
+
 cd "$scriptDir/.."  # Move to its parent 
 
-[[ ! -e ./binder/requirements.out ]] && echo ''  && echo 'Installing requirements' && echo '' && pip install -r ./binder/requirements.txt | tee binder/requirements.out 
+[[ ! -e binder/requirements.out ]] && echo ''  && echo 'Installing requirements' && echo '' && pip install -r binder/requirements.txt | tee binder/requirements.out 
 
 echo '' ; echo 'Producing figures' ; echo ''
 
-[[ ! -d ./Code/Python/src ]] && mkdir -p ./Code/Python/src
-
-cp -r ./src/* ./Code/Python/src
-
-cd "./Code/Python"
-[[ ! -e BufferStockTheor*.py ]] && jupyter nbconvert --to script BufferStockTheor*.ipynb 
-ipython BufferStockTheor*.py
-
-rm BufferStockTheor*.py # Delete it to prevent jupytext conflicts
+cd "."
+ipython Endo.py
 
 [[ -e latexdefs.tex ]] && rm -f latexdefs.tex # Delete junk file that might be created
 

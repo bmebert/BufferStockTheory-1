@@ -18,8 +18,8 @@ SolveAnotherPeriod := Block[{
   
 (* Construct limiting minimum and maximum MPC's as wealth goes to \[Infinity] and 0., and human wealth *)
   AppendTo[\[HBar]   ,1+FHW \[HBar][[-1]]]; (* Recursive formula for human wealth ratio \[HBar] *)
-  AppendTo[\[Kappa]Max,1/(1+\[Lambda]Below/Last[\[Kappa]Max])]; (* eq:MaxMPCInv in BufferStockTheory.tex *)
-  AppendTo[\[Kappa]Min,1/(1+\[Lambda]Above/Last[\[Kappa]Min])]; (* eq:MinMPCInv in BufferStockTheory.tex *)
+  AppendTo[\[Kappa]Max,1/(1+\[Lambda]Below/Last[\[Kappa]Max])]; (* eq:MaxMPCInv in Endo.tex *)
+  AppendTo[\[Kappa]Min,1/(1+\[Lambda]Above/Last[\[Kappa]Min])]; (* eq:MinMPCInv in Endo.tex *)
 
   MakeDataIntoFuncs; (* Given the vectors constructed above, add appropriate data and functions to ambient environment *)
 

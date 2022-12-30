@@ -9,8 +9,8 @@ ClearAll[\"Global`*\"];
 If[Length[$FrontEnd] > 0, NBDir = SetDirectory[NotebookDirectory[]]];(* If \
 running from the Notebook interface *)
 If[Length[$FrontEnd] == \
-0,SetDirectory[\"/Volumes/Data/Work/BufferStock/BufferStockTheory/Latest/Code/\
-Mathematica/Results/BufferStockTheory\"]];
+0,SetDirectory[\"/Volumes/Data/Work/BufferStock/Endo/Latest/Code/\
+Mathematica/Results/Endo\"]];
 
 HomeDir = Directory[];
 CodeDir = HomeDir<>\"/../../CoreCode\";

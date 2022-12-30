@@ -3,5 +3,5 @@
 
 scriptDir="$(dirname "$0")"
 
-./reproduce_computed.sh # All BufferStockTheory results can be reproduced quickly
+./reproduce_computed.sh # All Endo results can be reproduced quickly
 

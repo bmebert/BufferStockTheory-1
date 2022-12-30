@@ -1,0 +1,272 @@
+
+% -*- mode: LaTeX; TeX-PDF-mode: t; -*-
+\input{./econtexRoot}\documentclass[Endo]{subfiles}
+
+%\usepackage[backend=bibtex]{biblatex}
+%\addbibresource{endo.bib}
+
+% WARNING: AuCTeX local variables only get reset when file is loaded
+% and differ between this file and Endo.tex
+% so must re-load whichever file you want to compile with C-x C-v
+
+% WARNING: Different AucTeX execution depending on whether
+% 0. Being compiled as standalone document
+% * Compile main to completion
+% * Then compile this one
+% * Keep compiling until nothing changes
+% 0. Being compiled as subfile of main document
+% * Just compile main document repeatedly
+
+\input{./econtexRoot}\input{\LaTeXInputs/econtex_onlyinsubfile}
+\onlyinsubfile{\externaldocument{Endo}} % Get xrefs -- esp to apndx -- from main file; only works if main file has already been compiled
+
+% % Redefine commands from sty file to signal compilation from master
+
+\providecommand{\versn}{pdf} % Version; like, web or pdf or journal submission
+
+% Embed metadata
+ \hypersetup{pdfauthor={Elizabeth M. W. Bertelson  <ebertel1@jhu.edu>},
+   pdftitle={In Situ Spatial RNA Detection of Type II Endometrial Carcinoma Tumor Microenvironment within FFPE Uterine Tissue},
+   pdfkeywords={spatial transcriptomics, immunoncology, endometrial cancer, FFPE, RNA amplification, lock-and-roll, rolling circle},
+   pdfnewwindow=true,
+   pdfcreator = {ebertel1@jhu.edu}
+ }
+
+\begin{document}
+
+
+\title{In Situ Spatial RNA Detection \\ of \\ Type II Endometrial Carcinoma Tumor Microenvironment \\ within \\ FFPE Uterine Tissue}
+
+\author{Elizabeth M. W. Bertelson\authNum}
+
+\keywords{spatial transcriptomics, immunoncology, endometrial cancer, FFPE, RNA amplification, lock-and-roll, rolling circle}
+
+
+\maketitle
+\hypertarget{abstract}{}
+\begin{abstract}
+  This paper outlines the process of qualifying and optimizing Formalin-Fixed Paraffin-Embedded (FFPE) uterus tissue for in situ spatial RNA detection in Type II, Stage 1 endometrial carcinoma.
+\end{abstract}
+
+
+\providecommand{\figName}{ECMA_generic}
+\providecommand{\figFile}{\figName}
+\cite{NCI:2021}
+\hypertarget{\figFile}{}
+\input{\FigDir/\figName}
+
+
+% Various resources
+\hypertarget{links}{}
+
+
+\begin{authorsinfo}
+  \name{Contact: \href{mailto:ebertel1@jhu.edu}{\texttt{ebertel1@jhu.edu}}, Department of Biomedical Engineering, 114 Clark Hall, Johns Hopkins University, Baltimore, MD 21218, \url{https://www.linkedin.com/in/lbertelson}, and Portal Bioscience LLC.}
+\end{authorsinfo}
+
+\pagenumbering{gobble} % Prevent numbering for pages including the TOC and title page
+
+
+\ifthenelse{\boolean{Web}}{
+}{
+  \begin{minipage}{0.9\textwidth}
+    \footnotesize 
+    Special thanks to Miguel Flores, Sarah McGuire, Tiffany Jones,and David Baumeister for their guiadance and never-ending support.
+  \end{minipage}
+
+  \titlepagefinish\pagebreak
+  \let\LaTeXStandardContentsName\contentsname
+  \renewcommand{\contentsname}{}
+  \tableofcontents
+  \pagebreak
+
+%   \medskip\medskip
+%   \begin{minipage}{0.9\textwidth}
+%    \renewcommand{\listfigName{}}
+%   \end{minipage}
+
+%   \medskip\medskip
+%   \begin{minipage}{0.9\textwidth}
+%     \listoftables
+%   \end{minipage}
+ } % {Web}
+% \pagebreak
+\hypertarget{Introduction}{}
+\section{Introduction}\label{sec:intro}
+\setcounter{page}{0}\pagenumbering{arabic}
+
+In the never-ceasing fight against cancer, the immune microenvironment has become front and center. As B-cells and T-cells have became phenotyped, and immune population clusters divided into macrophage high and natural killer cell low groups, the spatial distribution of these immune soldiers become more and more relevant.(\cite{Makk:2021}) A prime example being tertiary lymphoid structures - distinct immune structures of varying immune cell composition, frequently found in tumor microenvironments. In the quest for higher resolution data, spatial transcriptomics has emerged as a worthwhile contender.
+
+% Keep track of where you are via header at top of PDF
+\ifthenelse{\boolean{Web}}{}{
+  \automark{subsection}
+}
+
+\hypertarget{The-Growing-ECMA-Caseload-Problem}{}
+\section{The Growing ECMA Caseload Problem}\label{sec:growing}
+\subsection{Setup}\label{subsec:setup}\
+%Discuss the background on EC and the growing case frequency in recent decades.
+
+Endometrial cancer is increasing in incident rate, due to a number of factors. Some of these factors include obesity (sedentary lifestyle instead?) and delaying or never having children.(\cite{Shih:2021}) While Type I EC has an relatively high recovery and survival rate, the same is not true for Type II EC. Early detection and early resection are key to a high chance of survival. It is anticipated that Type II case with continue to climb as the time marches on.(\cite{McAl:2016})
+Developing better tools for early, non-invasive diagnosis, as well as deeper investigative tools for disease pathology, therapy development, screening, and therapy qualifying.(\cite{Will:2021})
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Here is some stuff about ECMA.
+
+
+\hypertarget{Comparison-to-Existing-iTME-Knowledge}{}
+\subsection{Comparison to Existing iTME Knowledge}\label{subsec:lit}
+\hypertarget{DiffFromLit}{}In the never-ceasing fight against cancer, the immune microenvironment has become front and center.(\cite{Meyer:2020}) As B-cells and T-cells have became phenotyped, and immune population clusters divided into macrophage high and natural killer cell low groups, the spatial distribution of these immune soldiers become more and more relevant.(\cite{Van:2022}) A prime example being tertiary lymphoid structures - distinct immune structures of varying immune cell composition, frequently found in tumor microenvironments. In the quest for higher resolution data, spatial transcriptomics has emerged as a worthwhile contender.
+
+Within the immune landscape of EC, there are many important players. The lineage of these cells is an important consideration as mutations within the surrounding tumor microenvironment are common. Myeloid-derived suppressor cells (MDSCs) originate from bone marrow stem cells, and are often upregulated in chronically inflamed regions, a result of altered hematopoiesis. Regions with high MDSC populations also exhibit T-cell suppression.  The investigation of this mechanism throughout early stage endometrioid development would provide further pathological insight into EC. 
+
+ 
+%\hypertarget{Polymorphonuclear-Neutrophils-vs-Tumor}{}
+\hypertarget{Recent-ECMA-iTME-Discoveries}{}
+\subsection{Recent ECMA iTME Discoveries}\label{subsec:recent}
+
+Powerful therapy tools exist to combat cancer; among the many options, immune checkpoint inhibitors, CAR-T cell therapy, among many other treatments. When these therapies work, tumor rapidly shrink, metastasis is stopped in its tracks, and the risk of recurrence is low. However, often these expensive and taxing treatments results in no improvement. A growing consensus is the importance of the immune microenvironment in the treatment of malignancies in the body. With increased focus on the immune players of the tumor milieu, research has focused on categorizing immune populations, phenotyping T-cells, B-Cells, NKs, and macrophages, and single cell sequencing.(\cite{Yama:2013}) Alongside immunohistology and the identification of tertiary immune structures within chronically inflammation tissue, high resolution, spatial RNA detection and distribution of immune cells and biomarkers are the newest frontiers.
+
+Endometrial cancer is a sneaky beast - she can lie in wait and slowly grow, enduring a steady assault of T-cell and NK cells at her perimeter.(\cite{Souto:2011}) But EC is clever and plays the long game, recruiting a sympathetic agent within the immune camp. MDSCs hold significant influence over T-cells, and, drunk on power from EC, MDSCs convince the T-cells that EC is no threat and that they really needn't do anything much at all about her. This can be observed by staining for CD11+ (\ref{fig:CD11_Stain_ECMA}) in conjunction with stand H and E staining (\cite{fig:H_E_Stain}). Our main character is MDSC - and understanding her motivations, we must also know where she goes and to whom she talks.(\cite{Drag:2015})
+
+
+\renewcommand{\figName}{CD11_Stain_ECMA}
+\renewcommand{\figFile}{\figName}
+\hypertarget{\figFile}{}
+\input{\FigDir/\figName}
+
+
+\renewcommand{\figName}{H_E_Stain_ECMA}
+\renewcommand{\figFile}{\figName}
+\hypertarget{\figFile}{}
+\input{\FigDir/\figName}
+
+
+\hypertarget{An-Overview-of-Spatial-Transcriptomics}{}
+\section{An Overview of Spatial Transcriptomics}\label{sec:spatial}
+
+High spatial resolution within FFPE is a challenge, but a challenge worth undertaking. Endless bio-banks of data could be used if only the biomaterial were accessible. Both immunostaining and fluorescent in situ hybridization (FISH) are techniques currently used and commercially available for single-cell (is this true?) resolution,; however, these techniques perform considerably better on freshly frozen tissue, with no exposure to paraffin. Paraffin was not only creates difficulties in permeabilizing the tissue, but also with autofluorescence and background during fluorescence imaging.
+
+
+\hypertarget{In-Situ-RNA-Detection}{}
+\subsection{In Situ RNA Detection}\label{subsec:rna}
+
+Lock'n'Roll, an in situ nucleic acid amplification technique (patent; how is this referenced?) paired with nucleic acid tags, has had early success on FFPE tissue. Lock'n'Roll is a form of rolling circle amplification, occurring in situ, ``locked'' onto the target RNA. This results in a `` ball'' of amplified targets with a nucleic acid tag sequence embedded repeatedly within the Lock'N'Roll ball. Using a 4 sequence barcode, multiple fluorescent tags can be imaged and analyzed to call out specific targets whenever the correct colocalization is detected. The size of the Lock'n'Roll ball is important, allowing colocalization during imaging analysis. An example can be seen in \ref{fig:TonsilB2M}.
+
+
+\renewcommand{\figName}{TonsilB2M}
+\renewcommand{\figFile}{\figName}
+\hypertarget{\figFile}{}
+\input{\FigDir/\figName}
+
+\hypertarget{Methods}{}
+\section{Methods}\label{sec:methods}
+
+
+\hypertarget{Automated-Multiround-Fluorescence-Microscope-Imaging}{}
+\subsection{Automated Multi-round Fluorescence Microscope Imaging}\label{subsec:vsa}
+
+\renewcommand{\figName}{VSA_control}
+\renewcommand{\figFile}{\figName}
+\hypertarget{\figFile}{}
+\input{\FigDir/\figName}
+
+%%%%% Discuss specifics of LISH
+
+
+%\hypertarget{Compuational-Combinatorial-Analysis}{}
+%\subsection{Computational Combinatorial Analysis}\label{subsec:comp}
+
+\hypertarget{Calculation-of-Codewords-with-error-Correction}{}
+\subsection{Calculation of Codewords with Error Correction}\label{subsec:error}
+  
+% Discuss the logical analysis of n-bit combinations and the context in previous research
+%%%%% MERFISH
+
+As discussed in \cite{Chen:2015}, the probability of a mis-identified transcripts can be calculated and corrected.
+
+Beginning with the probability of properly identified RNA transcripts with a 4 'ON' bits of 24 total bits, \ref{eq:noErrProb}.
+
+%probability of properly IDed RNA transcript
+\begin{verbatimwrite}{\EqDir/noErrProb}
+  \begin{equation}
+    \left(1-p_1\right)^m\left(1-p_0\right)^{N-m}
+    \label{eq:noErrProb}
+  \end{equation}
+\end{verbatimwrite}
+\input{\LtxDir\EqDir/noErrProb}
+
+The impact of a '0' that should be a '1', or a '1' that should '0' is equivalent; both result is a wrongly identified transcripts. However, the probability of a '0' (no spot)  being misidetified as a '1' is lower than a '1' (true spot) being misidentified as a '0'. This is based on the logic that a fake spot is likely than a missed spot. These errors are weighted accordingly in \ref{eq:wtdErr}
+
+%weighted error of 0--> 1 vs 1 --> 0
+\begin{verbatimwrite}{\EqDir/wtdErr}
+  \begin{equation}
+    \frac{1}{2^N}\sum_{m=0}^N\left(\begin{array}{c}N\\m\end{array}\right)\left(1-p_1\right)^m\left(1-p_0\right)^{N-m}
+    \label{eq:wtdErr}
+  \end{equation}
+\end{verbatimwrite}
+\input{\LtxDir\EqDir/wtdErr}
+
+Finally, to measure the accuracy of the decoded analysis, a Mis-Identification Rate (MIR) can be calculated using \ref{eq:avgMIR}. This is a ratio of the true RNA transcripts that have been misidentified as the {\it wrong} RNA transcripts compared to {\it true positive} RNA transcripts. 
+
+% m_{t}}\right){\PermGroFac}_{t+1}\right]  \notag \\
+%average mis ID rate of true positive detected RNA
+\begin{verbatimwrite}{\EqDir/avgMIR}
+  \begin{equation}
+    1-\frac{1}{2^N}\sum_{m=0}^N\left(\begin{array}{l}N\\m\end{array}\right)\left(1-p_1\right)^m\left(1-p_0\right)^{N=m}
+    \label{eq:aveMIR}
+  \end{equation}
+\end{verbatimwrite}
+\input{\LtxDir\EqDir/avgMIR}
+
+  
+\hypertarget{Results}{}
+\section{Results}\label{sec:results}
+
+This experiment is in-processed with limited data available at this time. 
+
+\hypertarget{Highly-Expressed-Transcripts-Across-Tumor-Border}{}
+\subsection{Highly Expressed Transcripts Across Tumor Border}\label{subsubsec:transcripts}
+
+Initial imaging during the optimization process reveals high expression among cell types typically crucial in hot immune environments. These transcripts are expressed to create a locally cytotoxic microenivronment due to inflammation caused by the carcinoma.(\cite{Van:2014}) 
+
+\input{\TableDir/Key_Transcripts}
+\cite{CCLE:2022}
+\cite{TCGA:2020}
+
+\hypertarget{Computational-Challenges}{}
+\subsection{Computational Challenges}\label{subsec:challenges}
+
+A repeated challenge through analysis was computational overcorrection for errors. This call be observed in \ref{fig:LowCallOut}, where RNA spots are visible in yellow, but positive transcripts cannot be identified by the decode executable. 
+
+\renewcommand{\figName}{LowCallOut}
+\renewcommand{\figFile}{\figName}
+\hypertarget{\figFile}{}
+\input{\FigDir/\figName}
+
+A repeated challenge through analysis was computational overcorrection for errors. This call be observed in \ref{fig:LowCallOut}, where RNA spots are visible in yellow.
+
+
+
+\hypertarget{Conclusion}{}
+\subsection{Conclusion}\label{subsec:challenges}
+
+As the project continue, more data will come available, allowing a conclusion section to be thoroughly written. Stay tuned!
+
+\pagebreak
+
+\onlyinsubfile{\input{\LaTeXInputs/bibliography_blend}}
+% Do not include appendix figures and tables in ToC unless for Web version
+%\ifthenelse{\boolean{Web}}{}{
+%\onlyinsubfile{\captionsetup[figure]{list=no}}
+%\onlyinsubfile{\captionsetup[table]{list=no}}
+
+\end{document}
+
+\small
+\pagebreak
+%\input{\Endo.bib}\end{document}
+\printbibliography
+\endinput
+\end{document}

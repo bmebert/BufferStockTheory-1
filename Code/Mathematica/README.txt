@@ -5,7 +5,7 @@ model of the kind described in the paper "Theoretical Foundations of Buffer Stoc
 ./Results contains folders that, using the general-purpose code in ./CoreCode, produce specific 
 results for a specific paper.  
 
-./Results/BufferStockTheory/doAll.nb 
+./Results/Endo/doAll.nb 
 
 is the notebook that produces all the figures and other results in the "Theoretical Foundations" paper.
 

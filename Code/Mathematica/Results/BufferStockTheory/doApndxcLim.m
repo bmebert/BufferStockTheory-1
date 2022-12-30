@@ -38,7 +38,7 @@ If[$VersionNumber < 6,(*then*) Print["These programs require Mathematica version
 (* If running from Notebook front end, set directory to Notebook's directory *)
 If[Length[$FrontEnd] > 0, NBDir = SetDirectory[NotebookDirectory[]]];
 (* If not running from Notebook front end, set directory manually *)
-If[Length[$FrontEnd] == 0,SetDirectory["/Volumes/Data/Work/BufferStock/BufferStockTheory/Latest/Code/Mathematica/Results/BufferStockTheory"]];
+If[Length[$FrontEnd] == 0,SetDirectory["/Volumes/Data/Work/BufferStock/Endo/Latest/Code/Mathematica/Results/Endo"]];
 SaveFigs = True;
 
 HomeDir = Directory[];

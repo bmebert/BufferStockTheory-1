@@ -75,7 +75,7 @@ from HARK.ConsumptionSaving.ConsIndShockModel import (
 # \end{equation*}
 # where $\mLvl$ denotes any other state variables that consumption might depend on, $\cFunc(\cdot,\cdot)$ is the individual consumption function, and $f_t(\cdot,\cdot)$ is the joint density function of permanent income and the other state variables at time $t$.
 #
-# Under the usual assumption of Constant Relative Risk Aversion utility and standard assumptions about the budget constraint, [such models are homothetic](https://econ-ark.github.io/BufferStockTheory/BufferStockTheory3.html#The-Problem-Can-Be-Normalized-By-Permanent-Income). This means that for a state variable $\mLvl$ one can solve for a normalized policy function $\cFunc(\cdot)$ such that
+# Under the usual assumption of Constant Relative Risk Aversion utility and standard assumptions about the budget constraint, [such models are homothetic](https://econ-ark.github.io/Endo/Endo3.html#The-Problem-Can-Be-Normalized-By-Permanent-Income). This means that for a state variable $\mLvl$ one can solve for a normalized policy function $\cFunc(\cdot)$ such that
 # \begin{equation*}
 #     \mathrm{c}(\mLvl,\pLvl) = \mathrm{c}\left(\mLvl/\pLvl\right)\times \pLvl 
 # \end{equation*}
@@ -118,7 +118,7 @@ from HARK.ConsumptionSaving.ConsIndShockModel import (
 # %% [markdown] tags=[]
 # # Description of the method
 #
-# To illustrate Harmenberg's idea, consider a [buffer stock saving](https://econ-ark.github.io/BufferStockTheory) model in which:
+# To illustrate Harmenberg's idea, consider a [buffer stock saving](https://econ-ark.github.io/Endo) model in which:
 # - The individual agent's problem has two state variables:
 #     - Market resources $\mLvl_{i,t}$.
 #     - Permanent income $\pLvl_{i,t}$.
@@ -246,7 +246,7 @@ from HARK.ConsumptionSaving.ConsIndShockModel import (
 #
 # To demonstrate the gain in efficiency from using Harmenberg's method, we will set up the following experiment.
 #
-# Consider an economy populated by [Buffer-Stock](https://econ-ark.github.io/BufferStockTheory/) savers, whose individual-level state variables are market resources $\mLvl_t$ and permanent income $\pLvl_t$. Such agents have a [homothetic consumption function](https://econ-ark.github.io/BufferStockTheory/#The-Problem-Can-Be-Normalized-By-Permanent-Income), so that we can define normalized market resources $\mNrm_t \def \mLvl_t / \pLvl_t$, solve for a normalized consumption function $\cFunc(\cdot)$, and express the consumption function as $\cFunc(\mLvl,\pLvl) = \cFunc(\mNrm)\times\pLvl$.
+# Consider an economy populated by [Buffer-Stock](https://econ-ark.github.io/Endo/) savers, whose individual-level state variables are market resources $\mLvl_t$ and permanent income $\pLvl_t$. Such agents have a [homothetic consumption function](https://econ-ark.github.io/Endo/#The-Problem-Can-Be-Normalized-By-Permanent-Income), so that we can define normalized market resources $\mNrm_t \def \mLvl_t / \pLvl_t$, solve for a normalized consumption function $\cFunc(\cdot)$, and express the consumption function as $\cFunc(\mLvl,\pLvl) = \cFunc(\mNrm)\times\pLvl$.
 #
 # Assume further that mortality, impatience, and permanent income growth are such that the economy converges to stable joint distribution of $\mNrm$ and $\pLvl$ characterized by the density function $f(\cdot,\cdot)$. Under these conditions, define the stable level of aggregate market resources and consumption as
 # \begin{equation}

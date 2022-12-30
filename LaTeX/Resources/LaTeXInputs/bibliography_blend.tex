@@ -1,6 +1,6 @@
 % Allows two (optional) supplements to hard-wired \texname.bib bibfile:
 % economics.bib is a default bibfile that supplies anything missing elsewhere
-% Add-Refs.bib is an override bibfile that supplants anything in \texname.bib or economics.bib
+% Add-Refs.bib is an override bibfile that supplants anything in \texfile.bib or economics.bib
 \provideboolean{AddRefsExists}
 \provideboolean{economicsExists}
 \provideboolean{BothExist}
@@ -38,8 +38,8 @@
 
 \ifthenelse{\boolean{BothExist}}{
   % then use both
-  \typeout{bibliography{\econtexRoot/Add-Refs,\econtexRoot/\texname,\economics}}
-  \bibliography{\econtexRoot/Add-Refs,\econtexRoot/\texname,\economics}
+  \typeout{bibliography{\econtexRoot/Add-Refs,\econtexRoot/\texname,economics}}
+  \bibliography{\econtexRoot/Add-Refs,\econtexRoot/\texname,economics}
   % else both do not exist
 }{ % maybe neither does?
   \ifthenelse{\boolean{NeitherExists}}{
@@ -49,8 +49,7 @@
     \ifthenelse{\boolean{AddRefsExists}}{
       \typeout{bibliography{\econtexRoot/Add-Refs,\econtexRoot/\texname}}
       \bibliography{\econtexRoot/Add-Refs,\econtexRoot/\texname}}{
-      \typeout{bibliography{\econtexRoot/\texname,\economics}}
-      \bibliography{        \econtexRoot/\texname,\economics}}
+      \typeout{bibliography{\econtexRoot/\texname,economics}}
+      \bibliography{        \econtexRoot/\texname,economics}}
   } % end of picking the one that exists
 } % end of testing whether neither exists
-\small

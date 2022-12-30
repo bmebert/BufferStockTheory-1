@@ -25,7 +25,7 @@ ClearAll["Global`*"];
 
 (* If running from Notebook front end, set directory to Notebook's directory *)
 If[Length[$FrontEnd] > 0, NBDir = SetDirectory[NotebookDirectory[]]];(* If running from the Notebook interface *)
-If[Length[$FrontEnd] == 0,SetDirectory["/Volumes/Data/Work/BufferStock/BufferStockTheory/Latest/Code/Mathematica/Results/BufferStockTheory"]];
+If[Length[$FrontEnd] == 0,SetDirectory["/Volumes/Data/Work/BufferStock/Endo/Latest/Code/Mathematica/Results/Endo"]];
 
 HomeDir = Directory[];
 CodeDir = HomeDir<>"/../../CoreCode";

@@ -1,0 +1,206 @@
+% -*- mode: LaTeX; TeX-PDF-mode: t; -*-
+\input{./econtexRoot}\input{\ResourcesDir/owner}
+\documentclass[pdflatex]{beamer}
+\usepackage{ifthen}
+\newboolean{Web}\setboolean{Web}{false}
+\usepackage{econark}
+\providecommand{\texname}{Endo-Slides}% 
+
+% Can't read in Endo.sty because some packages conflict with Beamer
+% So need to redefine everything here
+
+\usepackage{econark}
+\usepackage{\econtexShortcuts}
+\usepackage{\LaTeXInputs/\texname}
+
+\setboolean{showPageHead}{false}
+
+\usepackage{natbib,amsmath,amssymb,rotating,subfigure}
+\usepackage{verbatim,moreverb,graphicx}
+\usepackage{wasysym}
+\usepackage{dcolumn}
+\usepackage{cancel}
+%\renewcommand{\LtxDir\EqDir}{\econtexRoot/Equations}
+\providecommand{\FigsRaw}{\econtexRoot/Code/Python/Figures}
+\providecommand{\CodeDir}{\econtexRoot/Code}
+\providecommand{\CalibrationDir}{\econtexRoot/Calibration}
+\providecommand{\TableDir}{\econtexRoot/Tables}
+\providecommand{\ApndxDir}{\econtexRoot/Appendices}
+\providecommand{\Ex}{\mathbb{E}}
+
+
+%\usepackage{natbib}\newcommand*{\newblock}{}
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+  % or ...
+  \setbeamercovered{transparent}
+}
+
+%\beamerdefaultoverlayspecification{<+->}
+
+%\setbeamertemplate{navigation symbols}{}  % Take away navigation symbols
+
+\usetheme{Warsaw}
+
+\setbeamersize{text margin left=3mm}
+\setbeamersize{text margin right=3mm}
+
+
+%_____________ Opening slide _______________________
+
+\title[RNA-based Spatial Endometrial Cancer Transcriptomics]{RNA-based Spatial Endometrial Cancer Transcriptomics \\ ReSPECT Project}
+\author[Bertelson]{Elizabeth MW Bertelson}
+\institute[JHU]{Johns Hopkins University}
+
+
+\begin{document}\bibliographystyle{\econtexBibStyle}
+
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+
+%_____________ 1st section  ____________
+\section{Introduction}
+
+\begin{frame}
+\frametitle{What is Endometrial Cancer (EC)?}
+
+
+\pause EC Basics \pause
+\begin{itemize}
+\item Nearly 66k women in the US diagnosed with EC in 2022
+\item 12,500 women will die from EC in the same year \\\pause {\it Nearly 20 percent of women diagnosed with EC do not survive. } \pause
+\item Treatable {\it if caught early} (Stage 1)
+\item EC incident rate expected double by 2030 due to
+\begin{itemize}
+\item High rates of obesity
+\item Delayed pregnancy
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\medskip\medskip
+
+\section{The Problem}
+
+
+\begin{frame}
+\frametitle{What's the EC problem?}
+  
+\pause {\it The overall survival is 80 percent - Why do we care about EC?}\pause
+\begin{itemize}
+\item Higher occurance/lower survival for women of color
+\item Vague biological/immune requrements to be qualified for immune targeted treatments
+\item Invasive biopsies make early detection challenging and less accessible
+\end{itemize}
+
+\end{frame}
+
+\section{The Idea}
+
+\begin{frame}
+ \frametitle{How can we address EC challenges?}
+\begin{itemize}
+\item Spatially Explore Localized Immune Activity Near Carcinoma
+  \begin{itemize}
+  \item Within Tumor
+  \item Within Stroma (forming connective tissue within tumor)
+  \item Adjecent to tumor region
+  \item Healthy endometrial tissue
+  \end{itemize}
+\item Create Robust Immune Profile for Treatment Determination
+\end{itemize}
+
+\end{frame}
+
+\section{The Method}
+
+\begin{frame}
+ \frametitle{How do we spatially detect immune cells?}
+\pause {\it In Situ} RNA Imaging \pause
+\begin{itemize}
+\item 1) Design 100 different immune transcript probes
+\item 2) Pretreat Tissue Sample to expose RNA
+\item 3) Incubate tissue with target immune transcripts ({\it targets will ligate to RNA})
+\item 4) Enzyme amplification of ligated targets ({\it increases physical size of target})
+\item 5) Incubate with fluorescent probes ({\it binding to enlarges RNA targets})
+\item 6) Image using fluorescent microscopy
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+ \frametitle{Key Immune Transcripts}
+ Transcripts are respresentative of proteins about to be created by a particular cell. These transcripts are used to identify specific immune cells as well as immune system chemical signalling.
+  \begin{table}[!th]
+   \centering
+  \begin{tabular}{|llll|}
+\hline
+\multicolumn{4}{|l|}{Key Transcripts in Endometrial Carcinoma with "Hot" Immune Prescence} \\ \hline
+\multicolumn{1}{|l|}{Transcript} & \multicolumn{1}{l|}{Protein Type} & \multicolumn{1}{l|}{Specific Function} & Role \\ \hline
+\multicolumn{1}{|l|}{CD8B} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}T-cell Surface\\ Glycoprotein\end{tabular}} & \multicolumn{1}{l|}{Activates CD4+ CTLs} & Immune function \\ \hline
+\multicolumn{1}{|l|}{CX3CR1} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Immature WBCs\\ Chemokine Receptor\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Recruits NK cells\\ through inflammation\end{tabular}} & \begin{tabular}[c]{@{}l@{}}Immune function\\ Chemotaxis\end{tabular} \\ \hline
+\multicolumn{1}{|l|}{TGFB1} & \multicolumn{1}{l|}{Growth Factor} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Promotes Th17 \\ \& Tregs cells\end{tabular}} & \begin{tabular}[c]{@{}l@{}}Immune function\\ Normal Development\end{tabular} \\ \hline
+\multicolumn{1}{|l|}{CD69} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}T cell, B cell, NK cell\\ Post-activation Antigen\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Promotes lymphocyte \\ proliferation\end{tabular}} & Immune function \\ \hline
+\multicolumn{1}{|l|}{IL-6} & \multicolumn{1}{l|}{Cytokine} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Stimulates B cells\\ Differentiates CD4 T cells\end{tabular}} & \begin{tabular}[c]{@{}l@{}}Immune function\\ Tissue Regeneration\end{tabular} \\ \hline
+\multicolumn{1}{|l|}{PRF1} & \multicolumn{1}{l|}{Perforin Protein} & \multicolumn{1}{l|}{Creates pore in cell} & Programmed Death \\ \hline
+\multicolumn{1}{|l|}{CD1C} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}T-cell Surface \\ Glycoprotein\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Presents antigen to \\ TCR and NK cells\end{tabular}} & Immune function \\ \hline
+\multicolumn{1}{|l|}{CXCL11} & \multicolumn{1}{l|}{Chemokine} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Attracts \& induces Ca+ \\ release in activated T cells\end{tabular}} & \begin{tabular}[c]{@{}l@{}}Immune function\\ Chemotaxis\end{tabular} \\ \hline
+\multicolumn{1}{|l|}{TGFB3} & \multicolumn{1}{l|}{Growth Factor} & \multicolumn{1}{l|}{Stimulates Growth} & \begin{tabular}[c]{@{}l@{}}Immune function\\ Normal Development\end{tabular} \\ \hline
+\end{tabular}
+\end{table}
+
+\end{frame}
+
+\section{The Results}
+
+\begin{frame}
+ \frametitle{Example Images}
+ The ReSPECT Project is ongoing. Below are examples of how collected spatial transcriptomic information can be used.
+
+
+\providecommand{\figName}{LowCallOut}
+\providecommand{\figFile}{\figName}
+\hypertarget{\figFile}{}
+\input{\FigDir/\figName} 
+\end{frame}
+
+
+\def\newblock{\hskip .11em plus .33em minus .07em}
+
+%\begin{frame}
+
+%\renewcommand{\bibsection}{\subsubsection*{\bibname }}
+
+%\tiny 
+
+
+%\pagebreak\input{\LaTeXInputs/bibliography_blend}
+
+%\end{frame}
+\end{document}\endinput
+
+% Local Variables:
+% TeX-master-file: t
+% eval: (setq TeX-command-list  (assq-delete-all (car (assoc "BibTeX" TeX-command-list)) TeX-command-list))
+% eval: (setq TeX-command-list  (assq-delete-all (car (assoc "Biber"  TeX-command-list)) TeX-command-list))
+% eval: (setq TeX-command-list  (remove '("BibTeX" "%(bibtex) ../LaTeX/%s"    TeX-run-BibTeX nil t :help "Run BibTeX") TeX-command-list))
+% eval: (setq TeX-command-list  (remove '("BibTeX"    "bibtex ../LaTeX/%s"    TeX-run-BibTeX nil (plain-tex-mode latex-mode doctex-mode ams-tex-mode texinfo-mode context-mode)  :help "Run BibTeX") TeX-command-list))
+% eval: (setq TeX-command-list  (remove '("BibTeX" "bibtex ../LaTeX/%s"    TeX-run-BibTeX nil t :help "Run BibTeX") TeX-command-list))
+% eval: (add-to-list 'TeX-command-list '("BibTeX" "bibtex LaTeX/%s" TeX-run-BibTeX nil t                                                                              :help "Run BibTeX") t)
+% eval:  (add-to-list 'TeX-command-list '("BibTeX" "bibtex LaTeX/%s" TeX-run-BibTeX nil (plain-tex-mode latex-mode doctex-mode ams-tex-mode texinfo-mode context-mode) :help "Run BibTeX") t)
+% TeX-PDF-mode: t
+% TeX-file-line-error: t
+% TeX-debug-warnings: t
+% LaTeX-command-style: (("" "%(PDF)%(latex) %(file-line-error) %(extraopts) -output-directory=./LaTeX %S%(PDFout)"))
+% TeX-source-correlate-mode: t
+% TeX-parse-self: t
+% TeX-parse-all-errors: t
+% eval: (cond ((string-equal system-type "darwin") (progn (setq TeX-view-program-list '(("Skim" "/Applications/Skim.app/Contents/SharedSupport/displayline -b %n LaTeX/%o %b"))))))
+% eval: (cond ((string-equal system-type "gnu/linux") (progn (setq TeX-view-program-list '(("Evince" "evince --page-index=%(outpage) LaTeX/%o"))))))
+% eval: (cond ((string-equal system-type "gnu/linux") (progn (setq TeX-view-program-selection '((output-pdf "Evince"))))))

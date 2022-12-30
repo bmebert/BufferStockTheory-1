@@ -42,8 +42,8 @@ Cell[BoxData[
        RowBox[{"Length", "[", "$FrontEnd", "]"}], "\[Equal]", "0"}], ",", 
       RowBox[{
       "SetDirectory", "[", 
-       "\"\</Volumes/Data/Work/BufferStock/BufferStockTheory/Latest/Code/\
-Mathematica/Results/BufferStockTheory\>\"", "]"}]}], "]"}], ";"}], 
+       "\"\</Volumes/Data/Work/BufferStock/Endo/Latest/Code/\
+Mathematica/Results/Endo\>\"", "]"}]}], "]"}], ";"}], 
    "\[IndentingNewLine]", "\n", 
    RowBox[{
     RowBox[{"HomeDir", "=", 
